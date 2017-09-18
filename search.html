@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Custom Search</title>
+</head>
+<body>
+  <style>
+    #search-box {
+        position: relative;
+        width: 20%;
+        margin: 0;
+        padding: 1em;
+    }
+
+    #search-form {
+        height: 30px;
+        border: 1px solid #999;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        background-color: #fff;
+        overflow: hidden;
+    }
+
+    #search-text {
+        font-size: 14px;
+        color: #ddd;
+        border-width: 0;
+        background: transparent;
+    }
+
+    #search-box input[type="text"] {
+        width: 90%;
+        padding: 4px 0 12px 1em;
+        color: #333;
+        outline: none;
+    }
+  </style>
+  <div>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script>
+      (function() {
+        var cx = '008264547667239827819:wnd6hef8hqu';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+    <gcse:search></gcse:search>
+  </div>
+</body>
+</html>
