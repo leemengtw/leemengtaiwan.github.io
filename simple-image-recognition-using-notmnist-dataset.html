@@ -1082,6 +1082,7 @@ h6:hover .anchor-link {
 <h2 id="After-finishing-this-notebook,-we-learn">After finishing this notebook, we learn<a class="anchor-link" href="#After-finishing-this-notebook,-we-learn">¶</a></h2><ul>
 <li>Use matplotlib to read images, transform them to ndarray and render.</li>
 <li>Identify whether there exist unbalanced problem for the labels of classification .</li>
+<li>Understand why it's important to have both valid and test set.</li>
 <li>Identify the importance of randomizing data for better efficieny when training sequentially.</li>
 <li>Identify duplicate images between training/test set.</li>
 </ul>
@@ -4762,8 +4763,12 @@ Number of samples in ./datasets/notMNIST_large/J.pickle: 52911
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Merge-seperate-character-dataset-together-(for-both-training/test)">Merge seperate character dataset together (for both training/test)<a class="anchor-link" href="#Merge-seperate-character-dataset-together-(for-both-training/test)">¶</a></h2><p>Merge and prune the training data as needed. Depending on your computer setup, you might not be able to fit it all in memory, and you can tune <code>train_size</code> as needed. The labels will be stored into a separate array of <strong>integers 0 through 9.</strong></p>
+<h2 id="Merge-seperate-character-dataset-together-(for-all-training/test/valid)">Merge seperate character dataset together (for all training/test/valid)<a class="anchor-link" href="#Merge-seperate-character-dataset-together-(for-all-training/test/valid)">¶</a></h2><p>Merge and prune the training data as needed. Depending on your computer setup, you might not be able to fit it all in memory, and you can tune <code>train_size</code> as needed. The labels will be stored into a separate array of <strong>integers 0 through 9.</strong></p>
 <p>Also create a validation dataset for hyperparameter tuning.</p>
+<p>Keypoints:</p>
+<ul>
+<li>Why we need vaild/test set? Our goal is to make sure the model we train can generalize to brand-new data. If we only divide the whole dataset into training/test set and try to get the best model by tuning parameters on test set, chances are that we actully give the model 'hints' on training set by our eyes. Because eventually, the best model will use the parameters incorporating our knowledge about training dataset, and when the very brand-new data comes, our model can't actually generalize to it and make wrong predictions. So we have to use vaild/dev set to tune our model, and only test the performance on test set to simulate model's 'real-world' performance after deploying it.</li>
+</ul>
 </div>
 </div>
 </div>

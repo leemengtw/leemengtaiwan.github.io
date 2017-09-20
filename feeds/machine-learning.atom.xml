@@ -1004,6 +1004,7 @@ h6:hover .anchor-link {
 &lt;h2 id="After-finishing-this-notebook,-we-learn"&gt;After finishing this notebook, we learn&lt;a class="anchor-link" href="#After-finishing-this-notebook,-we-learn"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Use matplotlib to read images, transform them to ndarray and render.&lt;/li&gt;
 &lt;li&gt;Identify whether there exist unbalanced problem for the labels of classification .&lt;/li&gt;
+&lt;li&gt;Understand why it's important to have both valid and test set.&lt;/li&gt;
 &lt;li&gt;Identify the importance of randomizing data for better efficieny when training sequentially.&lt;/li&gt;
 &lt;li&gt;Identify duplicate images between training/test set.&lt;/li&gt;
 &lt;/ul&gt;
@@ -4684,8 +4685,12 @@ Number of samples in ./datasets/notMNIST_large/J.pickle: 52911
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Merge-seperate-character-dataset-together-(for-both-training/test)"&gt;Merge seperate character dataset together (for both training/test)&lt;a class="anchor-link" href="#Merge-seperate-character-dataset-together-(for-both-training/test)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Merge and prune the training data as needed. Depending on your computer setup, you might not be able to fit it all in memory, and you can tune &lt;code&gt;train_size&lt;/code&gt; as needed. The labels will be stored into a separate array of &lt;strong&gt;integers 0 through 9.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="Merge-seperate-character-dataset-together-(for-all-training/test/valid)"&gt;Merge seperate character dataset together (for all training/test/valid)&lt;a class="anchor-link" href="#Merge-seperate-character-dataset-together-(for-all-training/test/valid)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Merge and prune the training data as needed. Depending on your computer setup, you might not be able to fit it all in memory, and you can tune &lt;code&gt;train_size&lt;/code&gt; as needed. The labels will be stored into a separate array of &lt;strong&gt;integers 0 through 9.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Also create a validation dataset for hyperparameter tuning.&lt;/p&gt;
+&lt;p&gt;Keypoints:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Why we need vaild/test set? Our goal is to make sure the model we train can generalize to brand-new data. If we only divide the whole dataset into training/test set and try to get the best model by tuning parameters on test set, chances are that we actully give the model 'hints' on training set by our eyes. Because eventually, the best model will use the parameters incorporating our knowledge about training dataset, and when the very brand-new data comes, our model can't actually generalize to it and make wrong predictions. So we have to use vaild/dev set to tune our model, and only test the performance on test set to simulate model's 'real-world' performance after deploying it.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
