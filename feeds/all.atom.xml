@@ -1001,9 +1001,11 @@ h6:hover .anchor-link {
 &lt;li&gt;Remove duplicate images appear both in train/test or train/validation set&lt;/li&gt;
 &lt;li&gt;Build simple model for image recognition using different size of training data&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="After-finishing-this-notebook,-I'm-able-to-.."&gt;After finishing this notebook, I'm able to ..&lt;a class="anchor-link" href="#After-finishing-this-notebook,-I'm-able-to-.."&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id="After-finishing-this-notebook,-we-learn"&gt;After finishing this notebook, we learn&lt;a class="anchor-link" href="#After-finishing-this-notebook,-we-learn"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Use matplotlib to read images, transform them to ndarray and render.&lt;/li&gt;
-&lt;li&gt;Identify duplicate images in test/validation set between training set and choose the one which best fit our application for evaluating the performance of the models.&lt;/li&gt;
+&lt;li&gt;Identify whether there exist unbalanced problem for the labels of classification .&lt;/li&gt;
+&lt;li&gt;Identify the importance of randomizing data for better efficieny when training sequentially.&lt;/li&gt;
+&lt;li&gt;Identify duplicate images between training/test set.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
@@ -3648,6 +3650,11 @@ to&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span clas
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Keypoints:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Normalize image using 
+&lt;code&gt;image_data = (ndimage.imread(image_file).astype(float) - pixel_depth / 2) / pixel_depth&lt;/code&gt; where &lt;code&gt;pixel_depth == 255&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;References&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://stackoverflow.com/questions/41124353/importerror-could-not-import-the-python-imaging-library-pil-required-to-load"&gt;https://stackoverflow.com/questions/41124353/importerror-could-not-import-the-python-imaging-library-pil-required-to-load&lt;/a&gt;&lt;/li&gt;
@@ -4763,13 +4770,14 @@ Testing: (10000, 28, 28) (10000,)
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Randomize-data"&gt;Randomize data&lt;a class="anchor-link" href="#Randomize-data"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Next, we'll randomize the data. It's important to have the labels well shuffled for the training and test distributions to match.&lt;/p&gt;
+&lt;h2 id="Randomize-data"&gt;Randomize data&lt;a class="anchor-link" href="#Randomize-data"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Next, we'll randomize the data. It's important to have the labels well shuffled for the training and test distributions to match. The purpose of randomizing data is to perserve the assumption that we get the data randomly as predict phase. We don't want to train models sequantially on training instances like AAA ... BBB ... CCC.&lt;/p&gt;
 &lt;p&gt;Keypoints:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;train set and test set should apply the same shuffle &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;shuffled_dataset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dataset&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;permutation&lt;/span&gt;&lt;span class="p"&gt;,:,:]&lt;/span&gt;
 &lt;span class="n"&gt;shuffled_labels&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;labels&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;permutation&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
+&lt;li&gt;Although we do only one randomization here, we may do it multiple times when we are going to use the same dataset many times.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -7937,7 +7945,7 @@ AAAASUVORK5CYII=
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="python"></category><category term="matplotlib"></category><category term="NotMNIST"></category><category term="sklearn"></category><category term="machine learning"></category><category term="image recognition"></category><category term="data exploration"></category><category term="Udacity"></category></entry><entry><title>Purpose of this blog</title><link href="http://leemengtaiwan.github.io/purpose-of-this-blog.html" rel="alternate"></link><published>2017-09-17T12:30:00+09:00</published><updated>2017-09-17T12:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-17:/purpose-of-this-blog.html</id><summary type="html">
+</content><category term="python"></category><category term="matplotlib"></category><category term="data preprocessing"></category><category term="data cleaning"></category><category term="NotMNIST"></category><category term="sklearn"></category><category term="machine learning"></category><category term="image recognition"></category><category term="Udacity"></category></entry><entry><title>Purpose of this blog</title><link href="http://leemengtaiwan.github.io/purpose-of-this-blog.html" rel="alternate"></link><published>2017-09-17T12:30:00+09:00</published><updated>2017-09-17T12:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-17:/purpose-of-this-blog.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
