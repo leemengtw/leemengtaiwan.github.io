@@ -1,74 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Purpose of this blog — Space for data scientists</title>
-	<meta name="description" content="Title: Purpose of this blog; Date: 2017-09-17; Author: Lee Meng">
-	<meta name="author" content="Lee Meng">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-	<!--[if lt IE 9]>
-		<script src="http://leemengtaiwan.github.io/theme/html5.js"></script>
-		<![endif]-->
-	<link href="http://leemengtaiwan.github.io/theme/css/ipython.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
-	<link href="http://leemengtaiwan.github.io/theme/css/local.css" rel="stylesheet">
-	<link href="http://leemengtaiwan.github.io/theme/css/pygments.css" rel="stylesheet">
-	<!-- Global Site Tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments)};
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-106559980-1');
-	</script>
-</head>
-<body>
-<div class="container">
-	<div class="page-header">
-		<h1><a href="http://leemengtaiwan.github.io/">Space for data scientists</a>
-			<br>	</div>
-
-	<form class="search" action="/search.html" target="_blank">
-	    <input type="text" class="search-query" placeholder="Search" name="q" id="s">
-	</form>
-
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">Purpose of this blog</h1>
-		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-			<h4 itemprop="name">Lee Meng</h4>
-		</span>
-		<time datetime="2017-09-17T12:30:00+09:00" itemprop="datePublished">Sun, 17 Sep 2017</time>
-	</div>
-	<div>
-		Category:
-		<span itemprop="articleSection">
-			<a href="http://leemengtaiwan.github.io/category/miscellaneous.html" rel="category">Miscellaneous</a>
-		</span>
-	</div>
-	<div>
-		Tags:
-		<span itemprop="keywords">
-			<a href="http://leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://leemengtaiwan.github.io/tag/pelican.html" rel="tag">pelican</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://leemengtaiwan.github.io/tag/data-science.html" rel="tag">data science</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="http://leemengtaiwan.github.io/tag/blogging.html" rel="tag">blogging</a>
-		</span>
-	</div>
-	<div itemprop="articleBody" class="article-body"><style type="text/css">/*!
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Space for data scientists - Miscellaneous</title><link href="http://leemengtaiwan.github.io/" rel="alternate"></link><link href="http://leemengtaiwan.github.io/feeds/miscellaneous.atom.xml" rel="self"></link><id>http://leemengtaiwan.github.io/</id><updated>2017-09-17T12:30:00+09:00</updated><entry><title>Purpose of this blog</title><link href="http://leemengtaiwan.github.io/purpose-of-this-blog.html" rel="alternate"></link><published>2017-09-17T12:30:00+09:00</published><updated>2017-09-17T12:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-17:/purpose-of-this-blog.html</id><summary type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;第一篇文章做一點 blog 的簡介，打算把自己在學 data science 還有 machine learning 過程中寫的筆記還有在 MOOC 上課的 code (主要是 jupyter notebook) 記錄下來方便自己以後搜尋。 雖然目前為止我都將 jupyter notebook render 成 HTML 然後存到 Evernote 搜尋, 但是如果該 notebook 一直更新的話就變得很不實際..&lt;/p&gt;
+&lt;p&gt;&lt;/br&gt;
+這次利用 python 的 pelican 將 jupyter notebook 轉成靜態網頁, 讓我可以不斷更新 notebooks 而且也希望 code 可以幫助到其他也在做 data science / machine learning 的人當作一些參考。 blog 的走向目前看來應該會是中英夾雜 ..&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;This is the first post of my blog.&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -295,7 +241,7 @@ div.unrecognized_cell .inner_cell a:hover {
   text-decoration: none;
 }
 @media (max-width: 540px) {
-  div.unrecognized_cell > div.prompt {
+  div.unrecognized_cell &gt; div.prompt {
     display: none;
   }
 }
@@ -348,19 +294,19 @@ div.input_prompt {
   color: #303F9F;
   border-top: 1px solid transparent;
 }
-div.input_area > div.highlight {
+div.input_area &gt; div.highlight {
   margin: 0.4em;
   border: none;
   padding: 0px;
   background-color: transparent;
 }
-div.input_area > div.highlight > pre {
+div.input_area &gt; div.highlight &gt; pre {
   margin: 0px;
   border: none;
   padding: 0px;
   background-color: transparent;
 }
-/* The following gets added to the <head> if it is detected that the user has a
+/* The following gets added to the &lt;head&gt; if it is detected that the user has a
  * monospace font with inconsistent normal/bold/italic height.  See
  * notebookmain.js.  Such fonts will have keywords vertically offset with
  * respect to the rest of the text.  The user should select a better font.
@@ -406,7 +352,7 @@ div.input_area > div.highlight > pre {
 }
 /*
 
-Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Original style from softwaremaniacs.org (c) Ivan Sagalaev &lt;Maniac@SoftwareManiacs.Org&gt;
 Adapted from GitHub theme
 
 */
@@ -868,7 +814,7 @@ div.text_cell {
   align-items: stretch;
 }
 @media (max-width: 540px) {
-  div.text_cell > div.prompt {
+  div.text_cell &gt; div.prompt {
     display: none;
   }
 }
@@ -933,8 +879,8 @@ h6:hover .anchor-link {
   font-size: 100%;
   font-style: italic;
 }
-</style>
-<style type="text/css">.highlight .hll { background-color: #ffffcc }
+&lt;/style&gt;
+&lt;style type="text/css"&gt;.highlight .hll { background-color: #ffffcc }
 .highlight  { background: #f8f8f8; }
 .highlight .c { color: #408080; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */
@@ -1002,8 +948,8 @@ h6:hover .anchor-link {
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
-<style type="text/css">
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;
+&lt;style type="text/css"&gt;
 /* Temporary definitions which will become obsolete with Notebook release 5.0 */
 .ansi-black-fg { color: #3E424D; }
 .ansi-black-bg { background-color: #3E424D; }
@@ -1039,29 +985,29 @@ h6:hover .anchor-link {
 .ansi-white-intense-bg { background-color: #A1A6B2; }
 
 .ansi-bold { font-weight: bold; }
-</style>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>第一篇文章做一點 blog 的簡介，打算把自己在學 data science 還有 machine learning 過程中寫的筆記還有在 MOOC 上課的 code (主要是 jupyter notebook) 記錄下來方便自己以後搜尋。 雖然目前為止我都將 jupyter notebook render 成 HTML 然後存到 Evernote 搜尋, 但是如果該 notebook 一直更新的話就變得很不實際..</p>
-<p></br>
-這次利用 python 的 pelican 將 jupyter notebook 轉成靜態網頁, 讓我可以不斷更新 notebooks 而且也希望 code 可以幫助到其他也在做 data science / machine learning 的人當作一些參考。 blog 的走向目前看來應該會是中英夾雜 ..</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This is the first post of my blog.</p>
-<p></br>
-I decided to record my learning path toward data scientist / machine learning engineer and make it easier for my future self to review what I have learnt. This blog will include codes from the courses on MOOC like Coursera, Udacity and also some pet projects. It would also be wonderful if these code and thought can help someone who want to become a data scientist.</p>
-</div>
-</div>
-</div>
+&lt;/style&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;第一篇文章做一點 blog 的簡介，打算把自己在學 data science 還有 machine learning 過程中寫的筆記還有在 MOOC 上課的 code (主要是 jupyter notebook) 記錄下來方便自己以後搜尋。 雖然目前為止我都將 jupyter notebook render 成 HTML 然後存到 Evernote 搜尋, 但是如果該 notebook 一直更新的話就變得很不實際..&lt;/p&gt;
+&lt;p&gt;&lt;/br&gt;
+這次利用 python 的 pelican 將 jupyter notebook 轉成靜態網頁, 讓我可以不斷更新 notebooks 而且也希望 code 可以幫助到其他也在做 data science / machine learning 的人當作一些參考。 blog 的走向目前看來應該會是中英夾雜 ..&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;This is the first post of my blog.&lt;/p&gt;
+&lt;p&gt;&lt;/br&gt;
+I decided to record my learning path toward data scientist / machine learning engineer and make it easier for my future self to review what I have learnt. This blog will include codes from the courses on MOOC like Coursera, Udacity and also some pet projects. It would also be wonderful if these code and thought can help someone who want to become a data scientist.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
@@ -1087,90 +1033,5 @@ I decided to record my learning path toward data scientist / machine learning en
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-</script>
-</div>
-	<hr>
-	<h2>Comments</h2>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'leemengtaiwan'; 
-    var disqus_title = 'Purpose of this blog';
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-		</div>
-	</div> 	<!-- <hr> -->
-</div> <!-- /container -->
-<footer class="aw-footer bg-danger">
-	<div class="container"> <!-- footer -->
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="row">
-					<div class="col-md-3">
-						<h4>Navigation</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://leemengtaiwan.github.io">Space for data scientists</a></li>
-							<li><a href="http://leemengtaiwan.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Author</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="https://github.com/leemengtaiwan">Github</a></li>
-							<li><a href="https://www.linkedin.com/in/leemeng1990/">LinkedIn</a></li>
-							<li><a href="https://www.facebook.com/LeeMengTaiwan">Facebook</a></li>
-							<li><a href="mailto:b9875001@gmail.com">Gmail</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Categories</h4>
-						<ul class="list-unstyled my-list-style">
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 text-center center-block aw-bottom">
-			<p>&copy; Lee Meng 2016</p>
-			<p>Powered by Pelican</p>
-		</div>
-	</div>
-</div>
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$("div.collapseheader").click(function () {
-		$header = $(this).children("span").first();
-		$codearea = $(this).children(".input_area");
-		$codearea.slideToggle(500, function () {
-			$header.text(function () {
-				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
-			});
-		});
-	});
-});
-</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-106559980-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-</body>
-</html>
+&lt;/script&gt;
+</content><category term="python"></category><category term="pelican"></category><category term="data science"></category><category term="blogging"></category></entry></feed>
