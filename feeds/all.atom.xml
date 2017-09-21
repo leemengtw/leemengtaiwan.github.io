@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Space for data scientists</title><link href="http://leemengtaiwan.github.io/" rel="alternate"></link><link href="http://leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>http://leemengtaiwan.github.io/</id><updated>2017-09-21T23:50:00+09:00</updated><entry><title>Test</title><link href="http://leemengtaiwan.github.io/test.html" rel="alternate"></link><published>2017-09-21T23:50:00+09:00</published><updated>2017-09-21T23:50:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-21:/test.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Space for data scientists</title><link href="http://leemengtaiwan.github.io/" rel="alternate"></link><link href="http://leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>http://leemengtaiwan.github.io/</id><updated>2017-09-21T23:50:00+09:00</updated><entry><title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title><link href="http://leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="alternate"></link><published>2017-09-21T23:50:00+09:00</published><updated>2017-09-21T23:50:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-21:/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The goal of this assignment is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) for optimization respectively to see the difference between the optimizers. Finally, train a Neural Network with one-hidden layer using ReLU activation units to see whether we can boost our model's performance further.&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
+&lt;p&gt;The goal of this assignment is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers. Finally, train a Neural Network with one-hidden layer using ReLU activation units to see whether we can boost our model's performance further.&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -980,12 +980,8 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The goal of this assignment is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) for optimization respectively to see the difference between the optimizers. Finally, train a Neural Network with one-hidden layer using ReLU activation units to see whether we can boost our model's performance further.&lt;/p&gt;
+&lt;p&gt;The goal of this assignment is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers. Finally, train a Neural Network with one-hidden layer using ReLU activation units to see whether we can boost our model's performance further.&lt;/p&gt;
 &lt;p&gt;Previously in &lt;code&gt;1_notmnist.ipynb&lt;/code&gt;, we created a pickle with formatted datasets for training, development and testing on the &lt;a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html"&gt;notMNIST dataset&lt;/a&gt;.&lt;/p&gt;
-&lt;h1 id="Todo"&gt;Todo&lt;a class="anchor-link" href="#Todo"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;draw computation graph?&lt;/li&gt;
-&lt;li&gt;workflow 用 nbextension 幫我們產生&lt;/li&gt;
-&lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1140,7 +1136,7 @@ Test set (18724, 784) (18724, 10)
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="First-attempt:-Logistic-regression-with-gradient-descent"&gt;First attempt: Logistic regression with gradient descent&lt;a class="anchor-link" href="#First-attempt:-Logistic-regression-with-gradient-descent"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="Logistic-regression-with-gradient-descent"&gt;Logistic regression with gradient descent&lt;a class="anchor-link" href="#Logistic-regression-with-gradient-descent"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1321,7 +1317,7 @@ Test accuracy: 82.9%
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Second-attempt:-Logistic-regression-with-SGD"&gt;Second attempt: Logistic regression with SGD&lt;a class="anchor-link" href="#Second-attempt:-Logistic-regression-with-SGD"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="Logistic-regression-with-SGD"&gt;Logistic regression with SGD&lt;a class="anchor-link" href="#Logistic-regression-with-SGD"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1454,7 +1450,7 @@ Test accuracy: 86.1%
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Final-attempt:-2-layer-NN-with-ReLU-units"&gt;Final attempt: 2-layer NN with ReLU units&lt;a class="anchor-link" href="#Final-attempt:-2-layer-NN-with-ReLU-units"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="2-layer-NN-with-ReLU-units"&gt;2-layer NN with ReLU units&lt;a class="anchor-link" href="#2-layer-NN-with-ReLU-units"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1464,6 +1460,17 @@ Test accuracy: 86.1%
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Turn the logistic regression example with SGD into a 1-hidden layer neural network with rectified linear units &lt;a href="https://www.tensorflow.org/versions/r0.7/api_docs/python/nn.html#relu"&gt;nn.relu()&lt;/a&gt; and 1024 hidden nodes. This model should improve your validation / test accuracy.&lt;/p&gt;
 &lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Todo"&gt;Todo&lt;a class="anchor-link" href="#Todo"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;draw computation graph?&lt;/li&gt;
+&lt;li&gt;workflow 用 nbextension 幫我們產生&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1495,7 +1502,7 @@ Test accuracy: 86.1%
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="python"></category><category term="tensorflow"></category><category term="deep learning"></category><category term="data preprocessing"></category><category term="NotMNIST"></category><category term="machine learning"></category><category term="image recognition"></category><category term="Udacity"></category></entry><entry><title>Simple Image Recognition using NotMNIST dataset</title><link href="http://leemengtaiwan.github.io/simple-image-recognition-using-notmnist-dataset.html" rel="alternate"></link><published>2017-09-19T20:30:00+09:00</published><updated>2017-09-19T20:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-19:/simple-image-recognition-using-notmnist-dataset.html</id><summary type="html">
+</content><category term="python"></category><category term="tensorflow"></category><category term="deep learning"></category><category term="neural network"></category><category term="optimization"></category><category term="NotMNIST"></category><category term="machine learning"></category><category term="image recognition"></category><category term="Udacity"></category></entry><entry><title>Simple Image Recognition using NotMNIST dataset</title><link href="http://leemengtaiwan.github.io/simple-image-recognition-using-notmnist-dataset.html" rel="alternate"></link><published>2017-09-19T20:30:00+09:00</published><updated>2017-09-19T20:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-19:/simple-image-recognition-using-notmnist-dataset.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;

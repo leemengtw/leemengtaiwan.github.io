@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Test — Space for data scientists</title>
-	<meta name="description" content="Title: Test; Date: 2017-09-21; Author: Lee Meng">
+	<title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent — Space for data scientists</title>
+	<meta name="description" content="Title: Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent; Date: 2017-09-21; Author: Lee Meng">
 	<meta name="author" content="Lee Meng">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
@@ -41,7 +41,7 @@
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">Test</h1>
+		<h1 itemprop="name headline" class="article-title">Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</h1>
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 			<h4 itemprop="name">Lee Meng</h4>
 		</span>
@@ -50,7 +50,7 @@
 	<div>
 		Category:
 		<span itemprop="articleSection">
-			<a href="http://leemengtaiwan.github.io/category/testcategory.html" rel="category">testcategory</a>
+			<a href="http://leemengtaiwan.github.io/category/deep-learning.html" rel="category">Deep Learning</a>
 		</span>
 	</div>
 	<div>
@@ -65,7 +65,10 @@
 			<a href="http://leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">deep learning</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="http://leemengtaiwan.github.io/tag/data-preprocessing.html" rel="tag">data preprocessing</a>
+			<a href="http://leemengtaiwan.github.io/tag/neural-network.html" rel="tag">neural network</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://leemengtaiwan.github.io/tag/optimization.html" rel="tag">optimization</a>
 		</span>
 		<span itemprop="keywords">
 			<a href="http://leemengtaiwan.github.io/tag/notmnist.html" rel="tag">NotMNIST</a>
@@ -1056,12 +1059,8 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal of this assignment is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) for optimization respectively to see the difference between the optimizers. Finally, train a Neural Network with one-hidden layer using ReLU activation units to see whether we can boost our model's performance further.</p>
+<p>The goal of this assignment is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers. Finally, train a Neural Network with one-hidden layer using ReLU activation units to see whether we can boost our model's performance further.</p>
 <p>Previously in <code>1_notmnist.ipynb</code>, we created a pickle with formatted datasets for training, development and testing on the <a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html">notMNIST dataset</a>.</p>
-<h1 id="Todo">Todo<a class="anchor-link" href="#Todo">¶</a></h1><ul>
-<li>draw computation graph?</li>
-<li>workflow 用 nbextension 幫我們產生</li>
-</ul>
 </div>
 </div>
 </div>
@@ -1216,7 +1215,7 @@ Test set (18724, 784) (18724, 10)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="First-attempt:-Logistic-regression-with-gradient-descent">First attempt: Logistic regression with gradient descent<a class="anchor-link" href="#First-attempt:-Logistic-regression-with-gradient-descent">¶</a></h2>
+<h2 id="Logistic-regression-with-gradient-descent">Logistic regression with gradient descent<a class="anchor-link" href="#Logistic-regression-with-gradient-descent">¶</a></h2>
 </div>
 </div>
 </div>
@@ -1397,7 +1396,7 @@ Test accuracy: 82.9%
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Second-attempt:-Logistic-regression-with-SGD">Second attempt: Logistic regression with SGD<a class="anchor-link" href="#Second-attempt:-Logistic-regression-with-SGD">¶</a></h2>
+<h2 id="Logistic-regression-with-SGD">Logistic regression with SGD<a class="anchor-link" href="#Logistic-regression-with-SGD">¶</a></h2>
 </div>
 </div>
 </div>
@@ -1530,7 +1529,7 @@ Test accuracy: 86.1%
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Final-attempt:-2-layer-NN-with-ReLU-units">Final attempt: 2-layer NN with ReLU units<a class="anchor-link" href="#Final-attempt:-2-layer-NN-with-ReLU-units">¶</a></h2>
+<h2 id="2-layer-NN-with-ReLU-units">2-layer NN with ReLU units<a class="anchor-link" href="#2-layer-NN-with-ReLU-units">¶</a></h2>
 </div>
 </div>
 </div>
@@ -1540,6 +1539,17 @@ Test accuracy: 86.1%
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Turn the logistic regression example with SGD into a 1-hidden layer neural network with rectified linear units <a href="https://www.tensorflow.org/versions/r0.7/api_docs/python/nn.html#relu">nn.relu()</a> and 1024 hidden nodes. This model should improve your validation / test accuracy.</p>
 <hr />
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Todo">Todo<a class="anchor-link" href="#Todo">¶</a></h2><ul>
+<li>draw computation graph?</li>
+<li>workflow 用 nbextension 幫我們產生</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1577,7 +1587,7 @@ Test accuracy: 86.1%
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'leemengtaiwan'; 
-    var disqus_title = 'Test';
+    var disqus_title = 'Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -1614,9 +1624,9 @@ Test accuracy: 86.1%
 					<div class="col-md-3">
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
+							<li><a href="http://leemengtaiwan.github.io/category/deep-learning.html">Deep Learning (1)</a></li>
 							<li><a href="http://leemengtaiwan.github.io/category/machine-learning.html">Machine learning (1)</a></li>
 							<li><a href="http://leemengtaiwan.github.io/category/miscellaneous.html">Miscellaneous (1)</a></li>
-							<li><a href="http://leemengtaiwan.github.io/category/testcategory.html">testcategory (1)</a></li>
 						</ul>
 					</div>
 				</div>
