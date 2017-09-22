@@ -1061,15 +1061,9 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal of this assignment is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers. Finally, train a Neural Network with one-hidden layer using ReLU activation units to see whether we can boost our model's performance further.</p>
+<p>The goal of this assignment is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.</p>
+<p>Finally, train a Neural Network with one-hidden layer using ReLU activation units to see whether we can boost our model's performance further.</p>
 <p>Previously in <code>1_notmnist.ipynb</code>, we created a pickle with formatted datasets for training, development and testing on the <a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html">notMNIST dataset</a>.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 </div>
 </div>
 </div>
@@ -1083,12 +1077,13 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [0]:</div>
+<div class="prompt input_prompt">In [67]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># These are all the modules we'll be using later. Make sure you can import them</span>
 <span class="c1"># before proceeding further.</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="n">cPickle</span> <span class="k">as</span> <span class="n">pickle</span>
@@ -1102,49 +1097,35 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First reload the data we generated in <code>1_notmnist.ipynb</code>.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Load-notMNIST-dataset">Load notMNIST dataset<a class="anchor-link" href="#Load-notMNIST-dataset">¶</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This time we save the time doing data preprocessing by using dataset which has been:</p>
+<h2 id="Load-notMNIST-dataset">Load notMNIST dataset<a class="anchor-link" href="#Load-notMNIST-dataset">¶</a></h2><p>This time we will use the dataset which has been normalized and randomized before to omit the data preprocessing step.</p>
+<p>Key points:</p>
 <ul>
-<li>Normalized to have equal variance and mean</li>
-<li>Randomized</li>
+<li>Release memory after loading big-size dataset using <code>del</code>. </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [0]:</div>
+<div class="prompt input_prompt">In [88]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pickle_file</span> <span class="o">=</span> <span class="s1">'notMNIST.pickle'</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pickle_file</span> <span class="o">=</span> <span class="s1">'datasets/notMNIST.pickle'</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pickle_file</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-  <span class="n">save</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-  <span class="n">train_dataset</span> <span class="o">=</span> <span class="n">save</span><span class="p">[</span><span class="s1">'train_dataset'</span><span class="p">]</span>
-  <span class="n">train_labels</span> <span class="o">=</span> <span class="n">save</span><span class="p">[</span><span class="s1">'train_labels'</span><span class="p">]</span>
-  <span class="n">valid_dataset</span> <span class="o">=</span> <span class="n">save</span><span class="p">[</span><span class="s1">'valid_dataset'</span><span class="p">]</span>
-  <span class="n">valid_labels</span> <span class="o">=</span> <span class="n">save</span><span class="p">[</span><span class="s1">'valid_labels'</span><span class="p">]</span>
-  <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">save</span><span class="p">[</span><span class="s1">'test_dataset'</span><span class="p">]</span>
-  <span class="n">test_labels</span> <span class="o">=</span> <span class="n">save</span><span class="p">[</span><span class="s1">'test_labels'</span><span class="p">]</span>
-  <span class="k">del</span> <span class="n">save</span>  <span class="c1"># hint to help gc free up memory</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">'Training set'</span><span class="p">,</span> <span class="n">train_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">'Validation set'</span><span class="p">,</span> <span class="n">valid_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">valid_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">'Test set'</span><span class="p">,</span> <span class="n">test_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">save</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Dataset size: </span><span class="si">{:.1f}</span><span class="s1"> MB'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">pickle_file</span><span class="p">)</span><span class="o">.</span><span class="n">st_size</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">20</span><span class="p">))</span>
+
+    <span class="n">train_dataset</span> <span class="o">=</span> <span class="n">save</span><span class="p">[</span><span class="s1">'train_dataset'</span><span class="p">]</span>
+    <span class="n">train_labels</span> <span class="o">=</span> <span class="n">save</span><span class="p">[</span><span class="s1">'train_labels'</span><span class="p">]</span>
+    <span class="n">valid_dataset</span> <span class="o">=</span> <span class="n">save</span><span class="p">[</span><span class="s1">'valid_dataset'</span><span class="p">]</span>
+    <span class="n">valid_labels</span> <span class="o">=</span> <span class="n">save</span><span class="p">[</span><span class="s1">'valid_labels'</span><span class="p">]</span>
+    <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">save</span><span class="p">[</span><span class="s1">'test_dataset'</span><span class="p">]</span>
+    <span class="n">test_labels</span> <span class="o">=</span> <span class="n">save</span><span class="p">[</span><span class="s1">'test_labels'</span><span class="p">]</span>
+    <span class="k">del</span> <span class="n">save</span>  <span class="c1"># hint to help gc free up memory</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Training set'</span><span class="p">,</span> <span class="n">train_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Validation set'</span><span class="p">,</span> <span class="n">valid_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">valid_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Test set'</span><span class="p">,</span> <span class="n">test_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1154,9 +1135,10 @@ h6:hover .anchor-link {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Training set (200000, 28, 28) (200000,)
+<pre>Dataset size: 658.8 MB
+Training set (200000, 28, 28) (200000,)
 Validation set (10000, 28, 28) (10000,)
-Test set (18724, 28, 28) (18724,)
+Test set (10000, 28, 28) (10000,)
 </pre>
 </div>
 </div>
@@ -1175,27 +1157,40 @@ Test set (18724, 28, 28) (18724,)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Reformat into a shape that's more adapted to the models we're going to train:</p>
+<p>Reformat both pixels(features) and labels that's more adapted to the models we're going to train:</p>
 <ul>
-<li>data as a flat matrix,</li>
-<li>labels as float 1-hot encodings.</li>
+<li>features(pixels) as a flat matrix with shape = (#total pixels, #instances)</li>
+</ul>
+<p><img src="images/flattened_features.png" style="height:20%;width:auto" /><caption><center> <u><font color="purple"> Figure 1</font></u><font color="purple">: Flattened features <br /> <font color="black"> </font></font></center></caption></p>
+<ul>
+<li>labels as float 1-hot encodings with shape = (#type of labels, #instances)</li>
+</ul>
+<p><img src="images/flattened_ground_true.png" style="height:20%;width:auto" /><caption><center> <u><font color="purple"> Figure 1</font></u><font color="purple">: Flattened labels <br /> <font color="black"> </font></font></center></caption></p>
+<p>Key points:</p>
+<ul>
+<li>Notice that we use different shape of matrix with the original TensorFlow example <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/2_fullyconnected.ipynb">nookbook</a> because I think it's easier to understand how matrix multiplication work by imagining each training/test instance as a column vector.    </li>
+<li>One-hot encode labels by compare the label with the 0-9 array and transform True/False array as float array use <code>astype(np.float32)</code></li>
 </ul>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [0]:</div>
+<div class="prompt input_prompt">In [92]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">image_size</span> <span class="o">=</span> <span class="mi">28</span>
 <span class="n">num_labels</span> <span class="o">=</span> <span class="mi">10</span>
 
+
 <span class="k">def</span> <span class="nf">reformat</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
-  <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-  <span class="c1"># Map 0 to [1.0, 0.0, 0.0 ...], 1 to [0.0, 1.0, 0.0 ...]</span>
-  <span class="n">labels</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_labels</span><span class="p">)</span> <span class="o">==</span> <span class="n">labels</span><span class="p">[:,</span><span class="kc">None</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">labels</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    
+    <span class="c1"># Map 0 to [1.0, 0.0, 0.0 ...], 1 to [0.0, 1.0, 0.0 ...]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_labels</span><span class="p">)</span> <span class="o">==</span> <span class="n">labels</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="c1"># key point1</span>
+    <span class="k">return</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">labels</span>
+
+
 <span class="n">train_dataset</span><span class="p">,</span> <span class="n">train_labels</span> <span class="o">=</span> <span class="n">reformat</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">)</span>
 <span class="n">valid_dataset</span><span class="p">,</span> <span class="n">valid_labels</span> <span class="o">=</span> <span class="n">reformat</span><span class="p">(</span><span class="n">valid_dataset</span><span class="p">,</span> <span class="n">valid_labels</span><span class="p">)</span>
 <span class="n">test_dataset</span><span class="p">,</span> <span class="n">test_labels</span> <span class="o">=</span> <span class="n">reformat</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span>
@@ -1211,9 +1206,9 @@ Test set (18724, 28, 28) (18724,)
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Training set (200000, 784) (200000, 10)
-Validation set (10000, 784) (10000, 10)
-Test set (18724, 784) (18724, 10)
+<pre>Training set (784, 200000) (10, 200000)
+Validation set (784, 10000) (10, 10000)
+Test set (784, 10000) (10, 10000)
 </pre>
 </div>
 </div>
@@ -1224,7 +1219,8 @@ Test set (18724, 784) (18724, 10)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Logistic-regression-with-gradient-descent">Logistic regression with gradient descent<a class="anchor-link" href="#Logistic-regression-with-gradient-descent">¶</a></h2>
+<h2 id="Logistic-regression-with-gradient-descent">Logistic regression with gradient descent<a class="anchor-link" href="#Logistic-regression-with-gradient-descent">¶</a></h2><p>For logistic regression, we use the formula $WX + b = Y'$ to do the computation. W is of shape (10, 784), X is of shape (784, m) and Y' is of shape (10, m) where $m$ is the number of training instances/images. After compute the probabilities of 10 classes stored in Y', we will use built-in <code>tf.nn.softmax_cross_entropy_with_logits</code> to compute cross-entropy between Y' and Y(train_labels) as cost.</p>
+<p>We will first instruct Tensorflow how to do all the computation and make it run the optimization several times.</p>
 </div>
 </div>
 </div>
@@ -1258,7 +1254,7 @@ Test set (18724, 784) (18724, 10)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [0]:</div>
+<div class="prompt input_prompt">In [106]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># With gradient descent training, even this much data is prohibitive.</span>
@@ -1266,46 +1262,61 @@ Test set (18724, 784) (18724, 10)
 <span class="n">train_subset</span> <span class="o">=</span> <span class="mi">10000</span>
 
 <span class="n">graph</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="c1"># when we want to create multiple graphs in the same script, use this to encapsulate each graph</span>
 <span class="k">with</span> <span class="n">graph</span><span class="o">.</span><span class="n">as_default</span><span class="p">():</span>
 
-  <span class="c1"># Input data.</span>
-  <span class="c1"># Load the training, validation and test data into constants that are</span>
-  <span class="c1"># attached to the graph.</span>
-  <span class="n">tf_train_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">[:</span><span class="n">train_subset</span><span class="p">,</span> <span class="p">:])</span>
-  <span class="n">tf_train_labels</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">train_labels</span><span class="p">[:</span><span class="n">train_subset</span><span class="p">])</span>
-  <span class="n">tf_valid_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">valid_dataset</span><span class="p">)</span>
-  <span class="n">tf_test_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
-  
-  <span class="c1"># Variables.</span>
-  <span class="c1"># These are the parameters that we are going to be training. The weight</span>
-  <span class="c1"># matrix will be initialized using random values following a (truncated)</span>
-  <span class="c1"># normal distribution. The biases get initialized to zero.</span>
-  <span class="n">weights</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">([</span><span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">num_labels</span><span class="p">]))</span>
-  <span class="n">biases</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">num_labels</span><span class="p">]))</span>
-  
-  <span class="c1"># Training computation.</span>
-  <span class="c1"># We multiply the inputs with the weight matrix, and add biases. We compute</span>
-  <span class="c1"># the softmax and cross-entropy (it's one operation in TensorFlow, because</span>
-  <span class="c1"># it's very common, and it can be optimized). We take the average of this</span>
-  <span class="c1"># cross-entropy across all training examples: that's our loss.</span>
-  <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tf_train_dataset</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span>
-  <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax_cross_entropy_with_logits</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">tf_train_labels</span><span class="p">,</span> <span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">))</span>
-  
-  <span class="c1"># Optimizer.</span>
-  <span class="c1"># We are going to find the minimum of this loss using gradient descent.</span>
-  <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
-  
-  <span class="c1"># Predictions for the training, validation, and test data.</span>
-  <span class="c1"># These are not part of training, but merely here so that we can report</span>
-  <span class="c1"># accuracy figures as we train.</span>
-  <span class="n">train_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
-  <span class="n">valid_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tf_valid_dataset</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">)</span>
-  <span class="n">test_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tf_test_dataset</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">)</span>
+    <span class="c1"># Input data.</span>
+    <span class="c1"># Load the training, validation and test data into constants that are</span>
+    <span class="c1"># attached to the graph.</span>
+    <span class="n">tf_train_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">[:,</span> <span class="p">:</span><span class="n">train_subset</span><span class="p">])</span>
+    <span class="n">tf_train_labels</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">train_labels</span><span class="p">[:,</span> <span class="p">:</span><span class="n">train_subset</span><span class="p">])</span>
+    <span class="n">tf_valid_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">valid_dataset</span><span class="p">)</span>
+    <span class="n">tf_test_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
+
+    <span class="c1"># Variables.</span>
+    <span class="c1"># These are the parameters that we are going to be training. The weight</span>
+    <span class="c1"># matrix will be initialized using random values following a (truncated)</span>
+    <span class="c1"># normal distribution. The biases get initialized to zero.</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">([</span><span class="n">num_labels</span><span class="p">,</span> <span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">]))</span>
+    <span class="n">biases</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">num_labels</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+
+    <span class="c1"># Training computation.</span>
+    <span class="c1"># We multiply the inputs with the weight matrix, and add biases. We compute</span>
+    <span class="c1"># the softmax and cross-entropy (it's one operation in TensorFlow, because</span>
+    <span class="c1"># it's very common, and it can be optimized). We take the average of this</span>
+    <span class="c1"># cross-entropy across all training examples: that's our loss.</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">tf_train_dataset</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax_cross_entropy_with_logits</span><span class="p">(</span>
+            <span class="n">labels</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">tf_train_labels</span><span class="p">),</span> <span class="n">logits</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">logits</span><span class="p">)))</span>
+
+    <span class="c1"># Optimizer.</span>
+    <span class="c1"># We are going to find the minimum of this loss using gradient descent.</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+
+    <span class="c1"># Predictions for the training, validation, and test data.</span>
+    <span class="c1"># These are not part of training, but merely here so that we can report</span>
+    <span class="c1"># accuracy figures as we train.</span>
+    <span class="n">train_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
+    <span class="n">valid_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">tf_valid_dataset</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">)</span>
+    <span class="n">test_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">tf_test_dataset</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Key points:</p>
+<ul>
+<li>As we saw before, <code>logits = tf.matmul(weights, tf_train_dataset) + biases</code> is equivalent to the logistic regression formula $Y' = WX + b$</li>
+<li>Transpose y_hat and y to fit in <code>softmax_cross_entropy_with_logits</code></li>
+</ul>
 </div>
 </div>
 </div>
@@ -1321,42 +1332,56 @@ Test set (18724, 784) (18724, 10)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's run this computation and iterate:</p>
+<p>Now we can tell TensorFlow to run this computation and iterate.<br />
+Here we will use <code>tqdm</code> library to help us easily visualize the progress and the time used in the iterations.</p>
+<p>Key points:</p>
+<ul>
+<li>Use <code>np.argmax(predictions, axis=0)</code> to transfrom one-hot encoded labels back to singe number for every data points.</li>
+<li>Use <code>.eval()</code> to get the predictions for test/validation set</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [0]:</div>
+<div class="prompt input_prompt">In [111]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">801</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tnrange</span>
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">801</span>
+
 
 <span class="k">def</span> <span class="nf">accuracy</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
-  <span class="k">return</span> <span class="p">(</span><span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-          <span class="o">/</span> <span class="n">predictions</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="sd">"""For every (y_hat, y) pair, get the (predicted label, label) and count the </span>
+<span class="sd">    occurence where predicted label == label and divide by the total number of </span>
+<span class="sd">    data points.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> 
+            <span class="o">/</span> <span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
 
 <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">graph</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
-  <span class="c1"># This is a one-time operation which ensures the parameters get initialized as</span>
-  <span class="c1"># we described in the graph: random weights for the matrix, zeros for the</span>
-  <span class="c1"># biases. </span>
-  <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">'Initialized'</span><span class="p">)</span>
-  <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
-    <span class="c1"># Run the computations. We tell .run() that we want to run the optimizer,</span>
-    <span class="c1"># and get the loss value and the training predictions returned as numpy</span>
-    <span class="c1"># arrays.</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">predictions</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">train_prediction</span><span class="p">])</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">step</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s1">'Loss at step </span><span class="si">%d</span><span class="s1">: </span><span class="si">%f</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s1">'Training accuracy: </span><span class="si">%.1f%%</span><span class="s1">'</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">(</span>
-        <span class="n">predictions</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">[:</span><span class="n">train_subset</span><span class="p">,</span> <span class="p">:]))</span>
-      <span class="c1"># Calling .eval() on valid_prediction is basically like calling run(), but</span>
-      <span class="c1"># just to get that one numpy array. Note that it recomputes all its graph</span>
-      <span class="c1"># dependencies.</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s1">'Validation accuracy: </span><span class="si">%.1f%%</span><span class="s1">'</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">(</span>
-        <span class="n">valid_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">valid_labels</span><span class="p">))</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">'Test accuracy: </span><span class="si">%.1f%%</span><span class="s1">'</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">(</span><span class="n">test_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">test_labels</span><span class="p">))</span>
+    <span class="c1"># This is a one-time operation which ensures the parameters get initialized as</span>
+    <span class="c1"># we described in the graph: random weights for the matrix, zeros for the</span>
+    <span class="c1"># biases.</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Initialized'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">tnrange</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
+        <span class="c1"># Run the computations. We tell .run() that we want to run the optimizer,</span>
+        <span class="c1"># and get the loss value and the training predictions returned as numpy</span>
+        <span class="c1"># arrays.</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">predictions</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">train_prediction</span><span class="p">])</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">step</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'Cost at step </span><span class="si">{}</span><span class="s1">: </span><span class="si">{:.3f}</span><span class="s1">. Training acc: </span><span class="si">{:.1f}</span><span class="s1">%, Validation acc: </span><span class="si">{:.1f}</span><span class="s1">%.'</span>\
+                  <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span>
+                          <span class="n">accuracy</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">[:,</span> <span class="p">:</span><span class="n">train_subset</span><span class="p">]),</span>
+                          <span class="n">accuracy</span><span class="p">(</span><span class="n">valid_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">valid_labels</span><span class="p">),</span> <span class="s2">">"</span><span class="p">))</span>
+            
+    <span class="c1"># Calling .eval() on valid_prediction is basically like calling run(), but</span>
+    <span class="c1"># just to get that one numpy array. Note that it recomputes all its graph</span>
+    <span class="c1"># dependencies.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Test acc: </span><span class="si">{:.1f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy</span><span class="p">(</span><span class="n">test_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">test_labels</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1367,34 +1392,34 @@ Test set (18724, 784) (18724, 10)
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Initialized
-Loss at step 0 : 17.2939
-Training accuracy: 10.8%
-Validation accuracy: 13.8%
-Loss at step 100 : 2.26903
-Training accuracy: 72.3%
-Validation accuracy: 71.6%
-Loss at step 200 : 1.84895
-Training accuracy: 74.9%
-Validation accuracy: 73.9%
-Loss at step 300 : 1.60701
-Training accuracy: 76.0%
-Validation accuracy: 74.5%
-Loss at step 400 : 1.43912
-Training accuracy: 76.8%
-Validation accuracy: 74.8%
-Loss at step 500 : 1.31349
-Training accuracy: 77.5%
-Validation accuracy: 75.0%
-Loss at step 600 : 1.21501
-Training accuracy: 78.1%
-Validation accuracy: 75.4%
-Loss at step 700 : 1.13515
-Training accuracy: 78.6%
-Validation accuracy: 75.4%
-Loss at step 800 : 1.0687
-Training accuracy: 79.2%
-Validation accuracy: 75.6%
-Test accuracy: 82.9%
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div id="b406229e-4c53-4f9f-b2fe-c8d6bc836935"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#b406229e-4c53-4f9f-b2fe-c8d6bc836935');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "8c0792c457444bebad86a9391c6cde64"}
+</script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Cost at step 0: 15.029. Training acc: 10.3%, Validation acc: 13.6%.
+Cost at step 100: 2.321. Training acc: 60.7%, Validation acc: 63.0%.
+Cost at step 200: 1.893. Training acc: 62.1%, Validation acc: 63.6%.
+Cost at step 300: 1.657. Training acc: 63.3%, Validation acc: 63.9%.
+Cost at step 400: 1.491. Training acc: 64.4%, Validation acc: 64.0%.
+Cost at step 500: 1.366. Training acc: 65.0%, Validation acc: 64.1%.
+Cost at step 600: 1.266. Training acc: 65.4%, Validation acc: 64.1%.
+Cost at step 700: 1.183. Training acc: 65.6%, Validation acc: 64.2%.
+Cost at step 800: 1.114. Training acc: 66.0%, Validation acc: 64.4%.
+Test acc: 69.8
 </pre>
 </div>
 </div>
@@ -1405,7 +1430,7 @@ Test accuracy: 82.9%
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Logistic-regression-with-SGD">Logistic regression with SGD<a class="anchor-link" href="#Logistic-regression-with-SGD">¶</a></h2>
+<h2 id="Logistic-regression-with-SGD">Logistic regression with SGD<a class="anchor-link" href="#Logistic-regression-with-SGD">¶</a></h2><p>Or more precisely, mini-batch approach.</p>
 </div>
 </div>
 </div>
@@ -1413,7 +1438,7 @@ Test accuracy: 82.9%
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's now switch to stochastic gradient descent training instead, which is much faster.</p>
+<p>From the result above, we can see it cost about 20 seconds (machine-dependent) to iterate 10,000 training instances by simple gradient descent. Let's now switch to stochastic gradient descent training instead, which is much faster.</p>
 <p>The graph will be similar, except that instead of holding all the training data into a constant node, we create a <code>Placeholder</code> node which will be fed actual data at every call of <code>session.run()</code>.</p>
 </div>
 </div>
@@ -1428,32 +1453,35 @@ Test accuracy: 82.9%
 <span class="n">graph</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 <span class="k">with</span> <span class="n">graph</span><span class="o">.</span><span class="n">as_default</span><span class="p">():</span>
 
-  <span class="c1"># Input data. For the training data, we use a placeholder that will be fed</span>
-  <span class="c1"># at run time with a training minibatch.</span>
-  <span class="n">tf_train_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
-                                    <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">))</span>
-  <span class="n">tf_train_labels</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_labels</span><span class="p">))</span>
-  <span class="n">tf_valid_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">valid_dataset</span><span class="p">)</span>
-  <span class="n">tf_test_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
-  
-  <span class="c1"># Variables.</span>
-  <span class="n">weights</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">([</span><span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">num_labels</span><span class="p">]))</span>
-  <span class="n">biases</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">num_labels</span><span class="p">]))</span>
-  
-  <span class="c1"># Training computation.</span>
-  <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tf_train_dataset</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span>
-  <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax_cross_entropy_with_logits</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">tf_train_labels</span><span class="p">,</span> <span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">))</span>
-  
-  <span class="c1"># Optimizer.</span>
-  <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
-  
-  <span class="c1"># Predictions for the training, validation, and test data.</span>
-  <span class="n">train_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
-  <span class="n">valid_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tf_valid_dataset</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">)</span>
-  <span class="n">test_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tf_test_dataset</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">)</span>
+    <span class="c1"># Input data. For the training data, we use a placeholder that will be fed</span>
+    <span class="c1"># at run time with a training minibatch.</span>
+    <span class="n">tf_train_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">))</span>
+    <span class="n">tf_train_labels</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_labels</span><span class="p">))</span>
+    <span class="n">tf_valid_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">valid_dataset</span><span class="p">)</span>
+    <span class="n">tf_test_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
+
+    <span class="c1"># Variables.</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">([</span><span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">num_labels</span><span class="p">]))</span>
+    <span class="n">biases</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">num_labels</span><span class="p">]))</span>
+
+    <span class="c1"># Training computation.</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tf_train_dataset</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax_cross_entropy_with_logits</span><span class="p">(</span>
+            <span class="n">labels</span><span class="o">=</span><span class="n">tf_train_labels</span><span class="p">,</span> <span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">))</span>
+
+    <span class="c1"># Optimizer.</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+
+    <span class="c1"># Predictions for the training, validation, and test data.</span>
+    <span class="n">train_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
+    <span class="n">valid_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tf_valid_dataset</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">)</span>
+    <span class="n">test_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tf_test_dataset</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1558,6 +1586,7 @@ Test accuracy: 86.1%
 <h2 id="Todo">Todo<a class="anchor-link" href="#Todo">¶</a></h2><ul>
 <li>draw computation graph?</li>
 <li>workflow 用 nbextension 幫我們產生</li>
+<li>放入一些圖幫助理解</li>
 </ul>
 </div>
 </div>
