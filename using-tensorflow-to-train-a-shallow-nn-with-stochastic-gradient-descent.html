@@ -82,6 +82,12 @@
 		<span itemprop="keywords">
 			<a href="//leemengtaiwan.github.io/tag/udacity.html" rel="tag">Udacity</a>
 		</span>
+		<span itemprop="keywords">
+			<a href="//leemengtaiwan.github.io/tag/sgd.html" rel="tag">sgd</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="//leemengtaiwan.github.io/tag/gradient-descent.html" rel="tag">gradient descent</a>
+		</span>
 	</div>
 
 
@@ -1077,7 +1083,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [67]:</div>
+<div class="prompt input_prompt">In [332]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># These are all the modules we'll be using later. Make sure you can import them</span>
@@ -1098,7 +1104,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Load-notMNIST-dataset">Load notMNIST dataset<a class="anchor-link" href="#Load-notMNIST-dataset">¶</a></h2><p>This time we will use the dataset which has been normalized and randomized before to omit the data preprocessing step.</p>
-<p>Key points:</p>
+<p>Tips:</p>
 <ul>
 <li>Release memory after loading big-size dataset using <code>del</code>. </li>
 </ul>
@@ -1107,7 +1113,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [88]:</div>
+<div class="prompt input_prompt">In [333]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pickle_file</span> <span class="o">=</span> <span class="s1">'datasets/notMNIST.pickle'</span>
@@ -1161,22 +1167,25 @@ Test set (10000, 28, 28) (10000,)
 <ul>
 <li>features(pixels) as a flat matrix with shape = (#total pixels, #instances)</li>
 </ul>
-<p><img src="images/flattened_features.png" style="height:20%;width:auto" /><caption><center> <u><font color="purple"> Figure 1</font></u><font color="purple">: Flattened features <br /> <font color="black"> </font></font></center></caption></p>
-<ul>
+<center><img src="images/flattened_features.png" style="width:70%" /><caption><center> <u><font color="purple"> Figure 1</font></u><font color="purple">: Flattened features <br /> <font color="black"> </font></font></center><ul>
 <li>labels as float 1-hot encodings with shape = (#type of labels, #instances)</li>
 </ul>
-<p><img src="images/flattened_ground_true.png" style="height:20%;width:auto" /><caption><center> <u><font color="purple"> Figure 1</font></u><font color="purple">: Flattened labels <br /> <font color="black"> </font></font></center></caption></p>
-<p>Key points:</p>
+<center><img src="images/flattened_ground_true.png" style="width:70%" /><caption><center> <u><font color="purple"> Figure 2</font></u><font color="purple">: Flattened labels <br /> <font color="black"> </font></font></center><p>Tips:</p>
 <ul>
-<li>Notice that we use different shape of matrix with the original TensorFlow example <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/2_fullyconnected.ipynb">nookbook</a> because I think it's easier to understand how matrix multiplication work by imagining each training/test instance as a column vector.    </li>
+<li>Notice that we use different shape of matrix with the original TensorFlow example <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/2_fullyconnected.ipynb">nookbook</a> because I think it's easier to understand how matrix multiplication work by imagining each training/test instance as a column vector. But in response to this change, we have to modify several code in order to make it works!<ul>
+<li>Transpose logits and labels when calling <code>tf.nn.softmax_cross_entropy_with_logits</code></li>
+<li>Set <code>dim = 0</code> when using <code>tf.nn.softmax</code></li>
+<li>Set <code>axis = 0</code> when using <code>np.argmax</code> to compute accuracy</li>
+</ul>
+</li>
 <li>One-hot encode labels by compare the label with the 0-9 array and transform True/False array as float array use <code>astype(np.float32)</code></li>
 </ul>
-</div>
+</caption></center></caption></center></div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [92]:</div>
+<div class="prompt input_prompt">In [334]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">image_size</span> <span class="o">=</span> <span class="mi">28</span>
@@ -1254,7 +1263,7 @@ Test set (784, 10000) (10, 10000)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [106]:</div>
+<div class="prompt input_prompt">In [335]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># With gradient descent training, even this much data is prohibitive.</span>
@@ -1262,7 +1271,8 @@ Test set (784, 10000) (10, 10000)
 <span class="n">train_subset</span> <span class="o">=</span> <span class="mi">10000</span>
 
 <span class="n">graph</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
-<span class="c1"># when we want to create multiple graphs in the same script, use this to encapsulate each graph</span>
+<span class="c1"># when we want to create multiple graphs in the same script,</span>
+<span class="c1"># use this to encapsulate each graph and run session right after graph definition</span>
 <span class="k">with</span> <span class="n">graph</span><span class="o">.</span><span class="n">as_default</span><span class="p">():</span>
 
     <span class="c1"># Input data.</span>
@@ -1298,11 +1308,11 @@ Test set (784, 10000) (10, 10000)
     <span class="c1"># Predictions for the training, validation, and test data.</span>
     <span class="c1"># These are not part of training, but merely here so that we can report</span>
     <span class="c1"># accuracy figures as we train.</span>
-    <span class="n">train_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
+    <span class="n">train_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">valid_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span>
-        <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">tf_valid_dataset</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">)</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">tf_valid_dataset</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">test_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span>
-        <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">tf_test_dataset</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">)</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">tf_test_dataset</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1312,7 +1322,7 @@ Test set (784, 10000) (10, 10000)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Key points:</p>
+<p>Tips:</p>
 <ul>
 <li>As we saw before, <code>logits = tf.matmul(weights, tf_train_dataset) + biases</code> is equivalent to the logistic regression formula $Y' = WX + b$</li>
 <li>Transpose y_hat and y to fit in <code>softmax_cross_entropy_with_logits</code></li>
@@ -1334,7 +1344,7 @@ Test set (784, 10000) (10, 10000)
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we can tell TensorFlow to run this computation and iterate.<br />
 Here we will use <code>tqdm</code> library to help us easily visualize the progress and the time used in the iterations.</p>
-<p>Key points:</p>
+<p>Tips:</p>
 <ul>
 <li>Use <code>np.argmax(predictions, axis=0)</code> to transfrom one-hot encoded labels back to singe number for every data points.</li>
 <li>Use <code>.eval()</code> to get the predictions for test/validation set</li>
@@ -1344,7 +1354,7 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [111]:</div>
+<div class="prompt input_prompt">In [336]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tnrange</span>
@@ -1352,12 +1362,19 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 
 
 <span class="k">def</span> <span class="nf">accuracy</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
-    <span class="sd">"""For every (y_hat, y) pair, get the (predicted label, label) and count the </span>
+    <span class="sd">"""For every (logit/Z, y) pair, get the (predicted label, label) and count the </span>
 <span class="sd">    occurence where predicted label == label and divide by the total number of </span>
 <span class="sd">    data points.</span>
 <span class="sd">    """</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> 
             <span class="o">/</span> <span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="c1"># Calculate the correct predictions</span>
+<span class="c1">#     correct_prediction = tf.equal(tf.argmax(predictions), tf.argmax(labels))</span>
+
+<span class="c1">#     # Calculate accuracy on the test set</span>
+<span class="c1">#     accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))</span>
+    <span class="k">return</span> <span class="n">accruacy</span>
 
 
 <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">graph</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
@@ -1381,7 +1398,7 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
     <span class="c1"># Calling .eval() on valid_prediction is basically like calling run(), but</span>
     <span class="c1"># just to get that one numpy array. Note that it recomputes all its graph</span>
     <span class="c1"># dependencies.</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'Test acc: </span><span class="si">{:.1f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy</span><span class="p">(</span><span class="n">test_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">test_labels</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Test acc: </span><span class="si">{:.1f}</span><span class="s1">%'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy</span><span class="p">(</span><span class="n">test_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">test_labels</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1397,29 +1414,30 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="b406229e-4c53-4f9f-b2fe-c8d6bc836935"></div>
+<div id="8ef15487-964d-437b-a031-f6c1f38a3480"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b406229e-4c53-4f9f-b2fe-c8d6bc836935');
+var element = $('#8ef15487-964d-437b-a031-f6c1f38a3480');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "8c0792c457444bebad86a9391c6cde64"}
+{"model_id": "a776469c0f394bab94bc900cf03f469d", "version_minor": 0, "version_major": 2}
 </script>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Cost at step 0: 15.029. Training acc: 10.3%, Validation acc: 13.6%.
-Cost at step 100: 2.321. Training acc: 60.7%, Validation acc: 63.0%.
-Cost at step 200: 1.893. Training acc: 62.1%, Validation acc: 63.6%.
-Cost at step 300: 1.657. Training acc: 63.3%, Validation acc: 63.9%.
-Cost at step 400: 1.491. Training acc: 64.4%, Validation acc: 64.0%.
-Cost at step 500: 1.366. Training acc: 65.0%, Validation acc: 64.1%.
-Cost at step 600: 1.266. Training acc: 65.4%, Validation acc: 64.1%.
-Cost at step 700: 1.183. Training acc: 65.6%, Validation acc: 64.2%.
-Cost at step 800: 1.114. Training acc: 66.0%, Validation acc: 64.4%.
-Test acc: 69.8
+<pre>Cost at step 0: 20.057. Training acc: 6.4%, Validation acc: 10.0%.
+Cost at step 100: 2.326. Training acc: 70.9%, Validation acc: 70.7%.
+Cost at step 200: 1.868. Training acc: 73.9%, Validation acc: 73.4%.
+Cost at step 300: 1.611. Training acc: 75.4%, Validation acc: 74.5%.
+Cost at step 400: 1.436. Training acc: 76.4%, Validation acc: 74.8%.
+Cost at step 500: 1.306. Training acc: 77.1%, Validation acc: 75.1%.
+Cost at step 600: 1.207. Training acc: 77.8%, Validation acc: 75.5%.
+Cost at step 700: 1.127. Training acc: 78.5%, Validation acc: 75.6%.
+Cost at step 800: 1.062. Training acc: 79.2%, Validation acc: 75.9%.
+
+Test acc: 82.8%
 </pre>
 </div>
 </div>
@@ -1438,14 +1456,27 @@ Test acc: 69.8
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>From the result above, we can see it cost about 20 seconds (machine-dependent) to iterate 10,000 training instances by simple gradient descent. Let's now switch to stochastic gradient descent training instead, which is much faster.</p>
+<p>From the result above, we can see it cost about 20 seconds (on my computer) to iterate 10,000 training instances by simple gradient descent. Let's now switch to stochastic gradient descent training instead, which is much faster.</p>
 <p>The graph will be similar, except that instead of holding all the training data into a constant node, we create a <code>Placeholder</code> node which will be fed actual data at every call of <code>session.run()</code>.</p>
+<p>Tips:</p>
+<ul>
+<li>The difference between SGD and gradient descent is that the former don't use whole training set to compute gradient descent, instead just use a 'mini-batch' of it and assume the corresponding gradient descent is the way to optimize. So we will keep using <code>GradientDescentOptimizer</code> but with a different <code>loss</code> computed from a smaller sub-training set.</li>
+</ul>
+<center><img src="images/sgd_vs_gradient_descent.png" style="width:70%" /><caption><center> <u><font color="purple"> Figure 3</font></u><font color="purple">: SGD vs Gradient Descent<br /> <font color="black"> </font></font></center>
+</caption></center></div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Build-computation-graph">Build computation graph<a class="anchor-link" href="#Build-computation-graph">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [0]:</div>
+<div class="prompt input_prompt">In [337]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
@@ -1456,32 +1487,33 @@ Test acc: 69.8
     <span class="c1"># Input data. For the training data, we use a placeholder that will be fed</span>
     <span class="c1"># at run time with a training minibatch.</span>
     <span class="n">tf_train_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span>
-        <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">))</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">))</span>
     <span class="n">tf_train_labels</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span>
-        <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_labels</span><span class="p">))</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">num_labels</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">))</span>
     <span class="n">tf_valid_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">valid_dataset</span><span class="p">)</span>
     <span class="n">tf_test_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
 
     <span class="c1"># Variables.</span>
     <span class="n">weights</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
-        <span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">([</span><span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">num_labels</span><span class="p">]))</span>
-    <span class="n">biases</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">num_labels</span><span class="p">]))</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">([</span><span class="n">num_labels</span><span class="p">,</span> <span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">]))</span>
+    <span class="n">biases</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">num_labels</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
 
     <span class="c1"># Training computation.</span>
-    <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tf_train_dataset</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">tf_train_dataset</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span>
     <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span>
         <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax_cross_entropy_with_logits</span><span class="p">(</span>
-            <span class="n">labels</span><span class="o">=</span><span class="n">tf_train_labels</span><span class="p">,</span> <span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">))</span>
+            <span class="n">labels</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">tf_train_labels</span><span class="p">),</span> <span class="n">logits</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">logits</span><span class="p">)))</span>
 
     <span class="c1"># Optimizer.</span>
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
 
     <span class="c1"># Predictions for the training, validation, and test data.</span>
-    <span class="n">train_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
+    <span class="n">train_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">valid_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span>
-        <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tf_valid_dataset</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">)</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">tf_valid_dataset</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">test_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span>
-        <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tf_test_dataset</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">)</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">tf_test_dataset</span><span class="p">)</span> <span class="o">+</span> <span class="n">biases</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
 </pre></div>
 </div>
 </div>
@@ -1491,39 +1523,43 @@ Test acc: 69.8
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's run it:</p>
+<h3 id="Iterate-using-SGD">Iterate using SGD<a class="anchor-link" href="#Iterate-using-SGD">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [0]:</div>
+<div class="prompt input_prompt">In [338]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">3001</span>
 
 <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">graph</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
-  <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">"Initialized"</span><span class="p">)</span>
-  <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
-    <span class="c1"># Pick an offset within the training data, which has been randomized.</span>
-    <span class="c1"># Note: we could use better randomization across epochs.</span>
-    <span class="n">offset</span> <span class="o">=</span> <span class="p">(</span><span class="n">step</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">train_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">batch_size</span><span class="p">)</span>
-    <span class="c1"># Generate a minibatch.</span>
-    <span class="n">batch_data</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="n">offset</span><span class="p">:(</span><span class="n">offset</span> <span class="o">+</span> <span class="n">batch_size</span><span class="p">),</span> <span class="p">:]</span>
-    <span class="n">batch_labels</span> <span class="o">=</span> <span class="n">train_labels</span><span class="p">[</span><span class="n">offset</span><span class="p">:(</span><span class="n">offset</span> <span class="o">+</span> <span class="n">batch_size</span><span class="p">),</span> <span class="p">:]</span>
-    <span class="c1"># Prepare a dictionary telling the session where to feed the minibatch.</span>
-    <span class="c1"># The key of the dictionary is the placeholder node of the graph to be fed,</span>
-    <span class="c1"># and the value is the numpy array to feed to it.</span>
-    <span class="n">feed_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">tf_train_dataset</span> <span class="p">:</span> <span class="n">batch_data</span><span class="p">,</span> <span class="n">tf_train_labels</span> <span class="p">:</span> <span class="n">batch_labels</span><span class="p">}</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">predictions</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-      <span class="p">[</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">train_prediction</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">step</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s2">"Minibatch loss at step </span><span class="si">%d</span><span class="s2">: </span><span class="si">%f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s2">"Minibatch accuracy: </span><span class="si">%.1f%%</span><span class="s2">"</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">batch_labels</span><span class="p">))</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s2">"Validation accuracy: </span><span class="si">%.1f%%</span><span class="s2">"</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">(</span>
-        <span class="n">valid_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">valid_labels</span><span class="p">))</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">"Test accuracy: </span><span class="si">%.1f%%</span><span class="s2">"</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">(</span><span class="n">test_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">test_labels</span><span class="p">))</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Initialized"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">tnrange</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
+        <span class="c1"># Pick an offset within the training data, which has been randomized.</span>
+        <span class="c1"># Note: we could use better randomization across epochs.</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="p">(</span><span class="n">step</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">train_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">batch_size</span><span class="p">)</span>
+        <span class="c1"># Generate a minibatch.</span>
+        <span class="n">batch_data</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[:,</span> <span class="n">offset</span><span class="p">:(</span><span class="n">offset</span> <span class="o">+</span> <span class="n">batch_size</span><span class="p">)]</span>
+        <span class="n">batch_labels</span> <span class="o">=</span> <span class="n">train_labels</span><span class="p">[:,</span> <span class="n">offset</span><span class="p">:(</span><span class="n">offset</span> <span class="o">+</span> <span class="n">batch_size</span><span class="p">)]</span>
+        <span class="c1"># Prepare a dictionary telling the session where to feed the minibatch.</span>
+        <span class="c1"># The key of the dictionary is the placeholder node of the graph to be fed,</span>
+        <span class="c1"># and the value is the numpy array to feed to it.</span>
+        <span class="n">feed_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">tf_train_dataset</span><span class="p">:</span> <span class="n">batch_data</span><span class="p">,</span>
+            <span class="n">tf_train_labels</span><span class="p">:</span> <span class="n">batch_labels</span>
+        <span class="p">}</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">predictions</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">train_prediction</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">step</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'Minibatch loss at step </span><span class="si">{}</span><span class="s1">: </span><span class="si">{:.3f}</span><span class="s1">. batch acc: </span><span class="si">{:.1f}</span><span class="s1">%, Valid acc: </span><span class="si">{:.1f}</span><span class="s1">%.'</span>\
+                  <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span>
+                          <span class="n">accuracy</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">batch_labels</span><span class="p">),</span>
+                          <span class="n">accuracy</span><span class="p">(</span><span class="n">valid_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">valid_labels</span><span class="p">)))</span>
+            
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Test acc: </span><span class="si">{:.1f}</span><span class="s1">%'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy</span><span class="p">(</span><span class="n">test_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">test_labels</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1534,31 +1570,44 @@ Test acc: 69.8
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Initialized
-Minibatch loss at step 0 : 16.8091
-Minibatch accuracy: 12.5%
-Validation accuracy: 14.0%
-Minibatch loss at step 500 : 1.75256
-Minibatch accuracy: 77.3%
-Validation accuracy: 75.0%
-Minibatch loss at step 1000 : 1.32283
-Minibatch accuracy: 77.3%
-Validation accuracy: 76.6%
-Minibatch loss at step 1500 : 0.944533
-Minibatch accuracy: 83.6%
-Validation accuracy: 76.5%
-Minibatch loss at step 2000 : 1.03795
-Minibatch accuracy: 78.9%
-Validation accuracy: 77.8%
-Minibatch loss at step 2500 : 1.10219
-Minibatch accuracy: 80.5%
-Validation accuracy: 78.0%
-Minibatch loss at step 3000 : 0.758874
-Minibatch accuracy: 82.8%
-Validation accuracy: 78.8%
-Test accuracy: 86.1%
 </pre>
 </div>
 </div>
+<div class="output_area">
+<div class="prompt"></div>
+<div id="ed3448fb-7f84-4a96-bd82-0e880ce8a322"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#ed3448fb-7f84-4a96-bd82-0e880ce8a322');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_minor": 0, "version_major": 2}
+</script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Minibatch loss at step 0: 20.939. batch acc: 6.2%, Valid acc: 9.7%.
+Minibatch loss at step 500: 2.546. batch acc: 70.3%, Valid acc: 75.1%.
+Minibatch loss at step 1000: 1.520. batch acc: 74.2%, Valid acc: 76.3%.
+Minibatch loss at step 1500: 1.441. batch acc: 76.6%, Valid acc: 77.8%.
+Minibatch loss at step 2000: 1.135. batch acc: 79.7%, Valid acc: 77.1%.
+Minibatch loss at step 2500: 1.225. batch acc: 72.7%, Valid acc: 78.8%.
+Minibatch loss at step 3000: 0.932. batch acc: 76.6%, Valid acc: 79.4%.
+
+Test acc: 86.9%
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It took only about 3 seconds in my computer to finish the optimization using SGD (which took gradient descent about 20 seconds) and got a even slightly better result. The key of SGD is take <strong>randomized</strong> samples / mini-batches and feed that into the model every iteration (thus the <code>feed_dict</code> term).</p>
 </div>
 </div>
 </div>
@@ -1574,8 +1623,68 @@ Test accuracy: 86.1%
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Turn the logistic regression example with SGD into a 1-hidden layer neural network with rectified linear units <a href="https://www.tensorflow.org/versions/r0.7/api_docs/python/nn.html#relu">nn.relu()</a> and 1024 hidden nodes. This model should improve your validation / test accuracy.</p>
-<hr />
+<p>Instead all just linear combination of features, we want to introduce non-linearlity in our logistic regression. By turning the logistic regression example with SGD into a 1-hidden layer neural network with rectified linear units <a href="https://www.tensorflow.org/versions/r0.7/api_docs/python/nn.html#relu">nn.relu()</a> and 1024 hidden nodes, we should be able to improve validation / test accuracy.</p>
+<p>A 2-layer NN (1-hidden layer NN) look like this:</p>
+<center><img src="images/2layer_nn.png" style="width:30%" /><caption><center> <u><font color="purple"> Figure 4</font></u><font color="purple">: 1 hidden-layer NN <br /> <font color="black"> </font></font></center><p>A ReLU activation unit look like this:</p>
+<center><img src="images/relu.png" style="width:30%" /><caption><center> <u><font color="purple"> Figure 5</font></u><font color="purple">: ReLU <br /> <font color="black"> </font></font></center>
+</caption></center></caption></center></div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Build-compuation-graph">Build compuation graph<a class="anchor-link" href="#Build-compuation-graph">¶</a></h3><p>In this part, use the notation $X$ in replace of  <code>dataset</code>. The weights and biases of the hidden layer are denoted as $W1$ and $b1$, and the weights and biases of the output layer are denoted as $W2$ and $b2$.</p>
+<p>Thus the pre-activation output(logits) of output layer is computed as $ logits = W2 * ReLU(W1 * X + b1) + b2 $</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [339]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">num_hidden_unit</span> <span class="o">=</span> <span class="mi">1024</span>
+
+<span class="n">graph</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">graph</span><span class="o">.</span><span class="n">as_default</span><span class="p">():</span>
+    <span class="c1"># placeholder for mini-batch when training </span>
+    <span class="n">tf_train_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">))</span>
+    <span class="n">tf_train_labels</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">num_labels</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">))</span>
+    
+    <span class="c1"># use all valid/test set</span>
+    <span class="n">tf_valid_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">valid_dataset</span><span class="p">)</span>
+    <span class="n">tf_test_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
+    
+    <span class="c1"># initialize weights, biases</span>
+    <span class="c1"># notice that we have a new hidden layer so we now have W1, b1, W2, b2</span>
+    <span class="n">W1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">([</span><span class="n">num_hidden_unit</span><span class="p">,</span> <span class="n">image_size</span> <span class="o">*</span> <span class="n">image_size</span><span class="p">]))</span>
+    <span class="n">b1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">num_hidden_unit</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+    <span class="n">W2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">([</span><span class="n">num_labels</span><span class="p">,</span> <span class="n">num_hidden_unit</span><span class="p">]))</span>
+    <span class="n">b2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">num_labels</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+
+
+    <span class="c1"># training computation</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">W2</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">W1</span><span class="p">,</span> <span class="n">tf_train_dataset</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span><span class="p">))</span> <span class="o">+</span> <span class="n">b2</span>    
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax_cross_entropy_with_logits</span><span class="p">(</span>
+            <span class="n">labels</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">tf_train_labels</span><span class="p">),</span> <span class="n">logits</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">logits</span><span class="p">)))</span>
+    
+    <span class="c1"># optimizer</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+    
+    <span class="c1"># valid / test prediction - y_hat</span>
+    <span class="n">train_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">valid_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">W2</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">W1</span><span class="p">,</span> <span class="n">tf_valid_dataset</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span><span class="p">))</span> <span class="o">+</span> <span class="n">b2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">test_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">W2</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">W1</span><span class="p">,</span> <span class="n">tf_test_dataset</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span><span class="p">))</span> <span class="o">+</span> <span class="n">b2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -1583,11 +1692,93 @@ Test accuracy: 86.1%
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Todo">Todo<a class="anchor-link" href="#Todo">¶</a></h2><ul>
-<li>draw computation graph?</li>
-<li>workflow 用 nbextension 幫我們產生</li>
-<li>放入一些圖幫助理解</li>
-</ul>
+<h3 id="Run-the-iterations">Run the iterations<a class="anchor-link" href="#Run-the-iterations">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [340]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">3001</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">graph</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+    <span class="c1"># initialized parameters</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Initialized"</span><span class="p">)</span>
+    <span class="c1"># take steps to optimize</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">tnrange</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
+        
+        <span class="c1"># generate randomized mini-batches</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="p">(</span><span class="n">step</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">train_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">batch_data</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[:,</span> <span class="n">offset</span><span class="p">:(</span><span class="n">offset</span> <span class="o">+</span> <span class="n">batch_size</span><span class="p">)]</span>
+        <span class="n">batch_labels</span> <span class="o">=</span> <span class="n">train_labels</span><span class="p">[:,</span> <span class="n">offset</span><span class="p">:(</span><span class="n">offset</span> <span class="o">+</span> <span class="n">batch_size</span><span class="p">)]</span>
+        
+        <span class="n">feed_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">tf_train_dataset</span><span class="p">:</span> <span class="n">batch_data</span><span class="p">,</span>
+            <span class="n">tf_train_labels</span><span class="p">:</span> <span class="n">batch_labels</span>
+        <span class="p">}</span>
+        
+        <span class="n">_</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">predictions</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">train_prediction</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">step</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'Minibatch loss at step </span><span class="si">{}</span><span class="s1">: </span><span class="si">{:.3f}</span><span class="s1">. batch acc: </span><span class="si">{:.1f}</span><span class="s1">%, Valid acc: </span><span class="si">{:.1f}</span><span class="s1">%.'</span>\
+                  <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span>
+                          <span class="n">accuracy</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">batch_labels</span><span class="p">),</span>
+                          <span class="n">accuracy</span><span class="p">(</span><span class="n">valid_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">valid_labels</span><span class="p">)))</span>
+            
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Test acc: </span><span class="si">{:.1f}</span><span class="s1">%'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy</span><span class="p">(</span><span class="n">test_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">test_labels</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Initialized
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div id="cff06264-69b7-4031-8ac2-4d7314a760c2"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#cff06264-69b7-4031-8ac2-4d7314a760c2');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_minor": 0, "version_major": 2}
+</script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Minibatch loss at step 0: 409.203. batch acc: 4.7%, Valid acc: 30.5%.
+Minibatch loss at step 500: 12.319. batch acc: 75.8%, Valid acc: 80.7%.
+Minibatch loss at step 1000: 12.638. batch acc: 74.2%, Valid acc: 80.8%.
+Minibatch loss at step 1500: 7.635. batch acc: 77.3%, Valid acc: 81.2%.
+Minibatch loss at step 2000: 7.322. batch acc: 80.5%, Valid acc: 81.4%.
+Minibatch loss at step 2500: 10.451. batch acc: 76.6%, Valid acc: 80.1%.
+Minibatch loss at step 3000: 3.914. batch acc: 83.6%, Valid acc: 82.7%.
+
+Test acc: 88.7%
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h2><p>Because we use a more complex model(1 hidden-layer NN), it take a little longer to train, but we're able to gain more performance from logistic regression even with the same hyper-parameter settings (learning rate = 0.5, batch_size=128). Better performance may be gained by tuning hyper parameters of the 2 layer NN.</p>
 </div>
 </div>
 </div>
