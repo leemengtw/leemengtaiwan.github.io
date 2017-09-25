@@ -1231,7 +1231,7 @@ Test set (10000, 28, 28, 1) (10000, 10)
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Computation-graph">Computation graph<a class="anchor-link" href="#Computation-graph">¶</a></h3><p>Although this assignment already provide good Tensorflow code to build convoluational networks, I found that I can't imagine what NN I was going to build by reading the code. So I tried to draw what we're going to build and explain some parameters used in code by comments.</p>
 <p>The convolutional network we're going to build:</p>
-<center><img src="images/2convolational_layers_with_1_fully_connected_nn.png" style="width:70%" /><caption><center> <u><font color="purple"> Figure 1</font></u><font color="purple">: CNN with 1 fully connected layer<br /> <font color="black"> </font></font></center>
+<center><img src="images/2convolational_layers_with_1_fully_connected_nn.png" style="width:80%" /><caption><center> <u><font color="purple"> Figure 1</font></u><font color="purple">: CNN with 1 fully connected layer<br /> <font color="black"> </font></font></center>
 </caption></center></div>
 </div>
 </div>
@@ -1367,11 +1367,12 @@ Test set (10000, 28, 28, 1) (10000, 10)
         <span class="n">_</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">predictions</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="p">[</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">train_prediction</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">step</span> <span class="o">%</span> <span class="mi">50</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">'Minibatch loss at step </span><span class="si">%d</span><span class="s1">: </span><span class="si">%f</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">'Minibatch accuracy: </span><span class="si">%.1f%%</span><span class="s1">'</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">(</span>
-                <span class="n">predictions</span><span class="p">,</span> <span class="n">batch_labels</span><span class="p">))</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">'Validation accuracy: </span><span class="si">%.1f%%</span><span class="s1">'</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">(</span>
-                <span class="n">valid_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">valid_labels</span><span class="p">))</span>
+            
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'Minibatch loss at step </span><span class="si">{}</span><span class="s1">: </span><span class="si">{:.3f}</span><span class="s1">. batch acc: </span><span class="si">{:.1f}</span><span class="s1">%, Valid acc: </span><span class="si">{:.1f}</span><span class="s1">%.'</span>\
+                  <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span>
+                          <span class="n">accuracy</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">batch_labels</span><span class="p">),</span>
+                          <span class="n">accuracy</span><span class="p">(</span><span class="n">valid_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span> <span class="n">valid_labels</span><span class="p">)))</span>
+            
     <span class="nb">print</span><span class="p">(</span><span class="s1">'Test accuracy: </span><span class="si">%.1f%%</span><span class="s1">'</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">(</span><span class="n">test_prediction</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span>
                                              <span class="n">test_labels</span><span class="p">))</span>
 </pre></div>

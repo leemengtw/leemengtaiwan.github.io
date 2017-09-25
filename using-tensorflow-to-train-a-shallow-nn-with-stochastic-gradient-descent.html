@@ -1177,7 +1177,15 @@ Test set (10000, 28, 28) (10000,)
 <center><img src="images/flattened_features.png" style="width:70%" /><caption><center> <u><font color="purple"> Figure 1</font></u><font color="purple">: Flattened features <br /> <font color="black"> </font></font></center><ul>
 <li>labels as float 1-hot encodings with shape = (#type of labels, #instances)</li>
 </ul>
-<center><img src="images/flattened_ground_true.png" style="width:70%" /><caption><center> <u><font color="purple"> Figure 2</font></u><font color="purple">: Flattened labels <br /> <font color="black"> </font></font></center><p>Tips:</p>
+<center><img src="images/flattened_ground_true.png" style="width:70%" /><caption><center> <u><font color="purple"> Figure 2</font></u><font color="purple">: Flattened labels <br /> <font color="black"> </font></font></center>
+</caption></center></caption></center></div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Tips:</p>
 <ul>
 <li>Notice that we use different shape of matrix with the original TensorFlow example <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/2_fullyconnected.ipynb">nookbook</a> because I think it's easier to understand how matrix multiplication work by imagining each training/test instance as a column vector. But in response to this change, we have to modify several code in order to make it works!<ul>
 <li>Transpose logits and labels when calling <code>tf.nn.softmax_cross_entropy_with_logits</code></li>
@@ -1187,7 +1195,7 @@ Test set (10000, 28, 28) (10000,)
 </li>
 <li>One-hot encode labels by compare the label with the 0-9 array and transform True/False array as float array use <code>astype(np.float32)</code></li>
 </ul>
-</caption></center></caption></center></div>
+</div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -1421,13 +1429,13 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="051b6941-4efb-49e5-b423-b8ad53238daf"></div>
+<div id="8c655e70-d8ae-46ec-a57d-ada2599fef06"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#051b6941-4efb-49e5-b423-b8ad53238daf');
+var element = $('#8c655e70-d8ae-46ec-a57d-ada2599fef06');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "model_id": "a776469c0f394bab94bc900cf03f469d", "version_minor": 0}
+{"version_major": 2, "version_minor": 0, "model_id": "a776469c0f394bab94bc900cf03f469d"}
 </script>
 </div>
 </div>
@@ -1582,13 +1590,13 @@ Test acc: 82.8%
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="437d7e30-7605-418c-801a-9501a0267830"></div>
+<div id="25696a1f-c268-47f0-bde3-6928eb87df7d"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#437d7e30-7605-418c-801a-9501a0267830');
+var element = $('#25696a1f-c268-47f0-bde3-6928eb87df7d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_minor": 0}
+{"version_major": 2, "version_minor": 0, "model_id": "2d2a36e34f9843b5a38a9fe105281093"}
 </script>
 </div>
 </div>
@@ -1753,13 +1761,13 @@ Test acc: 86.9%
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="49c0ce1b-6bac-455b-9d54-a57f476229c4"></div>
+<div id="5df338d2-8502-40a6-a2a2-08a484c554a5"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#49c0ce1b-6bac-455b-9d54-a57f476229c4');
+var element = $('#5df338d2-8502-40a6-a2a2-08a484c554a5');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_minor": 0}
+{"version_major": 2, "version_minor": 0, "model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17"}
 </script>
 </div>
 </div>
