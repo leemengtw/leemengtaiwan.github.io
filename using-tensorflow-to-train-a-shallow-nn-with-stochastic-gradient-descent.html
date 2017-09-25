@@ -56,37 +56,43 @@
 	<div>
 		Tags:
 		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
+			<a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">tensorflow</a>
+			<a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">TensorFlow</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">deep learning</a>
+			<a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">Deep Learning</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/neural-network.html" rel="tag">neural network</a>
+			<a href="//leemengtaiwan.github.io/tag/neural-networks.html" rel="tag">Neural Networks</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/optimization.html" rel="tag">optimization</a>
+			<a href="//leemengtaiwan.github.io/tag/optimization.html" rel="tag">Optimization</a>
 		</span>
 		<span itemprop="keywords">
 			<a href="//leemengtaiwan.github.io/tag/notmnist.html" rel="tag">NotMNIST</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/machine-learning.html" rel="tag">machine learning</a>
+			<a href="//leemengtaiwan.github.io/tag/machine-learning.html" rel="tag">Machine Learning</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/image-recognition.html" rel="tag">image recognition</a>
+			<a href="//leemengtaiwan.github.io/tag/image-recognition.html" rel="tag">Image Recognition</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="//leemengtaiwan.github.io/tag/sgd.html" rel="tag">SGD</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="//leemengtaiwan.github.io/tag/gradient-descent.html" rel="tag">Gradient Descent</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="//leemengtaiwan.github.io/tag/deep-learning-by-google.html" rel="tag">Deep Learning by Google</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="//leemengtaiwan.github.io/tag/machine-learning-engineer-by-kaggle.html" rel="tag">Machine Learning Engineer by kaggle</a>
 		</span>
 		<span itemprop="keywords">
 			<a href="//leemengtaiwan.github.io/tag/udacity.html" rel="tag">Udacity</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/sgd.html" rel="tag">sgd</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/gradient-descent.html" rel="tag">gradient descent</a>
 		</span>
 	</div>
 
@@ -1067,9 +1073,10 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal of this assignment is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.</p>
+<p>The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.</p>
 <p>Finally, train a Neural Network with one-hidden layer using ReLU activation units to see whether we can boost our model's performance further.</p>
-<p>Previously in <code>1_notmnist.ipynb</code>, we created a pickle with formatted datasets for training, development and testing on the <a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html">notMNIST dataset</a>.</p>
+<p>Previously in <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb">1_notmnist.ipynb</a>, we created a pickle with formatted datasets for training, development and testing on the <a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html">notMNIST dataset</a>.</p>
+<p>This post is modified from the <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/2_fullyconnected.ipynb">jupyter notebook</a> originated from the Udacity MOOC course: <a href="https://www.udacity.com/course/deep-learning--ud730">Deep learning by Google</a>.</p>
 </div>
 </div>
 </div>
@@ -1414,13 +1421,13 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="ac41adb7-2bcc-42c8-97a4-6028d46c2a12"></div>
+<div id="051b6941-4efb-49e5-b423-b8ad53238daf"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#ac41adb7-2bcc-42c8-97a4-6028d46c2a12');
+var element = $('#051b6941-4efb-49e5-b423-b8ad53238daf');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
+{"version_major": 2, "model_id": "a776469c0f394bab94bc900cf03f469d", "version_minor": 0}
 </script>
 </div>
 </div>
@@ -1575,13 +1582,13 @@ Test acc: 82.8%
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="49b165cb-be47-42bd-acbd-76a1b1d172ee"></div>
+<div id="437d7e30-7605-418c-801a-9501a0267830"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#49b165cb-be47-42bd-acbd-76a1b1d172ee');
+var element = $('#437d7e30-7605-418c-801a-9501a0267830');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
+{"version_major": 2, "model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_minor": 0}
 </script>
 </div>
 </div>
@@ -1746,13 +1753,13 @@ Test acc: 86.9%
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="98ae8e03-3007-4f7f-98e5-16a920d64d5c"></div>
+<div id="49c0ce1b-6bac-455b-9d54-a57f476229c4"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#98ae8e03-3007-4f7f-98e5-16a920d64d5c');
+var element = $('#49c0ce1b-6bac-455b-9d54-a57f476229c4');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
+{"version_major": 2, "model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_minor": 0}
 </script>
 </div>
 </div>
@@ -1853,7 +1860,7 @@ Test acc: 88.7%
 					<div class="col-md-3">
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="//leemengtaiwan.github.io/category/deep-learning.html">Deep Learning (2)</a></li>
+							<li><a href="//leemengtaiwan.github.io/category/deep-learning.html">Deep Learning (3)</a></li>
 							<li><a href="//leemengtaiwan.github.io/category/machine-learning.html">Machine learning (1)</a></li>
 							<li><a href="//leemengtaiwan.github.io/category/miscellaneous.html">Miscellaneous (1)</a></li>
 						</ul>

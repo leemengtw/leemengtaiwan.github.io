@@ -42,6 +42,55 @@
         
         
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="//leemengtaiwan.github.io/simple-convolutional-neural-network-using-tensorflow.html">
+		<h2 itemprop="name headline">Simple Convolutional Neural Network using TensorFlow</h2>
+	</a>
+	<time datetime="2017-09-26T18:30:00+09:00" itemprop="datePublished">Tue, 26 Sep 2017</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">Lee Meng</span>
+	</span>
+	<div class="summary">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The goal here is to practice building convolutional neural networks to classify <a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html">notMNIST</a> characters using TensorFlow.
+As image size become bigger and bigger, it become unpractical to train fully-connected NN because there will be just too many parameters and thus the model will overfit very soon. And CNN solve this problem by weight sharing.</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="//leemengtaiwan.github.io/category/deep-learning.html" rel="category">Deep Learning</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">Tensorflow</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">Deep Learning</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/convolutional-neural-network.html" rel="tag">Convolutional Neural Network</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/cnn.html" rel="tag">CNN</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/deep-learning-by-google.html" rel="tag">Deep Learning by Google</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/machine-learning-engineer-by-kaggle.html" rel="tag">Machine Learning Engineer by kaggle</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/udacity.html" rel="tag">Udacity</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<a href="//leemengtaiwan.github.io/regularization-for-multi-layer-neural-networks-in-tensorflow.html">
 		<h2 itemprop="name headline">Regularization for Multi-layer Neural Networks in Tensorflow</h2>
 	</a>
@@ -55,7 +104,6 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Previously in <code>2_fullyconnected.ipynb</code>, you trained a logistic regression and a neural network model.</p>
 <p>The goal of this assignment is to explore regularization techniques.
 The original notebook can be found <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/3_regularization.ipynb">here</a></p>
 </div>
@@ -78,16 +126,25 @@ The original notebook can be found <a href="https://github.com/tensorflow/tensor
 	Tags:
  
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">tensorflow</a>
+		<a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">Tensorflow</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
+		<a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">deep learning</a>
+		<a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">Deep Learning</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/regularization.html" rel="tag">regularization</a>
+		<a href="//leemengtaiwan.github.io/tag/regularization.html" rel="tag">Regularization</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/deep-learning-by-google.html" rel="tag">Deep Learning by Google</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/machine-learning-engineer-by-kaggle.html" rel="tag">Machine Learning Engineer by kaggle</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/udacity.html" rel="tag">Udacity</a>
 	</span>
 </div>
 <hr>
@@ -106,7 +163,7 @@ The original notebook can be found <a href="https://github.com/tensorflow/tensor
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal of this assignment is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.</p></div>
+<p>The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.</p></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="//leemengtaiwan.github.io/category/deep-learning.html" rel="category">Deep Learning</a>
@@ -114,37 +171,43 @@ The original notebook can be found <a href="https://github.com/tensorflow/tensor
 	Tags:
  
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
+		<a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">tensorflow</a>
+		<a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">TensorFlow</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">deep learning</a>
+		<a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">Deep Learning</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/neural-network.html" rel="tag">neural network</a>
+		<a href="//leemengtaiwan.github.io/tag/neural-networks.html" rel="tag">Neural Networks</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/optimization.html" rel="tag">optimization</a>
+		<a href="//leemengtaiwan.github.io/tag/optimization.html" rel="tag">Optimization</a>
 	</span>
 	<span itemprop="keywords">
 		<a href="//leemengtaiwan.github.io/tag/notmnist.html" rel="tag">NotMNIST</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/machine-learning.html" rel="tag">machine learning</a>
+		<a href="//leemengtaiwan.github.io/tag/machine-learning.html" rel="tag">Machine Learning</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/image-recognition.html" rel="tag">image recognition</a>
+		<a href="//leemengtaiwan.github.io/tag/image-recognition.html" rel="tag">Image Recognition</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/sgd.html" rel="tag">SGD</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/gradient-descent.html" rel="tag">Gradient Descent</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/deep-learning-by-google.html" rel="tag">Deep Learning by Google</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/machine-learning-engineer-by-kaggle.html" rel="tag">Machine Learning Engineer by kaggle</a>
 	</span>
 	<span itemprop="keywords">
 		<a href="//leemengtaiwan.github.io/tag/udacity.html" rel="tag">Udacity</a>
-	</span>
-	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/sgd.html" rel="tag">sgd</a>
-	</span>
-	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/gradient-descent.html" rel="tag">gradient descent</a>
 	</span>
 </div>
 <hr>
@@ -172,28 +235,34 @@ The original notebook can be found <a href="https://github.com/tensorflow/tensor
 	Tags:
  
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
+		<a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/matplotlib.html" rel="tag">matplotlib</a>
+		<a href="//leemengtaiwan.github.io/tag/matplotlib.html" rel="tag">Matplotlib</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/data-preprocessing.html" rel="tag">data preprocessing</a>
+		<a href="//leemengtaiwan.github.io/tag/data-preprocessing.html" rel="tag">Data Preprocessing</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/data-cleaning.html" rel="tag">data cleaning</a>
+		<a href="//leemengtaiwan.github.io/tag/data-cleaning.html" rel="tag">Data Cleaning</a>
 	</span>
 	<span itemprop="keywords">
 		<a href="//leemengtaiwan.github.io/tag/notmnist.html" rel="tag">NotMNIST</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/sklearn.html" rel="tag">sklearn</a>
+		<a href="//leemengtaiwan.github.io/tag/sklearn.html" rel="tag">Sklearn</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/machine-learning.html" rel="tag">machine learning</a>
+		<a href="//leemengtaiwan.github.io/tag/machine-learning.html" rel="tag">Machine Learning</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="//leemengtaiwan.github.io/tag/image-recognition.html" rel="tag">image recognition</a>
+		<a href="//leemengtaiwan.github.io/tag/image-recognition.html" rel="tag">Image Recognition</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/deep-learning-by-google.html" rel="tag">Deep Learning by Google</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="//leemengtaiwan.github.io/tag/machine-learning-engineer-by-kaggle.html" rel="tag">Machine Learning Engineer by kaggle</a>
 	</span>
 	<span itemprop="keywords">
 		<a href="//leemengtaiwan.github.io/tag/udacity.html" rel="tag">Udacity</a>
@@ -282,7 +351,7 @@ The original notebook can be found <a href="https://github.com/tensorflow/tensor
 					<div class="col-md-3">
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="//leemengtaiwan.github.io/category/deep-learning.html">Deep Learning (2)</a></li>
+							<li><a href="//leemengtaiwan.github.io/category/deep-learning.html">Deep Learning (3)</a></li>
 							<li><a href="//leemengtaiwan.github.io/category/machine-learning.html">Machine learning (1)</a></li>
 							<li><a href="//leemengtaiwan.github.io/category/miscellaneous.html">Miscellaneous (1)</a></li>
 						</ul>
