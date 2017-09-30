@@ -991,8 +991,8 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Unlike supervised learning, we don't have labels that tell us 'kitty' = 'cat'. So how do we train a model that will learn the relationship between two words?&lt;/p&gt;
-&lt;p&gt;Recap the assumption mentioned before, words with similar meaning tend to appear in similar context. Because 'kitten' and 'cat' appear in similar context, if we can train a model to predict the context words by the target word 'cat' and 'kitten' with the similar context, the representation of 'kitten' and 'cat' should be similar in the model because they produce similar result.&lt;/p&gt;
+&lt;p&gt;Unlike supervised learning, we don't have labels that tell us 'kitten' = 'cat'. So how do we train a model that will learn the relationship between these two words?&lt;/p&gt;
+&lt;p&gt;Recap the assumption mentioned before, words with similar meaning tend to appear in similar context. Because 'kitten' and 'cat' appear in similar context, if we can train a model to predict the context of the target word 'cat' and 'kitten' respectively, model should learn a similar representation for both 'kitten' and 'cat' because they produce similar context.&lt;/p&gt;
 &lt;center&gt;&lt;img src="images/cat_vs_kitten.png" style="width:60%" /&gt;&lt;caption&gt;&lt;center&gt; &lt;u&gt;&lt;font color="purple"&gt; Figure 2&lt;/font&gt;&lt;/u&gt;&lt;font color="purple"&gt;: Training data generated from target word and context&lt;br /&gt; &lt;font color="black"&gt; &lt;/font&gt;&lt;/font&gt;&lt;/center&gt;
 &lt;/caption&gt;&lt;/center&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1001,7 +1001,8 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;First, let's build the training data in order to train our model.&lt;/p&gt;
+&lt;p&gt;As shown above, for each words like 'cat' in raw text, we will treat them as &lt;strong&gt;target word&lt;/strong&gt; and the words surrounding it as &lt;strong&gt;context&lt;/strong&gt; and construct the training instances (x, y) where x is target word and y is one of the word in context. And the definition of 'context' is decided by the parameter 'window size'.&lt;/p&gt;
+&lt;p&gt;First, let's load the text data and build the training data in order to train our model.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1042,7 +1043,7 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Dataset"&gt;Dataset&lt;a class="anchor-link" href="#Dataset"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="Raw-text-data"&gt;Raw text data&lt;a class="anchor-link" href="#Raw-text-data"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1050,13 +1051,13 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Download-/-load-data"&gt;Download / load data&lt;a class="anchor-link" href="#Download-/-load-data"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Download the data from the source website if necessary.&lt;/p&gt;
+&lt;h3 id="Download-/-load-data"&gt;Download / load data&lt;a class="anchor-link" href="#Download-/-load-data"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Download the data from the source website if necessary. will store the zip file in the 'datasets' subdirectory.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [19]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'http://mattmahoney.net/dc/'&lt;/span&gt;
@@ -1108,7 +1109,7 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [16]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In [63]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;read_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1140,24 +1141,161 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Build-dictionary"&gt;Build dictionary&lt;a class="anchor-link" href="#Build-dictionary"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Build the dictionary and replace rare words with UNK token. UNK means unknown word that doesn't exist in the vocabulary set.&lt;/p&gt;
+&lt;h3 id="Look-into-text-corpus"&gt;Look into text corpus&lt;a class="anchor-link" href="#Look-into-text-corpus"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The 'data size' above mean how many words we have in the data. That is, there are about 17 millions words!&lt;br /&gt;
+Let's show some parts of the text data to make some sense of it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Some phrases which include word 'cat' with window size = '2'.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [20]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In [27]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;cats&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;' '&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'cat'&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'cats'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cats&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+&lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;cats&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;the cartoon cat garfield would
+amount of cats that roam
+politicians autodidacts cat lovers firearm
+and activists cat lovers epistemologists
+force australia cat six two
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Some phrases which include word 'kitten' with window size = '2'.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [28]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;kitten&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;' '&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'kitten'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;kitten&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+&lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;kitten&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;put the kitten nermal in
+s sex kitten in the
+of tom kitten one nine
+as a kitten rudolph grey
+called a kitten which is
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Create-training-data"&gt;Create training data&lt;a class="anchor-link" href="#Create-training-data"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;In order to let TensorFlow make use of the text corpus, we have to transform the text corpus into sequence of numbers. The way to achieve this to build a dictionary which map every word to a unique number and use that dictionary to transform the corpus into number-based data.&lt;/p&gt;
+&lt;center&gt;&lt;img src="images/turn_corpus_into_numbers.png" style="width:60%" /&gt;&lt;caption&gt;&lt;center&gt; &lt;u&gt;&lt;font color="purple"&gt; Figure 3&lt;/font&gt;&lt;/u&gt;&lt;font color="purple"&gt;: Build dictionary and turn text into numbers&lt;br /&gt; &lt;font color="black"&gt; &lt;/font&gt;&lt;/font&gt;&lt;/center&gt;
+&lt;/caption&gt;&lt;/center&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Notice that some rare words may appear very few times in the entire text corpus. We may want to exclude these terms to keep our dictionary in a reasonable size. In order to do this, we will build the dictionary and view these terms as UNK tokens. UNK means unknown word that doesn't exist in the vocabulary set and the default number of a UNK in dictionary is 0 as shown above.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Decide-dictionary-size"&gt;Decide dictionary size&lt;a class="anchor-link" href="#Decide-dictionary-size"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Depend on the size of the vocabulary, we will construct a dictionary for top &lt;strong&gt;vocabulary_size - 1&lt;/strong&gt; common words. For example, if the &lt;code&gt;vocabulary_size = 50000&lt;/code&gt;, we will first count the frequencies of every word appeared in the text corpus and put the most common 49,999 terms into our vocabulary and make the rest of words as UNK token. ( thus the 50,000 th term in the vocabulary).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [64]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;vocabulary_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;50000&lt;/span&gt;
-
-
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;build_dataset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Build-dictionary-and-transform-text-corpus-into-sequence-of-numbers"&gt;Build dictionary and transform text corpus into sequence of numbers&lt;a class="anchor-link" href="#Build-dictionary-and-transform-text-corpus-into-sequence-of-numbers"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [65]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;build_dataset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="sd"&gt;    Parameters:&lt;/span&gt;
+&lt;span class="sd"&gt;    words: a string with every word devided by spaces&lt;/span&gt;
+&lt;span class="sd"&gt;    &lt;/span&gt;
+&lt;span class="sd"&gt;    Returns:&lt;/span&gt;
+&lt;span class="sd"&gt;    dictionary: a dict with word as key and a unique number(index)&lt;/span&gt;
+&lt;span class="sd"&gt;        as their value. dictionary[word] = idx&lt;/span&gt;
+&lt;span class="sd"&gt;    reverse_dictionary: a dict with index as key and the corresponding &lt;/span&gt;
+&lt;span class="sd"&gt;        word as value. reverse_dictionary[idx] = word&lt;/span&gt;
+&lt;span class="sd"&gt;    counts: a list contain tuples (word, frequency) sorted descendingly &lt;/span&gt;
+&lt;span class="sd"&gt;        by frequency while use ('UNK', unk_count) as first tuple.&lt;/span&gt;
+&lt;span class="sd"&gt;    data: a list contain indices of the original words in the parameters&lt;/span&gt;
+&lt;span class="sd"&gt;        'words'.&lt;/span&gt;
+&lt;span class="sd"&gt;    """&lt;/span&gt;
+    &lt;span class="c1"&gt;# count term frequencies and choose the most frequent &lt;/span&gt;
+    &lt;span class="c1"&gt;# terms of vocabulary_size&lt;/span&gt;
     &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="s1"&gt;'UNK'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
     &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;collections&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Counter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;most_common&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;vocabulary_size&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
     &lt;span class="n"&gt;dictionary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="c1"&gt;# index term by their frequency. while UKN is indexed as 0,&lt;/span&gt;
+    &lt;span class="c1"&gt;# the term with most frequencies is indexed as 1, the term with 2th frequencies&lt;/span&gt;
+    &lt;span class="c1"&gt;# is indexed as 2, ...&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    
+    &lt;span class="c1"&gt;# turn the text corpus into a sequence of number where each number is the &lt;/span&gt;
+    &lt;span class="c1"&gt;# index of the original term in 'dictionary' dict and mark those UNK's number&lt;/span&gt;
+    &lt;span class="c1"&gt;# as 0 which indicate that they're unknown words&lt;/span&gt;
     &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;unk_count&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -1167,14 +1305,50 @@ h6:hover .anchor-link {
             &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;  &lt;span class="c1"&gt;# dictionary['UNK']&lt;/span&gt;
             &lt;span class="n"&gt;unk_count&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;unk_count&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
         &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        
+    &lt;span class="c1"&gt;# update UNK's count in corpus&lt;/span&gt;
     &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;unk_count&lt;/span&gt;
+    
+    &lt;span class="c1"&gt;# create reverse dict to enable lookup the original word by their index&lt;/span&gt;
     &lt;span class="n"&gt;reverse_dictionary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reverse_dictionary&lt;/span&gt;
 
-
 &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reverse_dictionary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;build_dataset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Most common words (+UNK)'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Sample data'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Most common words (+UNK) in text corpus:&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;Most common words (+UNK) in text corpus:
+[['UNK', 418391], ('the', 1061396), ('of', 593677), ('and', 416629), ('one', 411764)]
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="See-transformed-text-corpus"&gt;See transformed text corpus&lt;a class="anchor-link" href="#See-transformed-text-corpus"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [71]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sample_idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'"&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\n\n&lt;/span&gt;&lt;span class="s1"&gt;was transformed into&lt;/span&gt;&lt;span class="se"&gt;\n\n&lt;/span&gt;&lt;span class="s1"&gt;"&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;"'&lt;/span&gt;\
+      &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;' '&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sample_idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;sample_idx&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt;
+              &lt;span class="s1"&gt;' '&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sample_idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;sample_idx&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;]])))&lt;/span&gt;
 &lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;words&lt;/span&gt;  &lt;span class="c1"&gt;# Hint to reduce memory.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1185,346 +1359,12 @@ h6:hover .anchor-link {
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;Most common words (+UNK) [['UNK', 418391], ('the', 1061396), ('of', 593677), ('and', 416629), ('one', 411764)]
-Sample data [5236, 3081, 12, 6, 195, 2, 3137, 46, 59, 156]
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [46]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-&lt;div class="output_area"&gt;
-&lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;[5236, 3081, 12, 6, 195, 2, 3137, 46, 59, 156]
-[['UNK', 418391], ('the', 1061396), ('of', 593677), ('and', 416629), ('one', 411764), ('in', 372201), ('a', 325873), ('to', 316376), ('zero', 264975), ('nine', 250430)]
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="output_area"&gt;
-&lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div class="output_subarea output_text output_error"&gt;
-&lt;pre&gt;
-&lt;span class="ansi-red-fg"&gt;-----------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="ansi-red-fg"&gt;TypeError&lt;/span&gt;                             Traceback (most recent call last)
-&lt;span class="ansi-green-fg"&gt;&lt;ipython-input-46-c0a3ea440420&gt;&lt;/span&gt; in &lt;span class="ansi-cyan-fg"&gt;&lt;module&gt;&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;()&lt;/span&gt;
-&lt;span class="ansi-green-intense-fg ansi-bold"&gt;      1&lt;/span&gt; print&lt;span class="ansi-blue-fg"&gt;(&lt;/span&gt;data&lt;span class="ansi-blue-fg"&gt;[&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;:&lt;/span&gt;&lt;span class="ansi-cyan-fg"&gt;10&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;]&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;)&lt;/span&gt;
-&lt;span class="ansi-green-intense-fg ansi-bold"&gt;      2&lt;/span&gt; print&lt;span class="ansi-blue-fg"&gt;(&lt;/span&gt;count&lt;span class="ansi-blue-fg"&gt;[&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;:&lt;/span&gt;&lt;span class="ansi-cyan-fg"&gt;10&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;]&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;)&lt;/span&gt;
-&lt;span class="ansi-green-fg"&gt;----&gt; 3&lt;/span&gt;&lt;span class="ansi-red-fg"&gt; &lt;/span&gt;print&lt;span class="ansi-blue-fg"&gt;(&lt;/span&gt;dictionary&lt;span class="ansi-blue-fg"&gt;.&lt;/span&gt;items&lt;span class="ansi-blue-fg"&gt;(&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;)&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;[&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;:&lt;/span&gt;&lt;span class="ansi-cyan-fg"&gt;10&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;]&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;)&lt;/span&gt;
-&lt;span class="ansi-green-intense-fg ansi-bold"&gt;      4&lt;/span&gt; print&lt;span class="ansi-blue-fg"&gt;(&lt;/span&gt;reverse_dictionary&lt;span class="ansi-blue-fg"&gt;.&lt;/span&gt;items&lt;span class="ansi-blue-fg"&gt;(&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;)&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;[&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;:&lt;/span&gt;&lt;span class="ansi-cyan-fg"&gt;10&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;]&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;)&lt;/span&gt;
+&lt;pre&gt;"american individualist anarchism benjamin tucker in one eight two five"
 
-&lt;span class="ansi-red-fg"&gt;TypeError&lt;/span&gt;: 'dict_items' object is not subscriptable&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [43]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reverse_dictionary&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reverse_dictionary&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-&lt;div class="output_area"&gt;
-&lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;0 UNK
-1 the
-2 of
-3 and
-4 one
-5 in
-6 a
-7 to
-8 zero
-9 nine
-10 two
+was transformed into
+
+"64 10276 5234 3248 9615 5 4 13 10 16"
 &lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [26]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="p"&gt;())[:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-&lt;div class="output_area"&gt;
-&lt;div class="prompt output_prompt"&gt;Out[26]:&lt;/div&gt;
-&lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;['portals', 'yelling', 'ksc', 'board', 'titular']&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [39]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;reverse_dictionary&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;w&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-&lt;div class="output_area"&gt;
-&lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;['in', 'of', 'and', 'a']
-['and', 'UNK', 'zero', 'the']
-['the', 'of']
-['a']
-['the', 'nine', 'in']
-['of']
-['and', 'the', 'and', 'to']
-['one', 'a']
-['in', 'nine']
-['the', 'in', 'a']
-['the', 'of', 'zero']
-['to', 'one', 'of']
-['one', 'to', 'to']
-['the', 'UNK', 'in', 'nine', 'and']
-['the', 'and', 'one']
-['the']
-['of', 'to', 'one', 'nine', 'in']
-['of']
-['the']
-['the', 'UNK', 'and']
-['zero', 'in', 'in']
-['and']
-['the']
-['the', 'in', 'the', 'nine', 'nine']
-['UNK']
-['of']
-['the']
-['the', 'in', 'the']
-['zero', 'in', 'in']
-['and', 'in', 'zero', 'the']
-['the']
-['the', 'nine', 'in']
-['the', 'the']
-['the', 'nine', 'the']
-['in', 'nine']
-['in']
-['a']
-['the', 'UNK', 'to', 'of', 'one']
-['of', 'the', 'in']
-['to']
-['the', 'and', 'of', 'a']
-['the', 'UNK', 'in']
-['one', 'in', 'in']
-['of', 'UNK']
-['in', 'nine']
-['of', 'to', 'and', 'of']
-['and', 'a', 'and']
-['to']
-['and', 'a', 'to', 'and']
-['the']
-['to', 'UNK', 'nine']
-['of']
-['and', 'to', 'of']
-['of', 'to']
-['one', 'the']
-['and', 'to']
-['in', 'one']
-['in', 'one', 'UNK']
-['nine', 'zero']
-['the', 'of']
-['a']
-['the', 'one', 'of', 'a']
-['of', 'to', 'a', 'UNK']
-['the', 'nine']
-['in', 'a', 'zero']
-['a', 'zero', 'to']
-['to', 'the', 'the', 'of']
-['the']
-['of', 'one', 'zero']
-['in', 'of', 'and', 'a']
-['the', 'the']
-['the', 'UNK', 'in', 'and']
-['of', 'zero']
-['the']
-['and', 'of', 'the']
-['of', 'one', 'nine']
-['one', 'a', 'in', 'to', 'a']
-['of', 'zero', 'zero', 'UNK']
-['to', 'nine', 'and']
-['the', 'zero', 'to']
-['in', 'of', 'and', 'a']
-['the', 'of']
-['a']
-['of', 'UNK', 'the']
-['a', 'UNK', 'and']
-['the', 'the']
-['the']
-['the', 'the', 'and', 'to']
-['of', 'UNK']
-['of', 'a', 'of', 'and']
-['of', 'a']
-['nine', 'UNK', 'and', 'the']
-['and']
-['of', 'zero', 'UNK']
-['and', 'of']
-['one', 'the', 'one', 'zero']
-['the', 'one', 'of']
-['a', 'UNK']
-['of', 'a']
-['a', 'one', 'one', 'and']
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [28]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-&lt;div class="output_area"&gt;
-&lt;div class="prompt output_prompt"&gt;Out[28]:&lt;/div&gt;
-&lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;[5236,
- 3081,
- 12,
- 6,
- 195,
- 2,
- 3137,
- 46,
- 59,
- 156,
- 128,
- 742,
- 477,
- 10593,
- 134,
- 1,
- 27495,
- 2,
- 1,
- 103,
- 855,
- 3,
- 1,
- 15199,
- 0,
- 2,
- 1,
- 151,
- 855,
- 3581,
- 1,
- 195,
- 11,
- 191,
- 59,
- 5,
- 6,
- 10724,
- 215,
- 7,
- 1326,
- 105,
- 455,
- 20,
- 59,
- 2732,
- 363,
- 7,
- 3673,
- 1,
- 709,
- 2,
- 372,
- 27,
- 41,
- 37,
- 54,
- 540,
- 98,
- 12,
- 6,
- 1426,
- 2760,
- 19,
- 568,
- 687,
- 7112,
- 1,
- 248,
- 5236,
- 11,
- 1053,
- 28,
- 1,
- 321,
- 249,
- 46576,
- 2880,
- 793,
- 187,
- 5236,
- 12,
- 6,
- 201,
- 603,
- 11,
- 1,
- 1137,
- 20,
- 2623,
- 26,
- 9031,
- 3,
- 280,
- 32,
- 4148,
- 142,
- 60,
- 26,
- 6443]&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5553,6 +5393,7 @@ AAAAJSTmAAAASuj/AKSSWUR2kw4CAAAAAElFTkSuQmCC
 &lt;h2 id="References"&gt;References&lt;a class="anchor-link" href="#References"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/"&gt;http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Original &lt;a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/5_word2vec.ipynb"&gt;jupyter notebook&lt;/a&gt; from the Udacity MOOC course: &lt;a href="https://www.udacity.com/course/deep-learning--ud730"&gt;Deep learning by Google&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.tensorflow.org/tutorials/word2vec"&gt;https://www.tensorflow.org/tutorials/word2vec&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -6957,10 +6798,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="192838ef-fc1a-44ad-ae6f-1c6c799bc2cc"&gt;&lt;/div&gt;
+&lt;div id="c45bd92d-1525-4828-b81a-a978db1241ce"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#192838ef-fc1a-44ad-ae6f-1c6c799bc2cc');
+var element = $('#c45bd92d-1525-4828-b81a-a978db1241ce');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -7726,13 +7567,13 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="5f91b7f1-7708-465b-8df1-25f28f68e326"&gt;&lt;/div&gt;
+&lt;div id="7a96aa20-a0e0-433f-b95e-be65b431503b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#5f91b7f1-7708-465b-8df1-25f28f68e326');
+var element = $('#7a96aa20-a0e0-433f-b95e-be65b431503b');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"version_minor": 0, "version_major": 2, "model_id": "255b2330df764c069bf0fa8b72e282b3"}
+{"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -7927,10 +7768,10 @@ Test accuracy: 89.4%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="761197c3-041a-4c0c-9df2-4aa4739ec729"&gt;&lt;/div&gt;
+&lt;div id="92348501-2200-4055-ba80-6d0b00976ac4"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#761197c3-041a-4c0c-9df2-4aa4739ec729');
+var element = $('#92348501-2200-4055-ba80-6d0b00976ac4');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -8696,13 +8537,13 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="f79402a2-7e03-4d56-ac23-42083f9654b3"&gt;&lt;/div&gt;
+&lt;div id="ab84f09f-9c8e-4ce4-9231-fc3af3c3979f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f79402a2-7e03-4d56-ac23-42083f9654b3');
+var element = $('#ab84f09f-9c8e-4ce4-9231-fc3af3c3979f');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"version_minor": 0, "version_major": 2, "model_id": "ae81313ad6ad4b428ce63444b7f0ae73"}
+{"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8908,10 +8749,10 @@ Test accuracy: 90.7%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="9b47e4a1-2d0c-4dbf-9fea-a98382a03a49"&gt;&lt;/div&gt;
+&lt;div id="7dcecc12-2ce0-4a44-9fbb-bce7a504f683"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9b47e4a1-2d0c-4dbf-9fea-a98382a03a49');
+var element = $('#7dcecc12-2ce0-4a44-9fbb-bce7a504f683');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -9677,13 +9518,13 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="885ea7a1-aa3a-422b-b714-71062b5524b1"&gt;&lt;/div&gt;
+&lt;div id="6aa71a1f-11dc-4024-9455-6e246e070712"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#885ea7a1-aa3a-422b-b714-71062b5524b1');
+var element = $('#6aa71a1f-11dc-4024-9455-6e246e070712');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"version_minor": 0, "version_major": 2, "model_id": "b240065c4ffa4ca29432614b189f2e04"}
+{"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -11103,13 +10944,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="667aed3b-a592-4d2a-afe2-11c34db1eda2"&gt;&lt;/div&gt;
+&lt;div id="31e8092a-c001-43f6-87c6-b6af3b6576df"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#667aed3b-a592-4d2a-afe2-11c34db1eda2');
+var element = $('#31e8092a-c001-43f6-87c6-b6af3b6576df');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"version_minor": 0, "version_major": 2, "model_id": "95a1e075513f4d02a8579c4fcd5b8509"}
+{"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -11173,13 +11014,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="81b0c782-e8ed-45a1-8339-e649bda28d2d"&gt;&lt;/div&gt;
+&lt;div id="aa84a325-4eba-4136-be96-98339b922cae"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#81b0c782-e8ed-45a1-8339-e649bda28d2d');
+var element = $('#aa84a325-4eba-4136-be96-98339b922cae');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"version_minor": 0, "version_major": 2, "model_id": "6b6986da296646b9aac2266326edcf21"}
+{"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -11235,13 +11076,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="1e0395fc-ea97-458b-9bee-1af3075e8b14"&gt;&lt;/div&gt;
+&lt;div id="b94d6483-34b0-443d-97c0-2fc4f4b1710d"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#1e0395fc-ea97-458b-9bee-1af3075e8b14');
+var element = $('#b94d6483-34b0-443d-97c0-2fc4f4b1710d');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"version_minor": 0, "version_major": 2, "model_id": "312b63e26f364cec95540b452b4ec95c"}
+{"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -11297,13 +11138,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="07249458-e898-4a28-b2e9-2b0841574bd3"&gt;&lt;/div&gt;
+&lt;div id="d63668ae-4233-4ede-b444-64c4e58c172c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#07249458-e898-4a28-b2e9-2b0841574bd3');
+var element = $('#d63668ae-4233-4ede-b444-64c4e58c172c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"version_minor": 0, "version_major": 2, "model_id": "f5a5be47b2a14f488d9d302df5d5988d"}
+{"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -11365,13 +11206,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="08444af8-7fae-4fdd-b405-ff3b3a2290b2"&gt;&lt;/div&gt;
+&lt;div id="e3675b1c-0cb9-4413-8df2-0cf9619e7ad2"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#08444af8-7fae-4fdd-b405-ff3b3a2290b2');
+var element = $('#e3675b1c-0cb9-4413-8df2-0cf9619e7ad2');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"version_minor": 0, "version_major": 2, "model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd"}
+{"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -12760,13 +12601,13 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="60014dfe-fe3a-4154-b582-3497730879be"&gt;&lt;/div&gt;
+&lt;div id="3316d0c4-b296-40f5-8852-aef6b6c4db0c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#60014dfe-fe3a-4154-b582-3497730879be');
+var element = $('#3316d0c4-b296-40f5-8852-aef6b6c4db0c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"version_minor": 0, "version_major": 2, "model_id": "a776469c0f394bab94bc900cf03f469d"}
+{"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -12921,13 +12762,13 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="7580b725-0c2d-412c-afa6-2806a3a5329a"&gt;&lt;/div&gt;
+&lt;div id="fb3c4d85-dd6e-4259-93f5-c4a55c1e7997"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#7580b725-0c2d-412c-afa6-2806a3a5329a');
+var element = $('#fb3c4d85-dd6e-4259-93f5-c4a55c1e7997');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"version_minor": 0, "version_major": 2, "model_id": "2d2a36e34f9843b5a38a9fe105281093"}
+{"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -13092,13 +12933,13 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="55e3810b-efde-484e-8f32-d049bebffc8f"&gt;&lt;/div&gt;
+&lt;div id="e93c133d-f80f-4932-8b52-d85b4e5de7bd"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#55e3810b-efde-484e-8f32-d049bebffc8f');
+var element = $('#e93c133d-f80f-4932-8b52-d85b4e5de7bd');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"version_minor": 0, "version_major": 2, "model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17"}
+{"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;

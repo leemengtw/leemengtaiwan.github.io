@@ -1059,8 +1059,8 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Unlike supervised learning, we don't have labels that tell us 'kitty' = 'cat'. So how do we train a model that will learn the relationship between two words?</p>
-<p>Recap the assumption mentioned before, words with similar meaning tend to appear in similar context. Because 'kitten' and 'cat' appear in similar context, if we can train a model to predict the context words by the target word 'cat' and 'kitten' with the similar context, the representation of 'kitten' and 'cat' should be similar in the model because they produce similar result.</p>
+<p>Unlike supervised learning, we don't have labels that tell us 'kitten' = 'cat'. So how do we train a model that will learn the relationship between these two words?</p>
+<p>Recap the assumption mentioned before, words with similar meaning tend to appear in similar context. Because 'kitten' and 'cat' appear in similar context, if we can train a model to predict the context of the target word 'cat' and 'kitten' respectively, model should learn a similar representation for both 'kitten' and 'cat' because they produce similar context.</p>
 <center><img src="images/cat_vs_kitten.png" style="width:60%" /><caption><center> <u><font color="purple"> Figure 2</font></u><font color="purple">: Training data generated from target word and context<br /> <font color="black"> </font></font></center>
 </caption></center></div>
 </div>
@@ -1069,7 +1069,8 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First, let's build the training data in order to train our model.</p>
+<p>As shown above, for each words like 'cat' in raw text, we will treat them as <strong>target word</strong> and the words surrounding it as <strong>context</strong> and construct the training instances (x, y) where x is target word and y is one of the word in context. And the definition of 'context' is decided by the parameter 'window size'.</p>
+<p>First, let's load the text data and build the training data in order to train our model.</p>
 </div>
 </div>
 </div>
@@ -1110,7 +1111,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Dataset">Dataset<a class="anchor-link" href="#Dataset">¶</a></h2>
+<h2 id="Raw-text-data">Raw text data<a class="anchor-link" href="#Raw-text-data">¶</a></h2>
 </div>
 </div>
 </div>
@@ -1118,13 +1119,13 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Download-/-load-data">Download / load data<a class="anchor-link" href="#Download-/-load-data">¶</a></h3><p>Download the data from the source website if necessary.</p>
+<h3 id="Download-/-load-data">Download / load data<a class="anchor-link" href="#Download-/-load-data">¶</a></h3><p>Download the data from the source website if necessary. will store the zip file in the 'datasets' subdirectory.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [19]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'http://mattmahoney.net/dc/'</span>
@@ -1176,7 +1177,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [16]:</div>
+<div class="prompt input_prompt">In [63]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">read_data</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
@@ -1208,24 +1209,161 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Build-dictionary">Build dictionary<a class="anchor-link" href="#Build-dictionary">¶</a></h2><p>Build the dictionary and replace rare words with UNK token. UNK means unknown word that doesn't exist in the vocabulary set.</p>
+<h3 id="Look-into-text-corpus">Look into text corpus<a class="anchor-link" href="#Look-into-text-corpus">¶</a></h3><p>The 'data size' above mean how many words we have in the data. That is, there are about 17 millions words!<br />
+Let's show some parts of the text data to make some sense of it.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Some phrases which include word 'cat' with window size = '2'.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [20]:</div>
+<div class="prompt input_prompt">In [27]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cats</span> <span class="o">=</span> <span class="p">[</span><span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">idx</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s1">'cat'</span> <span class="ow">or</span> <span class="n">word</span> <span class="o">==</span> <span class="s1">'cats'</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cats</span><span class="p">[:</span><span class="mi">5</span><span class="p">]))</span>
+<span class="k">del</span> <span class="n">cats</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>the cartoon cat garfield would
+amount of cats that roam
+politicians autodidacts cat lovers firearm
+and activists cat lovers epistemologists
+force australia cat six two
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Some phrases which include word 'kitten' with window size = '2'.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [28]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">kitten</span> <span class="o">=</span> <span class="p">[</span><span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">idx</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s1">'kitten'</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">kitten</span><span class="p">[:</span><span class="mi">5</span><span class="p">]))</span>
+<span class="k">del</span> <span class="n">kitten</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>put the kitten nermal in
+s sex kitten in the
+of tom kitten one nine
+as a kitten rudolph grey
+called a kitten which is
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Create-training-data">Create training data<a class="anchor-link" href="#Create-training-data">¶</a></h2><p>In order to let TensorFlow make use of the text corpus, we have to transform the text corpus into sequence of numbers. The way to achieve this to build a dictionary which map every word to a unique number and use that dictionary to transform the corpus into number-based data.</p>
+<center><img src="images/turn_corpus_into_numbers.png" style="width:60%" /><caption><center> <u><font color="purple"> Figure 3</font></u><font color="purple">: Build dictionary and turn text into numbers<br /> <font color="black"> </font></font></center>
+</caption></center></div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice that some rare words may appear very few times in the entire text corpus. We may want to exclude these terms to keep our dictionary in a reasonable size. In order to do this, we will build the dictionary and view these terms as UNK tokens. UNK means unknown word that doesn't exist in the vocabulary set and the default number of a UNK in dictionary is 0 as shown above.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Decide-dictionary-size">Decide dictionary size<a class="anchor-link" href="#Decide-dictionary-size">¶</a></h3><p>Depend on the size of the vocabulary, we will construct a dictionary for top <strong>vocabulary_size - 1</strong> common words. For example, if the <code>vocabulary_size = 50000</code>, we will first count the frequencies of every word appeared in the text corpus and put the most common 49,999 terms into our vocabulary and make the rest of words as UNK token. ( thus the 50,000 th term in the vocabulary).</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [64]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocabulary_size</span> <span class="o">=</span> <span class="mi">50000</span>
-
-
-<span class="k">def</span> <span class="nf">build_dataset</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Build-dictionary-and-transform-text-corpus-into-sequence-of-numbers">Build dictionary and transform text corpus into sequence of numbers<a class="anchor-link" href="#Build-dictionary-and-transform-text-corpus-into-sequence-of-numbers">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [65]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">build_dataset</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    words: a string with every word devided by spaces</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    dictionary: a dict with word as key and a unique number(index)</span>
+<span class="sd">        as their value. dictionary[word] = idx</span>
+<span class="sd">    reverse_dictionary: a dict with index as key and the corresponding </span>
+<span class="sd">        word as value. reverse_dictionary[idx] = word</span>
+<span class="sd">    counts: a list contain tuples (word, frequency) sorted descendingly </span>
+<span class="sd">        by frequency while use ('UNK', unk_count) as first tuple.</span>
+<span class="sd">    data: a list contain indices of the original words in the parameters</span>
+<span class="sd">        'words'.</span>
+<span class="sd">    """</span>
+    <span class="c1"># count term frequencies and choose the most frequent </span>
+    <span class="c1"># terms of vocabulary_size</span>
     <span class="n">count</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">'UNK'</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
     <span class="n">count</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="n">vocabulary_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
     <span class="n">dictionary</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="c1"># index term by their frequency. while UKN is indexed as 0,</span>
+    <span class="c1"># the term with most frequencies is indexed as 1, the term with 2th frequencies</span>
+    <span class="c1"># is indexed as 2, ...</span>
     <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">count</span><span class="p">:</span>
         <span class="n">dictionary</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
+    
+    <span class="c1"># turn the text corpus into a sequence of number where each number is the </span>
+    <span class="c1"># index of the original term in 'dictionary' dict and mark those UNK's number</span>
+    <span class="c1"># as 0 which indicate that they're unknown words</span>
     <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="n">unk_count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
@@ -1235,14 +1373,50 @@ h6:hover .anchor-link {
             <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># dictionary['UNK']</span>
             <span class="n">unk_count</span> <span class="o">=</span> <span class="n">unk_count</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        
+    <span class="c1"># update UNK's count in corpus</span>
     <span class="n">count</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">unk_count</span>
+    
+    <span class="c1"># create reverse dict to enable lookup the original word by their index</span>
     <span class="n">reverse_dictionary</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">dictionary</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
     <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">reverse_dictionary</span>
 
-
 <span class="n">data</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">reverse_dictionary</span> <span class="o">=</span> <span class="n">build_dataset</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Most common words (+UNK)'</span><span class="p">,</span> <span class="n">count</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Sample data'</span><span class="p">,</span> <span class="n">data</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Most common words (+UNK) in text corpus:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">[:</span><span class="mi">5</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Most common words (+UNK) in text corpus:
+[['UNK', 418391], ('the', 1061396), ('of', 593677), ('and', 416629), ('one', 411764)]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="See-transformed-text-corpus">See transformed text corpus<a class="anchor-link" href="#See-transformed-text-corpus">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [71]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sample_idx</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'"</span><span class="si">{}</span><span class="s1">"</span><span class="se">\n\n</span><span class="s1">was transformed into</span><span class="se">\n\n</span><span class="s1">"</span><span class="si">{}</span><span class="s1">"'</span>\
+      <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">sample_idx</span><span class="p">:</span> <span class="n">sample_idx</span> <span class="o">+</span> <span class="mi">10</span><span class="p">]),</span>
+              <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="n">sample_idx</span><span class="p">:</span> <span class="n">sample_idx</span> <span class="o">+</span> <span class="mi">10</span><span class="p">]])))</span>
 <span class="k">del</span> <span class="n">words</span>  <span class="c1"># Hint to reduce memory.</span>
 </pre></div>
 </div>
@@ -1253,346 +1427,12 @@ h6:hover .anchor-link {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Most common words (+UNK) [['UNK', 418391], ('the', 1061396), ('of', 593677), ('and', 416629), ('one', 411764)]
-Sample data [5236, 3081, 12, 6, 195, 2, 3137, 46, 59, 156]
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [46]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dictionary</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">></span> <span class="mi">10</span><span class="p">:</span> <span class="k">break</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[5236, 3081, 12, 6, 195, 2, 3137, 46, 59, 156]
-[['UNK', 418391], ('the', 1061396), ('of', 593677), ('and', 416629), ('one', 411764), ('in', 372201), ('a', 325873), ('to', 316376), ('zero', 264975), ('nine', 250430)]
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">-----------------------------------------------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>                             Traceback (most recent call last)
-<span class="ansi-green-fg"><ipython-input-46-c0a3ea440420></span> in <span class="ansi-cyan-fg"><module></span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> print<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> print<span class="ansi-blue-fg">(</span>count<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">----> 3</span><span class="ansi-red-fg"> </span>print<span class="ansi-blue-fg">(</span>dictionary<span class="ansi-blue-fg">.</span>items<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> print<span class="ansi-blue-fg">(</span>reverse_dictionary<span class="ansi-blue-fg">.</span>items<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<pre>"american individualist anarchism benjamin tucker in one eight two five"
 
-<span class="ansi-red-fg">TypeError</span>: 'dict_items' object is not subscriptable</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [43]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">reverse_dictionary</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">></span> <span class="mi">10</span><span class="p">:</span> <span class="k">break</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">reverse_dictionary</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>0 UNK
-1 the
-2 of
-3 and
-4 one
-5 in
-6 a
-7 to
-8 zero
-9 nine
-10 two
+was transformed into
+
+"64 10276 5234 3248 9615 5 4 13 10 16"
 </pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [26]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[26]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>['portals', 'yelling', 'ksc', 'board', 'titular']</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [39]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">([</span><span class="n">reverse_dictionary</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">w</span><span class="p">)]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>['in', 'of', 'and', 'a']
-['and', 'UNK', 'zero', 'the']
-['the', 'of']
-['a']
-['the', 'nine', 'in']
-['of']
-['and', 'the', 'and', 'to']
-['one', 'a']
-['in', 'nine']
-['the', 'in', 'a']
-['the', 'of', 'zero']
-['to', 'one', 'of']
-['one', 'to', 'to']
-['the', 'UNK', 'in', 'nine', 'and']
-['the', 'and', 'one']
-['the']
-['of', 'to', 'one', 'nine', 'in']
-['of']
-['the']
-['the', 'UNK', 'and']
-['zero', 'in', 'in']
-['and']
-['the']
-['the', 'in', 'the', 'nine', 'nine']
-['UNK']
-['of']
-['the']
-['the', 'in', 'the']
-['zero', 'in', 'in']
-['and', 'in', 'zero', 'the']
-['the']
-['the', 'nine', 'in']
-['the', 'the']
-['the', 'nine', 'the']
-['in', 'nine']
-['in']
-['a']
-['the', 'UNK', 'to', 'of', 'one']
-['of', 'the', 'in']
-['to']
-['the', 'and', 'of', 'a']
-['the', 'UNK', 'in']
-['one', 'in', 'in']
-['of', 'UNK']
-['in', 'nine']
-['of', 'to', 'and', 'of']
-['and', 'a', 'and']
-['to']
-['and', 'a', 'to', 'and']
-['the']
-['to', 'UNK', 'nine']
-['of']
-['and', 'to', 'of']
-['of', 'to']
-['one', 'the']
-['and', 'to']
-['in', 'one']
-['in', 'one', 'UNK']
-['nine', 'zero']
-['the', 'of']
-['a']
-['the', 'one', 'of', 'a']
-['of', 'to', 'a', 'UNK']
-['the', 'nine']
-['in', 'a', 'zero']
-['a', 'zero', 'to']
-['to', 'the', 'the', 'of']
-['the']
-['of', 'one', 'zero']
-['in', 'of', 'and', 'a']
-['the', 'the']
-['the', 'UNK', 'in', 'and']
-['of', 'zero']
-['the']
-['and', 'of', 'the']
-['of', 'one', 'nine']
-['one', 'a', 'in', 'to', 'a']
-['of', 'zero', 'zero', 'UNK']
-['to', 'nine', 'and']
-['the', 'zero', 'to']
-['in', 'of', 'and', 'a']
-['the', 'of']
-['a']
-['of', 'UNK', 'the']
-['a', 'UNK', 'and']
-['the', 'the']
-['the']
-['the', 'the', 'and', 'to']
-['of', 'UNK']
-['of', 'a', 'of', 'and']
-['of', 'a']
-['nine', 'UNK', 'and', 'the']
-['and']
-['of', 'zero', 'UNK']
-['and', 'of']
-['one', 'the', 'one', 'zero']
-['the', 'one', 'of']
-['a', 'UNK']
-['of', 'a']
-['a', 'one', 'one', 'and']
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [28]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[28]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>[5236,
- 3081,
- 12,
- 6,
- 195,
- 2,
- 3137,
- 46,
- 59,
- 156,
- 128,
- 742,
- 477,
- 10593,
- 134,
- 1,
- 27495,
- 2,
- 1,
- 103,
- 855,
- 3,
- 1,
- 15199,
- 0,
- 2,
- 1,
- 151,
- 855,
- 3581,
- 1,
- 195,
- 11,
- 191,
- 59,
- 5,
- 6,
- 10724,
- 215,
- 7,
- 1326,
- 105,
- 455,
- 20,
- 59,
- 2732,
- 363,
- 7,
- 3673,
- 1,
- 709,
- 2,
- 372,
- 27,
- 41,
- 37,
- 54,
- 540,
- 98,
- 12,
- 6,
- 1426,
- 2760,
- 19,
- 568,
- 687,
- 7112,
- 1,
- 248,
- 5236,
- 11,
- 1053,
- 28,
- 1,
- 321,
- 249,
- 46576,
- 2880,
- 793,
- 187,
- 5236,
- 12,
- 6,
- 201,
- 603,
- 11,
- 1,
- 1137,
- 20,
- 2623,
- 26,
- 9031,
- 3,
- 280,
- 32,
- 4148,
- 142,
- 60,
- 26,
- 6443]</pre>
 </div>
 </div>
 </div>
@@ -5621,6 +5461,7 @@ AAAAJSTmAAAASuj/AKSSWUR2kw4CAAAAAElFTkSuQmCC
 <h2 id="References">References<a class="anchor-link" href="#References">¶</a></h2><ul>
 <li><a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/</a></li>
 <li>Original <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/5_word2vec.ipynb">jupyter notebook</a> from the Udacity MOOC course: <a href="https://www.udacity.com/course/deep-learning--ud730">Deep learning by Google</a>.</li>
+<li><a href="https://www.tensorflow.org/tutorials/word2vec">https://www.tensorflow.org/tutorials/word2vec</a></li>
 </ul>
 </div>
 </div>
