@@ -1512,6 +1512,14 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;&lt;img src="images/word2vec_model.png" style="width:70%" /&gt;&lt;caption&gt;&lt;center&gt; &lt;u&gt;&lt;font color="purple"&gt; Figure 5&lt;/font&gt;&lt;/u&gt;&lt;font color="purple"&gt;: Word2vec model&lt;br /&gt; &lt;font color="black"&gt; &lt;/font&gt;&lt;/font&gt;&lt;/center&gt;
+&lt;/caption&gt;&lt;/center&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Computation-graph"&gt;Computation graph&lt;a class="anchor-link" href="#Computation-graph"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1645,13 +1653,13 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="82854a59-04b4-46ba-a36d-3cc54c7195ce"&gt;&lt;/div&gt;
+&lt;div id="1c72356b-6350-4864-a334-68f1fc7daf6e"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#82854a59-04b4-46ba-a36d-3cc54c7195ce');
+var element = $('#1c72356b-6350-4864-a334-68f1fc7daf6e');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "479bac87e8864793a2657306231c3b2a", "version_minor": 0, "version_major": 2}
+{"version_major": 2, "version_minor": 0, "model_id": "479bac87e8864793a2657306231c3b2a"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5956,10 +5964,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="c8aa1d85-e384-4568-864d-8320f5e9cac0"&gt;&lt;/div&gt;
+&lt;div id="ba4d6dad-8d0d-4626-aaba-7cafc9c88c0d"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#c8aa1d85-e384-4568-864d-8320f5e9cac0');
+var element = $('#ba4d6dad-8d0d-4626-aaba-7cafc9c88c0d');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -6725,13 +6733,13 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="2983ada3-5ebe-4fb6-b39e-39e5ec43fbf6"&gt;&lt;/div&gt;
+&lt;div id="6572bf13-2829-4af5-8e3d-ddd65481b59e"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#2983ada3-5ebe-4fb6-b39e-39e5ec43fbf6');
+var element = $('#6572bf13-2829-4af5-8e3d-ddd65481b59e');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_minor": 0, "version_major": 2}
+{"version_major": 2, "version_minor": 0, "model_id": "255b2330df764c069bf0fa8b72e282b3"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -6926,10 +6934,10 @@ Test accuracy: 89.4%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="61e76f60-eb39-41de-8460-fc32dbf717d2"&gt;&lt;/div&gt;
+&lt;div id="3a5b6f0c-9040-4be3-800a-04bd88739510"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#61e76f60-eb39-41de-8460-fc32dbf717d2');
+var element = $('#3a5b6f0c-9040-4be3-800a-04bd88739510');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -7695,13 +7703,13 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="9332f551-1e12-430f-9be2-9263117cd431"&gt;&lt;/div&gt;
+&lt;div id="4e776802-72b5-460b-8fc4-f714c90ad3b8"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9332f551-1e12-430f-9be2-9263117cd431');
+var element = $('#4e776802-72b5-460b-8fc4-f714c90ad3b8');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_minor": 0, "version_major": 2}
+{"version_major": 2, "version_minor": 0, "model_id": "ae81313ad6ad4b428ce63444b7f0ae73"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -7907,10 +7915,10 @@ Test accuracy: 90.7%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="3f821a44-a60c-413f-bd20-55031bc8c81b"&gt;&lt;/div&gt;
+&lt;div id="569bc2ad-d318-4ab9-ad86-f15b1d2918e5"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3f821a44-a60c-413f-bd20-55031bc8c81b');
+var element = $('#569bc2ad-d318-4ab9-ad86-f15b1d2918e5');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -8676,13 +8684,13 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="5c69df10-43a3-470a-b809-081cec297950"&gt;&lt;/div&gt;
+&lt;div id="1c280d39-f1bf-4741-a404-a6cbd9c31fbe"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#5c69df10-43a3-470a-b809-081cec297950');
+var element = $('#1c280d39-f1bf-4741-a404-a6cbd9c31fbe');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_minor": 0, "version_major": 2}
+{"version_major": 2, "version_minor": 0, "model_id": "b240065c4ffa4ca29432614b189f2e04"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -10102,13 +10110,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="b5072fb3-7303-41c0-a41e-9f67da19e9d6"&gt;&lt;/div&gt;
+&lt;div id="17a8ccae-0c96-4e4d-ac4e-a669a88d2772"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#b5072fb3-7303-41c0-a41e-9f67da19e9d6');
+var element = $('#17a8ccae-0c96-4e4d-ac4e-a669a88d2772');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_minor": 0, "version_major": 2}
+{"version_major": 2, "version_minor": 0, "model_id": "95a1e075513f4d02a8579c4fcd5b8509"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -10172,13 +10180,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="2eb0b1f7-a5e3-4687-b55a-3e4045a4bd73"&gt;&lt;/div&gt;
+&lt;div id="c6c1f1c2-f499-4855-9c03-46cb9ce1dd5f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#2eb0b1f7-a5e3-4687-b55a-3e4045a4bd73');
+var element = $('#c6c1f1c2-f499-4855-9c03-46cb9ce1dd5f');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "6b6986da296646b9aac2266326edcf21", "version_minor": 0, "version_major": 2}
+{"version_major": 2, "version_minor": 0, "model_id": "6b6986da296646b9aac2266326edcf21"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -10234,13 +10242,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="8131fbab-788f-4c8e-87e0-1fea49fc34f5"&gt;&lt;/div&gt;
+&lt;div id="568bfd33-f86e-4e42-82e2-a2d8680642b9"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#8131fbab-788f-4c8e-87e0-1fea49fc34f5');
+var element = $('#568bfd33-f86e-4e42-82e2-a2d8680642b9');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "312b63e26f364cec95540b452b4ec95c", "version_minor": 0, "version_major": 2}
+{"version_major": 2, "version_minor": 0, "model_id": "312b63e26f364cec95540b452b4ec95c"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -10296,13 +10304,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="0bf231fd-dc6b-4a7c-b057-cd1e826083ab"&gt;&lt;/div&gt;
+&lt;div id="7b4e9bf0-c3c1-49a9-ac64-9a85b9d2e11b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#0bf231fd-dc6b-4a7c-b057-cd1e826083ab');
+var element = $('#7b4e9bf0-c3c1-49a9-ac64-9a85b9d2e11b');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_minor": 0, "version_major": 2}
+{"version_major": 2, "version_minor": 0, "model_id": "f5a5be47b2a14f488d9d302df5d5988d"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -10364,13 +10372,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="47f9ac4d-3485-40f3-9cda-2c723f2d5586"&gt;&lt;/div&gt;
+&lt;div id="2ab60878-98ac-4fd4-83c7-3a73e9c1f47b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#47f9ac4d-3485-40f3-9cda-2c723f2d5586');
+var element = $('#2ab60878-98ac-4fd4-83c7-3a73e9c1f47b');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_minor": 0, "version_major": 2}
+{"version_major": 2, "version_minor": 0, "model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -11759,13 +11767,13 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="4cbec646-4b03-4fc6-a424-a3706609281b"&gt;&lt;/div&gt;
+&lt;div id="7a048c45-92db-4664-8e3f-43d3d0e5132f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#4cbec646-4b03-4fc6-a424-a3706609281b');
+var element = $('#7a048c45-92db-4664-8e3f-43d3d0e5132f');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "a776469c0f394bab94bc900cf03f469d", "version_minor": 0, "version_major": 2}
+{"version_major": 2, "version_minor": 0, "model_id": "a776469c0f394bab94bc900cf03f469d"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -11920,13 +11928,13 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="110d0daf-316a-4683-b315-a12d89a04598"&gt;&lt;/div&gt;
+&lt;div id="9168c69c-4b19-4b5e-96a1-b038215a8d59"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#110d0daf-316a-4683-b315-a12d89a04598');
+var element = $('#9168c69c-4b19-4b5e-96a1-b038215a8d59');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_minor": 0, "version_major": 2}
+{"version_major": 2, "version_minor": 0, "model_id": "2d2a36e34f9843b5a38a9fe105281093"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -12091,13 +12099,13 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="650edab7-acfc-429f-8b1b-a5b5f053efe8"&gt;&lt;/div&gt;
+&lt;div id="df9c161a-46cb-472b-a279-89e564e332d7"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#650edab7-acfc-429f-8b1b-a5b5f053efe8');
+var element = $('#df9c161a-46cb-472b-a279-89e564e332d7');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_minor": 0, "version_major": 2}
+{"version_major": 2, "version_minor": 0, "model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
