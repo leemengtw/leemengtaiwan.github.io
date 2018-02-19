@@ -1,88 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Simple Convolutional Neural Network using TensorFlow — Space for data scientists</title>
-	<meta name="description" content="Title: Simple Convolutional Neural Network using TensorFlow; Date: 2017-09-26; Author: Lee Meng">
-	<meta name="author" content="Lee Meng">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-	<!--[if lt IE 9]>
-		<script src="//leemengtaiwan.github.io/theme/html5.js"></script>
-		<![endif]-->
-	<link href="//leemengtaiwan.github.io/theme/css/ipython.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
-	<link href="//leemengtaiwan.github.io/theme/css/local.css" rel="stylesheet">
-	<link href="//leemengtaiwan.github.io/theme/css/pygments.css" rel="stylesheet">
-	<!-- Global Site Tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments)};
-	  gtag('js', new Date());
 
-	  gtag('config', 'UA-106559980-1');
-	</script>
-</head>
-<body>
-<div class="container">
-	<div class="page-header">
-		<h1><a href="//leemengtaiwan.github.io/">Space for data scientists</a>
-			<br>	</div>
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>Space for data scientists</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="//leemengtaiwan.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Space for data scientists Full Atom Feed" />
+			<link href="//leemengtaiwan.github.io/feeds/deep-learning.atom.xml" type="application/atom+xml" rel="alternate" title="Space for data scientists Categories Atom Feed" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+						
+							<!-- Header -->
+								<section id="header">
+									
+									<!-- Logo -->
+									<h1><a href="//leemengtaiwan.github.io/">Space for data scientists</a></h1>
+									
+									<!-- Nav -->
+										<nav id="nav">
+											<ul>
+											</ul>
+										</nav>
 
-	<form class="search" action="/search.html" target="_blank">
-	    <input type="text" class="search-query" placeholder="Search" name="q" id="s">
-	</form>
+								</section>
 
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">Simple Convolutional Neural Network using TensorFlow</h1>
-		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-			<h4 itemprop="name">Lee Meng</h4>
-		</span>
-		<time datetime="2017-09-26T18:30:00+09:00" itemprop="datePublished">Tue, 26 Sep 2017</time>
-	</div>
-	<div>
-		Category:
-		<span itemprop="articleSection">
-			<a href="//leemengtaiwan.github.io/category/deep-learning.html" rel="category">Deep Learning</a>
-		</span>
-	</div>
-	<div>
-		Tags:
-		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">Tensorflow</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">Deep Learning</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/convolutional-neural-network.html" rel="tag">Convolutional Neural Network</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/cnn.html" rel="tag">CNN</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/deep-learning-by-google.html" rel="tag">Deep Learning by Google</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/machine-learning-engineer-by-kaggle.html" rel="tag">Machine Learning Engineer by kaggle</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="//leemengtaiwan.github.io/tag/udacity.html" rel="tag">Udacity</a>
-		</span>
-	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/deep-learning.html">Deep learning</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
 
+												<li><a class="button button-alt" href="tag/tensorflow.html">Tensorflow</a></li>
 
-	<div itemprop="articleBody" class="article-body"><style type="text/css">/*!
+												<li><a class="button button-alt" href="tag/deep-learning.html">Deep learning</a></li>
+
+												<li><a class="button button-alt" href="tag/convolutional-neural-network.html">Convolutional neural network</a></li>
+
+												<li><a class="button button-alt" href="tag/cnn.html">Cnn</a></li>
+
+												<li><a class="button button-alt" href="tag/deep-learning-by-google.html">Deep learning by google</a></li>
+
+												<li><a class="button button-alt" href="tag/machine-learning-engineer-by-kaggle.html">Machine learning engineer by kaggle</a></li>
+
+												<li><a class="button button-alt" href="tag/udacity.html">Udacity</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2017-09-26</div>
+									<h2>Simple Convolutional Neural Network using TensorFlow</h2>
+									<style type="text/css">/*!
 *
 * IPython notebook
 *
@@ -1448,10 +1447,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="ba4d6dad-8d0d-4626-aaba-7cafc9c88c0d"></div>
+<div id="4a4c9056-2646-4893-8391-00ac0b39db01"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#ba4d6dad-8d0d-4626-aaba-7cafc9c88c0d');
+var element = $('#4a4c9056-2646-4893-8391-00ac0b39db01');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -2217,13 +2216,13 @@ if (IPython.notebook.kernel != null) {
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="6572bf13-2829-4af5-8e3d-ddd65481b59e"></div>
+<div id="244a763b-3762-4bd8-b63f-bb21368edcab"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6572bf13-2829-4af5-8e3d-ddd65481b59e');
+var element = $('#244a763b-3762-4bd8-b63f-bb21368edcab');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "255b2330df764c069bf0fa8b72e282b3"}
+{"version_minor": 0, "model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2}
 </script>
 </div>
 </div>
@@ -2418,10 +2417,10 @@ Test accuracy: 89.4%
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="3a5b6f0c-9040-4be3-800a-04bd88739510"></div>
+<div id="d001de87-273c-4848-aa4f-a1f520aa8831"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#3a5b6f0c-9040-4be3-800a-04bd88739510');
+var element = $('#d001de87-273c-4848-aa4f-a1f520aa8831');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -3187,13 +3186,13 @@ if (IPython.notebook.kernel != null) {
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="4e776802-72b5-460b-8fc4-f714c90ad3b8"></div>
+<div id="4f46151e-1775-4343-8003-3310042e3072"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#4e776802-72b5-460b-8fc4-f714c90ad3b8');
+var element = $('#4f46151e-1775-4343-8003-3310042e3072');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "ae81313ad6ad4b428ce63444b7f0ae73"}
+{"version_minor": 0, "model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2}
 </script>
 </div>
 </div>
@@ -3399,10 +3398,10 @@ Test accuracy: 90.7%
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="569bc2ad-d318-4ab9-ad86-f15b1d2918e5"></div>
+<div id="d49bf396-cbe9-40d0-8c52-bf9f3cf15905"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#569bc2ad-d318-4ab9-ad86-f15b1d2918e5');
+var element = $('#d49bf396-cbe9-40d0-8c52-bf9f3cf15905');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -4168,13 +4167,13 @@ if (IPython.notebook.kernel != null) {
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="1c280d39-f1bf-4741-a404-a6cbd9c31fbe"></div>
+<div id="882b8e51-7656-4422-a6a5-f0881a5b9a29"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#1c280d39-f1bf-4741-a404-a6cbd9c31fbe');
+var element = $('#882b8e51-7656-4422-a6a5-f0881a5b9a29');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "b240065c4ffa4ca29432614b189f2e04"}
+{"version_minor": 0, "model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2}
 </script>
 </div>
 </div>
@@ -4236,92 +4235,138 @@ Test accuracy: 94.6%
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 </script>
-</div>
-	<hr>
-	<h2>Comments</h2>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'leemengtaiwan'; 
-    var disqus_title = 'Simple Convolutional Neural Network using TensorFlow';
 
+								</article>
+ <div id="disqus_thread" class="box"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'leemengtaiwan';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-		</div>
-	</div> 	<!-- <hr> -->
-</div> <!-- /container -->
-<footer class="aw-footer bg-danger">
-	<div class="container"> <!-- footer -->
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="row">
-					<div class="col-md-3">
-						<h4>Navigation</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="//leemengtaiwan.github.io">Space for data scientists</a></li>
-							<li><a href="//leemengtaiwan.github.io/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Author</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="https://github.com/leemengtaiwan">Github</a></li>
-							<li><a href="https://www.linkedin.com/in/leemeng1990/">LinkedIn</a></li>
-							<li><a href="https://www.facebook.com/LeeMengTaiwan">Facebook</a></li>
-							<li><a href="mailto:b9875001@gmail.com">Gmail</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Categories</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="//leemengtaiwan.github.io/category/deep-learning.html">Deep Learning (4)</a></li>
-							<li><a href="//leemengtaiwan.github.io/category/machine-learning.html">Machine learning (1)</a></li>
-							<li><a href="//leemengtaiwan.github.io/category/miscellaneous.html">Miscellaneous (1)</a></li>
-						</ul>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-</footer>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 text-center center-block aw-bottom">
-			<p>&copy; Lee Meng 2016</p>
-			<p>Powered by Pelican</p>
-		</div>
+			</section>
 	</div>
 </div>
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$("div.collapseheader").click(function () {
-		$header = $(this).children("span").first();
-		$codearea = $(this).children(".input_area");
-		$codearea.slideToggle(500, function () {
-			$header.text(function () {
-				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
-			});
-		});
-	});
-});
-</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-106559980-1', 'auto');
-  ga('send', 'pageview');
+				</div>
+			</div>
 
-</script>
-</body>
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 9 <strong>30</strong></span>
+											<h3><a href="find-word-semantic-by-using-word2vec-in-tensorflow.html">Find Word Semantic by Using Word2vec in TensorFlow</a></h3>
+											<p>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The goal of this assignment is to train a Word2Vec skip-gram model over <a href="http://mattmahoney.net/dc/textdata">Text8</a> data using Tensorflow.</p>
+<p>Word2vec is a kind of vector space model (VSM) in natural language processing (NLP) where the core assumption/intuition is that words that appear in similar 'context' share similar meaning and they should be near in the vector space. So what word2vec trying to do is to find a vector representation (embedding) for each word in our training corpus where words with similar meanings are near in the vector space.</p></p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>26</strong></span>
+											<h3><a href="simple-convolutional-neural-network-using-tensorflow.html">Simple Convolutional Neural Network using TensorFlow</a></h3>
+											<p>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The goal here is to practice building convolutional neural networks to classify <a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html">notMNIST</a> characters using TensorFlow.
+As image size become bigger and bigger, it become unpractical to train fully-connected NN because there will be just too many parameters and thus the model will overfit very soon. And CNN solve this problem by weight sharing.</p></p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>25</strong></span>
+											<h3><a href="regularization-for-multi-layer-neural-networks-in-tensorflow.html">Regularization for Multi-layer Neural Networks in Tensorflow</a></h3>
+											<p>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The goal of this assignment is to explore regularization techniques.
+The original notebook can be found <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/3_regularization.ipynb">here</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Import-libraries">Import libraries<a class="anchor-link" href="#Import-libraries">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input"></p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>21</strong></span>
+											<h3><a href="using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html">Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</a></h3>
+											<p>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.</p></p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="//leemengtaiwan.github.io/category/deep-learning.html">Deep Learning</a></li>
+											<li><a href="//leemengtaiwan.github.io/category/machine-learning.html">Machine learning</a></li>
+											<li><a href="//leemengtaiwan.github.io/category/miscellaneous.html">Miscellaneous</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+							
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
 </html>
