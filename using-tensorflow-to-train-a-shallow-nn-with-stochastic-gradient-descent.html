@@ -1,97 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<!DOCTYPE HTML>
-<!--
-	Dopetrope 2.0 by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-			<title>Space for data scientists</title>
-			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-			<meta charset="utf-8" />
-			<link href="//leemengtaiwan.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Space for data scientists Full Atom Feed" />
-			<link href="//leemengtaiwan.github.io/feeds/deep-learning.atom.xml" type="application/atom+xml" rel="alternate" title="Space for data scientists Categories Atom Feed" />
-			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
-				<link rel="stylesheet" href="/theme/css/pygment.css" />
-			<noscript>
-				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
-				<link rel="stylesheet" href="/theme/css/style.css" />
-				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
-			</noscript>
-	</head>
-	<body class="no-sidebar">
-		<!-- Header Wrapper -->
-			<div id="header-wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="12u">
-						
-							<!-- Header -->
-								<section id="header">
-									
-									<!-- Logo -->
-									<h1><a href="//leemengtaiwan.github.io/">Space for data scientists</a></h1>
-									
-									<!-- Nav -->
-										<nav id="nav">
-											<ul>
-											</ul>
-										</nav>
+        <title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title>
+        <meta charset="utf-8" />
+        <link href="//leemengtaiwan.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Space for data scientists Full Atom Feed" />
+        <link href="//leemengtaiwan.github.io/feeds/deep-learning.atom.xml" type="application/atom+xml" rel="alternate" title="Space for data scientists Categories Atom Feed" />
 
-								</section>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		
-		<!-- Main Wrapper -->
-			<div id="main-wrapper">
-				<div class="container">
-<div class="row">
-	<div class="12u">
-			<section>
-				<div>
-					<div class="row">
-						<div class="12u skel-cell-mainContent">
-							<!-- Content -->
-								<article class="box is-post">
-									<div class="post-infos">
-										<ul class="tags">
-											<li><a class="button" href="category/deep-learning.html">Deep learning</a></li>
-												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-												<li><a class="button button-alt" href="tag/tensorflow.html">Tensorflow</a></li>
+        <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/pygment.css" />
 
-												<li><a class="button button-alt" href="tag/deep-learning.html">Deep learning</a></li>
+        <script src="//leemengtaiwan.github.io/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
-												<li><a class="button button-alt" href="tag/neural-networks.html">Neural networks</a></li>
 
-												<li><a class="button button-alt" href="tag/optimization.html">Optimization</a></li>
 
-												<li><a class="button button-alt" href="tag/notmnist.html">Notmnist</a></li>
 
-												<li><a class="button button-alt" href="tag/machine-learning.html">Machine learning</a></li>
+</head>
 
-												<li><a class="button button-alt" href="tag/image-recognition.html">Image recognition</a></li>
+<body id="index" class="home">
 
-												<li><a class="button button-alt" href="tag/sgd.html">Sgd</a></li>
 
-												<li><a class="button button-alt" href="tag/gradient-descent.html">Gradient descent</a></li>
+    <div class="container">
 
-												<li><a class="button button-alt" href="tag/deep-learning-by-google.html">Deep learning by google</a></li>
+        <div class="row">
 
-												<li><a class="button button-alt" href="tag/machine-learning-engineer-by-kaggle.html">Machine learning engineer by kaggle</a></li>
+          <header id="banner" class="body">
+                  <h1><a href="//leemengtaiwan.github.io/">Space for data scientists <strong></strong></a></h1>
+          </header><!-- /#banner -->
 
-												<li><a class="button button-alt" href="tag/udacity.html">Udacity</a></li>
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="//leemengtaiwan.github.io/">Home</a></li>
 
-										</ul>
-									</div>
 
-									<div class="pennant pennant-alt date">2017-09-21</div>
-									<h2>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</h2>
-									<style type="text/css">/*!
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="//leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="bookmark"
+                   title="Permalink to Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent">Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2017-09-21T23:50:00+09:00">
+                Thu, 21 Sep 2017
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="//leemengtaiwan.github.io/author/lee-meng.html"> Lee Meng</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <style type="text/css">/*!
 *
 * IPython notebook
 *
@@ -1423,13 +1396,13 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="de247602-6520-4c3c-af6b-3c62b157a98e"></div>
+<div id="ad1b6cbc-ae94-45db-ba9c-f3e9070c0169"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#de247602-6520-4c3c-af6b-3c62b157a98e');
+var element = $('#ad1b6cbc-ae94-45db-ba9c-f3e9070c0169');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_minor": 0, "version_major": 2, "model_id": "a776469c0f394bab94bc900cf03f469d"}
+{"version_major": 2, "model_id": "a776469c0f394bab94bc900cf03f469d", "version_minor": 0}
 </script>
 </div>
 </div>
@@ -1584,13 +1557,13 @@ Test acc: 82.8%
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="2b2bfeb8-78a6-48ed-8f3f-7a189e3cee28"></div>
+<div id="f7a679c9-1389-4adb-9a4c-530018c87104"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#2b2bfeb8-78a6-48ed-8f3f-7a189e3cee28');
+var element = $('#f7a679c9-1389-4adb-9a4c-530018c87104');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_minor": 0, "version_major": 2, "model_id": "2d2a36e34f9843b5a38a9fe105281093"}
+{"version_major": 2, "model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_minor": 0}
 </script>
 </div>
 </div>
@@ -1755,13 +1728,13 @@ Test acc: 86.9%
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="ff7ee6f6-1745-4026-aabd-3f77b8190ced"></div>
+<div id="10278df8-7ddf-4b25-80bf-52c164039ef6"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#ff7ee6f6-1745-4026-aabd-3f77b8190ced');
+var element = $('#10278df8-7ddf-4b25-80bf-52c164039ef6');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_minor": 0, "version_major": 2, "model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17"}
+{"version_major": 2, "model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_minor": 0}
 </script>
 </div>
 </div>
@@ -1820,137 +1793,101 @@ Test acc: 88.7%
 }
 </script>
 
-								</article>
- <div id="disqus_thread" class="box"></div>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://leemengtaiwan.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="//leemengtaiwan.github.io/category/deep-learning.html">Deep Learning</a></li>
+		<li><a href="//leemengtaiwan.github.io/category/machine-learning.html">Machine learning</a></li>
+		<li><a href="//leemengtaiwan.github.io/category/miscellaneous.html">Miscellaneous</a></li>
+</ul>
+
+
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul class="blank">
+    <li><a href="https://github.com/leemengtaiwan">Github</a></li>
+    <li><a href="https://www.linkedin.com/in/leemeng1990/">LinkedIn</a></li>
+    <li><a href="https://www.facebook.com/LeeMengTaiwan">Facebook</a></li>
+    <li><a href="mailto:b9875001@gmail.com">Gmail</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
 <script type="text/javascript">
     var disqus_shortname = 'leemengtaiwan';
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
 </script>
-						</div>
-					</div>
-				</div>
-			</section>
-	</div>
-</div>
-
-				</div>
-			</div>
-
-		<!-- Footer Wrapper -->
-			<div id="footer-wrapper">
-				<!-- Footer -->
-					<section id="footer" class="container">
-						<div class="row">
-							<div class="8u">
-								<section>
-									<header>
-										<h2>Latest articles</h2>
-									</header>
-									<ul class="dates">
-										<li>
-											<span class="date"> 9 <strong>30</strong></span>
-											<h3><a href="find-word-semantic-by-using-word2vec-in-tensorflow.html">Find Word Semantic by Using Word2vec in TensorFlow</a></h3>
-											<p>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal of this assignment is to train a Word2Vec skip-gram model over <a href="http://mattmahoney.net/dc/textdata">Text8</a> data using Tensorflow.</p>
-<p>Word2vec is a kind of vector space model (VSM) in natural language processing (NLP) where the core assumption/intuition is that words that appear in similar 'context' share similar meaning and they should be near in the vector space. So what word2vec trying to do is to find a vector representation (embedding) for each word in our training corpus where words with similar meanings are near in the vector space.</p></p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>26</strong></span>
-											<h3><a href="simple-convolutional-neural-network-using-tensorflow.html">Simple Convolutional Neural Network using TensorFlow</a></h3>
-											<p>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal here is to practice building convolutional neural networks to classify <a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html">notMNIST</a> characters using TensorFlow.
-As image size become bigger and bigger, it become unpractical to train fully-connected NN because there will be just too many parameters and thus the model will overfit very soon. And CNN solve this problem by weight sharing.</p></p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>25</strong></span>
-											<h3><a href="regularization-for-multi-layer-neural-networks-in-tensorflow.html">Regularization for Multi-layer Neural Networks in Tensorflow</a></h3>
-											<p>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal of this assignment is to explore regularization techniques.
-The original notebook can be found <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/3_regularization.ipynb">here</a></p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Import-libraries">Import libraries<a class="anchor-link" href="#Import-libraries">¶</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input"></p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>21</strong></span>
-											<h3><a href="using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html">Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</a></h3>
-											<p>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.</p></p>
-										</li>
-									</ul>
-								</section>
-							</div>
-						</div>
-						<div class="row">
-							<div class="4u">
-								<section>
-									<header>
-										<h2>Blogroll</h2>
-									</header>
-									<ul class="divided">
-									</ul>
-								</section>
-							</div>
-							<div class="4u">
-								<section>
-									<header>
-										<h2>Categories</h2>
-									</header>
-									<ul class="divided">
-											<li><a href="//leemengtaiwan.github.io/category/deep-learning.html">Deep Learning</a></li>
-											<li><a href="//leemengtaiwan.github.io/category/machine-learning.html">Machine learning</a></li>
-											<li><a href="//leemengtaiwan.github.io/category/miscellaneous.html">Miscellaneous</a></li>
-									</ul>
-								</section>
-							</div>
-							<div class="4u">
-							
-								<section>
-									<header>
-										<h2>Contact</h2>
-									</header>
-									<ul class="social">
-									</ul>
-								</section>
-							</div>
-						</div>
-					</section>
-			</div>
-		<script src="/theme/js/jquery.min.js"></script>
-		<script src="/theme/js/jquery.dropotron.js"></script>
-		<script src="/theme/js/config.js"></script>
-		<script src="/theme/js/skel.min.js"></script>
-		<script src="/theme/js/skel-panels.min.js"></script>
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
-	</body>
+  <script src="//leemengtaiwan.github.io/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="//leemengtaiwan.github.io/theme/js/libs/gumby.min.js"></script>
+  <script src="//leemengtaiwan.github.io/theme/js/plugins.js"></script>
+</body>
 </html>
