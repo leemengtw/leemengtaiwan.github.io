@@ -25,6 +25,11 @@ html {
   line-height: 1;
 }
 
+h2.entry-title a {
+  font-size: 60%
+}
+
+
 ol, ul {
   list-style: none;
 }
@@ -6118,6 +6123,11 @@ Is this needed? It makes the ul slide in on hover :/
 #home header h1 {
   padding: 0.5em 0 0.125em 0;
 }
+
+#banner h1 a {
+  font-size: 60%
+}
+
 
 #home h2 {
   padding-bottom: .5em;
