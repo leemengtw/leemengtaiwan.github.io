@@ -1,371 +1,322 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="zh-hant-tw">
 <head>
+        <title>Space for Data Scientists - Articles by Lee Meng</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="lang" content="zh-hant-tw">
+        <meta name="description" content="Blog by LeeMeng" />
+        <meta name="keywords" content="Python, Jupyter Notebook, Data Science, Visualization" />
+        <meta name="author" content="Lee Meng" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-        <title>Space for data scientists - Articles by Lee Meng</title>
-        <meta charset="utf-8" />
-        <link href="//leemengtaiwan.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Space for data scientists Full Atom Feed" />
+        <link rel="shortcut icon" href="theme/images/favicon.ico" />
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7CLibre+Baskerville:400,400italic,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/clear.css' />
+        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/common.css' />
+        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/font-awesome.min.css' />
+        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/carouFredSel.css' />
+        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/sm-clean.css' />
+        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/style.css' />
+        <link rel="stylesheet" type="text/css" href='//leemengtaiwan.github.io/theme/css/ipython.css' />
+        <link rel="stylesheet" type="text/css" href='//leemengtaiwan.github.io/theme/css/progress-bar.css' />
 
+        <!--[if lt IE 9]>
+                <script src="js/html5.js"></script>
+        <![endif]-->
 
-        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+        <link href="//leemengtaiwan.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Space for Data Scientists Full Atom Feed" />
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments)};
+        gtag('js', new Date());
 
-        <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/pygment.css" />
-
-        <script src="//leemengtaiwan.github.io/theme/js/libs/modernizr-2.6.2.min.js"></script>
-
-
+        gtag('config', 'UA-106559980-1');
+        </script>
 
 
 </head>
 
-<body id="index" class="home">
+<body class="home blog">
+                    <!-- Preloader Gif -->
+        <table class="doc-loader">
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="theme/images/ajax-document-loader.gif" alt="Loading...">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
 
-    <div class="container">
-
-        <div class="row">
-
-          <header id="banner" class="body">
-                  <h1><a href="//leemengtaiwan.github.io/">Space for data scientists <strong></strong></a></h1>
-          </header><!-- /#banner -->
-
-            <div id="navigation" class="navbar row">
-              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
-             
-              <ul class="columns">
-                <li><a href="//leemengtaiwan.github.io/">Home</a></li>
-
-
-              </ul>
+                    <!-- Left Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <div class="menu-left-part">
+                <div class="search-holder">
+                    <form class="search" action="/search.html">
+                        <label>
+                            <input type="search" class="search-field" placeholder="Type here to search..." value="" name="q" id="s" title="Search for:">
+                        </label>
+                    </form>
+                </div>
+                <div class="site-info-holder">
+                    <div class="site-title"><a href="index.html">Space for Data Scientists</a></div>
+                    <p class="site-description">
+                        Python, 資料科學, 機器學習, Visualization, 雜七雜八
+                    </p>
+                </div>
+                <nav id="header-main-menu">
+                    <ul class="main-menu sm sm-clean">
+                        <li><a href="index.html" class="current">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <!--<li><a href="scroll.html">Scroll</a></li>-->
+                        <!--<li><a href="contact.html">Contact</a></li>-->
+                    </ul>
+                </nav>
+                <footer>
+                    <div class="footer-info">
+                        Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a><i class="fa-python"></i>,
+                        <br>
+                        Crafted with <i class="fa fa-heart"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>.
+                    </div>
+                </footer>
             </div>
-
-<section id="content">
-<h2>Articles by Lee Meng</h2>
-
-
-   <div class="row">
-
-
-        <div class="eleven columns">
-                 <ol id="post-list">
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="//leemengtaiwan.github.io/find-word-semantic-by-using-word2vec-in-tensorflow.html" rel="bookmark" title="Permalink to Find Word Semantic by Using Word2vec in TensorFlow">Find Word Semantic by Using Word2vec in TensorFlow</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2017-09-30T18:30:00+09:00"> Sat, 30 Sep 2017 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="//leemengtaiwan.github.io/author/lee-meng.html"> Lee Meng</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> 
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal of this assignment is to train a Word2Vec skip-gram model over <a href="http://mattmahoney.net/dc/textdata">Text8</a> data using Tensorflow.</p>
-<p>Word2vec is a kind of vector space model (VSM) in natural language processing (NLP) where the core assumption/intuition is that words that appear in similar 'context' share similar meaning and they should be near in the vector space. So what word2vec trying to do is to find a vector representation (embedding) for each word in our training corpus where words with similar meanings are near in the vector space.</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="//leemengtaiwan.github.io/find-word-semantic-by-using-word2vec-in-tensorflow.html" rel="bookmark" title="Permalink to Find Word Semantic by Using Word2vec in TensorFlow">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/python.html">Python</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/tensorflow.html">TensorFlow</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/word2vec.html">Word2Vec</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/nlp.html">NLP</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/vsm.html">VSM</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="//leemengtaiwan.github.io/simple-convolutional-neural-network-using-tensorflow.html" rel="bookmark" title="Permalink to Simple Convolutional Neural Network using TensorFlow">Simple Convolutional Neural Network using TensorFlow</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2017-09-26T18:30:00+09:00"> Tue, 26 Sep 2017 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="//leemengtaiwan.github.io/author/lee-meng.html"> Lee Meng</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> 
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal here is to practice building convolutional neural networks to classify <a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html">notMNIST</a> characters using TensorFlow.
-As image size become bigger and bigger, it become unpractical to train fully-connected NN because there will be just too many parameters and thus the model will overfit very soon. And CNN solve this problem by weight sharing.</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="//leemengtaiwan.github.io/simple-convolutional-neural-network-using-tensorflow.html" rel="bookmark" title="Permalink to Simple Convolutional Neural Network using TensorFlow">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/python.html">Python</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/tensorflow.html">Tensorflow</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/deep-learning.html">Deep Learning</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/convolutional-neural-network.html">Convolutional Neural Network</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/cnn.html">CNN</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/deep-learning-by-google.html">Deep Learning by Google</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/machine-learning-engineer-by-kaggle.html">Machine Learning Engineer by kaggle</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/udacity.html">Udacity</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="//leemengtaiwan.github.io/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="bookmark" title="Permalink to Regularization for Multi-layer Neural Networks in Tensorflow">Regularization for Multi-layer Neural Networks in Tensorflow</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2017-09-25T16:00:00+09:00"> Mon, 25 Sep 2017 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="//leemengtaiwan.github.io/author/lee-meng.html"> Lee Meng</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> 
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal of this assignment is to explore regularization techniques.
-The original notebook can be found <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/3_regularization.ipynb">here</a></p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Import-libraries">Import libraries<a class="anchor-link" href="#Import-libraries">¶</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input"> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="//leemengtaiwan.github.io/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="bookmark" title="Permalink to Regularization for Multi-layer Neural Networks in Tensorflow">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/tensorflow.html">Tensorflow</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/python.html">Python</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/deep-learning.html">Deep Learning</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/regularization.html">Regularization</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/deep-learning-by-google.html">Deep Learning by Google</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/machine-learning-engineer-by-kaggle.html">Machine Learning Engineer by kaggle</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/udacity.html">Udacity</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="//leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="bookmark" title="Permalink to Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent">Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2017-09-21T23:50:00+09:00"> Thu, 21 Sep 2017 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="//leemengtaiwan.github.io/author/lee-meng.html"> Lee Meng</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> 
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="//leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="bookmark" title="Permalink to Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/python.html">Python</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/tensorflow.html">TensorFlow</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/deep-learning.html">Deep Learning</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/neural-networks.html">Neural Networks</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/optimization.html">Optimization</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/notmnist.html">NotMNIST</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/machine-learning.html">Machine Learning</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/image-recognition.html">Image Recognition</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/sgd.html">SGD</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/gradient-descent.html">Gradient Descent</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/deep-learning-by-google.html">Deep Learning by Google</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/machine-learning-engineer-by-kaggle.html">Machine Learning Engineer by kaggle</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/udacity.html">Udacity</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="//leemengtaiwan.github.io/simple-image-recognition-using-notmnist-dataset.html" rel="bookmark" title="Permalink to Simple Image Recognition using NotMNIST dataset">Simple Image Recognition using NotMNIST dataset</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2017-09-19T20:30:00+09:00"> Tue, 19 Sep 2017 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="//leemengtaiwan.github.io/author/lee-meng.html"> Lee Meng</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> 
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Today we're going to do some simple image recogintion using NotMNIST dataset. But before creating model for prediction, it's more important to explore, clean and normalize our dataset in order to make the learning go smoother when we actually build predictive models.</p>
-<p>I motified the <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb">notebook</a> from Udacity's online Deep learning course and the objective of this assignment is to learn about <strong>simple data curation practices</strong> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="//leemengtaiwan.github.io/simple-image-recognition-using-notmnist-dataset.html" rel="bookmark" title="Permalink to Simple Image Recognition using NotMNIST dataset">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/python.html">Python</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/matplotlib.html">Matplotlib</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/data-preprocessing.html">Data Preprocessing</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/data-cleaning.html">Data Cleaning</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/notmnist.html">NotMNIST</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/sklearn.html">Sklearn</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/machine-learning.html">Machine Learning</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/image-recognition.html">Image Recognition</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/deep-learning-by-google.html">Deep Learning by Google</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/machine-learning-engineer-by-kaggle.html">Machine Learning Engineer by kaggle</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/udacity.html">Udacity</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="//leemengtaiwan.github.io/purpose-of-this-blog.html" rel="bookmark" title="Permalink to Purpose of this blog">Purpose of this blog</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2017-09-17T12:30:00+09:00"> Sun, 17 Sep 2017 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="//leemengtaiwan.github.io/author/lee-meng.html"> Lee Meng</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> 
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>第一篇文章做一點 blog 的簡介，打算把自己在學 data science 還有 machine learning 過程中寫的筆記還有在 MOOC 上課的 code (主要是 jupyter notebook) 記錄下來方便自己以後搜尋。 雖然目前為止我都將 jupyter notebook render 成 HTML 然後存到 Evernote 搜尋, 但是如果該 notebook 一直更新的話就變得很不實際..</p>
-<p></br>
-這次利用 python 的 pelican 將 jupyter notebook 轉成靜態網頁, 讓我可以不斷更新 notebooks 而且也希望 code 可以幫助到其他也在做 data science / machine learning 的人當作一些參考。 blog 的走向目前看來應該會是中英夾雜 ..</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This is the first post of my blog.</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="//leemengtaiwan.github.io/purpose-of-this-blog.html" rel="bookmark" title="Permalink to Purpose of this blog">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/python.html">python</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/pelican.html">pelican</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/data-science.html">data science</a>
-                                            <a class="danger label" href="//leemengtaiwan.github.io/tag/blogging.html">blogging</a>
-                                </div>
-
-
-
-                        </article></li>
-                </ol><!-- /#posts-list -->
-
-        </div><!-- /.eleven.columns -->
-        
-<div class="three columns">
-
-<h4>Pages</h4>
-
- <ul>
-  </ul>
-
-<h4>Categories</h4>
-<ul class="blank">
-		<li><a href="//leemengtaiwan.github.io/category/deep-learning.html">Deep Learning</a></li>
-		<li><a href="//leemengtaiwan.github.io/category/machine-learning.html">Machine learning</a></li>
-		<li><a href="//leemengtaiwan.github.io/category/miscellaneous.html">Miscellaneous</a></li>
-</ul>
-
-
-
-
-<nav class="widget">
-  <h4>Social</h4>
-  <ul class="blank">
-    <li><a href="https://github.com/leemengtaiwan" target="_blank">Github</a></li>
-    <li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">LinkedIn</a></li>
-    <li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">Facebook</a></li>
-    <li><a href="mailto:b9875001@gmail.com" target="_blank">Gmail</a></li>
-  </ul>
-</nav>
-
-</div> </div><!-- /.row -->
-
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
-
-       </div><!-- /.row -->
-    </div><!-- /.container -->
-
-
-       <div class="container.nopad bg">
-
-    
-        <footer id="credits" class="row">
-          <div class="seven columns left-center">
-
-                   <address id="about" class="vcard body">
-                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                    which takes great advantage of <a href="http://python.org">Python</a>.
-                    <br />
-                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
-                    </address>
-          </div>
-
-
-          <div class="seven columns">
-            <div class="row">
-              <ul class="socbtns">
-
-
-
-
-
-              </ul>
+            <div class="menu-right-part">
+                <div class="logo-holder">
+                    <a href="index.html">
+                        <img src="//leemengtaiwan.github.io/theme/images/logo.png" alt="LeeMeng">
+                    </a>
+                </div>
+                <div class="toggle-holder">
+                    <div id="toggle">
+                        <div class="menu-line"></div>
+                    </div>
+                </div>
+                <div class="social-holder">
+                    <div class="social-list">
+<a href="https://github.com/leemengtaiwan" target="_blank"><i class="fa fa-github"></i></a><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank"><i class="fa fa-linkedin"></i></a><a href="https://www.instagram.com/leemengtaiwan/" target="_blank"><i class="fa fa-instagram"></i></a><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank"><i class="fa fa-facebook-f"></i></a><a href="mailto:b9875001@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>                    </div>
+                </div>
+                <div class="fixed scroll-top"><i class="fa fa-caret-square-o-up" aria-hidden="true"></i></div>
             </div>
-          </div>
-        </footer>
-
-    </div>
+            <div class="clear"></div>
+        </div>
 
 
-<script type="text/javascript">
-    var disqus_shortname = 'leemengtaiwan';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-  <script src="//leemengtaiwan.github.io/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="//leemengtaiwan.github.io/theme/js/libs/gumby.min.js"></script>
-  <script src="//leemengtaiwan.github.io/theme/js/plugins.js"></script>
-</body>
+        <!-- Home Content -->
+        <div id="content" class="site-content">
+            <div id="blog-wrapper">
+                <div class="blog-holder center-relative">
+                        <article id="post-1" class="blog-item-holder featured-post">
+                            <div class="entry-content relative">
+                                <div class="content-1170 center-relative">
+                                    <h2 class="entry-title">
+                                        <a href="//leemengtaiwan.github.io/sqlite-note.html" rel="bookmark" title="Permalink to SQLite 筆記">SQLite 筆記</a>
+                                    </h2>
+
+                                    <div class="entry-date published">2018-02-23 (金)</div>
+                                    <div class="cat-links">
+                                        <ul>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/sql.html" rel="tag">SQL</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/sqlite.html" rel="tag">SQLite</a>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div class="excerpt">
+                                        
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這篇主要紀錄使用 SQLite shell 下 SQL Query 的指令.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>基本上在 shell 裡頭都是用 dot-command, 使用 <code>.help</code> 可以顯示所有可用的指令.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Prettier-output">Prettier output<a class="anchor-link" href="#Prettier-output">¶</a></h2><p>在 command-line program 裡頭使用的 response format</p>
+<pre><code>.mode column
+.headers on
+
+</code></pre>
+<p>Example output</p>
+<pre><code>Code        Name        Price       Manufacturer
+----------  ----------  ----------  ------------
+7           CD drive    90          2           
+9           Toner cart  66          3           
+
+</code><a class="read-more" href="//leemengtaiwan.github.io/sqlite-note.html"></a>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </article>
+                        <article id="post-2" class="blog-item-holder">
+                            <div class="entry-content relative">
+                                <div class="content-1170 center-relative">
+                                    <h2 class="entry-title">
+                                        <a href="//leemengtaiwan.github.io/find-word-semantic-by-using-word2vec-in-tensorflow.html" rel="bookmark" title="Permalink to Find Word Semantic by Using Word2vec in TensorFlow">Find Word Semantic by Using Word2vec in TensorFlow</a>
+                                    </h2>
+
+                                    <div class="entry-date published">2017-09-30 (土)</div>
+                                    <div class="cat-links">
+                                        <ul>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/word2vec.html" rel="tag">Word2Vec</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/nlp.html" rel="tag">NLP</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/vsm.html" rel="tag">VSM</a>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </article>
+                        <article id="post-3" class="blog-item-holder">
+                            <div class="entry-content relative">
+                                <div class="content-1170 center-relative">
+                                    <h2 class="entry-title">
+                                        <a href="//leemengtaiwan.github.io/simple-convolutional-neural-network-using-tensorflow.html" rel="bookmark" title="Permalink to Simple Convolutional Neural Network using TensorFlow">Simple Convolutional Neural Network using TensorFlow</a>
+                                    </h2>
+
+                                    <div class="entry-date published">2017-09-26 (火)</div>
+                                    <div class="cat-links">
+                                        <ul>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">Tensorflow</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">Deep Learning</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/convolutional-neural-network.html" rel="tag">Convolutional Neural Network</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/cnn.html" rel="tag">CNN</a>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </article>
+                        <article id="post-4" class="blog-item-holder">
+                            <div class="entry-content relative">
+                                <div class="content-1170 center-relative">
+                                    <h2 class="entry-title">
+                                        <a href="//leemengtaiwan.github.io/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="bookmark" title="Permalink to Regularization for Multi-layer Neural Networks in Tensorflow">Regularization for Multi-layer Neural Networks in Tensorflow</a>
+                                    </h2>
+
+                                    <div class="entry-date published">2017-09-25 (月)</div>
+                                    <div class="cat-links">
+                                        <ul>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">Tensorflow</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">Deep Learning</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/regularization.html" rel="tag">Regularization</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/deep-learning-by-google.html" rel="tag">Deep Learning by Google</a>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </article>
+                        <article id="post-5" class="blog-item-holder">
+                            <div class="entry-content relative">
+                                <div class="content-1170 center-relative">
+                                    <h2 class="entry-title">
+                                        <a href="//leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="bookmark" title="Permalink to Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent">Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</a>
+                                    </h2>
+
+                                    <div class="entry-date published">2017-09-21 (木)</div>
+                                    <div class="cat-links">
+                                        <ul>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">Deep Learning</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/neural-networks.html" rel="tag">Neural Networks</a>
+                                                </li>
+                                                <li>
+                                                    <a href="//leemengtaiwan.github.io/tag/optimization.html" rel="tag">Optimization</a>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </article>
+                </div>
+                <!--pagination-->
+                <div class="clear"></div>
+<div class="block load-more-holder">
+    Page 1 / 2
+        <a href="//leemengtaiwan.github.io/author/lee-meng2.html">&raquo;</a>
+</div>
+
+
+
+            </div>
+            <!--top / right image panel-->
+            <div class="featured-image-holder">
+                <div class="featured-post-image" style="background-image: url(//leemengtaiwan.github.io/theme/images/featured-image.jpg)"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+                    <!--Load JavaScript-->
+        <script type="text/javascript" src="//leemengtaiwan.github.io/theme/js/jquery.js"></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/imagesloaded.pkgd.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.nicescroll.min.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.smartmenus.min.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.carouFredSel-6.0.0-packed.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.mousewheel.min.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.touchSwipe.min.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.easing.1.3.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/main.js'></script>
+
+    </body>
 </html>

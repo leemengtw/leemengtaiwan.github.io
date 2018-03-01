@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+<html lang="zh-hant-tw">
+<head>
+          <title>Space for Data Scientists</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="lang" content="zh-hant-tw">
+        <meta name="description" content="Blog by LeeMeng" />
+        <meta name="keywords" content="Python, Jupyter Notebook, Data Science, Visualization" />
+        <meta name="author" content="Lee Meng" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <link rel="shortcut icon" href="theme/images/favicon.ico" />
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7CLibre+Baskerville:400,400italic,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/clear.css' />
+        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/common.css' />
+        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/font-awesome.min.css' />
+        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/carouFredSel.css' />
+        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/sm-clean.css' />
+        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/style.css' />
+        <link rel="stylesheet" type="text/css" href='//leemengtaiwan.github.io/theme/css/ipython.css' />
+        <link rel="stylesheet" type="text/css" href='//leemengtaiwan.github.io/theme/css/progress-bar.css' />
+
+        <!--[if lt IE 9]>
+                <script src="js/html5.js"></script>
+        <![endif]-->
+
+        <link href="//leemengtaiwan.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Space for Data Scientists Full Atom Feed" />
+        <link href="//leemengtaiwan.github.io/feeds/sql.atom.xml" type="application/atom+xml" rel="alternate" title="Space for Data Scientists Categories Atom Feed" />
+
+
+    <meta name="tags" content="SQL" />
+    <meta name="tags" content="SQLite" />
+
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments)};
+        gtag('js', new Date());
+
+        gtag('config', 'UA-106559980-1');
+        </script>
+
+
+</head>
+<body class="single-post">
+
+                    <!-- Preloader Gif -->
+        <table class="doc-loader">
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="theme/images/ajax-document-loader.gif" alt="Loading...">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+                    <!-- Left Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <div class="menu-left-part">
+                <div class="search-holder">
+                    <form class="search" action="/search.html">
+                        <label>
+                            <input type="search" class="search-field" placeholder="Type here to search..." value="" name="q" id="s" title="Search for:">
+                        </label>
+                    </form>
+                </div>
+                <div class="site-info-holder">
+                    <div class="site-title"><a href="index.html">Space for Data Scientists</a></div>
+                    <p class="site-description">
+                        Python, 資料科學, 機器學習, Visualization, 雜七雜八
+                    </p>
+                </div>
+                <nav id="header-main-menu">
+                    <ul class="main-menu sm sm-clean">
+                        <li><a href="index.html" class="current">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <!--<li><a href="scroll.html">Scroll</a></li>-->
+                        <!--<li><a href="contact.html">Contact</a></li>-->
+                    </ul>
+                </nav>
+                <footer>
+                    <div class="footer-info">
+                        Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a><i class="fa-python"></i>,
+                        <br>
+                        Crafted with <i class="fa fa-heart"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>.
+                    </div>
+                </footer>
+            </div>
+            <div class="menu-right-part">
+                <div class="logo-holder">
+                    <a href="index.html">
+                        <img src="//leemengtaiwan.github.io/theme/images/logo.png" alt="LeeMeng">
+                    </a>
+                </div>
+                <div class="toggle-holder">
+                    <div id="toggle">
+                        <div class="menu-line"></div>
+                    </div>
+                </div>
+                <div class="social-holder">
+                    <div class="social-list">
+<a href="https://github.com/leemengtaiwan" target="_blank"><i class="fa fa-github"></i></a><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank"><i class="fa fa-linkedin"></i></a><a href="https://www.instagram.com/leemengtaiwan/" target="_blank"><i class="fa fa-instagram"></i></a><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank"><i class="fa fa-facebook-f"></i></a><a href="mailto:b9875001@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>                    </div>
+                </div>
+                <div class="fixed scroll-top"><i class="fa fa-caret-square-o-up" aria-hidden="true"></i></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+
+        <!-- Single Content -->
+        <div id="content" class="site-content center-relative">
+            <div class="KW_progressContainer">
+                <div class="KW_progressBar"></div>
+            </div>
+            <div class="single-post-wrapper content-1070 center-relative">
+                <article class="center-relative">
+                    <h1 class="entry-title">SQLite 筆記</h1>
+                    <div class="post-info content-660 center-relative">
+        <div class="cat-links">
+            <ul>
+                    <li>
+                        <a href="//leemengtaiwan.github.io/tag/sql.html" rel="tag">SQL</a>
+                    </li>
+                    <li>
+                        <a href="//leemengtaiwan.github.io/tag/sqlite.html" rel="tag">SQLite</a>
+                    </li>
+            </ul>
+        </div>
+                        <div class="entry-date published">2018-02-23 (金)</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="entry-content">
+
+                        
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這篇主要紀錄使用 SQLite shell 下 SQL Query 的指令.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>基本上在 shell 裡頭都是用 dot-command, 使用 <code>.help</code> 可以顯示所有可用的指令.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Prettier-output">Prettier output<a class="anchor-link" href="#Prettier-output">¶</a></h2><p>在 command-line program 裡頭使用的 response format</p>
+<pre><code>.mode column
+.headers on
+
+</code></pre>
+<p>Example output</p>
+<pre><code>Code        Name        Price       Manufacturer
+----------  ----------  ----------  ------------
+7           CD drive    90          2           
+9           Toner cart  66          3           
+
+</code></pre>
+<h3 id="調整每一個-column-寬度">調整每一個 column 寬度<a class="anchor-link" href="#調整每一個-column-寬度">¶</a></h3>
+<pre><code>.width 5 18 15
+
+</code></pre>
+<p>缺點是不同的 tables, 不同的 columns 需要的寬度不同, 要自己調整
+要重置設定:</p>
+<pre><code>.width 0</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="在-sqlite3-shell-裡清空畫面">在 sqlite3 shell 裡清空畫面<a class="anchor-link" href="#在-sqlite3-shell-裡清空畫面">¶</a></h2><p>要看 OS 決定實際的 shell command</p>
+<pre><code>.shell clear
+
+</code></pre>
+<p>除了 <code>clear</code> 以外, 其他 shell command都能使用, e.g.,</p>
+<pre><code>.shell cd</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="使用-SQL-script-建立-tables">使用 SQL script 建立 tables<a class="anchor-link" href="#使用-SQL-script-建立-tables">¶</a></h2><p>比方我們有一個 <code>create_tables.sql</code> 內容是：</p>
+<pre><code>CREATE TABLE Departments (
+  Code INTEGER PRIMARY KEY,
+  Name varchar(255) NOT NULL ,
+  Budget decimal NOT NULL 
+);
+
+INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
+
+</code></pre>
+<p>我們可以用 <code>.read</code> dot-command 在 shell 跑該 script 建立 <code>Department</code> table:</p>
+<pre><code>.read create_tables.sql</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="顯示目前的-tables">顯示目前的 tables<a class="anchor-link" href="#顯示目前的-tables">¶</a></h2>
+<pre><code>.tables</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="顯示-table-schema">顯示 table schema<a class="anchor-link" href="#顯示-table-schema">¶</a></h2>
+<pre><code>.schema <table_name></code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="顯示-indexes">顯示 indexes<a class="anchor-link" href="#顯示-indexes">¶</a></h2>
+<pre><code>.indexes
+
+</code></pre>
+<p>在 Table T 的 Column C 建立 index</p>
+<pre><code>CREATE INDEX <index_name> ON T(C);
+
+</code></pre>
+<p>砍掉 index</p>
+<pre><code>DROP INDEX <index_name></code></pre>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+                    </div>
+                    <div class="clear"></div>
+                </article>
+            </div>
+        </div>
+
+                    <!--Load JavaScript-->
+        <script type="text/javascript" src="//leemengtaiwan.github.io/theme/js/jquery.js"></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/imagesloaded.pkgd.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.nicescroll.min.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.smartmenus.min.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.carouFredSel-6.0.0-packed.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.mousewheel.min.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.touchSwipe.min.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.easing.1.3.js'></script>
+        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/main.js'></script>
+
+            <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
+    </body>
+</html>

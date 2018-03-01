@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Space for Data Scientists - SQL</title><link href="//leemengtaiwan.github.io/" rel="alternate"></link><link href="//leemengtaiwan.github.io/feeds/sql.atom.xml" rel="self"></link><id>//leemengtaiwan.github.io/</id><updated>2018-02-23T22:00:00+09:00</updated><entry><title>SQLite 筆記</title><link href="//leemengtaiwan.github.io/sqlite-note.html" rel="alternate"></link><published>2018-02-23T22:00:00+09:00</published><updated>2018-02-23T22:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-02-23:/sqlite-note.html</id><summary type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這篇主要紀錄使用 SQLite shell 下 SQL Query 的指令.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;基本上在 shell 裡頭都是用 dot-command, 使用 &lt;code&gt;.help&lt;/code&gt; 可以顯示所有可用的指令.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Prettier-output"&gt;Prettier output&lt;a class="anchor-link" href="#Prettier-output"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在 command-line program 裡頭使用的 response format&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.mode column
+.headers on
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Example output&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Code        Name        Price       Manufacturer
+----------  ----------  ----------  ------------
+7           CD drive    90          2           
+9           Toner cart  66          3           
+
+&lt;/code&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這篇主要紀錄使用 SQLite shell 下 SQL Query 的指令.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;基本上在 shell 裡頭都是用 dot-command, 使用 &lt;code&gt;.help&lt;/code&gt; 可以顯示所有可用的指令.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Prettier-output"&gt;Prettier output&lt;a class="anchor-link" href="#Prettier-output"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在 command-line program 裡頭使用的 response format&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.mode column
+.headers on
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Example output&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Code        Name        Price       Manufacturer
+----------  ----------  ----------  ------------
+7           CD drive    90          2           
+9           Toner cart  66          3           
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="調整每一個-column-寬度"&gt;調整每一個 column 寬度&lt;a class="anchor-link" href="#調整每一個-column-寬度"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;.width 5 18 15
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;缺點是不同的 tables, 不同的 columns 需要的寬度不同, 要自己調整
+要重置設定:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.width 0&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="在-sqlite3-shell-裡清空畫面"&gt;在 sqlite3 shell 裡清空畫面&lt;a class="anchor-link" href="#在-sqlite3-shell-裡清空畫面"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要看 OS 決定實際的 shell command&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.shell clear
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;除了 &lt;code&gt;clear&lt;/code&gt; 以外, 其他 shell command都能使用, e.g.,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.shell cd&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="使用-SQL-script-建立-tables"&gt;使用 SQL script 建立 tables&lt;a class="anchor-link" href="#使用-SQL-script-建立-tables"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;比方我們有一個 &lt;code&gt;create_tables.sql&lt;/code&gt; 內容是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE TABLE Departments (
+  Code INTEGER PRIMARY KEY,
+  Name varchar(255) NOT NULL ,
+  Budget decimal NOT NULL 
+);
+
+INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我們可以用 &lt;code&gt;.read&lt;/code&gt; dot-command 在 shell 跑該 script 建立 &lt;code&gt;Department&lt;/code&gt; table:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.read create_tables.sql&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="顯示目前的-tables"&gt;顯示目前的 tables&lt;a class="anchor-link" href="#顯示目前的-tables"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;.tables&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="顯示-table-schema"&gt;顯示 table schema&lt;a class="anchor-link" href="#顯示-table-schema"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;.schema &lt;table_name&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="顯示-indexes"&gt;顯示 indexes&lt;a class="anchor-link" href="#顯示-indexes"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;.indexes
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在 Table T 的 Column C 建立 index&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE INDEX &lt;index_name&gt; ON T(C);
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;砍掉 index&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;DROP INDEX &lt;index_name&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content><category term="SQL"></category><category term="SQLite"></category></entry></feed>
