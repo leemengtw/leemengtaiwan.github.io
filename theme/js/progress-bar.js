@@ -1,6 +1,6 @@
 // Credit: https://codepen.io/k33k00/pen/ByeyVB
 jQuery(document).ready(function($){
-    $(window).load(function(){
+    $(window).on('load', function(){
       $(window).scroll(function() {
         var wintop = $(window).scrollTop(), docheight = $('article').height(), winheight = $(window).height();
         // console.log(wintop);

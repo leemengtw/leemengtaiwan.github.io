@@ -1,34 +1,51 @@
-<!DOCTYPE HTML>
-<html lang="zh-hant-tw">
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
 <head>
-          <title>Space for Data Scientists</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="lang" content="zh-hant-tw">
-        <meta name="description" content="Blog by LeeMeng" />
-        <meta name="keywords" content="Python, Jupyter Notebook, Data Science, Visualization" />
-        <meta name="author" content="Lee Meng" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LeeMeng - Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title>    <meta name="description" content="LeeMeng" />
+    <meta name="keywords" content="Python, Jupyter Notebook, Data Science, Visualization" />
+    <meta name="author" content="Lee Meng" />
 
-        <link rel="shortcut icon" href="theme/images/favicon.ico" />
-        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7CLibre+Baskerville:400,400italic,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/clear.css' />
-        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/common.css' />
-        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/font-awesome.min.css' />
-        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/carouFredSel.css' />
-        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/sm-clean.css' />
-        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/style.css' />
-        <link rel="stylesheet" type="text/css" href='//leemengtaiwan.github.io/theme/css/ipython.css' />
-        <link rel="stylesheet" type="text/css" href='//leemengtaiwan.github.io/theme/css/progress-bar.css' />
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!--[if lt IE 9]>
-                <script src="js/html5.js"></script>
-        <![endif]-->
+    <!-- CSS
+    ================================================== -->
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='//leemengtaiwan.github.io/theme/css/progress-bar.css' />
 
-        <link href="//leemengtaiwan.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Space for Data Scientists Full Atom Feed" />
-        <link href="//leemengtaiwan.github.io/feeds/deep-learning.atom.xml" type="application/atom+xml" rel="alternate" title="Space for Data Scientists Categories Atom Feed" />
+    <!-- script
+    ================================================== -->
+    <script src="//leemengtaiwan.github.io/theme/js/modernizr.js"></script>
+    <script src="//leemengtaiwan.github.io/theme/js/pace.min.js"></script>
 
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="theme/images/favicon.ico" type="image/x-icon"/>
 
-    <meta name="tags" content="Python" />
+    <!--Google Analysis-->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments)};
+        gtag('js', new Date());
+        gtag('config', 'UA-106559980-1');
+    </script>
+
+<title>LeeMeng - Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title>    <meta name="tags" content="Python" />
     <meta name="tags" content="TensorFlow" />
     <meta name="tags" content="Deep Learning" />
     <meta name="tags" content="Neural Networks" />
@@ -42,121 +59,81 @@
     <meta name="tags" content="Machine Learning Engineer by kaggle" />
     <meta name="tags" content="Udacity" />
 
-        <!-- Global Site Tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments)};
-        gtag('js', new Date());
-
-        gtag('config', 'UA-106559980-1');
-        </script>
-
-
 </head>
-<body class="single-post">
-
-                    <!-- Preloader Gif -->
-        <table class="doc-loader">
-            <tbody>
-                <tr>
-                    <td>
-                        <img src="theme/images/ajax-document-loader.gif" alt="Loading...">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
 
 
-                    <!-- Left Sidebar -->
-        <div id="sidebar" class="sidebar">
-            <div class="menu-left-part">
-                <div class="search-holder">
-                    <form class="search" action="/search.html">
-                        <label>
-                            <input type="search" class="search-field" placeholder="Type here to search..." value="" name="q" id="s" title="Search for:">
-                        </label>
-                    </form>
-                </div>
-                <div class="site-info-holder">
-                    <div class="site-title"><a href="index.html">Space for Data Scientists</a></div>
-                    <p class="site-description">
-                        Python, 資料科學, 機器學習, Visualization, 雜七雜八
-                    </p>
-                </div>
-                <nav id="header-main-menu">
-                    <ul class="main-menu sm sm-clean">
-                        <li><a href="index.html" class="current">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <!--<li><a href="scroll.html">Scroll</a></li>-->
-                        <!--<li><a href="contact.html">Contact</a></li>-->
-                    </ul>
-                </nav>
-                <footer>
-                    <div class="footer-info">
-                        Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a><i class="fa-python"></i>,
-                        <br>
-                        Crafted with <i class="fa fa-heart"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>.
-                    </div>
-                </footer>
-            </div>
-            <div class="menu-right-part">
-                <div class="logo-holder">
-                    <a href="index.html">
-                        <img src="//leemengtaiwan.github.io/theme/images/logo.png" alt="LeeMeng">
-                    </a>
-                </div>
-                <div class="toggle-holder">
-                    <div id="toggle">
-                        <div class="menu-line"></div>
-                    </div>
-                </div>
-                <div class="social-holder">
-                    <div class="social-list">
-<a href="https://github.com/leemengtaiwan" target="_blank"><i class="fa fa-github"></i></a><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank"><i class="fa fa-linkedin"></i></a><a href="https://www.instagram.com/leemengtaiwan/" target="_blank"><i class="fa fa-instagram"></i></a><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank"><i class="fa fa-facebook-f"></i></a><a href="mailto:b9875001@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>                    </div>
-                </div>
-                <div class="fixed scroll-top"><i class="fa fa-caret-square-o-up" aria-hidden="true"></i></div>
-            </div>
-            <div class="clear"></div>
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="//leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
         </div>
 
-
-        <!-- Single Content -->
-        <div id="content" class="site-content center-relative">
-            <div class="KW_progressContainer">
-                <div class="KW_progressBar"></div>
-            </div>
-            <div class="single-post-wrapper content-1070 center-relative">
-                <article class="center-relative">
-                    <h1 class="entry-title">Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</h1>
-                    <div class="post-info content-660 center-relative">
-        <div class="cat-links">
-            <ul>
-                    <li>
-                        <a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
-                    </li>
-                    <li>
-                        <a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">TensorFlow</a>
-                    </li>
-                    <li>
-                        <a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">Deep Learning</a>
-                    </li>
-                    <li>
-                        <a href="//leemengtaiwan.github.io/tag/neural-networks.html" rel="tag">Neural Networks</a>
-                    </li>
-                    <li>
-                        <a href="//leemengtaiwan.github.io/tag/optimization.html" rel="tag">Optimization</a>
-                    </li>
+        <nav class="header-nav-wrap">
+            <ul class="header-nav">
+                <li><a href="../index.html#home" title="home">Home</a></li>
+                <li><a href="../index.html#about" title="about">About</a></li>
+                <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
+                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
+                <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
             </ul>
-        </div>
-                        <div class="entry-date published">2017-09-21 (木)</div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="entry-content">
+        </nav>
 
-                        
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(//leemengtaiwan.github.io/theme/images/background/default.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
+                            <a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                            <a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">Deep Learning</a>
+                            <a href="//leemengtaiwan.github.io/tag/neural-networks.html" rel="tag">Neural Networks</a>
+                            <a href="//leemengtaiwan.github.io/tag/optimization.html" rel="tag">Optimization</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="//leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" title="">
+                            Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2017-09-21 (木)</li>
+                        <li class="author">
+                            By
+                            <span>Lee Meng</span>
+                        </li>
+                        <li><a href="https://unsplash.com/@lucabravo" target="_blank">PhotoCredit</a></li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+
+        <div class="row blog-content">
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.</p>
@@ -166,8 +143,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Import-libraries">Import libraries<a class="anchor-link" href="#Import-libraries">¶</a></h2>
@@ -176,7 +152,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [332]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># These are all the modules we'll be using later. Make sure you can import them</span>
@@ -192,8 +168,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Load-notMNIST-dataset">Load notMNIST dataset<a class="anchor-link" href="#Load-notMNIST-dataset">¶</a></h2><p>This time we will use the dataset which has been normalized and randomized before to omit the data preprocessing step.</p>
@@ -206,7 +181,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [333]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pickle_file</span> <span class="o">=</span> <span class="s1">'datasets/notMNIST.pickle'</span>
@@ -232,7 +207,7 @@
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Dataset size: 658.8 MB
 Training set (200000, 28, 28) (200000,)
@@ -244,16 +219,14 @@ Test set (10000, 28, 28) (10000,)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Reformat-data-for-easier-training">Reformat data for easier training<a class="anchor-link" href="#Reformat-data-for-easier-training">¶</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Reformat both pixels(features) and labels that's more adapted to the models we're going to train:</p>
@@ -267,8 +240,7 @@ Test set (10000, 28, 28) (10000,)
 </caption></center></caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Tips:</p>
@@ -286,7 +258,7 @@ Test set (10000, 28, 28) (10000,)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [334]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">image_size</span> <span class="o">=</span> <span class="mi">28</span>
@@ -314,7 +286,7 @@ Test set (10000, 28, 28) (10000,)
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training set (784, 200000) (10, 200000)
 Validation set (784, 10000) (10, 10000)
@@ -325,8 +297,7 @@ Test set (784, 10000) (10, 10000)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Logistic-regression-with-gradient-descent">Logistic regression with gradient descent<a class="anchor-link" href="#Logistic-regression-with-gradient-descent">¶</a></h2><p>For logistic regression, we use the formula $WX + b = Y'$ to do the computation. W is of shape (10, 784), X is of shape (784, m) and Y' is of shape (10, m) where $m$ is the number of training instances/images. After compute the probabilities of 10 classes stored in Y', we will use built-in <code>tf.nn.softmax_cross_entropy_with_logits</code> to compute cross-entropy between Y' and Y(train_labels) as cost.</p>
@@ -334,16 +305,14 @@ Test set (784, 10000) (10, 10000)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Build-the-Tensorflow-computation-graph">Build the Tensorflow computation graph<a class="anchor-link" href="#Build-the-Tensorflow-computation-graph">¶</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We're first going to train a multinomial logistic regression using simple gradient descent.</p>
@@ -364,7 +333,7 @@ Test set (784, 10000) (10, 10000)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [335]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># With gradient descent training, even this much data is prohibitive.</span>
@@ -419,8 +388,7 @@ Test set (784, 10000) (10, 10000)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Tips:</p>
@@ -431,16 +399,14 @@ Test set (784, 10000) (10, 10000)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Gradient-descent-by-iterating-computation-graph">Gradient descent by iterating computation graph<a class="anchor-link" href="#Gradient-descent-by-iterating-computation-graph">¶</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we can tell TensorFlow to run this computation and iterate.<br />
@@ -455,7 +421,7 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [336]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tnrange</span>
@@ -507,26 +473,26 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Initialized
 </pre>
 </div>
 </div>
 <div class="output_area">
-<div class="prompt"></div>
-<div id="04af7a29-7fec-416a-8233-e4af1d3d1f3f"></div>
+
+<div id="745a0c2a-1136-49f3-b24a-26845e2cefc1"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#04af7a29-7fec-416a-8233-e4af1d3d1f3f');
+var element = $('#745a0c2a-1136-49f3-b24a-26845e2cefc1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
+{"model_id": "a776469c0f394bab94bc900cf03f469d", "version_minor": 0, "version_major": 2}
 </script>
 </div>
 </div>
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Cost at step 0: 20.057. Training acc: 6.4%, Validation acc: 10.0%.
 Cost at step 100: 2.326. Training acc: 70.9%, Validation acc: 70.7%.
@@ -545,16 +511,14 @@ Test acc: 82.8%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Logistic-regression-with-SGD">Logistic regression with SGD<a class="anchor-link" href="#Logistic-regression-with-SGD">¶</a></h2><p>Or more precisely, mini-batch approach.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>From the result above, we can see it cost about 20 seconds (on my computer) to iterate 10,000 training instances by simple gradient descent. Let's now switch to stochastic gradient descent training instead, which is much faster.</p>
@@ -567,8 +531,7 @@ Test acc: 82.8%
 </caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Build-computation-graph">Build computation graph<a class="anchor-link" href="#Build-computation-graph">¶</a></h3>
@@ -577,7 +540,7 @@ Test acc: 82.8%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [337]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
@@ -620,8 +583,7 @@ Test acc: 82.8%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Iterate-using-SGD">Iterate using SGD<a class="anchor-link" href="#Iterate-using-SGD">¶</a></h3>
@@ -630,7 +592,7 @@ Test acc: 82.8%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [338]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">3001</span>
@@ -668,26 +630,26 @@ Test acc: 82.8%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Initialized
 </pre>
 </div>
 </div>
 <div class="output_area">
-<div class="prompt"></div>
-<div id="b6f5a788-bd6e-488d-8b5c-5b3783f6b844"></div>
+
+<div id="4420784e-58ff-41ef-bb1c-a92bf05c2fc9"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b6f5a788-bd6e-488d-8b5c-5b3783f6b844');
+var element = $('#4420784e-58ff-41ef-bb1c-a92bf05c2fc9');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
+{"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_minor": 0, "version_major": 2}
 </script>
 </div>
 </div>
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Minibatch loss at step 0: 20.939. batch acc: 6.2%, Valid acc: 9.7%.
 Minibatch loss at step 500: 2.546. batch acc: 70.3%, Valid acc: 75.1%.
@@ -704,24 +666,21 @@ Test acc: 86.9%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It took only about 3 seconds in my computer to finish the optimization using SGD (which took gradient descent about 20 seconds) and got a even slightly better result. The key of SGD is take <strong>randomized</strong> samples / mini-batches and feed that into the model every iteration (thus the <code>feed_dict</code> term).</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="2-layer-NN-with-ReLU-units">2-layer NN with ReLU units<a class="anchor-link" href="#2-layer-NN-with-ReLU-units">¶</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Instead all just linear combination of features, we want to introduce non-linearlity in our logistic regression. By turning the logistic regression example with SGD into a 1-hidden layer neural network with rectified linear units <a href="https://www.tensorflow.org/versions/r0.7/api_docs/python/nn.html#relu">nn.relu()</a> and 1024 hidden nodes, we should be able to improve validation / test accuracy.</p>
@@ -731,8 +690,7 @@ Test acc: 86.9%
 </caption></center></caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Build-compuation-graph">Build compuation graph<a class="anchor-link" href="#Build-compuation-graph">¶</a></h3><p>In this part, use the notation $X$ in replace of  <code>dataset</code>. The weights and biases of the hidden layer are denoted as $W1$ and $b1$, and the weights and biases of the output layer are denoted as $W2$ and $b2$.</p>
@@ -742,7 +700,7 @@ Test acc: 86.9%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [339]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
@@ -789,8 +747,7 @@ Test acc: 86.9%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Run-the-iterations">Run the iterations<a class="anchor-link" href="#Run-the-iterations">¶</a></h3>
@@ -799,7 +756,7 @@ Test acc: 86.9%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [340]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">3001</span>
@@ -839,26 +796,26 @@ Test acc: 86.9%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Initialized
 </pre>
 </div>
 </div>
 <div class="output_area">
-<div class="prompt"></div>
-<div id="0a026367-a545-4257-9343-4e7a9d9ee37e"></div>
+
+<div id="a88b86ce-0280-42ed-9e57-f67b19eeaa54"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#0a026367-a545-4257-9343-4e7a9d9ee37e');
+var element = $('#a88b86ce-0280-42ed-9e57-f67b19eeaa54');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
+{"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_minor": 0, "version_major": 2}
 </script>
 </div>
 </div>
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Minibatch loss at step 0: 409.203. batch acc: 4.7%, Valid acc: 30.5%.
 Minibatch loss at step 500: 12.319. batch acc: 75.8%, Valid acc: 80.7%.
@@ -875,8 +832,7 @@ Test acc: 88.7%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h2><p>Because we use a more complex model(1 hidden-layer NN), it take a little longer to train, but we're able to gain more performance from logistic regression even with the same hyper-parameter settings (learning rate = 0.5, batch_size=128). Better performance may be gained by tuning hyper parameters of the 2 layer NN. Also notice that by using mini-batch / SGD, we can save lots of time training models and even get a better result.</p>
@@ -912,23 +868,151 @@ Test acc: 88.7%
 }
 </script>
 
+
+                <!--Tags-->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
+                        <a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                        <a href="//leemengtaiwan.github.io/tag/deep-learning.html" rel="tag">Deep Learning</a>
+                        <a href="//leemengtaiwan.github.io/tag/neural-networks.html" rel="tag">Neural Networks</a>
+                        <a href="//leemengtaiwan.github.io/tag/optimization.html" rel="tag">Optimization</a>
+                        <a href="//leemengtaiwan.github.io/tag/notmnist.html" rel="tag">NotMNIST</a>
+                        <a href="//leemengtaiwan.github.io/tag/machine-learning.html" rel="tag">Machine Learning</a>
+                        <a href="//leemengtaiwan.github.io/tag/image-recognition.html" rel="tag">Image Recognition</a>
+                        <a href="//leemengtaiwan.github.io/tag/sgd.html" rel="tag">SGD</a>
+                        <a href="//leemengtaiwan.github.io/tag/gradient-descent.html" rel="tag">Gradient Descent</a>
+                        <a href="//leemengtaiwan.github.io/tag/deep-learning-by-google.html" rel="tag">Deep Learning by Google</a>
+                        <a href="//leemengtaiwan.github.io/tag/machine-learning-engineer-by-kaggle.html" rel="tag">Machine Learning Engineer by kaggle</a>
+                        <a href="//leemengtaiwan.github.io/tag/udacity.html" rel="tag">Udacity</a>
+                    </span>
+
+                </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!--Pagination-->
+                <div class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a href="//leemengtaiwan.github.io/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="prev">
+                                <span>Previous Post</span>
+                                Regularization for Multi-layer Neural Networks in Tensorflow
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <a href="//leemengtaiwan.github.io/simple-image-recognition-using-notmnist-dataset.html" rel="next">
+                                <span>Next Post</span>
+                                Simple Image Recognition using NotMNIST dataset
+                            </a>
+                        </div>
                     </div>
-                    <div class="clear"></div>
-                </article>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+
+            </div><!-- end blog-content__main -->
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = 'Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="//leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
             </div>
         </div>
 
-                    <!--Load JavaScript-->
-        <script type="text/javascript" src="//leemengtaiwan.github.io/theme/js/jquery.js"></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/imagesloaded.pkgd.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.nicescroll.min.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.smartmenus.min.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.carouFredSel-6.0.0-packed.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.mousewheel.min.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.touchSwipe.min.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.easing.1.3.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/main.js'></script>
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
 
-            <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
-    </body>
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="//leemengtaiwan.github.io/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="//leemengtaiwan.github.io/theme/js/plugins.js"></script>
+    <script src="//leemengtaiwan.github.io/theme/js/main.js"></script>
+
+    <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
+
+</body>
 </html>

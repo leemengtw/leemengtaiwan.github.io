@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+  
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LeeMeng - BeautifulSoup 筆記</title>    <meta name="description" content="LeeMeng" />
+    <meta name="keywords" content="Python, Jupyter Notebook, Data Science, Visualization" />
+    <meta name="author" content="Lee Meng" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='//leemengtaiwan.github.io/theme/css/progress-bar.css' />
+
+    <!-- script
+    ================================================== -->
+    <script src="//leemengtaiwan.github.io/theme/js/modernizr.js"></script>
+    <script src="//leemengtaiwan.github.io/theme/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+
+    <!--Google Analysis-->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments)};
+        gtag('js', new Date());
+        gtag('config', 'UA-106559980-1');
+    </script>
+
+<title>LeeMeng - BeautifulSoup 筆記</title>    <meta name="tags" content="python" />
+    <meta name="tags" content="beautifulsoup" />
+    <meta name="tags" content="html" />
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="//leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+
+        <nav class="header-nav-wrap">
+            <ul class="header-nav">
+                <li><a href="../index.html#home" title="home">Home</a></li>
+                <li><a href="../index.html#about" title="about">About</a></li>
+                <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
+                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
+                <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
+            </ul>
+        </nav>
+
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(//leemengtaiwan.github.io/theme/images/background/default.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
+                            <a href="//leemengtaiwan.github.io/tag/beautifulsoup.html" rel="tag">beautifulsoup</a>
+                            <a href="//leemengtaiwan.github.io/tag/html.html" rel="tag">html</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="//leemengtaiwan.github.io/beautifulsoup-cheat-sheet.html" title="">
+                            BeautifulSoup 筆記
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2018-03-02 (金)</li>
+                        <li class="author">
+                            By
+                            <span>Lee Meng</span>
+                        </li>
+                        <li><a href="https://unsplash.com/@lucabravo" target="_blank">PhotoCredit</a></li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+
+        <div class="row blog-content">
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Beautifulsoup 是一個可以幫助我們 parse HTML 的 lib, 這篇主要紀錄使用 beautifulsoup 時常用的指令。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="找出特定-HTML-物件">找出特定 HTML 物件<a class="anchor-link" href="#找出特定-HTML-物件">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>假設我們有一個字串代表一個表格：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">html</span> <span class="o">=</span> <span class="s2">"""<div><table border="1" class="dataframe"><thead><tr style="text-align:right;"><th></th><th>x</th><th>y</th></tr></thead><tbody><tr><th>0</th><td>-2.863752</td><td>-1.066424</td></tr><tr><th>1</th><td>-0.779238</td><td>0.862169</td></tr></tbody></table></div>"""</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>渲染成 HTML:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div>
+<table border="1" class="dataframe table table-striped table-responsive">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>x</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>-2.863752</td>
+<td>-1.066424</td>
+</tr>
+<tr>
+<th>1</th>
+<td>-0.779238</td>
+<td>0.862169</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>實際 HTML 架構：</p>
+<div class="highlight"><pre><span></span><span class="p"><</span><span class="nt">div</span><span class="p">></span>
+   <span class="p"><</span><span class="nt">table</span> <span class="na">border</span><span class="o">=</span><span class="s">"1"</span> <span class="na">class</span><span class="o">=</span><span class="s">"dataframe"</span><span class="p">></span>
+      <span class="p"><</span><span class="nt">thead</span><span class="p">></span>
+         <span class="p"><</span><span class="nt">tr</span> <span class="na">style</span><span class="o">=</span><span class="s">"text-align: right;"</span><span class="p">></span>
+            <span class="p"><</span><span class="nt">th</span><span class="p">><!--</span--><span class="nt">th</span><span class="p">></span>
+            <span class="p"><</span><span class="nt">th</span><span class="p">></span>x<span class="p"><!--</span--><span class="nt">th</span><span class="p">></span>
+            <span class="p"><</span><span class="nt">th</span><span class="p">></span>y<span class="p"><!--</span--><span class="nt">th</span><span class="p">></span>
+         <span class="p"><!--</span--><span class="nt">tr</span><span class="p">></span>
+      <span class="p"><!--</span--><span class="nt">thead</span><span class="p">></span>
+      <span class="p"><</span><span class="nt">tbody</span><span class="p">></span>
+         <span class="p"><</span><span class="nt">tr</span><span class="p">></span>
+            <span class="p"><</span><span class="nt">th</span><span class="p">></span>0<span class="p"><!--</span--><span class="nt">th</span><span class="p">></span>
+            <span class="p"><</span><span class="nt">td</span><span class="p">></span>-2.863752<span class="p"><!--</span--><span class="nt">td</span><span class="p">></span>
+            <span class="p"><</span><span class="nt">td</span><span class="p">></span>-1.066424<span class="p"><!--</span--><span class="nt">td</span><span class="p">></span>
+         <span class="p"><!--</span--><span class="nt">tr</span><span class="p">></span>
+         <span class="p"><</span><span class="nt">tr</span><span class="p">></span>
+            <span class="p"><</span><span class="nt">th</span><span class="p">></span>1<span class="p"><!--</span--><span class="nt">th</span><span class="p">></span>
+            <span class="p"><</span><span class="nt">td</span><span class="p">></span>-0.779238<span class="p"><!--</span--><span class="nt">td</span><span class="p">></span>
+            <span class="p"><</span><span class="nt">td</span><span class="p">></span>0.862169<span class="p"><!--</span--><span class="nt">td</span><span class="p">></span>
+         <span class="p"><!--</span--><span class="nt">tr</span><span class="p">></span>
+      <span class="p"><!--</span--><span class="nt">tbody</span><span class="p">></span>
+   <span class="p"><!--</span--><span class="nt">table</span><span class="p">></span>
+<span class="p"><!--</span--><span class="nt">div</span><span class="p">></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>利用 <code>BeautifulSoup</code> 物件 parse HTML:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">soup</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+
+<div class="output_text output_subarea output_execute_result">
+<pre>bs4.BeautifulSoup</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>找到第一個符合條件的 <code>table</code> 標籤</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'table'</span><span class="p">,</span> <span class="p">{</span><span class="s1">'class'</span><span class="p">:</span> <span class="s1">'dataframe'</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">table</span><span class="p">))</span>
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><class &#x27;bs4.element.tag&#x27;>
+</pre>
+</div>
+</div>
+<div class="output_area">
+
+<div class="output_text output_subarea output_execute_result">
+<pre><table border="1" class="dataframe"><thead><tr style="text-align:right;"><th></th><th>x</th><th>y</th></tr></thead><tbody><tr><th>0</th><td>-2.863752</td><td>-1.066424</td></tr><tr><th>1</th><td>-0.779238</td><td>0.862169</td></tr></tbody></table></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="設定新屬性-/-class">設定新屬性 / class<a class="anchor-link" href="#設定新屬性-/-class">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因為這時候我們取出來的 <code>table</code> 物件是 reference 到 soup 裡頭對應的物件, 只要直接改變對應的 attr 就會直接反映結果到 <code>soup</code> 物件:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="s1">'class'</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s1">'class'</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">'table'</span><span class="p">,</span> <span class="s1">'table-striped'</span><span class="p">,</span> <span class="s1">'table-responsive'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">soup</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+
+<div class="output_text output_subarea output_execute_result">
+<pre><div><table border="1" class="dataframe table table-striped table-responsive"><thead><tr style="text-align:right;"><th></th><th>x</th><th>y</th></tr></thead><tbody><tr><th>0</th><td>-2.863752</td><td>-1.066424</td></tr><tr><th>1</th><td>-0.779238</td><td>0.862169</td></tr></tbody></table></div></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Iterate-標籤裡頭的子標籤">Iterate 標籤裡頭的子標籤<a class="anchor-link" href="#Iterate-標籤裡頭的子標籤">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">'</span><span class="si">{c.name}</span><span class="s1"> in </span><span class="si">{table.name}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>thead in table
+tbody in table
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="移除標籤">移除標籤<a class="anchor-link" href="#移除標籤">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這邊假設我們要移除表格裡頭第一行的值 ( 第2個 <code>tr</code> 標籤 ), 可以對要移除的標籤物件使用 <code>extract()</code> func.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">'tr'</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><tr style="text-align:right;"><th></th><th>x</th><th>y</th></tr>
+<tr><th>0</th><td>-2.863752</td><td>-1.066424</td></tr>
+<tr><th>1</th><td>-0.779238</td><td>0.862169</td></tr>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">'tr'</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">tr</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">'tr'</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><tr style="text-align:right;"><th></th><th>x</th><th>y</th></tr>
+<tr><th>1</th><td>-0.779238</td><td>0.862169</td></tr>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+
+                <!--Tags-->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
+                        <a href="//leemengtaiwan.github.io/tag/beautifulsoup.html" rel="tag">beautifulsoup</a>
+                        <a href="//leemengtaiwan.github.io/tag/html.html" rel="tag">html</a>
+                    </span>
+
+                </p>
+
+
+
+
+                <!--Pagination-->
+                <div class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__next">
+                            <a href="//leemengtaiwan.github.io/seaborn-cheat-sheet.html" rel="next">
+                                <span>Next Post</span>
+                                Seaborn 筆記
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+
+            </div><!-- end blog-content__main -->
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = 'BeautifulSoup 筆記';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="//leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="//leemengtaiwan.github.io/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="//leemengtaiwan.github.io/theme/js/plugins.js"></script>
+    <script src="//leemengtaiwan.github.io/theme/js/main.js"></script>
+
+    <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
+
+</body>
+</html>

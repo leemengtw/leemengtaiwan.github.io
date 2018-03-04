@@ -1,154 +1,131 @@
-<!DOCTYPE HTML>
-<html lang="zh-hant-tw">
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
 <head>
-          <title>Space for Data Scientists</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="lang" content="zh-hant-tw">
-        <meta name="description" content="Blog by LeeMeng" />
-        <meta name="keywords" content="Python, Jupyter Notebook, Data Science, Visualization" />
-        <meta name="author" content="Lee Meng" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LeeMeng - Find Word Semantic by Using Word2vec in TensorFlow</title>    <meta name="description" content="LeeMeng" />
+    <meta name="keywords" content="Python, Jupyter Notebook, Data Science, Visualization" />
+    <meta name="author" content="Lee Meng" />
 
-        <link rel="shortcut icon" href="theme/images/favicon.ico" />
-        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7CLibre+Baskerville:400,400italic,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/clear.css' />
-        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/common.css' />
-        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/font-awesome.min.css' />
-        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/carouFredSel.css' />
-        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/sm-clean.css' />
-        <link rel="stylesheet" type="text/css"  href='//leemengtaiwan.github.io/theme/css/style.css' />
-        <link rel="stylesheet" type="text/css" href='//leemengtaiwan.github.io/theme/css/ipython.css' />
-        <link rel="stylesheet" type="text/css" href='//leemengtaiwan.github.io/theme/css/progress-bar.css' />
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!--[if lt IE 9]>
-                <script src="js/html5.js"></script>
-        <![endif]-->
+    <!-- CSS
+    ================================================== -->
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="//leemengtaiwan.github.io/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='//leemengtaiwan.github.io/theme/css/progress-bar.css' />
 
-        <link href="//leemengtaiwan.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Space for Data Scientists Full Atom Feed" />
-        <link href="//leemengtaiwan.github.io/feeds/deep-learning.atom.xml" type="application/atom+xml" rel="alternate" title="Space for Data Scientists Categories Atom Feed" />
+    <!-- script
+    ================================================== -->
+    <script src="//leemengtaiwan.github.io/theme/js/modernizr.js"></script>
+    <script src="//leemengtaiwan.github.io/theme/js/pace.min.js"></script>
 
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="theme/images/favicon.ico" type="image/x-icon"/>
 
-    <meta name="tags" content="Python" />
+    <!--Google Analysis-->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments)};
+        gtag('js', new Date());
+        gtag('config', 'UA-106559980-1');
+    </script>
+
+<title>LeeMeng - Find Word Semantic by Using Word2vec in TensorFlow</title>    <meta name="tags" content="Python" />
     <meta name="tags" content="TensorFlow" />
     <meta name="tags" content="Word2Vec" />
     <meta name="tags" content="NLP" />
     <meta name="tags" content="VSM" />
 
-        <!-- Global Site Tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments)};
-        gtag('js', new Date());
-
-        gtag('config', 'UA-106559980-1');
-        </script>
-
-
 </head>
-<body class="single-post">
-
-                    <!-- Preloader Gif -->
-        <table class="doc-loader">
-            <tbody>
-                <tr>
-                    <td>
-                        <img src="theme/images/ajax-document-loader.gif" alt="Loading...">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
 
 
-                    <!-- Left Sidebar -->
-        <div id="sidebar" class="sidebar">
-            <div class="menu-left-part">
-                <div class="search-holder">
-                    <form class="search" action="/search.html">
-                        <label>
-                            <input type="search" class="search-field" placeholder="Type here to search..." value="" name="q" id="s" title="Search for:">
-                        </label>
-                    </form>
-                </div>
-                <div class="site-info-holder">
-                    <div class="site-title"><a href="index.html">Space for Data Scientists</a></div>
-                    <p class="site-description">
-                        Python, 資料科學, 機器學習, Visualization, 雜七雜八
-                    </p>
-                </div>
-                <nav id="header-main-menu">
-                    <ul class="main-menu sm sm-clean">
-                        <li><a href="index.html" class="current">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <!--<li><a href="scroll.html">Scroll</a></li>-->
-                        <!--<li><a href="contact.html">Contact</a></li>-->
-                    </ul>
-                </nav>
-                <footer>
-                    <div class="footer-info">
-                        Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a><i class="fa-python"></i>,
-                        <br>
-                        Crafted with <i class="fa fa-heart"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>.
-                    </div>
-                </footer>
-            </div>
-            <div class="menu-right-part">
-                <div class="logo-holder">
-                    <a href="index.html">
-                        <img src="//leemengtaiwan.github.io/theme/images/logo.png" alt="LeeMeng">
-                    </a>
-                </div>
-                <div class="toggle-holder">
-                    <div id="toggle">
-                        <div class="menu-line"></div>
-                    </div>
-                </div>
-                <div class="social-holder">
-                    <div class="social-list">
-<a href="https://github.com/leemengtaiwan" target="_blank"><i class="fa fa-github"></i></a><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank"><i class="fa fa-linkedin"></i></a><a href="https://www.instagram.com/leemengtaiwan/" target="_blank"><i class="fa fa-instagram"></i></a><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank"><i class="fa fa-facebook-f"></i></a><a href="mailto:b9875001@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>                    </div>
-                </div>
-                <div class="fixed scroll-top"><i class="fa fa-caret-square-o-up" aria-hidden="true"></i></div>
-            </div>
-            <div class="clear"></div>
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="//leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
         </div>
 
-
-        <!-- Single Content -->
-        <div id="content" class="site-content center-relative">
-            <div class="KW_progressContainer">
-                <div class="KW_progressBar"></div>
-            </div>
-            <div class="single-post-wrapper content-1070 center-relative">
-                <article class="center-relative">
-                    <h1 class="entry-title">Find Word Semantic by Using Word2vec in TensorFlow</h1>
-                    <div class="post-info content-660 center-relative">
-        <div class="cat-links">
-            <ul>
-                    <li>
-                        <a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
-                    </li>
-                    <li>
-                        <a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">TensorFlow</a>
-                    </li>
-                    <li>
-                        <a href="//leemengtaiwan.github.io/tag/word2vec.html" rel="tag">Word2Vec</a>
-                    </li>
-                    <li>
-                        <a href="//leemengtaiwan.github.io/tag/nlp.html" rel="tag">NLP</a>
-                    </li>
-                    <li>
-                        <a href="//leemengtaiwan.github.io/tag/vsm.html" rel="tag">VSM</a>
-                    </li>
+        <nav class="header-nav-wrap">
+            <ul class="header-nav">
+                <li><a href="../index.html#home" title="home">Home</a></li>
+                <li><a href="../index.html#about" title="about">About</a></li>
+                <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
+                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
+                <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
             </ul>
-        </div>
-                        <div class="entry-date published">2017-09-30 (土)</div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="entry-content">
+        </nav>
 
-                        
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(//leemengtaiwan.github.io/theme/images/background/default.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
+                            <a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                            <a href="//leemengtaiwan.github.io/tag/word2vec.html" rel="tag">Word2Vec</a>
+                            <a href="//leemengtaiwan.github.io/tag/nlp.html" rel="tag">NLP</a>
+                            <a href="//leemengtaiwan.github.io/tag/vsm.html" rel="tag">VSM</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="//leemengtaiwan.github.io/find-word-semantic-by-using-word2vec-in-tensorflow.html" title="">
+                            Find Word Semantic by Using Word2vec in TensorFlow
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2017-09-30 (土)</li>
+                        <li class="author">
+                            By
+                            <span>Lee Meng</span>
+                        </li>
+                        <li><a href="https://unsplash.com/@lucabravo" target="_blank">PhotoCredit</a></li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+
+        <div class="row blog-content">
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The goal of this assignment is to train a Word2Vec skip-gram model over <a href="http://mattmahoney.net/dc/textdata">Text8</a> data using Tensorflow.</p>
@@ -157,8 +134,7 @@
 </caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Unlike supervised learning, we don't have labels that tell us 'kitten' = 'cat'. So how do we train a model that will learn the relationship between these two words?</p>
@@ -167,8 +143,7 @@
 </caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As shown above, for each words like 'cat' in raw text, we will treat them as <strong>target word</strong> and the words surrounding it as <strong>context</strong> and construct the training instances (x, y) where x is target word and y is one of the word in context. And the definition of 'context' is decided by the parameter 'window size'.</p>
@@ -176,8 +151,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Libraries">Libraries<a class="anchor-link" href="#Libraries">¶</a></h2>
@@ -186,7 +160,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [107]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># These are all the modules we'll be using later. Make sure you can import them</span>
@@ -213,16 +187,14 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Raw-text-data">Raw text data<a class="anchor-link" href="#Raw-text-data">¶</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Download-/-load-data">Download / load data<a class="anchor-link" href="#Download-/-load-data">¶</a></h3><p>Download the data from the source website if necessary. will store the zip file in the 'datasets' subdirectory.</p>
@@ -231,7 +203,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [2]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'http://mattmahoney.net/dc/'</span>
@@ -264,7 +236,7 @@
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Found and verified datasets/text8.zip. size: 31344016
 </pre>
@@ -273,8 +245,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Turn-data-into-words">Turn data into words<a class="anchor-link" href="#Turn-data-into-words">¶</a></h3><p>Read the data into a string.</p>
@@ -283,7 +254,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [63]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">read_data</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
@@ -302,7 +273,7 @@
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Data size 17005207
 </pre>
@@ -311,8 +282,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Look-into-text-corpus">Look into text corpus<a class="anchor-link" href="#Look-into-text-corpus">¶</a></h3><p>The 'data size' above mean how many words we have in the data. That is, there are about 17 millions words!<br />
@@ -320,8 +290,7 @@ Let's show some parts of the text data to make some sense of it.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Some phrases which include word 'cat' with window size = '2'.</p>
@@ -330,7 +299,7 @@ Let's show some parts of the text data to make some sense of it.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [27]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cats</span> <span class="o">=</span> <span class="p">[</span><span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">idx</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s1">'cat'</span> <span class="ow">or</span> <span class="n">word</span> <span class="o">==</span> <span class="s1">'cats'</span><span class="p">]</span>
@@ -343,7 +312,7 @@ Let's show some parts of the text data to make some sense of it.</p>
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>the cartoon cat garfield would
 amount of cats that roam
@@ -356,8 +325,7 @@ force australia cat six two
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Some phrases which include word 'kitten' with window size = '2'.</p>
@@ -366,7 +334,7 @@ force australia cat six two
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [28]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">kitten</span> <span class="o">=</span> <span class="p">[</span><span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">idx</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s1">'kitten'</span><span class="p">]</span>
@@ -379,7 +347,7 @@ force australia cat six two
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>put the kitten nermal in
 s sex kitten in the
@@ -392,8 +360,7 @@ called a kitten which is
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Create-training-data">Create training data<a class="anchor-link" href="#Create-training-data">¶</a></h2><p>In order to let TensorFlow make use of the text corpus, we have to transform the text corpus into sequence of numbers. The way to achieve this to build a dictionary which map every word to a unique number and use that dictionary to transform the corpus into number-based data.</p>
@@ -401,16 +368,14 @@ called a kitten which is
 </caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice that some rare words may appear very few times in the entire text corpus. We may want to exclude these terms to keep our dictionary in a reasonable size. In order to do this, we will build the dictionary and view these terms as UNK tokens. UNK means unknown word that doesn't exist in the vocabulary set and the default number of a UNK in dictionary is 0 as shown above.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Decide-dictionary-size">Decide dictionary size<a class="anchor-link" href="#Decide-dictionary-size">¶</a></h3><p>Depend on the size of the vocabulary, we will construct a dictionary for top <strong>vocabulary_size - 1</strong> common words. For example, if the <code>vocabulary_size = 50000</code>, we will first count the frequencies of every word appeared in the text corpus and put the most common 49,999 terms into our vocabulary and make the rest of words as UNK token. ( thus the 50,000 th term in the vocabulary).</p>
@@ -419,7 +384,7 @@ called a kitten which is
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [64]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocabulary_size</span> <span class="o">=</span> <span class="mi">50000</span>
@@ -428,8 +393,7 @@ called a kitten which is
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Build-dictionary-and-transform-text-corpus-into-sequence-of-numbers">Build dictionary and transform text corpus into sequence of numbers<a class="anchor-link" href="#Build-dictionary-and-transform-text-corpus-into-sequence-of-numbers">¶</a></h3>
@@ -438,7 +402,7 @@ called a kitten which is
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [65]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">build_dataset</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
@@ -501,7 +465,7 @@ called a kitten which is
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Most common words (+UNK) in text corpus:
 [['UNK', 418391], ('the', 1061396), ('of', 593677), ('and', 416629), ('one', 411764)]
@@ -511,8 +475,7 @@ called a kitten which is
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="See-transformed-text-corpus">See transformed text corpus<a class="anchor-link" href="#See-transformed-text-corpus">¶</a></h3>
@@ -521,7 +484,7 @@ called a kitten which is
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [71]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sample_idx</span> <span class="o">=</span> <span class="mi">1000</span>
@@ -536,7 +499,7 @@ called a kitten which is
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>"american individualist anarchism benjamin tucker in one eight two five"
 
@@ -549,8 +512,7 @@ was transformed into
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Function-to-generate-a-training-batch-for-the-skip-gram-model.">Function to generate a training batch for the skip-gram model.<a class="anchor-link" href="#Function-to-generate-a-training-batch-for-the-skip-gram-model.">¶</a></h2><p>As usual, we will use mini-batch GD to update our model's parameters.<br />
@@ -561,7 +523,7 @@ Other than batch_size, we also have to decide the range of context surrounding t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [93]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># global variable to randomize mini-batch</span>
@@ -641,7 +603,7 @@ Other than batch_size, we also have to decide the range of context surrounding t
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>data: "anarchism originated as a term of abuse first"
 
@@ -670,24 +632,21 @@ Other than batch_size, we also have to decide the range of context surrounding t
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Word2Vec-skip-gram-model.">Word2Vec skip-gram model.<a class="anchor-link" href="#Word2Vec-skip-gram-model.">¶</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center><img src="images/word2vec_model.png" style="width:70%" /><caption><center> <u><font color="purple"> Figure 5</font></u><font color="purple">: Word2vec model<br /> <font color="black"> </font></font></center>
 </caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Computation-graph">Computation graph<a class="anchor-link" href="#Computation-graph">¶</a></h3>
@@ -696,7 +655,7 @@ Other than batch_size, we also have to decide the range of context surrounding t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [94]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
@@ -764,8 +723,7 @@ Other than batch_size, we also have to decide the range of context surrounding t
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Train-the-model">Train the model<a class="anchor-link" href="#Train-the-model">¶</a></h3>
@@ -774,7 +732,7 @@ Other than batch_size, we also have to decide the range of context surrounding t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [97]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">100001</span>
@@ -815,26 +773,26 @@ Other than batch_size, we also have to decide the range of context surrounding t
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Initialized
 </pre>
 </div>
 </div>
 <div class="output_area">
-<div class="prompt"></div>
-<div id="5bf5911a-762b-4850-b609-fff77d79cc18"></div>
+
+<div id="09216ab1-3741-4d58-82fb-1afeb6c67542"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#5bf5911a-762b-4850-b609-fff77d79cc18');
+var element = $('#09216ab1-3741-4d58-82fb-1afeb6c67542');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
+{"model_id": "479bac87e8864793a2657306231c3b2a", "version_minor": 0, "version_major": 2}
 </script>
 </div>
 </div>
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Average loss at step 0: 7.942154
 Nearest to up: refit, airmen, unexplored, scharnhorst, histones, envelopes, wanna, wick,
@@ -1070,8 +1028,7 @@ Nearest to will: would, could, must, can, should, may, might, cannot,
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Transform-embedding-into-2D-using-t-SNE">Transform embedding into 2D using t-SNE<a class="anchor-link" href="#Transform-embedding-into-2D-using-t-SNE">¶</a></h2>
@@ -1080,7 +1037,7 @@ Nearest to will: would, could, must, can, should, may, might, cannot,
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [100]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">final_embeddings</span><span class="o">.</span><span class="n">shape</span>
@@ -1091,7 +1048,7 @@ Nearest to will: would, could, must, can, should, may, might, cannot,
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[100]:</div>
+
 <div class="output_text output_subarea output_execute_result">
 <pre>(50000, 128)</pre>
 </div>
@@ -1101,7 +1058,7 @@ Nearest to will: would, could, must, can, should, may, might, cannot,
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [101]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
@@ -1114,8 +1071,7 @@ two_d_embeddings = tsne.fit_transform(final_embeddings[1:num_points+1, :])
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Visualize-result">Visualize result<a class="anchor-link" href="#Visualize-result">¶</a></h2>
@@ -1124,7 +1080,7 @@ two_d_embeddings = tsne.fit_transform(final_embeddings[1:num_points+1, :])
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [110]:</div>
+
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">embeddings</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
@@ -1151,7 +1107,7 @@ two_d_embeddings = tsne.fit_transform(final_embeddings[1:num_points+1, :])
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt"></div>
+
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA28AAANqCAYAAAAaAnNPAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XtY1HX+///7OCBnlYMHUGFUVBIoSjFtTTb3k5ZkVt/y
@@ -3712,8 +3668,7 @@ AAAAAHiA4Q0AAAAAPPAD6qjcfWntDHEAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Todo">Todo<a class="anchor-link" href="#Todo">¶</a></h2><p>CBOW</p>
@@ -3722,8 +3677,7 @@ AAAAAHiA4Q0AAAAAPPAD6qjcfWntDHEAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="References">References<a class="anchor-link" href="#References">¶</a></h2><ul>
@@ -3763,23 +3717,137 @@ AAAAAHiA4Q0AAAAAPPAD6qjcfWntDHEAAAAASUVORK5CYII=
 }
 </script>
 
+
+                <!--Tags-->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="//leemengtaiwan.github.io/tag/python.html" rel="tag">Python</a>
+                        <a href="//leemengtaiwan.github.io/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                        <a href="//leemengtaiwan.github.io/tag/word2vec.html" rel="tag">Word2Vec</a>
+                        <a href="//leemengtaiwan.github.io/tag/nlp.html" rel="tag">NLP</a>
+                        <a href="//leemengtaiwan.github.io/tag/vsm.html" rel="tag">VSM</a>
+                    </span>
+
+                </p>
+
+
+
+
+
+
+
+
+
+
+                <!--Pagination-->
+                <div class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a href="//leemengtaiwan.github.io/sqlite-note.html" rel="prev">
+                                <span>Previous Post</span>
+                                SQLite 筆記
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <a href="//leemengtaiwan.github.io/simple-convolutional-neural-network-using-tensorflow.html" rel="next">
+                                <span>Next Post</span>
+                                Simple Convolutional Neural Network using TensorFlow
+                            </a>
+                        </div>
                     </div>
-                    <div class="clear"></div>
-                </article>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+
+            </div><!-- end blog-content__main -->
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = 'Find Word Semantic by Using Word2vec in TensorFlow';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="//leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
             </div>
         </div>
 
-                    <!--Load JavaScript-->
-        <script type="text/javascript" src="//leemengtaiwan.github.io/theme/js/jquery.js"></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/imagesloaded.pkgd.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.nicescroll.min.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.smartmenus.min.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.carouFredSel-6.0.0-packed.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.mousewheel.min.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.touchSwipe.min.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/jquery.easing.1.3.js'></script>
-        <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/main.js'></script>
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
 
-            <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
-    </body>
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="//leemengtaiwan.github.io/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="//leemengtaiwan.github.io/theme/js/plugins.js"></script>
+    <script src="//leemengtaiwan.github.io/theme/js/main.js"></script>
+
+    <script type='text/javascript' src='//leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
+
+</body>
 </html>
