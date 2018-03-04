@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="leemengtaiwan.github.io/" rel="alternate"></link><link href="leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>leemengtaiwan.github.io/</id><updated>2018-03-02T15:34:00+09:00</updated><entry><title>BeautifulSoup 筆記</title><link href="leemengtaiwan.github.io/beautifulsoup-cheat-sheet.html" rel="alternate"></link><published>2018-03-02T15:34:00+09:00</published><updated>2018-03-02T15:34:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:None,2018-03-02:leemengtaiwan.github.io/beautifulsoup-cheat-sheet.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-03-02T15:34:00+09:00</updated><entry><title>BeautifulSoup 筆記</title><link href="https://leemengtaiwan.github.io/beautifulsoup-cheat-sheet.html" rel="alternate"></link><published>2018-03-02T15:34:00+09:00</published><updated>2018-03-02T15:34:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-02:/beautifulsoup-cheat-sheet.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -367,7 +367,7 @@ tbody in table
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="python"></category><category term="beautifulsoup"></category><category term="html"></category></entry><entry><title>Seaborn 筆記</title><link href="leemengtaiwan.github.io/seaborn-cheat-sheet.html" rel="alternate"></link><published>2018-03-02T00:10:00+09:00</published><updated>2018-03-02T00:10:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:None,2018-03-02:leemengtaiwan.github.io/seaborn-cheat-sheet.html</id><summary type="html">
+</content><category term="python"></category><category term="beautifulsoup"></category><category term="html"></category></entry><entry><title>Seaborn 筆記</title><link href="https://leemengtaiwan.github.io/seaborn-cheat-sheet.html" rel="alternate"></link><published>2018-03-02T00:10:00+09:00</published><updated>2018-03-02T00:10:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-02:/seaborn-cheat-sheet.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -880,7 +880,7 @@ tbody in table
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="python"></category><category term="seaborn"></category></entry><entry><title>SQLite 筆記</title><link href="leemengtaiwan.github.io/sqlite-note.html" rel="alternate"></link><published>2018-02-23T22:00:00+09:00</published><updated>2018-02-23T22:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:None,2018-02-23:leemengtaiwan.github.io/sqlite-note.html</id><summary type="html">
+</content><category term="python"></category><category term="seaborn"></category></entry><entry><title>SQLite 筆記</title><link href="https://leemengtaiwan.github.io/sqlite-note.html" rel="alternate"></link><published>2018-02-23T22:00:00+09:00</published><updated>2018-02-23T22:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-02-23:/sqlite-note.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -1014,7 +1014,7 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="SQL"></category><category term="SQLite"></category></entry><entry><title>Find Word Semantic by Using Word2vec in TensorFlow</title><link href="leemengtaiwan.github.io/find-word-semantic-by-using-word2vec-in-tensorflow.html" rel="alternate"></link><published>2017-09-30T18:30:00+09:00</published><updated>2017-09-30T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:None,2017-09-30:leemengtaiwan.github.io/find-word-semantic-by-using-word2vec-in-tensorflow.html</id><summary type="html">
+</content><category term="SQL"></category><category term="SQLite"></category></entry><entry><title>Find Word Semantic by Using Word2vec in TensorFlow</title><link href="https://leemengtaiwan.github.io/find-word-semantic-by-using-word2vec-in-tensorflow.html" rel="alternate"></link><published>2017-09-30T18:30:00+09:00</published><updated>2017-09-30T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-30:/find-word-semantic-by-using-word2vec-in-tensorflow.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -1676,13 +1676,13 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="1b495279-23d6-4d86-bab3-1327a8695665"&gt;&lt;/div&gt;
+&lt;div id="b06620d5-43b5-4476-a9ed-df2b116e6cec"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#1b495279-23d6-4d86-bab3-1327a8695665');
+var element = $('#b06620d5-43b5-4476-a9ed-df2b116e6cec');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
+{"version_minor": 0, "version_major": 2, "model_id": "479bac87e8864793a2657306231c3b2a"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4611,7 +4611,7 @@ AAAAAHiA4Q0AAAAAPPAD6qjcfWntDHEAAAAASUVORK5CYII=
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="Python"></category><category term="TensorFlow"></category><category term="Word2Vec"></category><category term="NLP"></category><category term="VSM"></category></entry><entry><title>Simple Convolutional Neural Network using TensorFlow</title><link href="leemengtaiwan.github.io/simple-convolutional-neural-network-using-tensorflow.html" rel="alternate"></link><published>2017-09-26T18:30:00+09:00</published><updated>2017-09-26T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:None,2017-09-26:leemengtaiwan.github.io/simple-convolutional-neural-network-using-tensorflow.html</id><summary type="html">
+</content><category term="Python"></category><category term="TensorFlow"></category><category term="Word2Vec"></category><category term="NLP"></category><category term="VSM"></category></entry><entry><title>Simple Convolutional Neural Network using TensorFlow</title><link href="https://leemengtaiwan.github.io/simple-convolutional-neural-network-using-tensorflow.html" rel="alternate"></link><published>2017-09-26T18:30:00+09:00</published><updated>2017-09-26T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-26:/simple-convolutional-neural-network-using-tensorflow.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -5000,10 +5000,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="ff56b9d4-3ba3-4333-8e53-9d46424e1758"&gt;&lt;/div&gt;
+&lt;div id="162e0bae-f939-46f9-8616-824387ddbd1b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#ff56b9d4-3ba3-4333-8e53-9d46424e1758');
+var element = $('#162e0bae-f939-46f9-8616-824387ddbd1b');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -5769,13 +5769,13 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="b5fe23f7-7d8f-4491-a808-f751c140992d"&gt;&lt;/div&gt;
+&lt;div id="afe88db8-75ec-41cc-a881-2c145b3f4f46"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#b5fe23f7-7d8f-4491-a808-f751c140992d');
+var element = $('#afe88db8-75ec-41cc-a881-2c145b3f4f46');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
+{"version_minor": 0, "version_major": 2, "model_id": "255b2330df764c069bf0fa8b72e282b3"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5966,10 +5966,10 @@ Test accuracy: 89.4%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="bfcb432c-8b46-4aa3-8cd1-678aa1133be0"&gt;&lt;/div&gt;
+&lt;div id="89d32389-b6c3-41ad-9baf-01a0b478ecb1"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#bfcb432c-8b46-4aa3-8cd1-678aa1133be0');
+var element = $('#89d32389-b6c3-41ad-9baf-01a0b478ecb1');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -6735,13 +6735,13 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="74f00822-a427-4765-ac9d-6e280535eee4"&gt;&lt;/div&gt;
+&lt;div id="4847aef4-09b1-4b2f-b478-c8437b7dc6b8"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#74f00822-a427-4765-ac9d-6e280535eee4');
+var element = $('#4847aef4-09b1-4b2f-b478-c8437b7dc6b8');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
+{"version_minor": 0, "version_major": 2, "model_id": "ae81313ad6ad4b428ce63444b7f0ae73"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -6943,10 +6943,10 @@ Test accuracy: 90.7%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="0631da4e-b7b6-4dd1-8f2a-f5530de431a9"&gt;&lt;/div&gt;
+&lt;div id="e208faaf-e913-4d4b-8a97-7c603ca5d5cc"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#0631da4e-b7b6-4dd1-8f2a-f5530de431a9');
+var element = $('#e208faaf-e913-4d4b-8a97-7c603ca5d5cc');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -7712,13 +7712,13 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="add86a94-850b-4cc2-bb25-5d1fd503210b"&gt;&lt;/div&gt;
+&lt;div id="6208e8a6-0af3-4762-9945-a0ff8a67d9a7"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#add86a94-850b-4cc2-bb25-5d1fd503210b');
+var element = $('#6208e8a6-0af3-4762-9945-a0ff8a67d9a7');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
+{"version_minor": 0, "version_major": 2, "model_id": "b240065c4ffa4ca29432614b189f2e04"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -7779,7 +7779,7 @@ Test accuracy: 94.6%
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="Python"></category><category term="Tensorflow"></category><category term="Deep Learning"></category><category term="Convolutional Neural Network"></category><category term="CNN"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Regularization for Multi-layer Neural Networks in Tensorflow</title><link href="leemengtaiwan.github.io/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="alternate"></link><published>2017-09-25T16:00:00+09:00</published><updated>2017-09-25T16:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:None,2017-09-25:leemengtaiwan.github.io/regularization-for-multi-layer-neural-networks-in-tensorflow.html</id><summary type="html">
+</content><category term="Python"></category><category term="Tensorflow"></category><category term="Deep Learning"></category><category term="Convolutional Neural Network"></category><category term="CNN"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Regularization for Multi-layer Neural Networks in Tensorflow</title><link href="https://leemengtaiwan.github.io/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="alternate"></link><published>2017-09-25T16:00:00+09:00</published><updated>2017-09-25T16:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-25:/regularization-for-multi-layer-neural-networks-in-tensorflow.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -8148,13 +8148,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="bf663160-a5ab-4d61-a63f-ab6800f36ec4"&gt;&lt;/div&gt;
+&lt;div id="35af5695-b0f8-4bff-baed-a463abe96441"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#bf663160-a5ab-4d61-a63f-ab6800f36ec4');
+var element = $('#35af5695-b0f8-4bff-baed-a463abe96441');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
+{"version_minor": 0, "version_major": 2, "model_id": "95a1e075513f4d02a8579c4fcd5b8509"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8217,13 +8217,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="98b79451-39ae-48a2-9f2a-5e95921e0d0c"&gt;&lt;/div&gt;
+&lt;div id="3814e2dd-8f74-4c58-a017-3a7051850219"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#98b79451-39ae-48a2-9f2a-5e95921e0d0c');
+var element = $('#3814e2dd-8f74-4c58-a017-3a7051850219');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
+{"version_minor": 0, "version_major": 2, "model_id": "6b6986da296646b9aac2266326edcf21"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8278,13 +8278,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="842c3db9-f61a-484b-a6ea-2e0cda2658fe"&gt;&lt;/div&gt;
+&lt;div id="d5f69593-dbaa-41f8-829c-0eccc2ed9ec0"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#842c3db9-f61a-484b-a6ea-2e0cda2658fe');
+var element = $('#d5f69593-dbaa-41f8-829c-0eccc2ed9ec0');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
+{"version_minor": 0, "version_major": 2, "model_id": "312b63e26f364cec95540b452b4ec95c"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8339,13 +8339,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="97ffdf46-9227-4a68-bd7e-c24c97335948"&gt;&lt;/div&gt;
+&lt;div id="1ac0b1f4-2868-4dba-af21-3f915fecf4fa"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#97ffdf46-9227-4a68-bd7e-c24c97335948');
+var element = $('#1ac0b1f4-2868-4dba-af21-3f915fecf4fa');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
+{"version_minor": 0, "version_major": 2, "model_id": "f5a5be47b2a14f488d9d302df5d5988d"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8406,13 +8406,13 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="f3024262-139b-4dce-b54b-d80910614490"&gt;&lt;/div&gt;
+&lt;div id="bf1e62c6-5b30-46ec-9418-b9614b2d40ae"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f3024262-139b-4dce-b54b-d80910614490');
+var element = $('#bf1e62c6-5b30-46ec-9418-b9614b2d40ae');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
+{"version_minor": 0, "version_major": 2, "model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8464,7 +8464,7 @@ Test acc: 94.3%
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="Tensorflow"></category><category term="Python"></category><category term="Deep Learning"></category><category term="Regularization"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title><link href="leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="alternate"></link><published>2017-09-21T23:50:00+09:00</published><updated>2017-09-21T23:50:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:None,2017-09-21:leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</id><summary type="html">
+</content><category term="Tensorflow"></category><category term="Python"></category><category term="Deep Learning"></category><category term="Regularization"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title><link href="https://leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="alternate"></link><published>2017-09-21T23:50:00+09:00</published><updated>2017-09-21T23:50:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-21:/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -8817,13 +8817,13 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="97c340da-8539-4045-a13d-929880ef0f68"&gt;&lt;/div&gt;
+&lt;div id="608b58ca-ef99-4e1f-935e-771e5c785f23"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#97c340da-8539-4045-a13d-929880ef0f68');
+var element = $('#608b58ca-ef99-4e1f-935e-771e5c785f23');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
+{"version_minor": 0, "version_major": 2, "model_id": "a776469c0f394bab94bc900cf03f469d"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8974,13 +8974,13 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="6e8f6c4a-ebd0-4c48-8eba-14de7119e166"&gt;&lt;/div&gt;
+&lt;div id="2cb1b5ce-5f99-4e43-bcae-73adea392f62"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#6e8f6c4a-ebd0-4c48-8eba-14de7119e166');
+var element = $('#2cb1b5ce-5f99-4e43-bcae-73adea392f62');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
+{"version_minor": 0, "version_major": 2, "model_id": "2d2a36e34f9843b5a38a9fe105281093"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -9140,13 +9140,13 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="80336c13-126d-4619-a9e4-f70cf2f8e87e"&gt;&lt;/div&gt;
+&lt;div id="faa5d194-d3c5-4b35-aef4-6183934f6647"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#80336c13-126d-4619-a9e4-f70cf2f8e87e');
+var element = $('#faa5d194-d3c5-4b35-aef4-6183934f6647');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
-{"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
+{"version_minor": 0, "version_major": 2, "model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17"}
 &lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -9203,7 +9203,7 @@ Test acc: 88.7%
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="Python"></category><category term="TensorFlow"></category><category term="Deep Learning"></category><category term="Neural Networks"></category><category term="Optimization"></category><category term="NotMNIST"></category><category term="Machine Learning"></category><category term="Image Recognition"></category><category term="SGD"></category><category term="Gradient Descent"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Simple Image Recognition using NotMNIST dataset</title><link href="leemengtaiwan.github.io/simple-image-recognition-using-notmnist-dataset.html" rel="alternate"></link><published>2017-09-19T20:30:00+09:00</published><updated>2017-09-19T20:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:None,2017-09-19:leemengtaiwan.github.io/simple-image-recognition-using-notmnist-dataset.html</id><summary type="html">
+</content><category term="Python"></category><category term="TensorFlow"></category><category term="Deep Learning"></category><category term="Neural Networks"></category><category term="Optimization"></category><category term="NotMNIST"></category><category term="Machine Learning"></category><category term="Image Recognition"></category><category term="SGD"></category><category term="Gradient Descent"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Simple Image Recognition using NotMNIST dataset</title><link href="https://leemengtaiwan.github.io/simple-image-recognition-using-notmnist-dataset.html" rel="alternate"></link><published>2017-09-19T20:30:00+09:00</published><updated>2017-09-19T20:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-19:/simple-image-recognition-using-notmnist-dataset.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -16160,7 +16160,7 @@ AAAASUVORK5CYII=
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="Python"></category><category term="Matplotlib"></category><category term="Data Preprocessing"></category><category term="Data Cleaning"></category><category term="NotMNIST"></category><category term="Sklearn"></category><category term="Machine Learning"></category><category term="Image Recognition"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Purpose of this blog</title><link href="leemengtaiwan.github.io/purpose-of-this-blog.html" rel="alternate"></link><published>2017-09-17T12:30:00+09:00</published><updated>2017-09-17T12:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:None,2017-09-17:leemengtaiwan.github.io/purpose-of-this-blog.html</id><summary type="html">
+</content><category term="Python"></category><category term="Matplotlib"></category><category term="Data Preprocessing"></category><category term="Data Cleaning"></category><category term="NotMNIST"></category><category term="Sklearn"></category><category term="Machine Learning"></category><category term="Image Recognition"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Purpose of this blog</title><link href="https://leemengtaiwan.github.io/purpose-of-this-blog.html" rel="alternate"></link><published>2017-09-17T12:30:00+09:00</published><updated>2017-09-17T12:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-17:/purpose-of-this-blog.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
