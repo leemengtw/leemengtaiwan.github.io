@@ -85,7 +85,7 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="顯示-table-schema"&gt;顯示 table schema&lt;a class="anchor-link" href="#顯示-table-schema"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;.schema &lt;table_name&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;.schema &amp;lt;TABLE_NAME&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -97,11 +97,11 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;在 Table T 的 Column C 建立 index&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;CREATE INDEX &lt;index_name&gt; ON T(C);
+&lt;pre&gt;&lt;code&gt;CREATE INDEX &amp;lt;INDEX_NAME&amp;gt; ON T(C);
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;砍掉 index&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;DROP INDEX &lt;index_name&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;DROP INDEX &amp;lt;INDEX_NAME&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;

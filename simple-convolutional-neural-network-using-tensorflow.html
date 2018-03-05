@@ -116,7 +116,7 @@
                             By
                             <span>Lee Meng</span>
                         </li>
-                        <li><a href="https://unsplash.com/@lucabravo" target="_blank">PhotoCredit</a></li>
+                        <li><a href="https://unsplash.com/@lucabravo" target="_blank" style="color:rgba(255, 255, 255, 0.5)">PhotoCredit</a></li>
                     </ul>
 
                 </article>
@@ -352,7 +352,7 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 <ul>
 <li>We set both convoluational layers' output depth = 16.</li>
 <li>We use filters/patches of shape (5 * 5) to find features in local area of a image.</li>
-<li>The new width and height of the convoluational layer will be half of that in the previous layer because we use stride = 2 and SAME padding to 'slide' our patches. Thus 28 -> 14 -> 7.</li>
+<li>The new width and height of the convoluational layer will be half of that in the previous layer because we use stride = 2 and SAME padding to 'slide' our patches. Thus 28 -&gt; 14 -&gt; 7.</li>
 <li>Notice that ReLU layers applied after convoluational layers are omitted for simplicity.</li>
 <li>The activations in C2 fully connected to the FC layer. For each neuron on the FC layer, there are $7 * 7 * 16 = 784$ weights ($785$ for bias ), so there are $785 * 64 = 50240$ parameters in the FC layer.</li>
 </ul>
@@ -516,10 +516,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 <div class="output">
 <div class="output_area">
 
-<div id="f6428678-077c-48a7-87d1-ad45ac82fc49"></div>
+<div id="2fbdfb0e-cadd-49b0-ac91-c48374af34e6"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#f6428678-077c-48a7-87d1-ad45ac82fc49');
+var element = $('#2fbdfb0e-cadd-49b0-ac91-c48374af34e6');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -1285,10 +1285,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 <div class="output_area">
 
-<div id="1513317d-b109-4072-b02c-02a0b58df9c0"></div>
+<div id="a5e5ae68-9260-45b8-9772-f9a8ea49d78c"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#1513317d-b109-4072-b02c-02a0b58df9c0');
+var element = $('#a5e5ae68-9260-45b8-9772-f9a8ea49d78c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_minor": 0, "version_major": 2}
@@ -1482,10 +1482,10 @@ Test accuracy: 89.4%
 <div class="output">
 <div class="output_area">
 
-<div id="c56bbefa-4856-4a69-98cb-563d5ebb5552"></div>
+<div id="18e70b25-0a10-4270-94c5-7e5415b108c5"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#c56bbefa-4856-4a69-98cb-563d5ebb5552');
+var element = $('#18e70b25-0a10-4270-94c5-7e5415b108c5');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -2251,10 +2251,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 <div class="output_area">
 
-<div id="7314f857-1f80-4c1d-8087-04c56fba08ce"></div>
+<div id="368ece3b-a74e-4f88-ae3a-920ec47d4014"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#7314f857-1f80-4c1d-8087-04c56fba08ce');
+var element = $('#368ece3b-a74e-4f88-ae3a-920ec47d4014');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_minor": 0, "version_major": 2}
@@ -2341,21 +2341,21 @@ Test accuracy: 90.7%
             <span class="p">[</span><span class="n">patch_size</span><span class="p">,</span> <span class="n">patch_size</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">depth</span><span class="p">],</span> <span class="n">stddev</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
     <span class="n">layer3_biases</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">depth</span><span class="p">]))</span>
     
-    <span class="c1"># CONV -> FC</span>
+    <span class="c1"># CONV -&gt; FC</span>
     <span class="n">layer4_weights</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
         <span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">(</span>
             <span class="p">[(</span><span class="n">image_size</span> <span class="o">//</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">image_size</span> <span class="o">//</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">depth</span><span class="p">,</span> <span class="n">num_hidden</span><span class="p">],</span>
             <span class="n">stddev</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
     <span class="n">layer4_biases</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">num_hidden</span><span class="p">]))</span>
     
-    <span class="c1"># FC -> output</span>
+    <span class="c1"># FC -&gt; output</span>
     <span class="n">layer5_weights</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
         <span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">([</span><span class="n">num_hidden</span><span class="p">,</span> <span class="n">num_labels</span><span class="p">],</span> <span class="n">stddev</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
     <span class="n">layer5_biases</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">num_labels</span><span class="p">]))</span>
 
     <span class="c1"># Model.</span>
     <span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-        <span class="c1"># [CONV -> RELU -> POOL] * 3</span>
+        <span class="c1"># [CONV -&gt; RELU -&gt; POOL] * 3</span>
         <span class="n">conv</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">layer1_weights</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'SAME'</span><span class="p">)</span>
         <span class="n">hidden</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">conv</span> <span class="o">+</span> <span class="n">layer1_biases</span><span class="p">)</span>
         <span class="n">pool</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">max_pool</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'SAME'</span><span class="p">)</span>
@@ -2459,10 +2459,10 @@ Test accuracy: 90.7%
 <div class="output">
 <div class="output_area">
 
-<div id="73cad9ae-6006-4e56-8c03-f5c1ad46475e"></div>
+<div id="e8e550fa-a930-4644-9eb6-35e8c0842284"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#73cad9ae-6006-4e56-8c03-f5c1ad46475e');
+var element = $('#e8e550fa-a930-4644-9eb6-35e8c0842284');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -3228,10 +3228,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 <div class="output_area">
 
-<div id="d3566b1b-d053-491b-a531-d16b26b80d76"></div>
+<div id="aac8d123-d4b1-4e7f-a9a6-6241fa1af5c9"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#d3566b1b-d053-491b-a531-d16b26b80d76');
+var element = $('#aac8d123-d4b1-4e7f-a9a6-6241fa1af5c9');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_minor": 0, "version_major": 2}

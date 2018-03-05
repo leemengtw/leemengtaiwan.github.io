@@ -119,7 +119,7 @@
                             By
                             <span>Lee Meng</span>
                         </li>
-                        <li><a href="https://unsplash.com/@lucabravo" target="_blank">PhotoCredit</a></li>
+                        <li><a href="https://unsplash.com/@lucabravo" target="_blank" style="color:rgba(255, 255, 255, 0.5)">PhotoCredit</a></li>
                     </ul>
 
                 </article>
@@ -2840,8 +2840,8 @@ to<div class="highlight"><pre><span></span><span class="kn">from</span> <span cl
       <span class="nb">print</span><span class="p">(</span><span class="s1">'Could not read:'</span><span class="p">,</span> <span class="n">image_file</span><span class="p">,</span> <span class="s1">':'</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="s1">'- it</span><span class="se">\'</span><span class="s1">s ok, skipping.'</span><span class="p">)</span>
     
   <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">num_images</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
-  <span class="k">if</span> <span class="n">num_images</span> <span class="o"><</span> <span class="n">min_num_images</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'Many fewer images than expected: </span><span class="si">%d</span><span class="s1"> < </span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span>
+  <span class="k">if</span> <span class="n">num_images</span> <span class="o">&lt;</span> <span class="n">min_num_images</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'Many fewer images than expected: </span><span class="si">%d</span><span class="s1"> &lt; </span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span>
                     <span class="p">(</span><span class="n">num_images</span><span class="p">,</span> <span class="n">min_num_images</span><span class="p">))</span>
     
   <span class="nb">print</span><span class="p">(</span><span class="s1">'Full dataset tensor:'</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -5351,10 +5351,10 @@ def get_duplicate_data(source_dataset, target_dataset, threshold=1, num_duplicat
     dup_target_indices = []
     show_duplicate_counter = 0
     for source_idx in range(cosine_sim.shape[0]):
-        dup_indices = list(np.where(cosine_sim[source_idx, :] >= threshold)[0])
+        dup_indices = list(np.where(cosine_sim[source_idx, :] &gt;= threshold)[0])
     
         # render duplicate images when is available. may omit if visual output is not required
-        if dup_indices and num_duplicate_to_show and (show_duplicate_counter < num_duplicate_to_show):
+        if dup_indices and num_duplicate_to_show and (show_duplicate_counter &lt; num_duplicate_to_show):
             # show only non-redudent duplicate images
             for i in dup_indices:
                 if i in dup_target_indices:

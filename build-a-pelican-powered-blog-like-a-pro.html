@@ -10,7 +10,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>LeeMeng - Pelican 實戰手冊</title>    <meta name="description" content="LeeMeng" />
+<title>LeeMeng - Pelican 實戰手冊(主題篇)</title>    <meta name="description" content="LeeMeng" />
     <meta name="keywords" content="Python, Jupyter Notebook, Data Science, Visualization" />
     <meta name="author" content="Lee Meng" />
 
@@ -50,9 +50,9 @@
 
 
 
-<title>LeeMeng - Pelican 實戰手冊</title>    <meta name="tags" content="python" />
+<title>LeeMeng - Pelican 實戰手冊(主題篇)</title>    <meta name="tags" content="python" />
     <meta name="tags" content="pelican" />
-    <meta name="tags" content="jinja" />
+    <meta name="tags" content="jinja2" />
 
 </head>
 
@@ -95,12 +95,12 @@
                         <div class="page-header__cat">
                             <a href="https://leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
                             <a href="https://leemengtaiwan.github.io/tag/pelican.html" rel="tag">pelican</a>
-                            <a href="https://leemengtaiwan.github.io/tag/jinja.html" rel="tag">jinja</a>
+                            <a href="https://leemengtaiwan.github.io/tag/jinja2.html" rel="tag">jinja2</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
                         <a href="https://leemengtaiwan.github.io/build-a-pelican-powered-blog-like-a-pro.html" title="">
-                            Pelican 實戰手冊
+                            Pelican 實戰手冊(主題篇)
                         </a>
                     </h1>
                     <ul class="page-header__meta">
@@ -109,7 +109,7 @@
                             By
                             <span>Lee Meng</span>
                         </li>
-                        <li><a href="https://unsplash.com/photos/wbXdGS_D17U?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">PhotoCredit</a></li>
+                        <li><a href="https://unsplash.com/photos/wbXdGS_D17U?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" style="color:rgba(255, 255, 255, 0.5)">PhotoCredit</a></li>
                     </ul>
 
                 </article>
@@ -126,6 +126,255 @@
             <div class="col-full blog-content__main">
 
                 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>有些人可能已經注意到這個 blog 是用 <a href="https://github.com/getpelican/pelican">Pelican</a> 所寫成並且 host 在 <a href="https://github.com/leemengtaiwan/leemengtaiwan.github.io">Github</a> 上。這篇主要紀錄如何使用 <a href="http://jinja.pocoo.org/docs/2.10/">Jinja2</a> 自訂主題。</p>
+<p>Pelican 是一個用 Python 寫的靜態網頁生成器, 可以幫我們把 reStructedText, Markdown file 甚至 <a href="http://jupyter.org/">Jupyer notebook</a> 轉成靜態的 HTML 檔案。 靜態網頁的好處就是我們不需要一個 web server 或者是資料庫來管理內容, 可以把 HTML 檔案 host 在想要的地方，比方說 <a href="https://pages.github.com/">Github Pages</a>。用 Pelican 官網一句來介紹的話就是：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>Pelican is a static site generator, written in Python, that requires no database or server-side logic. - Pelican Blog</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Google 一下你會發現除了 Pelican 以外還有很多其他像是 Jekyll, Hexo 等<a href="https://www.staticgen.com/">靜態網頁生成器</a>。 之所以會選擇 Pelican 是因為以下幾點：</p>
+<ul>
+<li>Pelican 是用 Python 寫的，讓 Python 開發者（我）很容易客製化</li>
+<li>可以把 <a href="https://github.com/danielfrg/pelican-ipynb">jupyter notebook 轉成 HTML</a>，這對每天寫一堆 notebooks 的資料科學家很友善</li>
+<li>主題是用強大的 <a href="http://jinja.pocoo.org/docs/2.10/">Jinja2</a> 模組引擎建立，可以用前人寫好的<a href="http://www.pelicanthemes.com/">主題</a>或是自己寫 templates，自由度很高，也是本篇重點。  </li>
+</ul>
+<p>如果你的需求類似而且想要自己架一個部落格，可以現在就跳入 <a href="https://github.com/getpelican/pelican/blob/master/docs/quickstart.rst">Pelican Quickstart</a>，有問題再回來看這篇。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="images/jinja2.jpeg" /></center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Jinja2 是 Python 知名的模組引擎 (templating engine)，可以有系統地產生 HTML，很常出現在 <a href="http://flask.pocoo.org/">Flask</a> 或是 <a href="https://www.djangoproject.com/">Django</a> Apps 裡頭。以下介紹在建立 Pelican blog 時常用到的功能。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="再利用-HTML-區塊">再利用 HTML 區塊<a class="anchor-link" href="#再利用-HTML-區塊">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>比方說我們可以建立一個汎用的 template base.html 來定義整個部落格共用的資訊，像是 header 裡頭要 import 的 css / favicon 等等：</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+{% block head %}
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span> <span class="na">href</span><span class="o">=</span><span class="s">"css/vendor.css"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"icon"</span> <span class="na">href</span><span class="o">=</span><span class="s">"images/favicon.ico"</span> <span class="na">type</span><span class="o">=</span><span class="s">"image/x-icon"</span><span class="p">/&gt;</span>
+{% endblock head %}
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    {% block content %}
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>部落格內容<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    {% endblock content %}
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>注意到上面的 <code>{% block head %}</code> jinja2 語法。會在多個 HTML 檔案重複使用的部分我們可以用 <code>{% block BLOCKNAME %}</code> 以及 <code>{% endblock BLOCKNAME %}</code> 包起來，然後在獨立顯示一篇文章的 article.html 裡頭我們可以定義：</p>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="o">%</span> <span class="n">extends</span> <span class="s2">"base.html"</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">head</span> <span class="o">%</span><span class="p">}</span>
+  <span class="p">{{</span> <span class="nb">super</span><span class="p">()</span> <span class="p">}}</span>
+  <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="err">文章標題</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endblock</span> <span class="n">head</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">content</span> <span class="o">%</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="err">文章內容</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="o">%</span> <span class="n">endblock</span> <span class="n">content</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>上面的 code 基本上是告訴 jinja2 article.html 要繼承 base.html 的所有內容，而在 <code>head</code> block 除了用<code>{{ super() }}</code> 繼承 base.html 的內容以外，在下面再追加新的內容。而 <code>content</code> block 則是完全取代。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因此最後 article.html 會被渲染成：</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span> <span class="na">href</span><span class="o">=</span><span class="s">"css/vendor.css"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"icon"</span> <span class="na">href</span><span class="o">=</span><span class="s">"images/favicon.ico"</span> <span class="na">type</span><span class="o">=</span><span class="s">"image/x-icon"</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>文章標題<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>文章內容<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="為當前文章取得前/後一篇文章連結">為當前文章取得前/後一篇文章連結<a class="anchor-link" href="#為當前文章取得前/後一篇文章連結">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="images/pagination_prev_and_next.png" style="width:70%" /></center>
+<center><font color="purple"> Pagination 範例: 顯示前後文章連結 <br /></font></center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>依照主題不同，有些主題可能文章頁面裡頭並沒有提供前一篇/後一篇文章的連結。要像上圖為每一篇文章取得前後文章的連結，可以在 article.html 裡存取 <a href="https://github.com/getpelican/pelican/blob/master/docs/themes.rst#common-variables">articles Variable</a> 並使用 jinja2 <a href="http://jinja.pocoo.org/docs/2.10/templates/#assignments">namespace</a> 來取得前後文章(<code>namespace</code> 要在 jinja 2.10+ 以後才能使用)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="c1"># get prev- and next-article for pagination #}</span>
+<span class="p">{</span><span class="o">%</span> <span class="nb">set</span> <span class="n">ns</span> <span class="o">=</span> <span class="n">namespace</span><span class="p">(</span><span class="n">found</span><span class="o">=</span><span class="n">false</span><span class="p">,</span> <span class="n">prev</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">articles</span> <span class="o">%</span><span class="p">}</span>
+    <span class="p">{</span><span class="c1"># 要使用 break 要安裝 extension, 最佳化效率可省略 #}</span>
+    <span class="p">{</span><span class="o">%-</span> <span class="k">if</span> <span class="n">ns</span><span class="o">.</span><span class="n">found</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="k">break</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>
+
+    <span class="p">{</span><span class="c1"># 假設文章標題不會重複, unique #}</span>
+    <span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="n">article</span><span class="o">.</span><span class="n">title</span> <span class="o">%</span><span class="p">}</span>
+        <span class="p">{</span><span class="o">%</span> <span class="nb">set</span> <span class="n">ns</span><span class="o">.</span><span class="n">found</span> <span class="o">=</span> <span class="n">true</span> <span class="o">%</span><span class="p">}</span>
+        <span class="p">{</span><span class="o">%</span> <span class="nb">set</span> <span class="n">ns</span><span class="o">.</span><span class="n">prev</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">previtem</span> <span class="o">%</span><span class="p">}</span>
+        <span class="p">{</span><span class="o">%</span> <span class="nb">set</span> <span class="n">ns</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">nextitem</span> <span class="o">%</span><span class="p">}</span>
+    <span class="p">{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>上面的 code 會 iterate 所有文章，當遇到當前文章的時候利用 <code>loop.previtem</code> 以及 <code>loop.nextitem</code> 把前後文章記下來。 <a href="https://stackoverflow.com/questions/9486393/jinja2-change-the-value-of-a-variable-inside-a-loop">jinja2 預設是無法在 loop 裡頭改變變數的值</a>，但使用 <code>namespace</code> 即可。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>接著就能利用剛剛取得的前後 article 物件來渲染前後連結：</p>
+<div class="highlight"><pre><span></span>{# 方便起見的 assignment %}
+{% set prev_article = ns.prev %}
+{% set next_article = ns.next %}
+
+{% if prev_article %}
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"prev_article.url"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"prev"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Previous Post<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        {{ prev_article.title }}
+    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{% endif %}
+{% if next_article %}
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"next_article.url"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"next"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Next Post<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        {{ next_article.title }}
+    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{% endif %}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="傳參數給子-template">傳參數給子 template<a class="anchor-link" href="#傳參數給子-template">¶</a></h2><p>有時候多個 templates 會使用類似的 HTML，像是當首頁 index.html 以及部落格 blog.html 都用相同格式渲染最新幾篇文章時，我們可以定義一個 article_entries.html 如下：</p>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="c1"># 簡化版 #}</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">article</span> <span class="n">class</span><span class="o">=</span><span class="s2">"col-block"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">"{{ SITEURL }}/{{ article.url }}"</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">article</span><span class="o">.</span><span class="n">title</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">article</span><span class="o">.</span><span class="n">summary</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">article</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>注意這時候如果直接在 index.html 使用</p>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="o">%</span> <span class="n">include</span> <span class="s1">'article_entries.html'</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+<p>是會出現<a href="https://stackoverflow.com/questions/9404990/how-to-pass-selected-named-arguments-to-jinja2s-include-context">錯誤</a>的。理由是被 include 的 article_entries.html 看不到定義在 index.html 的 <code>articles</code> 變數。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>解決方法是在 index.html 裡透過 <code>{% with %}</code> 語法定義一個 scope：</p>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="c1"># 選擇前五篇文章來渲染 #}</span>
+<span class="p">{</span><span class="o">%</span> <span class="nb">set</span> <span class="n">articles_to_show</span> <span class="o">=</span> <span class="n">articles_page</span><span class="o">.</span><span class="n">object_list</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="c1"># 定義 scope #}</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">with</span> <span class="n">articles</span><span class="o">=</span><span class="n">articles_to_show</span> <span class="o">%</span><span class="p">}</span>
+    <span class="p">{</span><span class="o">%</span> <span class="n">include</span> <span class="s1">'article_entries.html'</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endwith</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>使用 <code>with</code> 的好處是可以把子 template article_entries.html 當作 function 來使用，我們可以依照母 template 的需要，傳進想要渲染的文章即可。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Reference">Reference<a class="anchor-link" href="#Reference">¶</a></h2><ul>
+<li><a href="http://jinja.pocoo.org/docs/2.9/templates/#extensions">Jinja2 Extension</a></li>
+</ul>
+</div>
+</div>
+</div>
 
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
@@ -163,7 +412,7 @@
                     <span class="blog-content__tag-list">
                         <a href="https://leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
                         <a href="https://leemengtaiwan.github.io/tag/pelican.html" rel="tag">pelican</a>
-                        <a href="https://leemengtaiwan.github.io/tag/jinja.html" rel="tag">jinja</a>
+                        <a href="https://leemengtaiwan.github.io/tag/jinja2.html" rel="tag">jinja2</a>
                     </span>
 
                 </p>
@@ -204,7 +453,7 @@
 
 <script type="text/javascript">
 var disqus_shortname = 'leemengtaiwan';
-var disqus_title = 'Pelican 實戰手冊';
+var disqus_title = 'Pelican 實戰手冊(主題篇)';
 
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

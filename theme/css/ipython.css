@@ -41,12 +41,24 @@ div.output_subarea img {
   margin-right: auto;
 }
 
-/*取消 bootstrap 的 hyperlink hover 效果*/
+/*取消 bootstrap 的 hyperlink hover 效果, 只保留文章裡頭的 a*/
 a:hover {
   text-decoration: none;
 }
+
+p a:hover {
+  text-decoration: underline;
+}
+
 
 /*取消 output area 的 code 背景顏色*/
 div.output_subarea pre {
   background-color: white;
 }
+
+/*置中 markdown 裡頭 引進的圖片*/
+p img {
+  display: block;
+  margin: auto;
+}
+
