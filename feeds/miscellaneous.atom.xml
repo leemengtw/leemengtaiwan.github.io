@@ -1,5 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng - Miscellaneous</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/miscellaneous.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-03-05T15:00:00+09:00</updated><entry><title>Pelican 實戰手冊(主題篇)</title><link href="https://leemengtaiwan.github.io/build-a-pelican-powered-blog-like-a-pro.html" rel="alternate"></link><published>2018-03-05T15:00:00+09:00</published><updated>2018-03-05T15:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-05:/build-a-pelican-powered-blog-like-a-pro.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng - Miscellaneous</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/miscellaneous.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-03-13T16:34:00+09:00</updated><entry><title>Google Data Studio 基礎</title><link href="https://leemengtaiwan.github.io/google-data-studio-basics.html" rel="alternate"></link><published>2018-03-13T16:34:00+09:00</published><updated>2018-03-13T16:34:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-13:/google-data-studio-basics.html</id><summary type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/data-studio/"&gt;Google Data Studio&lt;/a&gt; 是 Google 推出的一個 Dashboard / Reporting 的服務，讓我們可以利用多種&lt;a href="https://support.google.com/datastudio/answer/7530149?hl=en&amp;amp;ref_topic=6370347"&gt;連結器&lt;/a&gt;將儲存在如 Google Analytics、 Google 試算表及 Google BigQuery 等特定資料來源的資料做出漂亮的 visualization ，用資料講故事而不用自己設計 UI。公司內部雖然有自己的 dashboards 不過想說多試一些方案沒有壞處，而且現在 Data Studio 還是 Beta 版本，雖然介面是中文，說明文件還只有英文，想說把學到的一些技巧以及使用心得記錄下來。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="將-Google-試算表的資料可視化"&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/data-studio/"&gt;Google Data Studio&lt;/a&gt; 是 Google 推出的一個 Dashboard / Reporting 的服務，讓我們可以利用多種&lt;a href="https://support.google.com/datastudio/answer/7530149?hl=en&amp;amp;ref_topic=6370347"&gt;連結器&lt;/a&gt;將儲存在如 Google Analytics、 Google 試算表及 Google BigQuery 等特定資料來源的資料做出漂亮的 visualization ，用資料講故事而不用自己設計 UI。公司內部雖然有自己的 dashboards 不過想說多試一些方案沒有壞處，而且現在 Data Studio 還是 Beta 版本，雖然介面是中文，說明文件還只有英文，想說把學到的一些技巧以及使用心得記錄下來。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="將-Google-試算表的資料可視化"&gt;將 Google 試算表的資料可視化&lt;a class="anchor-link" href="#將-Google-試算表的資料可視化"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;為了快速展示 Data Studio 的功能，我們將使用&lt;a href="https://data.gov.tw/"&gt;政府資料開放平臺&lt;/a&gt;上由交通部觀光局提供的&lt;a href="https://data.gov.tw/dataset/45444"&gt;105年來台旅客性別統計&lt;/a&gt;資料。將 CSV 檔案下載下來，稍微簡化格式後上傳到 Google 試算表以當作報表的資料來源。下圖是簡化後的資料：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/google-data-studio/table-preview.png" style="width:90%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://data.gov.tw/dataset/45444" target="_blank"&gt;資料來源&lt;/a&gt;
+&lt;font color="purple"&gt;: 2016年來台旅客性別統計&lt;/font&gt;&lt;br /&gt;
+    每一列代表某地區 / 國家的訪台人數以及男女比
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="條件欄位應用"&gt;條件欄位應用&lt;a class="anchor-link" href="#條件欄位應用"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href="https://support.google.com/datastudio/answer/7359285"&gt;條件欄位&lt;/a&gt;讓我們可以針對試算表裡頭每一列做 IF ELSE 判斷，依照判斷結果給予不同的值。現在假設我們想知道有多少國家的男性遊客過半數，可以使用簡易的評量表來計算：&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/google-data-studio/male-over-half.png" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;font color="purple"&gt;訪台男性遊客過半國家佔全部國家的比例&lt;br /&gt;
+&lt;/font&gt;&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;我們發現高達八成的國家（有些是區域）的訪台男性遊客較女性為多。我們可以調查其他國家的訪客性別比，看是不是只有台灣有此現象。要產生分母的「國家數」很直覺，我們只要新增一個欄位並計算有幾個國家即可：&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/google-data-studio/num_countries_as_metric.png" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;font color="purple"&gt;新增一個名為「國家數」的欄位&lt;br /&gt;
+&lt;/font&gt;&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;但要計算分子的「男性遊客過半國家數」就稍微 tricky 了。我們想做的是，針對每一國家（每一列），只有在該國訪台男性遊客百分比過半（超過 50%)的時候才會被納入結果。而 Data Studio 的&lt;a href="https://support.google.com/datastudio/answer/7359285"&gt;條件欄位&lt;/a&gt;就是專門針對這種情況設計的。&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/google-data-studio/conditional-calculated-field.png" style="width:70%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;font color="purple"&gt;使用 CASE 語法對每一列做 IF-ELSE 判斷&lt;br /&gt;
+&lt;/font&gt;&lt;/center&gt;&lt;p&gt;上面的公式用白話來說就是：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;blockquote&gt;&lt;p&gt;針對每一列的國家，看它的「男性百分比」欄位的值有沒有大於50。有的話值為1，否則為0。在針對每列做完條件判斷以後再把所有 1 加起來，就等於符合條件的國家數。&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="篩選器（filter）應用"&gt;篩選器（filter）應用&lt;a class="anchor-link" href="#篩選器（filter）應用"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;根據上個分析，我們知道女性遊客過半的國家只佔 20%。假設我們想確切知道是哪些國家的女性遊客過半，可以從女性百分比最高的國家開始列出男女比：&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/google-data-studio/multibar-female-over-half.png" style="width:100%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;font color="purple"&gt;訪台女性遊客過半國家&lt;br /&gt;
+&lt;/font&gt;&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;我們發現女性遊客過半的都是亞洲國家，或許我們可以簡單解釋成這些國家與台灣的距離短，適合女性遊客拜訪。而為了讓圖表易讀，上面這張組合圖額外建立一個篩選器來過濾掉男性遊客比女性多的國家：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/google-data-studio/female-more-than-half.png" style="width:70%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;font color="purple"&gt;新增一個篩選器以過濾男性遊客比例較高的國家&lt;br /&gt;&lt;/font&gt;
+    註：一般的長條圖可以直接透過設定限制長條圖數目
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="維度-VS-指標"&gt;維度 VS 指標&lt;a class="anchor-link" href="#維度-VS-指標"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在 Data Studio 裡頭，了解&lt;a href="https://support.google.com/datastudio/answer/6402048?ref_topic=7441655&amp;amp;utm_source=product&amp;amp;utm_medium=cta&amp;amp;utm_campaign=wwr&amp;amp;utm_content=dims_mets"&gt;維度跟指標的差異&lt;/a&gt;很重要。&lt;/p&gt;
+&lt;p&gt;以我們現在的資料集為例，每一列就是一筆紀錄（record），每一行則是一個欄位。每個欄位則是維度或指標。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;指標（Metric，底下藍色）&lt;ul&gt;
+&lt;li&gt;數值型欄位，有經過「匯總」，負責 quantify 資料&lt;/li&gt;
+&lt;li&gt;如「國家數」、「總人數」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;維度（Dimension，底下綠色）&lt;ul&gt;
+&lt;li&gt;分類型欄位，負責 qualify 資料&lt;/li&gt;
+&lt;li&gt;如「國家」、「居住地」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;center&gt;
+&lt;img src="images/google-data-studio/metric-versus-dimension.png" style="width:90%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;font color="purple"&gt;fx 則代表是額外利用公式建立的欄位&lt;/font&gt;&lt;br /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;像我們前面定義的「男性遊客過半國家數」欄位因為有經過 &lt;code&gt;SUM&lt;/code&gt; 公式匯總成為一個數值，因此為一個指標（藍）。而如果我們透過 &lt;code&gt;CASE&lt;/code&gt; 語法新定義一個「男性過半」欄位如下：&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/google-data-studio/define-a-dimension-with-case-syntax.png" style="width:70%" /&gt;
+&lt;/center&gt;&lt;p&gt;此欄位沒有經過匯總因此被視為維度，在上一張圖被標為綠色。因此一句話總結維度跟指標的功能就是：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;blockquote&gt;&lt;p&gt;維度負責「描述」資料； 指標則負責「衡量」資料。&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="限制"&gt;限制&lt;a class="anchor-link" href="#限制"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;可能因為還處在 beta 版本，在這篇文章寫的時候（2018/03）試用了一陣子發現 Data Studio 也有一些使用案例沒有辦法做到，像是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;篩選器（filter）只能設定像是「欄位 C 大於 X」這種條件，而不能做「當欄位 C1 &amp;gt; 欄位 C2」這種欄位間的比較。&lt;/li&gt;
+&lt;li&gt;同上，條件欄位也只能設定像是「欄位 C 大於某固定值 X」的條件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="實戰演練"&gt;實戰演練&lt;a class="anchor-link" href="#實戰演練"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;這篇文章用的報表連結在&lt;a href="https://datastudio.google.com/open/19a--FnAQ9asll18anhv7negoXGO0fpyH"&gt;此&lt;/a&gt;，可以自己試試不同 visualization。有任何 feedback 也歡迎聯絡。&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/google-data-studio/google-data-studio-preview.png" style="width:70%" /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content><category term="google"></category><category term="data science"></category><category term="visualization"></category></entry><entry><title>Pelican 實戰手冊(主題篇)</title><link href="https://leemengtaiwan.github.io/build-a-pelican-powered-blog-like-a-pro.html" rel="alternate"></link><published>2018-03-05T15:00:00+09:00</published><updated>2018-03-05T15:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-05:/build-a-pelican-powered-blog-like-a-pro.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
