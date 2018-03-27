@@ -1,5 +1,394 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng - Miscellaneous</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/miscellaneous.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-03-24T15:33:00+09:00</updated><entry><title>Designing Data-Intensive Applications (1) - 序言</title><link href="https://leemengtaiwan.github.io/designing-data-intensive-applications-1-preface.html" rel="alternate"></link><published>2018-03-24T15:33:00+09:00</published><updated>2018-03-24T15:33:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-24:/designing-data-intensive-applications-1-preface.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng - Miscellaneous</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/miscellaneous.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-03-27T18:30:00+09:00</updated><entry><title>AWS Data Migration Service - 從 MongoDB 遷移到 Redshift</title><link href="https://leemengtaiwan.github.io/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html" rel="alternate"></link><published>2018-03-27T18:30:00+09:00</published><updated>2018-03-27T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-27:/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html</id><summary type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;同樣一份資料因應不同的使用案例，可能需要使用不同的存取方式。而針對這些不同的存取方式，我們通常需要選擇最適合的資料庫來最佳化使用者體驗。&lt;/p&gt;
+&lt;p&gt;這篇文章將簡單介紹如何使用 &lt;a href="https://aws.amazon.com/tw/dms/"&gt;AWS Database Migration Service&lt;/a&gt; (以下簡稱 AWS DMS )來快速地達到我們的目標：將 MongoDB 資料遷移到 Redshift 上。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="使用案例"&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;同樣一份資料因應不同的使用案例，可能需要使用不同的存取方式。而針對這些不同的存取方式，我們通常需要選擇最適合的資料庫來最佳化使用者體驗。&lt;/p&gt;
+&lt;p&gt;這篇文章將簡單介紹如何使用 &lt;a href="https://aws.amazon.com/tw/dms/"&gt;AWS Database Migration Service&lt;/a&gt; (以下簡稱 AWS DMS )來快速地達到我們的目標：將 MongoDB 資料遷移到 Redshift 上。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="使用案例"&gt;使用案例&lt;a class="anchor-link" href="#使用案例"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;舉例來說，一個電子商務網站的後端可以使用一個具有高度彈性的 NoSQL 資料庫如 &lt;a href="https://www.mongodb.com/"&gt;MongoDB&lt;/a&gt; 來應對變化快速的使用者需求；而公司內部的資料科學家可以利用資料倉儲如 &lt;a href="https://aws.amazon.com/tw/redshift/"&gt;Redshift&lt;/a&gt; 來找出 business insight 。但這時候一個問題產生了：資料科學家用的資料倉儲 (例：Redshift) 的資料哪裡來？&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;常見的方式是對 MongoDB 裡頭的資料定期做 &lt;a href="https://zh.wikipedia.org/wiki/ETL"&gt;ETL&lt;/a&gt; 以後將轉換過後的資料載入 Redshift 供分析需求。而在這篇文章裡頭我們將簡單介紹 AWS DMS 的運作方式，以及實際進行資料遷移所需要的步驟。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/aws-dms/intro.png" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://aws.amazon.com/tw/dms/" target="_blank"&gt;AWS DMS&lt;/a&gt;
+&lt;font color="purple"&gt;: 遷移（並轉換） AWS 上的資料庫&lt;/font&gt;
+&lt;br /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="AWS-DMS-基本介紹"&gt;AWS DMS 基本介紹&lt;a class="anchor-link" href="#AWS-DMS-基本介紹"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;DMS 基本上運作方式就是幫我們啟動一台 EC2 機器 (稱之為 replication instance) ，然後在上面跑 replication task(s) 。 一個 instance 上可以有多個 tasks 進行資料遷移。 instance 則分別透過 &lt;a href="https://docs.aws.amazon.com/zh_cn/dms/latest/userguide/CHAP_Introduction.Sources.html"&gt;Source Endpoint&lt;/a&gt; / &lt;a href="https://docs.aws.amazon.com/zh_cn/dms/latest/userguide/CHAP_Introduction.Targets.html"&gt;Target Endpoint&lt;/a&gt; 連結來源 / 目標資料庫。在後面我們會看到， endpoints 實際上就只是告訴 AWS DMS 的 replication instance 如何連結到實際的資料庫的設定罷了。在我們的例子裡頭，來源 / 目標資料庫分別對應到 MongoDB / Redshift 。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/aws-dms/flow.png" style="width:80%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://docs.aws.amazon.com/zh_cn/dms/latest/userguide/Welcome.html" target="_blank"&gt;DMS 基本運作方式&lt;/a&gt;
+&lt;font color="purple"&gt;: 資料遷移是由在 Replication Instance 上執行的 Replication Task 透過 endpoints 連結來源/目標資料庫完成的&lt;/font&gt;
+&lt;br /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="基本遷移步驟"&gt;基本遷移步驟&lt;a class="anchor-link" href="#基本遷移步驟"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在假設來源 / 目標資料庫已經在運作的情況下，如同 AWS DMS 的 Get started, 一般會進行以下步驟來遷移資料：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="#建立-replication-instance"&gt;建立 replication instance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#確保-replication-instance-能連結到來源-/-目標資料庫"&gt;確保 replication instance 能連結到來源 / 目標資料庫&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#定義-replication-task"&gt;定義 replication task&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;除錯：確保一切運作正常&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以下針對每個步驟，我會紀錄一些需要注意的地方。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="建立-replication-instance"&gt;建立 replication instance&lt;a class="anchor-link" href="#建立-replication-instance"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;點擊 AWS DMS 介面的 Get started 選項會請我們建立新的 instance:&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/aws-dms/create-replicate-instance.png" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    建立 Replication Instance
+    &lt;font color="purple"&gt;: 注意 VPC /設定&lt;/font&gt;
+&lt;br /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這步驟基本上沒什麼問題， replication task 會佔用大量的 CPU 以及記憶體資源，理想上是依據需求選擇 Instance class ，不過第一次測試功能的話用預設的 t2.medium 即可。這邊值得注意的是 VPC 以及下面進階選項的 VPC Security Group(s) 設定。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;如果來源 / 目標資料庫都可供公開存取的話，基本上不需要 VPC 。但一般來說我們都會有安全考量，也就是要求所有在 AWS 上的資源都要套用安全設定，則最簡單的架構是將來源資料庫、目標資料庫以及 Replication Instance 都放入同一個 VPC ，並利用 &lt;a href="https://docs.aws.amazon.com/zh_cn/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html"&gt;security group&lt;/a&gt; 設定來允許該 Instance 存取兩個資料庫。概念上此 VPC 的架構會如下 ( &lt;code&gt;sg&lt;/code&gt; 為 Security Group 之縮寫 )：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/aws-dms/naive-vpc-structure.png" style="width:60%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;font color="purple"&gt;來源 / 目標資料庫所在的 Security Group 要允許 Replication Instance 所在的 Security Group 存取&lt;/font&gt;
+&lt;br /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;以上圖為例， Security Group &lt;code&gt;sg_mongodb&lt;/code&gt; 以及 &lt;code&gt;sg_redshift&lt;/code&gt; 的 Inbound Rule 要允許 &lt;code&gt;sg_replicate&lt;/code&gt; 存取。而允許存取的 Port 則依照資料庫實際使用的 Port 設定即可 (例： MongoDB 慣用 27017； Redshift 則是 5439)。最後別忘了在建立 replication instance 的進階設定的 VPC Security Group(s) 選擇 &lt;code&gt;sg_replicate&lt;/code&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;另外你可能已經注意到上圖的 S3 bucket 。就 &lt;a href="https://aws.amazon.com/tw/cloudwatch/"&gt;ClodWatch&lt;/a&gt; 的 log 來看， AWS DMS 在遷移資料的時候實際上會再細分為兩步驟：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Replication Task 將來源資料庫的資料載出、轉換並暫存到 S3&lt;/li&gt;
+&lt;li&gt;Task 將存在 S3 的資料載入目標資料庫&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;雖然 ClodWatch 需要額外收費，但為了方便除錯，建議使用。在後面的除錯章節（連結），我們會實際看一些例子。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="確保-replication-instance-能連結到來源-/-目標資料庫"&gt;確保 replication instance 能連結到來源 / 目標資料庫&lt;a class="anchor-link" href="#確保-replication-instance-能連結到來源-/-目標資料庫"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;上一步驟設定好以後， AWS DMS 會馬上幫我們建立一個新的 replication instance。在等待的同時我們可以開始設定資料庫的 endpoints。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/aws-dms/check-replication-instance-can-connect-to-both-endpoints.png" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    設定來源 / 目標 enpoints
+    &lt;font color="purple"&gt;: 在此步驟確保 Replication Instance 可以連到兩個資料庫可以減少除錯時間&lt;/font&gt;
+&lt;br /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這步驟基本上依照資料庫的不同，需要的輸入的項目可能不一樣。不過值得一提的是，在&lt;a href="#建立-replication-instance"&gt;建立 replication instance&lt;/a&gt; 的時候我們已經讓來源 / 目標資料庫以及 replication instance 都待在同個 VPC 裡頭。假設我們的 MongoDB 是運行在該 VPC 裡頭的某個 EC2 instance 之上，要允許在同個 VPC 的 replication instance 存取該 EC2 instance，我們要在 Server name 選項輸入運行 MongoDB 的 EC2 的 Private IP (上圖第一個紅框)。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="MongoDB-as-Source-Database"&gt;MongoDB as Source Database&lt;a class="anchor-link" href="#MongoDB-as-Source-Database"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;當 MongoDB 為來源資料庫時有一些&lt;a href="https://docs.aws.amazon.com/zh_cn/dms/latest/userguide/CHAP_Source.MongoDB.html"&gt;值得注意的事情&lt;/a&gt;，像是要以 Replica Set 模式運行才能使用 AWS DMS。&lt;/p&gt;
+&lt;p&gt;另外 Metadata mode 預設為 &lt;code&gt;document&lt;/code&gt;（上圖第二個紅框），也就是把 MongoDB 裡頭的 json-formated 文件放到 Redshift 裡頭對應 Table 的一個 &lt;code&gt;_doc&lt;/code&gt; 欄位。假設 MongoDB 裡有一個 &lt;code&gt;users&lt;/code&gt; collection ，裡頭存了以下文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nt"&gt;"user"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"leemeng"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;"favorite"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"chocolate"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;"a"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;"b"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"For fun!"&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="nt"&gt;"unnecessary_field"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"Don't include me!"&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;將會以以下的格式存在 Redshift：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;_doc                      |
+---------------------------
+{"user": "leemeng", "fav ..&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;而這通常不是我們要的。使用 &lt;code&gt;table&lt;/code&gt; 模式能讓 AWS DMS 把文件裡頭的欄位扁平化後放入對應的欄位(column)：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;user    | favorite  | a.b     | unnecessary_field
+-------------------------------------------------
+leemeng | chocolate | For fun!| Don't include me!
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;而 Numbers of documents to scan 選項則讓我們決定要讓 AWS DMS 拿多少文件來決定要建立哪些欄位。如果要遷移的 MongoDB collection 的文件 schema 很常被更動（常有新鍵值）的話，建議可以讓 AWS DMS 掃描多一點文件來建立足夠的欄位。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="定義-replication-task"&gt;定義 replication task&lt;a class="anchor-link" href="#定義-replication-task"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在確定 replication instance 可以連線到兩個資料庫後，可以開始建立我們的 replication task：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/aws-dms/create-replication-task.png" /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這邊我們可以看到有三種資料遷移方式 (Migration Type)：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;遷移目前 MongoDB 的資料&lt;/li&gt;
+&lt;li&gt;同上，但在遷移後之後繼續同步 MongoDB &amp;amp; Redshift (前提：MongoDB 以 Replica Set 模式執行)&lt;/li&gt;
+&lt;li&gt;只把 Task 啟動後 MongoDB 的資料變動遷移到 Redshift&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;這邊選擇自己的想要的遷移方式即可。接著我們要告訴 AWS DMS 想要進行遷移的 MongoDB Collections 以及在想要做的簡單轉換。兩者分別透過 &lt;a href="#Selection-Rules"&gt;Selection Rules&lt;/a&gt; 還有 &lt;a href="#Transformation-Rules"&gt;Transformation Rules&lt;/a&gt; 定義。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Selection-Rules"&gt;Selection Rules&lt;a class="anchor-link" href="#Selection-Rules"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Selection Rules 的用途是告訴 AWS DMS 該遷移以及不要遷移的 (MongoDB) collections 。下圖是告訴 AWS DMS 遷移所有在 MongoDB 的 Collections。另外如果想要排除哪個 collection 的話就新增一個 rule 並在 Action 選擇 &lt;code&gt;Exclude&lt;/code&gt;。基本上想要加幾個 Selection Rules 都可以。而 Exclude Rules 的效果是在所有 Include Rules 後套用。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/aws-dms/selection-rules.png" style="width:80%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://www.netpromoter.com/know/" target="_blank"&gt;Selection Rules&lt;/a&gt;
+&lt;font color="purple"&gt;: 選擇要遷移到目標資料庫的 Tables / Collections&lt;/font&gt;
+&lt;br /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Transformation-Rules"&gt;Transformation Rules&lt;a class="anchor-link" href="#Transformation-Rules"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;這邊所謂的轉換並不是對欄位值 (value) 進行轉換，而是像是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不遷移某 Collection / Table&lt;/li&gt;
+&lt;li&gt;幫欄位名加上 prefix / postfix&lt;/li&gt;
+&lt;li&gt;排除某些欄位&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這種操作。下圖是將 &lt;code&gt;users&lt;/code&gt; collection 裡頭不需要遷移的鍵值 &lt;code&gt;uncessary_field&lt;/code&gt; 從 Redshift 排除的 rules:&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/aws-dms/transformation-rules.png" style="width:80%" /&gt;
+&lt;/center&gt;&lt;p&gt;透過這個 Transformation rule，我們上面 &lt;code&gt;users&lt;/code&gt; collection 的範例文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nt"&gt;"user"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"leemeng"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;"favorite"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"chocolate"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;"a"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;"b"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"For fun!"&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="nt"&gt;"unnecessary_field"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"Don't include me!"&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;就會被轉成：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;user    | favorite  | a.b     
+------------------------------
+leemeng | chocolate | For fun!
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意 &lt;code&gt;uncessary_field&lt;/code&gt; 不會被存到 Redshift 裡頭。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="除錯-(Debugging)"&gt;除錯 (Debugging)&lt;a class="anchor-link" href="#除錯-(Debugging)"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;除錯&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;redshift&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt; 
+&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Happy&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;
+&lt;span class="n"&gt;概念圖&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;設定&lt;/span&gt; &lt;span class="n"&gt;Redshift&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MongoDB&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Replication&lt;/span&gt; &lt;span class="n"&gt;Instance&lt;/span&gt; &lt;span class="n"&gt;用的&lt;/span&gt; &lt;span class="n"&gt;security&lt;/span&gt; &lt;span class="n"&gt;group&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;VPC&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;啟動&lt;/span&gt; &lt;span class="n"&gt;Redshift&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;endpoint&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;考慮用量&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;啟動&lt;/span&gt; &lt;span class="n"&gt;MongoDB&lt;/span&gt; &lt;span class="mf"&gt;3.6&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;endpoint&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;replicate&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;ongoing&lt;/span&gt; &lt;span class="n"&gt;replication&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;slave&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;之後自己定期跑&lt;/span&gt; &lt;span class="n"&gt;replication&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;建立&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;啟動&lt;/span&gt; &lt;span class="n"&gt;DMS&lt;/span&gt; &lt;span class="n"&gt;的&lt;/span&gt; &lt;span class="n"&gt;replication&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;測試&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;連線&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;建立&lt;/span&gt; &lt;span class="n"&gt;replication&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;設定要同步的&lt;/span&gt; &lt;span class="n"&gt;table&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;設定要做的&lt;/span&gt; &lt;span class="n"&gt;transformation&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="n"&gt;針對特定table&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;去除不必要的&lt;/span&gt; &lt;span class="n"&gt;column&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="n"&gt;去除&lt;/span&gt; &lt;span class="n"&gt;prefix&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;optional&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;設定&lt;/span&gt; &lt;span class="n"&gt;cloudWatch&lt;/span&gt; &lt;span class="n"&gt;方便&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;確認資料有被&lt;/span&gt; &lt;span class="n"&gt;sync&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;確認&lt;/span&gt; &lt;span class="n"&gt;ongoing&lt;/span&gt; &lt;span class="n"&gt;replication&lt;/span&gt; &lt;span class="n"&gt;有正確運作&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;replicate&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;確認&lt;/span&gt; &lt;span class="n"&gt;scheduled&lt;/span&gt; &lt;span class="n"&gt;replication&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt; &lt;span class="n"&gt;有正確運作&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;slave&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;aws&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;amazon&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tw&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;blogs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;database&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;automating&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;aws&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dms&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;migration&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tasks&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;但從&lt;/span&gt; &lt;span class="n"&gt;ETL&lt;/span&gt; &lt;span class="n"&gt;的頻率可以分為兩種&lt;/span&gt;&lt;span class="err"&gt;：&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;將&lt;/span&gt; &lt;span class="n"&gt;OLTP&lt;/span&gt; &lt;span class="n"&gt;的資料定期&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;例&lt;/span&gt;&lt;span class="err"&gt;：&lt;/span&gt;&lt;span class="n"&gt;每天深夜&lt;/span&gt;&lt;span class="err"&gt;）&lt;/span&gt; 
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;將&lt;/span&gt; &lt;span class="n"&gt;OLTP&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content><category term="aws"></category><category term="database"></category><category term="mongodb"></category><category term="redshift"></category></entry><entry><title>Designing Data-Intensive Applications (1) - 序言</title><link href="https://leemengtaiwan.github.io/designing-data-intensive-applications-1-preface.html" rel="alternate"></link><published>2018-03-24T15:33:00+09:00</published><updated>2018-03-24T15:33:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-24:/designing-data-intensive-applications-1-preface.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -1080,16 +1469,14 @@ tbody in table
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;第一篇文章做一點 blog 的簡介，打算把自己在學 data science 還有 machine learning 過程中寫的筆記還有在 MOOC 上課的 code (主要是 jupyter notebook) 記錄下來方便自己以後搜尋。 雖然目前為止我都將 jupyter notebook render 成 HTML 然後存到 Evernote 搜尋, 但是如果該 notebook 一直更新的話就變得很不實際..&lt;/p&gt;
-&lt;p&gt;&amp;lt;/br&amp;gt;
-這次利用 python 的 pelican 將 jupyter notebook 轉成靜態網頁, 讓我可以不斷更新 notebooks 而且也希望 code 可以幫助到其他也在做 data science / machine learning 的人當作一些參考。 blog 的走向目前看來應該會是中英夾雜 ..&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;h1 id="Table-of-Contents"&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;This is the first post of my blog.&lt;/p&gt;</summary><content type="html">
+&lt;h1 id="Table-of-Contents"&gt;Table of Contents&lt;a class="anchor-link" href="#Table-of-Contents"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;div class="toc" style="margin-top: 1em;"&gt;&lt;ul class="toc-item" id="toc-level0"&gt;&lt;/ul&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
