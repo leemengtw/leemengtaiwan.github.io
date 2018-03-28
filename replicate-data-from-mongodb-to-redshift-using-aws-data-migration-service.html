@@ -146,7 +146,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>常見的方式是對 MongoDB 裡頭的資料定期做 <a href="https://zh.wikipedia.org/wiki/ETL">ETL</a> 以後將轉換過後的資料載入 Redshift 供分析需求。而在這篇文章裡頭我們將簡單介紹 AWS DMS 的運作方式，以及實際進行資料遷移所需要的步驟。</p>
+<p>常見的方式是對 MongoDB 裡頭的資料定期做 <a href="https://zh.wikipedia.org/wiki/ETL">ETL</a> 以後將轉換過後的資料載入 Redshift 供分析需求。理論上在做 ETL 時要依照資料倉儲的 Data Model 重新設計 Tables (例： <a href="https://en.wikipedia.org/wiki/Star_schema">Star Schema</a>)，但為了能在最短的時間將 MongoDB 上的資料轉到 Redshift 進行一些 Query，這篇文章將簡單介紹 AWS DMS 的運作方式，以及如何運用它來實際進行資料遷移所需要的步驟。</p>
 </div>
 </div>
 </div>
@@ -154,7 +154,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/intro.png" />
+<img src="images/aws-dms/intro.png" width="90%" />
 </center>
 <center>
 <a href="https://aws.amazon.com/tw/dms/" target="_blank">AWS DMS</a>
@@ -200,7 +200,7 @@
 <li><a href="#建立-replication-instance">建立 replication instance</a></li>
 <li><a href="#確保-replication-instance-能連結到來源-/-目標資料庫">確保 replication instance 能連結到來源 / 目標資料庫</a></li>
 <li><a href="#定義-replication-task">定義 replication task</a></li>
-<li>除錯：確保一切運作正常</li>
+<li><a href="#Debugging">Debugging：確保一切運作正常</a></li>
 </ol>
 <p>以下針對每個步驟，我會紀錄一些需要注意的地方。</p>
 </div>
@@ -217,7 +217,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/create-replicate-instance.png" />
+<img src="images/aws-dms/create-replicate-instance.png" width="90%" />
 </center>
 <center>
     建立 Replication Instance
@@ -264,12 +264,12 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>另外你可能已經注意到上圖的 S3 bucket 。就 <a href="https://aws.amazon.com/tw/cloudwatch/">ClodWatch</a> 的 log 來看， AWS DMS 在遷移資料的時候實際上會再細分為兩步驟：</p>
+<p>另外你可能已經注意到上圖的 S3 bucket 。就 replication tasks 的 log 來看， AWS DMS 在遷移資料的時候實際上會再細分為兩步驟：</p>
 <ul>
 <li>Replication Task 將來源資料庫的資料載出、轉換並暫存到 S3</li>
 <li>Task 將存在 S3 的資料載入目標資料庫</li>
 </ul>
-<p>雖然 ClodWatch 需要額外收費，但為了方便除錯，建議使用。在後面的除錯章節（連結），我們會實際看一些例子。</p>
+<p>雖然 <a href="https://aws.amazon.com/tw/cloudwatch/">ClodWatch</a> 需要額外收費，但為了方便除錯，建議使用。在文章後面的 <a href="#Debugging">Debugging</a> 我們會實際看一些例子。</p>
 </div>
 </div>
 </div>
@@ -284,7 +284,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/check-replication-instance-can-connect-to-both-endpoints.png" />
+<img src="images/aws-dms/check-replication-instance-can-connect-to-both-endpoints.png" width="90%" />
 </center>
 <center>
     設定來源 / 目標 enpoints
@@ -304,27 +304,61 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="MongoDB-as-Source-Database">MongoDB as Source Database<a class="anchor-link" href="#MongoDB-as-Source-Database">¶</a></h3><p>當 MongoDB 為來源資料庫時有一些<a href="https://docs.aws.amazon.com/zh_cn/dms/latest/userguide/CHAP_Source.MongoDB.html">值得注意的事情</a>，像是要以 Replica Set 模式運行才能使用 AWS DMS。</p>
-<p>另外 Metadata mode 預設為 <code>document</code>（上圖第二個紅框），也就是把 MongoDB 裡頭的 json-formated 文件放到 Redshift 裡頭對應 Table 的一個 <code>_doc</code> 欄位。假設 MongoDB 裡有一個 <code>users</code> collection ，裡頭存了以下文件：</p>
+<h3 id="MongoDB-as-Source-Database">MongoDB as Source Database<a class="anchor-link" href="#MongoDB-as-Source-Database">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>當 MongoDB 為來源資料庫時有一些值得注意的事情可以參考<a href="https://docs.aws.amazon.com/zh_cn/dms/latest/userguide/CHAP_Source.MongoDB.html">官方文件</a>。以下會說明一些值得特別注意的地方。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Metadata-mode">Metadata mode<a class="anchor-link" href="#Metadata-mode">¶</a></h4><p>Metadata mode 預設為 <code>document</code>（上圖第二個紅框），也就是把 MongoDB 裡頭的 json-formated 文件放到 Redshift 裡頭對應 Table 的一個 <code>_doc</code> 欄位。假設 MongoDB 裡有一個 <code>users</code> collection ，裡頭存了以下文件：</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">"user"</span><span class="p">:</span> <span class="s2">"leemeng"</span><span class="p">,</span>
-    <span class="nt">"favorite"</span><span class="p">:</span> <span class="s2">"chocolate"</span><span class="p">,</span>
+    <span class="nt">"favorite"</span><span class="p">:</span> <span class="s2">"chocolate"</span><span class="p">,</span> 
     <span class="nt">"a"</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">"b"</span><span class="p">:</span> <span class="s2">"For fun!"</span>
     <span class="p">},</span>
     <span class="nt">"unnecessary_field"</span><span class="p">:</span> <span class="s2">"Don't include me!"</span>
 <span class="p">}</span>
 </pre></div>
-<p>將會以以下的格式存在 Redshift：</p>
+<p>將會被以下的格式載入 Redshift：</p>
 <pre><code>_doc                      |
 ---------------------------
 {"user": "leemeng", "fav ..</code></pre>
-<p>而這通常不是我們要的。使用 <code>table</code> 模式能讓 AWS DMS 把文件裡頭的欄位扁平化後放入對應的欄位(column)：</p>
+<p>而這通常不是我們要的。將 metadate mode 設定為 <code>table</code> 模式能讓 AWS DMS 把文件裡頭的欄位扁平化後放入對應的欄位(column)：</p>
 <div class="highlight"><pre><span></span>user    | favorite  | a.b     | unnecessary_field
 -------------------------------------------------
 leemeng | chocolate | For fun!| Don't include me!
 </pre></div>
-<p>而 Numbers of documents to scan 選項則讓我們決定要讓 AWS DMS 拿多少文件來決定要建立哪些欄位。如果要遷移的 MongoDB collection 的文件 schema 很常被更動（常有新鍵值）的話，建議可以讓 AWS DMS 掃描多一點文件來建立足夠的欄位。</p>
+<p>注意到這邊有一個我們不需要遷移到 Redshift 的 <code>unnecessary_field</code> 。在後面的 <a href="#Transformation Rules">Transformation Rules</a> 我們會了解怎麼辦該欄位去除。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Numbers-of-documents-to-scan">Numbers of documents to scan<a class="anchor-link" href="#Numbers-of-documents-to-scan">¶</a></h4><p>而 Numbers of documents to scan 選項則讓我們決定要讓 AWS DMS 拿多少文件來決定要建立哪些欄位。如果要遷移的 MongoDB collection 的文件 schema 很常被更動（常有新鍵值）的話，建議可以讓 AWS DMS 掃描多一點文件來建立足夠的欄位。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Redshift-as-Target-Database">Redshift as Target Database<a class="anchor-link" href="#Redshift-as-Target-Database">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果按照 AWS DMS 的 Get started 一步一步走的話基本上沒有問題。要注意的是 Redshift 要有允許 DMS 存取的 AMI Rule，否則會出錯。</p>
 </div>
 </div>
 </div>
@@ -339,7 +373,7 @@ leemeng | chocolate | For fun!| Don't include me!
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/create-replication-task.png" />
+<img src="images/aws-dms/create-replication-task.png" width="90%" />
 </center>
 </div>
 </div>
@@ -347,10 +381,10 @@ leemeng | chocolate | For fun!| Don't include me!
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這邊我們可以看到有三種資料遷移方式 (Migration Type)：</p>
+<p>這邊我們可以看到有三種資料遷移方式 (圖中的 Migration type)：</p>
 <ol>
 <li>遷移目前 MongoDB 的資料</li>
-<li>同上，但在遷移後之後繼續同步 MongoDB &amp; Redshift (前提：MongoDB 以 Replica Set 模式執行)</li>
+<li>同上，但在遷移後之後繼續同步 MongoDB &amp; Redshift (前提是 MongoDB 要以 Replica Set 模式執行)</li>
 <li>只把 Task 啟動後 MongoDB 的資料變動遷移到 Redshift</li>
 </ol>
 <p>這邊選擇自己的想要的遷移方式即可。接著我們要告訴 AWS DMS 想要進行遷移的 MongoDB Collections 以及在想要做的簡單轉換。兩者分別透過 <a href="#Selection-Rules">Selection Rules</a> 還有 <a href="#Transformation-Rules">Transformation Rules</a> 定義。</p>
@@ -360,7 +394,8 @@ leemeng | chocolate | For fun!| Don't include me!
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Selection-Rules">Selection Rules<a class="anchor-link" href="#Selection-Rules">¶</a></h3><p>Selection Rules 的用途是告訴 AWS DMS 該遷移以及不要遷移的 (MongoDB) collections 。下圖是告訴 AWS DMS 遷移所有在 MongoDB 的 Collections。另外如果想要排除哪個 collection 的話就新增一個 rule 並在 Action 選擇 <code>Exclude</code>。基本上想要加幾個 Selection Rules 都可以。而 Exclude Rules 的效果是在所有 Include Rules 後套用。</p>
+<h3 id="Selection-Rules">Selection Rules<a class="anchor-link" href="#Selection-Rules">¶</a></h3><p>Selection Rules 的用途是告訴 AWS DMS 該遷移以及不要遷移的 (MongoDB) collections 。我們可以定義一個 general rule 讓一個 task 處理某個 db 的所有 collections ；也能讓一個 task 只負責一個 collection 的遷移。後者的設定比較花時間但是彈性比較高，可以依照不同 collection 特性決定遷移的方式。</p>
+<p>下圖是定義一個 rule 告訴 AWS DMS 遷移所有在 MongoDB 的 Collections。另外如果想要排除哪個 collection 的話就新增一個 rule 並在 Action 選擇 <code>Exclude</code>。基本上想要加幾個 Selection Rules 都可以。而 Exclude Rules 的效果是在所有 Include Rules 後套用。</p>
 </div>
 </div>
 </div>
@@ -368,7 +403,7 @@ leemeng | chocolate | For fun!| Don't include me!
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/selection-rules.png" style="width:80%" />
+<img src="images/aws-dms/selection-rules.png" style="width:90%" />
 </center>
 <center>
 <a href="https://www.netpromoter.com/know/" target="_blank">Selection Rules</a>
@@ -381,11 +416,10 @@ leemeng | chocolate | For fun!| Don't include me!
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Transformation-Rules">Transformation Rules<a class="anchor-link" href="#Transformation-Rules">¶</a></h3><p>這邊所謂的轉換並不是對欄位值 (value) 進行轉換，而是像是</p>
+<h3 id="Transformation-Rules">Transformation Rules<a class="anchor-link" href="#Transformation-Rules">¶</a></h3><p>這邊所謂的轉換並不是對欄位的實際值 (value) 進行轉換，而是針對 Table / Column 層級做</p>
 <ul>
-<li>不遷移某 Collection / Table</li>
-<li>幫欄位名加上 prefix / postfix</li>
-<li>排除某些欄位</li>
+<li>排除（不遷移該 Table / Column）</li>
+<li>幫 Table / Column 更名、大小寫轉換或是名稱加上 prefix / postfix</li>
 </ul>
 <p>這種操作。下圖是將 <code>users</code> collection 裡頭不需要遷移的鍵值 <code>uncessary_field</code> 從 Redshift 排除的 rules:</p>
 </div>
@@ -395,7 +429,7 @@ leemeng | chocolate | For fun!| Don't include me!
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/transformation-rules.png" style="width:80%" />
+<img src="images/aws-dms/transformation-rules.png" style="width:90%" />
 </center><p>透過這個 Transformation rule，我們上面 <code>users</code> collection 的範例文件：</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">"user"</span><span class="p">:</span> <span class="s2">"leemeng"</span><span class="p">,</span>
@@ -418,63 +452,66 @@ leemeng | chocolate | For fun!
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="除錯-(Debugging)">除錯 (Debugging)<a class="anchor-link" href="#除錯-(Debugging)">¶</a></h2>
+<h2 id="Debugging">Debugging<a class="anchor-link" href="#Debugging">¶</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">*</span> <span class="n">除錯</span> <span class="n">using</span> <span class="n">redshift</span> <span class="n">query</span> 
-<span class="o">*</span> <span class="n">Happy</span> <span class="n">query</span>
-<span class="n">概念圖</span>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>當建立並執行一個新的 replication task 後，我們可以從 Load State 看到每個 Table 載入的狀況。 Load State 有幾種可能的值：</p>
+<ul>
+<li>Before Loading</li>
+<li>Full Load</li>
+<li>Table completed</li>
+<li>Table error</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>當出現 <code>Table error</code> 時，我們可以先看 log 瞭解情況：</p>
+<div class="highlight"><pre><span></span>2018-03-28T01:23:30 [TARGET_LOAD ]E: RetCode: SQL_ERROR SqlState: XX000 NativeError: 30 Message: [Amazon][Amazon Redshift] (30) Error occurred while trying to execute a query: [SQLState XX000] ERROR: Load into table 'users' failed. Check 'stl_load_errors' system table for details. [1022502] (ar_odbc_stmt.c:4406)
+</pre></div>
+<p>依照不同的錯誤、不同的目標資料庫，實際的 log 內容會有所不同。以我們目標資料庫 = Redshift 的情況下，上面的 log 告訴我們 replication task 在載入 <code>users</code> Table 時出錯，詳情可以參考 Redshift 的 <code>stl_load_error</code> Table (<a href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_STL_LOAD_ERRORS.html">官方文件</a>)：</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">pg_catalog</span><span class="p">.</span><span class="n">stl_load_errors</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">starttime</span> <span class="k">DESC</span>
+<span class="k">LIMIT</span> <span class="mi">1</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">*</span> <span class="n">設定</span> <span class="n">Redshift</span><span class="p">,</span> <span class="n">MongoDB</span><span class="p">,</span> <span class="n">Replication</span> <span class="n">Instance</span> <span class="n">用的</span> <span class="n">security</span> <span class="n">group</span> <span class="o">/</span> <span class="n">VPC</span>
-<span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="n">啟動</span> <span class="n">Redshift</span>  <span class="p">(</span> <span class="n">target</span> <span class="n">endpoint</span> <span class="p">)</span>
-    <span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="n">考慮用量</span>
-<span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="n">啟動</span> <span class="n">MongoDB</span> <span class="mf">3.6</span> <span class="p">(</span> <span class="n">source</span> <span class="n">endpoint</span> <span class="p">)</span>
-    <span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="n">replicate</span> <span class="nb">set</span> <span class="n">mode</span> <span class="p">(</span> <span class="k">for</span> <span class="n">ongoing</span> <span class="n">replication</span><span class="p">)</span>
-    <span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="n">master</span> <span class="o">/</span> <span class="n">slave</span> <span class="p">(</span> <span class="n">之後自己定期跑</span> <span class="n">replication</span> <span class="n">task</span> <span class="p">)</span>
-<span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="n">建立</span><span class="o">/</span><span class="n">啟動</span> <span class="n">DMS</span> <span class="n">的</span> <span class="n">replication</span> <span class="n">instance</span>
-    <span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="n">測試</span> <span class="n">source</span> <span class="o">/</span> <span class="n">target</span> <span class="n">連線</span>
-<span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="n">建立</span> <span class="n">replication</span> <span class="n">task</span>
-    <span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="n">設定要同步的</span> <span class="n">table</span>
-    <span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="n">設定要做的</span> <span class="n">transformation</span>
-        <span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="err">（</span><span class="n">針對特定table</span><span class="p">)</span> <span class="n">去除不必要的</span> <span class="n">column</span>
-        <span class="o">*</span> <span class="p">[</span> <span class="p">]</span>  <span class="n">去除</span> <span class="n">prefix</span>
-    <span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span> <span class="n">設定</span> <span class="n">cloudWatch</span> <span class="n">方便</span> <span class="n">debug</span>
-<span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="n">確認資料有被</span> <span class="n">sync</span>
-    <span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="n">確認</span> <span class="n">ongoing</span> <span class="n">replication</span> <span class="n">有正確運作</span> <span class="p">(</span> <span class="n">replicate</span> <span class="nb">set</span> <span class="p">)</span>
-    <span class="o">*</span> <span class="p">[</span> <span class="p">]</span> <span class="n">確認</span> <span class="n">scheduled</span> <span class="n">replication</span> <span class="n">task</span> <span class="n">有正確運作</span> <span class="p">(</span> <span class="n">master</span> <span class="o">/</span> <span class="n">slave</span> <span class="p">)</span>
-        <span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">aws</span><span class="o">.</span><span class="n">amazon</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tw</span><span class="o">/</span><span class="n">blogs</span><span class="o">/</span><span class="n">database</span><span class="o">/</span><span class="n">automating</span><span class="o">-</span><span class="n">aws</span><span class="o">-</span><span class="n">dms</span><span class="o">-</span><span class="n">migration</span><span class="o">-</span><span class="n">tasks</span><span class="o">/</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/aws-dms/load-error-example.png" width="90%" />
+</center>
+<center>
+    查看 Redshift 裡頭 stl_load_error Table 來除錯
+</center>
 </div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>就這個錯誤例子來看， err_reason 的內容告訴我們有個 <code>memo</code> 欄位 ( colname ) 的值太長導致沒辦法載入 Redshift。這時候可以把正在運行的 replication task 暫停，用前面提到的 <a href="#Transformation-Rules">Transformation Rules</a> 來去除該欄位。而基本上其他錯誤也能用類似的方式解決。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>到這邊為止大致上應該可以順利把 MongoDB 的資料載入 Redshift 了。之後想到什麼再補充。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">但從</span> <span class="n">ETL</span> <span class="n">的頻率可以分為兩種</span><span class="err">：</span>
-<span class="o">-</span> <span class="n">將</span> <span class="n">OLTP</span> <span class="n">的資料定期</span> <span class="p">(</span><span class="n">例</span><span class="err">：</span><span class="n">每天深夜</span><span class="err">）</span> 
-<span class="o">-</span> <span class="n">將</span> <span class="n">OLTP</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {

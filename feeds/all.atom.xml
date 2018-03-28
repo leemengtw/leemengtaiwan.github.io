@@ -30,7 +30,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;常見的方式是對 MongoDB 裡頭的資料定期做 &lt;a href="https://zh.wikipedia.org/wiki/ETL"&gt;ETL&lt;/a&gt; 以後將轉換過後的資料載入 Redshift 供分析需求。而在這篇文章裡頭我們將簡單介紹 AWS DMS 的運作方式，以及實際進行資料遷移所需要的步驟。&lt;/p&gt;
+&lt;p&gt;常見的方式是對 MongoDB 裡頭的資料定期做 &lt;a href="https://zh.wikipedia.org/wiki/ETL"&gt;ETL&lt;/a&gt; 以後將轉換過後的資料載入 Redshift 供分析需求。理論上在做 ETL 時要依照資料倉儲的 Data Model 重新設計 Tables (例： &lt;a href="https://en.wikipedia.org/wiki/Star_schema"&gt;Star Schema&lt;/a&gt;)，但為了能在最短的時間將 MongoDB 上的資料轉到 Redshift 進行一些 Query，這篇文章將簡單介紹 AWS DMS 的運作方式，以及如何運用它來實際進行資料遷移所需要的步驟。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -38,7 +38,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="images/aws-dms/intro.png" /&gt;
+&lt;img src="images/aws-dms/intro.png" width="90%" /&gt;
 &lt;/center&gt;
 &lt;center&gt;
 &lt;a href="https://aws.amazon.com/tw/dms/" target="_blank"&gt;AWS DMS&lt;/a&gt;
@@ -84,7 +84,7 @@
 &lt;li&gt;&lt;a href="#建立-replication-instance"&gt;建立 replication instance&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#確保-replication-instance-能連結到來源-/-目標資料庫"&gt;確保 replication instance 能連結到來源 / 目標資料庫&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#定義-replication-task"&gt;定義 replication task&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;除錯：確保一切運作正常&lt;/li&gt;
+&lt;li&gt;&lt;a href="#Debugging"&gt;Debugging：確保一切運作正常&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;以下針對每個步驟，我會紀錄一些需要注意的地方。&lt;/p&gt;
 &lt;/div&gt;
@@ -101,7 +101,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="images/aws-dms/create-replicate-instance.png" /&gt;
+&lt;img src="images/aws-dms/create-replicate-instance.png" width="90%" /&gt;
 &lt;/center&gt;
 &lt;center&gt;
     建立 Replication Instance
@@ -148,12 +148,12 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;另外你可能已經注意到上圖的 S3 bucket 。就 &lt;a href="https://aws.amazon.com/tw/cloudwatch/"&gt;ClodWatch&lt;/a&gt; 的 log 來看， AWS DMS 在遷移資料的時候實際上會再細分為兩步驟：&lt;/p&gt;
+&lt;p&gt;另外你可能已經注意到上圖的 S3 bucket 。就 replication tasks 的 log 來看， AWS DMS 在遷移資料的時候實際上會再細分為兩步驟：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Replication Task 將來源資料庫的資料載出、轉換並暫存到 S3&lt;/li&gt;
 &lt;li&gt;Task 將存在 S3 的資料載入目標資料庫&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;雖然 ClodWatch 需要額外收費，但為了方便除錯，建議使用。在後面的除錯章節（連結），我們會實際看一些例子。&lt;/p&gt;
+&lt;p&gt;雖然 &lt;a href="https://aws.amazon.com/tw/cloudwatch/"&gt;ClodWatch&lt;/a&gt; 需要額外收費，但為了方便除錯，建議使用。在文章後面的 &lt;a href="#Debugging"&gt;Debugging&lt;/a&gt; 我們會實際看一些例子。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -168,7 +168,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="images/aws-dms/check-replication-instance-can-connect-to-both-endpoints.png" /&gt;
+&lt;img src="images/aws-dms/check-replication-instance-can-connect-to-both-endpoints.png" width="90%" /&gt;
 &lt;/center&gt;
 &lt;center&gt;
     設定來源 / 目標 enpoints
@@ -188,27 +188,61 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="MongoDB-as-Source-Database"&gt;MongoDB as Source Database&lt;a class="anchor-link" href="#MongoDB-as-Source-Database"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;當 MongoDB 為來源資料庫時有一些&lt;a href="https://docs.aws.amazon.com/zh_cn/dms/latest/userguide/CHAP_Source.MongoDB.html"&gt;值得注意的事情&lt;/a&gt;，像是要以 Replica Set 模式運行才能使用 AWS DMS。&lt;/p&gt;
-&lt;p&gt;另外 Metadata mode 預設為 &lt;code&gt;document&lt;/code&gt;（上圖第二個紅框），也就是把 MongoDB 裡頭的 json-formated 文件放到 Redshift 裡頭對應 Table 的一個 &lt;code&gt;_doc&lt;/code&gt; 欄位。假設 MongoDB 裡有一個 &lt;code&gt;users&lt;/code&gt; collection ，裡頭存了以下文件：&lt;/p&gt;
+&lt;h3 id="MongoDB-as-Source-Database"&gt;MongoDB as Source Database&lt;a class="anchor-link" href="#MongoDB-as-Source-Database"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;當 MongoDB 為來源資料庫時有一些值得注意的事情可以參考&lt;a href="https://docs.aws.amazon.com/zh_cn/dms/latest/userguide/CHAP_Source.MongoDB.html"&gt;官方文件&lt;/a&gt;。以下會說明一些值得特別注意的地方。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h4 id="Metadata-mode"&gt;Metadata mode&lt;a class="anchor-link" href="#Metadata-mode"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Metadata mode 預設為 &lt;code&gt;document&lt;/code&gt;（上圖第二個紅框），也就是把 MongoDB 裡頭的 json-formated 文件放到 Redshift 裡頭對應 Table 的一個 &lt;code&gt;_doc&lt;/code&gt; 欄位。假設 MongoDB 裡有一個 &lt;code&gt;users&lt;/code&gt; collection ，裡頭存了以下文件：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nt"&gt;"user"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"leemeng"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nt"&gt;"favorite"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"chocolate"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;"favorite"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"chocolate"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
     &lt;span class="nt"&gt;"a"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="nt"&gt;"b"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"For fun!"&lt;/span&gt;
     &lt;span class="p"&gt;},&lt;/span&gt;
     &lt;span class="nt"&gt;"unnecessary_field"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"Don't include me!"&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;將會以以下的格式存在 Redshift：&lt;/p&gt;
+&lt;p&gt;將會被以下的格式載入 Redshift：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;_doc                      |
 ---------------------------
 {"user": "leemeng", "fav ..&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;而這通常不是我們要的。使用 &lt;code&gt;table&lt;/code&gt; 模式能讓 AWS DMS 把文件裡頭的欄位扁平化後放入對應的欄位(column)：&lt;/p&gt;
+&lt;p&gt;而這通常不是我們要的。將 metadate mode 設定為 &lt;code&gt;table&lt;/code&gt; 模式能讓 AWS DMS 把文件裡頭的欄位扁平化後放入對應的欄位(column)：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;user    | favorite  | a.b     | unnecessary_field
 -------------------------------------------------
 leemeng | chocolate | For fun!| Don't include me!
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;而 Numbers of documents to scan 選項則讓我們決定要讓 AWS DMS 拿多少文件來決定要建立哪些欄位。如果要遷移的 MongoDB collection 的文件 schema 很常被更動（常有新鍵值）的話，建議可以讓 AWS DMS 掃描多一點文件來建立足夠的欄位。&lt;/p&gt;
+&lt;p&gt;注意到這邊有一個我們不需要遷移到 Redshift 的 &lt;code&gt;unnecessary_field&lt;/code&gt; 。在後面的 &lt;a href="#Transformation Rules"&gt;Transformation Rules&lt;/a&gt; 我們會了解怎麼辦該欄位去除。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h4 id="Numbers-of-documents-to-scan"&gt;Numbers of documents to scan&lt;a class="anchor-link" href="#Numbers-of-documents-to-scan"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;而 Numbers of documents to scan 選項則讓我們決定要讓 AWS DMS 拿多少文件來決定要建立哪些欄位。如果要遷移的 MongoDB collection 的文件 schema 很常被更動（常有新鍵值）的話，建議可以讓 AWS DMS 掃描多一點文件來建立足夠的欄位。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Redshift-as-Target-Database"&gt;Redshift as Target Database&lt;a class="anchor-link" href="#Redshift-as-Target-Database"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;如果按照 AWS DMS 的 Get started 一步一步走的話基本上沒有問題。要注意的是 Redshift 要有允許 DMS 存取的 AMI Rule，否則會出錯。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -223,7 +257,7 @@ leemeng | chocolate | For fun!| Don't include me!
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="images/aws-dms/create-replication-task.png" /&gt;
+&lt;img src="images/aws-dms/create-replication-task.png" width="90%" /&gt;
 &lt;/center&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -231,10 +265,10 @@ leemeng | chocolate | For fun!| Don't include me!
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;這邊我們可以看到有三種資料遷移方式 (Migration Type)：&lt;/p&gt;
+&lt;p&gt;這邊我們可以看到有三種資料遷移方式 (圖中的 Migration type)：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;遷移目前 MongoDB 的資料&lt;/li&gt;
-&lt;li&gt;同上，但在遷移後之後繼續同步 MongoDB &amp;amp; Redshift (前提：MongoDB 以 Replica Set 模式執行)&lt;/li&gt;
+&lt;li&gt;同上，但在遷移後之後繼續同步 MongoDB &amp;amp; Redshift (前提是 MongoDB 要以 Replica Set 模式執行)&lt;/li&gt;
 &lt;li&gt;只把 Task 啟動後 MongoDB 的資料變動遷移到 Redshift&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;這邊選擇自己的想要的遷移方式即可。接著我們要告訴 AWS DMS 想要進行遷移的 MongoDB Collections 以及在想要做的簡單轉換。兩者分別透過 &lt;a href="#Selection-Rules"&gt;Selection Rules&lt;/a&gt; 還有 &lt;a href="#Transformation-Rules"&gt;Transformation Rules&lt;/a&gt; 定義。&lt;/p&gt;
@@ -244,7 +278,8 @@ leemeng | chocolate | For fun!| Don't include me!
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Selection-Rules"&gt;Selection Rules&lt;a class="anchor-link" href="#Selection-Rules"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Selection Rules 的用途是告訴 AWS DMS 該遷移以及不要遷移的 (MongoDB) collections 。下圖是告訴 AWS DMS 遷移所有在 MongoDB 的 Collections。另外如果想要排除哪個 collection 的話就新增一個 rule 並在 Action 選擇 &lt;code&gt;Exclude&lt;/code&gt;。基本上想要加幾個 Selection Rules 都可以。而 Exclude Rules 的效果是在所有 Include Rules 後套用。&lt;/p&gt;
+&lt;h3 id="Selection-Rules"&gt;Selection Rules&lt;a class="anchor-link" href="#Selection-Rules"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Selection Rules 的用途是告訴 AWS DMS 該遷移以及不要遷移的 (MongoDB) collections 。我們可以定義一個 general rule 讓一個 task 處理某個 db 的所有 collections ；也能讓一個 task 只負責一個 collection 的遷移。後者的設定比較花時間但是彈性比較高，可以依照不同 collection 特性決定遷移的方式。&lt;/p&gt;
+&lt;p&gt;下圖是定義一個 rule 告訴 AWS DMS 遷移所有在 MongoDB 的 Collections。另外如果想要排除哪個 collection 的話就新增一個 rule 並在 Action 選擇 &lt;code&gt;Exclude&lt;/code&gt;。基本上想要加幾個 Selection Rules 都可以。而 Exclude Rules 的效果是在所有 Include Rules 後套用。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -252,7 +287,7 @@ leemeng | chocolate | For fun!| Don't include me!
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="images/aws-dms/selection-rules.png" style="width:80%" /&gt;
+&lt;img src="images/aws-dms/selection-rules.png" style="width:90%" /&gt;
 &lt;/center&gt;
 &lt;center&gt;
 &lt;a href="https://www.netpromoter.com/know/" target="_blank"&gt;Selection Rules&lt;/a&gt;
@@ -265,11 +300,10 @@ leemeng | chocolate | For fun!| Don't include me!
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Transformation-Rules"&gt;Transformation Rules&lt;a class="anchor-link" href="#Transformation-Rules"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;這邊所謂的轉換並不是對欄位值 (value) 進行轉換，而是像是&lt;/p&gt;
+&lt;h3 id="Transformation-Rules"&gt;Transformation Rules&lt;a class="anchor-link" href="#Transformation-Rules"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;這邊所謂的轉換並不是對欄位的實際值 (value) 進行轉換，而是針對 Table / Column 層級做&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;不遷移某 Collection / Table&lt;/li&gt;
-&lt;li&gt;幫欄位名加上 prefix / postfix&lt;/li&gt;
-&lt;li&gt;排除某些欄位&lt;/li&gt;
+&lt;li&gt;排除（不遷移該 Table / Column）&lt;/li&gt;
+&lt;li&gt;幫 Table / Column 更名、大小寫轉換或是名稱加上 prefix / postfix&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;這種操作。下圖是將 &lt;code&gt;users&lt;/code&gt; collection 裡頭不需要遷移的鍵值 &lt;code&gt;uncessary_field&lt;/code&gt; 從 Redshift 排除的 rules:&lt;/p&gt;
 &lt;/div&gt;
@@ -279,7 +313,7 @@ leemeng | chocolate | For fun!| Don't include me!
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="images/aws-dms/transformation-rules.png" style="width:80%" /&gt;
+&lt;img src="images/aws-dms/transformation-rules.png" style="width:90%" /&gt;
 &lt;/center&gt;&lt;p&gt;透過這個 Transformation rule，我們上面 &lt;code&gt;users&lt;/code&gt; collection 的範例文件：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nt"&gt;"user"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"leemeng"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -302,63 +336,66 @@ leemeng | chocolate | For fun!
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="除錯-(Debugging)"&gt;除錯 (Debugging)&lt;a class="anchor-link" href="#除錯-(Debugging)"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="Debugging"&gt;Debugging&lt;a class="anchor-link" href="#Debugging"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
-&lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;除錯&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;redshift&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt; 
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Happy&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;
-&lt;span class="n"&gt;概念圖&lt;/span&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;當建立並執行一個新的 replication task 後，我們可以從 Load State 看到每個 Table 載入的狀況。 Load State 有幾種可能的值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Before Loading&lt;/li&gt;
+&lt;li&gt;Full Load&lt;/li&gt;
+&lt;li&gt;Table completed&lt;/li&gt;
+&lt;li&gt;Table error&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;當出現 &lt;code&gt;Table error&lt;/code&gt; 時，我們可以先看 log 瞭解情況：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;2018-03-28T01:23:30 [TARGET_LOAD ]E: RetCode: SQL_ERROR SqlState: XX000 NativeError: 30 Message: [Amazon][Amazon Redshift] (30) Error occurred while trying to execute a query: [SQLState XX000] ERROR: Load into table 'users' failed. Check 'stl_load_errors' system table for details. [1022502] (ar_odbc_stmt.c:4406)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;依照不同的錯誤、不同的目標資料庫，實際的 log 內容會有所不同。以我們目標資料庫 = Redshift 的情況下，上面的 log 告訴我們 replication task 在載入 &lt;code&gt;users&lt;/code&gt; Table 時出錯，詳情可以參考 Redshift 的 &lt;code&gt;stl_load_error&lt;/code&gt; Table (&lt;a href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_STL_LOAD_ERRORS.html"&gt;官方文件&lt;/a&gt;)：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;pg_catalog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stl_load_errors&lt;/span&gt;
+&lt;span class="k"&gt;ORDER&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;starttime&lt;/span&gt; &lt;span class="k"&gt;DESC&lt;/span&gt;
+&lt;span class="k"&gt;LIMIT&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
-&lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;設定&lt;/span&gt; &lt;span class="n"&gt;Redshift&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MongoDB&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Replication&lt;/span&gt; &lt;span class="n"&gt;Instance&lt;/span&gt; &lt;span class="n"&gt;用的&lt;/span&gt; &lt;span class="n"&gt;security&lt;/span&gt; &lt;span class="n"&gt;group&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;VPC&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;啟動&lt;/span&gt; &lt;span class="n"&gt;Redshift&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;endpoint&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;考慮用量&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;啟動&lt;/span&gt; &lt;span class="n"&gt;MongoDB&lt;/span&gt; &lt;span class="mf"&gt;3.6&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;endpoint&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;replicate&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;ongoing&lt;/span&gt; &lt;span class="n"&gt;replication&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;slave&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;之後自己定期跑&lt;/span&gt; &lt;span class="n"&gt;replication&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;建立&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;啟動&lt;/span&gt; &lt;span class="n"&gt;DMS&lt;/span&gt; &lt;span class="n"&gt;的&lt;/span&gt; &lt;span class="n"&gt;replication&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;
-    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;測試&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;連線&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;建立&lt;/span&gt; &lt;span class="n"&gt;replication&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;
-    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;設定要同步的&lt;/span&gt; &lt;span class="n"&gt;table&lt;/span&gt;
-    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;設定要做的&lt;/span&gt; &lt;span class="n"&gt;transformation&lt;/span&gt;
-        &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="n"&gt;針對特定table&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;去除不必要的&lt;/span&gt; &lt;span class="n"&gt;column&lt;/span&gt;
-        &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="n"&gt;去除&lt;/span&gt; &lt;span class="n"&gt;prefix&lt;/span&gt;
-    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;optional&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;設定&lt;/span&gt; &lt;span class="n"&gt;cloudWatch&lt;/span&gt; &lt;span class="n"&gt;方便&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;確認資料有被&lt;/span&gt; &lt;span class="n"&gt;sync&lt;/span&gt;
-    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;確認&lt;/span&gt; &lt;span class="n"&gt;ongoing&lt;/span&gt; &lt;span class="n"&gt;replication&lt;/span&gt; &lt;span class="n"&gt;有正確運作&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;replicate&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;確認&lt;/span&gt; &lt;span class="n"&gt;scheduled&lt;/span&gt; &lt;span class="n"&gt;replication&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt; &lt;span class="n"&gt;有正確運作&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;slave&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;aws&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;amazon&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tw&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;blogs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;database&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;automating&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;aws&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dms&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;migration&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tasks&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/aws-dms/load-error-example.png" width="90%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    查看 Redshift 裡頭 stl_load_error Table 來除錯
+&lt;/center&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;就這個錯誤例子來看， err_reason 的內容告訴我們有個 &lt;code&gt;memo&lt;/code&gt; 欄位 ( colname ) 的值太長導致沒辦法載入 Redshift。這時候可以把正在運行的 replication task 暫停，用前面提到的 &lt;a href="#Transformation-Rules"&gt;Transformation Rules&lt;/a&gt; 來去除該欄位。而基本上其他錯誤也能用類似的方式解決。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;到這邊為止大致上應該可以順利把 MongoDB 的資料載入 Redshift 了。之後想到什麼再補充。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
 
-&lt;div class="inner_cell"&gt;
-&lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;但從&lt;/span&gt; &lt;span class="n"&gt;ETL&lt;/span&gt; &lt;span class="n"&gt;的頻率可以分為兩種&lt;/span&gt;&lt;span class="err"&gt;：&lt;/span&gt;
-&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;將&lt;/span&gt; &lt;span class="n"&gt;OLTP&lt;/span&gt; &lt;span class="n"&gt;的資料定期&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;例&lt;/span&gt;&lt;span class="err"&gt;：&lt;/span&gt;&lt;span class="n"&gt;每天深夜&lt;/span&gt;&lt;span class="err"&gt;）&lt;/span&gt; 
-&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;將&lt;/span&gt; &lt;span class="n"&gt;OLTP&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
@@ -2774,10 +2811,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="91f77ad8-0f1a-4515-81f5-880a6a9a1a34"&gt;&lt;/div&gt;
+&lt;div id="10f10cdc-edf4-4474-9e46-d4f0a417e22f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#91f77ad8-0f1a-4515-81f5-880a6a9a1a34');
+var element = $('#10f10cdc-edf4-4474-9e46-d4f0a417e22f');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -6098,10 +6135,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="8feed5e1-bd31-40d7-afb0-dc2ce3145d22"&gt;&lt;/div&gt;
+&lt;div id="dfb9fa6d-3a26-4e57-8659-f4abf4525a65"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#8feed5e1-bd31-40d7-afb0-dc2ce3145d22');
+var element = $('#dfb9fa6d-3a26-4e57-8659-f4abf4525a65');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -6867,10 +6904,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="5c013dc8-bb79-448d-9ed2-c191ac43acfe"&gt;&lt;/div&gt;
+&lt;div id="ac83b6c5-7530-443c-afc7-772310efa1fe"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#5c013dc8-bb79-448d-9ed2-c191ac43acfe');
+var element = $('#ac83b6c5-7530-443c-afc7-772310efa1fe');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -7064,10 +7101,10 @@ Test accuracy: 89.4%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="fbd3260e-e9b1-4abb-9d3e-d2fb58a8ca1d"&gt;&lt;/div&gt;
+&lt;div id="f44c5e4b-313e-4b14-a9c8-68a7683619e1"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#fbd3260e-e9b1-4abb-9d3e-d2fb58a8ca1d');
+var element = $('#f44c5e4b-313e-4b14-a9c8-68a7683619e1');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -7833,10 +7870,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="7baf5746-c445-4243-bba3-0f6b8ca4d6e4"&gt;&lt;/div&gt;
+&lt;div id="c92f951b-1d0c-4cb4-849e-7ad4b267bafa"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#7baf5746-c445-4243-bba3-0f6b8ca4d6e4');
+var element = $('#c92f951b-1d0c-4cb4-849e-7ad4b267bafa');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -8041,10 +8078,10 @@ Test accuracy: 90.7%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="24d0b77d-ba1e-4072-9e44-303523ac2044"&gt;&lt;/div&gt;
+&lt;div id="f88e07f6-3187-4372-8c12-86858f37e687"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#24d0b77d-ba1e-4072-9e44-303523ac2044');
+var element = $('#f88e07f6-3187-4372-8c12-86858f37e687');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -8810,10 +8847,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="c12fad92-d082-4880-86d0-44cea8bf5814"&gt;&lt;/div&gt;
+&lt;div id="a5ae3b76-9242-45d0-be79-4de7480a1eea"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#c12fad92-d082-4880-86d0-44cea8bf5814');
+var element = $('#a5ae3b76-9242-45d0-be79-4de7480a1eea');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -9246,10 +9283,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="0120c9e5-39ba-4efe-a8ed-03eab010986b"&gt;&lt;/div&gt;
+&lt;div id="f765217e-2834-43bd-a919-eb91f933e9a7"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#0120c9e5-39ba-4efe-a8ed-03eab010986b');
+var element = $('#f765217e-2834-43bd-a919-eb91f933e9a7');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -9315,10 +9352,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="38667cf6-3f62-47ed-85ae-cf03364ce1cb"&gt;&lt;/div&gt;
+&lt;div id="99d8b2ef-7df4-4048-bc7c-aaf17fc5d952"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#38667cf6-3f62-47ed-85ae-cf03364ce1cb');
+var element = $('#99d8b2ef-7df4-4048-bc7c-aaf17fc5d952');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -9376,10 +9413,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="146fb565-0d45-49cf-8dd3-d293e62616ad"&gt;&lt;/div&gt;
+&lt;div id="cb1ce746-c0bf-41d3-aa86-8694d4c76b97"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#146fb565-0d45-49cf-8dd3-d293e62616ad');
+var element = $('#cb1ce746-c0bf-41d3-aa86-8694d4c76b97');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -9437,10 +9474,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="4ab539c0-20a3-4355-bbac-ec48b8821779"&gt;&lt;/div&gt;
+&lt;div id="02712eb4-500c-4b15-898e-7d4d6a61864c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#4ab539c0-20a3-4355-bbac-ec48b8821779');
+var element = $('#02712eb4-500c-4b15-898e-7d4d6a61864c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -9504,10 +9541,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="3b11d94e-1c1f-48d5-85ae-9ef7d0375907"&gt;&lt;/div&gt;
+&lt;div id="2b031a63-acff-4164-9770-568f0403a792"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3b11d94e-1c1f-48d5-85ae-9ef7d0375907');
+var element = $('#2b031a63-acff-4164-9770-568f0403a792');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -9915,10 +9952,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="e222edea-e983-424d-9ec8-fca4f5ca6c39"&gt;&lt;/div&gt;
+&lt;div id="ab68c140-3e64-4e8b-8f18-3ab16f3579f4"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#e222edea-e983-424d-9ec8-fca4f5ca6c39');
+var element = $('#ab68c140-3e64-4e8b-8f18-3ab16f3579f4');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -10072,10 +10109,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="f86d96dd-8d70-463e-b468-3c724e764928"&gt;&lt;/div&gt;
+&lt;div id="1e5703b9-7186-4ec4-9f0a-1feee7e0a666"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f86d96dd-8d70-463e-b468-3c724e764928');
+var element = $('#1e5703b9-7186-4ec4-9f0a-1feee7e0a666');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -10238,10 +10275,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="466c31fd-0c2c-40c7-86a1-aab07eea31b9"&gt;&lt;/div&gt;
+&lt;div id="ab53c370-176f-40be-94b3-a22e9b8a9b02"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#466c31fd-0c2c-40c7-86a1-aab07eea31b9');
+var element = $('#ab53c370-176f-40be-94b3-a22e9b8a9b02');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
