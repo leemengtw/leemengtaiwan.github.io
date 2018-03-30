@@ -153,13 +153,12 @@
 <li>處理 streaming events 的 messaging queue (e.g., Kafka)</li>
 <li>定期將 NoSQL 資料庫的資料做 <a href="https://zh.wikipedia.org/wiki/ETL">ETL</a> 存到 資料倉儲的批次處理 (e.g., Hive jobs)</li>
 </ul>
-<p>光是要把以上所列的資料庫 / 分散式系統 / 資料流 以有系統的方式組合起來就需要大量經驗，更遑論還要達到</p>
+<p>光是要把以上所列的資料庫 / 分散式系統 / 資料流 以有系統的方式組合起來就需要大量經驗，更遑論還要達到以下三個要求了：</p>
 <ul>
 <li>可靠性 (reliable): 像是 zero-down time, 很短的回應時間 etc</li>
 <li>規模性 (scalable): 即使之後資料量增加，系統也能很好地運作</li>
 <li>維護性 (maintainable): 容易改善、新增功能的系統設計</li>
 </ul>
-<p>三大要求了。</p>
 <center>
 <img src="images/ddia/jigsaw-puzzle.png" style="width:90%" />
 </center>
@@ -198,7 +197,7 @@
 <ul>
 <li>能有效儲存大量資料的 Google BigTable</li>
 <li>以欄 (column) 為單位儲存以壓縮大量資料的資料倉儲 Redshift</li>
-<li>Amazon 的 leader-less Replication - DynamoDB</li>
+<li>Amazon 的 Single-leader Replication - DynamoDB</li>
 <li>專門處理 realtime streaming data 的 Kafka, RabbitMQ etc.</li>
 </ul>
 <p>如同前述，以上提到的系統依照它們想要解決的問題的特性，背後都會有一些假設以及 trade-off 。了解這些背後的原理可以讓我們了解哪些工具在什麼時候最 powerful 。</p>

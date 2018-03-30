@@ -470,13 +470,12 @@ leemeng | chocolate | For fun!
 &lt;li&gt;處理 streaming events 的 messaging queue (e.g., Kafka)&lt;/li&gt;
 &lt;li&gt;定期將 NoSQL 資料庫的資料做 &lt;a href="https://zh.wikipedia.org/wiki/ETL"&gt;ETL&lt;/a&gt; 存到 資料倉儲的批次處理 (e.g., Hive jobs)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;光是要把以上所列的資料庫 / 分散式系統 / 資料流 以有系統的方式組合起來就需要大量經驗，更遑論還要達到&lt;/p&gt;
+&lt;p&gt;光是要把以上所列的資料庫 / 分散式系統 / 資料流 以有系統的方式組合起來就需要大量經驗，更遑論還要達到以下三個要求了：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;可靠性 (reliable): 像是 zero-down time, 很短的回應時間 etc&lt;/li&gt;
 &lt;li&gt;規模性 (scalable): 即使之後資料量增加，系統也能很好地運作&lt;/li&gt;
 &lt;li&gt;維護性 (maintainable): 容易改善、新增功能的系統設計&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;三大要求了。&lt;/p&gt;
 &lt;center&gt;
 &lt;img src="images/ddia/jigsaw-puzzle.png" style="width:90%" /&gt;
 &lt;/center&gt;
@@ -515,7 +514,7 @@ leemeng | chocolate | For fun!
 &lt;ul&gt;
 &lt;li&gt;能有效儲存大量資料的 Google BigTable&lt;/li&gt;
 &lt;li&gt;以欄 (column) 為單位儲存以壓縮大量資料的資料倉儲 Redshift&lt;/li&gt;
-&lt;li&gt;Amazon 的 leader-less Replication - DynamoDB&lt;/li&gt;
+&lt;li&gt;Amazon 的 Single-leader Replication - DynamoDB&lt;/li&gt;
 &lt;li&gt;專門處理 realtime streaming data 的 Kafka, RabbitMQ etc.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;如同前述，以上提到的系統依照它們想要解決的問題的特性，背後都會有一些假設以及 trade-off 。了解這些背後的原理可以讓我們了解哪些工具在什麼時候最 powerful 。&lt;/p&gt;
