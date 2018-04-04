@@ -1,5 +1,445 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-03-27T18:30:00+09:00</updated><entry><title>AWS Data Migration Service - 從 MongoDB 遷移到 Redshift</title><link href="https://leemengtaiwan.github.io/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html" rel="alternate"></link><published>2018-03-27T18:30:00+09:00</published><updated>2018-03-27T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-27:/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-04-04T21:30:00+09:00</updated><entry><title>利用 Kinesis 處理串流資料並建立資料湖</title><link href="https://leemengtaiwan.github.io/use-kinesis-streams-and-firehose-to-build-a-data-lake.html" rel="alternate"></link><published>2018-04-04T21:30:00+09:00</published><updated>2018-04-04T21:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-04-04:/use-kinesis-streams-and-firehose-to-build-a-data-lake.html</id><summary type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;所謂的&lt;a href="https://en.wikipedia.org/wiki/Data_lake"&gt;資料湖 (data lake) &lt;/a&gt; 指的是一企業裡頭所有形式的資料的集合。這些資料包含原始資料 (raw data)，以及經過轉換的衍生資料 (derived data)。&lt;/p&gt;
+&lt;p&gt;資料湖的核心概念是將所有可用的資料全部整合在一個邏輯上相近的地方以供企業自由結合並做各式各樣的運用。資料湖可以用很多方式建立，這裏我們主要介紹如何利用 &lt;a href="https://aws.amazon.com/tw/kinesis/"&gt;Amazon Kinesis&lt;/a&gt; 將串流資料 (streaming data) 載入資料湖。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="概觀"&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;所謂的&lt;a href="https://en.wikipedia.org/wiki/Data_lake"&gt;資料湖 (data lake) &lt;/a&gt; 指的是一企業裡頭所有形式的資料的集合。這些資料包含原始資料 (raw data)，以及經過轉換的衍生資料 (derived data)。&lt;/p&gt;
+&lt;p&gt;資料湖的核心概念是將所有可用的資料全部整合在一個邏輯上相近的地方以供企業自由結合並做各式各樣的運用。資料湖可以用很多方式建立，這裏我們主要介紹如何利用 &lt;a href="https://aws.amazon.com/tw/kinesis/"&gt;Amazon Kinesis&lt;/a&gt; 將串流資料 (streaming data) 載入資料湖。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="概觀"&gt;概觀&lt;a class="anchor-link" href="#概觀"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;資料湖概念上可以說是企業的所有資料的最終目的地。現在假設我們打算以 &lt;a href="https://aws.amazon.com/tw/s3/"&gt;Amazon S3&lt;/a&gt; 中作為我們的資料湖，問題就變成：要如何將串流資料穩定地傳到 S3。這部分我們將透過 &lt;a href="https://aws.amazon.com/tw/kinesis/"&gt;Amazon Kinesis&lt;/a&gt; 來達成。 Kinesis 本質上是跟 &lt;a href="https://kafka.apache.org/"&gt;Apache Kafka&lt;/a&gt; 類似的 &lt;a href="https://en.wikipedia.org/wiki/Message_broker"&gt;message broker&lt;/a&gt;，將訊息依照 message producers 產生的順序傳遞給 message consumers。實際上資料的流動會如下圖所示：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/kinesis/simple-streaming-data-flow.png" style="width:80%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    Simple Dataflow
+    &lt;font color="purple"&gt;: 將 streaming data 透過 Kinesis 保存在 S3&lt;/font&gt;
+&lt;br /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;上圖有幾點值得說明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;作為一個簡易的 demo，這邊我們的串流資料產生者 (streaming data producer) 是一個簡易 python script&lt;/li&gt;
+&lt;li&gt;Streams 指的是 &lt;a href="https://aws.amazon.com/tw/kinesis/data-streams/"&gt;Amazon Kinesis Data Streams&lt;/a&gt;。在 Kinesis 架構裡頭，一個 data stream 通常代表一個主題 (topic)，
+跟這個主題相關的 producers 會把資料傳入該 stream 以讓該主題的 consumers 之後能接受訊息。&lt;/li&gt;
+&lt;li&gt;Firehose 指的是 &lt;a href="https://aws.amazon.com/tw/kinesis/data-firehose/"&gt;Amazon Kinesis Data Firehose&lt;/a&gt;，是專門把接受到的串流資料寫入 AWS 上的資料存放區（如 S3、Redshift、ElasticSearch）以供後續分析的服務。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="建構流程"&gt;建構流程&lt;a class="anchor-link" href="#建構流程"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;要完成上述的資料傳輸 pipeline，我們會 follow 以下步驟：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#建立一個-Kinesis-data-stream"&gt;建立一個 Kinesis data stream&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#建立一個-Firehose-delivery-stream"&gt;建立一個 Firehose delivery stream&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#用-Python-傳串流資料"&gt;用 Python 傳串流資料&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#確認-S3-上的資料"&gt;確認 S3 上的資料&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在每個步驟裡頭會稍微澄清一些概念。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="建立一個-Kinesis-data-stream"&gt;建立一個 Kinesis data stream&lt;a class="anchor-link" href="#建立一個-Kinesis-data-stream"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;現在假設有一個名為 naive-app 的應用程式，我們想要把使用者在上面做的操作紀錄下來。這時候我們可以建立一個新的 Kinesis Data Stream 來接受 app 的 streaming data。這邊指的 streaming data 是使用者存取應用程式時產生的 access log。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/kinesis/create-kinesis-stream.png" style="width:80%" /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Scalability"&gt;Scalability&lt;a class="anchor-link" href="#Scalability"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這邊最重要的是 &lt;code&gt;Number of shards&lt;/code&gt; 的設定。Kinesis 將接收到的資料以 log 的方式儲存在硬碟上，而為了提高 scalability，Kinesis 利用 Partitioning 的概念將 log 切割成多個部分並分配到不同的 shards 上，再將這些 shards 分別存在不同機器上面以提高 read/write capacity。因此我們可以理解一個 Kinesis Stream (Topic) 的資料吞吐量 (throughput) 直接受到 shard 的數目影響： shard 數目越多，同時能處理 read/write 的機器越多，資料吞吐量越高。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="How-to-scale"&gt;How to scale&lt;a class="anchor-link" href="#How-to-scale"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;理想上是一開始就掌握該 Stream/Topic 需要的資料吞吐量，進而決定最佳的 &lt;code&gt;Number of shards&lt;/code&gt; ，但有時候事與願違。事後想要改變 shard 數目時需要透過 &lt;a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/"&gt;AWS Streams API&lt;/a&gt; 做 Resharding。Resharding 實際上就是在改變 shard 數目：增加 shard 會讓已存在的 shard 再度被切割；減少 shard 則會合併已存在的 shard。&lt;/p&gt;
+&lt;p&gt;在這邊我們就只直接使用一個 shard for demo。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Availability"&gt;Availability&lt;a class="anchor-link" href="#Availability"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;另外值得一提的是 Kinesis 為了避免資料損失，會在三個不同的 availability zones 進行資料的 replication。因為這個額外的 overhead 可能使得在同樣設定下， &lt;a href="https://www.opsclarity.com/evaluating-message-brokers-kafka-vs-kinesis-vs-sqs/"&gt;Kinesis 比 Kafka 慢&lt;/a&gt; 的情況。因為是 log-based message broker，資料會被暫時存在硬碟上，預設保留 24 小時，而最多可以付費提升到維持 7 天以用來 replay data。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="建立一個-Firehose-delivery-stream"&gt;建立一個 Firehose delivery stream&lt;a class="anchor-link" href="#建立一個-Firehose-delivery-stream"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;有了接受 naive-app 串流資料的 Kinesis stream 以後，我們要建立一個 Firehose delivery stream 來接收 Kinesis stream 的資料。&lt;/p&gt;
+&lt;p&gt;Firehouse delivery stream 簡單來說是一個將串流資料存到 AWS 資料存放區的服務（如 S3、Redshift、ElasticSearch）。因此除了 &lt;a href="https://aws.amazon.com/tw/about-aws/whats-new/2017/08/amazon-kinesis-firehose-can-now-read-data-directly-from-amazon-kinesis-streams/"&gt;Kinesis stream 的串流資料&lt;/a&gt;以外，當然也可以接其他的串流資料：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CloudWatch 的 log &lt;/li&gt;
+&lt;li&gt;AWS IoT&lt;/li&gt;
+&lt;li&gt;使用者自定義的串流資料&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在這篇裡頭我們的串流資料是 Kinesis stream，因此 Source 選擇 &lt;code&gt;Kinesis stream&lt;/code&gt; 並填入我們剛剛建立的 stream 名稱： &lt;code&gt;naive-app-access-log&lt;/code&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/kinesis/create-delivery-stream.png" style="width:80%" /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;值得一提的是 Firehose delivery stream 會 auto-scale，並不像 Kinesis stream 要手動調整 shard 數目。不過當然傳越多花越多。&lt;/p&gt;
+&lt;p&gt;如上張圖所示，實際上 Firehose 還允許我們在 delivery stream 接受到串流資料以後把原始資料傳到指定的 &lt;a href="https://aws.amazon.com/tw/lambda/"&gt;Lambda function&lt;/a&gt; 做進一步的轉換。
+但因為我們想要資料湖儲存原始的串流資料，這邊我們省略這步驟。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Configuration"&gt;Configuration&lt;a class="anchor-link" href="#Configuration"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;實際上 Firehose 不會一接收到資料就進行資料轉移。我們可以設定 Buffer size 以及 Buffer interval 讓 Firehose 在達到其中一個條件的時候把接收到的訊息統整起來一次做資料的轉移 (batch processing)。這邊為了能讓 Firehose 盡快把收到的資料轉移到 S3，設定 Buffer interval 為 &lt;code&gt;60&lt;/code&gt; 秒。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/kinesis/firehose-configure-settings.png" style="width:80%" /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="選擇-delivery-stream-目的地"&gt;選擇 delivery stream 目的地&lt;a class="anchor-link" href="#選擇-delivery-stream-目的地"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;在設定好 Firehose delivery stream 的串流資料來源（e.g., Kinesis stream）以及基本設定以後，我們要決定串流資料的目的地。這邊基本上很直覺， Destination 選擇 &lt;code&gt;Amazon S3&lt;/code&gt; 以及想要放資料的 bucket 即可。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/kinesis/firehose-select-destination.png" style="width:80%" /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;比較需要注意的是我們可以指定此 Firehose delivery stream 在放資料進入 bucket 時要為檔案加什麼前綴。&lt;/p&gt;
+&lt;p&gt;假設未來其他的串流資料我們也想要統一放在 &lt;code&gt;me-data-lake&lt;/code&gt; 這個 bucket 裡頭。為了方便管理，我們可以為每個 delivery stream 設定一個識別用的 Prefix。以 naive-app 來說，我們指定 Prefix 為 &lt;code&gt;naive-app-access-log/&lt;/code&gt; 。加上 Firehose 預設的 &lt;code&gt;YYYY/MM/DD/HH/&lt;/code&gt; ，該 stream 的每個檔案的路徑就會變成如下圖的 &lt;code&gt;naive-app-access-log/YYYY/MM/DD/HH/file_name&lt;/code&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/kinesis/s3-bucket-path.png" style="width:80%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    加入 Prefix 後實際將串流資料存入 S3 時的檔案路徑
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="用-Python-傳串流資料"&gt;用 Python 傳串流資料&lt;a class="anchor-link" href="#用-Python-傳串流資料"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;確保 Kinesis stream -&amp;gt; Firehose delivery stream -&amp;gt; S3 的資料流設定以後，我們可以寫一個簡單的 Python script 實際傳資料進 Kinesis stream 做測試。但首先先讓我們使用 &lt;a href="https://boto3.readthedocs.io/en/latest/"&gt;AWS SDK for Python&lt;/a&gt; 實作一個寄訊息給 Kinesis stream 的 function &lt;code&gt;write_to_stream&lt;/code&gt; ：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;boto3&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;write_to_stream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;event_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;region_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stream_name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;"""Write streaming event to specified Kinesis Stream within specified region.&lt;/span&gt;
+
+&lt;span class="sd"&gt;    Parameters&lt;/span&gt;
+&lt;span class="sd"&gt;    ----------&lt;/span&gt;
+&lt;span class="sd"&gt;    event_id: str&lt;/span&gt;
+&lt;span class="sd"&gt;        The unique identifer for the event which will be needed in partitioning.&lt;/span&gt;
+&lt;span class="sd"&gt;    event: dict&lt;/span&gt;
+&lt;span class="sd"&gt;        The actual payload including all the details of the event.&lt;/span&gt;
+&lt;span class="sd"&gt;    region_name: str&lt;/span&gt;
+&lt;span class="sd"&gt;        AWS region identifier, e.g., "ap-northeast-1".&lt;/span&gt;
+&lt;span class="sd"&gt;    stream_name: str&lt;/span&gt;
+&lt;span class="sd"&gt;        Kinesis Stream name to write.&lt;/span&gt;
+
+&lt;span class="sd"&gt;    Returns&lt;/span&gt;
+&lt;span class="sd"&gt;    -------&lt;/span&gt;
+&lt;span class="sd"&gt;    res: Response returned by `put_record` func defined in boto3.client('kinesis')&lt;/span&gt;
+&lt;span class="sd"&gt;    """&lt;/span&gt;
+    &lt;span class="n"&gt;client&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;boto3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'kinesis'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;region_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;region_name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;put_record&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;StreamName&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;stream_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;Data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dumps&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;PartitionKey&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;event_id&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;如何 docstring 所述， &lt;code&gt;write_to_stream&lt;/code&gt; 基本上就是一個把 Python dict &lt;code&gt;event&lt;/code&gt; 傳到指定的 region 的 Kinesis stream 裡的函式。（完整的 &lt;a href="https://gist.github.com/leemengtaiwan/b5edca45e12664164e6634d6fe24d913"&gt;Gist&lt;/a&gt; ）&lt;/p&gt;
+&lt;p&gt;值得一提的是因為 Kinesis 背後是使用 &lt;a href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html"&gt;Hash partitioning&lt;/a&gt; 來分配資料到 shard，基本上 &lt;code&gt;PartitionKey=event_id&lt;/code&gt; 裡頭的 &lt;code&gt;event_id&lt;/code&gt; 只要每個訊息都是獨一無二的，就能保證資料能「平均地」分配到各個 shard 上。&lt;/p&gt;
+&lt;p&gt;有了此函式以後，我們可以實際傳一些訊息進 Kinesis stream：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;event&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s2"&gt;"event_id"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;randint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100000&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+        &lt;span class="s2"&gt;"event_type"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s1"&gt;'read_post'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'write_post'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'make_comments'&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt;
+        &lt;span class="s2"&gt;"timestamp"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;calendar&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timegm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;utcnow&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timetuple&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# send to Kinesis Stream&lt;/span&gt;
+    &lt;span class="n"&gt;event_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'event_id'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;write_to_stream&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;event_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;REGION_NAME&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;KINESIS_STREAM_NAME&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;假設我們的 naive-app 可以讓使用者讀文章、寫文章以及寫評論，則上面的程式碼是模擬使用者使用 naive-app 時產生的事件，並將該事件的內容傳到 Kinesis stream &lt;code&gt;naive-app-access-log&lt;/code&gt;。60 秒內幾筆產生的事件如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{'event_id': '56262', 'event_type': 'write_post', 'timestamp': 1522740951}
+{'event_id': '35672', 'event_type': 'make_comments', 'timestamp': 1522740956}
+{'event_id': '71613', 'event_type': 'read_post', 'timestamp': 1522740962}
+{'event_id': '48160', 'event_type': 'make_comments', 'timestamp': 1522740967}
+{'event_id': '96093', 'event_type': 'write_post', 'timestamp': 1522740972}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="確認-S3-上的資料"&gt;確認 S3 上的資料&lt;a class="anchor-link" href="#確認-S3-上的資料"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;注意因為上面的 5 個事件在 $5 * 5 = 25$ 秒內就產生了。且因為我們前面設定 Firehose delivery stream 的 Buffer interval 為 60 秒，Firehose 會把以上的事件的訊息全部串接起來，放到一個檔案裡頭，而不是分成五個檔案：&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/kinesis/s3-bucket-path.png" style="width:80%" /&gt;
+&lt;/center&gt;&lt;p&gt;而實際檔案的內容如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{"event_id": "56262", "timestamp": 1522740951, "event_type": "write_post"}{"event_id": "35672", "timestamp": 1522740956 ...
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="結語"&gt;結語&lt;a class="anchor-link" href="#結語"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;到這邊為止成功把（偽）串流資料透過 Kinesis 存到 S3 了！為了方便之後的應用，輸出的檔案的內容格式或許還可以再改進，但資料湖的其中一個想法是 &lt;a href="https://www.youtube.com/watch?v=JHGkaShoyNs"&gt;Command Query Responsibility Segregation (CQRS)&lt;/a&gt;，也就是在存放資料的時候就只專心丟資料，不去在意之後資料會被以什麼方式、schema 使用，可以保證之後實際應用資料時有最大的彈性。&lt;/p&gt;
+&lt;p&gt;另外在確保資料好好地儲存在資料湖以後，我們通常會實際針對串流資料再進行一些處理 / 分析像是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://aws.amazon.com/tw/blogs/big-data/building-a-near-real-time-discovery-platform-with-aws/"&gt;放到 Elasticsearch 並用 Kibana 做 Visualization&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;觸發 Lambda function 做進一步處理&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;center&gt;
+&lt;img src="images/kinesis/kinesis-firehose-intro.png" style="width:80%" /&gt;
+&lt;/center&gt;&lt;p&gt;但這邊時間有限，之後有機會再來記錄資料湖之後的分析筆記。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="References"&gt;References&lt;a class="anchor-link" href="#References"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=814aUb5n_Fk"&gt;Youtube: Introduction to Amazon Kinesis Firehose&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.sumologic.com/blog/devops/kinesis-streams-vs-firehose/"&gt;sumologic - Kinesis Stream vs Firehose&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://acloud.guru/forums/aws-certified-big-data-specialty/discussion/-KhI3MgPEo-FY5rfgl3J/what_is_difference_between_kin"&gt;A Cloud Guru - difference betwwen Kinesis Streams and Kinesis Firehose&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.arundhaj.com/blog/getting-started-kinesis-python.html"&gt;Getting started with AWS Kinesis using Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.opsclarity.com/evaluating-message-brokers-kafka-vs-kinesis-vs-sqs/"&gt;opsclarity - Evaluating Message Brokers: Kafka vs. Kinesis vs. SQS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content><category term="python"></category><category term="aws"></category><category term="kinesis"></category></entry><entry><title>AWS Data Migration Service - 從 MongoDB 遷移到 Redshift</title><link href="https://leemengtaiwan.github.io/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html" rel="alternate"></link><published>2018-03-27T18:30:00+09:00</published><updated>2018-03-27T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-27:/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -2810,10 +3250,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="9a2ebb6a-8f9f-42f8-803b-3d599c457dba"&gt;&lt;/div&gt;
+&lt;div id="95ba5647-7345-4622-affd-23bd1052f2e4"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9a2ebb6a-8f9f-42f8-803b-3d599c457dba');
+var element = $('#95ba5647-7345-4622-affd-23bd1052f2e4');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -6134,10 +6574,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="72144f12-f0bd-426a-9086-21a094cdd4a0"&gt;&lt;/div&gt;
+&lt;div id="d7c4bbbc-13b7-4e2c-8ee9-228f7e02ed9a"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#72144f12-f0bd-426a-9086-21a094cdd4a0');
+var element = $('#d7c4bbbc-13b7-4e2c-8ee9-228f7e02ed9a');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -6903,10 +7343,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="a1e6ddc1-791b-496d-9a7d-4302493af932"&gt;&lt;/div&gt;
+&lt;div id="d7fbb806-cb68-478d-aece-630d71e08414"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#a1e6ddc1-791b-496d-9a7d-4302493af932');
+var element = $('#d7fbb806-cb68-478d-aece-630d71e08414');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -7100,10 +7540,10 @@ Test accuracy: 89.4%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="a2020647-7dce-47bb-a8ca-35d36b3d9b99"&gt;&lt;/div&gt;
+&lt;div id="feaa1aba-ea1b-4cf3-8f0d-6d683eb5a358"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#a2020647-7dce-47bb-a8ca-35d36b3d9b99');
+var element = $('#feaa1aba-ea1b-4cf3-8f0d-6d683eb5a358');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -7869,10 +8309,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="d3feef3a-774e-42dc-becd-d21ec443fa96"&gt;&lt;/div&gt;
+&lt;div id="9e8ed109-15d9-453e-8ffb-f05b19d09dcd"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#d3feef3a-774e-42dc-becd-d21ec443fa96');
+var element = $('#9e8ed109-15d9-453e-8ffb-f05b19d09dcd');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -8077,10 +8517,10 @@ Test accuracy: 90.7%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="360b736b-25c1-4aef-9cd5-c986be9dc4c5"&gt;&lt;/div&gt;
+&lt;div id="ad68cc03-a1b1-454a-a2bb-1d16ad076427"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#360b736b-25c1-4aef-9cd5-c986be9dc4c5');
+var element = $('#ad68cc03-a1b1-454a-a2bb-1d16ad076427');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -8846,10 +9286,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="a590c8a3-04d9-463c-a43c-d963714173ca"&gt;&lt;/div&gt;
+&lt;div id="fdc317dc-424c-4a45-b5e6-875cbae12ea5"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#a590c8a3-04d9-463c-a43c-d963714173ca');
+var element = $('#fdc317dc-424c-4a45-b5e6-875cbae12ea5');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -9282,10 +9722,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="ccb62b1e-ca9b-4c0f-a41d-82772dcec940"&gt;&lt;/div&gt;
+&lt;div id="ee4472b8-1c97-4067-81af-958b75607ddc"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#ccb62b1e-ca9b-4c0f-a41d-82772dcec940');
+var element = $('#ee4472b8-1c97-4067-81af-958b75607ddc');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -9351,10 +9791,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="a8c83b45-6ba4-467b-964e-51c54af0f0ab"&gt;&lt;/div&gt;
+&lt;div id="2729973f-fd91-4a9d-b7e3-bbbe95af5cf4"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#a8c83b45-6ba4-467b-964e-51c54af0f0ab');
+var element = $('#2729973f-fd91-4a9d-b7e3-bbbe95af5cf4');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -9412,10 +9852,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="ecb8a0c1-a3b2-4b4d-a5de-bcbaee313281"&gt;&lt;/div&gt;
+&lt;div id="750d71ab-d80a-4f99-90ea-f806d15e5d92"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#ecb8a0c1-a3b2-4b4d-a5de-bcbaee313281');
+var element = $('#750d71ab-d80a-4f99-90ea-f806d15e5d92');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -9473,10 +9913,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="4b747aa2-ab51-4f8a-b6a3-db33ace12e76"&gt;&lt;/div&gt;
+&lt;div id="b3a321b3-8c2c-4e7e-a606-b52b3b4ce8d5"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#4b747aa2-ab51-4f8a-b6a3-db33ace12e76');
+var element = $('#b3a321b3-8c2c-4e7e-a606-b52b3b4ce8d5');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -9540,10 +9980,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="3fa4237f-b6e9-4dc4-86c1-db2efd41067d"&gt;&lt;/div&gt;
+&lt;div id="f4531f77-d7f0-4c3f-a2eb-3e744b560f04"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3fa4237f-b6e9-4dc4-86c1-db2efd41067d');
+var element = $('#f4531f77-d7f0-4c3f-a2eb-3e744b560f04');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -9951,10 +10391,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="617bc7b5-9a5d-4a91-8744-267495bd42d2"&gt;&lt;/div&gt;
+&lt;div id="147289b5-a57f-4a5c-8a15-385cfb8229e2"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#617bc7b5-9a5d-4a91-8744-267495bd42d2');
+var element = $('#147289b5-a57f-4a5c-8a15-385cfb8229e2');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -10108,10 +10548,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="3bd2a83c-965e-4977-962c-abe23e12b720"&gt;&lt;/div&gt;
+&lt;div id="b2c3f65d-ec2e-4a3f-baba-28622305589b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3bd2a83c-965e-4977-962c-abe23e12b720');
+var element = $('#b2c3f65d-ec2e-4a3f-baba-28622305589b');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -10274,10 +10714,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="3a964e18-3c85-4f97-b004-89c8fcb4e8e2"&gt;&lt;/div&gt;
+&lt;div id="7abbb19c-6353-41ab-99bb-507b60f03c6b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3a964e18-3c85-4f97-b004-89c8fcb4e8e2');
+var element = $('#7abbb19c-6353-41ab-99bb-507b60f03c6b');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}

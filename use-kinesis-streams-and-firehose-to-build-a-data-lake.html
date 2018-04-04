@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+  
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>利用 Kinesis 處理串流資料並建立資料湖</title>    <meta name="description" content="LeeMeng" />
+    <meta name="keywords" content="Python, Jupyter Notebook, Data Science, Visualization" />
+    <meta name="author" content="Lee Meng" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemengtaiwan.github.io/theme/css/progress-bar.css' />
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemengtaiwan.github.io/theme/js/modernizr.js"></script>
+    <script src="https://leemengtaiwan.github.io/theme/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+
+<title>利用 Kinesis 處理串流資料並建立資料湖</title>    <meta name="tags" content="python" />
+    <meta name="tags" content="aws" />
+    <meta name="tags" content="kinesis" />
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+
+        <nav class="header-nav-wrap">
+            <ul class="header-nav">
+                <li><a href="../index.html#home" title="home">Home</a></li>
+                <li><a href="../index.html#about" title="about">About</a></li>
+                <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
+                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
+                <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
+            </ul>
+        </nav>
+
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemengtaiwan.github.io/theme/images/background/jackson-hendry-435713-unsplash.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
+                            <a href="https://leemengtaiwan.github.io/tag/aws.html" rel="tag">aws</a>
+                            <a href="https://leemengtaiwan.github.io/tag/kinesis.html" rel="tag">kinesis</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemengtaiwan.github.io/use-kinesis-streams-and-firehose-to-build-a-data-lake.html" title="">
+                            利用 Kinesis 處理串流資料並建立資料湖
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2018-04-04 (水)</li>
+                        <li class="author">
+                            By
+                            <span>Lee Meng</span>
+                        </li>
+                        <li><a href="https://unsplash.com/photos/eodA_8CTOFo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" style="color:rgba(255, 255, 255, 0.5)">PhotoCredit</a></li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+
+        <div class="row blog-content">
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>所謂的<a href="https://en.wikipedia.org/wiki/Data_lake">資料湖 (data lake) </a> 指的是一企業裡頭所有形式的資料的集合。這些資料包含原始資料 (raw data)，以及經過轉換的衍生資料 (derived data)。</p>
+<p>資料湖的核心概念是將所有可用的資料全部整合在一個邏輯上相近的地方以供企業自由結合並做各式各樣的運用。資料湖可以用很多方式建立，這裏我們主要介紹如何利用 <a href="https://aws.amazon.com/tw/kinesis/">Amazon Kinesis</a> 將串流資料 (streaming data) 載入資料湖。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="概觀">概觀<a class="anchor-link" href="#概觀">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>資料湖概念上可以說是企業的所有資料的最終目的地。現在假設我們打算以 <a href="https://aws.amazon.com/tw/s3/">Amazon S3</a> 中作為我們的資料湖，問題就變成：要如何將串流資料穩定地傳到 S3。這部分我們將透過 <a href="https://aws.amazon.com/tw/kinesis/">Amazon Kinesis</a> 來達成。 Kinesis 本質上是跟 <a href="https://kafka.apache.org/">Apache Kafka</a> 類似的 <a href="https://en.wikipedia.org/wiki/Message_broker">message broker</a>，將訊息依照 message producers 產生的順序傳遞給 message consumers。實際上資料的流動會如下圖所示：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/kinesis/simple-streaming-data-flow.png" style="width:80%" />
+</center>
+<center>
+    Simple Dataflow
+    <font color="purple">: 將 streaming data 透過 Kinesis 保存在 S3</font>
+<br />
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>上圖有幾點值得說明：</p>
+<ul>
+<li>作為一個簡易的 demo，這邊我們的串流資料產生者 (streaming data producer) 是一個簡易 python script</li>
+<li>Streams 指的是 <a href="https://aws.amazon.com/tw/kinesis/data-streams/">Amazon Kinesis Data Streams</a>。在 Kinesis 架構裡頭，一個 data stream 通常代表一個主題 (topic)，
+跟這個主題相關的 producers 會把資料傳入該 stream 以讓該主題的 consumers 之後能接受訊息。</li>
+<li>Firehose 指的是 <a href="https://aws.amazon.com/tw/kinesis/data-firehose/">Amazon Kinesis Data Firehose</a>，是專門把接受到的串流資料寫入 AWS 上的資料存放區（如 S3、Redshift、ElasticSearch）以供後續分析的服務。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="建構流程">建構流程<a class="anchor-link" href="#建構流程">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>要完成上述的資料傳輸 pipeline，我們會 follow 以下步驟：</p>
+<ul>
+<li><a href="#建立一個-Kinesis-data-stream">建立一個 Kinesis data stream</a></li>
+<li><a href="#建立一個-Firehose-delivery-stream">建立一個 Firehose delivery stream</a></li>
+<li><a href="#用-Python-傳串流資料">用 Python 傳串流資料</a></li>
+<li><a href="#確認-S3-上的資料">確認 S3 上的資料</a></li>
+</ul>
+<p>在每個步驟裡頭會稍微澄清一些概念。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="建立一個-Kinesis-data-stream">建立一個 Kinesis data stream<a class="anchor-link" href="#建立一個-Kinesis-data-stream">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>現在假設有一個名為 naive-app 的應用程式，我們想要把使用者在上面做的操作紀錄下來。這時候我們可以建立一個新的 Kinesis Data Stream 來接受 app 的 streaming data。這邊指的 streaming data 是使用者存取應用程式時產生的 access log。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/kinesis/create-kinesis-stream.png" style="width:80%" />
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Scalability">Scalability<a class="anchor-link" href="#Scalability">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這邊最重要的是 <code>Number of shards</code> 的設定。Kinesis 將接收到的資料以 log 的方式儲存在硬碟上，而為了提高 scalability，Kinesis 利用 Partitioning 的概念將 log 切割成多個部分並分配到不同的 shards 上，再將這些 shards 分別存在不同機器上面以提高 read/write capacity。因此我們可以理解一個 Kinesis Stream (Topic) 的資料吞吐量 (throughput) 直接受到 shard 的數目影響： shard 數目越多，同時能處理 read/write 的機器越多，資料吞吐量越高。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-to-scale">How to scale<a class="anchor-link" href="#How-to-scale">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>理想上是一開始就掌握該 Stream/Topic 需要的資料吞吐量，進而決定最佳的 <code>Number of shards</code> ，但有時候事與願違。事後想要改變 shard 數目時需要透過 <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/">AWS Streams API</a> 做 Resharding。Resharding 實際上就是在改變 shard 數目：增加 shard 會讓已存在的 shard 再度被切割；減少 shard 則會合併已存在的 shard。</p>
+<p>在這邊我們就只直接使用一個 shard for demo。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Availability">Availability<a class="anchor-link" href="#Availability">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>另外值得一提的是 Kinesis 為了避免資料損失，會在三個不同的 availability zones 進行資料的 replication。因為這個額外的 overhead 可能使得在同樣設定下， <a href="https://www.opsclarity.com/evaluating-message-brokers-kafka-vs-kinesis-vs-sqs/">Kinesis 比 Kafka 慢</a> 的情況。因為是 log-based message broker，資料會被暫時存在硬碟上，預設保留 24 小時，而最多可以付費提升到維持 7 天以用來 replay data。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="建立一個-Firehose-delivery-stream">建立一個 Firehose delivery stream<a class="anchor-link" href="#建立一個-Firehose-delivery-stream">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>有了接受 naive-app 串流資料的 Kinesis stream 以後，我們要建立一個 Firehose delivery stream 來接收 Kinesis stream 的資料。</p>
+<p>Firehouse delivery stream 簡單來說是一個將串流資料存到 AWS 資料存放區的服務（如 S3、Redshift、ElasticSearch）。因此除了 <a href="https://aws.amazon.com/tw/about-aws/whats-new/2017/08/amazon-kinesis-firehose-can-now-read-data-directly-from-amazon-kinesis-streams/">Kinesis stream 的串流資料</a>以外，當然也可以接其他的串流資料：</p>
+<ul>
+<li>CloudWatch 的 log </li>
+<li>AWS IoT</li>
+<li>使用者自定義的串流資料</li>
+</ul>
+<p>在這篇裡頭我們的串流資料是 Kinesis stream，因此 Source 選擇 <code>Kinesis stream</code> 並填入我們剛剛建立的 stream 名稱： <code>naive-app-access-log</code>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/kinesis/create-delivery-stream.png" style="width:80%" />
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>值得一提的是 Firehose delivery stream 會 auto-scale，並不像 Kinesis stream 要手動調整 shard 數目。不過當然傳越多花越多。</p>
+<p>如上張圖所示，實際上 Firehose 還允許我們在 delivery stream 接受到串流資料以後把原始資料傳到指定的 <a href="https://aws.amazon.com/tw/lambda/">Lambda function</a> 做進一步的轉換。
+但因為我們想要資料湖儲存原始的串流資料，這邊我們省略這步驟。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Configuration">Configuration<a class="anchor-link" href="#Configuration">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>實際上 Firehose 不會一接收到資料就進行資料轉移。我們可以設定 Buffer size 以及 Buffer interval 讓 Firehose 在達到其中一個條件的時候把接收到的訊息統整起來一次做資料的轉移 (batch processing)。這邊為了能讓 Firehose 盡快把收到的資料轉移到 S3，設定 Buffer interval 為 <code>60</code> 秒。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/kinesis/firehose-configure-settings.png" style="width:80%" />
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="選擇-delivery-stream-目的地">選擇 delivery stream 目的地<a class="anchor-link" href="#選擇-delivery-stream-目的地">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在設定好 Firehose delivery stream 的串流資料來源（e.g., Kinesis stream）以及基本設定以後，我們要決定串流資料的目的地。這邊基本上很直覺， Destination 選擇 <code>Amazon S3</code> 以及想要放資料的 bucket 即可。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/kinesis/firehose-select-destination.png" style="width:80%" />
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>比較需要注意的是我們可以指定此 Firehose delivery stream 在放資料進入 bucket 時要為檔案加什麼前綴。</p>
+<p>假設未來其他的串流資料我們也想要統一放在 <code>me-data-lake</code> 這個 bucket 裡頭。為了方便管理，我們可以為每個 delivery stream 設定一個識別用的 Prefix。以 naive-app 來說，我們指定 Prefix 為 <code>naive-app-access-log/</code> 。加上 Firehose 預設的 <code>YYYY/MM/DD/HH/</code> ，該 stream 的每個檔案的路徑就會變成如下圖的 <code>naive-app-access-log/YYYY/MM/DD/HH/file_name</code>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/kinesis/s3-bucket-path.png" style="width:80%" />
+</center>
+<center>
+    加入 Prefix 後實際將串流資料存入 S3 時的檔案路徑
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="用-Python-傳串流資料">用 Python 傳串流資料<a class="anchor-link" href="#用-Python-傳串流資料">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>確保 Kinesis stream -&gt; Firehose delivery stream -&gt; S3 的資料流設定以後，我們可以寫一個簡單的 Python script 實際傳資料進 Kinesis stream 做測試。但首先先讓我們使用 <a href="https://boto3.readthedocs.io/en/latest/">AWS SDK for Python</a> 實作一個寄訊息給 Kinesis stream 的 function <code>write_to_stream</code> ：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+
+<span class="k">def</span> <span class="nf">write_to_stream</span><span class="p">(</span><span class="n">event_id</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">region_name</span><span class="p">,</span> <span class="n">stream_name</span><span class="p">):</span>
+    <span class="sd">"""Write streaming event to specified Kinesis Stream within specified region.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    event_id: str</span>
+<span class="sd">        The unique identifer for the event which will be needed in partitioning.</span>
+<span class="sd">    event: dict</span>
+<span class="sd">        The actual payload including all the details of the event.</span>
+<span class="sd">    region_name: str</span>
+<span class="sd">        AWS region identifier, e.g., "ap-northeast-1".</span>
+<span class="sd">    stream_name: str</span>
+<span class="sd">        Kinesis Stream name to write.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    res: Response returned by `put_record` func defined in boto3.client('kinesis')</span>
+<span class="sd">    """</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">'kinesis'</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="n">region_name</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">put_record</span><span class="p">(</span>
+        <span class="n">StreamName</span><span class="o">=</span><span class="n">stream_name</span><span class="p">,</span>
+        <span class="n">Data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">event</span><span class="p">),</span>
+        <span class="n">PartitionKey</span><span class="o">=</span><span class="n">event_id</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如何 docstring 所述， <code>write_to_stream</code> 基本上就是一個把 Python dict <code>event</code> 傳到指定的 region 的 Kinesis stream 裡的函式。（完整的 <a href="https://gist.github.com/leemengtaiwan/b5edca45e12664164e6634d6fe24d913">Gist</a> ）</p>
+<p>值得一提的是因為 Kinesis 背後是使用 <a href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html">Hash partitioning</a> 來分配資料到 shard，基本上 <code>PartitionKey=event_id</code> 裡頭的 <code>event_id</code> 只要每個訊息都是獨一無二的，就能保證資料能「平均地」分配到各個 shard 上。</p>
+<p>有了此函式以後，我們可以實際傳一些訊息進 Kinesis stream：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">event</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"event_id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)),</span>
+        <span class="s2">"event_type"</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">'read_post'</span><span class="p">,</span> <span class="s1">'write_post'</span><span class="p">,</span> <span class="s1">'make_comments'</span><span class="p">]),</span>
+        <span class="s2">"timestamp"</span><span class="p">:</span> <span class="n">calendar</span><span class="o">.</span><span class="n">timegm</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">timetuple</span><span class="p">())</span>
+    <span class="p">}</span>
+
+    <span class="c1"># send to Kinesis Stream</span>
+    <span class="n">event_id</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">'event_id'</span><span class="p">]</span>
+    <span class="n">write_to_stream</span><span class="p">(</span><span class="n">event_id</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">REGION_NAME</span><span class="p">,</span> <span class="n">KINESIS_STREAM_NAME</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>假設我們的 naive-app 可以讓使用者讀文章、寫文章以及寫評論，則上面的程式碼是模擬使用者使用 naive-app 時產生的事件，並將該事件的內容傳到 Kinesis stream <code>naive-app-access-log</code>。60 秒內幾筆產生的事件如下：</p>
+<div class="highlight"><pre><span></span>{'event_id': '56262', 'event_type': 'write_post', 'timestamp': 1522740951}
+{'event_id': '35672', 'event_type': 'make_comments', 'timestamp': 1522740956}
+{'event_id': '71613', 'event_type': 'read_post', 'timestamp': 1522740962}
+{'event_id': '48160', 'event_type': 'make_comments', 'timestamp': 1522740967}
+{'event_id': '96093', 'event_type': 'write_post', 'timestamp': 1522740972}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="確認-S3-上的資料">確認 S3 上的資料<a class="anchor-link" href="#確認-S3-上的資料">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>注意因為上面的 5 個事件在 $5 * 5 = 25$ 秒內就產生了。且因為我們前面設定 Firehose delivery stream 的 Buffer interval 為 60 秒，Firehose 會把以上的事件的訊息全部串接起來，放到一個檔案裡頭，而不是分成五個檔案：</p>
+<center>
+<img src="images/kinesis/s3-bucket-path.png" style="width:80%" />
+</center><p>而實際檔案的內容如下：</p>
+<div class="highlight"><pre><span></span>{"event_id": "56262", "timestamp": 1522740951, "event_type": "write_post"}{"event_id": "35672", "timestamp": 1522740956 ...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結語">結語<a class="anchor-link" href="#結語">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>到這邊為止成功把（偽）串流資料透過 Kinesis 存到 S3 了！為了方便之後的應用，輸出的檔案的內容格式或許還可以再改進，但資料湖的其中一個想法是 <a href="https://www.youtube.com/watch?v=JHGkaShoyNs">Command Query Responsibility Segregation (CQRS)</a>，也就是在存放資料的時候就只專心丟資料，不去在意之後資料會被以什麼方式、schema 使用，可以保證之後實際應用資料時有最大的彈性。</p>
+<p>另外在確保資料好好地儲存在資料湖以後，我們通常會實際針對串流資料再進行一些處理 / 分析像是：</p>
+<ul>
+<li><a href="https://aws.amazon.com/tw/blogs/big-data/building-a-near-real-time-discovery-platform-with-aws/">放到 Elasticsearch 並用 Kibana 做 Visualization</a></li>
+<li>觸發 Lambda function 做進一步處理</li>
+<li>...</li>
+</ul>
+<center>
+<img src="images/kinesis/kinesis-firehose-intro.png" style="width:80%" />
+</center><p>但這邊時間有限，之後有機會再來記錄資料湖之後的分析筆記。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="References">References<a class="anchor-link" href="#References">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://www.youtube.com/watch?v=814aUb5n_Fk">Youtube: Introduction to Amazon Kinesis Firehose</a></li>
+<li><a href="https://www.sumologic.com/blog/devops/kinesis-streams-vs-firehose/">sumologic - Kinesis Stream vs Firehose</a></li>
+<li><a href="https://acloud.guru/forums/aws-certified-big-data-specialty/discussion/-KhI3MgPEo-FY5rfgl3J/what_is_difference_between_kin">A Cloud Guru - difference betwwen Kinesis Streams and Kinesis Firehose</a></li>
+<li><a href="https://www.arundhaj.com/blog/getting-started-kinesis-python.html">Getting started with AWS Kinesis using Python</a></li>
+<li><a href="https://www.opsclarity.com/evaluating-message-brokers-kafka-vs-kinesis-vs-sqs/">opsclarity - Evaluating Message Brokers: Kafka vs. Kinesis vs. SQS</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+
+                <!--Tags-->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
+                        <a href="https://leemengtaiwan.github.io/tag/aws.html" rel="tag">aws</a>
+                        <a href="https://leemengtaiwan.github.io/tag/kinesis.html" rel="tag">kinesis</a>
+                    </span>
+
+                </p>
+
+
+
+
+                <!--Pagination-->
+                <div class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__next">
+                            <a href="https://leemengtaiwan.github.io/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html" rel="next">
+                                <span>Next Post</span>
+                                AWS Data Migration Service - 從 MongoDB 遷移到 Redshift
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+
+            </div><!-- end blog-content__main -->
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '利用 Kinesis 處理串流資料並建立資料湖';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemengtaiwan.github.io/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemengtaiwan.github.io/theme/js/plugins.js"></script>
+    <script src="https://leemengtaiwan.github.io/theme/js/main.js"></script>
+
+    <script type='text/javascript' src='https://leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
+
+</body>
+</html>
