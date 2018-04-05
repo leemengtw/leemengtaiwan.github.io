@@ -3,14 +3,14 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;這篇主要紀錄使用 SQLite shell 下 SQL Query 的指令。基本上在 shell 裡頭都是用 dot-command, 使用 &lt;code&gt;.help&lt;/code&gt; 可以顯示所有可用的指令.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;h1 id="Table-of-Contents"&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Prettier-output"&gt;</summary><content type="html">
+&lt;h1 id="Table-of-Contents"&gt;Table of Contents&lt;a class="anchor-link" href="#Table-of-Contents"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;div class="toc" style="margin-top: 1em;"&gt;&lt;ul class="toc-item" id="toc-level0"&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="Prettier-output-1" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#Prettier-output"&gt;Prettier output&lt;/a&gt;&lt;/span&gt;&lt;ul class="toc-item"&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="調整每一個-column-寬度-1.1" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#調整每一個-column-寬度"&gt;調整每一個 column 寬度&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="在-sqlite3-shell-裡清空畫面-2" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#在-sqlite3-shell-裡清空畫面"&gt;在 sqlite3 shell 裡清空畫面&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="使用-SQL-script-建立-tables-3" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#使用-SQL-script-建立-tables"&gt;使用 SQL script 建立 tables&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="顯示目前的-tables-4" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示目前的-tables"&gt;顯示目前的 tables&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="顯示-table-schema-5" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示-table-schema"&gt;顯示 table schema&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="顯示-indexes-6" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示-indexes"&gt;顯示 indexes&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
