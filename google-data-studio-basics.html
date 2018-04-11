@@ -88,7 +88,7 @@
                 <li><a href="../index.html#home" title="home">Home</a></li>
                 <li><a href="../index.html#about" title="about">About</a></li>
                 <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
-                <li class="current"><a href="../index.html#blog" title="blog">Blog</a></li>
+                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
                 <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
             </ul>
         </nav>
@@ -315,10 +315,43 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="資料透視表-(Pivot-Table)">資料透視表 (Pivot Table)<a class="anchor-link" href="#資料透視表-(Pivot-Table)">¶</a></h2><p>資料透視表很適合拿來看在不同條件下某個指標的表現。下圖是一個依照</p>
+<ul>
+<li>居住地</li>
+<li>國家</li>
+</ul>
+<p>兩個維度計算「男性人數」指標的資料透視表：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/google-data-studio/pivot-table.png" style="width:90%" />
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>依照<a href="https://support.google.com/datastudio/answer/7516660?hl=en">官方文件</a>有幾點值得注意：</p>
+<ul>
+<li>資料透視表最多處理 50,000 筆資料，為了避免 scan 資料太花時間，可以額外建立一些篩選器 subset 資料</li>
+<li>列維度跟欄維度最多可以分別設定 2 個維度（上例列欄各設定 1 個維度）</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="限制">限制<a class="anchor-link" href="#限制">¶</a></h2><p>可能因為還處在 beta 版本，在這篇文章寫的時候（2018/03）試用了一陣子發現 Data Studio 也有一些使用案例沒有辦法做到，像是：</p>
 <ul>
 <li>篩選器（filter）只能設定像是「欄位 C 大於 X」這種條件，而不能做「當欄位 C1 &gt; 欄位 C2」這種欄位間的比較。</li>
 <li>同上，條件欄位也只能設定像是「欄位 C 大於某固定值 X」的條件</li>
+<li>資料透視表包含的資料稍多 (&gt; 2000筆)就開始變慢 ..</li>
 </ul>
 </div>
 </div>
