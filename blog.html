@@ -99,41 +99,41 @@
 
     <!-- page header for featured/newest post
     ================================================== -->
-    <section class="page-header page-hero" style="background-image:url(https://leemengtaiwan.github.io/theme/images/background/jackson-hendry-435713-unsplash.jpg)">
+    <section class="page-header page-hero" style="background-image:url(https://leemengtaiwan.github.io/theme/images/background/neven-krcmarek-145603-unsplash.jpg)">
         <div class="row page-header__content">
             <article class="col-full">
 
                 <div class="page-header__info">
                     <div class="page-header__cat">
-                        <a href="https://leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
-                        <a href="https://leemengtaiwan.github.io/tag/aws.html" rel="tag">aws</a>
-                        <a href="https://leemengtaiwan.github.io/tag/kinesis.html" rel="tag">kinesis</a>
+                        <a href="https://leemengtaiwan.github.io/tag/r.html" rel="tag">R</a>
+                        <a href="https://leemengtaiwan.github.io/tag/visualization.html" rel="tag">visualization</a>
+                        <a href="https://leemengtaiwan.github.io/tag/ggplot2.html" rel="tag">ggplot2</a>
                     </div>
                     <div class="page-header__date">
-                        2018-04-04 (水)
+                        2018-04-14 (土)
                     </div>
                 </div>
                 
                 <h1 class="page-header__title">
-                     <a href="https://leemengtaiwan.github.io/use-kinesis-streams-and-firehose-to-build-a-data-lake.html" rel="bookmark" title="Permalink to 利用 Kinesis 處理串流資料並建立資料湖">
-                        利用 Kinesis 處理串流資料並建立資料湖
+                     <a href="https://leemengtaiwan.github.io/data-visualization-from-matplotlib-to-ggplot2.html" rel="bookmark" title="Permalink to 淺談資料視覺化以及 ggplot2 實踐">
+                        淺談資料視覺化以及 ggplot2 實踐
                      </a>
                 </h1>
                 <p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>所謂的<a href="https://en.wikipedia.org/wiki/Data_lake">資料湖 (data lake) </a> 指的是一企業裡頭所有形式的資料的集合。這些資料包含原始資料 (raw data)，以及經過轉換的衍生資料 (derived data)。</p>
-<p>資料湖的核心概念是將所有可用的資料全部整合在一個邏輯上相近的地方以供企業自由結合並做各式各樣的運用。資料湖可以用很多方式建立，這裏我們主要介紹如何利用 <a href="https://aws.amazon.com/tw/kinesis/">Amazon Kinesis</a> 將串流資料 (streaming data) 載入資料湖。</p>
+<p>這篇主要描述自己以往在利用 Python 做資料視覺化 (data visualization) 時常犯的思維瑕疵，而該思維如何在接觸 R 的 <a href="http://ggplot2.org/">ggplot2</a> 以後得到改善。</p>
+<p>本文會試著說明資料視覺化的本質為何，以及在設計視覺化時，概念上應該包含什麼要素以及步驟。最後展示如何透過 ggplot2 活用前述的概念，來實際做資料視覺化。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="概觀"></p>
+<h2 id="目錄"></p>
                 <p>
-                    <a href="https://leemengtaiwan.github.io/use-kinesis-streams-and-firehose-to-build-a-data-lake.html" class="btn btn--stroke page-header__btn">Read More</a>
+                    <a href="https://leemengtaiwan.github.io/data-visualization-from-matplotlib-to-ggplot2.html" class="btn btn--stroke page-header__btn">Read More</a>
                 </p>
             </article>
         </div>
@@ -149,6 +149,36 @@
 
         <div class="blog-list block-1-2 block-tab-full">
 
+                <article class="col-block">
+
+                    <div class="blog-date">
+                        <a href="https://leemengtaiwan.github.io/use-kinesis-streams-and-firehose-to-build-a-data-lake.html">2018-04-04 (水)</a>
+                    </div>
+
+                    <h2 class="h01">
+                        <a href="https://leemengtaiwan.github.io/use-kinesis-streams-and-firehose-to-build-a-data-lake.html" rel="bookmark" title="Permalink to 利用 Kinesis 處理串流資料並建立資料湖">利用 Kinesis 處理串流資料並建立資料湖</a>
+                    </h2>
+
+                    <p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>所謂的<a href="https://en.wikipedia.org/wiki/Data_lake">資料湖 (data lake) </a> 指的是一企業裡頭所有形式的資料的集合。這些資料包含原始資料 (raw data)，以及經過轉換的衍生資料 (derived data)。</p>
+<p>資料湖的核心概念是將所有可用的資料全部整合在一個邏輯上相近的地方以供企業自由結合並做各式各樣的運用。資料湖可以用很多方式建立，這裏我們主要介紹如何利用 <a href="https://aws.amazon.com/tw/kinesis/">Amazon Kinesis</a> 將串流資料 (streaming data) 載入資料湖。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="概觀"></p>
+                    <div class="blog-cat">
+                        <a href="https://leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
+                        <a href="https://leemengtaiwan.github.io/tag/aws.html" rel="tag">aws</a>
+                        <a href="https://leemengtaiwan.github.io/tag/kinesis.html" rel="tag">kinesis</a>
+                    </div>
+
+                </article>
                 <article class="col-block">
 
                     <div class="blog-date">
@@ -293,33 +323,6 @@
                         <a href="https://leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
                         <a href="https://leemengtaiwan.github.io/tag/beautifulsoup.html" rel="tag">beautifulsoup</a>
                         <a href="https://leemengtaiwan.github.io/tag/html.html" rel="tag">html</a>
-                    </div>
-
-                </article>
-                <article class="col-block">
-
-                    <div class="blog-date">
-                        <a href="https://leemengtaiwan.github.io/seaborn-cheat-sheet.html">2018-03-02 (金)</a>
-                    </div>
-
-                    <h2 class="h01">
-                        <a href="https://leemengtaiwan.github.io/seaborn-cheat-sheet.html" rel="bookmark" title="Permalink to Seaborn 筆記">Seaborn 筆記</a>
-                    </h2>
-
-                    <p>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>這篇記錄我在使用 <a href="https://seaborn.pydata.org/">seaborn</a> 做資料分析還有 visualization 時常用的 code.
-一般慣例會把 seaborn 更名成 <code>sns</code> for reference.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input"></p>
-                    <div class="blog-cat">
-                        <a href="https://leemengtaiwan.github.io/tag/python.html" rel="tag">python</a>
-                        <a href="https://leemengtaiwan.github.io/tag/seaborn.html" rel="tag">seaborn</a>
                     </div>
 
                 </article>
