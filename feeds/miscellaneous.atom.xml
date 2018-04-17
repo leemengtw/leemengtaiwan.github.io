@@ -2779,7 +2779,7 @@ KoE66EiWrwAAAABJRU5ErkJggg==" /&gt;
     &lt;span class="n"&gt;client&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;boto3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'kinesis'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;region_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;region_name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;put_record&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
         &lt;span class="n"&gt;StreamName&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;stream_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="n"&gt;Data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dumps&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;Data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dumps&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="n"&gt;PartitionKey&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;event_id&lt;/span&gt;
     &lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;
@@ -2790,8 +2790,19 @@ KoE66EiWrwAAAABJRU5ErkJggg==" /&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;如何 docstring 所述， &lt;code&gt;write_to_stream&lt;/code&gt; 基本上就是一個把 Python dict &lt;code&gt;event&lt;/code&gt; 傳到指定的 region 的 Kinesis stream 裡的函式。（完整的 &lt;a href="https://gist.github.com/leemengtaiwan/b5edca45e12664164e6634d6fe24d913"&gt;Gist&lt;/a&gt; ）&lt;/p&gt;
-&lt;p&gt;值得一提的是因為 Kinesis 背後是使用 &lt;a href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html"&gt;Hash partitioning&lt;/a&gt; 來分配資料到 shard，基本上 &lt;code&gt;PartitionKey=event_id&lt;/code&gt; 裡頭的 &lt;code&gt;event_id&lt;/code&gt; 只要每個訊息都是獨一無二的，就能保證資料能「平均地」分配到各個 shard 上。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;write_to_stream&lt;/code&gt; 基本上是把一個 Python dict &lt;code&gt;event&lt;/code&gt; 利用 &lt;code&gt;json.dumps&lt;/code&gt; 轉成字串後傳到指定的 region 的 Kinesis stream 裡的函式。（完整的 &lt;a href="https://gist.github.com/leemengtaiwan/b5edca45e12664164e6634d6fe24d913"&gt;Gist&lt;/a&gt; ）&lt;/p&gt;
+&lt;p&gt;這邊值得注意的是 &lt;code&gt;Data=json.dumps(event) + '\n'&lt;/code&gt; 裡頭的 &lt;code&gt;'\n'&lt;/code&gt; 。如果之後想要利用 &lt;a href="https://aws.amazon.com/tw/glue/"&gt;AWS Glue&lt;/a&gt; 或者 &lt;a href="https://aws.amazon.com/tw/athena/"&gt;Athena&lt;/a&gt; 來進一步分析此串流資料的話，推薦在代表一個 event 的字串後面加上換行符號以維持「一行一事件」的資料形式，方便 schema 的自動產生。&lt;/p&gt;
+&lt;p&gt;範例日誌檔案內容會像是這樣：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{"event_id": "56262", "timestamp": 1522740951, "event_type": "write_post"}
+{"event_id": "35672", "timestamp": 1522740956 ...
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;另外值得一提的是因為 Kinesis 背後是使用 &lt;a href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html"&gt;Hash partitioning&lt;/a&gt; 來分配資料到 shard，基本上 &lt;code&gt;PartitionKey=event_id&lt;/code&gt; 裡頭的 &lt;code&gt;event_id&lt;/code&gt; 只要每個訊息都是獨一無二的，就能保證資料能「平均地」分配到各個 shard 上。&lt;/p&gt;
 &lt;p&gt;有了此函式以後，我們可以實際傳一些訊息進 Kinesis stream：&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2841,7 +2852,8 @@ KoE66EiWrwAAAABJRU5ErkJggg==" /&gt;
 &lt;center&gt;
 &lt;img src="images/kinesis/s3-bucket-path.png" style="width:80%" /&gt;
 &lt;/center&gt;&lt;p&gt;而實際檔案的內容如下：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{"event_id": "56262", "timestamp": 1522740951, "event_type": "write_post"}{"event_id": "35672", "timestamp": 1522740956 ...
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{"event_id": "56262", "timestamp": 1522740951, "event_type": "write_post"}
+{"event_id": "35672", "timestamp": 1522740956 ...
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2861,6 +2873,7 @@ KoE66EiWrwAAAABJRU5ErkJggg==" /&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://aws.amazon.com/tw/blogs/big-data/building-a-near-real-time-discovery-platform-with-aws/"&gt;放到 Elasticsearch 並用 Kibana 做 Visualization&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;觸發 Lambda function 做進一步處理&lt;/li&gt;
+&lt;li&gt;使用 Athena 做 ad-hoc 分析&lt;/li&gt;
 &lt;li&gt;...&lt;/li&gt;
 &lt;/ul&gt;
 &lt;center&gt;

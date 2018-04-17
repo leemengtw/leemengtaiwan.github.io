@@ -425,7 +425,7 @@
     <span class="n">client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">'kinesis'</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="n">region_name</span><span class="p">)</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">put_record</span><span class="p">(</span>
         <span class="n">StreamName</span><span class="o">=</span><span class="n">stream_name</span><span class="p">,</span>
-        <span class="n">Data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">event</span><span class="p">),</span>
+        <span class="n">Data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span>
         <span class="n">PartitionKey</span><span class="o">=</span><span class="n">event_id</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">res</span>
@@ -436,8 +436,19 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>如何 docstring 所述， <code>write_to_stream</code> 基本上就是一個把 Python dict <code>event</code> 傳到指定的 region 的 Kinesis stream 裡的函式。（完整的 <a href="https://gist.github.com/leemengtaiwan/b5edca45e12664164e6634d6fe24d913">Gist</a> ）</p>
-<p>值得一提的是因為 Kinesis 背後是使用 <a href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html">Hash partitioning</a> 來分配資料到 shard，基本上 <code>PartitionKey=event_id</code> 裡頭的 <code>event_id</code> 只要每個訊息都是獨一無二的，就能保證資料能「平均地」分配到各個 shard 上。</p>
+<p><code>write_to_stream</code> 基本上是把一個 Python dict <code>event</code> 利用 <code>json.dumps</code> 轉成字串後傳到指定的 region 的 Kinesis stream 裡的函式。（完整的 <a href="https://gist.github.com/leemengtaiwan/b5edca45e12664164e6634d6fe24d913">Gist</a> ）</p>
+<p>這邊值得注意的是 <code>Data=json.dumps(event) + '\n'</code> 裡頭的 <code>'\n'</code> 。如果之後想要利用 <a href="https://aws.amazon.com/tw/glue/">AWS Glue</a> 或者 <a href="https://aws.amazon.com/tw/athena/">Athena</a> 來進一步分析此串流資料的話，推薦在代表一個 event 的字串後面加上換行符號以維持「一行一事件」的資料形式，方便 schema 的自動產生。</p>
+<p>範例日誌檔案內容會像是這樣：</p>
+<div class="highlight"><pre><span></span>{"event_id": "56262", "timestamp": 1522740951, "event_type": "write_post"}
+{"event_id": "35672", "timestamp": 1522740956 ...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>另外值得一提的是因為 Kinesis 背後是使用 <a href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html">Hash partitioning</a> 來分配資料到 shard，基本上 <code>PartitionKey=event_id</code> 裡頭的 <code>event_id</code> 只要每個訊息都是獨一無二的，就能保證資料能「平均地」分配到各個 shard 上。</p>
 <p>有了此函式以後，我們可以實際傳一些訊息進 Kinesis stream：</p>
 </div>
 </div>
@@ -487,7 +498,8 @@
 <center>
 <img src="images/kinesis/s3-bucket-path.png" style="width:80%" />
 </center><p>而實際檔案的內容如下：</p>
-<div class="highlight"><pre><span></span>{"event_id": "56262", "timestamp": 1522740951, "event_type": "write_post"}{"event_id": "35672", "timestamp": 1522740956 ...
+<div class="highlight"><pre><span></span>{"event_id": "56262", "timestamp": 1522740951, "event_type": "write_post"}
+{"event_id": "35672", "timestamp": 1522740956 ...
 </pre></div>
 </div>
 </div>
@@ -507,6 +519,7 @@
 <ul>
 <li><a href="https://aws.amazon.com/tw/blogs/big-data/building-a-near-real-time-discovery-platform-with-aws/">放到 Elasticsearch 並用 Kibana 做 Visualization</a></li>
 <li>觸發 Lambda function 做進一步處理</li>
+<li>使用 Athena 做 ad-hoc 分析</li>
 <li>...</li>
 </ul>
 <center>
