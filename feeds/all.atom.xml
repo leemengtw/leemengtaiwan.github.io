@@ -1,5 +1,454 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-04-14T15:10:00+09:00</updated><entry><title>淺談資料視覺化以及 ggplot2 實踐</title><link href="https://leemengtaiwan.github.io/data-visualization-from-matplotlib-to-ggplot2.html" rel="alternate"></link><published>2018-04-14T15:10:00+09:00</published><updated>2018-04-14T15:10:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-04-14:/data-visualization-from-matplotlib-to-ggplot2.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-04-23T22:55:00+09:00</updated><entry><title>資料科學家為何需要了解資料工程</title><link href="https://leemengtaiwan.github.io/why-you-need-to-learn-data-engineering-as-a-data-scientist.html" rel="alternate"></link><published>2018-04-23T22:55:00+09:00</published><updated>2018-04-23T22:55:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-04-23:/why-you-need-to-learn-data-engineering-as-a-data-scientist.html</id><summary type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;透過描述資料科學家的一天日常，本文將簡單介紹資料工程（Data Engineering）的概念、其如何跟資料科學相關。以及最重要的，作為一個資料科學家（Data Scientist）應該如何學習並善用這些知識來創造最大價值。&lt;/p&gt;
+&lt;p&gt;身為一個資料科學家，擁有資料工程的知識可以提升工作效率，點亮你的方向並加速專案前進。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="目錄"&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;透過描述資料科學家的一天日常，本文將簡單介紹資料工程（Data Engineering）的概念、其如何跟資料科學相關。以及最重要的，作為一個資料科學家（Data Scientist）應該如何學習並善用這些知識來創造最大價值。&lt;/p&gt;
+&lt;p&gt;身為一個資料科學家，擁有資料工程的知識可以提升工作效率，點亮你的方向並加速專案前進。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="目錄"&gt;目錄&lt;a class="anchor-link" href="#目錄"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#資料科學家的一天"&gt;資料科學家的一天&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#資料準備"&gt;資料準備&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#第一挑戰：資料量大增"&gt;第一挑戰：資料量大增&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#第二挑戰：非結構化資料"&gt;第二挑戰：非結構化資料&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#資料為本"&gt;資料為本&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#資料管道"&gt;資料管道&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#資料倉儲"&gt;資料倉儲&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#資料湖"&gt;資料湖&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#如何實際應用資料工程？"&gt;如何實際應用資料工程？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#結語"&gt;結語&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="資料科學家的一天"&gt;資料科學家的一天&lt;a class="anchor-link" href="#資料科學家的一天"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;一說到資料科學，在你腦海中浮現的幾個關鍵字可能是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;資料分析&lt;/li&gt;
+&lt;li&gt;資料視覺化&lt;/li&gt;
+&lt;li&gt;A.I. / 機器學習&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;等為人津津樂道的面向。&lt;/p&gt;
+&lt;p&gt;的確，這些都在資料科學的範疇裡頭，但實際上佔用多數資料科學家大部分時間，卻常被忽略的部分是資料準備：&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/data-engineering/data-scientist-work-pie-chart.png" style="width:90%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/#5d0184f76f63" target="_blank"&gt;Forbes&lt;/a&gt;
+&lt;font color="purple"&gt;: &lt;/font&gt;依據調查，多數資料科學家花 80 % 的時候在準備資料
+    &lt;br /&gt;
+&lt;/center&gt;&lt;h3 id="資料準備"&gt;資料準備&lt;a class="anchor-link" href="#資料準備"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;說到資料準備，你可能會聯想到我們在前一篇&lt;a href="data-visualization-from-matplotlib-to-ggplot2.html#載入資料-+-簡單資料處理"&gt;淺談資料視覺化以及 ggplot2 實踐&lt;/a&gt;裡頭，使用 R 語言做的簡單資料清理：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 將 CSV 檔案載入成資料框架（dataframe）&lt;/span&gt;
+ramen_all &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.csv&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"datasets//ramen-ratings.csv"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# 將「星星數」轉成定量資料&lt;/span&gt;
+ramen_all&lt;span class="o"&gt;$&lt;/span&gt;Stars &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;ramen_all&lt;span class="o"&gt;$&lt;/span&gt;Stars&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;span class="c1"&gt;# Subset 資料&lt;/span&gt;
+ramen &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ramen_all &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+  filter&lt;span class="p"&gt;(&lt;/span&gt;Country &lt;span class="o"&gt;%in%&lt;/span&gt; count&lt;span class="p"&gt;(&lt;/span&gt;ramen_all&lt;span class="p"&gt;,&lt;/span&gt; Country&lt;span class="p"&gt;,&lt;/span&gt; sort &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; drop&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+  filter&lt;span class="p"&gt;(&lt;/span&gt;Style &lt;span class="o"&gt;%in%&lt;/span&gt; count&lt;span class="p"&gt;(&lt;/span&gt;ramen_all&lt;span class="p"&gt;,&lt;/span&gt; Style&lt;span class="p"&gt;,&lt;/span&gt; sort &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; drop&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;在做分析之前，我們做了以下的步驟來準備資料：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;讀進&lt;code&gt;ramen-ratings.csv&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;轉變某些欄位的資料型態&lt;/li&gt;
+&lt;li&gt;依照一些條件取出想要分析的資料&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;雖然資料量不大，你仍然可以試著想像我們實際上建立了一個 &lt;a href="https://zh.wikipedia.org/wiki/ETL"&gt;ETL&lt;/a&gt; 工作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;將資料從來源（硬碟）擷取出來（&lt;strong&gt;E&lt;/strong&gt;xtract）&lt;/li&gt;
+&lt;li&gt;做了一些轉換（&lt;strong&gt;T&lt;/strong&gt;ransform）&lt;/li&gt;
+&lt;li&gt;載入（&lt;strong&gt;L&lt;/strong&gt;oad）目的地（記憶體）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;假設我們把一般的資料分析專案分為以下兩階段：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;資料準備：將資料轉換成適合分析的格式&lt;/li&gt;
+&lt;li&gt;資料分析：探索資料、建構預測模型&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;上面的 ETL 就屬於第一個步驟。又因為此資料集大概只包含 5,000 筆資料，步驟 1 所花的時間跟步驟 2 的所需時間相比，可以說微乎其微，它不會是你做資料科學的一個 bottleneck。&lt;/p&gt;
+&lt;p&gt;但如果你要處理的資料量是這個的 1,000 倍大呢？你還能馬上進入分析階段嗎？&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="第一挑戰：資料量大增"&gt;第一挑戰：資料量大增&lt;a class="anchor-link" href="#第一挑戰：資料量大增"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;實際上一個資料科學家每天需要分析的資料量可能要乘上幾個級數。現在假設你從銷售部門拿到一個包含數百萬筆銷售紀錄，大小為 60G 的 CSV 檔案，我想你應該不會想要直接打開它，即使它在某些人眼裡還不夠資格稱為大數據 (´；ω；｀)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;你殫精竭慮，最後決定去問公司內一位資深的&lt;a href="https://medium.freecodecamp.org/the-rise-of-the-data-engineer-91be18f1e603"&gt;資料工程師（Data Engineer）&lt;/a&gt;該怎麼解決這問題。&lt;/p&gt;
+&lt;p&gt;該仁兄施了點你不曉得的魔法，過了幾分鐘從 Slack 丟來個神秘的 URL。連到上面，你發現熟悉的 &lt;a href="http://jupyter.org/"&gt;Jupyter Nook&lt;/a&gt; 介面，而且 CSV 還幫你載好了 Σ(ﾟдﾟ;&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/data-engineering/jupyter-notebook.png" style="width:90%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://www.ithome.com.tw/news/121497" target="_blank"&gt;Bonus&lt;/a&gt;
+&lt;font color="purple"&gt;: &lt;/font&gt;Jupyter Lab 是 Jupyter Notebook 的改善版，大推
+    &lt;br /&gt;
+&lt;/center&gt;&lt;p&gt;你開心地在資料工程師幫你搞定的機器上做出分析，最後在大家面前做口頭報告。大家針對報告的反應不錯，但坐在底下的廣告部門的人這時候提問了：&lt;/p&gt;
+&lt;p&gt;「可以把這些銷售紀錄跟廣告點擊的串流日誌（log）合在一起分析嗎？這樣我們會有更多有趣的結果！」&lt;/p&gt;
+&lt;p&gt;你的頭又痛了起來。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="第二挑戰：非結構化資料"&gt;第二挑戰：非結構化資料&lt;a class="anchor-link" href="#第二挑戰：非結構化資料"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;除了資料量級的差異，一個資料科學家在企業裡頭會遇到的另外一個挑戰是非結構化資料（Unstructured Data）的快速增加。你如何將各種不同格式（JSON、存取日誌、CSV 等）的資料以有效率的方式跟平常熟悉的關聯式資料庫如 &lt;a href="https://www.postgresql.org/"&gt;PostgreSQL&lt;/a&gt; 裡頭的資料結合以供分析？&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/data-engineering/increasing-dark-data.png" style="width:90%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://www.slideshare.net/AmazonWebServices/how-to-build-a-data-lake-with-aws-glue-data-catalog-abd213r" target="_blank"&gt;AWS Reinvent&lt;/a&gt;
+&lt;font color="purple"&gt;: &lt;/font&gt;非結構化資料快速增加，但因為不存在關聯式資料庫裡，無法直接被拿來分析
+    &lt;br /&gt;
+&lt;/center&gt;&lt;p&gt;如果我們能寫一個簡單的 &lt;a href="https://zh.wikipedia.org/wiki/SQL"&gt;SQL&lt;/a&gt; 查詢，把銷售資料（sales）跟廣告點擊（clicks）資料依照共有的鍵值 &lt;code&gt;sale_id&lt;/code&gt; 合起來該有多好：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT *
+FROM sales AS s
+INNER JOIN clicks AS c
+ON s.sale_id = c.sale_id&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;你想著想著就到下班時間了。&lt;/p&gt;
+&lt;p&gt;「算了，還是先回家睡個覺，明天再厚著臉皮問資料工程師吧！反正之前他也幫我在&lt;a href="https://zh.wikipedia.org/wiki/%E8%B3%87%E6%96%99%E5%80%89%E5%84%B2"&gt;資料倉儲（Data Warehouse）&lt;/a&gt;加了新的表格。」&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="資料為本"&gt;資料為本&lt;a class="anchor-link" href="#資料為本"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;從上面這個資料科學家的一天，我們得到什麼啟示？&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;blockquote&gt;&lt;p&gt;資料（的基礎設施）為資料科學之基礎 - 巧婦難為無米之炊&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;老實說這個例子裡頭的資料科學家已經非常幸運：公司裡有資料工程師能幫他把大量、複雜格式的資料做 ETL 並以資料倉儲中的一個新表格（Table）的方式呈現轉換過後的資料以供他使用。硬要說稍微不方便的地方，頂多就是該資料科學家得等資料工程師搞定好資料就是了。&lt;/p&gt;
+&lt;p&gt;然而因為資料工程師是一個很新的職位，多數的企業現在並沒有這樣的人存在。大多數的資料科學家只能自己下海，想辦法生出可以用的資料。實際上，&lt;a href="https://hackernoon.com/@mrogati?source=post_header_lockup"&gt;Monica Rogati&lt;/a&gt; 在 &lt;a href="https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007"&gt;The AI Hierarchy of Needs&lt;/a&gt; 提到，一些常見的資料科學專案像是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建置 AI &lt;/li&gt;
+&lt;li&gt;建置簡單的機器學習模型&lt;/li&gt;
+&lt;li&gt;資料分析&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;都得建立在「有完善且可靠的資料」這個基礎之下：&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/data-engineering/ai-need.png" style="width:80%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007" target="_blank"&gt;資料科學的金字塔層級要求&lt;/a&gt;
+&lt;font color="purple"&gt;: &lt;/font&gt;你需要建立好資料科學的基礎設施才有本錢往「上」發展
+    &lt;br /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;以金字塔最下三層為例，要讓資料科學的專案順利進行，你最少要（由下而上）：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;持續搜集（COLLECT）原始資料&lt;/li&gt;
+&lt;li&gt;將該資料轉移（MOVE / STORE）到適合分析的地方如資料倉儲、&lt;a href="https://itw01.com/G4DCESL.html"&gt;資料湖&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;轉換（TRANSFORM）被轉移的資料，進行前處理以方便分析&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我認爲資料工程的重頭戲在上面的 2, 3 點：將資料以「轉換好」的形式「送」到可供分析的地方。（當然也可以先送再轉換，或者不轉換，詳見下面章節的&lt;a href="#資料湖"&gt;資料湖&lt;/a&gt;）&lt;/p&gt;
+&lt;p&gt;身為資料科學家，如果你夠幸運，公司內部有專業的資料工程師幫你把上面這件事情做好，恭喜！你可以多專注在分析以及建置預測模型上面；
+但假設公司裡頭只有資料科學家，而企業又想要處理大數據的話，抱歉，你得擔起這個攤子，想辦法把資料的基本設施搞定：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;blockquote&gt;&lt;p&gt;每個成功的資料科學家背後都有個偉大的資料工程師。或者該資料科學家就是那個資料工程師。&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;身為資料科學家，如果我們也能了解資料工程相關的知識的話，不就能更快地、更有效率地進行資料分析了嗎？&lt;/p&gt;
+&lt;p&gt;這個想法即是所謂的&lt;a href="http://www.effectiveengineer.com/blog/master-adjacent-disciplines"&gt;從鄰近專業（Adjacent Disciplines）學習&lt;/a&gt;：透過學習跟本業息息相關的資料工程，資料科學家可以加速資料科學的專案進行，並為個人以及團隊創造更大價值。想閱讀更多，可以看看&lt;a href="https://medium.com/@rchang/a-beginners-guide-to-data-engineering-part-i-4227c5c457d7"&gt;在 Airbnb 工作的資料科學家怎麼說&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;接著讓我們稍微聊聊到底什麼是資料工程以及一些相關例子。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="資料管道"&gt;資料管道&lt;a class="anchor-link" href="#資料管道"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;依照前面的論述，資料工程最主要的目的就是建構資料科學的基本設施（Infrastructure）。而這些基礎設施裡頭一個很重要的部分是&lt;a href="https://www.alooma.com/answers/what-is-the-difference-between-a-data-pipeline-and-an-etl-pipeline"&gt;資料管道（Data Pipeline）&lt;/a&gt;的建置：將資料從來源 &lt;strong&gt;S&lt;/strong&gt;ource 導向目的地 
+&lt;strong&gt;T&lt;/strong&gt;arget 以供之後的利用。有必要的話，對資料進行一些轉換。&lt;/p&gt;
+&lt;p&gt;一些簡單的例子像是我們之前部落格提到的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html"&gt;將 NoSQL（MongoDB） 資料導向資料倉儲（Redshift）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="use-kinesis-streams-and-firehose-to-build-a-data-lake.html"&gt;將串流資料（Kinesis）導向資料湖（AWS S3）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;從上面的例子也可以看到，實際上資料管道是一個涵蓋範圍很廣的詞彙，包含&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;即時的串流資料處理&lt;/li&gt;
+&lt;li&gt;Batch 處理（如：每 12 小時作一次）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ETL 做的事情跟資料管道類似，但偏重在 Batch 處理，這篇文章將 ETL 視為資料管道裡頭的一個子集。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/data-engineering/etl-flow.png" style="width:90%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://robinhood.engineering/why-robinhood-uses-airflow-aed13a9a90c8" target="_blank"&gt;ETL&lt;/a&gt;
+&lt;font color="purple"&gt;: &lt;/font&gt;從資料來源擷取、轉換資料並將其導入目的地
+    &lt;br /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;資料的來源或目的地可以是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分散式檔案儲存系統（如 &lt;a href="https://zh.wikipedia.org/wiki/Apache_Hadoop"&gt;HDFS&lt;/a&gt;、&lt;a href="https://aws.amazon.com/tw/s3/"&gt;AWS S3&lt;/a&gt;）&lt;/li&gt;
+&lt;li&gt;一般的資料庫 / 資料倉儲（如 &lt;a href="https://aws.amazon.com/tw/redshift/getting-started/"&gt;AWS Redshift&lt;/a&gt;）&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ETL 最重要的是轉換步驟，一些常見的轉換包含：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;改變欄位名稱&lt;/li&gt;
+&lt;li&gt;去除空值（Missing Value）&lt;/li&gt;
+&lt;li&gt;套用商業邏輯，事先做資料整合（Aggregate）&lt;/li&gt;
+&lt;li&gt;轉變資料格式（例：從 JSON 到適合資料倉儲的格式如 &lt;a href="https://parquet.apache.org/"&gt;Parquet&lt;/a&gt;）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;center&gt;
+&lt;img src="images/data-engineering/man-on-data-pipeline.png" style="width:90%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://unsplash.com/photos/xNdPWGJ6UCQ?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText" target="_blank"&gt;資料工程師&lt;/a&gt;
+&lt;font color="purple"&gt;: &lt;/font&gt;建構資料管道以讓大量的資料可供分析
+    &lt;br /&gt;
+&lt;/center&gt;&lt;p&gt;這些轉換都是為了讓之後使用資料的資料科學家們能更輕鬆地分析資料。為了建置可靠的資料管道 / ETL 流程，我們常會需要使用一些管理工具像是 &lt;a href="https://airflow.apache.org/"&gt;Airflow&lt;/a&gt;、 &lt;a href="https://aws.amazon.com/tw/glue/"&gt;AWS Glue&lt;/a&gt; 以確保資料的處理如同我們預期。&lt;/p&gt;
+&lt;h3 id="一些關鍵技術"&gt;一些關鍵技術&lt;a class="anchor-link" href="#一些關鍵技術"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Hadoop 生態環境&lt;/li&gt;
+&lt;li&gt;分散式系統上的 ETL 設計&lt;/li&gt;
+&lt;li&gt;SQL-on-Hadoop 的專案了解（如 Apache Hive, Spark SQL, Fackbook Presto）&lt;/li&gt;
+&lt;li&gt;資料流程管理（如 Airflow、AWS Glue）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;那經過資料管道處理後的資料要怎麼存取/分析？依照存取方式的不同，資料管道的架構方式也會有所不同。&lt;/p&gt;
+&lt;p&gt;而存取資料的方式大概可以分為兩種：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://medium.com/@rchang/a-beginners-guide-to-data-engineering-part-i-4227c5c457d7"&gt;資料倉儲（Data Warehousing）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://itw01.com/G4DCESL.html"&gt;資料湖（Data Lake）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="資料倉儲"&gt;資料倉儲&lt;a class="anchor-link" href="#資料倉儲"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;資料倉儲的概念就跟實際的倉儲相同：你在這邊將原料（原始資料）轉化成可以消化的產品（資料庫裡頭的經過整理的一筆筆紀錄）並存起來方便之後分析。&lt;/p&gt;
+&lt;p&gt;這邊最重要的概念是：為了方便商業智慧的萃取，在將資料放入資料倉儲前，資料科學家 / 資料工程師需要花很多的心力決定資料庫綱目（Database Schema）要長什麼樣子。
+也就是說資料庫的綱要（Schema）在建立資料管道的時候就已經被決定了：這種模式稱之為 Schema-on-Write。這是為了確保資料在被放進資料倉儲的時候就已經是可以分析的形式，方便資料科學家分析。&lt;/p&gt;
+&lt;p&gt;你可以想像資料工程師在建構資料管道 / ETL 的時候，得對原始資料做大量的轉換以讓資料在被&lt;strong&gt;寫&lt;/strong&gt;入資料倉儲時就已經符合一開始定義的 Schema。而資料倉儲最常被拿來使用的一個資料模型（Data Model）是所謂的 &lt;a href="https://en.wikipedia.org/wiki/Dimensional_modeling"&gt;Dimensional Modeling&lt;/a&gt;（Stars / Snowflaks Schema）。&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/data-engineering/star-schema.png" style="width:90%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="http://publib.boulder.ibm.com/tividd/td/TEDW/SC32-1497-00/en_US/HTML/srfmst158.htm" target="_blank"&gt;資料倉儲最被廣泛使用的 Data Model&lt;/a&gt;
+&lt;font color="purple"&gt;: &lt;/font&gt;Stars Schema
+    &lt;br /&gt;
+&lt;/center&gt;&lt;p&gt;資料工程師將企業最重要的事件（如：使用者下了訂單、發了一個 Facebook 動態）放到最中間的 Fact Table，並且為了可以使用所有想像得到的維度來分析這些事件，會把事件本身的維度（Dimensions）再分別存在外圍的多個 Dimension Tables。常見的維度有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;時間（此事件什麼時候產生、年月份、星期幾等）&lt;/li&gt;
+&lt;li&gt;商品的製造商的資料、其他細節&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因為看起來就像是一個星星，因此被命名為 Stars Schema。Snowflakes 則是其變形。&lt;/p&gt;
+&lt;h3 id="一些關鍵技術"&gt;一些關鍵技術&lt;a class="anchor-link" href="#一些關鍵技術"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在資料倉儲的部分，關鍵的技術與概念有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;了解正規化（Normalization）的好處&lt;/li&gt;
+&lt;li&gt;分散式 SQL 查詢引擎的原理（如 &lt;a href="https://prestodb.io/"&gt;Presto&lt;/a&gt;）&lt;/li&gt;
+&lt;li&gt;分析專用的資料模型的設計原理（如 Stars / Snowflakes schema）&lt;/li&gt;
+&lt;li&gt;了解分散式系統背後各種 JOIN 的原理（Sort-Merge JOINs、Broadcast Hash JOINs、Paritioned Hash JOINs 等）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="資料湖"&gt;資料湖&lt;a class="anchor-link" href="#資料湖"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;「每天新增的資料量太多，要把所有想分析的資料都做詳細的 Schema 轉換再存入資料倉儲太花人力成本。總之先把這些資料原封不動地存到分散式檔案儲存系統上，之後利用如 &lt;a href="https://aws.amazon.com/tw/glue/"&gt;AWS Glue&lt;/a&gt; 等服務將資料的 schema 爬出來並分析。」這就是以資料湖為核心的資料管道架構想法。一般這種存取資料的方式我們稱之為 Schema-on-Read，因為 Schema 是在實際載入原始資料的時候才被使用。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://aws.amazon.com/tw/athena/"&gt;AWS Athena&lt;/a&gt; 就是一個 AWS 依照這樣的想法打造的服務。&lt;/p&gt;
+&lt;p&gt;舉個簡單的例子，假設我們現在想把&lt;a href="#資料科學家的一天"&gt;資料科學家的一天&lt;/a&gt;提到的銷售資料以及廣告資料合併起來做分析，在 AWS 上我們可以實作一個這樣的資料管道：&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/data-engineering/data-lake-example.png" style="width:90%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    利用 AWS Athena 及 AWS Glue 實作以資料湖為基礎的分析架構
+    &lt;font color="purple"&gt;: &lt;/font&gt;即時合併並分析不同格式的資料
+    &lt;br /&gt;
+&lt;/center&gt;&lt;p&gt;我們將存在關聯式資料庫的銷售資料透過 ETL 存到資料湖（AWS S3）裡頭以後，利用 AWS Glue 將資料的中繼資料（Meta Data）存在資料目錄（Data Catalogue）底頭。常見的中繼資料有&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;表格定義（有哪些欄位，如：&lt;code&gt;sale_id&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;各個欄位的資料型態&lt;/li&gt;
+&lt;li&gt;各個欄位實際在原始資料（如 CSV ）裡頭的排列順序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;接著我們就可以利用提到的 SQL 查詢把銷售資料跟廣告資料合併：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT *
+FROM sales AS s
+INNER JOIN clicks AS c
+ON s.sale_id = c.sale_id&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;收到以上的 SQL 查詢，Athena 會分別把銷售資料以及廣告資料依照對應的資料目錄解析資料後合併再回傳結果給我們。&lt;/p&gt;
+&lt;p&gt;我認為今後這種以資料湖為基礎的分析架構會越來越熱門，原因如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;非結構化資料量越來越大，花費人力在事前為資料倉儲建立完整的 schema 越來越不實際&lt;/li&gt;
+&lt;li&gt;分散式 SQL 查詢服務像是 Athena 抽象化複雜的資料格式，允許資料科學家下 SQL 查詢做 ad-hoc 分析&lt;/li&gt;
+&lt;li&gt;透過 Parquet / ORC 等資料格式來自動減少資料湖沒有做正規化而導致的效能損失&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="一些關鍵技術"&gt;一些關鍵技術&lt;a class="anchor-link" href="#一些關鍵技術"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;雖然再過幾年，等到資料工程的人才增加，資料科學家或許可以完全不用介意背後的資料基礎設施的建置，但近幾年這部分可能還是要靠資料科學家自己實作。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;資料湖的概念&lt;/li&gt;
+&lt;li&gt;AWS Glue + AWS Athena 的運用（Bonus: Serverless 分析架構，不需管理機器）&lt;/li&gt;
+&lt;li&gt;Hive MetaData Store&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在資料湖的例子我主要都用 AWS 的服務來舉例，但你可以自由使用其他雲端服務或者 Hadoop。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="如何實際應用資料工程？"&gt;如何實際應用資料工程？&lt;a class="anchor-link" href="#如何實際應用資料工程？"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;首先你得先了解目前環境的資料基礎設施。而為了釐清這點，你可以問自己或者相關人員以下問題：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;資料科學的金字塔，我們建到哪一層了？&lt;/li&gt;
+&lt;li&gt;我們過去有哪些專案是在取得、準備資料階段就陷入瓶頸？&lt;/li&gt;
+&lt;li&gt;我們有專業的資料工程師或相關人員在做資料倉儲或者是資料湖的準備嗎？&lt;/li&gt;
+&lt;li&gt;我們的資料是儲存在什麼分散式檔案儲存系統上面？ HDFS 還是 S3？&lt;/li&gt;
+&lt;li&gt;我們是怎麼管理/監管 ETL 工作的？ 要考慮用 Airflow 嗎？&lt;/li&gt;
+&lt;li&gt;要建構一個新的資料管道的話，要自己架 Hadoop 群集還是使用雲端服務？&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在你思考過以上幾個問題以後，你就會發現為何過往有些資料科學的專案進展緩慢了。這時候與其一直在等待資料的到來，你可以把你想到的幾個問題拿去跟相關的工程師討論。相信我，從你開口跟他們討論如何解決資料基礎設施的瓶頸這點開始，他們將不再視你為「那個只想要拿到資料」的敵人，而是同伴。&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/data-engineering/hadoop-framework.png" style="width:90%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://medium.com/@ssola/becoming-a-data-engineer-5e0f14048d42" target="_blank"&gt;Hadoop 的分散式基礎設施&lt;/a&gt;
+&lt;font color="purple"&gt;: &lt;/font&gt;要學的東西太多，不如就用雲端服務吧
+    &lt;br /&gt;
+&lt;/center&gt;&lt;p&gt;假如很不幸，你們公司沒有專業的工程師，而你得自己想辦法兜出一個可以處理這些大量資料的方法，我會建議先從現存的全受管（Full-Managed）雲端服務找能解決痛點的方案。&lt;/p&gt;
+&lt;p&gt;使用現成的雲端服務來建置資料基礎有幾個好處：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pay-as-you-go，通常是用多少花多少&lt;/li&gt;
+&lt;li&gt;Proof-of-concept，你可以直接開始嘗試建立最重要的商業邏輯而非架機器&lt;/li&gt;
+&lt;li&gt;Serverless 架構，不需管理機器（如 AWS Glue + Athena）&lt;/li&gt;
+&lt;li&gt;導入成本降低（相較於自己架 Hadoop Cluster）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="結語"&gt;結語&lt;a class="anchor-link" href="#結語"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;我嘗試在這篇文章說明資料工程對資料科學家的重要，以及你可以如何開始學習資料工程。&lt;/p&gt;
+&lt;p&gt;在這個大數據時代，資料科學家的價值在於找出「大量」資料背後的潛在價值，不要反而讓「資料量太多」這邊成了你最大的限制。
+從雲端服務開始，多學一點資料工程，讓你的資料科學專案前進地更快吧！&lt;/p&gt;
+&lt;p&gt;如果你有任何想法想要提出或分享，都歡迎在底下留言或者透過社群網站聯絡我 B-)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content><category term="data-science"></category><category term="data engineering"></category></entry><entry><title>淺談資料視覺化以及 ggplot2 實踐</title><link href="https://leemengtaiwan.github.io/data-visualization-from-matplotlib-to-ggplot2.html" rel="alternate"></link><published>2018-04-14T15:10:00+09:00</published><updated>2018-04-14T15:10:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-04-14:/data-visualization-from-matplotlib-to-ggplot2.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -5780,10 +6229,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="5a03d6c9-5d15-43fe-ae83-56010e634296"&gt;&lt;/div&gt;
+&lt;div id="4d6bdff6-0c3d-446d-a2e5-21055cf4a202"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#5a03d6c9-5d15-43fe-ae83-56010e634296');
+var element = $('#4d6bdff6-0c3d-446d-a2e5-21055cf4a202');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -9104,10 +9553,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="652707a4-e6bc-4865-b84a-ab9aca98f123"&gt;&lt;/div&gt;
+&lt;div id="e653404a-1766-4586-aaa4-78dc3476ddb6"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#652707a4-e6bc-4865-b84a-ab9aca98f123');
+var element = $('#e653404a-1766-4586-aaa4-78dc3476ddb6');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -9873,10 +10322,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="c7997c18-1510-4c29-8fdf-fa2c1e2a2477"&gt;&lt;/div&gt;
+&lt;div id="2ece934d-4082-409a-a07e-0ece9b5c452a"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#c7997c18-1510-4c29-8fdf-fa2c1e2a2477');
+var element = $('#2ece934d-4082-409a-a07e-0ece9b5c452a');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -10070,10 +10519,10 @@ Test accuracy: 89.4%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="433891df-e38b-498d-8b45-1d3c9aad31e3"&gt;&lt;/div&gt;
+&lt;div id="9b82bd88-76f0-4724-954c-07c6fe59ff4f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#433891df-e38b-498d-8b45-1d3c9aad31e3');
+var element = $('#9b82bd88-76f0-4724-954c-07c6fe59ff4f');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -10839,10 +11288,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="f336e426-1c0b-46f1-9d6e-4fec7c545d96"&gt;&lt;/div&gt;
+&lt;div id="5ad5b489-2dfb-4230-bd75-08ee9028c359"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f336e426-1c0b-46f1-9d6e-4fec7c545d96');
+var element = $('#5ad5b489-2dfb-4230-bd75-08ee9028c359');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -11047,10 +11496,10 @@ Test accuracy: 90.7%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="486047ee-b90b-4710-8fc5-7643f07f99df"&gt;&lt;/div&gt;
+&lt;div id="85faeabd-3b89-49c1-aba2-613403e1860b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#486047ee-b90b-4710-8fc5-7643f07f99df');
+var element = $('#85faeabd-3b89-49c1-aba2-613403e1860b');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -11816,10 +12265,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="f0638925-113c-4b94-95af-d2e7627601c9"&gt;&lt;/div&gt;
+&lt;div id="b6c7c06d-63df-44b8-9a71-8625d4db6f0b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f0638925-113c-4b94-95af-d2e7627601c9');
+var element = $('#b6c7c06d-63df-44b8-9a71-8625d4db6f0b');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -12252,10 +12701,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="1794a777-9cd1-4828-acff-a23978fea10b"&gt;&lt;/div&gt;
+&lt;div id="a963ecb4-c8f9-4820-9d50-00615eb1f017"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#1794a777-9cd1-4828-acff-a23978fea10b');
+var element = $('#a963ecb4-c8f9-4820-9d50-00615eb1f017');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -12321,10 +12770,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="50f11135-4901-4aa8-aecf-09215038aacf"&gt;&lt;/div&gt;
+&lt;div id="99e5894d-8e7c-4f74-a36f-910b9313bfc3"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#50f11135-4901-4aa8-aecf-09215038aacf');
+var element = $('#99e5894d-8e7c-4f74-a36f-910b9313bfc3');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -12382,10 +12831,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="edb1e3bf-6225-4b2b-ac5b-d270597aae3d"&gt;&lt;/div&gt;
+&lt;div id="4d721e10-911f-45ae-a7a5-739abc0bbea6"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#edb1e3bf-6225-4b2b-ac5b-d270597aae3d');
+var element = $('#4d721e10-911f-45ae-a7a5-739abc0bbea6');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -12443,10 +12892,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="5c1a42c4-7433-413c-bd15-1f3a18b7dd79"&gt;&lt;/div&gt;
+&lt;div id="ad3e7a85-bdac-4568-b2d9-8a109241314c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#5c1a42c4-7433-413c-bd15-1f3a18b7dd79');
+var element = $('#ad3e7a85-bdac-4568-b2d9-8a109241314c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -12510,10 +12959,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="bb9ef006-4509-4ebb-bcf6-0546d867a820"&gt;&lt;/div&gt;
+&lt;div id="276a98cd-72fb-4049-a820-3d2dbadf4263"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#bb9ef006-4509-4ebb-bcf6-0546d867a820');
+var element = $('#276a98cd-72fb-4049-a820-3d2dbadf4263');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -12921,10 +13370,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="bc9652ac-5dbb-42f5-86f9-15ec02c32840"&gt;&lt;/div&gt;
+&lt;div id="a5fdf967-d149-4c65-a362-de8288ea7fd8"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#bc9652ac-5dbb-42f5-86f9-15ec02c32840');
+var element = $('#a5fdf967-d149-4c65-a362-de8288ea7fd8');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -13078,10 +13527,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="99aa358b-6351-49ab-954e-3032d3445577"&gt;&lt;/div&gt;
+&lt;div id="c002f89d-64c4-422a-9d6a-daba329903d4"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#99aa358b-6351-49ab-954e-3032d3445577');
+var element = $('#c002f89d-64c4-422a-9d6a-daba329903d4');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -13244,10 +13693,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="647d5c33-a7f4-4eab-9040-8f811393e1a0"&gt;&lt;/div&gt;
+&lt;div id="cd15f08f-de04-43e3-aa1b-ad78a2f1858f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#647d5c33-a7f4-4eab-9040-8f811393e1a0');
+var element = $('#cd15f08f-de04-43e3-aa1b-ad78a2f1858f');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
