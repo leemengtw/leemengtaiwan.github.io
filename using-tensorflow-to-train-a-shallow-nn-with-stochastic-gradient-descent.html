@@ -6,22 +6,38 @@
 <!--<![endif]-->
 
 <head>
-  
+
     <!--- basic page needs
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title>    <meta name="description" content="部落格, 資料科學, Python, R, 機器學習, 資料分析, 資料視覺化, 軟體工程, 資料工程, 雲端運算" />
-    <meta name="keywords" content="部落格, 資料科學, Python, R, 機器學習, 資料分析, 資料視覺化, 軟體工程, 資料工程, 雲端運算" />
     <meta name="author" content="Lee Meng" />
+<title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers." />
+        <meta name="keywords" content="Python, TensorFlow, Deep Learning, Neural Networks, Optimization, NotMNIST, Machine Learning, Image Recognition, SGD, Gradient Descent, Deep Learning by Google, Machine Learning Engineer by kaggle, Udacity" />
+        <meta name="tags" content="Python" />
+        <meta name="tags" content="TensorFlow" />
+        <meta name="tags" content="Deep Learning" />
+        <meta name="tags" content="Neural Networks" />
+        <meta name="tags" content="Optimization" />
+        <meta name="tags" content="NotMNIST" />
+        <meta name="tags" content="Machine Learning" />
+        <meta name="tags" content="Image Recognition" />
+        <meta name="tags" content="SGD" />
+        <meta name="tags" content="Gradient Descent" />
+        <meta name="tags" content="Deep Learning by Google" />
+        <meta name="tags" content="Machine Learning Engineer by kaggle" />
+        <meta name="tags" content="Udacity" />
 
 
     <!--- Open Graph Object metas
     ================================================== -->
         <meta property="og:image" content="https://leemengtaiwan.github.io/theme/images/background/default.jpg" />
-      <meta property="og:type" content="article" />
-      <meta property="og:url" content="https://leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" />
-      <meta property="og:title" content="Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent" />
-      <meta property="og:description" content="The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" />
+        <meta property="og:title" content="Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent" />
+        <meta property="og:description" content="The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers." />
 
     <!-- mobile specific metas
     ================================================== -->
@@ -57,28 +73,6 @@
 </script>
 
 
-
-
-<title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title>  <meta name="description" content="The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers." />
-    <meta name="tags" content="Python" />
-    <meta name="tags" content="TensorFlow" />
-    <meta name="tags" content="Deep Learning" />
-    <meta name="tags" content="Neural Networks" />
-    <meta name="tags" content="Optimization" />
-    <meta name="tags" content="NotMNIST" />
-    <meta name="tags" content="Machine Learning" />
-    <meta name="tags" content="Image Recognition" />
-    <meta name="tags" content="SGD" />
-    <meta name="tags" content="Gradient Descent" />
-    <meta name="tags" content="Deep Learning by Google" />
-    <meta name="tags" content="Machine Learning Engineer by kaggle" />
-    <meta name="tags" content="Udacity" />
-
-        <meta property="og:image" content="https://leemengtaiwan.github.io/theme/images/background/default.jpg" />
-      <meta property="og:type" content="article" />
-      <meta property="og:url" content="https://leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" />
-      <meta property="og:title" content="Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent" />
-      <meta property="og:description" content="The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers." />
 
 </head>
 
@@ -502,10 +496,10 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 <div class="output_area">
 
-<div id="6a5c6318-f986-4961-b8dc-98dd2657bd32"></div>
+<div id="c30f0299-1798-4045-89a5-ef3f20d26546"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6a5c6318-f986-4961-b8dc-98dd2657bd32');
+var element = $('#c30f0299-1798-4045-89a5-ef3f20d26546');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -659,10 +653,10 @@ Test acc: 82.8%
 </div>
 <div class="output_area">
 
-<div id="1759950c-b72d-43bd-8345-e705bdec31af"></div>
+<div id="d2ba7b35-b546-470e-a3ee-5aeada6fcc4d"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#1759950c-b72d-43bd-8345-e705bdec31af');
+var element = $('#d2ba7b35-b546-470e-a3ee-5aeada6fcc4d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -825,10 +819,10 @@ Test acc: 86.9%
 </div>
 <div class="output_area">
 
-<div id="c7eb886d-96f2-409a-b0fa-5c6f030b904f"></div>
+<div id="6c99fe96-4010-4c62-9a2d-9cab54f719d1"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#c7eb886d-96f2-409a-b0fa-5c6f030b904f');
+var element = $('#6c99fe96-4010-4c62-9a2d-9cab54f719d1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
