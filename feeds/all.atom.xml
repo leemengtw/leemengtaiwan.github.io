@@ -1,5 +1,332 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-04-23T22:55:00+09:00</updated><entry><title>資料科學家為何需要了解資料工程</title><link href="https://leemengtaiwan.github.io/why-you-need-to-learn-data-engineering-as-a-data-scientist.html" rel="alternate"></link><published>2018-04-23T22:55:00+09:00</published><updated>2018-04-23T22:55:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-04-23:/why-you-need-to-learn-data-engineering-as-a-data-scientist.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-04-30T23:50:00+09:00</updated><entry><title>為何資料科學家需要學習 SQL</title><link href="https://leemengtaiwan.github.io/why-you-need-to-learn-sql-as-a-data-scientist.html" rel="alternate"></link><published>2018-04-30T23:50:00+09:00</published><updated>2018-04-30T23:50:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-04-30:/why-you-need-to-learn-sql-as-a-data-scientist.html</id><summary type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這篇簡單討論&lt;a href="https://zh.wikipedia.org/wiki/SQL"&gt;結構化查詢語言（SQL）&lt;/a&gt;在概念上跟命令式程式語言如 Python 有什麼不同之處，以及在什麼樣的情況下我們會想要利用 SQL 做資料分析。&lt;/p&gt;
+&lt;p&gt;這篇注重在為何你會想要使用 SQL 做資料分析，而非 SQL 本身功能的教學。如果要學習 SQL 本身，可以參考最後面的&lt;a href="#推薦閱讀"&gt;推薦閱讀&lt;/a&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="使用-SQL-與數據對話"&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這篇簡單討論&lt;a href="https://zh.wikipedia.org/wiki/SQL"&gt;結構化查詢語言（SQL）&lt;/a&gt;在概念上跟命令式程式語言如 Python 有什麼不同之處，以及在什麼樣的情況下我們會想要利用 SQL 做資料分析。&lt;/p&gt;
+&lt;p&gt;這篇注重在為何你會想要使用 SQL 做資料分析，而非 SQL 本身功能的教學。如果要學習 SQL 本身，可以參考最後面的&lt;a href="#推薦閱讀"&gt;推薦閱讀&lt;/a&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="使用-SQL-與數據對話"&gt;使用 SQL 與數據對話&lt;a class="anchor-link" href="#使用-SQL-與數據對話"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;身為資料科學家或者是分析人員，我們都知道 SQL 基本上是必備的分析工具。&lt;/p&gt;
+&lt;p&gt;簡單來說，&lt;a href="https://zh.wikipedia.org/wiki/%E5%AE%A3%E5%91%8A%E5%BC%8F%E7%B7%A8%E7%A8%8B"&gt;SQL 是一種程式語言&lt;/a&gt;，我們可以透過它對被儲存在&lt;a href="https://zh.wikipedia.org/wiki/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93"&gt;關聯式資料庫&lt;/a&gt;裡頭的資料進行查詢或操作。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;blockquote&gt;&lt;p&gt;SQL 是資料科學家與資料庫（Database）溝通的語言&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;在沒接觸過 SQL 之前，你可能會想&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「做為一個程式語言，為何 SQL &lt;a href="https://insights.stackoverflow.com/survey/2018/"&gt;有那麼多人在使用？&lt;/a&gt;」&lt;/li&gt;
+&lt;li&gt;「我們有 Python、R，不學 SQL 應該也沒關係吧？」&lt;/li&gt;
+&lt;li&gt;「又要學一個程式語言好麻煩。」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;為了釐清這些疑問，讓我們做一個假想實驗。比方說我們現在想要知道某個特定顧客過去的所有購買記錄。&lt;/p&gt;
+&lt;p&gt;如果你熟悉 SQL 的話，可以對資料庫下一個簡單的查詢（Query）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;customer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+       &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;totalprice&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+       &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;orderdate&lt;/span&gt; 
+  &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;customer&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="k"&gt;c&lt;/span&gt; 
+       &lt;span class="k"&gt;INNER&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="n"&gt;orders&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt; 
+       &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;custkey&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;custkey&lt;/span&gt; 
+ &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'Customer#000000001'&lt;/span&gt; 
+ &lt;span class="k"&gt;ORDER&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;orderdate&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;上面這個查詢翻為白話就是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;從顧客清單 &lt;code&gt;customer&lt;/code&gt; 還有購賣紀錄 &lt;code&gt;orders&lt;/code&gt; 裡頭&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;FROM customer AS c INNER JOIN orders AS o ON c.custkey = o.custkey&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;找出名為 Customer#000000001 的顧客的所有購買紀錄&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;WHERE c.name = 'Customer#000000001'&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;並把那些紀錄依照購買日期排序&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ORDER BY o.orderdate&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;最後只回傳顧客名稱、總購買金額、購買日期幾個項目&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;SELECT c.name AS customer, o.totalprice, o.orderdate&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這個查詢對第一次寫 SQL 的人可能會覺得很複雜，但注意，我們並沒有告訴資料庫「如何」取得這些資料，比方說：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;怎麼合併顧客跟購買紀錄？&lt;/li&gt;
+&lt;li&gt;怎麼過濾特定顧客？&lt;/li&gt;
+&lt;li&gt;怎麼排序？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我們只告訴它該給我們「什麼資料」。而得到的結果是：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;customer            | totalprice | orderdate
+--------------------+------------+------------
+ Customer#000000001 |  152411.41 | 1993-06-05
+ Customer#000000001 |  165928.33 | 1995-10-29
+ Customer#000000001 |  270087.44 | 1997-03-04
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如同我們預期，只有該顧客的購買紀錄被回傳，且依照購買日期 &lt;code&gt;orderdate&lt;/code&gt; 從早排到晚。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;實際上，資料庫可能需要做以下運算來取得資料：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;將顧客表格 &lt;code&gt;customer&lt;/code&gt; 以及購買紀錄的表格 &lt;code&gt;orders&lt;/code&gt; 分別命名為 &lt;code&gt;c&lt;/code&gt; 及 &lt;code&gt;o&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;依照共通的鍵值 &lt;code&gt;custkey&lt;/code&gt; 合併（&lt;code&gt;JOIN&lt;/code&gt;）兩表格&lt;/li&gt;
+&lt;li&gt;找出特定顧客 &lt;code&gt;Customer#000000001&lt;/code&gt; 的購買記錄&lt;/li&gt;
+&lt;li&gt;將該紀錄依照購買日期 &lt;code&gt;orderdate&lt;/code&gt; 排序&lt;/li&gt;
+&lt;li&gt;選出要顯示的欄位 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這些運算最後都得依照「某個」順序執行，但是我們不需要考慮這些事情，完全依靠資料庫的&lt;a href="http://db.cs.berkeley.edu/papers/fntdb07-architecture.pdf"&gt;查詢最佳化器（Query Optimizer）&lt;/a&gt;來幫我們決定。&lt;/p&gt;
+&lt;p&gt;寫 SQL 敘述時，你可以理解成我們是指定「要的資料」，而查詢最佳化器會依照此需求，找出一個最佳路徑來取得必要的資料。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="images/sql/yoal-desurmont-619654-unsplash.jpg" style="width:90%" /&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://unsplash.com/photos/pcLLI0MTDNg?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText" target="_blank"&gt;&lt;/a&gt;
+    SQL 查詢
+    &lt;font color="purple"&gt;: &lt;/font&gt;專注在你的目標，查詢最佳化器會負責找到達成目標的最佳路徑
+    &lt;br /&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;換句話說，當我們在寫 SQL 的時候，是在進行&lt;a href="https://zh.wikipedia.org/wiki/%E5%AE%A3%E5%91%8A%E5%BC%8F%E7%B7%A8%E7%A8%8B"&gt;宣告式程式設計（Declarative Programming）&lt;/a&gt;：我們只告訴資料庫，我們想要什麼資料（What），而不是怎麼取得（How）它們。&lt;/p&gt;
+&lt;p&gt;這跟一般常見的&lt;a href="https://zh.wikipedia.org/wiki/%E6%8C%87%E4%BB%A4%E5%BC%8F%E7%B7%A8%E7%A8%8B"&gt;命令式程式語言（Imperative Programming）&lt;/a&gt;如 Python、Java 有所不同。在寫 SQL 時，我們告訴資料庫它該達成的目標 - 取得什麼資料（What）；在寫 Python 時，我們得告訴程式該怎麼達成該目標（How）。&lt;/p&gt;
+&lt;p&gt;為了進一步闡述這個概念，接著讓我們試著使用 Python 來取得跟上面的 SQL 查詢一樣的結果。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="用-Python-達到-SQL-查詢效果"&gt;用 Python 達到 SQL 查詢效果&lt;a class="anchor-link" href="#用-Python-達到-SQL-查詢效果"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;首先先假設所有顧客資料是透過一個 &lt;code&gt;list&lt;/code&gt; 儲存，裡頭包含多個 &lt;code&gt;dict&lt;/code&gt;。每個 &lt;code&gt;dict&lt;/code&gt; 則代表一個顧客的資料：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;customers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"name"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"Customer#000000001"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"custkey"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"1"&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"name"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"Customer#000000002"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"custkey"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"2"&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;而購買記錄則是一個 &lt;code&gt;dict&lt;/code&gt;，&lt;code&gt;dict&lt;/code&gt; 的鍵值為所有顧客的 &lt;code&gt;custkey&lt;/code&gt;；鍵值對應的值則是包含該顧客所有購買紀錄的 &lt;code&gt;list&lt;/code&gt;：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;orders&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;"1"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="s2"&gt;"totalprice"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;152411.41&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"orderdate"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"1993-06-05"&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+          &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"totalprice"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;270087.44&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"orderdate"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"1997-03-04"&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+          &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"totalprice"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;165928.33&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"orderdate"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"1995-10-29"&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+         &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;所以 &lt;code&gt;orders["1"]&lt;/code&gt; 就代表 &lt;code&gt;custkey = 1&lt;/code&gt; 的顧客的購買紀錄。&lt;/p&gt;
+&lt;p&gt;了解背後的資料結構以後，我們可以寫一段 Python 程式碼來取得資料：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"customer           | totalprice| orderdate "&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"------------------ | ----------| --------- "&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# 從所有顧客找符合條件的人&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;customers&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="c1"&gt;# 跳過我們沒興趣的顧客&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'name'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s1"&gt;'Customer#000000001'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;continue&lt;/span&gt;
+    &lt;span class="c1"&gt;# 利用 custkey 取德該顧客的購買紀錄&lt;/span&gt;
+    &lt;span class="n"&gt;c_orders&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;orders&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'custkey'&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+    
+    &lt;span class="c1"&gt;# 依照 orderdate 排序購買紀錄&lt;/span&gt;
+    &lt;span class="n"&gt;c_orders_sorted&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c_orders&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'orderdate'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    
+    &lt;span class="c1"&gt;# 將所有排序後的記錄回傳&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;c_orders_sorted&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;values&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'name'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'totalprice'&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'orderdate'&lt;/span&gt;&lt;span class="p"&gt;])]&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;" | "&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="c1"&gt;# 已經找到該顧客，提早結束迴圈以減少處理時間&lt;/span&gt;
+    &lt;span class="k"&gt;break&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;customer           | totalprice| orderdate 
+------------------ | ----------| --------- 
+Customer#000000001 | 152411.41 | 1993-06-05
+Customer#000000001 | 165928.33 | 1995-10-29
+Customer#000000001 | 270087.44 | 1997-03-04
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;所以我們使用 Python 達到跟上面的 SQL 查詢一樣的結果了。但兩者在執行上有什麼差異？&lt;/p&gt;
+&lt;p&gt;使用命令式程式語言來處理資料時，我們需要：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;了解資料結構以操作資料（顧客是存在 &lt;code&gt;list&lt;/code&gt; 還是 &lt;code&gt;dict&lt;/code&gt; ？）&lt;/li&gt;
+&lt;li&gt;明確地定義執行步驟（先排序購買記錄 &lt;code&gt;orders&lt;/code&gt; 還是先把顧客 &lt;code&gt;customers&lt;/code&gt; 跟購買紀錄合併？）&lt;/li&gt;
+&lt;li&gt;最佳化（如最後的 &lt;code&gt;break&lt;/code&gt; ）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;再看一次先前的 SQL 查詢（+註解）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;-- 給我以下幾個欄位：顧客名稱、總購買金額、購買日期&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;customer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;totalprice&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;orderdate&lt;/span&gt;
+&lt;span class="c1"&gt;-- 將有相同 custkey 的顧客跟購買紀錄合併&lt;/span&gt;
+  &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;customer&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="k"&gt;c&lt;/span&gt;
+       &lt;span class="k"&gt;INNER&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="n"&gt;orders&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;
+       &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;custkey&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;custkey&lt;/span&gt;
+&lt;span class="c1"&gt;-- 只需要此顧客的購買紀錄&lt;/span&gt;
+ &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'Customer#000000001'&lt;/span&gt;
+&lt;span class="c1"&gt;-- 依照購買日期排序&lt;/span&gt;
+ &lt;span class="k"&gt;ORDER&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;orderdate&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;這裡頭我們不需要了解資料被以什麼形式儲存，也不需要定義要以什麼順序執行查詢，更不用做最佳化。這些事情全部交給背後的資料庫處理，使得資料科學家可以專注在更高層次的問題：「我們需要什麼資料？」&lt;/p&gt;
+&lt;p&gt;而這正是 SQL 最強大的地方：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;blockquote&gt;&lt;p&gt;SQL 讓資料科學家可以專注在需要「什麼」資料而非要「怎麼」取得。&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="結語"&gt;結語&lt;a class="anchor-link" href="#結語"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;雖然我們這篇只舉了一個十分簡單的例子，但一般來說 SQL 非常適合以下的使用情境：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;將多個資料來源（例：表格）合併起來並依照一些條件篩選結果&lt;/li&gt;
+&lt;li&gt;依照取得的資料做一些簡易的 aggregation （如：加總、平均、最大值）&lt;/li&gt;
+&lt;li&gt;簡單的資料轉換（例：把 datetime 欄位取出年份）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果需要十分複雜的資料轉換或者計算時，一般我還是推薦使用 Python 或 R。但是下次當你有機會使用 SQL 取得想要的資料時，不妨試著專注在「想要什麼資料」而不是「怎麼取得資料」。說不定一個 SQL 查詢就能幫你省下一些花在搜集資料的時間。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="推薦閱讀"&gt;推薦閱讀&lt;a class="anchor-link" href="#推薦閱讀"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.datacamp.com/courses/intro-to-sql-for-data-science"&gt;DataCamp - Intro to SQL for Data Science&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.datacamp.com/courses/joining-data-in-postgresql"&gt;DataCamp - Joining Data in PostgreSQL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.linkedin.com/learning/advanced-sql-for-data-scientists"&gt;LinkedIn Learning - Advanced SQL for Data Scientists&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="SQL"></category><category term="data-science"></category></entry><entry><title>資料科學家為何需要了解資料工程</title><link href="https://leemengtaiwan.github.io/why-you-need-to-learn-data-engineering-as-a-data-scientist.html" rel="alternate"></link><published>2018-04-23T22:55:00+09:00</published><updated>2018-04-23T22:55:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-04-23:/why-you-need-to-learn-data-engineering-as-a-data-scientist.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -420,34 +747,6 @@ ON s.sale_id = c.sale_id&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="data-science"></category><category term="data engineering"></category></entry><entry><title>淺談資料視覺化以及 ggplot2 實踐</title><link href="https://leemengtaiwan.github.io/data-visualization-from-matplotlib-to-ggplot2.html" rel="alternate"></link><published>2018-04-14T15:10:00+09:00</published><updated>2018-04-14T15:10:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-04-14:/data-visualization-from-matplotlib-to-ggplot2.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -2904,34 +3203,6 @@ KoE66EiWrwAAAABJRU5ErkJggg==" /&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="R"></category><category term="visualization"></category><category term="ggplot2"></category></entry><entry><title>利用 Kinesis 處理串流資料並建立資料湖</title><link href="https://leemengtaiwan.github.io/use-kinesis-streams-and-firehose-to-build-a-data-lake.html" rel="alternate"></link><published>2018-04-04T21:30:00+09:00</published><updated>2018-04-04T21:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-04-04:/use-kinesis-streams-and-firehose-to-build-a-data-lake.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -3357,34 +3628,6 @@ KoE66EiWrwAAAABJRU5ErkJggg==" /&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="python"></category><category term="aws"></category><category term="kinesis"></category></entry><entry><title>AWS Data Migration Service - 從 MongoDB 遷移到 Redshift</title><link href="https://leemengtaiwan.github.io/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html" rel="alternate"></link><published>2018-03-27T18:30:00+09:00</published><updated>2018-03-27T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-27:/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -3783,34 +4026,6 @@ leemeng | chocolate | For fun!
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="aws"></category><category term="database"></category><category term="mongodb"></category><category term="redshift"></category></entry><entry><title>Designing Data-Intensive Applications (1) - 序言</title><link href="https://leemengtaiwan.github.io/designing-data-intensive-applications-1-preface.html" rel="alternate"></link><published>2018-03-24T15:33:00+09:00</published><updated>2018-03-24T15:33:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-24:/designing-data-intensive-applications-1-preface.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -3930,34 +4145,6 @@ leemeng | chocolate | For fun!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="Software Engineering"></category><category term="data"></category></entry><entry><title>Google Data Studio 基礎</title><link href="https://leemengtaiwan.github.io/google-data-studio-basics.html" rel="alternate"></link><published>2018-03-13T16:34:00+09:00</published><updated>2018-03-13T16:34:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-13:/google-data-studio-basics.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -4197,34 +4384,6 @@ leemeng | chocolate | For fun!
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="google"></category><category term="data science"></category><category term="visualization"></category></entry><entry><title>Pelican 實戰手冊(主題篇)</title><link href="https://leemengtaiwan.github.io/build-a-pelican-powered-blog-like-a-pro.html" rel="alternate"></link><published>2018-03-05T15:00:00+09:00</published><updated>2018-03-05T15:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-05:/build-a-pelican-powered-blog-like-a-pro.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -4486,34 +4645,6 @@ leemeng | chocolate | For fun!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="python"></category><category term="pelican"></category><category term="jinja2"></category></entry><entry><title>BeautifulSoup 筆記</title><link href="https://leemengtaiwan.github.io/beautifulsoup-cheat-sheet.html" rel="alternate"></link><published>2018-03-02T15:34:00+09:00</published><updated>2018-03-02T15:34:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-02:/beautifulsoup-cheat-sheet.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -4892,34 +5023,6 @@ tbody in table
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="python"></category><category term="beautifulsoup"></category><category term="html"></category></entry><entry><title>Seaborn 筆記</title><link href="https://leemengtaiwan.github.io/seaborn-cheat-sheet.html" rel="alternate"></link><published>2018-03-02T00:10:00+09:00</published><updated>2018-03-02T00:10:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-03-02:/seaborn-cheat-sheet.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -5405,34 +5508,6 @@ tbody in table
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="python"></category><category term="seaborn"></category></entry><entry><title>SQLite 筆記</title><link href="https://leemengtaiwan.github.io/sqlite-note.html" rel="alternate"></link><published>2018-02-23T22:00:00+09:00</published><updated>2018-02-23T22:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-02-23:/sqlite-note.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -5539,34 +5614,6 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="SQL"></category><category term="SQLite"></category></entry><entry><title>Find Word Semantic by Using Word2vec in TensorFlow</title><link href="https://leemengtaiwan.github.io/find-word-semantic-by-using-word2vec-in-tensorflow.html" rel="alternate"></link><published>2017-09-30T18:30:00+09:00</published><updated>2017-09-30T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-30:/find-word-semantic-by-using-word2vec-in-tensorflow.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -6229,10 +6276,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="74b9ffce-fcbe-4539-ae2c-44cc8881f525"&gt;&lt;/div&gt;
+&lt;div id="3e258e0e-6c7e-4a25-870a-5c422bd23c29"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#74b9ffce-fcbe-4539-ae2c-44cc8881f525');
+var element = $('#3e258e0e-6c7e-4a25-870a-5c422bd23c29');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -9136,34 +9183,6 @@ AAAAAHiA4Q0AAAAAPPAD6qjcfWntDHEAAAAASUVORK5CYII=
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="Python"></category><category term="TensorFlow"></category><category term="Word2Vec"></category><category term="NLP"></category><category term="VSM"></category></entry><entry><title>Simple Convolutional Neural Network using TensorFlow</title><link href="https://leemengtaiwan.github.io/simple-convolutional-neural-network-using-tensorflow.html" rel="alternate"></link><published>2017-09-26T18:30:00+09:00</published><updated>2017-09-26T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-26:/simple-convolutional-neural-network-using-tensorflow.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -9553,10 +9572,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="9d7765f4-e05a-441e-b984-181a62866782"&gt;&lt;/div&gt;
+&lt;div id="eb08b3fb-b734-41a7-acb2-c70c0acb0dd1"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9d7765f4-e05a-441e-b984-181a62866782');
+var element = $('#eb08b3fb-b734-41a7-acb2-c70c0acb0dd1');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -10322,10 +10341,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="b6cba370-fb87-45f5-8e76-0057daae0d52"&gt;&lt;/div&gt;
+&lt;div id="9900dad2-efc7-464c-9bc8-5ae0bf0a58ea"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#b6cba370-fb87-45f5-8e76-0057daae0d52');
+var element = $('#9900dad2-efc7-464c-9bc8-5ae0bf0a58ea');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -10519,10 +10538,10 @@ Test accuracy: 89.4%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="a4afedda-c1ac-45d7-b6df-df8689eef6d7"&gt;&lt;/div&gt;
+&lt;div id="42b3643b-0dc3-45e0-95ac-ae383237324a"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#a4afedda-c1ac-45d7-b6df-df8689eef6d7');
+var element = $('#42b3643b-0dc3-45e0-95ac-ae383237324a');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -11288,10 +11307,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="e83892c3-2da5-4d89-b063-d76b5d9f2602"&gt;&lt;/div&gt;
+&lt;div id="b74afc41-b723-4ea0-9977-ed863487b98f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#e83892c3-2da5-4d89-b063-d76b5d9f2602');
+var element = $('#b74afc41-b723-4ea0-9977-ed863487b98f');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -11496,10 +11515,10 @@ Test accuracy: 90.7%
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="e7b314b1-2eda-48e7-bbd1-f52ac3094572"&gt;&lt;/div&gt;
+&lt;div id="cab659f6-01d3-4d52-baca-ca063abfe4e2"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#e7b314b1-2eda-48e7-bbd1-f52ac3094572');
+var element = $('#cab659f6-01d3-4d52-baca-ca063abfe4e2');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -12265,10 +12284,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="c521977e-a8c0-4b0b-9c44-aee9617c6e1c"&gt;&lt;/div&gt;
+&lt;div id="23134632-293d-48d0-9de6-8cad53aabc02"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#c521977e-a8c0-4b0b-9c44-aee9617c6e1c');
+var element = $('#23134632-293d-48d0-9de6-8cad53aabc02');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -12304,34 +12323,6 @@ Test accuracy: 94.6%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="Python"></category><category term="Tensorflow"></category><category term="Deep Learning"></category><category term="Convolutional Neural Network"></category><category term="CNN"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Regularization for Multi-layer Neural Networks in Tensorflow</title><link href="https://leemengtaiwan.github.io/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="alternate"></link><published>2017-09-25T16:00:00+09:00</published><updated>2017-09-25T16:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-25:/regularization-for-multi-layer-neural-networks-in-tensorflow.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -12701,10 +12692,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="f231f34e-4151-4d00-9068-8a37daaaa178"&gt;&lt;/div&gt;
+&lt;div id="698b4b72-f65f-47ed-bf12-6d1a75a31dd2"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f231f34e-4151-4d00-9068-8a37daaaa178');
+var element = $('#698b4b72-f65f-47ed-bf12-6d1a75a31dd2');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -12770,10 +12761,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="6bf961b0-ff18-4f06-88b2-d662eef70604"&gt;&lt;/div&gt;
+&lt;div id="2d91195a-e6e8-4a8d-9ff8-3c9e0283c950"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#6bf961b0-ff18-4f06-88b2-d662eef70604');
+var element = $('#2d91195a-e6e8-4a8d-9ff8-3c9e0283c950');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -12831,10 +12822,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="b5453eec-be49-4d92-a476-41637c6fc69a"&gt;&lt;/div&gt;
+&lt;div id="20e9c067-115e-4282-9bba-f4758a7452b1"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#b5453eec-be49-4d92-a476-41637c6fc69a');
+var element = $('#20e9c067-115e-4282-9bba-f4758a7452b1');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -12892,10 +12883,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="e853fbd3-6ede-47c3-9ef9-969313a61954"&gt;&lt;/div&gt;
+&lt;div id="abf002f6-633e-4a15-9169-e1c44bc6c124"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#e853fbd3-6ede-47c3-9ef9-969313a61954');
+var element = $('#abf002f6-633e-4a15-9169-e1c44bc6c124');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -12959,10 +12950,10 @@ Initialized
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="d394a59d-147a-4a27-b623-f14c7fb4c0b5"&gt;&lt;/div&gt;
+&lt;div id="e2a4da48-2801-468b-b6b5-187e3beb9dab"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#d394a59d-147a-4a27-b623-f14c7fb4c0b5');
+var element = $('#e2a4da48-2801-468b-b6b5-187e3beb9dab');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -12989,34 +12980,6 @@ Test acc: 94.3%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="Tensorflow"></category><category term="Python"></category><category term="Deep Learning"></category><category term="Regularization"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title><link href="https://leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="alternate"></link><published>2017-09-21T23:50:00+09:00</published><updated>2017-09-21T23:50:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-21:/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -13370,10 +13333,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="f2011479-08ae-48b6-bfc2-1520e5f3be31"&gt;&lt;/div&gt;
+&lt;div id="fba98ed3-8f48-418f-ac5f-2810c1e932bd"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f2011479-08ae-48b6-bfc2-1520e5f3be31');
+var element = $('#fba98ed3-8f48-418f-ac5f-2810c1e932bd');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -13527,10 +13490,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="750f7b6a-6019-4950-8119-1a0eb5c709d6"&gt;&lt;/div&gt;
+&lt;div id="fe8f59b2-806f-4930-86cd-1a2136d516f9"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#750f7b6a-6019-4950-8119-1a0eb5c709d6');
+var element = $('#fe8f59b2-806f-4930-86cd-1a2136d516f9');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -13693,10 +13656,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
 
-&lt;div id="edee832b-5c8d-403c-955b-58eea369cb08"&gt;&lt;/div&gt;
+&lt;div id="c3aaebf5-93b2-4f42-8c82-ecfb3caf1783"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#edee832b-5c8d-403c-955b-58eea369cb08');
+var element = $('#c3aaebf5-93b2-4f42-8c82-ecfb3caf1783');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
@@ -13728,34 +13691,6 @@ Test acc: 88.7%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="Python"></category><category term="TensorFlow"></category><category term="Deep Learning"></category><category term="Neural Networks"></category><category term="Optimization"></category><category term="NotMNIST"></category><category term="Machine Learning"></category><category term="Image Recognition"></category><category term="SGD"></category><category term="Gradient Descent"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Simple Image Recognition using NotMNIST dataset</title><link href="https://leemengtaiwan.github.io/simple-image-recognition-using-notmnist-dataset.html" rel="alternate"></link><published>2017-09-19T20:30:00+09:00</published><updated>2017-09-19T20:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-19:/simple-image-recognition-using-notmnist-dataset.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -20685,34 +20620,6 @@ AAAASUVORK5CYII=
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="Python"></category><category term="Matplotlib"></category><category term="Data Preprocessing"></category><category term="Data Cleaning"></category><category term="NotMNIST"></category><category term="Sklearn"></category><category term="Machine Learning"></category><category term="Image Recognition"></category><category term="Udacity"></category></entry><entry><title>Purpose of this blog</title><link href="https://leemengtaiwan.github.io/purpose-of-this-blog.html" rel="alternate"></link><published>2017-09-17T12:30:00+09:00</published><updated>2017-09-17T12:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2017-09-17:/purpose-of-this-blog.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
@@ -20743,32 +20650,4 @@ I decided to record my learning path toward data scientist / machine learning en
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
 </content><category term="python"></category><category term="pelican"></category><category term="data science"></category><category term="blogging"></category></entry></feed>

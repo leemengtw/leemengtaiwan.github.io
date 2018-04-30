@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>為何資料科學家需要學習 SQL</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="" />
+        <meta name="keywords" content="SQL, data-science" />
+        <meta name="tags" content="SQL" />
+        <meta name="tags" content="data-science" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemengtaiwan.github.io/theme/images/background/caspar-rubin-224229-unsplash.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemengtaiwan.github.io/why-you-need-to-learn-sql-as-a-data-scientist.html" />
+        <meta property="og:title" content="為何資料科學家需要學習 SQL" />
+        <meta property="og:description" content="" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--<link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'/>-->
+    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemengtaiwan.github.io/theme/css/progress-bar.css' />
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemengtaiwan.github.io/theme/js/modernizr.js"></script>
+    <script src="https://leemengtaiwan.github.io/theme/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+
+        <nav class="header-nav-wrap">
+            <ul class="header-nav">
+                <li><a href="../index.html#home" title="home">Home</a></li>
+                <li><a href="../index.html#about" title="about">About</a></li>
+                <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
+                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
+                <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
+            </ul>
+        </nav>
+
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemengtaiwan.github.io/theme/images/background/caspar-rubin-224229-unsplash.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemengtaiwan.github.io/tag/sql.html" rel="tag">SQL</a>
+                            <a href="https://leemengtaiwan.github.io/tag/data-science.html" rel="tag">data-science</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemengtaiwan.github.io/why-you-need-to-learn-sql-as-a-data-scientist.html" title="">
+                            為何資料科學家需要學習 SQL
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2018-04-30 (月)</li>
+                        <li class="author">
+                            By
+                            <span>Lee Meng</span>
+                        </li>
+                        <li><a href="https://unsplash.com/photos/fPkvU7RDmCo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" style="color:rgba(255, 255, 255, 0.5)">PhotoCredit</a></li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+
+        <div class="row blog-content">
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這篇簡單討論<a href="https://zh.wikipedia.org/wiki/SQL">結構化查詢語言（SQL）</a>在概念上跟命令式程式語言如 Python 有什麼不同之處，以及在什麼樣的情況下我們會想要利用 SQL 做資料分析。</p>
+<p>這篇注重在為何你會想要使用 SQL 做資料分析，而非 SQL 本身功能的教學。如果要學習 SQL 本身，可以參考最後面的<a href="#推薦閱讀">推薦閱讀</a>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="使用-SQL-與數據對話">使用 SQL 與數據對話<a class="anchor-link" href="#使用-SQL-與數據對話">¶</a></h2><p>身為資料科學家或者是分析人員，我們都知道 SQL 基本上是必備的分析工具。</p>
+<p>簡單來說，<a href="https://zh.wikipedia.org/wiki/%E5%AE%A3%E5%91%8A%E5%BC%8F%E7%B7%A8%E7%A8%8B">SQL 是一種程式語言</a>，我們可以透過它對被儲存在<a href="https://zh.wikipedia.org/wiki/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93">關聯式資料庫</a>裡頭的資料進行查詢或操作。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>SQL 是資料科學家與資料庫（Database）溝通的語言</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在沒接觸過 SQL 之前，你可能會想</p>
+<ul>
+<li>「做為一個程式語言，為何 SQL <a href="https://insights.stackoverflow.com/survey/2018/">有那麼多人在使用？</a>」</li>
+<li>「我們有 Python、R，不學 SQL 應該也沒關係吧？」</li>
+<li>「又要學一個程式語言好麻煩。」</li>
+</ul>
+<p>為了釐清這些疑問，讓我們做一個假想實驗。比方說我們現在想要知道某個特定顧客過去的所有購買記錄。</p>
+<p>如果你熟悉 SQL 的話，可以對資料庫下一個簡單的查詢（Query）：</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">customer</span><span class="p">,</span> 
+       <span class="n">o</span><span class="p">.</span><span class="n">totalprice</span><span class="p">,</span> 
+       <span class="n">o</span><span class="p">.</span><span class="n">orderdate</span> 
+  <span class="k">FROM</span> <span class="n">customer</span> <span class="k">AS</span> <span class="k">c</span> 
+       <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">orders</span> <span class="k">AS</span> <span class="n">o</span> 
+       <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">custkey</span> <span class="o">=</span> <span class="n">o</span><span class="p">.</span><span class="n">custkey</span> 
+ <span class="k">WHERE</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'Customer#000000001'</span> 
+ <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">o</span><span class="p">.</span><span class="n">orderdate</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>上面這個查詢翻為白話就是：</p>
+<ul>
+<li>從顧客清單 <code>customer</code> 還有購賣紀錄 <code>orders</code> 裡頭<ul>
+<li><code>FROM customer AS c INNER JOIN orders AS o ON c.custkey = o.custkey</code></li>
+</ul>
+</li>
+<li>找出名為 Customer#000000001 的顧客的所有購買紀錄<ul>
+<li><code>WHERE c.name = 'Customer#000000001'</code></li>
+</ul>
+</li>
+<li>並把那些紀錄依照購買日期排序<ul>
+<li><code>ORDER BY o.orderdate</code></li>
+</ul>
+</li>
+<li>最後只回傳顧客名稱、總購買金額、購買日期幾個項目<ul>
+<li><code>SELECT c.name AS customer, o.totalprice, o.orderdate</code></li>
+</ul>
+</li>
+</ul>
+<p>這個查詢對第一次寫 SQL 的人可能會覺得很複雜，但注意，我們並沒有告訴資料庫「如何」取得這些資料，比方說：</p>
+<ul>
+<li>怎麼合併顧客跟購買紀錄？</li>
+<li>怎麼過濾特定顧客？</li>
+<li>怎麼排序？</li>
+</ul>
+<p>我們只告訴它該給我們「什麼資料」。而得到的結果是：</p>
+<div class="highlight"><pre><span></span>customer            | totalprice | orderdate
+--------------------+------------+------------
+ Customer#000000001 |  152411.41 | 1993-06-05
+ Customer#000000001 |  165928.33 | 1995-10-29
+ Customer#000000001 |  270087.44 | 1997-03-04
+</pre></div>
+<p>如同我們預期，只有該顧客的購買紀錄被回傳，且依照購買日期 <code>orderdate</code> 從早排到晚。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>實際上，資料庫可能需要做以下運算來取得資料：</p>
+<ul>
+<li>將顧客表格 <code>customer</code> 以及購買紀錄的表格 <code>orders</code> 分別命名為 <code>c</code> 及 <code>o</code></li>
+<li>依照共通的鍵值 <code>custkey</code> 合併（<code>JOIN</code>）兩表格</li>
+<li>找出特定顧客 <code>Customer#000000001</code> 的購買記錄</li>
+<li>將該紀錄依照購買日期 <code>orderdate</code> 排序</li>
+<li>選出要顯示的欄位 </li>
+</ul>
+<p>這些運算最後都得依照「某個」順序執行，但是我們不需要考慮這些事情，完全依靠資料庫的<a href="http://db.cs.berkeley.edu/papers/fntdb07-architecture.pdf">查詢最佳化器（Query Optimizer）</a>來幫我們決定。</p>
+<p>寫 SQL 敘述時，你可以理解成我們是指定「要的資料」，而查詢最佳化器會依照此需求，找出一個最佳路徑來取得必要的資料。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/sql/yoal-desurmont-619654-unsplash.jpg" style="width:90%" />
+</center>
+<center>
+<a href="https://unsplash.com/photos/pcLLI0MTDNg?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank"></a>
+    SQL 查詢
+    <font color="purple">: </font>專注在你的目標，查詢最佳化器會負責找到達成目標的最佳路徑
+    <br />
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>換句話說，當我們在寫 SQL 的時候，是在進行<a href="https://zh.wikipedia.org/wiki/%E5%AE%A3%E5%91%8A%E5%BC%8F%E7%B7%A8%E7%A8%8B">宣告式程式設計（Declarative Programming）</a>：我們只告訴資料庫，我們想要什麼資料（What），而不是怎麼取得（How）它們。</p>
+<p>這跟一般常見的<a href="https://zh.wikipedia.org/wiki/%E6%8C%87%E4%BB%A4%E5%BC%8F%E7%B7%A8%E7%A8%8B">命令式程式語言（Imperative Programming）</a>如 Python、Java 有所不同。在寫 SQL 時，我們告訴資料庫它該達成的目標 - 取得什麼資料（What）；在寫 Python 時，我們得告訴程式該怎麼達成該目標（How）。</p>
+<p>為了進一步闡述這個概念，接著讓我們試著使用 Python 來取得跟上面的 SQL 查詢一樣的結果。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="用-Python-達到-SQL-查詢效果">用 Python 達到 SQL 查詢效果<a class="anchor-link" href="#用-Python-達到-SQL-查詢效果">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>首先先假設所有顧客資料是透過一個 <code>list</code> 儲存，裡頭包含多個 <code>dict</code>。每個 <code>dict</code> 則代表一個顧客的資料：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">customers</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Customer#000000001"</span><span class="p">,</span> <span class="s2">"custkey"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Customer#000000002"</span><span class="p">,</span> <span class="s2">"custkey"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>而購買記錄則是一個 <code>dict</code>，<code>dict</code> 的鍵值為所有顧客的 <code>custkey</code>；鍵值對應的值則是包含該顧客所有購買紀錄的 <code>list</code>：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">orders</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"1"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"totalprice"</span><span class="p">:</span> <span class="mf">152411.41</span><span class="p">,</span> <span class="s2">"orderdate"</span><span class="p">:</span> <span class="s2">"1993-06-05"</span><span class="p">},</span>
+          <span class="p">{</span><span class="s2">"totalprice"</span><span class="p">:</span> <span class="mf">270087.44</span><span class="p">,</span> <span class="s2">"orderdate"</span><span class="p">:</span> <span class="s2">"1997-03-04"</span><span class="p">},</span>
+          <span class="p">{</span><span class="s2">"totalprice"</span><span class="p">:</span> <span class="mf">165928.33</span><span class="p">,</span> <span class="s2">"orderdate"</span><span class="p">:</span> <span class="s2">"1995-10-29"</span><span class="p">}</span>
+         <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>所以 <code>orders["1"]</code> 就代表 <code>custkey = 1</code> 的顧客的購買紀錄。</p>
+<p>了解背後的資料結構以後，我們可以寫一段 Python 程式碼來取得資料：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"customer           | totalprice| orderdate "</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"------------------ | ----------| --------- "</span><span class="p">)</span>
+<span class="c1"># 從所有顧客找符合條件的人</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">customers</span><span class="p">:</span>
+    <span class="c1"># 跳過我們沒興趣的顧客</span>
+    <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">'Customer#000000001'</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="c1"># 利用 custkey 取德該顧客的購買紀錄</span>
+    <span class="n">c_orders</span> <span class="o">=</span> <span class="n">orders</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s1">'custkey'</span><span class="p">]]</span>
+    
+    <span class="c1"># 依照 orderdate 排序購買紀錄</span>
+    <span class="n">c_orders_sorted</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">c_orders</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">'orderdate'</span><span class="p">])</span>
+    
+    <span class="c1"># 將所有排序後的記錄回傳</span>
+    <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">c_orders_sorted</span><span class="p">:</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s1">'name'</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="s1">'totalprice'</span><span class="p">]),</span> <span class="nb">str</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="s1">'orderdate'</span><span class="p">])]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">" | "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
+    <span class="c1"># 已經找到該顧客，提早結束迴圈以減少處理時間</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>customer           | totalprice| orderdate 
+------------------ | ----------| --------- 
+Customer#000000001 | 152411.41 | 1993-06-05
+Customer#000000001 | 165928.33 | 1995-10-29
+Customer#000000001 | 270087.44 | 1997-03-04
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>所以我們使用 Python 達到跟上面的 SQL 查詢一樣的結果了。但兩者在執行上有什麼差異？</p>
+<p>使用命令式程式語言來處理資料時，我們需要：</p>
+<ul>
+<li>了解資料結構以操作資料（顧客是存在 <code>list</code> 還是 <code>dict</code> ？）</li>
+<li>明確地定義執行步驟（先排序購買記錄 <code>orders</code> 還是先把顧客 <code>customers</code> 跟購買紀錄合併？）</li>
+<li>最佳化（如最後的 <code>break</code> ）</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>再看一次先前的 SQL 查詢（+註解）：</p>
+<div class="highlight"><pre><span></span><span class="c1">-- 給我以下幾個欄位：顧客名稱、總購買金額、購買日期</span>
+<span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">customer</span><span class="p">,</span>
+       <span class="n">o</span><span class="p">.</span><span class="n">totalprice</span><span class="p">,</span>
+       <span class="n">o</span><span class="p">.</span><span class="n">orderdate</span>
+<span class="c1">-- 將有相同 custkey 的顧客跟購買紀錄合併</span>
+  <span class="k">FROM</span> <span class="n">customer</span> <span class="k">AS</span> <span class="k">c</span>
+       <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">orders</span> <span class="k">AS</span> <span class="n">o</span>
+       <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">custkey</span> <span class="o">=</span> <span class="n">o</span><span class="p">.</span><span class="n">custkey</span>
+<span class="c1">-- 只需要此顧客的購買紀錄</span>
+ <span class="k">WHERE</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'Customer#000000001'</span>
+<span class="c1">-- 依照購買日期排序</span>
+ <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">o</span><span class="p">.</span><span class="n">orderdate</span><span class="p">;</span>
+</pre></div>
+<p>這裡頭我們不需要了解資料被以什麼形式儲存，也不需要定義要以什麼順序執行查詢，更不用做最佳化。這些事情全部交給背後的資料庫處理，使得資料科學家可以專注在更高層次的問題：「我們需要什麼資料？」</p>
+<p>而這正是 SQL 最強大的地方：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>SQL 讓資料科學家可以專注在需要「什麼」資料而非要「怎麼」取得。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結語">結語<a class="anchor-link" href="#結語">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>雖然我們這篇只舉了一個十分簡單的例子，但一般來說 SQL 非常適合以下的使用情境：</p>
+<ul>
+<li>將多個資料來源（例：表格）合併起來並依照一些條件篩選結果</li>
+<li>依照取得的資料做一些簡易的 aggregation （如：加總、平均、最大值）</li>
+<li>簡單的資料轉換（例：把 datetime 欄位取出年份）</li>
+</ul>
+<p>如果需要十分複雜的資料轉換或者計算時，一般我還是推薦使用 Python 或 R。但是下次當你有機會使用 SQL 取得想要的資料時，不妨試著專注在「想要什麼資料」而不是「怎麼取得資料」。說不定一個 SQL 查詢就能幫你省下一些花在搜集資料的時間。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="推薦閱讀">推薦閱讀<a class="anchor-link" href="#推薦閱讀">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://www.datacamp.com/courses/intro-to-sql-for-data-science">DataCamp - Intro to SQL for Data Science</a></li>
+<li><a href="https://www.datacamp.com/courses/joining-data-in-postgresql">DataCamp - Joining Data in PostgreSQL</a></li>
+<li><a href="https://www.linkedin.com/learning/advanced-sql-for-data-scientists">LinkedIn Learning - Advanced SQL for Data Scientists</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+                <!--Tags-->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemengtaiwan.github.io/tag/sql.html" rel="tag">SQL</a>
+                        <a href="https://leemengtaiwan.github.io/tag/data-science.html" rel="tag">data-science</a>
+                    </span>
+
+                </p>
+
+
+
+
+                <!--Pagination-->
+                <div class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__next">
+                            <a href="https://leemengtaiwan.github.io/why-you-need-to-learn-data-engineering-as-a-data-scientist.html" rel="next">
+                                <span>Next Post</span>
+                                資料科學家為何需要了解資料工程
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+
+            </div><!-- end blog-content__main -->
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '為何資料科學家需要學習 SQL';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemengtaiwan.github.io/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemengtaiwan.github.io/theme/js/plugins.js"></script>
+    <script src="https://leemengtaiwan.github.io/theme/js/main.js"></script>
+
+    <script type='text/javascript' src='https://leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
+
+</body>
+</html>
