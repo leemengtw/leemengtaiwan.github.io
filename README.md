@@ -33,6 +33,7 @@ pip install -r init_requirements.txt
 
 ## Blog 開發
 - Shell 快捷鍵參考 [Gist](https://gist.github.com/leemengtaiwan/0fb24bdd4d33fefad39d0c718413880f)
+- 啟動對應的開發環境，例： `source activate blog`
 
 在 dev branch 重新建立文章
 ```commandline
