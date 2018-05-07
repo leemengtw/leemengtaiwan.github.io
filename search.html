@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Custom Search</title>
+  <meta name="description" content="This page is used for custom in-site search.">
+	<meta name="author" content="Lee Meng">
+</head>
+<body>
+  <div>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script>
+      (function() {
+        var cx = '008264547667239827819:wnd6hef8hqu';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+    <gcse:search></gcse:search>
+  </div>
+</body>
+</html>

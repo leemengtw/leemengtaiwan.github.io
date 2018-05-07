@@ -6,7 +6,8 @@ AUTHOR = 'Lee Meng'
 SITENAME = "LeeMeng"
 SITETITLE = 'All About DataScience'
 SITEURL = ''
-SITE_DESCRIPTION = "Python, Jupyter Notebook, Data Science, Visualization"
+SITE_DESCRIPTION = "部落格, 資料科學, Python, R, 機器學習, 資料分析, 資料視覺化, 軟體工程, 資料工程, 雲端運算"
+SITE_KEYWORDS = "部落格, 資料科學, Python, R, 機器學習, 資料分析, 資料視覺化, 軟體工程, 資料工程, 雲端運算"
 PATH = 'content'
 
 # Set path for stat files like favicon and robot.txt
@@ -14,12 +15,14 @@ STATIC_PATHS = [
     'images',
     'Udacity/Deep Learning/images',
     'extra/robots.txt',
-    'extra/favicon.ico'
+    'extra/favicon.ico',
+    'extra/.htaccess'
 ]
 
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
-    'extra/favicon.ico': {'path': 'favicon.ico'}
+    'extra/favicon.ico': {'path': 'favicon.ico'},
+    'extra/.htaccess': {'path': '.htaccess'}
 }
 
 # Use draft as default for preventing publish unfinished articles.
@@ -101,9 +104,9 @@ STATIC_CHECK_IF_MODIFIED = True
 
 
 # DISQUS settings
-DISQUS_SITENAME = "leemengtaiwan"
-DISQUS_SECRET_KEY = '5VlHrNMlpJ9f6wKT3nSC3O1lVKYlUetlB9a0eFaqXYqRII2LJWTjsdxeBF4m54Bb'
-DISQUS_PUBLIC_KEY = '4aHNPuCwkVqbu7Mzn7VYoiJh39hV0kIUAgdfAgyiIY9U4VQsJqdQgPiFdxujTsNf'
+# DISQUS_SITENAME = "leemengtaiwan"
+# DISQUS_SECRET_KEY = '5VlHrNMlpJ9f6wKT3nSC3O1lVKYlUetlB9a0eFaqXYqRII2LJWTjsdxeBF4m54Bb'
+# DISQUS_PUBLIC_KEY = '4aHNPuCwkVqbu7Mzn7VYoiJh39hV0kIUAgdfAgyiIY9U4VQsJqdQgPiFdxujTsNf'
 
 # Google analytics for checking
 # GOOGLE_ANALYTICS = "UA-106559980-1"
