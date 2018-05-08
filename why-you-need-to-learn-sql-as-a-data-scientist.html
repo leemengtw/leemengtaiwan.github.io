@@ -334,7 +334,7 @@
     <span class="c1"># 跳過我們沒興趣的顧客</span>
     <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">'Customer#000000001'</span><span class="p">:</span>
         <span class="k">continue</span>
-    <span class="c1"># 利用 custkey 取德該顧客的購買紀錄</span>
+    <span class="c1"># 利用 custkey 取得該顧客的購買紀錄</span>
     <span class="n">c_orders</span> <span class="o">=</span> <span class="n">orders</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s1">'custkey'</span><span class="p">]]</span>
     
     <span class="c1"># 依照 orderdate 排序購買紀錄</span>
