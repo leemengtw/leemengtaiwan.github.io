@@ -189,22 +189,10 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上面這個查詢翻為白話就是：</p>
 <ul>
-<li>從顧客清單 <code>customer</code> 還有購賣紀錄 <code>orders</code> 裡頭<ul>
-<li><code>FROM customer AS c INNER JOIN orders AS o ON c.custkey = o.custkey</code></li>
-</ul>
-</li>
-<li>找出名為 Customer#000000001 的顧客的所有購買紀錄<ul>
-<li><code>WHERE c.name = 'Customer#000000001'</code></li>
-</ul>
-</li>
-<li>並把那些紀錄依照購買日期排序<ul>
-<li><code>ORDER BY o.orderdate</code></li>
-</ul>
-</li>
-<li>最後只回傳顧客名稱、總購買金額、購買日期幾個項目<ul>
-<li><code>SELECT c.name AS customer, o.totalprice, o.orderdate</code></li>
-</ul>
-</li>
+<li>從顧客清單 <code>customer</code> 還有購賣紀錄 <code>orders</code> 裡頭（FROM customer AS c INNER JOIN orders AS o ON c.custkey = o.custkey）</li>
+<li>找出名為 Customer#000000001 的顧客的所有購買紀錄（WHERE c.name = 'Customer#000000001'）</li>
+<li>並把那些紀錄依照購買日期排序（ORDER BY o.orderdate）</li>
+<li>最後只回傳顧客名稱、總購買金額、購買日期幾個項目（SELECT c.name AS customer, o.totalprice, o.orderdate）</li>
 </ul>
 <p>這個查詢對第一次寫 SQL 的人可能會覺得很複雜，但注意，我們並沒有告訴資料庫「如何」取得這些資料，比方說：</p>
 <ul>
