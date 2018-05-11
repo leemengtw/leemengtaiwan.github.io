@@ -77,9 +77,25 @@ MAIL = 'mailto:b9875001@gmail.com'
 
 # enable Pelican to use plugins for additional features
 MARKUP = ('md', 'ipynb')
-PLUGIN_PATHS = ['/Users/leemeng/pelican-plugins']
-PLUGINS = ['pelican-ipynb.markup', 'sitemap']
+PLUGIN_PATHS = ['/Users/leemeng/reproduce-test/pelican-plugins']
+PLUGINS = ['pelican-ipynb.markup', 'sitemap', 'pelican-toc']
 IGNORE_FILES = ['.ipynb_checkpoints']
+
+
+TOC = {
+    'TOC_HEADERS'       : '^h[1-6]', # What headers should be included in
+                                     # the generated toc
+                                     # Expected format is a regular expression
+
+    'TOC_RUN'           : 'true',    # Default value for toc generation,
+                                     # if it does not evaluate
+                                     # to 'true' no toc will be generated
+
+    'TOC_INCLUDE_TITLE': 'true',     # If 'true' include title in toc
+}
+
+
+
 
 # Jinja extensions
 JINJA_ENVIRONMENT = {
@@ -141,6 +157,6 @@ DEFAULT_CATEGORY = 'Miscellaneous'
 
 # Pelican default theme for dev
 # THEME = "/Users/leemeng/Documents/Code/pelican-jupyter-notebook/themes/pelican-default"
-THEME = "/Users/leemeng/Documents/Code/pelican-jupyter-notebook/themes/Hola10"
+THEME = "/Users/leemeng/reproduce-test/pelican-jupyter-notebook/themes/Hola10"
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog']
 PAGINATED_DIRECT_TEMPLATES = ['index', 'blog']

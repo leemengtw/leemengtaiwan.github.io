@@ -17,6 +17,26 @@ git fetch leemengtaiwan
 git checkout dev
 ```
 
+pelican-toc
+```commandline
+cd pelican-plugins/pelican-toc/
+git remote add leemengtaiwan https://github.com/leemengtaiwan/pelican-toc.git
+git fetch leemengtaiwan
+git checkout dev
+```
+
+## 第一次修改插件
+首先先手動 fork 在 `pelican-plugins` 裡頭想要修改的 submodule，再 clone 下來修改
+```commandline
+git remote add leemengtaiwan https://github.com/leemengtaiwan/pelican-toc.git
+git fetch leemengtaiwan
+git checkout leemengtaiwan/master
+...
+git commit -m "Finish!"
+git checkout -b dev
+git push --set-upstream leemengtaiwan dev
+```
+
 ## 建立開發基本環境
 
 ```commandline
