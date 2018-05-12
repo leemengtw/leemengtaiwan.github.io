@@ -7,7 +7,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h1 id="Table-of-Contents"&gt;Table of Contents&lt;a class="anchor-link" href="#Table-of-Contents"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;div class="toc" style="margin-top: 1em;"&gt;&lt;ul class="toc-item" id="toc-level0"&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="Prettier-output-1" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#Prettier-output"&gt;Prettier output&lt;/a&gt;&lt;/span&gt;&lt;ul class="toc-item"&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="調整每一個-column-寬度-1.1" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#調整每一個-column-寬度"&gt;調整每一個 column 寬度&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="在-sqlite3-shell-裡清空畫面-2" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#在-sqlite3-shell-裡清空畫面"&gt;在 sqlite3 shell 裡清空畫面&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="使用-SQL-script-建立-tables-3" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#使用-SQL-script-建立-tables"&gt;使用 SQL script 建立 tables&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="顯示目前的-tables-4" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示目前的-tables"&gt;顯示目前的 tables&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="顯示-table-schema-5" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示-table-schema"&gt;顯示 table schema&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="顯示-indexes-6" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示-indexes"&gt;顯示 indexes&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+&lt;h1 id="Table-of-Contents"&gt;Table of Contents&lt;a class="anchor-link" href="#Table-of-Contents"&gt;&amp;para;&lt;/a&gt;&lt;/h1&gt;&lt;div class="toc" style="margin-top: 1em;"&gt;&lt;ul class="toc-item" id="toc-level0"&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="Prettier-output-1" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#Prettier-output"&gt;Prettier output&lt;/a&gt;&lt;/span&gt;&lt;ul class="toc-item"&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="調整每一個-column-寬度-1.1" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#調整每一個-column-寬度"&gt;調整每一個 column 寬度&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="在-sqlite3-shell-裡清空畫面-2" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#在-sqlite3-shell-裡清空畫面"&gt;在 sqlite3 shell 裡清空畫面&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="使用-SQL-script-建立-tables-3" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#使用-SQL-script-建立-tables"&gt;使用 SQL script 建立 tables&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="顯示目前的-tables-4" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示目前的-tables"&gt;顯示目前的 tables&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="顯示-table-schema-5" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示-table-schema"&gt;顯示 table schema&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a data-toc-modified-id="顯示-indexes-6" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示-indexes"&gt;顯示 indexes&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -21,7 +21,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Prettier-output"&gt;Prettier output&lt;a class="anchor-link" href="#Prettier-output"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在 command-line program 裡頭使用的 response format&lt;/p&gt;
+&lt;h2 id="Prettier-output"&gt;Prettier output&lt;a class="anchor-link" href="#Prettier-output"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在 command-line program 裡頭使用的 response format&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;.mode column
 .headers on
 
@@ -33,7 +33,7 @@
 9           Toner cart  66          3           
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id="調整每一個-column-寬度"&gt;調整每一個 column 寬度&lt;a class="anchor-link" href="#調整每一個-column-寬度"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="調整每一個-column-寬度"&gt;調整每一個 column 寬度&lt;a class="anchor-link" href="#調整每一個-column-寬度"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;.width 5 18 15
 
 &lt;/code&gt;&lt;/pre&gt;
@@ -46,7 +46,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="在-sqlite3-shell-裡清空畫面"&gt;在 sqlite3 shell 裡清空畫面&lt;a class="anchor-link" href="#在-sqlite3-shell-裡清空畫面"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要看 OS 決定實際的 shell command&lt;/p&gt;
+&lt;h2 id="在-sqlite3-shell-裡清空畫面_1"&gt;在 sqlite3 shell 裡清空畫面&lt;a class="anchor-link" href="#在-sqlite3-shell-裡清空畫面"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要看 OS 決定實際的 shell command&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;.shell clear
 
 &lt;/code&gt;&lt;/pre&gt;
@@ -58,7 +58,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="使用-SQL-script-建立-tables"&gt;使用 SQL script 建立 tables&lt;a class="anchor-link" href="#使用-SQL-script-建立-tables"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;比方我們有一個 &lt;code&gt;create_tables.sql&lt;/code&gt; 內容是：&lt;/p&gt;
+&lt;h2 id="使用-SQL-script-建立-tables"&gt;使用 SQL script 建立 tables&lt;a class="anchor-link" href="#使用-SQL-script-建立-tables"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;比方我們有一個 &lt;code&gt;create_tables.sql&lt;/code&gt; 內容是：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;CREATE TABLE Departments (
   Code INTEGER PRIMARY KEY,
   Name varchar(255) NOT NULL ,
@@ -76,7 +76,7 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="顯示目前的-tables"&gt;顯示目前的 tables&lt;a class="anchor-link" href="#顯示目前的-tables"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="顯示目前的-tables"&gt;顯示目前的 tables&lt;a class="anchor-link" href="#顯示目前的-tables"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;.tables&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -84,7 +84,7 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="顯示-table-schema"&gt;顯示 table schema&lt;a class="anchor-link" href="#顯示-table-schema"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="顯示-table-schema"&gt;顯示 table schema&lt;a class="anchor-link" href="#顯示-table-schema"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;.schema &amp;lt;TABLE_NAME&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -92,7 +92,7 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="顯示-indexes"&gt;顯示 indexes&lt;a class="anchor-link" href="#顯示-indexes"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="顯示-indexes"&gt;顯示 indexes&lt;a class="anchor-link" href="#顯示-indexes"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;.indexes
 
 &lt;/code&gt;&lt;/pre&gt;

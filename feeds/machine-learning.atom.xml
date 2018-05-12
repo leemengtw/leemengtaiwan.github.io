@@ -11,7 +11,7 @@
 &lt;p&gt;Today we're going to do some simple image recogintion using NotMNIST dataset. But before creating model for prediction, it's more important to explore, clean and normalize our dataset in order to make the learning go smoother when we actually build predictive models.&lt;/p&gt;
 &lt;p&gt;I motified the &lt;a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb"&gt;notebook&lt;/a&gt; from Udacity's online Deep learning course and the objective of this assignment is to learn about &lt;strong&gt;simple data curation practices&lt;/strong&gt;, and familiarize you with some of the data we'll be reusing later.&lt;/p&gt;
 &lt;p&gt;This notebook uses the &lt;a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html"&gt;notMNIST&lt;/a&gt; dataset to be used with python experiments. This dataset is designed to look like the classic &lt;a href="http://yann.lecun.com/exdb/mnist/"&gt;MNIST&lt;/a&gt; dataset, while looking a little more like real data: it's a harder task, and the data is a lot less 'clean' than MNIST.&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/notmnist.png" width="70%" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/notmnist.png" width="70%"/&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -19,7 +19,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;This notebook is mainly foucsing on data preprocessing rather than building models.&lt;/p&gt;
-&lt;h2 id="Workflow"&gt;Workflow&lt;a class="anchor-link" href="#Workflow"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id="Workflow"&gt;Workflow&lt;a class="anchor-link" href="#Workflow"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Download / load raw notMNIST dataset&lt;/li&gt;
 &lt;li&gt;Drop unreadable images and save the remaining images&lt;/li&gt;
 &lt;li&gt;Combine all images and divide it into testing/validation/test set&lt;/li&gt;
@@ -27,27 +27,26 @@
 &lt;li&gt;Remove duplicate images appear both in train/test or train/validation set&lt;/li&gt;
 &lt;li&gt;Build simple model for image recognition using different size of training data&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="After-finishing-this-notebook,-we-learn"&gt;After finishing this notebook, we learn&lt;a class="anchor-link" href="#After-finishing-this-notebook,-we-learn"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id="After-finishing-this-notebook,-we-learn"&gt;After finishing this notebook, we learn&lt;a class="anchor-link" href="#After-finishing-this-notebook,-we-learn"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Use matplotlib to read images, transform them to ndarray and render.&lt;/li&gt;
 &lt;li&gt;Identify whether there exist unbalanced problem for the labels of classification .&lt;/li&gt;
 &lt;li&gt;Understand why it's important to have both valid and test set.&lt;/li&gt;
 &lt;li&gt;Identify the importance of randomizing data for better efficieny when training sequentially.&lt;/li&gt;
 &lt;li&gt;Identify duplicate images between training/test set.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Import-libraries"&gt;Import libraries&lt;a class="anchor-link" href="#Import-libraries"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="Import-libraries"&gt;Import libraries&lt;a class="anchor-link" href="#Import-libraries"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# These are all the modules we'll be using later. Make sure you can import them&lt;/span&gt;
@@ -75,7 +74,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Dataset"&gt;Dataset&lt;a class="anchor-link" href="#Dataset"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id="Dataset"&gt;Dataset&lt;a class="anchor-link" href="#Dataset"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Download compressed dataset if the dataset is not available yet&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -90,7 +89,6 @@
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'https://commondatastorage.googleapis.com/books1000/'&lt;/span&gt;
@@ -138,7 +136,6 @@
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Found and verified ./datasets/notMNIST_large.tar.gz
 Found and verified ./datasets/notMNIST_small.tar.gz
@@ -151,14 +148,13 @@ Found and verified ./datasets/notMNIST_small.tar.gz
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Extract-the-dataset-into-folders-by-characters"&gt;Extract the dataset into folders by characters&lt;a class="anchor-link" href="#Extract-the-dataset-into-folders-by-characters"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Extract the dataset from the compressed .tar.gz file.
+&lt;h2 id="Extract-the-dataset-into-folders-by-characters"&gt;Extract the dataset into folders by characters&lt;a class="anchor-link" href="#Extract-the-dataset-into-folders-by-characters"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Extract the dataset from the compressed .tar.gz file.
 This should give you a set of directories, labeled A through J.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;num_classes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
@@ -194,7 +190,6 @@ This should give you a set of directories, labeled A through J.&lt;/p&gt;
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;./datasets/notMNIST_large already present - Skipping extraction of ./datasets/notMNIST_large.tar.gz.
 ['./datasets/notMNIST_large/A', './datasets/notMNIST_large/B', './datasets/notMNIST_large/C', './datasets/notMNIST_large/D', './datasets/notMNIST_large/E', './datasets/notMNIST_large/F', './datasets/notMNIST_large/G', './datasets/notMNIST_large/H', './datasets/notMNIST_large/I', './datasets/notMNIST_large/J']
@@ -209,20 +204,19 @@ This should give you a set of directories, labeled A through J.&lt;/p&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;hr /&gt;
-&lt;h2 id="Problem-1---Sample-some-images-in-dataset-and-render-them"&gt;Problem 1 - Sample some images in dataset and render them&lt;a class="anchor-link" href="#Problem-1---Sample-some-images-in-dataset-and-render-them"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Let's take a peek at some of the data to make sure it looks sensible. Each exemplar should be an image of a character A through J rendered in a different font. Display a sample of the images that we just downloaded. Hint: you can use the package IPython.display.&lt;/p&gt;
-&lt;h3 id="For-each-character-folder-in-dataset,-randomly-choose-one-picture-in-it-and-render-them-horizontally"&gt;For each character folder in dataset, randomly choose one picture in it and render them horizontally&lt;a class="anchor-link" href="#For-each-character-folder-in-dataset,-randomly-choose-one-picture-in-it-and-render-them-horizontally"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Keypoints:&lt;/p&gt;
+&lt;hr/&gt;
+&lt;h2 id="Problem-1---Sample-some-images-in-dataset-and-render-them"&gt;Problem 1 - Sample some images in dataset and render them&lt;a class="anchor-link" href="#Problem-1---Sample-some-images-in-dataset-and-render-them"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Let's take a peek at some of the data to make sure it looks sensible. Each exemplar should be an image of a character A through J rendered in a different font. Display a sample of the images that we just downloaded. Hint: you can use the package IPython.display.&lt;/p&gt;
+&lt;h3 id="For-each-character-folder-in-dataset,-randomly-choose-one-picture-in-it-and-render-them-horizontally"&gt;For each character folder in dataset, randomly choose one picture in it and render them horizontally&lt;a class="anchor-link" href="#For-each-character-folder-in-dataset,-randomly-choose-one-picture-in-it-and-render-them-horizontally"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Keypoints:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;use &lt;code&gt;os.listdir()&lt;/code&gt; to get list of file in a folder&lt;/li&gt;
 &lt;li&gt;use &lt;code&gt;mpl.image.imread&lt;/code&gt; to read in image as ndarray, and use &lt;code&gt;plt.imshow&lt;/code&gt; to render ndarray as images&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;ls ./datasets/notMNIST_small/
@@ -233,7 +227,6 @@ This should give you a set of directories, labeled A through J.&lt;/p&gt;
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;&lt;span class="ansi-blue-fg"&gt;A&lt;/span&gt;        B.pickle &lt;span class="ansi-blue-fg"&gt;D&lt;/span&gt;        E.pickle &lt;span class="ansi-blue-fg"&gt;G&lt;/span&gt;        H.pickle &lt;span class="ansi-blue-fg"&gt;J&lt;/span&gt;
 A.pickle &lt;span class="ansi-blue-fg"&gt;C&lt;/span&gt;        D.pickle &lt;span class="ansi-blue-fg"&gt;F&lt;/span&gt;        G.pickle &lt;span class="ansi-blue-fg"&gt;I&lt;/span&gt;        J.pickle
@@ -246,7 +239,6 @@ A.pickle &lt;span class="ansi-blue-fg"&gt;C&lt;/span&gt;        D.pickle &lt;spa
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;characters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'abcdefghij'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upper&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# sub folders to choose images from &lt;/span&gt;
@@ -258,7 +250,6 @@ A.pickle &lt;span class="ansi-blue-fg"&gt;C&lt;/span&gt;        D.pickle &lt;spa
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;BASE_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'./datasets/notMNIST_small/'&lt;/span&gt;
@@ -296,7 +287,6 @@ A.pickle &lt;span class="ansi-blue-fg"&gt;C&lt;/span&gt;        D.pickle &lt;spa
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsfVdzJNlx9WnvvfcAGsAAGLezXEohSsHg0/cLpCe96Pfo
@@ -849,11 +839,10 @@ SCSSMSKVMIlEIpFIJBKJRCIZI1IJk0gkEolEIpFIJJIxIpUwiUQikUgkEolEIhkjUgmTSCQSiUQi
 kUgkkjEilTCJRCKRSCQSiUQiGSNSCZNIJBKJRCKRSCSSMSKVMIlEIpFIJBKJRCIZI1IJk0gkEolE
 IpFIJJIxIpUwiUQikUgkEolEIhkjUgmTSCQSiUQikUgkkjEilTCJRCKRSCQSiUQiGSP/BwCfzso1
 hHpFAAAAAElFTkSuQmCC
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsfddyHEl29tfee49Gw1uaGXJGXIa0mg0p9m4VehTd6QH0
@@ -1418,11 +1407,10 @@ aTQajUaj0Wg0Gs0Q0UqYRqPRaDQajUaj0QwRrYRpNBqNRqPRaDQazRDRSphGo9FoNBqNRqPRDBGt
 hGk0Go1Go9FoNBrNENFKmEaj0Wg0Go1Go9EMEa2EaTQajUaj0Wg0Gs0Q0UqYRqPRaDQajUaj0QwR
 rYRpNBqNRqPRaDQazRDRSphGo9FoNBqNRqPRDBGthGk0Go1Go9FoNBrNENFKmEaj0Wg0Go1Go9EM
 kf8HkM8y8KWrC8MAAAAASUVORK5CYII=
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsfVlzG9t19QKIeZ4ngoM4iBJ1pasb24nzYvslVUmVq/KQ
@@ -2088,11 +2076,10 @@ YGBgYGBgYGBgYPCEME6YgYGBgYGBgYGBgYHBE8I4YQYGBgYGBgYGBgYGBk8I44QZGBgYGBgYGBgY
 GBg8IYwTZmBgYGBgYGBgYGBg8IQwTpiBgYGBgYGBgYGBgcETwjhhBgYGBgYGBgYGBgYGTwjjhBkY
 GBgYGBgYGBgYGDwhjBNmYGBgYGBgYGBgYGDwhDBOmIGBgYGBgYGBgYGBwRPCOGEGBgYGBgYGBgYG
 BgZPCOOEGRgYGBgYGBgYGBgYPCH+HzlBw+VKq88yAAAAAElFTkSuQmCC
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsfVdzJNlx9WnvvW+gu2EaMxi/s8slJVLSiyL0pl+in6Bf
@@ -2627,7 +2614,7 @@ hUKhUCgUigminDCFQqFQKBQKhUKhmCDKCVMoFAqFQqFQKBSKCaKcMIVCoVAoFAqFQqGYIMoJUygU
 CoVCoVAoFIoJopwwhUKhUCgUCoVCoZggyglTKBQKhUKhUCgUigminDCFQqFQKBQKhUKhmCDKCVMo
 FAqFQqFQKBSKCaKcMIVCoVAoFAqFQqGYIMoJUygUCoVCoVAoFIoJopwwhUKhUCgUCoVCoZggyglT
 KBQKhUKhUCgUigminDCFQqFQKBQKhUKhmCD/B49LVnfWJaUqAAAAAElFTkSuQmCC
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2636,7 +2623,7 @@ KBQKhUKhUCgUigminDCFQqFQKBQKhUKhmCD/B49LVnfWJaUqAAAAAElFTkSuQmCC
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Data-curation"&gt;Data curation&lt;a class="anchor-link" href="#Data-curation"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id="Data-curation_1"&gt;Data curation&lt;a class="anchor-link" href="#Data-curation"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;drop unreadable images&lt;/li&gt;
 &lt;li&gt;normalization &lt;/li&gt;
 &lt;li&gt;pickle the normalized data by characters / folders &lt;/li&gt;
@@ -2656,7 +2643,7 @@ KBQKhUKhUCgUigminDCFQqFQKBQKhUKhmCD/B49LVnfWJaUqAAAAAElFTkSuQmCC
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Debugging"&gt;Debugging&lt;a class="anchor-link" href="#Debugging"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;In case of following error occur:&lt;/p&gt;
+&lt;h3 id="Debugging"&gt;Debugging&lt;a class="anchor-link" href="#Debugging"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;In case of following error occur:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ne"&gt;ImportError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Could&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;the&lt;/span&gt; &lt;span class="nn"&gt;Python&lt;/span&gt; &lt;span class="nn"&gt;Imaging&lt;/span&gt; &lt;span class="nn"&gt;Library&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PIL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;load&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Follow these steps:&lt;/p&gt;
@@ -2683,7 +2670,6 @@ to&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span clas
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;image_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;28&lt;/span&gt;  &lt;span class="c1"&gt;# Pixel width and height.&lt;/span&gt;
@@ -2746,7 +2732,6 @@ to&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span clas
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;./datasets/notMNIST_large/A.pickle already present - Skipping pickling.
 ./datasets/notMNIST_large/B.pickle already present - Skipping pickling.
@@ -2777,9 +2762,9 @@ to&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span clas
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;hr /&gt;
-&lt;h2 id="Problem-2"&gt;Problem 2&lt;a class="anchor-link" href="#Problem-2"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Let's verify that the data still looks good. Displaying a sample of the labels and images from the ndarray. Hint: you can use matplotlib.pyplot.&lt;/p&gt;
-&lt;h3 id="Load--test-data-and--show-normalized-images-for-each-pickled-dataset"&gt;Load  test data and  show normalized images for each pickled dataset&lt;a class="anchor-link" href="#Load--test-data-and--show-normalized-images-for-each-pickled-dataset"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;hr/&gt;
+&lt;h2 id="Problem-2_1"&gt;Problem 2&lt;a class="anchor-link" href="#Problem-2"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Let's verify that the data still looks good. Displaying a sample of the labels and images from the ndarray. Hint: you can use matplotlib.pyplot.&lt;/p&gt;
+&lt;h3 id="Load--test-data-and--show-normalized-images-for-each-pickled-dataset"&gt;Load  test data and  show normalized images for each pickled dataset&lt;a class="anchor-link" href="#Load--test-data-and--show-normalized-images-for-each-pickled-dataset"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;notMNIST_small only in order to prevent memory-insufficient problem when load all train data&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Keypoints:&lt;/p&gt;
@@ -2788,13 +2773,12 @@ to&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span clas
 &lt;li&gt;create a figure obj and use &lt;code&gt;fig.add_subplot(1, len(images), i+1)&lt;/code&gt; to add subplot for each image&lt;/li&gt;
 &lt;li&gt;render ndarray represent images using &lt;code&gt;matplotlob.pyplot.imshow(image)&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
@@ -2816,7 +2800,6 @@ to&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span clas
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Number of samples in ./datasets/notMNIST_small/A.pickle: 1872
 Number of samples in ./datasets/notMNIST_small/B.pickle: 1873
@@ -2832,7 +2815,6 @@ Number of samples in ./datasets/notMNIST_small/J.pickle: 1872
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnVlzG1lythMACRD7TgBcRW3dY0d4HBP2/7/xnX3hiPFM
@@ -3648,7 +3630,7 @@ EkssscQSSyyxPKPEQVgsscQSSyyxxBJLLLHEEsszShyExRJLLLHEEkssscQSSyyxPKPEQVgsscQS
 SyyxxBJLLLHEEsszShyExRJLLLHEEkssscQSSyyxPKPEQVgsscQSSyyxxBJLLLHEEsszShyExRJL
 LLHEEkssscQSSyyxPKPEQVgsscQSSyyxxBJLLLHEEsszShyExRJLLLHEEkssscQSSyyxPKPEQVgs
 scQSSyyxxBJLLLHEEsszShyExRJLLLHEEkssscQSSyyxPKP8P1FhT5WvXKEnAAAAAElFTkSuQmCC
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3657,16 +3639,15 @@ scQSSyyxxBJLLLHEEsszShyExRJLLLHEEkssscQSSyyxPKP8P1FhT5WvXKEnAAAAAElFTkSuQmCC
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;hr /&gt;
-&lt;h2 id="Problem-3"&gt;Problem 3&lt;a class="anchor-link" href="#Problem-3"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;We expect the data to be balanced across classes.&lt;br /&gt;
+&lt;hr/&gt;
+&lt;h2 id="Problem-3_1"&gt;Problem 3&lt;a class="anchor-link" href="#Problem-3"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;We expect the data to be balanced across classes.&lt;br/&gt;
 By problem 2 above, we already see the data is balanced in test set, verify data is balanced in train data as well&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;file_path&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;train_datasets&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -3679,7 +3660,6 @@ By problem 2 above, we already see the data is balanced in test set, verify data
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Number of samples in ./datasets/notMNIST_large/A.pickle: 52909
 Number of samples in ./datasets/notMNIST_large/B.pickle: 52911
@@ -3700,7 +3680,7 @@ Number of samples in ./datasets/notMNIST_large/J.pickle: 52911
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Merge-seperate-character-dataset-together-(for-all-training/test/valid)"&gt;Merge seperate character dataset together (for all training/test/valid)&lt;a class="anchor-link" href="#Merge-seperate-character-dataset-together-(for-all-training/test/valid)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Merge and prune the training data as needed. Depending on your computer setup, you might not be able to fit it all in memory, and you can tune &lt;code&gt;train_size&lt;/code&gt; as needed. The labels will be stored into a separate array of &lt;strong&gt;integers 0 through 9.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="Merge-seperate-character-dataset-together-(for-all-training/test/valid)"&gt;Merge seperate character dataset together (for all training/test/valid)&lt;a class="anchor-link" href="#Merge-seperate-character-dataset-together-(for-all-training/test/valid)"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Merge and prune the training data as needed. Depending on your computer setup, you might not be able to fit it all in memory, and you can tune &lt;code&gt;train_size&lt;/code&gt; as needed. The labels will be stored into a separate array of &lt;strong&gt;integers 0 through 9.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Also create a validation dataset for hyperparameter tuning.&lt;/p&gt;
 &lt;p&gt;Keypoints:&lt;/p&gt;
 &lt;ul&gt;
@@ -3711,7 +3691,6 @@ Number of samples in ./datasets/notMNIST_large/J.pickle: 52911
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;make_arrays&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nb_rows&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;img_size&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -3775,7 +3754,6 @@ Number of samples in ./datasets/notMNIST_large/J.pickle: 52911
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Training: (200000, 28, 28) (200000,)
 Validation: (10000, 28, 28) (10000,)
@@ -3789,7 +3767,7 @@ Testing: (10000, 28, 28) (10000,)
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Randomize-data"&gt;Randomize data&lt;a class="anchor-link" href="#Randomize-data"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Next, we'll randomize the data. It's important to have the labels well shuffled for the training and test distributions to match. The purpose of randomizing data is to perserve the assumption that we get the data randomly as predict phase. We don't want to train models sequantially on training instances like AAA ... BBB ... CCC.&lt;/p&gt;
+&lt;h2 id="Randomize-data"&gt;Randomize data&lt;a class="anchor-link" href="#Randomize-data"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Next, we'll randomize the data. It's important to have the labels well shuffled for the training and test distributions to match. The purpose of randomizing data is to perserve the assumption that we get the data randomly as predict phase. We don't want to train models sequantially on training instances like AAA ... BBB ... CCC.&lt;/p&gt;
 &lt;p&gt;Keypoints:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;train set and test set should apply the same shuffle &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;shuffled_dataset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dataset&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;permutation&lt;/span&gt;&lt;span class="p"&gt;,:,:]&lt;/span&gt;
@@ -3803,7 +3781,6 @@ Testing: (10000, 28, 28) (10000,)
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;randomize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dataset&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;labels&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -3822,20 +3799,19 @@ Testing: (10000, 28, 28) (10000,)
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;hr /&gt;
-&lt;h2 id="Problem-4---Sanity-check-after-shuffling-dataset"&gt;Problem 4 - Sanity check after shuffling dataset&lt;a class="anchor-link" href="#Problem-4---Sanity-check-after-shuffling-dataset"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Convince yourself that the data is still good after shuffling!&lt;br /&gt;
-Randomly sample data instances to make sure X is corresponding to y for both training and test set after shuffling.&lt;br /&gt;
+&lt;hr/&gt;
+&lt;h2 id="Problem-4---Sanity-check-after-shuffling-dataset"&gt;Problem 4 - Sanity check after shuffling dataset&lt;a class="anchor-link" href="#Problem-4---Sanity-check-after-shuffling-dataset"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Convince yourself that the data is still good after shuffling!&lt;br/&gt;
+Randomly sample data instances to make sure X is corresponding to y for both training and test set after shuffling.&lt;br/&gt;
 Keypoints:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;label is start from 0 to 9 for A to J&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;lookup_labels&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s1"&gt;'ABCDEFGHIJ'&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
@@ -3863,14 +3839,12 @@ Keypoints:&lt;/p&gt;
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Training dataset:
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAAByCAYAAADaptmXAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvUdsJFuaLvZFeu8NmYZpyKQtc6tu39s9fnqA6QfMaCBA
@@ -4476,7 +4450,7 @@ KCgoKCgoKCjMEYqEKSgoKCgoKCgoKCgozBGKhCkoKCgoKCgoKCgoKMwRioQpKCgoKCgoKCgoKCjM
 EYqEKSgoKCgoKCgoKCgozBGKhCkoKCgoKCgoKCgoKMwRioQpKCgoKCgoKCgoKCjMEYqEKSgoKCgo
 KCgoKCgozBGKhCkoKCgoKCgoKCgoKMwRioQpKCgoKCgoKCgoKCjMEYqEKSgoKCgoKCgoKCgozBH/
 D4K/5h4Q6KxOAAAAAElFTkSuQmCC
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4484,7 +4458,6 @@ D4K/5h4Q6KxOAAAAAElFTkSuQmCC
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sanity_check&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_dataset&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;test_labels&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'Test dataset:'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -4495,14 +4468,12 @@ D4K/5h4Q6KxOAAAAAElFTkSuQmCC
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Test dataset:
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAAByCAYAAADaptmXAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvVmMY1uaLvTt8DzPYzjmKTNPZp48edTddaq6qKIFD10N
@@ -5110,7 +5081,7 @@ hBkYGBgYGBgYGBgYGDQRxgkzMDAwMDAwMDAwMDBoIowTZmBgYGBgYGBgYGBg0EQYJ8zAwMDAwMDA
 wMDAwKCJME6YgYGBgYGBgYGBgYFBE2GcMAMDAwMDAwMDAwMDgybCOGEGBgYGBgYGBgYGBgZNhHHC
 DAwMDAwMDAwMDAwMmgjjhBkYGBgYGBgYGBgYGDQRxgkzMDAwMDAwMDAwMDBoIowTZmBgYGBgYGBg
 YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5119,13 +5090,12 @@ YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Serialize-dataset-for-later-usage"&gt;Serialize dataset for later usage&lt;a class="anchor-link" href="#Serialize-dataset-for-later-usage"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Everything looks good, finally, let's save the data for later reuse:&lt;/p&gt;
+&lt;h2 id="Serialize-dataset-for-later-usage"&gt;Serialize dataset for later usage&lt;a class="anchor-link" href="#Serialize-dataset-for-later-usage"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Everything looks good, finally, let's save the data for later reuse:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pickle_file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data_root&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'notMNIST.pickle'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -5152,7 +5122,6 @@ YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;statinfo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pickle_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -5164,7 +5133,6 @@ YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Compressed pickle size: 690800503
 &lt;/pre&gt;
@@ -5176,23 +5144,23 @@ YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;hr /&gt;
-&lt;h2 id="Problem-5---Remove-overlapping-samples-in-test/valid-set"&gt;Problem 5 - Remove overlapping samples in test/valid set&lt;a class="anchor-link" href="#Problem-5---Remove-overlapping-samples-in-test/valid-set"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;By construction, this dataset might contain a lot of overlapping samples, including training data that's also contained in the validation and test set! Overlap between training and test can skew the results if you expect to use your model in an environment where there is &lt;strong&gt;never&lt;/strong&gt; an overlap, but are actually ok if you expect to see training samples recur when you use it.
+&lt;hr/&gt;
+&lt;h2 id="Problem-5---Remove-overlapping-samples-in-test/valid-set"&gt;Problem 5 - Remove overlapping samples in test/valid set&lt;a class="anchor-link" href="#Problem-5---Remove-overlapping-samples-in-test/valid-set"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;By construction, this dataset might contain a lot of overlapping samples, including training data that's also contained in the validation and test set! Overlap between training and test can skew the results if you expect to use your model in an environment where there is &lt;strong&gt;never&lt;/strong&gt; an overlap, but are actually ok if you expect to see training samples recur when you use it.
 Measure how much overlap there is between training, validation and test samples.&lt;/p&gt;
 &lt;p&gt;Optional questions:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;What about near duplicates between datasets? (images that are almost identical)&lt;/li&gt;
 &lt;li&gt;Create a sanitized validation and test set, and compare your accuracy on those in subsequent assignments.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Find-duplicate-images-in-test-set"&gt;Find duplicate images in test set&lt;a class="anchor-link" href="#Find-duplicate-images-in-test-set"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I used Cosine Similarity to measure whether image A in training set is identical to those image B in valid/test set.&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/cosine_sim.png" width="50%" /&gt;&lt;/p&gt;
+&lt;h3 id="Find-duplicate-images-in-test-set"&gt;Find duplicate images in test set&lt;a class="anchor-link" href="#Find-duplicate-images-in-test-set"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I used Cosine Similarity to measure whether image A in training set is identical to those image B in valid/test set.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/cosine_sim.png" width="50%"/&gt;&lt;/p&gt;
 &lt;p&gt;As formula suggested, I reshape every image in training set into column vectors, and do the same for images in valid/test set and compute similarity between the vectors. Although we can compute cosine similarity for every (train image vector, test image vector) explicitly, it's better to use vectorization to speed up computation since that we have 200,000 training images and 10,000 valid/test images. (Although it still take about 10 minutes to run in my computer)&lt;/p&gt;
 &lt;p&gt;Keypoints:&lt;/p&gt;
 &lt;ul&gt;
@@ -5203,7 +5171,6 @@ Measure how much overlap there is between training, validation and test samples.
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;time&lt;/span&gt;
@@ -5260,7 +5227,6 @@ print('Number of duplicates in test dataset: {}'.format(len(dup_indices_test)))
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Number of duplicates in test dataset: 1768
 CPU times: user 5min 11s, sys: 4min 17s, total: 9min 29s
@@ -5269,7 +5235,6 @@ Wall time: 7min 40s
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAB6VJREFUeJzt2muMXVUZxvH/0+mFFtqxINJITRnqJZBigHiDCuViSLkF
@@ -5307,11 +5272,10 @@ lhwGs+QwmCWHwSw5DGbJYTBLDoNZchjMksNglhwGs+QwmCWHwSw5DGbJYTBLDoNZchjMksNglhwG
 s+QwmCWHwSw5DGbJYTBLDoNZchjMksNglhwGs+QwmCWHwSw5DGbJYTBLDoNZchjMksNglhwGs+Qw
 mCWHwSw5DGbJYTBLDoNZUkQ0ewxm7wq+Mpglh8EsOQxmyWEwSw6DWXIYzJLDYJYcBrPkMJglh8Es
 OQxmyWEwSw6DWXIYzJLDYJYcBrPkMJglh8EsOQxmyWEwS/8FG9OOYCpq074AAAAASUVORK5CYII=
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAEU5JREFUeJztnXuMJMddxz+/nsc99tZ7Xp+98fk4+x4ycnAsMMQkzkME
@@ -5393,11 +5357,10 @@ iBE2TOoOK4YYYcOk7rBiiBHWM3SHFUOMsJ6hO6wYYoT1DN1hxRAjrGfoDiuGGGE9Q3dYMcQI6xm6
 w4ohRljP0B1WDDHCeobuEGtAi8XFegaLRWPFYLForBgsFo0Vg8WisWKwWDRWDBaLxorBYtFYMVgs
 GisGi0VjxWCxaKwYLBaNFYPForFisFg0VgwWi8aKwWLRWDFYLBorBotFY8VgsWisGCwWjRWDxaL5
 f0L3TH8Ju55mAAAAAElFTkSuQmCC
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAADPhJREFUeJztnX+QJGdZxz/fmbmZ3Z3MZH/ewrGye7eJqUtdrAsIieGX
@@ -5459,11 +5422,10 @@ YuhRPGdoHRdDj+I5Q+u4GBwn4GJwnICLoUfxnKF1XAw9iucMreNicJyAi6FH8TCpdVwMPYqHSa3j
 YnCcgIvBcQIuhh7Fc4bWcTH0KJ4ztI6LwXECLgbHCbgYehTPGVrHxdCjeM7QOi4Gxwm063egHafr
 8JHBcQIuBscJuBgcJ+BicJyAi8FxAi4Gxwm4GBwn4GJwnICLwXECLgbHCbgYHCfgYnCcgIvBcQIu
 BscJuBgcJ+BicJyAi8FxAi4Gxwm4GBwn4GJwnMD/A0dGWk7q6LhuAAAAAElFTkSuQmCC
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAHwZJREFUeJztfWuMZNt11rfqXdXV9X50dVc/Zrpn7tyQuVysiNzrhMiX
@@ -5606,11 +5568,10 @@ DNpXgZmI4ZVXXoHD4cDKysqZlWP0cIQzMPAG5iyGTqdjWBlmBTPyzQv9M5mMXK/ACYTNipmIwe12
 yz3azBCDBEyGBLBht0hrFM6DmfkeDAaSb7MHPJKZC2fBgpEwx+ZdFiyYAJYYLFjQYInBggUNlhgs
 WNBgicGCBQ2WGCxY0GCJwYIFDZYYLFjQYInBggUNlhgsWNBgicGCBQ2WGCxY0GCJwYIFDZYYLFjQ
 YInBggUNlhgsWNBgicGCBQ2WGCxY0GCJwYIFDZYYLFjQ8P8B6ShCWv5B0oUAAAAASUVORK5CYII=
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAGe9JREFUeJztnWmMZFlW33839n3JyIyqXKpyq5zpblW7Z0x3g6DBstgs
@@ -5731,7 +5692,7 @@ Mvh8vi7roTfWejcD7B2spuevl2PQ0U+AylKpo5/Q1BLy/baYvQoYvkE8CYIwMHgS8PTsUWRgcAaM
 MhgYWDDKYGBgwSiDgYEFowwGBhaMMhgYWDDKYGBgwSiDgYEFowwGBhaMMhgYWDDKYGBgwSiDgYEF
 owwGBhaMMhgYWDDKYGBgwSiDgYEFowwGBhaMMhgYWDDKYGBgwSiDgYGF/w88HGPcrD2HvgAAAABJ
 RU5ErkJggg==
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5740,13 +5701,12 @@ RU5ErkJggg==
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Duplicate-images-in-validation-set"&gt;Duplicate images in validation set&lt;a class="anchor-link" href="#Duplicate-images-in-validation-set"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Duplicate-images-in-validation-set"&gt;Duplicate images in validation set&lt;a class="anchor-link" href="#Duplicate-images-in-validation-set"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;time&lt;/span&gt;
@@ -5759,7 +5719,6 @@ print('Number of duplicates in validation dataset: {}'.format(len(dup_indices_va
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Number of duplicates in validation dataset: 1507
 CPU times: user 7min 52s, sys: 5min 7s, total: 12min 59s
@@ -5768,7 +5727,6 @@ Wall time: 8min 57s
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAGyFJREFUeJztnXuMZNl91z+/er/f1d3TPT0z3rW8XsdYJoYkNokhcTCL
@@ -5894,11 +5852,10 @@ w1tTuYXTarVMLeXNe9MKYfl+glsGPbgZjUYMBgOzm4GOvqin0R+Hy4j2/uf3C+j1j9G/dfBt/RxP
 Aizf/kBuolm3sHgSsZGYbhYWXw+wymBh4cAqg4WFA6sMFhYOrDJYWDiwymBh4cAqg4WFA6sMFhYO
 rDJYWDiwymBh4cAqg4WFA6sMFhYOrDJYWDiwymBh4cAqg4WFA6sMFhYOrDJYWDiwymBh4cAqg4WF
 A6sMFhYO/h+m1Uqkr7plLgAAAABJRU5ErkJggg==
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAEyZJREFUeJztnXuMZGlZh5+3rqequqqv0zVMz0zP7G5md4aVqFlZYFkW
@@ -5988,11 +5945,10 @@ uLq6GsymuGCEuw6OTnr3qpukeu9e7z3pJnWi9f/ziDT+E4ObfkulUsGUXSqVCsRz2cQJ4TKN2z98
 xxU6PzIQHpi1Zqxw1nKDQxc4N7/eGsBqtbrlMzz7jeq9NX1pGRTluciB/C/cirIfqBkUxaJmUBSL
 mkFRLGoGRbGoGRTFomZQFIuaQVEsagZFsagZFMWiZlAUi5pBUSxqBkWxqBkUxaJmUBSLmkFRLGoG
 RbGoGRTFomZQFIuaQVEs/w+kfKKTmnnyZgAAAABJRU5ErkJggg==
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAF1pJREFUeJztnXmMbFlZwH+nu2vpqurq2qu7qt/r7vdkyIzADIbI8pQE
@@ -6101,11 +6057,10 @@ u+qTYOR9NpybMQghdClz9TrNIhf2z7VaLb0qZCaT0WmFasJnEuJgzhIj77PhXIxBjVNV7Z3TFq49
 iL3ev/J0OKWrPglG3meDcIJFGwxnwe3XIzIYLgnGGAwGC2MMBoOFMQaDwcIYg8FgYYzBYLAwxmAw
 WBhjMBgsjDEYDBbGGAwGC2MMBoOFMQaDwcIYg8FgYYzBYLAwxmAwWBhjMBgsjDEYDBbGGAwGC2MM
 BoOFMQaDweL/AYZSupfKO62bAAAAAElFTkSuQmCC
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAFTZJREFUeJztnXtsXFl9xz+/mTsznqc9M3Zix7EndkRWi0rILpQ3ybLb
@@ -6204,11 +6159,10 @@ ML441iuwnngWFxepVCqcP3+eU6dOcerUqZ72DkUM+u1ivV7Htm1vm+t27Cj1Q5jt6HxmbQu9D762
 tjawGLS9G43GOnt31n8n2DusNnTbMPC7ps1mk3q9zurqKs1ms3vbdssHaAZD2Ozqf/ZpMASJEYPB
 4GLEYDC4GDEYDC5GDAaDixGDweBixGAwuBgxGAwuRgwGg4sRg8HgYsRgMLgYMRgMLkYMBoOLEYPB
 4GLEYDC4GDEYDC5GDAaDixGDweBixGAwuBgxGAwu/wdsbAP7ko54hwAAAABJRU5ErkJggg==
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAADllJREFUeJztnXtwXNddxz+/3dVK2tVj5dXDdhxHtvOgnThOSmgLfTCl
@@ -6277,7 +6231,7 @@ jmO4GBzHcDE4juFicBzDxeA4hovBcQwXg+MYLgbHMVwMjmO4GBzHcDE4juFicBzDxeA4hovBcQwX
 g+MYLgbHMdbrO9COs+nwnsFxDBeD4xguBscxXAyOY7gYHMdwMTiO4WJwHMPF4DiGi8FxDBeD4xgu
 BscxXAyOY7gYHMdwMTiO4WJwHMPF4DiGi8FxDBeD4xguBscxXAyOY/w/C2SidMpTOzsAAAAASUVO
 RK5CYII=
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -6286,7 +6240,7 @@ RK5CYII=
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Serialize-sanitized-dataset-for-later-model-performance-comparison"&gt;Serialize sanitized dataset for later model performance comparison&lt;a class="anchor-link" href="#Serialize-sanitized-dataset-for-later-model-performance-comparison"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="Serialize-sanitized-dataset-for-later-model-performance-comparison"&gt;Serialize sanitized dataset for later model performance comparison&lt;a class="anchor-link" href="#Serialize-sanitized-dataset-for-later-model-performance-comparison"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;Remove duplicates in test/valid set&lt;/li&gt;
 &lt;li&gt;Save dataset&lt;/li&gt;
 &lt;/ul&gt;
@@ -6299,7 +6253,6 @@ RK5CYII=
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Number of duplicate images in test set: &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dup_indices_test&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
@@ -6311,7 +6264,6 @@ RK5CYII=
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Number of duplicate images in test set: 1768
 Number of duplicate images in valid set: 1507
@@ -6323,7 +6275,6 @@ Number of duplicate images in valid set: 1507
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;non_duplicate_indices&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_dataset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dup_indices_test&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
@@ -6340,7 +6291,6 @@ Number of duplicate images in valid set: 1507
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pickle_file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data_root&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'notMNIST_sanitized.pickle'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -6367,7 +6317,6 @@ Number of duplicate images in valid set: 1507
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;statinfo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pickle_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -6379,7 +6328,6 @@ Number of duplicate images in valid set: 1507
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Compressed pickle size: 680517003
 &lt;/pre&gt;
@@ -6391,17 +6339,16 @@ Number of duplicate images in valid set: 1507
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;hr /&gt;
-&lt;h2 id="Problem-6---Build-naive-classifier-using-logistic-regression"&gt;Problem 6 - Build naive classifier using logistic regression&lt;a class="anchor-link" href="#Problem-6---Build-naive-classifier-using-logistic-regression"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Let's get an idea of what an off-the-shelf classifier can give you on this data. It's always good to check that there is something to learn, and that it's a problem that is not so trivial that a canned solution solves it.&lt;/p&gt;
+&lt;hr/&gt;
+&lt;h2 id="Problem-6---Build-naive-classifier-using-logistic-regression_1"&gt;Problem 6 - Build naive classifier using logistic regression&lt;a class="anchor-link" href="#Problem-6---Build-naive-classifier-using-logistic-regression"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Let's get an idea of what an off-the-shelf classifier can give you on this data. It's always good to check that there is something to learn, and that it's a problem that is not so trivial that a canned solution solves it.&lt;/p&gt;
 &lt;p&gt;Train a simple model on this data using 50, 100, 1000 and 5000 training samples. Hint: you can use the LogisticRegression model from sklearn.linear_model.&lt;/p&gt;
 &lt;p&gt;Optional question: train an off-the-shelf model on all the data!&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.linear_model&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;LogisticRegression&lt;/span&gt;
@@ -6461,7 +6408,6 @@ Number of duplicate images in valid set: 1507
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAegAAAHZCAYAAABNdqgEAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XlcVOX+B/DPHDaZYXBAIFdEUBPRTBHERAXB8gbuW1bq
@@ -6906,7 +6852,7 @@ QboqCiFq4dq1ayxbtoytW7dWWhYfH8+6devYtm2bGWomRPMit7iFELXSvn17HB0dOXjwoNF8g8FA
 bGys8o63EKJ+5ApaCFFr2dnZ7Nmzh7y8PFxdXSkrKyM/Px8/Pz/GjBmDnZ2duasoRJMnAVoIIYSw
 QHKLWwghhLBAEqCFEEIICyQBWgghhLBAEqCFEEIICyQBWgghhLBAEqCFEEIIC/R/b7Q1OLRq/BUA
 AAAASUVORK5CYII=
-" /&gt;
+"/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;

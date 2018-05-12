@@ -92,7 +92,6 @@
     </header> <!-- end s-header -->
 
 
-
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -131,9 +130,19 @@
         </div>
 
 
-        <div class="row blog-content">
-            <div class="col-full blog-content__main">
+        <div class="row blog-content" style="position: relative">
+            <!--<div style="position:absolute;top: 90px;left:0;">-->
+                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
 
+                <!---->
+                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="為何資料科學家需要學習 SQL">為何資料科學家需要學習 SQL</a><ul><li><a class="toc-href" href="#使用-SQL-與數據對話" title="使用 SQL 與數據對話">使用 SQL 與數據對話</a></li><li><a class="toc-href" href="#用-Python-達到-SQL-查詢效果" title="用 Python 達到 SQL 查詢效果">用 Python 達到 SQL 查詢效果</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li><li><a class="toc-href" href="#推薦閱讀" title="推薦閱讀">推薦閱讀</a></li></ul></li></ul></div>-->
+                <!---->
+
+
+            <!--</div>-->
+
+
+            <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
@@ -146,14 +155,13 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="使用-SQL-與數據對話">使用 SQL 與數據對話<a class="anchor-link" href="#使用-SQL-與數據對話">¶</a></h2><p>身為資料科學家或者是分析人員，我們都知道 SQL 基本上是必備的分析工具。</p>
+<h2 id="使用-SQL-與數據對話">使用 SQL 與數據對話<a class="anchor-link" href="#使用-SQL-與數據對話">&para;</a></h2><p>身為資料科學家或者是分析人員，我們都知道 SQL 基本上是必備的分析工具。</p>
 <p>簡單來說，<a href="https://zh.wikipedia.org/wiki/%E5%AE%A3%E5%91%8A%E5%BC%8F%E7%B7%A8%E7%A8%8B">SQL 是一種程式語言</a>，我們可以透過它對被儲存在<a href="https://zh.wikipedia.org/wiki/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93">關聯式資料庫</a>裡頭的資料進行查詢或操作。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><blockquote><p>SQL 是資料科學家與資料庫（Database）溝通的語言</p></blockquote></div>
@@ -189,10 +197,22 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上面這個查詢翻為白話就是：</p>
 <ul>
-<li>從顧客清單 <code>customer</code> 還有購賣紀錄 <code>orders</code> 裡頭（FROM customer AS c INNER JOIN orders AS o ON c.custkey = o.custkey）</li>
-<li>找出名為 Customer#000000001 的顧客的所有購買紀錄（WHERE c.name = 'Customer#000000001'）</li>
-<li>並把那些紀錄依照購買日期排序（ORDER BY o.orderdate）</li>
-<li>最後只回傳顧客名稱、總購買金額、購買日期幾個項目（SELECT c.name AS customer, o.totalprice, o.orderdate）</li>
+<li>從顧客清單 <code>customer</code> 還有購賣紀錄 <code>orders</code> 裡頭<ul>
+<li>FROM customer AS c INNER JOIN orders AS o ON c.custkey = o.custkey</li>
+</ul>
+</li>
+<li>找出名為 Customer#000000001 的顧客的所有購買紀錄<ul>
+<li>WHERE c.name = 'Customer#000000001'</li>
+</ul>
+</li>
+<li>並把那些紀錄依照購買日期排序<ul>
+<li>ORDER BY o.orderdate</li>
+</ul>
+</li>
+<li>最後只回傳顧客名稱、總購買金額、購買日期幾個項目<ul>
+<li>SELECT c.name AS customer, o.totalprice, o.orderdate</li>
+</ul>
+</li>
 </ul>
 <p>這個查詢對第一次寫 SQL 的人可能會覺得很複雜，但注意，我們並沒有告訴資料庫「如何」取得這些資料，比方說：</p>
 <ul>
@@ -231,13 +251,13 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/sql/yoal-desurmont-619654-unsplash.jpg" style="width:90%" />
+<img src="images/sql/yoal-desurmont-619654-unsplash.jpg" style="width:90%"/>
 </center>
 <center>
 <a href="https://unsplash.com/photos/pcLLI0MTDNg?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank"></a>
     SQL 查詢
     <font color="purple">: </font>專注在你的目標，查詢最佳化器會負責找到達成目標的最佳路徑
-    <br />
+    <br/>
 </center>
 </div>
 </div>
@@ -254,7 +274,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="用-Python-達到-SQL-查詢效果">用 Python 達到 SQL 查詢效果<a class="anchor-link" href="#用-Python-達到-SQL-查詢效果">¶</a></h2>
+<h2 id="用-Python-達到-SQL-查詢效果">用 Python 達到 SQL 查詢效果<a class="anchor-link" href="#用-Python-達到-SQL-查詢效果">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -267,7 +287,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">customers</span> <span class="o">=</span> <span class="p">[</span>
@@ -288,7 +307,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">orders</span> <span class="o">=</span> <span class="p">{</span>
@@ -312,7 +330,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"customer           | totalprice| orderdate "</span><span class="p">)</span>
@@ -322,7 +339,7 @@
     <span class="c1"># 跳過我們沒興趣的顧客</span>
     <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">'Customer#000000001'</span><span class="p">:</span>
         <span class="k">continue</span>
-    <span class="c1"># 利用 custkey 取得該顧客的購買紀錄</span>
+    <span class="c1"># 利用 custkey 取德該顧客的購買紀錄</span>
     <span class="n">c_orders</span> <span class="o">=</span> <span class="n">orders</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s1">'custkey'</span><span class="p">]]</span>
     
     <span class="c1"># 依照 orderdate 排序購買紀錄</span>
@@ -341,7 +358,6 @@
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>customer           | totalprice| orderdate 
 ------------------ | ----------| --------- 
@@ -391,7 +407,6 @@ Customer#000000001 | 270087.44 | 1997-03-04
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><blockquote><p>SQL 讓資料科學家可以專注在需要「什麼」資料而非要「怎麼」取得。</p></blockquote></div>
@@ -402,7 +417,7 @@ Customer#000000001 | 270087.44 | 1997-03-04
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="結語">結語<a class="anchor-link" href="#結語">¶</a></h2>
+<h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -422,7 +437,7 @@ Customer#000000001 | 270087.44 | 1997-03-04
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="推薦閱讀">推薦閱讀<a class="anchor-link" href="#推薦閱讀">¶</a></h2>
+<h2 id="推薦閱讀">推薦閱讀<a class="anchor-link" href="#推薦閱讀">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -453,9 +468,17 @@ Customer#000000001 | 270087.44 | 1997-03-04
 
 
 
+
+
                 <!--Pagination-->
                 <div class="blog-content__pagenav">
                     <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a href="https://leemengtaiwan.github.io/demystify-the-hype-of-data-science-and-its-value.html" rel="prev">
+                                <span>Previous Post</span>
+                                揭開資料科學的神秘面紗
+                            </a>
+                        </div>
                         <div class="blog-content__next">
                             <a href="https://leemengtaiwan.github.io/why-you-need-to-learn-data-engineering-as-a-data-scientist.html" rel="next">
                                 <span>Next Post</span>

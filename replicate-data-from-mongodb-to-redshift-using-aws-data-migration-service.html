@@ -94,7 +94,6 @@
     </header> <!-- end s-header -->
 
 
-
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -135,9 +134,19 @@
         </div>
 
 
-        <div class="row blog-content">
-            <div class="col-full blog-content__main">
+        <div class="row blog-content" style="position: relative">
+            <!--<div style="position:absolute;top: 90px;left:0;">-->
+                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
 
+                <!---->
+                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="AWS Data Migration Service - 從 MongoDB 遷移到 Redshift">AWS Data Migration Service - 從 MongoDB 遷移到 Redshift</a><ul><li><a class="toc-href" href="#使用案例" title="使用案例">使用案例</a></li><li><a class="toc-href" href="#AWS-DMS-基本介紹" title="AWS DMS 基本介紹">AWS DMS 基本介紹</a></li><li><a class="toc-href" href="#基本遷移步驟" title="基本遷移步驟">基本遷移步驟</a></li><li><a class="toc-href" href="#建立-replication-instance" title="建立 replication instance">建立 replication instance</a></li><li><a class="toc-href" href="#確保-replication-instance-能連結到來源-/-目標資料庫" title="確保 replication instance 能連結到來源 / 目標資料庫">確保 replication instance 能連結到來源 / 目標資料庫</a><ul><li><a class="toc-href" href="#MongoDB-as-Source-Database" title="MongoDB as Source Database">MongoDB as Source Database</a><ul><li><a class="toc-href" href="#Metadata-mode" title="Metadata mode">Metadata mode</a></li><li><a class="toc-href" href="#Numbers-of-documents-to-scan" title="Numbers of documents to scan">Numbers of documents to scan</a></li></ul></li><li><a class="toc-href" href="#Redshift-as-Target-Database_1" title="Redshift as Target Database">Redshift as Target Database</a></li></ul></li><li><a class="toc-href" href="#定義-replication-task_1" title="定義 replication task">定義 replication task</a><ul><li><a class="toc-href" href="#Selection-Rules" title="Selection Rules">Selection Rules</a></li><li><a class="toc-href" href="#Transformation-Rules" title="Transformation Rules">Transformation Rules</a></li></ul></li><li><a class="toc-href" href="#Debugging_1" title="Debugging">Debugging</a></li></ul></li></ul></div>-->
+                <!---->
+
+
+            <!--</div>-->
+
+
+            <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
@@ -150,7 +159,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="使用案例">使用案例<a class="anchor-link" href="#使用案例">¶</a></h2><p>舉例來說，一個電子商務網站的後端可以使用一個具有高度彈性的 NoSQL 資料庫如 <a href="https://www.mongodb.com/">MongoDB</a> 來應對變化快速的使用者需求；而公司內部的資料科學家可以利用資料倉儲如 <a href="https://aws.amazon.com/tw/redshift/">Redshift</a> 來找出 business insight 。但這時候一個問題產生了：資料科學家用的資料倉儲 (例：Redshift) 的資料哪裡來？</p>
+<h2 id="使用案例">使用案例<a class="anchor-link" href="#使用案例">&para;</a></h2><p>舉例來說，一個電子商務網站的後端可以使用一個具有高度彈性的 NoSQL 資料庫如 <a href="https://www.mongodb.com/">MongoDB</a> 來應對變化快速的使用者需求；而公司內部的資料科學家可以利用資料倉儲如 <a href="https://aws.amazon.com/tw/redshift/">Redshift</a> 來找出 business insight 。但這時候一個問題產生了：資料科學家用的資料倉儲 (例：Redshift) 的資料哪裡來？</p>
 </div>
 </div>
 </div>
@@ -165,12 +174,12 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/intro.png" width="90%" />
+<img src="images/aws-dms/intro.png" width="90%"/>
 </center>
 <center>
 <a href="https://aws.amazon.com/tw/dms/" target="_blank">AWS DMS</a>
 <font color="purple">: 遷移（並轉換） AWS 上的資料庫</font>
-<br />
+<br/>
 </center>
 </div>
 </div>
@@ -178,7 +187,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="AWS-DMS-基本介紹">AWS DMS 基本介紹<a class="anchor-link" href="#AWS-DMS-基本介紹">¶</a></h2>
+<h2 id="AWS-DMS-基本介紹">AWS DMS 基本介紹<a class="anchor-link" href="#AWS-DMS-基本介紹">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -193,12 +202,12 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/flow.png" style="width:80%" />
+<img src="images/aws-dms/flow.png" style="width:80%"/>
 </center>
 <center>
 <a href="https://docs.aws.amazon.com/zh_cn/dms/latest/userguide/Welcome.html" target="_blank">DMS 基本運作方式</a>
 <font color="purple">: 資料遷移是由在 Replication Instance 上執行的 Replication Task 透過 endpoints 連結來源/目標資料庫完成的</font>
-<br />
+<br/>
 </center>
 </div>
 </div>
@@ -206,7 +215,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="基本遷移步驟">基本遷移步驟<a class="anchor-link" href="#基本遷移步驟">¶</a></h2><p>在假設來源 / 目標資料庫已經在運作的情況下，如同 AWS DMS 的 Get started, 一般會進行以下步驟來遷移資料：</p>
+<h2 id="基本遷移步驟">基本遷移步驟<a class="anchor-link" href="#基本遷移步驟">&para;</a></h2><p>在假設來源 / 目標資料庫已經在運作的情況下，如同 AWS DMS 的 Get started, 一般會進行以下步驟來遷移資料：</p>
 <ol>
 <li><a href="#建立-replication-instance">建立 replication instance</a></li>
 <li><a href="#確保-replication-instance-能連結到來源-/-目標資料庫">確保 replication instance 能連結到來源 / 目標資料庫</a></li>
@@ -220,7 +229,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="建立-replication-instance">建立 replication instance<a class="anchor-link" href="#建立-replication-instance">¶</a></h2><p>點擊 AWS DMS 介面的 Get started 選項會請我們建立新的 instance:</p>
+<h2 id="建立-replication-instance">建立 replication instance<a class="anchor-link" href="#建立-replication-instance">&para;</a></h2><p>點擊 AWS DMS 介面的 Get started 選項會請我們建立新的 instance:</p>
 </div>
 </div>
 </div>
@@ -228,12 +237,12 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/create-replicate-instance.png" width="90%" />
+<img src="images/aws-dms/create-replicate-instance.png" width="90%"/>
 </center>
 <center>
     建立 Replication Instance
     <font color="purple">: 注意 VPC /設定</font>
-<br />
+<br/>
 </center>
 </div>
 </div>
@@ -256,11 +265,11 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/naive-vpc-structure.png" style="width:60%" />
+<img src="images/aws-dms/naive-vpc-structure.png" style="width:60%"/>
 </center>
 <center>
 <font color="purple">來源 / 目標資料庫所在的 Security Group 要允許 Replication Instance 所在的 Security Group 存取</font>
-<br />
+<br/>
 </center>
 </div>
 </div>
@@ -287,7 +296,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="確保-replication-instance-能連結到來源-/-目標資料庫">確保 replication instance 能連結到來源 / 目標資料庫<a class="anchor-link" href="#確保-replication-instance-能連結到來源-/-目標資料庫">¶</a></h2><p>上一步驟設定好以後， AWS DMS 會馬上幫我們建立一個新的 replication instance。在等待的同時我們可以開始設定資料庫的 endpoints。</p>
+<h2 id="確保-replication-instance-能連結到來源-/-目標資料庫">確保 replication instance 能連結到來源 / 目標資料庫<a class="anchor-link" href="#確保-replication-instance-能連結到來源-/-目標資料庫">&para;</a></h2><p>上一步驟設定好以後， AWS DMS 會馬上幫我們建立一個新的 replication instance。在等待的同時我們可以開始設定資料庫的 endpoints。</p>
 </div>
 </div>
 </div>
@@ -295,12 +304,12 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/check-replication-instance-can-connect-to-both-endpoints.png" width="90%" />
+<img src="images/aws-dms/check-replication-instance-can-connect-to-both-endpoints.png" width="90%"/>
 </center>
 <center>
     設定來源 / 目標 enpoints
     <font color="purple">: 在此步驟確保 Replication Instance 可以連到兩個資料庫可以減少除錯時間</font>
-<br />
+<br/>
 </center>
 </div>
 </div>
@@ -315,7 +324,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="MongoDB-as-Source-Database">MongoDB as Source Database<a class="anchor-link" href="#MongoDB-as-Source-Database">¶</a></h3>
+<h3 id="MongoDB-as-Source-Database">MongoDB as Source Database<a class="anchor-link" href="#MongoDB-as-Source-Database">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -329,7 +338,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Metadata-mode">Metadata mode<a class="anchor-link" href="#Metadata-mode">¶</a></h4><p>Metadata mode 預設為 <code>document</code>（上圖第二個紅框），也就是把 MongoDB 裡頭的 json-formated 文件放到 Redshift 裡頭對應 Table 的一個 <code>_doc</code> 欄位。假設 MongoDB 裡有一個 <code>users</code> collection ，裡頭存了以下文件：</p>
+<h4 id="Metadata-mode">Metadata mode<a class="anchor-link" href="#Metadata-mode">&para;</a></h4><p>Metadata mode 預設為 <code>document</code>（上圖第二個紅框），也就是把 MongoDB 裡頭的 json-formated 文件放到 Redshift 裡頭對應 Table 的一個 <code>_doc</code> 欄位。假設 MongoDB 裡有一個 <code>users</code> collection ，裡頭存了以下文件：</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">"user"</span><span class="p">:</span> <span class="s2">"leemeng"</span><span class="p">,</span>
     <span class="nt">"favorite"</span><span class="p">:</span> <span class="s2">"chocolate"</span><span class="p">,</span> 
@@ -355,14 +364,14 @@ leemeng | chocolate | For fun!| Don't include me!
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Numbers-of-documents-to-scan">Numbers of documents to scan<a class="anchor-link" href="#Numbers-of-documents-to-scan">¶</a></h4><p>而 Numbers of documents to scan 選項則讓我們決定要讓 AWS DMS 拿多少文件來決定要建立哪些欄位。如果要遷移的 MongoDB collection 的文件 schema 很常被更動（常有新鍵值）的話，建議可以讓 AWS DMS 掃描多一點文件來建立足夠的欄位。</p>
+<h4 id="Numbers-of-documents-to-scan">Numbers of documents to scan<a class="anchor-link" href="#Numbers-of-documents-to-scan">&para;</a></h4><p>而 Numbers of documents to scan 選項則讓我們決定要讓 AWS DMS 拿多少文件來決定要建立哪些欄位。如果要遷移的 MongoDB collection 的文件 schema 很常被更動（常有新鍵值）的話，建議可以讓 AWS DMS 掃描多一點文件來建立足夠的欄位。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Redshift-as-Target-Database">Redshift as Target Database<a class="anchor-link" href="#Redshift-as-Target-Database">¶</a></h3>
+<h3 id="Redshift-as-Target-Database_1">Redshift as Target Database<a class="anchor-link" href="#Redshift-as-Target-Database">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -376,7 +385,7 @@ leemeng | chocolate | For fun!| Don't include me!
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="定義-replication-task">定義 replication task<a class="anchor-link" href="#定義-replication-task">¶</a></h2><p>在確定 replication instance 可以連線到兩個資料庫後，可以開始建立我們的 replication task：</p>
+<h2 id="定義-replication-task_1">定義 replication task<a class="anchor-link" href="#定義-replication-task">&para;</a></h2><p>在確定 replication instance 可以連線到兩個資料庫後，可以開始建立我們的 replication task：</p>
 </div>
 </div>
 </div>
@@ -384,7 +393,7 @@ leemeng | chocolate | For fun!| Don't include me!
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/create-replication-task.png" width="90%" />
+<img src="images/aws-dms/create-replication-task.png" width="90%"/>
 </center>
 </div>
 </div>
@@ -405,7 +414,7 @@ leemeng | chocolate | For fun!| Don't include me!
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Selection-Rules">Selection Rules<a class="anchor-link" href="#Selection-Rules">¶</a></h3><p>Selection Rules 的用途是告訴 AWS DMS 該遷移以及不要遷移的 (MongoDB) collections 。我們可以定義一個 general rule 讓一個 task 處理某個 db 的所有 collections ；也能讓一個 task 只負責一個 collection 的遷移。後者的設定比較花時間但是彈性比較高，可以依照不同 collection 特性決定遷移的方式。</p>
+<h3 id="Selection-Rules">Selection Rules<a class="anchor-link" href="#Selection-Rules">&para;</a></h3><p>Selection Rules 的用途是告訴 AWS DMS 該遷移以及不要遷移的 (MongoDB) collections 。我們可以定義一個 general rule 讓一個 task 處理某個 db 的所有 collections ；也能讓一個 task 只負責一個 collection 的遷移。後者的設定比較花時間但是彈性比較高，可以依照不同 collection 特性決定遷移的方式。</p>
 <p>下圖是定義一個 rule 告訴 AWS DMS 遷移所有在 MongoDB 的 Collections。另外如果想要排除哪個 collection 的話就新增一個 rule 並在 Action 選擇 <code>Exclude</code>。基本上想要加幾個 Selection Rules 都可以。而 Exclude Rules 的效果是在所有 Include Rules 後套用。</p>
 </div>
 </div>
@@ -414,12 +423,12 @@ leemeng | chocolate | For fun!| Don't include me!
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/selection-rules.png" style="width:90%" />
+<img src="images/aws-dms/selection-rules.png" style="width:90%"/>
 </center>
 <center>
 <a href="https://www.netpromoter.com/know/" target="_blank">Selection Rules</a>
 <font color="purple">: 選擇要遷移到目標資料庫的 Tables / Collections</font>
-<br />
+<br/>
 </center>
 </div>
 </div>
@@ -427,7 +436,7 @@ leemeng | chocolate | For fun!| Don't include me!
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Transformation-Rules">Transformation Rules<a class="anchor-link" href="#Transformation-Rules">¶</a></h3><p>這邊所謂的轉換並不是對欄位的實際值 (value) 進行轉換，而是針對 Table / Column 層級做</p>
+<h3 id="Transformation-Rules">Transformation Rules<a class="anchor-link" href="#Transformation-Rules">&para;</a></h3><p>這邊所謂的轉換並不是對欄位的實際值 (value) 進行轉換，而是針對 Table / Column 層級做</p>
 <ul>
 <li>排除（不遷移該 Table / Column）</li>
 <li>幫 Table / Column 更名、大小寫轉換或是名稱加上 prefix / postfix</li>
@@ -440,7 +449,7 @@ leemeng | chocolate | For fun!| Don't include me!
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/transformation-rules.png" style="width:90%" />
+<img src="images/aws-dms/transformation-rules.png" style="width:90%"/>
 </center><p>透過這個 Transformation rule，我們上面 <code>users</code> collection 的範例文件：</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">"user"</span><span class="p">:</span> <span class="s2">"leemeng"</span><span class="p">,</span>
@@ -463,7 +472,7 @@ leemeng | chocolate | For fun!
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Debugging">Debugging<a class="anchor-link" href="#Debugging">¶</a></h2>
+<h2 id="Debugging_1">Debugging<a class="anchor-link" href="#Debugging">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -499,7 +508,7 @@ leemeng | chocolate | For fun!
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/aws-dms/load-error-example.png" width="90%" />
+<img src="images/aws-dms/load-error-example.png" width="90%"/>
 </center>
 <center>
     查看 Redshift 裡頭 stl_load_error Table 來除錯
@@ -522,7 +531,6 @@ leemeng | chocolate | For fun!
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-
 </div>
 
 
@@ -538,6 +546,8 @@ leemeng | chocolate | For fun!
                     </span>
 
                 </p>
+
+
 
 
 

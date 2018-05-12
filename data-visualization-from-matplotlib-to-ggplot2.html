@@ -93,7 +93,6 @@
     </header> <!-- end s-header -->
 
 
-
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -133,9 +132,19 @@
         </div>
 
 
-        <div class="row blog-content">
-            <div class="col-full blog-content__main">
+        <div class="row blog-content" style="position: relative">
+            <!--<div style="position:absolute;top: 90px;left:0;">-->
+                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
 
+                <!---->
+                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="淺談資料視覺化以及 ggplot2 實踐">淺談資料視覺化以及 ggplot2 實踐</a><ul><li><a class="toc-href" href="#目錄" title="目錄">目錄</a></li><li><a class="toc-href" href="#資料視覺化是資料與圖的直接映射？" title="資料視覺化是資料與圖的直接映射？">資料視覺化是資料與圖的直接映射？</a></li><li><a class="toc-href" href="#資料視覺化應該是-.." title="資料視覺化應該是 ..">資料視覺化應該是 ..</a><ul><li><a class="toc-href" href="#先確認觀眾及目的" title="先確認觀眾及目的">先確認觀眾及目的</a></li><li><a class="toc-href" href="#正式定義" title="正式定義">正式定義</a></li><li><a class="toc-href" href="#一個簡單例子" title="一個簡單例子">一個簡單例子</a></li><li><a class="toc-href" href="#圖像的分層文法" title="圖像的分層文法">圖像的分層文法</a></li></ul></li><li><a class="toc-href" href="#ggplot2-實踐_1" title="ggplot2 實踐">ggplot2 實踐</a><ul><li><a class="toc-href" href="#載入-packages" title="載入 packages">載入 packages</a></li><li><a class="toc-href" href="#載入資料-+-簡單資料處理" title="載入資料 + 簡單資料處理">載入資料 + 簡單資料處理</a></li><li><a class="toc-href" href="#簡單資料視覺化" title="簡單資料視覺化">簡單資料視覺化</a></li><li><a class="toc-href" href="#基本層數缺一不可" title="基本層數缺一不可">基本層數缺一不可</a></li><li><a class="toc-href" href="#另個簡單例子" title="另個簡單例子">另個簡單例子</a></li><li><a class="toc-href" href="#複雜例子" title="複雜例子">複雜例子</a></li></ul></li><li><a class="toc-href" href="#結語_1" title="結語">結語</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></li></ul></div>-->
+                <!---->
+
+
+            <!--</div>-->
+
+
+            <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
@@ -148,7 +157,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="目錄">目錄<a class="anchor-link" href="#目錄">¶</a></h2>
+<h2 id="目錄">目錄<a class="anchor-link" href="#目錄">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -169,14 +178,14 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="資料視覺化是資料與圖的直接映射？">資料視覺化是資料與圖的直接映射？<a class="anchor-link" href="#資料視覺化是資料與圖的直接映射？">¶</a></h2>
+<h2 id="資料視覺化是資料與圖的直接映射？">資料視覺化是資料與圖的直接映射？<a class="anchor-link" href="#資料視覺化是資料與圖的直接映射？">&para;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>身為一個 Python 起家的資料科學家，在做資料視覺化的時候，我很自然地使用 Python ecosystem 裡像是 <a href="https://matplotlib.org/">matplotlib</a> 以及 <a href="https://seaborn.pydata.org/">seaborn</a> 等繪圖 packages。針對手中的資料，我會想辦法找到一個「對應」的圖然後把資料塞進去。簡單無腦 <em>(:3 」∠)</em></p>
+<p>身為一個 Python 起家的資料科學家，在做資料視覺化的時候，我很自然地使用 Python ecosystem 裡像是 <a href="https://matplotlib.org/">matplotlib</a> 以及 <a href="https://seaborn.pydata.org/">seaborn</a> 等繪圖 packages。針對手中的資料，我會想辦法找到一個「對應」的圖然後把資料塞進去。簡單無腦 <em>(:3 」&ang;)</em></p>
 <p>舉例來說，當我們手上有三個變數 x, y, z 且其各自的資料型態為：</p>
 <ul>
 <li>x: <a href="https://zh.wikibooks.org/zh-hant/%E7%B5%B1%E8%A8%88%E5%AD%B8/%E7%B5%B1%E8%A8%88%E8%B3%87%E6%96%99">定量變數 (quantitative)</a></li>
@@ -195,14 +204,14 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="資料視覺化應該是-..">資料視覺化應該是 ..<a class="anchor-link" href="#資料視覺化應該是-..">¶</a></h2>
+<h2 id="資料視覺化應該是-..">資料視覺化應該是 ..<a class="anchor-link" href="#資料視覺化應該是-..">&para;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="先確認觀眾及目的">先確認觀眾及目的<a class="anchor-link" href="#先確認觀眾及目的">¶</a></h3>
+<h3 id="先確認觀眾及目的">先確認觀眾及目的<a class="anchor-link" href="#先確認觀眾及目的">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -221,12 +230,12 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/ggplot2/data-vis-purpose.png" style="width:90%" />
+<img src="images/ggplot2/data-vis-purpose.png" style="width:90%"/>
 </center>
 <center>
 <a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1" target="_blank">Image Credit</a>
 <font color="purple">: </font>搞清楚資料視覺化的目的以及觀眾是重要的第一步
-    <br />
+    <br/>
 </center>
 </div>
 </div>
@@ -241,7 +250,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="正式定義">正式定義<a class="anchor-link" href="#正式定義">¶</a></h3>
+<h3 id="正式定義">正式定義<a class="anchor-link" href="#正式定義">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -254,7 +263,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><blockquote><p>資料視覺化是將資料中的變數映射到視覺變數上，進而有效且有意義地呈現資料的樣貌</p></blockquote></div>
@@ -295,12 +303,11 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="一個簡單例子">一個簡單例子<a class="anchor-link" href="#一個簡單例子">¶</a></h3>
+<h3 id="一個簡單例子">一個簡單例子<a class="anchor-link" href="#一個簡單例子">&para;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
@@ -310,7 +317,7 @@
 </pre></div>
 <p>光是看這個數字，肉眼無法看出什麼模式，但我們可以簡單畫個圖：</p>
 <center>
-<img src="images/ggplot2/simple-visual-encoding.png" style="width:70%" />
+<img src="images/ggplot2/simple-visual-encoding.png" style="width:70%"/>
 </center>
 </div>
 </div>
@@ -325,7 +332,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="圖像的分層文法">圖像的分層文法<a class="anchor-link" href="#圖像的分層文法">¶</a></h3>
+<h3 id="圖像的分層文法">圖像的分層文法<a class="anchor-link" href="#圖像的分層文法">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -337,7 +344,7 @@
 <li>原始資料 = 資料層（Data）</li>
 <li>視覺變數層（Visual variables = Aesthetics）</li>
 </ul>
-<p>則恰好是這個架構裡頭最底下的兩層。視覺變數是我為了方便理解建立的名詞，在原文以及 ggplot2 裡頭被稱作 <strong>Aesthetics</strong>。（中文翻作「美學」，當初看好久也無法理解啊 (╯°Д°)╯ ┻━┻）</p>
+<p>則恰好是這個架構裡頭最底下的兩層。視覺變數是我為了方便理解建立的名詞，在原文以及 ggplot2 裡頭被稱作 <strong>Aesthetics</strong>。（中文翻作「美學」，當初看好久也無法理解啊 (╯&deg;Д&deg;)╯ ┻━┻）</p>
 </div>
 </div>
 </div>
@@ -345,12 +352,12 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/ggplot2/layered-grammar-of-graphics.png" style="width:80%" />
+<img src="images/ggplot2/layered-grammar-of-graphics.png" style="width:80%"/>
 </center>
 <center>
 <a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1" target="_blank">Image Credit</a>
 <font color="purple">: </font>圖像的分層文法
-    <br />
+    <br/>
 </center>
 </div>
 </div>
@@ -372,12 +379,12 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/ggplot2/make-geom-layer-independent.png" style="width:90%" />
+<img src="images/ggplot2/make-geom-layer-independent.png" style="width:90%"/>
 </center>
 <center>
     獨立幾何圖形層
     <font color="purple">: </font>
-<br />讓資料視覺化不再侷限於「我要畫什麼圖」，而是「我想要怎麼畫」
+<br/>讓資料視覺化不再侷限於「我要畫什麼圖」，而是「我想要怎麼畫」
 </center>
 </div>
 </div>
@@ -392,20 +399,19 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="ggplot2-實踐">ggplot2 實踐<a class="anchor-link" href="#ggplot2-實踐">¶</a></h2><p>在這個章節裡頭我們將使用 Kaggle 的 <a href="https://www.kaggle.com/residentmario/ramen-ratings/data">Ramen Ratings</a> 來做資料視覺化。這資料集紀錄了各國泡麵所得到的星星數。首先我們要先載入這次的主角：R 語言裡頭最著名的視覺化 package ggplot2。<a href="http://yaojenkuo.io/r_programming/ch14#(1">dplyr</a> 則是 R 語言用來處理資料的 package。</p>
+<h2 id="ggplot2-實踐_1">ggplot2 實踐<a class="anchor-link" href="#ggplot2-實踐">&para;</a></h2><p>在這個章節裡頭我們將使用 Kaggle 的 <a href="https://www.kaggle.com/residentmario/ramen-ratings/data">Ramen Ratings</a> 來做資料視覺化。這資料集紀錄了各國泡麵所得到的星星數。首先我們要先載入這次的主角：R 語言裡頭最著名的視覺化 package ggplot2。<a href="http://yaojenkuo.io/r_programming/ch14#(1">dplyr</a> 則是 R 語言用來處理資料的 package。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="載入-packages">載入 packages<a class="anchor-link" href="#載入-packages">¶</a></h3>
+<h3 id="載入-packages">載入 packages<a class="anchor-link" href="#載入-packages">&para;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
@@ -425,13 +431,12 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="載入資料-+-簡單資料處理">載入資料 + 簡單資料處理<a class="anchor-link" href="#載入資料-+-簡單資料處理">¶</a></h3><p>如下註解所示，這邊將資料集讀入，做一些簡單的資料型態轉變後選擇一部分的資料集（subset）來做之後的視覺化：</p>
+<h3 id="載入資料-+-簡單資料處理">載入資料 + 簡單資料處理<a class="anchor-link" href="#載入資料-+-簡單資料處理">&para;</a></h3><p>如下註解所示，這邊將資料集讀入，做一些簡單的資料型態轉變後選擇一部分的資料集（subset）來做之後的視覺化：</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 將 CSV 檔案載入成資料框架（dataframe）</span>
@@ -459,7 +464,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">head</span><span class="p">(</span><span class="n">ramen</span><span class="p">)</span>
@@ -470,7 +474,6 @@
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_html rendered_html output_subarea ">
 <table class="table table-striped table-responsive">
 <thead><tr><th scope="col">Review..</th><th scope="col">Brand</th><th scope="col">Variety</th><th scope="col">Style</th><th scope="col">Country</th><th scope="col">Stars</th><th scope="col">Top.Ten</th></tr></thead>
@@ -491,7 +494,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="簡單資料視覺化">簡單資料視覺化<a class="anchor-link" href="#簡單資料視覺化">¶</a></h3>
+<h3 id="簡單資料視覺化">簡單資料視覺化<a class="anchor-link" href="#簡單資料視覺化">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -515,11 +518,9 @@
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">ramen</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Style</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_bar</span><span class="p">()</span>
@@ -530,10 +531,8 @@
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAFoCAYAAACPNyggAAAEGWlDQ1BrQ0dDb2xvclNwYWNl
 R2VuZXJpY1JHQgAAOI2NVV1oHFUUPrtzZyMkzlNsNIV0qD8NJQ2TVjShtLp/3d02bpZJNtoi
@@ -823,7 +822,7 @@ ahVdT/bPl/xdAfvkk09OHs0wArEXoAYc+10AAASOLDB58mSbMWOGvf766y6QvvLKK/RiPjIZ
 UxFISYBOWCkxMRMC8RXQSxQOHDhgeujG008/TfCN765AyatYgBpwFYOyOAQQQAABBFIRoAac
 ihLzIIAAAgggUMUCBOAqBmVxCCCAAAIIpCJAAE5FiXkQQAABBBCoYgECcBWDsjgEEEAAAQRS
 ESAAp6LEPAgggAACCFSxAAG4ikFZHAIIIIAAAqkIEIBTUWIeBBBAAAEEqliAAFzFoCwOAQQQ
-QACBVAT+H+5PGMGtxImPAAAAAElFTkSuQmCC" />
+QACBVAT+H+5PGMGtxImPAAAAAElFTkSuQmCC"/>
 </div>
 </div>
 </div>
@@ -849,7 +848,7 @@ QACBVAT+H+5PGMGtxImPAAAAAElFTkSuQmCC" />
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="基本層數缺一不可">基本層數缺一不可<a class="anchor-link" href="#基本層數缺一不可">¶</a></h3>
+<h3 id="基本層數缺一不可">基本層數缺一不可<a class="anchor-link" href="#基本層數缺一不可">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -862,7 +861,6 @@ QACBVAT+H+5PGMGtxImPAAAAAElFTkSuQmCC" />
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">ramen</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Style</span><span class="p">))</span>
@@ -873,10 +871,8 @@ QACBVAT+H+5PGMGtxImPAAAAAElFTkSuQmCC" />
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAFoCAYAAACPNyggAAAEGWlDQ1BrQ0dDb2xvclNwYWNl
 R2VuZXJpY1JHQgAAOI2NVV1oHFUUPrtzZyMkzlNsNIV0qD8NJQ2TVjShtLp/3d02bpZJNtoi
@@ -1057,7 +1053,7 @@ Ff7jmODF9RndnhN7XHnllW299dYbRk+PbveVAIGpExDAU2ftmQh0FfjGN74xnHgjxwNnP66J
 AIGZJSCAZ9b88moJDBdlyOkqc37oDTfcsJ177rktg7JMBAjMLAGDsGbW/PJqCbQct5vzOOek
 GzluWPj6pSAwMwWsAc/M+eZVEyBAgMAMF7AGPMNnoJdPgAABAjNTQADPzPnmVRMgQIDADBcQ
 wDN8Bnr5BAgQIDAzBQTwzJxvXjUBAgQIzHABATzDZ6CXT4AAAQIzU0AAz8z55lUTIECAwAwX
-EMAzfAZ6+QQIECAwMwUE8Mycb141AQIECMxwgf8HT5fWj6lkuOUAAAAASUVORK5CYII=" />
+EMAzfAZ6+QQIECAwMwUE8Mycb141AQIECMxwgf8HT5fWj6lkuOUAAAAASUVORK5CYII="/>
 </div>
 </div>
 </div>
@@ -1073,7 +1069,7 @@ EMAzfAZ6+QQIECAwMwUE8Mycb141AQIECMxwgf8HT5fWj6lkuOUAAAAASUVORK5CYII=" />
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="另個簡單例子">另個簡單例子<a class="anchor-link" href="#另個簡單例子">¶</a></h3>
+<h3 id="另個簡單例子">另個簡單例子<a class="anchor-link" href="#另個簡單例子">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -1088,11 +1084,9 @@ EMAzfAZ6+QQIECAwMwUE8Mycb141AQIECMxwgf8HT5fWj6lkuOUAAAAASUVORK5CYII=" />
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">ramen</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Country</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">Style</span><span class="p">))</span> <span class="o">+</span> 
@@ -1105,10 +1099,8 @@ EMAzfAZ6+QQIECAwMwUE8Mycb141AQIECMxwgf8HT5fWj6lkuOUAAAAASUVORK5CYII=" />
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA8AAAAHgCAYAAABq5QSEAAAEGWlDQ1BrQ0dDb2xvclNwYWNl
 R2VuZXJpY1JHQgAAOI2NVV1oHFUUPrtzZyMkzlNsNIV0qD8NJQ2TVjShtLp/3d02bpZJNtoi
@@ -1652,7 +1644,7 @@ AIH6KEAAXB/PKseEAAIIIIAAAggggAACCCBQTSDwT9TVVmMBAggggAACCCCAAAIIIIAAArEt
 QAAc2+eP3COAAAIIIIAAAggggAACCIQoQAAcIhSrIYAAAggggAACCCCAAAIIxLYAAXBsnz9y
 jwACCCCAAAIIIIAAAgggEKIAAXCIUKyGAAIIIIAAAggggAACCCAQ2wIEwLF9/sg9AggggAAC
 CCCAAAIIIIBAiAIEwCFCsRoCCCCAAAIIIIAAAggggEBsC/wL+YrYPUjV7+YAAAAASUVORK5C
-YII=" />
+YII="/>
 </div>
 </div>
 </div>
@@ -1674,7 +1666,7 @@ YII=" />
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="複雜例子">複雜例子<a class="anchor-link" href="#複雜例子">¶</a></h3><p>讓我們解決最後一個問題：</p>
+<h3 id="複雜例子">複雜例子<a class="anchor-link" href="#複雜例子">&para;</a></h3><p>讓我們解決最後一個問題：</p>
 <ul>
 <li>不同包裝的泡麵所得到的星星總數，在不同國家有什麼差異嗎？</li>
 </ul>
@@ -1688,11 +1680,9 @@ YII=" />
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">ramen</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Style</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Stars</span><span class="p">))</span> <span class="o">+</span>
@@ -1705,10 +1695,8 @@ YII=" />
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA8AAAALQCAYAAABfdxm0AAAEGWlDQ1BrQ0dDb2xvclNwYWNl
 R2VuZXJpY1JHQgAAOI2NVV1oHFUUPrtzZyMkzlNsNIV0qD8NJQ2TVjShtLp/3d02bpZJNtoi
@@ -2512,7 +2500,7 @@ oGORTWwkAggggAACCCCAAAIIIIBAdQXoAa6uIJ9HAAEEEEAAAQQQQAABBBCIhQABcCyyiY1E
 AAEEEEAAAQQQQAABBBCorgABcHUF+TwCCCCAAAIIIIAAAggggEAsBAiAY5FNbCQCCCCAAAII
 IIAAAggggEB1BQiAqyvI5xFAAAEEEEAAAQQQQAABBGIhQAAci2xiIxFAAAEEEEAAAQQQQAAB
 BKorQABcXUE+jwACCCCAAAIIIIAAAgggEAsBAuBYZBMbiQACCCCAAAIIIIAAAgggUF2B/wfj
-KoE66EiWrwAAAABJRU5ErkJggg==" />
+KoE66EiWrwAAAABJRU5ErkJggg=="/>
 </div>
 </div>
 </div>
@@ -2538,7 +2526,7 @@ KoE66EiWrwAAAABJRU5ErkJggg==" />
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="結語">結語<a class="anchor-link" href="#結語">¶</a></h2>
+<h2 id="結語_1">結語<a class="anchor-link" href="#結語">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -2551,7 +2539,6 @@ KoE66EiWrwAAAABJRU5ErkJggg==" />
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><blockquote><p>資料視覺化是將資料中的變數映射到視覺變數上，進而有效且有意義地呈現資料的樣貌</p></blockquote></div>
@@ -2569,7 +2556,7 @@ KoE66EiWrwAAAABJRU5ErkJggg==" />
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="References">References<a class="anchor-link" href="#References">¶</a></h2><ul>
+<h2 id="References">References<a class="anchor-link" href="#References">&para;</a></h2><ul>
 <li><a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1">DataCamp - Data Visualization with ggplot2 (Part 1)</a></li>
 <li><a href="http://r-statistics.co/ggplot2-Tutorial-With-R.html">r-statistics.co - ggplot2 tutorial</a></li>
 <li><a href="https://www.safaribooksonline.com/library/view/data-visualization-in/9781491963661/">Safari - Data Visualization in R With ggplot2</a></li>
@@ -2578,7 +2565,6 @@ KoE66EiWrwAAAABJRU5ErkJggg==" />
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-
 </div>
 
 
@@ -2593,6 +2579,8 @@ KoE66EiWrwAAAABJRU5ErkJggg==" />
                     </span>
 
                 </p>
+
+
 
 
 

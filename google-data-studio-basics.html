@@ -93,7 +93,6 @@
     </header> <!-- end s-header -->
 
 
-
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -133,9 +132,19 @@
         </div>
 
 
-        <div class="row blog-content">
-            <div class="col-full blog-content__main">
+        <div class="row blog-content" style="position: relative">
+            <!--<div style="position:absolute;top: 90px;left:0;">-->
+                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
 
+                <!---->
+                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Google Data Studio 基礎">Google Data Studio 基礎</a><ul><li><a class="toc-href" href="#將-Google-試算表的資料可視化" title="將 Google 試算表的資料可視化">將 Google 試算表的資料可視化</a></li><li><a class="toc-href" href="#條件欄位應用" title="條件欄位應用">條件欄位應用</a></li><li><a class="toc-href" href="#篩選器（filter）應用" title="篩選器（filter）應用">篩選器（filter）應用</a></li><li><a class="toc-href" href="#維度-VS-指標" title="維度 VS 指標">維度 VS 指標</a></li><li><a class="toc-href" href="#資料透視表-(Pivot-Table)" title="資料透視表 (Pivot Table)">資料透視表 (Pivot Table)</a></li><li><a class="toc-href" href="#限制" title="限制">限制</a></li><li><a class="toc-href" href="#實戰演練" title="實戰演練">實戰演練</a></li></ul></li></ul></div>-->
+                <!---->
+
+
+            <!--</div>-->
+
+
+            <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
@@ -147,7 +156,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="將-Google-試算表的資料可視化">將 Google 試算表的資料可視化<a class="anchor-link" href="#將-Google-試算表的資料可視化">¶</a></h2>
+<h2 id="將-Google-試算表的資料可視化">將 Google 試算表的資料可視化<a class="anchor-link" href="#將-Google-試算表的資料可視化">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -162,11 +171,11 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/google-data-studio/table-preview.png" style="width:90%" />
+<img src="images/google-data-studio/table-preview.png" style="width:90%"/>
 </center>
 <center>
 <a href="https://data.gov.tw/dataset/45444" target="_blank">資料來源</a>
-<font color="purple">: 2016年來台旅客性別統計</font><br />
+<font color="purple">: 2016年來台旅客性別統計</font><br/>
     每一列代表某地區 / 國家的訪台人數以及男女比
 </center>
 </div>
@@ -175,12 +184,12 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="條件欄位應用">條件欄位應用<a class="anchor-link" href="#條件欄位應用">¶</a></h2><p><a href="https://support.google.com/datastudio/answer/7359285">條件欄位</a>讓我們可以針對試算表裡頭每一列做 IF ELSE 判斷，依照判斷結果給予不同的值。現在假設我們想知道有多少國家的男性遊客過半數，可以使用簡易的評量表來計算：</p>
+<h2 id="條件欄位應用">條件欄位應用<a class="anchor-link" href="#條件欄位應用">&para;</a></h2><p><a href="https://support.google.com/datastudio/answer/7359285">條件欄位</a>讓我們可以針對試算表裡頭每一列做 IF ELSE 判斷，依照判斷結果給予不同的值。現在假設我們想知道有多少國家的男性遊客過半數，可以使用簡易的評量表來計算：</p>
 <center>
-<img src="images/google-data-studio/male-over-half.png" />
+<img src="images/google-data-studio/male-over-half.png"/>
 </center>
 <center>
-<font color="purple">訪台男性遊客過半國家佔全部國家的比例<br />
+<font color="purple">訪台男性遊客過半國家佔全部國家的比例<br/>
 </font></center>
 </div>
 </div>
@@ -190,10 +199,10 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們發現高達八成的國家（有些是區域）的訪台男性遊客較女性為多。我們可以調查其他國家的訪客性別比，看是不是只有台灣有此現象。要產生分母的「國家數」很直覺，我們只要新增一個欄位並計算有幾個國家即可：</p>
 <center>
-<img src="images/google-data-studio/num_countries_as_metric.png" />
+<img src="images/google-data-studio/num_countries_as_metric.png"/>
 </center>
 <center>
-<font color="purple">新增一個名為「國家數」的欄位<br />
+<font color="purple">新增一個名為「國家數」的欄位<br/>
 </font></center>
 </div>
 </div>
@@ -203,17 +212,16 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>但要計算分子的「男性遊客過半國家數」就稍微 tricky 了。我們想做的是，針對每一國家（每一列），只有在該國訪台男性遊客百分比過半（超過 50%)的時候才會被納入結果。而 Data Studio 的<a href="https://support.google.com/datastudio/answer/7359285">條件欄位</a>就是專門針對這種情況設計的。</p>
 <center>
-<img src="images/google-data-studio/conditional-calculated-field.png" style="width:70%" />
+<img src="images/google-data-studio/conditional-calculated-field.png" style="width:70%"/>
 </center>
 <center>
-<font color="purple">使用 CASE 語法對每一列做 IF-ELSE 判斷<br />
+<font color="purple">使用 CASE 語法對每一列做 IF-ELSE 判斷<br/>
 </font></center><p>上面的公式用白話來說就是：</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><blockquote><p>針對每一列的國家，看它的「男性百分比」欄位的值有沒有大於50。有的話值為1，否則為0。在針對每列做完條件判斷以後再把所有 1 加起來，就等於符合條件的國家數。</p></blockquote></div>
@@ -224,7 +232,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="篩選器（filter）應用">篩選器（filter）應用<a class="anchor-link" href="#篩選器（filter）應用">¶</a></h2>
+<h2 id="篩選器（filter）應用">篩選器（filter）應用<a class="anchor-link" href="#篩選器（filter）應用">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -233,10 +241,10 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>根據上個分析，我們知道女性遊客過半的國家只佔 20%。假設我們想確切知道是哪些國家的女性遊客過半，可以從女性百分比最高的國家開始列出男女比：</p>
 <center>
-<img src="images/google-data-studio/multibar-female-over-half.png" style="width:100%" />
+<img src="images/google-data-studio/multibar-female-over-half.png" style="width:100%"/>
 </center>
 <center>
-<font color="purple">訪台女性遊客過半國家<br />
+<font color="purple">訪台女性遊客過半國家<br/>
 </font></center>
 </div>
 </div>
@@ -252,10 +260,10 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/google-data-studio/female-more-than-half.png" style="width:70%" />
+<img src="images/google-data-studio/female-more-than-half.png" style="width:70%"/>
 </center>
 <center>
-<font color="purple">新增一個篩選器以過濾男性遊客比例較高的國家<br /></font>
+<font color="purple">新增一個篩選器以過濾男性遊客比例較高的國家<br/></font>
     註：一般的長條圖可以直接透過設定限制長條圖數目
 </center>
 </div>
@@ -264,7 +272,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="維度-VS-指標">維度 VS 指標<a class="anchor-link" href="#維度-VS-指標">¶</a></h2><p>在 Data Studio 裡頭，了解<a href="https://support.google.com/datastudio/answer/6402048?ref_topic=7441655&amp;utm_source=product&amp;utm_medium=cta&amp;utm_campaign=wwr&amp;utm_content=dims_mets">維度跟指標的差異</a>很重要。</p>
+<h2 id="維度-VS-指標">維度 VS 指標<a class="anchor-link" href="#維度-VS-指標">&para;</a></h2><p>在 Data Studio 裡頭，了解<a href="https://support.google.com/datastudio/answer/6402048?ref_topic=7441655&amp;utm_source=product&amp;utm_medium=cta&amp;utm_campaign=wwr&amp;utm_content=dims_mets">維度跟指標的差異</a>很重要。</p>
 <p>以我們現在的資料集為例，每一列就是一筆紀錄（record），每一行則是一個欄位。每個欄位則是維度或指標。</p>
 <ul>
 <li>指標（Metric，底下藍色）<ul>
@@ -279,10 +287,10 @@
 </li>
 </ul>
 <center>
-<img src="images/google-data-studio/metric-versus-dimension.png" style="width:90%" />
+<img src="images/google-data-studio/metric-versus-dimension.png" style="width:90%"/>
 </center>
 <center>
-<font color="purple">fx 則代表是額外利用公式建立的欄位</font><br />
+<font color="purple">fx 則代表是額外利用公式建立的欄位</font><br/>
 </center>
 </div>
 </div>
@@ -292,14 +300,13 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>像我們前面定義的「男性遊客過半國家數」欄位因為有經過 <code>SUM</code> 公式匯總成為一個數值，因此為一個指標（藍）。而如果我們透過 <code>CASE</code> 語法新定義一個「男性過半」欄位如下：</p>
 <center>
-<img src="images/google-data-studio/define-a-dimension-with-case-syntax.png" style="width:70%" />
+<img src="images/google-data-studio/define-a-dimension-with-case-syntax.png" style="width:70%"/>
 </center><p>此欄位沒有經過匯總因此被視為維度，在上一張圖被標為綠色。因此一句話總結維度跟指標的功能就是：</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><blockquote><p>維度負責「描述」資料； 指標則負責「衡量」資料。</p></blockquote></div>
@@ -310,7 +317,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="資料透視表-(Pivot-Table)">資料透視表 (Pivot Table)<a class="anchor-link" href="#資料透視表-(Pivot-Table)">¶</a></h2><p>資料透視表很適合拿來看在不同條件下某個指標的表現。下圖是一個依照</p>
+<h2 id="資料透視表-(Pivot-Table)">資料透視表 (Pivot Table)<a class="anchor-link" href="#資料透視表-(Pivot-Table)">&para;</a></h2><p>資料透視表很適合拿來看在不同條件下某個指標的表現。下圖是一個依照</p>
 <ul>
 <li>居住地</li>
 <li>國家</li>
@@ -323,7 +330,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/google-data-studio/pivot-table.png" style="width:90%" />
+<img src="images/google-data-studio/pivot-table.png" style="width:90%"/>
 </center>
 </div>
 </div>
@@ -342,7 +349,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="限制">限制<a class="anchor-link" href="#限制">¶</a></h2><p>可能因為還處在 beta 版本，在這篇文章寫的時候（2018/03）試用了一陣子發現 Data Studio 也有一些使用案例沒有辦法做到，像是：</p>
+<h2 id="限制">限制<a class="anchor-link" href="#限制">&para;</a></h2><p>可能因為還處在 beta 版本，在這篇文章寫的時候（2018/03）試用了一陣子發現 Data Studio 也有一些使用案例沒有辦法做到，像是：</p>
 <ul>
 <li>篩選器（filter）只能設定像是「欄位 C 大於 X」這種條件，而不能做「當欄位 C1 &gt; 欄位 C2」這種欄位間的比較。</li>
 <li>同上，條件欄位也只能設定像是「欄位 C 大於某固定值 X」的條件</li>
@@ -354,15 +361,14 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="實戰演練">實戰演練<a class="anchor-link" href="#實戰演練">¶</a></h2><p>這篇文章用的報表連結在<a href="https://datastudio.google.com/open/19a--FnAQ9asll18anhv7negoXGO0fpyH">此</a>，可以自己試試不同 visualization。有任何 feedback 也歡迎聯絡。</p>
+<h2 id="實戰演練">實戰演練<a class="anchor-link" href="#實戰演練">&para;</a></h2><p>這篇文章用的報表連結在<a href="https://datastudio.google.com/open/19a--FnAQ9asll18anhv7negoXGO0fpyH">此</a>，可以自己試試不同 visualization。有任何 feedback 也歡迎聯絡。</p>
 <center>
-<img src="images/google-data-studio/google-data-studio-preview.png" style="width:70%" />
+<img src="images/google-data-studio/google-data-studio-preview.png" style="width:70%"/>
 </center>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-
 </div>
 
 
@@ -377,6 +383,8 @@
                     </span>
 
                 </p>
+
+
 
 
 

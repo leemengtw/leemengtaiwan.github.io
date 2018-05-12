@@ -92,7 +92,6 @@
     </header> <!-- end s-header -->
 
 
-
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -131,14 +130,24 @@
         </div>
 
 
-        <div class="row blog-content">
-            <div class="col-full blog-content__main">
+        <div class="row blog-content" style="position: relative">
+            <!--<div style="position:absolute;top: 90px;left:0;">-->
+                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
 
+                <!---->
+                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="SQLite 筆記">SQLite 筆記</a><ul><li><a class="toc-href" href="#Table-of-Contents" title="Table of Contents">Table of Contents</a><ul><li><a class="toc-href" href="#Prettier-output" title="Prettier output">Prettier output</a><ul><li><a class="toc-href" href="#調整每一個-column-寬度" title="調整每一個 column 寬度">調整每一個 column 寬度</a></li></ul></li><li><a class="toc-href" href="#在-sqlite3-shell-裡清空畫面_1" title="在 sqlite3 shell 裡清空畫面">在 sqlite3 shell 裡清空畫面</a></li><li><a class="toc-href" href="#使用-SQL-script-建立-tables" title="使用 SQL script 建立 tables">使用 SQL script 建立 tables</a></li><li><a class="toc-href" href="#顯示目前的-tables" title="顯示目前的 tables">顯示目前的 tables</a></li><li><a class="toc-href" href="#顯示-table-schema" title="顯示 table schema">顯示 table schema</a></li><li><a class="toc-href" href="#顯示-indexes" title="顯示 indexes">顯示 indexes</a></li></ul></li></ul></li></ul></div>-->
+                <!---->
+
+
+            <!--</div>-->
+
+
+            <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h1><div class="toc" style="margin-top: 1em;"><ul class="toc-item" id="toc-level0"><li><span><a data-toc-modified-id="Prettier-output-1" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#Prettier-output">Prettier output</a></span><ul class="toc-item"><li><span><a data-toc-modified-id="調整每一個-column-寬度-1.1" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#調整每一個-column-寬度">調整每一個 column 寬度</a></span></li></ul></li><li><span><a data-toc-modified-id="在-sqlite3-shell-裡清空畫面-2" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#在-sqlite3-shell-裡清空畫面">在 sqlite3 shell 裡清空畫面</a></span></li><li><span><a data-toc-modified-id="使用-SQL-script-建立-tables-3" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#使用-SQL-script-建立-tables">使用 SQL script 建立 tables</a></span></li><li><span><a data-toc-modified-id="顯示目前的-tables-4" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示目前的-tables">顯示目前的 tables</a></span></li><li><span><a data-toc-modified-id="顯示-table-schema-5" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示-table-schema">顯示 table schema</a></span></li><li><span><a data-toc-modified-id="顯示-indexes-6" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示-indexes">顯示 indexes</a></span></li></ul></div>
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&para;</a></h1><div class="toc" style="margin-top: 1em;"><ul class="toc-item" id="toc-level0"><li><span><a data-toc-modified-id="Prettier-output-1" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#Prettier-output">Prettier output</a></span><ul class="toc-item"><li><span><a data-toc-modified-id="調整每一個-column-寬度-1.1" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#調整每一個-column-寬度">調整每一個 column 寬度</a></span></li></ul></li><li><span><a data-toc-modified-id="在-sqlite3-shell-裡清空畫面-2" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#在-sqlite3-shell-裡清空畫面">在 sqlite3 shell 裡清空畫面</a></span></li><li><span><a data-toc-modified-id="使用-SQL-script-建立-tables-3" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#使用-SQL-script-建立-tables">使用 SQL script 建立 tables</a></span></li><li><span><a data-toc-modified-id="顯示目前的-tables-4" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示目前的-tables">顯示目前的 tables</a></span></li><li><span><a data-toc-modified-id="顯示-table-schema-5" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示-table-schema">顯示 table schema</a></span></li><li><span><a data-toc-modified-id="顯示-indexes-6" href="http://localhost:8890/notebooks/content/20180222-SQLite-practice-1.ipynb#顯示-indexes">顯示 indexes</a></span></li></ul></div>
 </div>
 </div>
 </div>
@@ -152,7 +161,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Prettier-output">Prettier output<a class="anchor-link" href="#Prettier-output">¶</a></h2><p>在 command-line program 裡頭使用的 response format</p>
+<h2 id="Prettier-output">Prettier output<a class="anchor-link" href="#Prettier-output">&para;</a></h2><p>在 command-line program 裡頭使用的 response format</p>
 <pre><code>.mode column
 .headers on
 
@@ -164,7 +173,7 @@
 9           Toner cart  66          3           
 
 </code></pre>
-<h3 id="調整每一個-column-寬度">調整每一個 column 寬度<a class="anchor-link" href="#調整每一個-column-寬度">¶</a></h3>
+<h3 id="調整每一個-column-寬度">調整每一個 column 寬度<a class="anchor-link" href="#調整每一個-column-寬度">&para;</a></h3>
 <pre><code>.width 5 18 15
 
 </code></pre>
@@ -177,7 +186,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="在-sqlite3-shell-裡清空畫面">在 sqlite3 shell 裡清空畫面<a class="anchor-link" href="#在-sqlite3-shell-裡清空畫面">¶</a></h2><p>要看 OS 決定實際的 shell command</p>
+<h2 id="在-sqlite3-shell-裡清空畫面_1">在 sqlite3 shell 裡清空畫面<a class="anchor-link" href="#在-sqlite3-shell-裡清空畫面">&para;</a></h2><p>要看 OS 決定實際的 shell command</p>
 <pre><code>.shell clear
 
 </code></pre>
@@ -189,7 +198,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="使用-SQL-script-建立-tables">使用 SQL script 建立 tables<a class="anchor-link" href="#使用-SQL-script-建立-tables">¶</a></h2><p>比方我們有一個 <code>create_tables.sql</code> 內容是：</p>
+<h2 id="使用-SQL-script-建立-tables">使用 SQL script 建立 tables<a class="anchor-link" href="#使用-SQL-script-建立-tables">&para;</a></h2><p>比方我們有一個 <code>create_tables.sql</code> 內容是：</p>
 <pre><code>CREATE TABLE Departments (
   Code INTEGER PRIMARY KEY,
   Name varchar(255) NOT NULL ,
@@ -207,7 +216,7 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="顯示目前的-tables">顯示目前的 tables<a class="anchor-link" href="#顯示目前的-tables">¶</a></h2>
+<h2 id="顯示目前的-tables">顯示目前的 tables<a class="anchor-link" href="#顯示目前的-tables">&para;</a></h2>
 <pre><code>.tables</code></pre>
 </div>
 </div>
@@ -215,7 +224,7 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="顯示-table-schema">顯示 table schema<a class="anchor-link" href="#顯示-table-schema">¶</a></h2>
+<h2 id="顯示-table-schema">顯示 table schema<a class="anchor-link" href="#顯示-table-schema">&para;</a></h2>
 <pre><code>.schema &lt;TABLE_NAME&gt;</code></pre>
 </div>
 </div>
@@ -223,7 +232,7 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="顯示-indexes">顯示 indexes<a class="anchor-link" href="#顯示-indexes">¶</a></h2>
+<h2 id="顯示-indexes">顯示 indexes<a class="anchor-link" href="#顯示-indexes">&para;</a></h2>
 <pre><code>.indexes
 
 </code></pre>
@@ -248,6 +257,8 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
                     </span>
 
                 </p>
+
+
 
 
 

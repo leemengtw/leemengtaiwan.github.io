@@ -99,7 +99,6 @@
     </header> <!-- end s-header -->
 
 
-
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -141,9 +140,19 @@
         </div>
 
 
-        <div class="row blog-content">
-            <div class="col-full blog-content__main">
+        <div class="row blog-content" style="position: relative">
+            <!--<div style="position:absolute;top: 90px;left:0;">-->
+                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
 
+                <!---->
+                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Simple Image Recognition using NotMNIST dataset">Simple Image Recognition using NotMNIST dataset</a><ul><li><a class="toc-href" href="#Workflow" title="Workflow">Workflow</a></li><li><a class="toc-href" href="#After-finishing-this-notebook,-we-learn" title="After finishing this notebook, we learn">After finishing this notebook, we learn</a></li><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Dataset" title="Dataset">Dataset</a></li><li><a class="toc-href" href="#Extract-the-dataset-into-folders-by-characters" title="Extract the dataset into folders by characters">Extract the dataset into folders by characters</a></li><li><a class="toc-href" href="#Problem-1---Sample-some-images-in-dataset-and-render-them" title="Problem 1 - Sample some images in dataset and render them">Problem 1 - Sample some images in dataset and render them</a><ul><li><a class="toc-href" href="#For-each-character-folder-in-dataset,-randomly-choose-one-picture-in-it-and-render-them-horizontally" title="For each character folder in dataset, randomly choose one picture in it and render them horizontally">For each character folder in dataset, randomly choose one picture in it and render them horizontally</a></li></ul></li><li><a class="toc-href" href="#Data-curation_1" title="Data curation">Data curation</a><ul><li><a class="toc-href" href="#Debugging" title="Debugging">Debugging</a></li></ul></li><li><a class="toc-href" href="#Problem-2_1" title="Problem 2">Problem 2</a><ul><li><a class="toc-href" href="#Load--test-data-and--show-normalized-images-for-each-pickled-dataset" title="Load  test data and  show normalized images for each pickled dataset">Load  test data and  show normalized images for each pickled dataset</a></li></ul></li><li><a class="toc-href" href="#Problem-3_1" title="Problem 3">Problem 3</a></li><li><a class="toc-href" href="#Merge-seperate-character-dataset-together-(for-all-training/test/valid)" title="Merge seperate character dataset together (for all training/test/valid)">Merge seperate character dataset together (for all training/test/valid)</a></li><li><a class="toc-href" href="#Randomize-data" title="Randomize data">Randomize data</a></li><li><a class="toc-href" href="#Problem-4---Sanity-check-after-shuffling-dataset" title="Problem 4 - Sanity check after shuffling dataset">Problem 4 - Sanity check after shuffling dataset</a></li><li><a class="toc-href" href="#Serialize-dataset-for-later-usage" title="Serialize dataset for later usage">Serialize dataset for later usage</a></li><li><a class="toc-href" href="#Problem-5---Remove-overlapping-samples-in-test/valid-set" title="Problem 5 - Remove overlapping samples in test/valid set">Problem 5 - Remove overlapping samples in test/valid set</a><ul><li><a class="toc-href" href="#Find-duplicate-images-in-test-set" title="Find duplicate images in test set">Find duplicate images in test set</a></li><li><a class="toc-href" href="#Duplicate-images-in-validation-set" title="Duplicate images in validation set">Duplicate images in validation set</a></li><li><a class="toc-href" href="#Serialize-sanitized-dataset-for-later-model-performance-comparison" title="Serialize sanitized dataset for later model performance comparison">Serialize sanitized dataset for later model performance comparison</a></li></ul></li><li><a class="toc-href" href="#Problem-6---Build-naive-classifier-using-logistic-regression_1" title="Problem 6 - Build naive classifier using logistic regression">Problem 6 - Build naive classifier using logistic regression</a></li></ul></li></ul></div>-->
+                <!---->
+
+
+            <!--</div>-->
+
+
+            <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
@@ -151,7 +160,7 @@
 <p>Today we're going to do some simple image recogintion using NotMNIST dataset. But before creating model for prediction, it's more important to explore, clean and normalize our dataset in order to make the learning go smoother when we actually build predictive models.</p>
 <p>I motified the <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb">notebook</a> from Udacity's online Deep learning course and the objective of this assignment is to learn about <strong>simple data curation practices</strong>, and familiarize you with some of the data we'll be reusing later.</p>
 <p>This notebook uses the <a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html">notMNIST</a> dataset to be used with python experiments. This dataset is designed to look like the classic <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a> dataset, while looking a little more like real data: it's a harder task, and the data is a lot less 'clean' than MNIST.</p>
-<p><img src="images/notmnist.png" width="70%" /></p>
+<p><img src="images/notmnist.png" width="70%"/></p>
 </div>
 </div>
 </div>
@@ -159,7 +168,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This notebook is mainly foucsing on data preprocessing rather than building models.</p>
-<h2 id="Workflow">Workflow<a class="anchor-link" href="#Workflow">¶</a></h2><ul>
+<h2 id="Workflow">Workflow<a class="anchor-link" href="#Workflow">&para;</a></h2><ul>
 <li>Download / load raw notMNIST dataset</li>
 <li>Drop unreadable images and save the remaining images</li>
 <li>Combine all images and divide it into testing/validation/test set</li>
@@ -167,27 +176,26 @@
 <li>Remove duplicate images appear both in train/test or train/validation set</li>
 <li>Build simple model for image recognition using different size of training data</li>
 </ul>
-<h2 id="After-finishing-this-notebook,-we-learn">After finishing this notebook, we learn<a class="anchor-link" href="#After-finishing-this-notebook,-we-learn">¶</a></h2><ul>
+<h2 id="After-finishing-this-notebook,-we-learn">After finishing this notebook, we learn<a class="anchor-link" href="#After-finishing-this-notebook,-we-learn">&para;</a></h2><ul>
 <li>Use matplotlib to read images, transform them to ndarray and render.</li>
 <li>Identify whether there exist unbalanced problem for the labels of classification .</li>
 <li>Understand why it's important to have both valid and test set.</li>
 <li>Identify the importance of randomizing data for better efficieny when training sequentially.</li>
 <li>Identify duplicate images between training/test set.</li>
 </ul>
-<hr />
+<hr/>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Import-libraries">Import libraries<a class="anchor-link" href="#Import-libraries">¶</a></h2>
+<h2 id="Import-libraries">Import libraries<a class="anchor-link" href="#Import-libraries">&para;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># These are all the modules we'll be using later. Make sure you can import them</span>
@@ -215,7 +223,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Dataset">Dataset<a class="anchor-link" href="#Dataset">¶</a></h2><ul>
+<h2 id="Dataset">Dataset<a class="anchor-link" href="#Dataset">&para;</a></h2><ul>
 <li>Download compressed dataset if the dataset is not available yet</li>
 </ul>
 </div>
@@ -230,7 +238,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'https://commondatastorage.googleapis.com/books1000/'</span>
@@ -278,7 +285,6 @@
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Found and verified ./datasets/notMNIST_large.tar.gz
 Found and verified ./datasets/notMNIST_small.tar.gz
@@ -291,14 +297,13 @@ Found and verified ./datasets/notMNIST_small.tar.gz
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Extract-the-dataset-into-folders-by-characters">Extract the dataset into folders by characters<a class="anchor-link" href="#Extract-the-dataset-into-folders-by-characters">¶</a></h2><p>Extract the dataset from the compressed .tar.gz file.
+<h2 id="Extract-the-dataset-into-folders-by-characters">Extract the dataset into folders by characters<a class="anchor-link" href="#Extract-the-dataset-into-folders-by-characters">&para;</a></h2><p>Extract the dataset from the compressed .tar.gz file.
 This should give you a set of directories, labeled A through J.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
@@ -334,7 +339,6 @@ This should give you a set of directories, labeled A through J.</p>
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>./datasets/notMNIST_large already present - Skipping extraction of ./datasets/notMNIST_large.tar.gz.
 ['./datasets/notMNIST_large/A', './datasets/notMNIST_large/B', './datasets/notMNIST_large/C', './datasets/notMNIST_large/D', './datasets/notMNIST_large/E', './datasets/notMNIST_large/F', './datasets/notMNIST_large/G', './datasets/notMNIST_large/H', './datasets/notMNIST_large/I', './datasets/notMNIST_large/J']
@@ -349,20 +353,19 @@ This should give you a set of directories, labeled A through J.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<h2 id="Problem-1---Sample-some-images-in-dataset-and-render-them">Problem 1 - Sample some images in dataset and render them<a class="anchor-link" href="#Problem-1---Sample-some-images-in-dataset-and-render-them">¶</a></h2><p>Let's take a peek at some of the data to make sure it looks sensible. Each exemplar should be an image of a character A through J rendered in a different font. Display a sample of the images that we just downloaded. Hint: you can use the package IPython.display.</p>
-<h3 id="For-each-character-folder-in-dataset,-randomly-choose-one-picture-in-it-and-render-them-horizontally">For each character folder in dataset, randomly choose one picture in it and render them horizontally<a class="anchor-link" href="#For-each-character-folder-in-dataset,-randomly-choose-one-picture-in-it-and-render-them-horizontally">¶</a></h3><p>Keypoints:</p>
+<hr/>
+<h2 id="Problem-1---Sample-some-images-in-dataset-and-render-them">Problem 1 - Sample some images in dataset and render them<a class="anchor-link" href="#Problem-1---Sample-some-images-in-dataset-and-render-them">&para;</a></h2><p>Let's take a peek at some of the data to make sure it looks sensible. Each exemplar should be an image of a character A through J rendered in a different font. Display a sample of the images that we just downloaded. Hint: you can use the package IPython.display.</p>
+<h3 id="For-each-character-folder-in-dataset,-randomly-choose-one-picture-in-it-and-render-them-horizontally">For each character folder in dataset, randomly choose one picture in it and render them horizontally<a class="anchor-link" href="#For-each-character-folder-in-dataset,-randomly-choose-one-picture-in-it-and-render-them-horizontally">&para;</a></h3><p>Keypoints:</p>
 <ul>
 <li>use <code>os.listdir()</code> to get list of file in a folder</li>
 <li>use <code>mpl.image.imread</code> to read in image as ndarray, and use <code>plt.imshow</code> to render ndarray as images</li>
 </ul>
-<hr />
+<hr/>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls ./datasets/notMNIST_small/
@@ -373,7 +376,6 @@ This should give you a set of directories, labeled A through J.</p>
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre><span class="ansi-blue-fg">A</span>        B.pickle <span class="ansi-blue-fg">D</span>        E.pickle <span class="ansi-blue-fg">G</span>        H.pickle <span class="ansi-blue-fg">J</span>
 A.pickle <span class="ansi-blue-fg">C</span>        D.pickle <span class="ansi-blue-fg">F</span>        G.pickle <span class="ansi-blue-fg">I</span>        J.pickle
@@ -386,7 +388,6 @@ A.pickle <span class="ansi-blue-fg">C</span>        D.pickle <span class="ansi-b
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">characters</span> <span class="o">=</span> <span class="s1">'abcdefghij'</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>  <span class="c1"># sub folders to choose images from </span>
@@ -398,7 +399,6 @@ A.pickle <span class="ansi-blue-fg">C</span>        D.pickle <span class="ansi-b
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">BASE_PATH</span> <span class="o">=</span> <span class="s1">'./datasets/notMNIST_small/'</span>
@@ -436,7 +436,6 @@ A.pickle <span class="ansi-blue-fg">C</span>        D.pickle <span class="ansi-b
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsfVdzJNlx9WnvvfcAGsAAGLezXEohSsHg0/cLpCe96Pfo
@@ -989,11 +988,10 @@ SCSSMSKVMIlEIpFIJBKJRCIZI1IJk0gkEolEIpFIJJIxIpUwiUQikUgkEolEIhkjUgmTSCQSiUQi
 kUgkkjEilTCJRCKRSCQSiUQiGSNSCZNIJBKJRCKRSCSSMSKVMIlEIpFIJBKJRCIZI1IJk0gkEolE
 IpFIJJIxIpUwiUQikUgkEolEIhkjUgmTSCQSiUQikUgkkjEilTCJRCKRSCQSiUQiGSP/BwCfzso1
 hHpFAAAAAElFTkSuQmCC
-" />
+"/>
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsfddyHEl29tfee49Gw1uaGXJGXIa0mg0p9m4VehTd6QH0
@@ -1558,11 +1556,10 @@ aTQajUaj0Wg0Gs0Q0UqYRqPRaDQajUaj0QwRrYRpNBqNRqPRaDQazRDRSphGo9FoNBqNRqPRDBGt
 hGk0Go1Go9FoNBrNENFKmEaj0Wg0Go1Go9EMEa2EaTQajUaj0Wg0Gs0Q0UqYRqPRaDQajUaj0QwR
 rYRpNBqNRqPRaDQazRDRSphGo9FoNBqNRqPRDBGthGk0Go1Go9FoNBrNENFKmEaj0Wg0Go1Go9EM
 kf8HkM8y8KWrC8MAAAAASUVORK5CYII=
-" />
+"/>
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsfVlzG9t19QKIeZ4ngoM4iBJ1pasb24nzYvslVUmVq/KQ
@@ -2228,11 +2225,10 @@ YGBgYGBgYGBgYPCEME6YgYGBgYGBgYGBgYHBE8I4YQYGBgYGBgYGBgYGBk8I44QZGBgYGBgYGBgY
 GBg8IYwTZmBgYGBgYGBgYGBg8IQwTpiBgYGBgYGBgYGBgcETwjhhBgYGBgYGBgYGBgYGTwjjhBkY
 GBgYGBgYGBgYGDwhjBNmYGBgYGBgYGBgYGDwhDBOmIGBgYGBgYGBgYGBwRPCOGEGBgYGBgYGBgYG
 BgZPCOOEGRgYGBgYGBgYGBgYPCH+HzlBw+VKq88yAAAAAElFTkSuQmCC
-" />
+"/>
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsfVdzJNlx9WnvvW+gu2EaMxi/s8slJVLSiyL0pl+in6Bf
@@ -2767,7 +2763,7 @@ hUKhUCgUigminDCFQqFQKBQKhUKhmCDKCVMoFAqFQqFQKBSKCaKcMIVCoVAoFAqFQqGYIMoJUygU
 CoVCoVAoFIoJopwwhUKhUCgUCoVCoZggyglTKBQKhUKhUCgUigminDCFQqFQKBQKhUKhmCDKCVMo
 FAqFQqFQKBSKCaKcMIVCoVAoFAqFQqGYIMoJUygUCoVCoVAoFIoJopwwhUKhUCgUCoVCoZggyglT
 KBQKhUKhUCgUigminDCFQqFQKBQKhUKhmCD/B49LVnfWJaUqAAAAAElFTkSuQmCC
-" />
+"/>
 </div>
 </div>
 </div>
@@ -2776,7 +2772,7 @@ KBQKhUKhUCgUigminDCFQqFQKBQKhUKhmCD/B49LVnfWJaUqAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-curation">Data curation<a class="anchor-link" href="#Data-curation">¶</a></h2><ul>
+<h2 id="Data-curation_1">Data curation<a class="anchor-link" href="#Data-curation">&para;</a></h2><ul>
 <li>drop unreadable images</li>
 <li>normalization </li>
 <li>pickle the normalized data by characters / folders </li>
@@ -2796,7 +2792,7 @@ KBQKhUKhUCgUigminDCFQqFQKBQKhUKhmCD/B49LVnfWJaUqAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Debugging">Debugging<a class="anchor-link" href="#Debugging">¶</a></h3><p>In case of following error occur:</p>
+<h3 id="Debugging">Debugging<a class="anchor-link" href="#Debugging">&para;</a></h3><p>In case of following error occur:</p>
 <div class="highlight"><pre><span></span><span class="ne">ImportError</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="kn">import</span> <span class="nn">the</span> <span class="nn">Python</span> <span class="nn">Imaging</span> <span class="nn">Library</span> <span class="p">(</span><span class="n">PIL</span><span class="p">)</span> <span class="n">required</span> <span class="n">to</span> <span class="n">load</span> <span class="n">image</span> <span class="n">files</span><span class="o">.</span>
 </pre></div>
 <p>Follow these steps:</p>
@@ -2823,7 +2819,6 @@ to<div class="highlight"><pre><span></span><span class="kn">from</span> <span cl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">image_size</span> <span class="o">=</span> <span class="mi">28</span>  <span class="c1"># Pixel width and height.</span>
@@ -2886,7 +2881,6 @@ to<div class="highlight"><pre><span></span><span class="kn">from</span> <span cl
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>./datasets/notMNIST_large/A.pickle already present - Skipping pickling.
 ./datasets/notMNIST_large/B.pickle already present - Skipping pickling.
@@ -2917,9 +2911,9 @@ to<div class="highlight"><pre><span></span><span class="kn">from</span> <span cl
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<h2 id="Problem-2">Problem 2<a class="anchor-link" href="#Problem-2">¶</a></h2><p>Let's verify that the data still looks good. Displaying a sample of the labels and images from the ndarray. Hint: you can use matplotlib.pyplot.</p>
-<h3 id="Load--test-data-and--show-normalized-images-for-each-pickled-dataset">Load  test data and  show normalized images for each pickled dataset<a class="anchor-link" href="#Load--test-data-and--show-normalized-images-for-each-pickled-dataset">¶</a></h3><ul>
+<hr/>
+<h2 id="Problem-2_1">Problem 2<a class="anchor-link" href="#Problem-2">&para;</a></h2><p>Let's verify that the data still looks good. Displaying a sample of the labels and images from the ndarray. Hint: you can use matplotlib.pyplot.</p>
+<h3 id="Load--test-data-and--show-normalized-images-for-each-pickled-dataset">Load  test data and  show normalized images for each pickled dataset<a class="anchor-link" href="#Load--test-data-and--show-normalized-images-for-each-pickled-dataset">&para;</a></h3><ul>
 <li>notMNIST_small only in order to prevent memory-insufficient problem when load all train data</li>
 </ul>
 <p>Keypoints:</p>
@@ -2928,13 +2922,12 @@ to<div class="highlight"><pre><span></span><span class="kn">from</span> <span cl
 <li>create a figure obj and use <code>fig.add_subplot(1, len(images), i+1)</code> to add subplot for each image</li>
 <li>render ndarray represent images using <code>matplotlob.pyplot.imshow(image)</code></li>
 </ul>
-<hr />
+<hr/>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2956,7 +2949,6 @@ to<div class="highlight"><pre><span></span><span class="kn">from</span> <span cl
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Number of samples in ./datasets/notMNIST_small/A.pickle: 1872
 Number of samples in ./datasets/notMNIST_small/B.pickle: 1873
@@ -2972,7 +2964,6 @@ Number of samples in ./datasets/notMNIST_small/J.pickle: 1872
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnVlzG1lythMACRD7TgBcRW3dY0d4HBP2/7/xnX3hiPFM
@@ -3788,7 +3779,7 @@ EkssscQSSyyxPKPEQVgsscQSSyyxxBJLLLHEEsszShyExRJLLLHEEkssscQSSyyxPKPEQVgsscQS
 SyyxxBJLLLHEEsszShyExRJLLLHEEkssscQSSyyxPKPEQVgsscQSSyyxxBJLLLHEEsszShyExRJL
 LLHEEkssscQSSyyxPKPEQVgsscQSSyyxxBJLLLHEEsszShyExRJLLLHEEkssscQSSyyxPKPEQVgs
 scQSSyyxxBJLLLHEEsszShyExRJLLLHEEkssscQSSyyxPKP8P1FhT5WvXKEnAAAAAElFTkSuQmCC
-" />
+"/>
 </div>
 </div>
 </div>
@@ -3797,16 +3788,15 @@ scQSSyyxxBJLLLHEEsszShyExRJLLLHEEkssscQSSyyxPKP8P1FhT5WvXKEnAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<h2 id="Problem-3">Problem 3<a class="anchor-link" href="#Problem-3">¶</a></h2><p>We expect the data to be balanced across classes.<br />
+<hr/>
+<h2 id="Problem-3_1">Problem 3<a class="anchor-link" href="#Problem-3">&para;</a></h2><p>We expect the data to be balanced across classes.<br/>
 By problem 2 above, we already see the data is balanced in test set, verify data is balanced in train data as well</p>
-<hr />
+<hr/>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">train_datasets</span><span class="p">:</span>
@@ -3819,7 +3809,6 @@ By problem 2 above, we already see the data is balanced in test set, verify data
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Number of samples in ./datasets/notMNIST_large/A.pickle: 52909
 Number of samples in ./datasets/notMNIST_large/B.pickle: 52911
@@ -3840,7 +3829,7 @@ Number of samples in ./datasets/notMNIST_large/J.pickle: 52911
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Merge-seperate-character-dataset-together-(for-all-training/test/valid)">Merge seperate character dataset together (for all training/test/valid)<a class="anchor-link" href="#Merge-seperate-character-dataset-together-(for-all-training/test/valid)">¶</a></h2><p>Merge and prune the training data as needed. Depending on your computer setup, you might not be able to fit it all in memory, and you can tune <code>train_size</code> as needed. The labels will be stored into a separate array of <strong>integers 0 through 9.</strong></p>
+<h2 id="Merge-seperate-character-dataset-together-(for-all-training/test/valid)">Merge seperate character dataset together (for all training/test/valid)<a class="anchor-link" href="#Merge-seperate-character-dataset-together-(for-all-training/test/valid)">&para;</a></h2><p>Merge and prune the training data as needed. Depending on your computer setup, you might not be able to fit it all in memory, and you can tune <code>train_size</code> as needed. The labels will be stored into a separate array of <strong>integers 0 through 9.</strong></p>
 <p>Also create a validation dataset for hyperparameter tuning.</p>
 <p>Keypoints:</p>
 <ul>
@@ -3851,7 +3840,6 @@ Number of samples in ./datasets/notMNIST_large/J.pickle: 52911
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">make_arrays</span><span class="p">(</span><span class="n">nb_rows</span><span class="p">,</span> <span class="n">img_size</span><span class="p">):</span>
@@ -3915,7 +3903,6 @@ Number of samples in ./datasets/notMNIST_large/J.pickle: 52911
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training: (200000, 28, 28) (200000,)
 Validation: (10000, 28, 28) (10000,)
@@ -3929,7 +3916,7 @@ Testing: (10000, 28, 28) (10000,)
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Randomize-data">Randomize data<a class="anchor-link" href="#Randomize-data">¶</a></h2><p>Next, we'll randomize the data. It's important to have the labels well shuffled for the training and test distributions to match. The purpose of randomizing data is to perserve the assumption that we get the data randomly as predict phase. We don't want to train models sequantially on training instances like AAA ... BBB ... CCC.</p>
+<h2 id="Randomize-data">Randomize data<a class="anchor-link" href="#Randomize-data">&para;</a></h2><p>Next, we'll randomize the data. It's important to have the labels well shuffled for the training and test distributions to match. The purpose of randomizing data is to perserve the assumption that we get the data randomly as predict phase. We don't want to train models sequantially on training instances like AAA ... BBB ... CCC.</p>
 <p>Keypoints:</p>
 <ul>
 <li>train set and test set should apply the same shuffle <div class="highlight"><pre><span></span><span class="n">shuffled_dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">permutation</span><span class="p">,:,:]</span>
@@ -3943,7 +3930,6 @@ Testing: (10000, 28, 28) (10000,)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">randomize</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
@@ -3962,20 +3948,19 @@ Testing: (10000, 28, 28) (10000,)
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<h2 id="Problem-4---Sanity-check-after-shuffling-dataset">Problem 4 - Sanity check after shuffling dataset<a class="anchor-link" href="#Problem-4---Sanity-check-after-shuffling-dataset">¶</a></h2><p>Convince yourself that the data is still good after shuffling!<br />
-Randomly sample data instances to make sure X is corresponding to y for both training and test set after shuffling.<br />
+<hr/>
+<h2 id="Problem-4---Sanity-check-after-shuffling-dataset">Problem 4 - Sanity check after shuffling dataset<a class="anchor-link" href="#Problem-4---Sanity-check-after-shuffling-dataset">&para;</a></h2><p>Convince yourself that the data is still good after shuffling!<br/>
+Randomly sample data instances to make sure X is corresponding to y for both training and test set after shuffling.<br/>
 Keypoints:</p>
 <ul>
 <li>label is start from 0 to 9 for A to J</li>
 </ul>
-<hr />
+<hr/>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lookup_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s1">'ABCDEFGHIJ'</span><span class="p">)}</span>
@@ -4003,14 +3988,12 @@ Keypoints:</p>
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training dataset:
 </pre>
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAAByCAYAAADaptmXAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvUdsJFuaLvZFeu8NmYZpyKQtc6tu39s9fnqA6QfMaCBA
@@ -4616,7 +4599,7 @@ KCgoKCgoKCjMEYqEKSgoKCgoKCgoKCgozBGKhCkoKCgoKCgoKCgoKMwRioQpKCgoKCgoKCgoKCjM
 EYqEKSgoKCgoKCgoKCgozBGKhCkoKCgoKCgoKCgoKMwRioQpKCgoKCgoKCgoKCjMEYqEKSgoKCgo
 KCgoKCgozBGKhCkoKCgoKCgoKCgoKMwRioQpKCgoKCgoKCgoKCjMEYqEKSgoKCgoKCgoKCgozBH/
 D4K/5h4Q6KxOAAAAAElFTkSuQmCC
-" />
+"/>
 </div>
 </div>
 </div>
@@ -4624,7 +4607,6 @@ D4K/5h4Q6KxOAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sanity_check</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">,</span> <span class="s1">'Test dataset:'</span><span class="p">)</span>
@@ -4635,14 +4617,12 @@ D4K/5h4Q6KxOAAAAAElFTkSuQmCC
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Test dataset:
 </pre>
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAAByCAYAAADaptmXAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvVmMY1uaLvTt8DzPYzjmKTNPZp48edTddaq6qKIFD10N
@@ -5250,7 +5230,7 @@ hBkYGBgYGBgYGBgYGDQRxgkzMDAwMDAwMDAwMDBoIowTZmBgYGBgYGBgYGBg0EQYJ8zAwMDAwMDA
 wMDAwKCJME6YgYGBgYGBgYGBgYFBE2GcMAMDAwMDAwMDAwMDgybCOGEGBgYGBgYGBgYGBgZNhHHC
 DAwMDAwMDAwMDAwMmgjjhBkYGBgYGBgYGBgYGDQRxgkzMDAwMDAwMDAwMDBoIowTZmBgYGBgYGBg
 YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
-" />
+"/>
 </div>
 </div>
 </div>
@@ -5259,13 +5239,12 @@ YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Serialize-dataset-for-later-usage">Serialize dataset for later usage<a class="anchor-link" href="#Serialize-dataset-for-later-usage">¶</a></h2><p>Everything looks good, finally, let's save the data for later reuse:</p>
+<h2 id="Serialize-dataset-for-later-usage">Serialize dataset for later usage<a class="anchor-link" href="#Serialize-dataset-for-later-usage">&para;</a></h2><p>Everything looks good, finally, let's save the data for later reuse:</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pickle_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_root</span><span class="p">,</span> <span class="s1">'notMNIST.pickle'</span><span class="p">)</span>
@@ -5292,7 +5271,6 @@ YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">statinfo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">pickle_file</span><span class="p">)</span>
@@ -5304,7 +5282,6 @@ YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Compressed pickle size: 690800503
 </pre>
@@ -5316,23 +5293,23 @@ YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<h2 id="Problem-5---Remove-overlapping-samples-in-test/valid-set">Problem 5 - Remove overlapping samples in test/valid set<a class="anchor-link" href="#Problem-5---Remove-overlapping-samples-in-test/valid-set">¶</a></h2><p>By construction, this dataset might contain a lot of overlapping samples, including training data that's also contained in the validation and test set! Overlap between training and test can skew the results if you expect to use your model in an environment where there is <strong>never</strong> an overlap, but are actually ok if you expect to see training samples recur when you use it.
+<hr/>
+<h2 id="Problem-5---Remove-overlapping-samples-in-test/valid-set">Problem 5 - Remove overlapping samples in test/valid set<a class="anchor-link" href="#Problem-5---Remove-overlapping-samples-in-test/valid-set">&para;</a></h2><p>By construction, this dataset might contain a lot of overlapping samples, including training data that's also contained in the validation and test set! Overlap between training and test can skew the results if you expect to use your model in an environment where there is <strong>never</strong> an overlap, but are actually ok if you expect to see training samples recur when you use it.
 Measure how much overlap there is between training, validation and test samples.</p>
 <p>Optional questions:</p>
 <ul>
 <li>What about near duplicates between datasets? (images that are almost identical)</li>
 <li>Create a sanitized validation and test set, and compare your accuracy on those in subsequent assignments.</li>
 </ul>
-<hr />
+<hr/>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Find-duplicate-images-in-test-set">Find duplicate images in test set<a class="anchor-link" href="#Find-duplicate-images-in-test-set">¶</a></h3><p>I used Cosine Similarity to measure whether image A in training set is identical to those image B in valid/test set.</p>
-<p><img src="images/cosine_sim.png" width="50%" /></p>
+<h3 id="Find-duplicate-images-in-test-set">Find duplicate images in test set<a class="anchor-link" href="#Find-duplicate-images-in-test-set">&para;</a></h3><p>I used Cosine Similarity to measure whether image A in training set is identical to those image B in valid/test set.</p>
+<p><img src="images/cosine_sim.png" width="50%"/></p>
 <p>As formula suggested, I reshape every image in training set into column vectors, and do the same for images in valid/test set and compute similarity between the vectors. Although we can compute cosine similarity for every (train image vector, test image vector) explicitly, it's better to use vectorization to speed up computation since that we have 200,000 training images and 10,000 valid/test images. (Although it still take about 10 minutes to run in my computer)</p>
 <p>Keypoints:</p>
 <ul>
@@ -5343,7 +5320,6 @@ Measure how much overlap there is between training, validation and test samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
@@ -5400,7 +5376,6 @@ print('Number of duplicates in test dataset: {}'.format(len(dup_indices_test)))
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Number of duplicates in test dataset: 1768
 CPU times: user 5min 11s, sys: 4min 17s, total: 9min 29s
@@ -5409,7 +5384,6 @@ Wall time: 7min 40s
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAB6VJREFUeJzt2muMXVUZxvH/0+mFFtqxINJITRnqJZBigHiDCuViSLkF
@@ -5447,11 +5421,10 @@ lhwGs+QwmCWHwSw5DGbJYTBLDoNZchjMksNglhwGs+QwmCWHwSw5DGbJYTBLDoNZchjMksNglhwG
 s+QwmCWHwSw5DGbJYTBLDoNZchjMksNglhwGs+QwmCWHwSw5DGbJYTBLDoNZchjMksNglhwGs+Qw
 mCWHwSw5DGbJYTBLDoNZUkQ0ewxm7wq+Mpglh8EsOQxmyWEwSw6DWXIYzJLDYJYcBrPkMJglh8Es
 OQxmyWEwSw6DWXIYzJLDYJYcBrPkMJglh8EsOQxmyWEwS/8FG9OOYCpq074AAAAASUVORK5CYII=
-" />
+"/>
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAEU5JREFUeJztnXuMJMddxz+/nsc99tZ7Xp+98fk4+x4ycnAsMMQkzkME
@@ -5533,11 +5506,10 @@ iBE2TOoOK4YYYcOk7rBiiBHWM3SHFUOMsJ6hO6wYYoT1DN1hxRAjrGfoDiuGGGE9Q3dYMcQI6xm6
 w4ohRljP0B1WDDHCeobuEGtAi8XFegaLRWPFYLForBgsFo0Vg8WisWKwWDRWDBaLxorBYtFYMVgs
 GisGi0VjxWCxaKwYLBaNFYPForFisFg0VgwWi8aKwWLRWDFYLBorBotFY8VgsWisGCwWjRWDxaL5
 f0L3TH8Ju55mAAAAAElFTkSuQmCC
-" />
+"/>
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAADPhJREFUeJztnX+QJGdZxz/fmbmZ3Z3MZH/ewrGye7eJqUtdrAsIieGX
@@ -5599,11 +5571,10 @@ YuhRPGdoHRdDj+I5Q+u4GBwn4GJwnICLoUfxnKF1XAw9iucMreNicJyAi6FH8TCpdVwMPYqHSa3j
 YnCcgIvBcQIuhh7Fc4bWcTH0KJ4ztI6LwXECLgbHCbgYehTPGVrHxdCjeM7QOi4Gxwm063egHafr
 8JHBcQIuBscJuBgcJ+BicJyAi8FxAi4Gxwm4GBwn4GJwnICLwXECLgbHCbgYHCfgYnCcgIvBcQIu
 BscJuBgcJ+BicJyAi8FxAi4Gxwm4GBwn4GJwnMD/A0dGWk7q6LhuAAAAAElFTkSuQmCC
-" />
+"/>
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAHwZJREFUeJztfWuMZNt11rfqXdXV9X50dVc/Zrpn7tyQuVysiNzrhMiX
@@ -5746,11 +5717,10 @@ DNpXgZmI4ZVXXoHD4cDKysqZlWP0cIQzMPAG5iyGTqdjWBlmBTPyzQv9M5mMXK/ACYTNipmIwe12
 yz3azBCDBEyGBLBht0hrFM6DmfkeDAaSb7MHPJKZC2fBgpEwx+ZdFiyYAJYYLFjQYInBggUNlhgs
 WNBgicGCBQ2WGCxY0GCJwYIFDZYYLFjQYInBggUNlhgsWNBgicGCBQ2WGCxY0GCJwYIFDZYYLFjQ
 YInBggUNlhgsWNBgicGCBQ2WGCxY0GCJwYIFDZYYLFjQ8P8B6ShCWv5B0oUAAAAASUVORK5CYII=
-" />
+"/>
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAGe9JREFUeJztnWmMZFlW33839n3JyIyqXKpyq5zpblW7Z0x3g6DBstgs
@@ -5871,7 +5841,7 @@ Mvh8vi7roTfWejcD7B2spuevl2PQ0U+AylKpo5/Q1BLy/baYvQoYvkE8CYIwMHgS8PTsUWRgcAaM
 MhgYWDDKYGBgwSiDgYEFowwGBhaMMhgYWDDKYGBgwSiDgYEFowwGBhaMMhgYWDDKYGBgwSiDgYEF
 owwGBhaMMhgYWDDKYGBgwSiDgYEFowwGBhaMMhgYWDDKYGBgwSiDgYGF/w88HGPcrD2HvgAAAABJ
 RU5ErkJggg==
-" />
+"/>
 </div>
 </div>
 </div>
@@ -5880,13 +5850,12 @@ RU5ErkJggg==
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Duplicate-images-in-validation-set">Duplicate images in validation set<a class="anchor-link" href="#Duplicate-images-in-validation-set">¶</a></h3>
+<h3 id="Duplicate-images-in-validation-set">Duplicate images in validation set<a class="anchor-link" href="#Duplicate-images-in-validation-set">&para;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
@@ -5899,7 +5868,6 @@ print('Number of duplicates in validation dataset: {}'.format(len(dup_indices_va
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Number of duplicates in validation dataset: 1507
 CPU times: user 7min 52s, sys: 5min 7s, total: 12min 59s
@@ -5908,7 +5876,6 @@ Wall time: 8min 57s
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAGyFJREFUeJztnXuMZNl91z+/er/f1d3TPT0z3rW8XsdYJoYkNokhcTCL
@@ -6034,11 +6001,10 @@ w1tTuYXTarVMLeXNe9MKYfl+glsGPbgZjUYMBgOzm4GOvqin0R+Hy4j2/uf3C+j1j9G/dfBt/RxP
 Aizf/kBuolm3sHgSsZGYbhYWXw+wymBh4cAqg4WFA6sMFhYOrDJYWDiwymBh4cAqg4WFA6sMFhYO
 rDJYWDiwymBh4cAqg4WFA6sMFhYOrDJYWDiwymBh4cAqg4WFA6sMFhYOrDJYWDiwymBh4cAqg4WF
 A6sMFhYO/h+m1Uqkr7plLgAAAABJRU5ErkJggg==
-" />
+"/>
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAEyZJREFUeJztnXuMZGlZh5+3rqequqqv0zVMz0zP7G5md4aVqFlZYFkW
@@ -6128,11 +6094,10 @@ uLq6GsymuGCEuw6OTnr3qpukeu9e7z3pJnWi9f/ziDT+E4ObfkulUsGUXSqVCsRz2cQJ4TKN2z98
 xxU6PzIQHpi1Zqxw1nKDQxc4N7/eGsBqtbrlMzz7jeq9NX1pGRTluciB/C/cirIfqBkUxaJmUBSL
 mkFRLGoGRbGoGRTFomZQFIuaQVEsagZFsagZFMWiZlAUi5pBUSxqBkWxqBkUxaJmUBSLmkFRLGoG
 RbGoGRTFomZQFIuaQVEs/w+kfKKTmnnyZgAAAABJRU5ErkJggg==
-" />
+"/>
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAF1pJREFUeJztnXmMbFlZwH+nu2vpqurq2qu7qt/r7vdkyIzADIbI8pQE
@@ -6241,11 +6206,10 @@ u+qTYOR9NpybMQghdClz9TrNIhf2z7VaLb0qZCaT0WmFasJnEuJgzhIj77PhXIxBjVNV7Z3TFq49
 iL3ev/J0OKWrPglG3meDcIJFGwxnwe3XIzIYLgnGGAwGC2MMBoOFMQaDwcIYg8FgYYzBYLAwxmAw
 WBhjMBgsjDEYDBbGGAwGC2MMBoOFMQaDwcIYg8FgYYzBYLAwxmAwWBhjMBgsjDEYDBbGGAwGC2MM
 BoOFMQaDweL/AYZSupfKO62bAAAAAElFTkSuQmCC
-" />
+"/>
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAFTZJREFUeJztnXtsXFl9xz+/mTsznqc9M3Zix7EndkRWi0rILpQ3ybLb
@@ -6344,11 +6308,10 @@ ML441iuwnngWFxepVCqcP3+eU6dOcerUqZ72DkUM+u1ivV7Htm1vm+t27Cj1Q5jt6HxmbQu9D762
 tjawGLS9G43GOnt31n8n2DusNnTbMPC7ps1mk3q9zurqKs1ms3vbdssHaAZD2Ozqf/ZpMASJEYPB
 4GLEYDC4GDEYDC5GDAaDixGDweBixGAwuBgxGAwuRgwGg4sRg8HgYsRgMLgYMRgMLkYMBoOLEYPB
 4GLEYDC4GDEYDC5GDAaDixGDweBixGAwuBgxGAwu/wdsbAP7ko54hwAAAABJRU5ErkJggg==
-" />
+"/>
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAADllJREFUeJztnXtwXNddxz+/3dVK2tVj5dXDdhxHtvOgnThOSmgLfTCl
@@ -6417,7 +6380,7 @@ jmO4GBzHcDE4juFicBzDxeA4hovBcQwXg+MYLgbHMVwMjmO4GBzHcDE4juFicBzDxeA4hovBcQwX
 g+MYLgbHMdbrO9COs+nwnsFxDBeD4xguBscxXAyOY7gYHMdwMTiO4WJwHMPF4DiGi8FxDBeD4xgu
 BscxXAyOY7gYHMdwMTiO4WJwHMPF4DiGi8FxDBeD4xguBscxXAyOY/w/C2SidMpTOzsAAAAASUVO
 RK5CYII=
-" />
+"/>
 </div>
 </div>
 </div>
@@ -6426,7 +6389,7 @@ RK5CYII=
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Serialize-sanitized-dataset-for-later-model-performance-comparison">Serialize sanitized dataset for later model performance comparison<a class="anchor-link" href="#Serialize-sanitized-dataset-for-later-model-performance-comparison">¶</a></h3><ul>
+<h3 id="Serialize-sanitized-dataset-for-later-model-performance-comparison">Serialize sanitized dataset for later model performance comparison<a class="anchor-link" href="#Serialize-sanitized-dataset-for-later-model-performance-comparison">&para;</a></h3><ul>
 <li>Remove duplicates in test/valid set</li>
 <li>Save dataset</li>
 </ul>
@@ -6439,7 +6402,6 @@ RK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Number of duplicate images in test set: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dup_indices_test</span><span class="p">)))</span>
@@ -6451,7 +6413,6 @@ RK5CYII=
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Number of duplicate images in test set: 1768
 Number of duplicate images in valid set: 1507
@@ -6463,7 +6424,6 @@ Number of duplicate images in valid set: 1507
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">non_duplicate_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">test_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dup_indices_test</span><span class="p">]</span>
@@ -6480,7 +6440,6 @@ Number of duplicate images in valid set: 1507
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pickle_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_root</span><span class="p">,</span> <span class="s1">'notMNIST_sanitized.pickle'</span><span class="p">)</span>
@@ -6507,7 +6466,6 @@ Number of duplicate images in valid set: 1507
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">statinfo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">pickle_file</span><span class="p">)</span>
@@ -6519,7 +6477,6 @@ Number of duplicate images in valid set: 1507
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Compressed pickle size: 680517003
 </pre>
@@ -6531,17 +6488,16 @@ Number of duplicate images in valid set: 1507
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<h2 id="Problem-6---Build-naive-classifier-using-logistic-regression">Problem 6 - Build naive classifier using logistic regression<a class="anchor-link" href="#Problem-6---Build-naive-classifier-using-logistic-regression">¶</a></h2><p>Let's get an idea of what an off-the-shelf classifier can give you on this data. It's always good to check that there is something to learn, and that it's a problem that is not so trivial that a canned solution solves it.</p>
+<hr/>
+<h2 id="Problem-6---Build-naive-classifier-using-logistic-regression_1">Problem 6 - Build naive classifier using logistic regression<a class="anchor-link" href="#Problem-6---Build-naive-classifier-using-logistic-regression">&para;</a></h2><p>Let's get an idea of what an off-the-shelf classifier can give you on this data. It's always good to check that there is something to learn, and that it's a problem that is not so trivial that a canned solution solves it.</p>
 <p>Train a simple model on this data using 50, 100, 1000 and 5000 training samples. Hint: you can use the LogisticRegression model from sklearn.linear_model.</p>
 <p>Optional question: train an off-the-shelf model on all the data!</p>
-<hr />
+<hr/>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
@@ -6601,7 +6557,6 @@ Number of duplicate images in valid set: 1507
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAegAAAHZCAYAAABNdqgEAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XlcVOX+B/DPHDaZYXBAIFdEUBPRTBHERAXB8gbuW1bq
@@ -7046,7 +7001,7 @@ QboqCiFq4dq1ayxbtoytW7dWWhYfH8+6devYtm2bGWomRPMit7iFELXSvn17HB0dOXjwoNF8g8FA
 bGys8o63EKJ+5ApaCFFr2dnZ7Nmzh7y8PFxdXSkrKyM/Px8/Pz/GjBmDnZ2duasoRJMnAVoIIYSw
 QHKLWwghhLBAEqCFEEIICyQBWgghhLBAEqCFEEIICyQBWgghhLBAEqCFEEIIC/R/b7Q1OLRq/BUA
 AAAASUVORK5CYII=
-" />
+"/>
 </div>
 </div>
 </div>
@@ -7087,6 +7042,8 @@ AAAASUVORK5CYII=
                     </span>
 
                 </p>
+
+
 
 
 

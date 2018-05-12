@@ -93,7 +93,6 @@
     </header> <!-- end s-header -->
 
 
-
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -133,9 +132,19 @@
         </div>
 
 
-        <div class="row blog-content">
-            <div class="col-full blog-content__main">
+        <div class="row blog-content" style="position: relative">
+            <!--<div style="position:absolute;top: 90px;left:0;">-->
+                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
 
+                <!---->
+                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="利用 Kinesis 處理串流資料並建立資料湖">利用 Kinesis 處理串流資料並建立資料湖</a><ul><li><a class="toc-href" href="#概觀" title="概觀">概觀</a></li><li><a class="toc-href" href="#建構流程" title="建構流程">建構流程</a></li><li><a class="toc-href" href="#建立一個-Kinesis-data-stream" title="建立一個 Kinesis data stream">建立一個 Kinesis data stream</a><ul><li><a class="toc-href" href="#Scalability" title="Scalability">Scalability</a></li><li><a class="toc-href" href="#How-to-scale" title="How to scale">How to scale</a></li><li><a class="toc-href" href="#Availability" title="Availability">Availability</a></li></ul></li><li><a class="toc-href" href="#建立一個-Firehose-delivery-stream_1" title="建立一個 Firehose delivery stream">建立一個 Firehose delivery stream</a><ul><li><a class="toc-href" href="#Configuration" title="Configuration">Configuration</a></li><li><a class="toc-href" href="#選擇-delivery-stream-目的地" title="選擇 delivery stream 目的地">選擇 delivery stream 目的地</a></li></ul></li><li><a class="toc-href" href="#用-Python-傳串流資料_1" title="用 Python 傳串流資料">用 Python 傳串流資料</a></li><li><a class="toc-href" href="#確認-S3-上的資料" title="確認 S3 上的資料">確認 S3 上的資料</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></li></ul></div>-->
+                <!---->
+
+
+            <!--</div>-->
+
+
+            <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
@@ -148,7 +157,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="概觀">概觀<a class="anchor-link" href="#概觀">¶</a></h2>
+<h2 id="概觀">概觀<a class="anchor-link" href="#概觀">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -163,12 +172,12 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/kinesis/simple-streaming-data-flow.png" style="width:80%" />
+<img src="images/kinesis/simple-streaming-data-flow.png" style="width:80%"/>
 </center>
 <center>
     Simple Dataflow
     <font color="purple">: 將 streaming data 透過 Kinesis 保存在 S3</font>
-<br />
+<br/>
 </center>
 </div>
 </div>
@@ -189,7 +198,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="建構流程">建構流程<a class="anchor-link" href="#建構流程">¶</a></h2>
+<h2 id="建構流程">建構流程<a class="anchor-link" href="#建構流程">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -210,7 +219,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="建立一個-Kinesis-data-stream">建立一個 Kinesis data stream<a class="anchor-link" href="#建立一個-Kinesis-data-stream">¶</a></h2>
+<h2 id="建立一個-Kinesis-data-stream">建立一個 Kinesis data stream<a class="anchor-link" href="#建立一個-Kinesis-data-stream">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -225,7 +234,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/kinesis/create-kinesis-stream.png" style="width:80%" />
+<img src="images/kinesis/create-kinesis-stream.png" style="width:80%"/>
 </center>
 </div>
 </div>
@@ -233,7 +242,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Scalability">Scalability<a class="anchor-link" href="#Scalability">¶</a></h3>
+<h3 id="Scalability">Scalability<a class="anchor-link" href="#Scalability">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -247,7 +256,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="How-to-scale">How to scale<a class="anchor-link" href="#How-to-scale">¶</a></h3>
+<h3 id="How-to-scale">How to scale<a class="anchor-link" href="#How-to-scale">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -262,7 +271,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Availability">Availability<a class="anchor-link" href="#Availability">¶</a></h3>
+<h3 id="Availability">Availability<a class="anchor-link" href="#Availability">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -276,7 +285,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="建立一個-Firehose-delivery-stream">建立一個 Firehose delivery stream<a class="anchor-link" href="#建立一個-Firehose-delivery-stream">¶</a></h2>
+<h2 id="建立一個-Firehose-delivery-stream_1">建立一個 Firehose delivery stream<a class="anchor-link" href="#建立一個-Firehose-delivery-stream">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -298,7 +307,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/kinesis/create-delivery-stream.png" style="width:80%" />
+<img src="images/kinesis/create-delivery-stream.png" style="width:80%"/>
 </center>
 </div>
 </div>
@@ -315,7 +324,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Configuration">Configuration<a class="anchor-link" href="#Configuration">¶</a></h3>
+<h3 id="Configuration">Configuration<a class="anchor-link" href="#Configuration">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -330,7 +339,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/kinesis/firehose-configure-settings.png" style="width:80%" />
+<img src="images/kinesis/firehose-configure-settings.png" style="width:80%"/>
 </center>
 </div>
 </div>
@@ -338,7 +347,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="選擇-delivery-stream-目的地">選擇 delivery stream 目的地<a class="anchor-link" href="#選擇-delivery-stream-目的地">¶</a></h3>
+<h3 id="選擇-delivery-stream-目的地">選擇 delivery stream 目的地<a class="anchor-link" href="#選擇-delivery-stream-目的地">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -353,7 +362,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/kinesis/firehose-select-destination.png" style="width:80%" />
+<img src="images/kinesis/firehose-select-destination.png" style="width:80%"/>
 </center>
 </div>
 </div>
@@ -370,7 +379,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/kinesis/s3-bucket-path.png" style="width:80%" />
+<img src="images/kinesis/s3-bucket-path.png" style="width:80%"/>
 </center>
 <center>
     加入 Prefix 後實際將串流資料存入 S3 時的檔案路徑
@@ -381,7 +390,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="用-Python-傳串流資料">用 Python 傳串流資料<a class="anchor-link" href="#用-Python-傳串流資料">¶</a></h2>
+<h2 id="用-Python-傳串流資料_1">用 Python 傳串流資料<a class="anchor-link" href="#用-Python-傳串流資料">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -482,7 +491,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="確認-S3-上的資料">確認 S3 上的資料<a class="anchor-link" href="#確認-S3-上的資料">¶</a></h2>
+<h2 id="確認-S3-上的資料">確認 S3 上的資料<a class="anchor-link" href="#確認-S3-上的資料">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -491,7 +500,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>注意因為上面的 5 個事件在 $5 * 5 = 25$ 秒內就產生了。且因為我們前面設定 Firehose delivery stream 的 Buffer interval 為 60 秒，Firehose 會把以上的事件的訊息全部串接起來，放到一個檔案裡頭，而不是分成五個檔案：</p>
 <center>
-<img src="images/kinesis/s3-bucket-path.png" style="width:80%" />
+<img src="images/kinesis/s3-bucket-path.png" style="width:80%"/>
 </center><p>而實際檔案的內容如下：</p>
 <div class="highlight"><pre><span></span>{"event_id": "56262", "timestamp": 1522740951, "event_type": "write_post"}
 {"event_id": "35672", "timestamp": 1522740956 ...
@@ -502,7 +511,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="結語">結語<a class="anchor-link" href="#結語">¶</a></h2>
+<h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -518,7 +527,7 @@
 <li>...</li>
 </ul>
 <center>
-<img src="images/kinesis/kinesis-firehose-intro.png" style="width:80%" />
+<img src="images/kinesis/kinesis-firehose-intro.png" style="width:80%"/>
 </center><p>但這邊時間有限，之後有機會再來記錄資料湖之後的分析筆記。</p>
 </div>
 </div>
@@ -526,7 +535,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="References">References<a class="anchor-link" href="#References">¶</a></h2>
+<h2 id="References">References<a class="anchor-link" href="#References">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -544,10 +553,8 @@
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-
 </div>
 
 
@@ -562,6 +569,8 @@
                     </span>
 
                 </p>
+
+
 
 
 

@@ -93,7 +93,6 @@
     </header> <!-- end s-header -->
 
 
-
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -133,9 +132,19 @@
         </div>
 
 
-        <div class="row blog-content">
-            <div class="col-full blog-content__main">
+        <div class="row blog-content" style="position: relative">
+            <!--<div style="position:absolute;top: 90px;left:0;">-->
+                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
 
+                <!---->
+                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Pelican 實戰手冊(主題篇)">Pelican 實戰手冊(主題篇)</a><ul><li><a class="toc-href" href="#再利用-HTML-區塊" title="再利用 HTML 區塊">再利用 HTML 區塊</a></li><li><a class="toc-href" href="#為當前文章取得前/後一篇文章連結" title="為當前文章取得前/後一篇文章連結">為當前文章取得前/後一篇文章連結</a></li><li><a class="toc-href" href="#傳參數給子-template" title="傳參數給子 template">傳參數給子 template</a></li><li><a class="toc-href" href="#Reference" title="Reference">Reference</a></li></ul></li></ul></div>-->
+                <!---->
+
+
+            <!--</div>-->
+
+
+            <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
@@ -147,7 +156,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><blockquote><p>Pelican is a static site generator, written in Python, that requires no database or server-side logic. - Pelican Blog</p></blockquote></div>
@@ -171,7 +179,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="images/jinja2.jpeg" /></center>
+<center><img src="images/jinja2.jpeg"/></center>
 </div>
 </div>
 </div>
@@ -185,7 +193,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="再利用-HTML-區塊">再利用 HTML 區塊<a class="anchor-link" href="#再利用-HTML-區塊">¶</a></h2>
+<h2 id="再利用-HTML-區塊">再利用 HTML 區塊<a class="anchor-link" href="#再利用-HTML-區塊">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -256,15 +264,15 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="為當前文章取得前/後一篇文章連結">為當前文章取得前/後一篇文章連結<a class="anchor-link" href="#為當前文章取得前/後一篇文章連結">¶</a></h2>
+<h2 id="為當前文章取得前/後一篇文章連結">為當前文章取得前/後一篇文章連結<a class="anchor-link" href="#為當前文章取得前/後一篇文章連結">&para;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="images/pagination_prev_and_next.png" style="width:70%" /></center>
-<center><font color="purple"> Pagination 範例: 顯示前後文章連結 <br /></font></center>
+<center><img src="images/pagination_prev_and_next.png" style="width:70%"/></center>
+<center><font color="purple"> Pagination 範例: 顯示前後文章連結 <br/></font></center>
 </div>
 </div>
 </div>
@@ -334,7 +342,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="傳參數給子-template">傳參數給子 template<a class="anchor-link" href="#傳參數給子-template">¶</a></h2><p>有時候多個 templates 會使用類似的 HTML，像是當首頁 index.html 以及部落格 blog.html 都用相同格式渲染最新幾篇文章時，我們可以定義一個 article_entries.html 如下：</p>
+<h2 id="傳參數給子-template">傳參數給子 template<a class="anchor-link" href="#傳參數給子-template">&para;</a></h2><p>有時候多個 templates 會使用類似的 HTML，像是當首頁 index.html 以及部落格 blog.html 都用相同格式渲染最新幾篇文章時，我們可以定義一個 article_entries.html 如下：</p>
 <div class="highlight"><pre><span></span><span class="p">{</span><span class="c1"># 簡化版 #}</span>
 <span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span> <span class="o">%</span><span class="p">}</span>
     <span class="o">&lt;</span><span class="n">article</span> <span class="n">class</span><span class="o">=</span><span class="s2">"col-block"</span><span class="o">&gt;</span>
@@ -381,7 +389,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Reference">Reference<a class="anchor-link" href="#Reference">¶</a></h2><ul>
+<h2 id="Reference">Reference<a class="anchor-link" href="#Reference">&para;</a></h2><ul>
 <li><a href="http://jinja.pocoo.org/docs/2.9/templates/#extensions">Jinja2 Extension</a></li>
 </ul>
 </div>
@@ -400,6 +408,8 @@
                     </span>
 
                 </p>
+
+
 
 
 

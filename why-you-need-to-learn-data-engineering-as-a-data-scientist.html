@@ -92,7 +92,6 @@
     </header> <!-- end s-header -->
 
 
-
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -131,9 +130,19 @@
         </div>
 
 
-        <div class="row blog-content">
-            <div class="col-full blog-content__main">
+        <div class="row blog-content" style="position: relative">
+            <!--<div style="position:absolute;top: 90px;left:0;">-->
+                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
 
+                <!---->
+                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學家為何需要了解資料工程">資料科學家為何需要了解資料工程</a><ul><li><a class="toc-href" href="#目錄" title="目錄">目錄</a></li><li><a class="toc-href" href="#資料科學家的一天" title="資料科學家的一天">資料科學家的一天</a><ul><li><a class="toc-href" href="#資料準備" title="資料準備">資料準備</a></li><li><a class="toc-href" href="#第一挑戰：資料量大增" title="第一挑戰：資料量大增">第一挑戰：資料量大增</a></li><li><a class="toc-href" href="#第二挑戰：非結構化資料" title="第二挑戰：非結構化資料">第二挑戰：非結構化資料</a></li></ul></li><li><a class="toc-href" href="#資料為本_1" title="資料為本">資料為本</a></li><li><a class="toc-href" href="#資料管道" title="資料管道">資料管道</a><ul><li><a class="toc-href" href="#一些關鍵技術" title="一些關鍵技術">一些關鍵技術</a></li></ul></li><li><a class="toc-href" href="#資料倉儲_1" title="資料倉儲">資料倉儲</a><ul><li><a class="toc-href" href="#一些關鍵技術_1" title="一些關鍵技術">一些關鍵技術</a></li></ul></li><li><a class="toc-href" href="#資料湖_1" title="資料湖">資料湖</a><ul><li><a class="toc-href" href="#一些關鍵技術_2" title="一些關鍵技術">一些關鍵技術</a></li></ul></li><li><a class="toc-href" href="#如何實際應用資料工程？_1" title="如何實際應用資料工程？">如何實際應用資料工程？</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>-->
+                <!---->
+
+
+            <!--</div>-->
+
+
+            <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
@@ -146,7 +155,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="目錄">目錄<a class="anchor-link" href="#目錄">¶</a></h2><ul>
+<h2 id="目錄">目錄<a class="anchor-link" href="#目錄">&para;</a></h2><ul>
 <li><a href="#資料科學家的一天">資料科學家的一天</a><ul>
 <li><a href="#資料準備">資料準備</a></li>
 <li><a href="#第一挑戰：資料量大增">第一挑戰：資料量大增</a></li>
@@ -166,7 +175,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="資料科學家的一天">資料科學家的一天<a class="anchor-link" href="#資料科學家的一天">¶</a></h2><p>一說到資料科學，在你腦海中浮現的幾個關鍵字可能是：</p>
+<h2 id="資料科學家的一天">資料科學家的一天<a class="anchor-link" href="#資料科學家的一天">&para;</a></h2><p>一說到資料科學，在你腦海中浮現的幾個關鍵字可能是：</p>
 <ul>
 <li>資料分析</li>
 <li>資料視覺化</li>
@@ -175,13 +184,13 @@
 <p>等為人津津樂道的面向。</p>
 <p>的確，這些都在資料科學的範疇裡頭，但實際上佔用多數資料科學家大部分時間，卻常被忽略的部分是資料準備：</p>
 <center>
-<img src="images/data-engineering/data-scientist-work-pie-chart.png" style="width:90%" />
+<img src="images/data-engineering/data-scientist-work-pie-chart.png" style="width:90%"/>
 </center>
 <center>
 <a href="https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/#5d0184f76f63" target="_blank">Forbes</a>
 <font color="purple">: </font>依據調查，多數資料科學家花 80 % 的時候在準備資料
-    <br />
-</center><h3 id="資料準備">資料準備<a class="anchor-link" href="#資料準備">¶</a></h3><p>說到資料準備，你可能會聯想到我們在前一篇<a href="data-visualization-from-matplotlib-to-ggplot2.html#載入資料-+-簡單資料處理">淺談資料視覺化以及 ggplot2 實踐</a>裡頭，使用 R 語言做的簡單資料清理：</p>
+    <br/>
+</center><h3 id="資料準備">資料準備<a class="anchor-link" href="#資料準備">&para;</a></h3><p>說到資料準備，你可能會聯想到我們在前一篇<a href="data-visualization-from-matplotlib-to-ggplot2.html#載入資料-+-簡單資料處理">淺談資料視覺化以及 ggplot2 實踐</a>裡頭，使用 R 語言做的簡單資料清理：</p>
 <div class="highlight"><pre><span></span><span class="c1"># 將 CSV 檔案載入成資料框架（dataframe）</span>
 ramen_all <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">"datasets//ramen-ratings.csv"</span><span class="p">)</span>
 <span class="c1"># 將「星星數」轉成定量資料</span>
@@ -222,7 +231,7 @@ ramen <span class="o">&lt;-</span> ramen_all <span class="o">%&gt;%</span>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="第一挑戰：資料量大增">第一挑戰：資料量大增<a class="anchor-link" href="#第一挑戰：資料量大增">¶</a></h3><p>實際上一個資料科學家每天需要分析的資料量可能要乘上幾個級數。現在假設你從銷售部門拿到一個包含數百萬筆銷售紀錄，大小為 60G 的 CSV 檔案，我想你應該不會想要直接打開它，即使它在某些人眼裡還不夠資格稱為大數據 (´；ω；｀)</p>
+<h3 id="第一挑戰：資料量大增">第一挑戰：資料量大增<a class="anchor-link" href="#第一挑戰：資料量大增">&para;</a></h3><p>實際上一個資料科學家每天需要分析的資料量可能要乘上幾個級數。現在假設你從銷售部門拿到一個包含數百萬筆銷售紀錄，大小為 60G 的 CSV 檔案，我想你應該不會想要直接打開它，即使它在某些人眼裡還不夠資格稱為大數據 (&acute;；&omega;；｀)</p>
 </div>
 </div>
 </div>
@@ -230,14 +239,14 @@ ramen <span class="o">&lt;-</span> ramen_all <span class="o">%&gt;%</span>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你殫精竭慮，最後決定去問公司內一位資深的<a href="https://medium.freecodecamp.org/the-rise-of-the-data-engineer-91be18f1e603">資料工程師（Data Engineer）</a>該怎麼解決這問題。</p>
-<p>該仁兄施了點你不曉得的魔法，過了幾分鐘從 Slack 丟來個神秘的 URL。連到上面，你發現熟悉的 <a href="http://jupyter.org/">Jupyter Nook</a> 介面，而且 CSV 還幫你載好了 Σ(ﾟдﾟ;</p>
+<p>該仁兄施了點你不曉得的魔法，過了幾分鐘從 Slack 丟來個神秘的 URL。連到上面，你發現熟悉的 <a href="http://jupyter.org/">Jupyter Nook</a> 介面，而且 CSV 還幫你載好了 &Sigma;(ﾟдﾟ;</p>
 <center>
-<img src="images/data-engineering/jupyter-notebook.png" style="width:90%" />
+<img src="images/data-engineering/jupyter-notebook.png" style="width:90%"/>
 </center>
 <center>
 <a href="https://www.ithome.com.tw/news/121497" target="_blank">Bonus</a>
 <font color="purple">: </font>Jupyter Lab 是 Jupyter Notebook 的改善版，大推
-    <br />
+    <br/>
 </center><p>你開心地在資料工程師幫你搞定的機器上做出分析，最後在大家面前做口頭報告。大家針對報告的反應不錯，但坐在底下的廣告部門的人這時候提問了：</p>
 <p>「可以把這些銷售紀錄跟廣告點擊的串流日誌（log）合在一起分析嗎？這樣我們會有更多有趣的結果！」</p>
 <p>你的頭又痛了起來。</p>
@@ -247,14 +256,14 @@ ramen <span class="o">&lt;-</span> ramen_all <span class="o">%&gt;%</span>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="第二挑戰：非結構化資料">第二挑戰：非結構化資料<a class="anchor-link" href="#第二挑戰：非結構化資料">¶</a></h3><p>除了資料量級的差異，一個資料科學家在企業裡頭會遇到的另外一個挑戰是非結構化資料（Unstructured Data）的快速增加。你如何將各種不同格式（JSON、存取日誌、CSV 等）的資料以有效率的方式跟平常熟悉的關聯式資料庫如 <a href="https://www.postgresql.org/">PostgreSQL</a> 裡頭的資料結合以供分析？</p>
+<h3 id="第二挑戰：非結構化資料">第二挑戰：非結構化資料<a class="anchor-link" href="#第二挑戰：非結構化資料">&para;</a></h3><p>除了資料量級的差異，一個資料科學家在企業裡頭會遇到的另外一個挑戰是非結構化資料（Unstructured Data）的快速增加。你如何將各種不同格式（JSON、存取日誌、CSV 等）的資料以有效率的方式跟平常熟悉的關聯式資料庫如 <a href="https://www.postgresql.org/">PostgreSQL</a> 裡頭的資料結合以供分析？</p>
 <center>
-<img src="images/data-engineering/increasing-dark-data.png" style="width:90%" />
+<img src="images/data-engineering/increasing-dark-data.png" style="width:90%"/>
 </center>
 <center>
 <a href="https://www.slideshare.net/AmazonWebServices/how-to-build-a-data-lake-with-aws-glue-data-catalog-abd213r" target="_blank">AWS Reinvent</a>
 <font color="purple">: </font>非結構化資料快速增加，但因為不存在關聯式資料庫裡，無法直接被拿來分析
-    <br />
+    <br/>
 </center><p>如果我們能寫一個簡單的 <a href="https://zh.wikipedia.org/wiki/SQL">SQL</a> 查詢，把銷售資料（sales）跟廣告點擊（clicks）資料依照共有的鍵值 <code>sale_id</code> 合起來該有多好：</p>
 <pre><code>SELECT *
 FROM sales AS s
@@ -274,7 +283,7 @@ ON s.sale_id = c.sale_id</code></pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="資料為本">資料為本<a class="anchor-link" href="#資料為本">¶</a></h2>
+<h2 id="資料為本_1">資料為本<a class="anchor-link" href="#資料為本">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -287,7 +296,6 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><blockquote><p>資料（的基礎設施）為資料科學之基礎 - 巧婦難為無米之炊</p></blockquote></div>
@@ -307,12 +315,12 @@ ON s.sale_id = c.sale_id</code></pre>
 </ul>
 <p>都得建立在「有完善且可靠的資料」這個基礎之下：</p>
 <center>
-<img src="images/data-engineering/ai-need.png" style="width:80%" />
+<img src="images/data-engineering/ai-need.png" style="width:80%"/>
 </center>
 <center>
 <a href="https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007" target="_blank">資料科學的金字塔層級要求</a>
 <font color="purple">: </font>你需要建立好資料科學的基礎設施才有本錢往「上」發展
-    <br />
+    <br/>
 </center>
 </div>
 </div>
@@ -334,7 +342,6 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><blockquote><p>每個成功的資料科學家背後都有個偉大的資料工程師。或者該資料科學家就是那個資料工程師。</p></blockquote></div>
@@ -354,7 +361,7 @@ ON s.sale_id = c.sale_id</code></pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="資料管道">資料管道<a class="anchor-link" href="#資料管道">¶</a></h2><p>依照前面的論述，資料工程最主要的目的就是建構資料科學的基本設施（Infrastructure）。而這些基礎設施裡頭一個很重要的部分是<a href="https://www.alooma.com/answers/what-is-the-difference-between-a-data-pipeline-and-an-etl-pipeline">資料管道（Data Pipeline）</a>的建置：將資料從來源 <strong>S</strong>ource 導向目的地 
+<h2 id="資料管道">資料管道<a class="anchor-link" href="#資料管道">&para;</a></h2><p>依照前面的論述，資料工程最主要的目的就是建構資料科學的基本設施（Infrastructure）。而這些基礎設施裡頭一個很重要的部分是<a href="https://www.alooma.com/answers/what-is-the-difference-between-a-data-pipeline-and-an-etl-pipeline">資料管道（Data Pipeline）</a>的建置：將資料從來源 <strong>S</strong>ource 導向目的地 
 <strong>T</strong>arget 以供之後的利用。有必要的話，對資料進行一些轉換。</p>
 <p>一些簡單的例子像是我們之前部落格提到的：</p>
 <ul>
@@ -374,12 +381,12 @@ ON s.sale_id = c.sale_id</code></pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/data-engineering/etl-flow.png" style="width:90%" />
+<img src="images/data-engineering/etl-flow.png" style="width:90%"/>
 </center>
 <center>
 <a href="https://robinhood.engineering/why-robinhood-uses-airflow-aed13a9a90c8" target="_blank">ETL</a>
 <font color="purple">: </font>從資料來源擷取、轉換資料並將其導入目的地
-    <br />
+    <br/>
 </center>
 </div>
 </div>
@@ -401,14 +408,14 @@ ON s.sale_id = c.sale_id</code></pre>
 <li>轉變資料格式（例：從 JSON 到適合資料倉儲的格式如 <a href="https://parquet.apache.org/">Parquet</a>）</li>
 </ul>
 <center>
-<img src="images/data-engineering/man-on-data-pipeline.png" style="width:90%" />
+<img src="images/data-engineering/man-on-data-pipeline.png" style="width:90%"/>
 </center>
 <center>
 <a href="https://unsplash.com/photos/xNdPWGJ6UCQ?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">資料工程師</a>
 <font color="purple">: </font>建構資料管道以讓大量的資料可供分析
-    <br />
+    <br/>
 </center><p>這些轉換都是為了讓之後使用資料的資料科學家們能更輕鬆地分析資料。為了建置可靠的資料管道 / ETL 流程，我們常會需要使用一些管理工具像是 <a href="https://airflow.apache.org/">Airflow</a>、 <a href="https://aws.amazon.com/tw/glue/">AWS Glue</a> 以確保資料的處理如同我們預期。</p>
-<h3 id="一些關鍵技術">一些關鍵技術<a class="anchor-link" href="#一些關鍵技術">¶</a></h3><ul>
+<h3 id="一些關鍵技術">一些關鍵技術<a class="anchor-link" href="#一些關鍵技術">&para;</a></h3><ul>
 <li>Hadoop 生態環境</li>
 <li>分散式系統上的 ETL 設計</li>
 <li>SQL-on-Hadoop 的專案了解（如 Apache Hive, Spark SQL, Fackbook Presto）</li>
@@ -432,17 +439,17 @@ ON s.sale_id = c.sale_id</code></pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="資料倉儲">資料倉儲<a class="anchor-link" href="#資料倉儲">¶</a></h2><p>資料倉儲的概念就跟實際的倉儲相同：你在這邊將原料（原始資料）轉化成可以消化的產品（資料庫裡頭的經過整理的一筆筆紀錄）並存起來方便之後分析。</p>
+<h2 id="資料倉儲_1">資料倉儲<a class="anchor-link" href="#資料倉儲">&para;</a></h2><p>資料倉儲的概念就跟實際的倉儲相同：你在這邊將原料（原始資料）轉化成可以消化的產品（資料庫裡頭的經過整理的一筆筆紀錄）並存起來方便之後分析。</p>
 <p>這邊最重要的概念是：為了方便商業智慧的萃取，在將資料放入資料倉儲前，資料科學家 / 資料工程師需要花很多的心力決定資料庫綱目（Database Schema）要長什麼樣子。
 也就是說資料庫的綱要（Schema）在建立資料管道的時候就已經被決定了：這種模式稱之為 Schema-on-Write。這是為了確保資料在被放進資料倉儲的時候就已經是可以分析的形式，方便資料科學家分析。</p>
 <p>你可以想像資料工程師在建構資料管道 / ETL 的時候，得對原始資料做大量的轉換以讓資料在被<strong>寫</strong>入資料倉儲時就已經符合一開始定義的 Schema。而資料倉儲最常被拿來使用的一個資料模型（Data Model）是所謂的 <a href="https://en.wikipedia.org/wiki/Dimensional_modeling">Dimensional Modeling</a>（Stars / Snowflaks Schema）。</p>
 <center>
-<img src="images/data-engineering/star-schema.png" style="width:90%" />
+<img src="images/data-engineering/star-schema.png" style="width:90%"/>
 </center>
 <center>
 <a href="http://publib.boulder.ibm.com/tividd/td/TEDW/SC32-1497-00/en_US/HTML/srfmst158.htm" target="_blank">資料倉儲最被廣泛使用的 Data Model</a>
 <font color="purple">: </font>Stars Schema
-    <br />
+    <br/>
 </center><p>資料工程師將企業最重要的事件（如：使用者下了訂單、發了一個 Facebook 動態）放到最中間的 Fact Table，並且為了可以使用所有想像得到的維度來分析這些事件，會把事件本身的維度（Dimensions）再分別存在外圍的多個 Dimension Tables。常見的維度有：</p>
 <ul>
 <li>時間（此事件什麼時候產生、年月份、星期幾等）</li>
@@ -450,7 +457,7 @@ ON s.sale_id = c.sale_id</code></pre>
 <li>...</li>
 </ul>
 <p>因為看起來就像是一個星星，因此被命名為 Stars Schema。Snowflakes 則是其變形。</p>
-<h3 id="一些關鍵技術">一些關鍵技術<a class="anchor-link" href="#一些關鍵技術">¶</a></h3><p>在資料倉儲的部分，關鍵的技術與概念有：</p>
+<h3 id="一些關鍵技術_1">一些關鍵技術<a class="anchor-link" href="#一些關鍵技術">&para;</a></h3><p>在資料倉儲的部分，關鍵的技術與概念有：</p>
 <ul>
 <li>了解正規化（Normalization）的好處</li>
 <li>分散式 SQL 查詢引擎的原理（如 <a href="https://prestodb.io/">Presto</a>）</li>
@@ -463,16 +470,16 @@ ON s.sale_id = c.sale_id</code></pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="資料湖">資料湖<a class="anchor-link" href="#資料湖">¶</a></h2><p>「每天新增的資料量太多，要把所有想分析的資料都做詳細的 Schema 轉換再存入資料倉儲太花人力成本。總之先把這些資料原封不動地存到分散式檔案儲存系統上，之後利用如 <a href="https://aws.amazon.com/tw/glue/">AWS Glue</a> 等服務將資料的 schema 爬出來並分析。」這就是以資料湖為核心的資料管道架構想法。一般這種存取資料的方式我們稱之為 Schema-on-Read，因為 Schema 是在實際載入原始資料的時候才被使用。</p>
+<h2 id="資料湖_1">資料湖<a class="anchor-link" href="#資料湖">&para;</a></h2><p>「每天新增的資料量太多，要把所有想分析的資料都做詳細的 Schema 轉換再存入資料倉儲太花人力成本。總之先把這些資料原封不動地存到分散式檔案儲存系統上，之後利用如 <a href="https://aws.amazon.com/tw/glue/">AWS Glue</a> 等服務將資料的 schema 爬出來並分析。」這就是以資料湖為核心的資料管道架構想法。一般這種存取資料的方式我們稱之為 Schema-on-Read，因為 Schema 是在實際載入原始資料的時候才被使用。</p>
 <p><a href="https://aws.amazon.com/tw/athena/">AWS Athena</a> 就是一個 AWS 依照這樣的想法打造的服務。</p>
 <p>舉個簡單的例子，假設我們現在想把<a href="#資料科學家的一天">資料科學家的一天</a>提到的銷售資料以及廣告資料合併起來做分析，在 AWS 上我們可以實作一個這樣的資料管道：</p>
 <center>
-<img src="images/data-engineering/data-lake-example.png" style="width:90%" />
+<img src="images/data-engineering/data-lake-example.png" style="width:90%"/>
 </center>
 <center>
     利用 AWS Athena 及 AWS Glue 實作以資料湖為基礎的分析架構
     <font color="purple">: </font>即時合併並分析不同格式的資料
-    <br />
+    <br/>
 </center><p>我們將存在關聯式資料庫的銷售資料透過 ETL 存到資料湖（AWS S3）裡頭以後，利用 AWS Glue 將資料的中繼資料（Meta Data）存在資料目錄（Data Catalogue）底頭。常見的中繼資料有</p>
 <ul>
 <li>表格定義（有哪些欄位，如：<code>sale_id</code>）</li>
@@ -491,7 +498,7 @@ ON s.sale_id = c.sale_id</code></pre>
 <li>分散式 SQL 查詢服務像是 Athena 抽象化複雜的資料格式，允許資料科學家下 SQL 查詢做 ad-hoc 分析</li>
 <li>透過 Parquet / ORC 等資料格式來自動減少資料湖沒有做正規化而導致的效能損失</li>
 </ul>
-<h3 id="一些關鍵技術">一些關鍵技術<a class="anchor-link" href="#一些關鍵技術">¶</a></h3><p>雖然再過幾年，等到資料工程的人才增加，資料科學家或許可以完全不用介意背後的資料基礎設施的建置，但近幾年這部分可能還是要靠資料科學家自己實作。</p>
+<h3 id="一些關鍵技術_2">一些關鍵技術<a class="anchor-link" href="#一些關鍵技術">&para;</a></h3><p>雖然再過幾年，等到資料工程的人才增加，資料科學家或許可以完全不用介意背後的資料基礎設施的建置，但近幾年這部分可能還是要靠資料科學家自己實作。</p>
 <ul>
 <li>資料湖的概念</li>
 <li>AWS Glue + AWS Athena 的運用（Bonus: Serverless 分析架構，不需管理機器）</li>
@@ -504,7 +511,7 @@ ON s.sale_id = c.sale_id</code></pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="如何實際應用資料工程？">如何實際應用資料工程？<a class="anchor-link" href="#如何實際應用資料工程？">¶</a></h2><p>首先你得先了解目前環境的資料基礎設施。而為了釐清這點，你可以問自己或者相關人員以下問題：</p>
+<h2 id="如何實際應用資料工程？_1">如何實際應用資料工程？<a class="anchor-link" href="#如何實際應用資料工程？">&para;</a></h2><p>首先你得先了解目前環境的資料基礎設施。而為了釐清這點，你可以問自己或者相關人員以下問題：</p>
 <ul>
 <li>資料科學的金字塔，我們建到哪一層了？</li>
 <li>我們過去有哪些專案是在取得、準備資料階段就陷入瓶頸？</li>
@@ -516,12 +523,12 @@ ON s.sale_id = c.sale_id</code></pre>
 </ul>
 <p>在你思考過以上幾個問題以後，你就會發現為何過往有些資料科學的專案進展緩慢了。這時候與其一直在等待資料的到來，你可以把你想到的幾個問題拿去跟相關的工程師討論。相信我，從你開口跟他們討論如何解決資料基礎設施的瓶頸這點開始，他們將不再視你為「那個只想要拿到資料」的敵人，而是同伴。</p>
 <center>
-<img src="images/data-engineering/hadoop-framework.png" style="width:90%" />
+<img src="images/data-engineering/hadoop-framework.png" style="width:90%"/>
 </center>
 <center>
 <a href="https://medium.com/@ssola/becoming-a-data-engineer-5e0f14048d42" target="_blank">Hadoop 的分散式基礎設施</a>
 <font color="purple">: </font>要學的東西太多，不如就用雲端服務吧
-    <br />
+    <br/>
 </center><p>假如很不幸，你們公司沒有專業的工程師，而你得自己想辦法兜出一個可以處理這些大量資料的方法，我會建議先從現存的全受管（Full-Managed）雲端服務找能解決痛點的方案。</p>
 <p>使用現成的雲端服務來建置資料基礎有幾個好處：</p>
 <ul>
@@ -536,7 +543,7 @@ ON s.sale_id = c.sale_id</code></pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="結語">結語<a class="anchor-link" href="#結語">¶</a></h2><p>我嘗試在這篇文章說明資料工程對資料科學家的重要，以及你可以如何開始學習資料工程。</p>
+<h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2><p>我嘗試在這篇文章說明資料工程對資料科學家的重要，以及你可以如何開始學習資料工程。</p>
 <p>在這個大數據時代，資料科學家的價值在於找出「大量」資料背後的潛在價值，不要反而讓「資料量太多」這邊成了你最大的限制。
 從雲端服務開始，多學一點資料工程，讓你的資料科學專案前進地更快吧！</p>
 <p>如果你有任何想法想要提出或分享，都歡迎在底下留言或者透過社群網站聯絡我 B-)</p>
@@ -555,6 +562,8 @@ ON s.sale_id = c.sale_id</code></pre>
                     </span>
 
                 </p>
+
+
 
 
 

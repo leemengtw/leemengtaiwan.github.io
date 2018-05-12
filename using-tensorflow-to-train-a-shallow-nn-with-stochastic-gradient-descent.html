@@ -103,7 +103,6 @@
     </header> <!-- end s-header -->
 
 
-
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -145,9 +144,19 @@
         </div>
 
 
-        <div class="row blog-content">
-            <div class="col-full blog-content__main">
+        <div class="row blog-content" style="position: relative">
+            <!--<div style="position:absolute;top: 90px;left:0;">-->
+                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
 
+                <!---->
+                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent">Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</a><ul><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Load-notMNIST-dataset" title="Load notMNIST dataset">Load notMNIST dataset</a></li><li><a class="toc-href" href="#Reformat-data-for-easier-training" title="Reformat data for easier training">Reformat data for easier training</a></li><li><a class="toc-href" href="#Logistic-regression-with-gradient-descent" title="Logistic regression with gradient descent">Logistic regression with gradient descent</a><ul><li><a class="toc-href" href="#Build-the-Tensorflow-computation-graph" title="Build the Tensorflow computation graph">Build the Tensorflow computation graph</a></li><li><a class="toc-href" href="#Gradient-descent-by-iterating-computation-graph" title="Gradient descent by iterating computation graph">Gradient descent by iterating computation graph</a></li></ul></li><li><a class="toc-href" href="#Logistic-regression-with-SGD_1" title="Logistic regression with SGD">Logistic regression with SGD</a><ul><li><a class="toc-href" href="#Build-computation-graph" title="Build computation graph">Build computation graph</a></li><li><a class="toc-href" href="#Iterate-using-SGD" title="Iterate using SGD">Iterate using SGD</a></li></ul></li><li><a class="toc-href" href="#2-layer-NN-with-ReLU-units_1" title="2-layer NN with ReLU units">2-layer NN with ReLU units</a><ul><li><a class="toc-href" href="#Build-compuation-graph" title="Build compuation graph">Build compuation graph</a></li><li><a class="toc-href" href="#Run-the-iterations" title="Run the iterations">Run the iterations</a></li></ul></li><li><a class="toc-href" href="#Summary_1" title="Summary">Summary</a></li></ul></li></ul></div>-->
+                <!---->
+
+
+            <!--</div>-->
+
+
+            <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
@@ -162,13 +171,12 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Import-libraries">Import libraries<a class="anchor-link" href="#Import-libraries">¶</a></h2>
+<h2 id="Import-libraries">Import libraries<a class="anchor-link" href="#Import-libraries">&para;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># These are all the modules we'll be using later. Make sure you can import them</span>
@@ -187,7 +195,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Load-notMNIST-dataset">Load notMNIST dataset<a class="anchor-link" href="#Load-notMNIST-dataset">¶</a></h2><p>This time we will use the dataset which has been normalized and randomized before to omit the data preprocessing step.</p>
+<h2 id="Load-notMNIST-dataset">Load notMNIST dataset<a class="anchor-link" href="#Load-notMNIST-dataset">&para;</a></h2><p>This time we will use the dataset which has been normalized and randomized before to omit the data preprocessing step.</p>
 <p>Tips:</p>
 <ul>
 <li>Release memory after loading big-size dataset using <code>del</code>. </li>
@@ -197,7 +205,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pickle_file</span> <span class="o">=</span> <span class="s1">'datasets/notMNIST.pickle'</span>
@@ -223,7 +230,6 @@
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Dataset size: 658.8 MB
 Training set (200000, 28, 28) (200000,)
@@ -238,7 +244,7 @@ Test set (10000, 28, 28) (10000,)
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Reformat-data-for-easier-training">Reformat data for easier training<a class="anchor-link" href="#Reformat-data-for-easier-training">¶</a></h2>
+<h2 id="Reformat-data-for-easier-training">Reformat data for easier training<a class="anchor-link" href="#Reformat-data-for-easier-training">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -249,10 +255,10 @@ Test set (10000, 28, 28) (10000,)
 <ul>
 <li>features(pixels) as a flat matrix with shape = (#total pixels, #instances)</li>
 </ul>
-<center><img src="images/flattened_features.png" style="width:70%" /><caption><center> <u><font color="purple"> Figure 1</font></u><font color="purple">: Flattened features <br /> <font color="black"> </font></font></center><ul>
+<center><img src="images/flattened_features.png" style="width:70%"/><caption><center> <u><font color="purple"> Figure 1</font></u><font color="purple">: Flattened features <br/> <font color="black"> </font></font></center><ul>
 <li>labels as float 1-hot encodings with shape = (#type of labels, #instances)</li>
 </ul>
-<center><img src="images/flattened_ground_true.png" style="width:70%" /><caption><center> <u><font color="purple"> Figure 2</font></u><font color="purple">: Flattened labels <br /> <font color="black"> </font></font></center>
+<center><img src="images/flattened_ground_true.png" style="width:70%"/><caption><center> <u><font color="purple"> Figure 2</font></u><font color="purple">: Flattened labels <br/> <font color="black"> </font></font></center>
 </caption></center></caption></center></div>
 </div>
 </div>
@@ -274,7 +280,6 @@ Test set (10000, 28, 28) (10000,)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">image_size</span> <span class="o">=</span> <span class="mi">28</span>
@@ -302,7 +307,6 @@ Test set (10000, 28, 28) (10000,)
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training set (784, 200000) (10, 200000)
 Validation set (784, 10000) (10, 10000)
@@ -316,7 +320,7 @@ Test set (784, 10000) (10, 10000)
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Logistic-regression-with-gradient-descent">Logistic regression with gradient descent<a class="anchor-link" href="#Logistic-regression-with-gradient-descent">¶</a></h2><p>For logistic regression, we use the formula $WX + b = Y'$ to do the computation. W is of shape (10, 784), X is of shape (784, m) and Y' is of shape (10, m) where $m$ is the number of training instances/images. After compute the probabilities of 10 classes stored in Y', we will use built-in <code>tf.nn.softmax_cross_entropy_with_logits</code> to compute cross-entropy between Y' and Y(train_labels) as cost.</p>
+<h2 id="Logistic-regression-with-gradient-descent">Logistic regression with gradient descent<a class="anchor-link" href="#Logistic-regression-with-gradient-descent">&para;</a></h2><p>For logistic regression, we use the formula $WX + b = Y'$ to do the computation. W is of shape (10, 784), X is of shape (784, m) and Y' is of shape (10, m) where $m$ is the number of training instances/images. After compute the probabilities of 10 classes stored in Y', we will use built-in <code>tf.nn.softmax_cross_entropy_with_logits</code> to compute cross-entropy between Y' and Y(train_labels) as cost.</p>
 <p>We will first instruct Tensorflow how to do all the computation and make it run the optimization several times.</p>
 </div>
 </div>
@@ -324,7 +328,7 @@ Test set (784, 10000) (10, 10000)
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Build-the-Tensorflow-computation-graph">Build the Tensorflow computation graph<a class="anchor-link" href="#Build-the-Tensorflow-computation-graph">¶</a></h3>
+<h3 id="Build-the-Tensorflow-computation-graph">Build the Tensorflow computation graph<a class="anchor-link" href="#Build-the-Tensorflow-computation-graph">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -349,7 +353,6 @@ Test set (784, 10000) (10, 10000)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># With gradient descent training, even this much data is prohibitive.</span>
@@ -418,14 +421,14 @@ Test set (784, 10000) (10, 10000)
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Gradient-descent-by-iterating-computation-graph">Gradient descent by iterating computation graph<a class="anchor-link" href="#Gradient-descent-by-iterating-computation-graph">¶</a></h3>
+<h3 id="Gradient-descent-by-iterating-computation-graph">Gradient descent by iterating computation graph<a class="anchor-link" href="#Gradient-descent-by-iterating-computation-graph">&para;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now we can tell TensorFlow to run this computation and iterate.<br />
+<p>Now we can tell TensorFlow to run this computation and iterate.<br/>
 Here we will use <code>tqdm</code> library to help us easily visualize the progress and the time used in the iterations.</p>
 <p>Tips:</p>
 <ul>
@@ -437,7 +440,6 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tnrange</span>
@@ -489,18 +491,16 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Initialized
 </pre>
 </div>
 </div>
 <div class="output_area">
-
-<div id="10639c2b-bba0-4a5f-af9f-648c09ceda01"></div>
+<div id="6a6b9545-ed18-4343-8362-26b03ba39f3a"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#10639c2b-bba0-4a5f-af9f-648c09ceda01');
+var element = $('#6a6b9545-ed18-4343-8362-26b03ba39f3a');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -508,7 +508,6 @@ var element = $('#10639c2b-bba0-4a5f-af9f-648c09ceda01');
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Cost at step 0: 20.057. Training acc: 6.4%, Validation acc: 10.0%.
 Cost at step 100: 2.326. Training acc: 70.9%, Validation acc: 70.7%.
@@ -530,7 +529,7 @@ Test acc: 82.8%
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Logistic-regression-with-SGD">Logistic regression with SGD<a class="anchor-link" href="#Logistic-regression-with-SGD">¶</a></h2><p>Or more precisely, mini-batch approach.</p>
+<h2 id="Logistic-regression-with-SGD_1">Logistic regression with SGD<a class="anchor-link" href="#Logistic-regression-with-SGD">&para;</a></h2><p>Or more precisely, mini-batch approach.</p>
 </div>
 </div>
 </div>
@@ -543,20 +542,19 @@ Test acc: 82.8%
 <ul>
 <li>The difference between SGD and gradient descent is that the former don't use whole training set to compute gradient descent, instead just use a 'mini-batch' of it and assume the corresponding gradient descent is the way to optimize. So we will keep using <code>GradientDescentOptimizer</code> but with a different <code>loss</code> computed from a smaller sub-training set.</li>
 </ul>
-<center><img src="images/sgd_vs_gradient_descent.png" style="width:70%" /><caption><center> <u><font color="purple"> Figure 3</font></u><font color="purple">: SGD vs Gradient Descent<br /> <font color="black"> </font></font></center>
+<center><img src="images/sgd_vs_gradient_descent.png" style="width:70%"/><caption><center> <u><font color="purple"> Figure 3</font></u><font color="purple">: SGD vs Gradient Descent<br/> <font color="black"> </font></font></center>
 </caption></center></div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Build-computation-graph">Build computation graph<a class="anchor-link" href="#Build-computation-graph">¶</a></h3>
+<h3 id="Build-computation-graph">Build computation graph<a class="anchor-link" href="#Build-computation-graph">&para;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
@@ -602,13 +600,12 @@ Test acc: 82.8%
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Iterate-using-SGD">Iterate using SGD<a class="anchor-link" href="#Iterate-using-SGD">¶</a></h3>
+<h3 id="Iterate-using-SGD">Iterate using SGD<a class="anchor-link" href="#Iterate-using-SGD">&para;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">3001</span>
@@ -646,18 +643,16 @@ Test acc: 82.8%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Initialized
 </pre>
 </div>
 </div>
 <div class="output_area">
-
-<div id="6640e3e3-ac3e-4450-b268-e11e337ef9d8"></div>
+<div id="e0a27464-be9b-4d6c-b828-0efd3498e71c"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6640e3e3-ac3e-4450-b268-e11e337ef9d8');
+var element = $('#e0a27464-be9b-4d6c-b828-0efd3498e71c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -665,7 +660,6 @@ var element = $('#6640e3e3-ac3e-4450-b268-e11e337ef9d8');
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Minibatch loss at step 0: 20.939. batch acc: 6.2%, Valid acc: 9.7%.
 Minibatch loss at step 500: 2.546. batch acc: 70.3%, Valid acc: 75.1%.
@@ -692,7 +686,7 @@ Test acc: 86.9%
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2-layer-NN-with-ReLU-units">2-layer NN with ReLU units<a class="anchor-link" href="#2-layer-NN-with-ReLU-units">¶</a></h2>
+<h2 id="2-layer-NN-with-ReLU-units_1">2-layer NN with ReLU units<a class="anchor-link" href="#2-layer-NN-with-ReLU-units">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -701,22 +695,21 @@ Test acc: 86.9%
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Instead all just linear combination of features, we want to introduce non-linearlity in our logistic regression. By turning the logistic regression example with SGD into a 1-hidden layer neural network with rectified linear units <a href="https://www.tensorflow.org/versions/r0.7/api_docs/python/nn.html#relu">nn.relu()</a> and 1024 hidden nodes, we should be able to improve validation / test accuracy.</p>
 <p>A 2-layer NN (1-hidden layer NN) look like this:</p>
-<center><img src="images/2layer_nn.png" style="width:30%" /><caption><center> <u><font color="purple"> Figure 4</font></u><font color="purple">: 1 hidden-layer NN <br /> <font color="black"> </font></font></center><p>A ReLU activation unit look like this:</p>
-<center><img src="images/relu.png" style="width:30%" /><caption><center> <u><font color="purple"> Figure 5</font></u><font color="purple">: ReLU <br /> <font color="black"> </font></font></center>
+<center><img src="images/2layer_nn.png" style="width:30%"/><caption><center> <u><font color="purple"> Figure 4</font></u><font color="purple">: 1 hidden-layer NN <br/> <font color="black"> </font></font></center><p>A ReLU activation unit look like this:</p>
+<center><img src="images/relu.png" style="width:30%"/><caption><center> <u><font color="purple"> Figure 5</font></u><font color="purple">: ReLU <br/> <font color="black"> </font></font></center>
 </caption></center></caption></center></div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Build-compuation-graph">Build compuation graph<a class="anchor-link" href="#Build-compuation-graph">¶</a></h3><p>In this part, use the notation $X$ in replace of  <code>dataset</code>. The weights and biases of the hidden layer are denoted as $W1$ and $b1$, and the weights and biases of the output layer are denoted as $W2$ and $b2$.</p>
+<h3 id="Build-compuation-graph">Build compuation graph<a class="anchor-link" href="#Build-compuation-graph">&para;</a></h3><p>In this part, use the notation $X$ in replace of  <code>dataset</code>. The weights and biases of the hidden layer are denoted as $W1$ and $b1$, and the weights and biases of the output layer are denoted as $W2$ and $b2$.</p>
 <p>Thus the pre-activation output(logits) of output layer is computed as $ logits = W2 * ReLU(W1 * X + b1) + b2 $</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
@@ -766,13 +759,12 @@ Test acc: 86.9%
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Run-the-iterations">Run the iterations<a class="anchor-link" href="#Run-the-iterations">¶</a></h3>
+<h3 id="Run-the-iterations">Run the iterations<a class="anchor-link" href="#Run-the-iterations">&para;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">3001</span>
@@ -812,18 +804,16 @@ Test acc: 86.9%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Initialized
 </pre>
 </div>
 </div>
 <div class="output_area">
-
-<div id="f636a8da-d906-4795-9000-1ce9cd46da3a"></div>
+<div id="dea2a36f-7c93-45d7-b1cc-4b9a36347328"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#f636a8da-d906-4795-9000-1ce9cd46da3a');
+var element = $('#dea2a36f-7c93-45d7-b1cc-4b9a36347328');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
@@ -831,7 +821,6 @@ var element = $('#f636a8da-d906-4795-9000-1ce9cd46da3a');
 </div>
 </div>
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Minibatch loss at step 0: 409.203. batch acc: 4.7%, Valid acc: 30.5%.
 Minibatch loss at step 500: 12.319. batch acc: 75.8%, Valid acc: 80.7%.
@@ -851,7 +840,7 @@ Test acc: 88.7%
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h2><p>Because we use a more complex model(1 hidden-layer NN), it take a little longer to train, but we're able to gain more performance from logistic regression even with the same hyper-parameter settings (learning rate = 0.5, batch_size=128). Better performance may be gained by tuning hyper parameters of the 2 layer NN. Also notice that by using mini-batch / SGD, we can save lots of time training models and even get a better result.</p>
+<h2 id="Summary_1">Summary<a class="anchor-link" href="#Summary">&para;</a></h2><p>Because we use a more complex model(1 hidden-layer NN), it take a little longer to train, but we're able to gain more performance from logistic regression even with the same hyper-parameter settings (learning rate = 0.5, batch_size=128). Better performance may be gained by tuning hyper parameters of the 2 layer NN. Also notice that by using mini-batch / SGD, we can save lots of time training models and even get a better result.</p>
 </div>
 </div>
 </div>
@@ -878,6 +867,8 @@ Test acc: 88.7%
                     </span>
 
                 </p>
+
+
 
 
 

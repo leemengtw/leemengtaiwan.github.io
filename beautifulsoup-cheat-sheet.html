@@ -93,7 +93,6 @@
     </header> <!-- end s-header -->
 
 
-
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -133,9 +132,19 @@
         </div>
 
 
-        <div class="row blog-content">
-            <div class="col-full blog-content__main">
+        <div class="row blog-content" style="position: relative">
+            <!--<div style="position:absolute;top: 90px;left:0;">-->
+                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
 
+                <!---->
+                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="BeautifulSoup 筆記">BeautifulSoup 筆記</a><ul><li><a class="toc-href" href="#找出特定-HTML-物件" title="找出特定 HTML 物件">找出特定 HTML 物件</a></li><li><a class="toc-href" href="#設定新屬性-/-class" title="設定新屬性 / class">設定新屬性 / class</a></li><li><a class="toc-href" href="#Iterate-標籤裡頭的子標籤" title="Iterate 標籤裡頭的子標籤">Iterate 標籤裡頭的子標籤</a></li><li><a class="toc-href" href="#移除標籤" title="移除標籤">移除標籤</a></li><li><a class="toc-href" href="#建立新標籤" title="建立新標籤">建立新標籤</a></li></ul></li></ul></div>-->
+                <!---->
+
+
+            <!--</div>-->
+
+
+            <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
@@ -146,7 +155,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
@@ -158,7 +166,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="找出特定-HTML-物件">找出特定 HTML 物件<a class="anchor-link" href="#找出特定-HTML-物件">¶</a></h2>
+<h2 id="找出特定-HTML-物件">找出特定 HTML 物件<a class="anchor-link" href="#找出特定-HTML-物件">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -171,7 +179,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">html</span> <span class="o">=</span> <span class="s2">"""&lt;div&gt;&lt;table border="1" class="dataframe"&gt;&lt;thead&gt;&lt;tr style="text-align:right;"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;th&gt;y&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th&gt;0&lt;/th&gt;&lt;td&gt;-2.863752&lt;/td&gt;&lt;td&gt;-1.066424&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;1&lt;/th&gt;&lt;td&gt;-0.779238&lt;/td&gt;&lt;td&gt;0.862169&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;"""</span>
@@ -250,7 +257,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
@@ -263,7 +269,6 @@
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_text output_subarea output_execute_result">
 <pre>&lt;div&gt;&lt;table border="1" class="dataframe"&gt;&lt;thead&gt;&lt;tr style="text-align:right;"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;th&gt;y&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th&gt;0&lt;/th&gt;&lt;td&gt;-2.863752&lt;/td&gt;&lt;td&gt;-1.066424&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;1&lt;/th&gt;&lt;td&gt;-0.779238&lt;/td&gt;&lt;td&gt;0.862169&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</pre>
 </div>
@@ -280,7 +285,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'table'</span><span class="p">,</span> <span class="p">{</span><span class="s1">'class'</span><span class="p">:</span> <span class="s1">'dataframe'</span><span class="p">})</span>
@@ -292,7 +296,6 @@
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_text output_subarea output_execute_result">
 <pre>&lt;table border="1" class="dataframe"&gt;&lt;thead&gt;&lt;tr style="text-align:right;"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;th&gt;y&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th&gt;0&lt;/th&gt;&lt;td&gt;-2.863752&lt;/td&gt;&lt;td&gt;-1.066424&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;1&lt;/th&gt;&lt;td&gt;-0.779238&lt;/td&gt;&lt;td&gt;0.862169&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;</pre>
 </div>
@@ -303,7 +306,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="設定新屬性-/-class">設定新屬性 / class<a class="anchor-link" href="#設定新屬性-/-class">¶</a></h2>
+<h2 id="設定新屬性-/-class">設定新屬性 / class<a class="anchor-link" href="#設定新屬性-/-class">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -316,7 +319,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="s1">'class'</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s1">'class'</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">'table'</span><span class="p">,</span> <span class="s1">'table-striped'</span><span class="p">,</span> <span class="s1">'table-responsive'</span><span class="p">]</span>
@@ -327,7 +329,6 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">soup</span>
@@ -338,7 +339,6 @@
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_text output_subarea output_execute_result">
 <pre>&lt;div&gt;&lt;table border="1" class="dataframe table table-striped table-responsive"&gt;&lt;thead&gt;&lt;tr style="text-align:right;"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;th&gt;y&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th&gt;0&lt;/th&gt;&lt;td&gt;-2.863752&lt;/td&gt;&lt;td&gt;-1.066424&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;1&lt;/th&gt;&lt;td&gt;-0.779238&lt;/td&gt;&lt;td&gt;0.862169&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</pre>
 </div>
@@ -349,13 +349,12 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Iterate-標籤裡頭的子標籤">Iterate 標籤裡頭的子標籤<a class="anchor-link" href="#Iterate-標籤裡頭的子標籤">¶</a></h2>
+<h2 id="Iterate-標籤裡頭的子標籤">Iterate 標籤裡頭的子標籤<a class="anchor-link" href="#Iterate-標籤裡頭的子標籤">&para;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
@@ -367,7 +366,6 @@
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>thead in table
 tbody in table
@@ -380,7 +378,7 @@ tbody in table
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="移除標籤">移除標籤<a class="anchor-link" href="#移除標籤">¶</a></h2>
+<h2 id="移除標籤">移除標籤<a class="anchor-link" href="#移除標籤">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -422,7 +420,6 @@ tbody in table
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">'tr'</span><span class="p">)):</span>
@@ -460,7 +457,7 @@ tbody in table
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="建立新標籤">建立新標籤<a class="anchor-link" href="#建立新標籤">¶</a></h2>
+<h2 id="建立新標籤">建立新標籤<a class="anchor-link" href="#建立新標籤">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -473,7 +470,6 @@ tbody in table
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s1">'I love BeautifulSoup!'</span>
@@ -484,7 +480,6 @@ tbody in table
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">blockquote</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span><span class="s1">'blockquote'</span><span class="p">)</span>
@@ -497,7 +492,6 @@ tbody in table
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-
 <div class="output_text output_subarea output_execute_result">
 <pre>&lt;blockquote&gt;I love BeautifulSoup!&lt;/blockquote&gt;</pre>
 </div>
@@ -518,6 +512,8 @@ tbody in table
                     </span>
 
                 </p>
+
+
 
 
 
