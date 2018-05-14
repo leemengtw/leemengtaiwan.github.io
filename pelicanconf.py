@@ -78,7 +78,7 @@ MAIL = 'mailto:b9875001@gmail.com'
 # enable Pelican to use plugins for additional features
 MARKUP = ('md', 'ipynb')
 PLUGIN_PATHS = ['/Users/leemeng/reproduce-test/pelican-plugins']
-PLUGINS = ['pelican-ipynb.markup', 'sitemap', 'pelican-toc']
+PLUGINS = ['pelican-ipynb.markup', 'sitemap', 'pelican-toc', 'tipue_search']
 IGNORE_FILES = ['.ipynb_checkpoints']
 
 
@@ -157,6 +157,6 @@ DEFAULT_CATEGORY = 'Miscellaneous'
 
 # Pelican default theme for dev
 # THEME = "/Users/leemeng/Documents/Code/pelican-jupyter-notebook/themes/pelican-default"
-THEME = "/Users/leemeng/reproduce-test/pelican-jupyter-notebook/themes/Hola10"
-DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog']
+THEME = "/Users/leemeng/Documents/Code/pelican-jupyter-notebook/themes/Hola10"
+DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search']
 PAGINATED_DIRECT_TEMPLATES = ['index', 'blog']
