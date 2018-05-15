@@ -42,6 +42,11 @@
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/ipython.css">
     <link rel="stylesheet" type="text/css" href='https://leemengtaiwan.github.io/theme/css/progress-bar.css' />
 
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/tipuesearch.css">
+
     <!-- script
     ================================================== -->
     <script src="https://leemengtaiwan.github.io/theme/js/modernizr.js"></script>
@@ -49,8 +54,8 @@
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="theme/images/favicon.ico" type="image/x-icon"/>
-    <link rel="icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
 
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
@@ -76,17 +81,23 @@
         <div class="header-logo">
             <a class="site-logo" href="../index.html"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
         </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
-        <nav class="header-nav-wrap">
-            <ul class="header-nav">
-                <li><a href="../index.html#home" title="home">Home</a></li>
-                <li><a href="../index.html#about" title="about">About</a></li>
-                <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
-                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
-                <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
-            </ul>
-        </nav>
 
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+    </ul>
+</nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
     </header> <!-- end s-header -->
@@ -131,16 +142,6 @@
 
 
         <div class="row blog-content" style="position: relative">
-            <!--<div style="position:absolute;top: 90px;left:0;">-->
-                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
-
-                <!---->
-                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Seaborn 筆記">Seaborn 筆記</a><ul><li><a class="toc-href" href="#基本設定" title="基本設定">基本設定</a></li><li><a class="toc-href" href="#Histogram" title="Histogram">Histogram</a></li><li><a class="toc-href" href="#Scatter-plot" title="Scatter plot">Scatter plot</a></li><li><a class="toc-href" href="#Correlation-matrix-/-Heatmap" title="Correlation matrix / Heatmap">Correlation matrix / Heatmap</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></li></ul></div>-->
-                <!---->
-
-
-            <!--</div>-->
-
 
             <div class="col-full blog-content__main">
                 

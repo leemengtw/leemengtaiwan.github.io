@@ -44,6 +44,11 @@
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/ipython.css">
     <link rel="stylesheet" type="text/css" href='https://leemengtaiwan.github.io/theme/css/progress-bar.css' />
 
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/tipuesearch.css">
+
     <!-- script
     ================================================== -->
     <script src="https://leemengtaiwan.github.io/theme/js/modernizr.js"></script>
@@ -51,8 +56,8 @@
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="theme/images/favicon.ico" type="image/x-icon"/>
-    <link rel="icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
 
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
@@ -78,17 +83,23 @@
         <div class="header-logo">
             <a class="site-logo" href="../index.html"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
         </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
-        <nav class="header-nav-wrap">
-            <ul class="header-nav">
-                <li><a href="../index.html#home" title="home">Home</a></li>
-                <li><a href="../index.html#about" title="about">About</a></li>
-                <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
-                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
-                <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
-            </ul>
-        </nav>
 
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+    </ul>
+</nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
     </header> <!-- end s-header -->
@@ -135,16 +146,6 @@
 
 
         <div class="row blog-content" style="position: relative">
-            <!--<div style="position:absolute;top: 90px;left:0;">-->
-                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
-
-                <!---->
-                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="AWS Data Migration Service - 從 MongoDB 遷移到 Redshift">AWS Data Migration Service - 從 MongoDB 遷移到 Redshift</a><ul><li><a class="toc-href" href="#使用案例" title="使用案例">使用案例</a></li><li><a class="toc-href" href="#AWS-DMS-基本介紹" title="AWS DMS 基本介紹">AWS DMS 基本介紹</a></li><li><a class="toc-href" href="#基本遷移步驟" title="基本遷移步驟">基本遷移步驟</a></li><li><a class="toc-href" href="#建立-replication-instance" title="建立 replication instance">建立 replication instance</a></li><li><a class="toc-href" href="#確保-replication-instance-能連結到來源-/-目標資料庫" title="確保 replication instance 能連結到來源 / 目標資料庫">確保 replication instance 能連結到來源 / 目標資料庫</a><ul><li><a class="toc-href" href="#MongoDB-as-Source-Database" title="MongoDB as Source Database">MongoDB as Source Database</a><ul><li><a class="toc-href" href="#Metadata-mode" title="Metadata mode">Metadata mode</a></li><li><a class="toc-href" href="#Numbers-of-documents-to-scan" title="Numbers of documents to scan">Numbers of documents to scan</a></li></ul></li><li><a class="toc-href" href="#Redshift-as-Target-Database_1" title="Redshift as Target Database">Redshift as Target Database</a></li></ul></li><li><a class="toc-href" href="#定義-replication-task_1" title="定義 replication task">定義 replication task</a><ul><li><a class="toc-href" href="#Selection-Rules" title="Selection Rules">Selection Rules</a></li><li><a class="toc-href" href="#Transformation-Rules" title="Transformation Rules">Transformation Rules</a></li></ul></li><li><a class="toc-href" href="#Debugging_1" title="Debugging">Debugging</a></li></ul></li></ul></div>-->
-                <!---->
-
-
-            <!--</div>-->
-
 
             <div class="col-full blog-content__main">
                 

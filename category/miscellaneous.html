@@ -20,12 +20,12 @@
 
     <!--- Open Graph Object metas
     ================================================== -->
-            <meta property="og:image" content="https://leemengtaiwan.github.io/theme/images/hero-bg4.jpg" />
+        <meta property="og:image" content="https://leemengtaiwan.github.io/theme/images/hero-bg4.jpg" />
     <meta property="og:type" content="website" />
 
-        <meta property="og:url" content="https://leemengtaiwan.github.io" />
-        <meta property="og:title" content="All About DataScience" />
-        <meta property="og:description" content="部落格, 資料科學, Python, R, 機器學習, 資料分析, 資料視覺化, 軟體工程, 資料工程, 雲端運算" />
+    <meta property="og:url" content="https://leemengtaiwan.github.io" />
+    <meta property="og:title" content="All About DataScience" />
+    <meta property="og:description" content="部落格, 資料科學, Python, R, 機器學習, 資料分析, 資料視覺化, 軟體工程, 資料工程, 雲端運算" />
 
     <!-- mobile specific metas
     ================================================== -->
@@ -41,6 +41,11 @@
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/ipython.css">
     <link rel="stylesheet" type="text/css" href='https://leemengtaiwan.github.io/theme/css/progress-bar.css' />
 
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/tipuesearch.css">
+
     <!-- script
     ================================================== -->
     <script src="https://leemengtaiwan.github.io/theme/js/modernizr.js"></script>
@@ -48,8 +53,8 @@
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="theme/images/favicon.ico" type="image/x-icon"/>
-    <link rel="icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
 
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
@@ -75,17 +80,24 @@
         <div class="header-logo">
             <a class="site-logo" href="../index.html"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
         </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
-        <nav class="header-nav-wrap">
-            <ul class="header-nav">
-                <li><a href="../index.html#home" title="home">Home</a></li>
-                <li><a href="../index.html#about" title="about">About</a></li>
-                <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
-                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
-                <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
-            </ul>
-        </nav>
 
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li class="current">
+            <a class="smoothscroll" href="#home">Home</a>
+        </li>
+        <li>
+            <a class="smoothscroll" href="#about">About</a>
+        </li>
+        <li>
+            <a class="smoothscroll" href="#blog">Blog</a>
+        </li>
+    </ul>
+</nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
     </header> <!-- end s-header -->
@@ -96,11 +108,6 @@
 <!-- home
 ================================================== -->
 <section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="https://leemengtaiwan.github.io/theme/images/hero-bg4.jpg" data-natural-width=1100 data-natural-height=1100 data-position-y=center>
-<!--<section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="https://leemengtaiwan.github.io/theme/images/rsz_hero-bg4.png" data-natural-width=1100 data-natural-height=760 data-position-y=center>-->
-<!--<section id="home" class="s-home page-hero target-section" data-parallax="scroll"-->
-         <!--data-image-src="https://leemengtaiwan.github.io/theme/images/hero-bg3.jpg" data-natural-width=3000 data-natural-height=2000-->
-         <!--data-position-y=center xmlns="http://www.w3.org/1999/html">-->
-
     <div class="overlay"></div>
     <div class="shadow-overlay"></div>
 
@@ -175,52 +182,51 @@
     <div class="row about-content">
 
         <div class="col-six tab-full left">
-            <h3>資料科學：跨多重領域</h3>
+            <h3>All of us are unique.</h3>
             <p>
-                我相信依照不同國家、不同業界、不同的環境需求，甚至是一個企業的發展階段，一個資料科學家（Data Scientist）所需要專注、學習的事都會有所不同。
-                更遑論是一個像我一樣，中途從軟體工程師（Software Engineer）轉職到資料科學家的人了。
+                依照不同業界、不同的環境需求，甚至是所處的企業的發展階段，一個資料科學家（Data Scientist）所累積的經驗、點的技能都會有所不同。
+                更遑論是一個像我一樣，從碼農做到資料工程，又轉到資料科學家的人了。
             </p>
             <p>
-                就算只專注在資料科學，依照我的認知，
-                也有以下領域需要了解：大數據、分散式系統、程式設計、資料分析、統計概念、資料視覺化、機器學習、雲端運算 ... 族繁不及備載。
+                資料科學是透過理解資料，從資料中萃取有意義的價值與洞見。而為了達到這目的，
+                有很多領域需要了解：大數據、BI、程式設計、資料分析、統計概念、資料視覺化、機器學習、雲端運算 ... 族繁不及備載。
             </p>
             <p>
-                我試著將以往跟資料科學相關的專案以及累積的經驗依照以上大分類歸類，依照自己對該分類的熟悉度給分，
-                就成了右邊（或者下面）這個超級主觀的主成份分析（Principal Component Analysis）。
-                近期方向是先想辦法先點高資料分析以及大數據處理這方面的技能。
+                要客觀且定量地衡量一個資料科學家在以上各領域的專業程度不容易。我試著以最熟悉的資料工程為基準，
+                設置熟悉度為 100，則在與其他領域比較之後，可以得到對應的相對分數。最後就成了右邊（或者下面）這個超級主觀的衡量表，博君一笑。
             </p>
             <p>
-                如果你夠閒，歡迎透過社群媒體告訴我你的主成份分析 <i class="im im-paperplane" aria-hidden="true"></i>
+                歡迎跟我說說你在各領域的熟悉程度 <i class="im im-paperplane" aria-hidden="true"></i>
             </p>
         </div>
 
         <div class="col-six tab-full right">
-            <h3>我的主成份分析</h3>
+            <h3>I'm familiar with..</h3>
 
             <ul class="skill-bars">
                 <li>
-                <div class="progress percent40"><span>40%</span></div>
-                <strong>大數據（Big Data）</strong>
+                <div class="progress percent50"><span>50%</span></div>
+                <strong>商業智慧（Business Intelligence）</strong>
                 </li>
                 <li>
-                <div class="progress percent75"><span>75%</span></div>
+                <div class="progress percent45"><span>45%</span></div>
                 <strong>資料視覺化（Data Visualization）</strong>
                 </li>
                 <li>
-                <div class="progress percent90"><span>90%</span></div>
-                <strong>程式設計（Programming）</strong>
-                </li>
-                <li>
-                <div class="progress percent70"><span>70%</span></div>
-                <strong>資料分析（Data Analysis）</strong>
-                </li>
-                <li>
-                <div class="progress percent55"><span>55%</span></div>
-                <strong>機器學習（Machine Learning）</strong>
+                <div class="progress percent100"><span>100%</span></div>
+                <strong>資料工程（Data Engineering）</strong>
                 </li>
                 <li>
                 <div class="progress percent75"><span>75%</span></div>
-                <strong>雲端運算（Cloud Computing）</strong>
+                <strong>程式設計（Programming）</strong>
+                </li>
+                <li>
+                <div class="progress percent60"><span>60%</span></div>
+                <strong>資料分析（Data Analysis）</strong>
+                </li>
+                <li>
+                <div class="progress percent45"><span>45%</span></div>
+                <strong>機器學習（Machine Learning）</strong>
                 </li>
             </ul>
         </div>

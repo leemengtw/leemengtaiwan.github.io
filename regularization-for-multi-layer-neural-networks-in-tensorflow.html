@@ -47,6 +47,11 @@
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/ipython.css">
     <link rel="stylesheet" type="text/css" href='https://leemengtaiwan.github.io/theme/css/progress-bar.css' />
 
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/tipuesearch.css">
+
     <!-- script
     ================================================== -->
     <script src="https://leemengtaiwan.github.io/theme/js/modernizr.js"></script>
@@ -54,8 +59,8 @@
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="theme/images/favicon.ico" type="image/x-icon"/>
-    <link rel="icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
 
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
@@ -81,17 +86,23 @@
         <div class="header-logo">
             <a class="site-logo" href="../index.html"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
         </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
-        <nav class="header-nav-wrap">
-            <ul class="header-nav">
-                <li><a href="../index.html#home" title="home">Home</a></li>
-                <li><a href="../index.html#about" title="about">About</a></li>
-                <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
-                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
-                <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
-            </ul>
-        </nav>
 
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+    </ul>
+</nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
     </header> <!-- end s-header -->
@@ -139,16 +150,6 @@
 
 
         <div class="row blog-content" style="position: relative">
-            <!--<div style="position:absolute;top: 90px;left:0;">-->
-                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
-
-                <!---->
-                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Regularization for Multi-layer Neural Networks in Tensorflow">Regularization for Multi-layer Neural Networks in Tensorflow</a><ul><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Load-NotMNIST-dataset" title="Load NotMNIST dataset">Load NotMNIST dataset</a></li><li><a class="toc-href" href="#Reformat-dataset" title="Reformat dataset">Reformat dataset</a><ul><li><a class="toc-href" href="#Using-Accuracy-as-Default-Metric" title="Using Accuracy as Default Metric">Using Accuracy as Default Metric</a></li></ul></li><li><a class="toc-href" href="#3-layer-NN-as-base-model_1" title="3-layer NN as base model">3-layer NN as base model</a><ul><li><a class="toc-href" href="#Hyper-parameters" title="Hyper parameters">Hyper parameters</a></li><li><a class="toc-href" href="#Build-model" title="Build model">Build model</a></li><li><a class="toc-href" href="#Train-model-without-regularization" title="Train model without regularization">Train model without regularization</a></li></ul></li><li><a class="toc-href" href="#L2-regularization_1" title="L2 regularization">L2 regularization</a></li><li><a class="toc-href" href="#Case-of-overfitting" title="Case of overfitting">Case of overfitting</a></li><li><a class="toc-href" href="#Dropout" title="Dropout">Dropout</a></li><li><a class="toc-href" href="#Boost-performance-by-using-Multi-layer-NN" title="Boost performance by using Multi-layer NN">Boost performance by using Multi-layer NN</a></li></ul></li></ul></div>-->
-                <!---->
-
-
-            <!--</div>-->
-
 
             <div class="col-full blog-content__main">
                 
@@ -497,10 +498,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="806172d0-01b8-40ce-a3df-133008f5bee4"></div>
+<div id="de832517-d340-4eb1-8e2f-3ede7b9bcda1"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#806172d0-01b8-40ce-a3df-133008f5bee4');
+var element = $('#de832517-d340-4eb1-8e2f-3ede7b9bcda1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -562,10 +563,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="a86d36d6-15b9-4cbc-9417-d91f7657119a"></div>
+<div id="d8f36966-e04e-448b-8dde-80fc87cc8d28"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a86d36d6-15b9-4cbc-9417-d91f7657119a');
+var element = $('#d8f36966-e04e-448b-8dde-80fc87cc8d28');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -619,10 +620,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="a11d41b1-701b-495a-97d0-7444657c98a9"></div>
+<div id="d51ced2e-2c9e-46b2-b05a-9df12f301479"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a11d41b1-701b-495a-97d0-7444657c98a9');
+var element = $('#d51ced2e-2c9e-46b2-b05a-9df12f301479');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -676,10 +677,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="533bbc4d-a574-4066-809c-dd88d0e4215f"></div>
+<div id="5f5861fe-2c3e-4c25-9f9e-778e77fc2862"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#533bbc4d-a574-4066-809c-dd88d0e4215f');
+var element = $('#5f5861fe-2c3e-4c25-9f9e-778e77fc2862');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -739,10 +740,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="37fe7c4b-e781-4904-af1f-05e42c36681c"></div>
+<div id="6b09b61b-ba3f-4a54-88d9-d649e2d96fe1"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#37fe7c4b-e781-4904-af1f-05e42c36681c');
+var element = $('#6b09b61b-ba3f-4a54-88d9-d649e2d96fe1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}

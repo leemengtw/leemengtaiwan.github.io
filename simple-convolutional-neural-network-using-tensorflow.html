@@ -48,6 +48,11 @@
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/ipython.css">
     <link rel="stylesheet" type="text/css" href='https://leemengtaiwan.github.io/theme/css/progress-bar.css' />
 
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/tipuesearch.css">
+
     <!-- script
     ================================================== -->
     <script src="https://leemengtaiwan.github.io/theme/js/modernizr.js"></script>
@@ -55,8 +60,8 @@
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="theme/images/favicon.ico" type="image/x-icon"/>
-    <link rel="icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
 
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
@@ -82,17 +87,23 @@
         <div class="header-logo">
             <a class="site-logo" href="../index.html"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
         </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
-        <nav class="header-nav-wrap">
-            <ul class="header-nav">
-                <li><a href="../index.html#home" title="home">Home</a></li>
-                <li><a href="../index.html#about" title="about">About</a></li>
-                <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
-                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
-                <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
-            </ul>
-        </nav>
 
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+    </ul>
+</nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
     </header> <!-- end s-header -->
@@ -140,16 +151,6 @@
 
 
         <div class="row blog-content" style="position: relative">
-            <!--<div style="position:absolute;top: 90px;left:0;">-->
-                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
-
-                <!---->
-                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Simple Convolutional Neural Network using TensorFlow">Simple Convolutional Neural Network using TensorFlow</a><ul><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Load-notMNIST-dataset" title="Load notMNIST dataset">Load notMNIST dataset</a></li><li><a class="toc-href" href="#Reformat-data" title="Reformat data">Reformat data</a></li><li><a class="toc-href" href="#Helper-for-training-visualization" title="Helper for training visualization">Helper for training visualization</a></li><li><a class="toc-href" href="#NN-with-2-convolutional-layers" title="NN with 2 convolutional layers">NN with 2 convolutional layers</a><ul><li><a class="toc-href" href="#Computation-graph" title="Computation graph">Computation graph</a></li><li><a class="toc-href" href="#Train-the-model-and-visualize-the-result" title="Train the model and visualize the result">Train the model and visualize the result</a></li></ul></li><li><a class="toc-href" href="#Problem-1---Use-pooling-layers-to-reduce-dimensionality_1" title="Problem 1 - Use pooling layers to reduce dimensionality">Problem 1 - Use pooling layers to reduce dimensionality</a><ul><li><a class="toc-href" href="#Build-model-with-pooling-layers" title="Build model with pooling layers">Build model with pooling layers</a></li><li><a class="toc-href" href="#Train-the-model" title="Train the model">Train the model</a></li></ul></li><li><a class="toc-href" href="#Problem-2_1" title="Problem 2">Problem 2</a><ul><li><a class="toc-href" href="#Computation-graph_1" title="Computation graph">Computation graph</a></li><li><a class="toc-href" href="#Train-the-model_1" title="Train the model">Train the model</a></li></ul></li></ul></li></ul></div>-->
-                <!---->
-
-
-            <!--</div>-->
-
 
             <div class="col-full blog-content__main">
                 
@@ -526,10 +527,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="4e523899-6c1a-4f89-827b-1d596e0c7f2a"></div>
+<div id="7b58aedf-74e5-4aee-b904-08591a075eeb"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#4e523899-6c1a-4f89-827b-1d596e0c7f2a');
+var element = $('#7b58aedf-74e5-4aee-b904-08591a075eeb');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -1293,10 +1294,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="36522a2e-0115-4577-82e9-9f33e82a2633"></div>
+<div id="954df67c-07c6-44ee-9369-fa6e24f4d469"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#36522a2e-0115-4577-82e9-9f33e82a2633');
+var element = $('#954df67c-07c6-44ee-9369-fa6e24f4d469');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -1486,10 +1487,10 @@ Test accuracy: 89.4%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="57b8ec72-a59f-49e9-8bcc-4ed2c7dbd9f7"></div>
+<div id="72d37a24-736d-4aff-9bdf-25c678684780"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#57b8ec72-a59f-49e9-8bcc-4ed2c7dbd9f7');
+var element = $('#72d37a24-736d-4aff-9bdf-25c678684780');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -2253,10 +2254,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="112c7b8b-e3dc-4ece-baa3-fcc348b6cccb"></div>
+<div id="e7a64571-4515-4275-8c5d-0625125686d5"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#112c7b8b-e3dc-4ece-baa3-fcc348b6cccb');
+var element = $('#e7a64571-4515-4275-8c5d-0625125686d5');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -2457,10 +2458,10 @@ Test accuracy: 90.7%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="2c7e18b6-b354-43e8-b420-7dcafd191b34"></div>
+<div id="c2a3e41e-1fbe-4b74-b6f2-9c1f250d4ce7"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#2c7e18b6-b354-43e8-b420-7dcafd191b34');
+var element = $('#c2a3e41e-1fbe-4b74-b6f2-9c1f250d4ce7');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -3224,10 +3225,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="b5b98a8a-69be-492a-a000-0596a1a5e087"></div>
+<div id="ea7b0be1-1b06-49fe-b090-6820520ec288"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b5b98a8a-69be-492a-a000-0596a1a5e087');
+var element = $('#ea7b0be1-1b06-49fe-b090-6820520ec288');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}

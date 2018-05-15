@@ -45,6 +45,11 @@
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/ipython.css">
     <link rel="stylesheet" type="text/css" href='https://leemengtaiwan.github.io/theme/css/progress-bar.css' />
 
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/tipuesearch.css">
+
     <!-- script
     ================================================== -->
     <script src="https://leemengtaiwan.github.io/theme/js/modernizr.js"></script>
@@ -52,8 +57,8 @@
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="theme/images/favicon.ico" type="image/x-icon"/>
-    <link rel="icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
 
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
@@ -79,17 +84,23 @@
         <div class="header-logo">
             <a class="site-logo" href="../index.html"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
         </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
-        <nav class="header-nav-wrap">
-            <ul class="header-nav">
-                <li><a href="../index.html#home" title="home">Home</a></li>
-                <li><a href="../index.html#about" title="about">About</a></li>
-                <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
-                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
-                <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
-            </ul>
-        </nav>
 
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+    </ul>
+</nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
     </header> <!-- end s-header -->
@@ -137,16 +148,6 @@
 
 
         <div class="row blog-content" style="position: relative">
-            <!--<div style="position:absolute;top: 90px;left:0;">-->
-                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
-
-                <!---->
-                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Find Word Semantic by Using Word2vec in TensorFlow">Find Word Semantic by Using Word2vec in TensorFlow</a><ul><li><a class="toc-href" href="#Libraries" title="Libraries">Libraries</a></li><li><a class="toc-href" href="#Raw-text-data" title="Raw text data">Raw text data</a><ul><li><a class="toc-href" href="#Download-/-load-data" title="Download / load data">Download / load data</a></li><li><a class="toc-href" href="#Turn-data-into-words" title="Turn data into words">Turn data into words</a></li><li><a class="toc-href" href="#Look-into-text-corpus" title="Look into text corpus">Look into text corpus</a></li></ul></li><li><a class="toc-href" href="#Create-training-data_1" title="Create training data">Create training data</a><ul><li><a class="toc-href" href="#Decide-dictionary-size" title="Decide dictionary size">Decide dictionary size</a></li><li><a class="toc-href" href="#Build-dictionary-and-transform-text-corpus-into-sequence-of-numbers" title="Build dictionary and transform text corpus into sequence of numbers">Build dictionary and transform text corpus into sequence of numbers</a></li><li><a class="toc-href" href="#See-transformed-text-corpus" title="See transformed text corpus">See transformed text corpus</a></li></ul></li><li><a class="toc-href" href="#Function-to-generate-a-training-batch-for-the-skip-gram-model._1" title="Function to generate a training batch for the skip-gram model.">Function to generate a training batch for the skip-gram model.</a></li><li><a class="toc-href" href="#Word2Vec-skip-gram-model." title="Word2Vec skip-gram model.">Word2Vec skip-gram model.</a><ul><li><a class="toc-href" href="#Computation-graph" title="Computation graph">Computation graph</a></li><li><a class="toc-href" href="#Train-the-model" title="Train the model">Train the model</a></li></ul></li><li><a class="toc-href" href="#Transform-embedding-into-2D-using-t-SNE_1" title="Transform embedding into 2D using t-SNE">Transform embedding into 2D using t-SNE</a></li><li><a class="toc-href" href="#Visualize-result" title="Visualize result">Visualize result</a></li><li><a class="toc-href" href="#Todo" title="Todo">Todo</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></li></ul></div>-->
-                <!---->
-
-
-            <!--</div>-->
-
 
             <div class="col-full blog-content__main">
                 
@@ -786,10 +787,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 </div>
 </div>
 <div class="output_area">
-<div id="9f99478d-a889-479b-bf68-62a111befdc7"></div>
+<div id="4cb06990-fcdb-453e-95c0-ab514bcbb21f"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#9f99478d-a889-479b-bf68-62a111befdc7');
+var element = $('#4cb06990-fcdb-453e-95c0-ab514bcbb21f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}

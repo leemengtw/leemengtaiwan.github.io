@@ -53,6 +53,11 @@
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/ipython.css">
     <link rel="stylesheet" type="text/css" href='https://leemengtaiwan.github.io/theme/css/progress-bar.css' />
 
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/tipuesearch.css">
+
     <!-- script
     ================================================== -->
     <script src="https://leemengtaiwan.github.io/theme/js/modernizr.js"></script>
@@ -60,8 +65,8 @@
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="theme/images/favicon.ico" type="image/x-icon"/>
-    <link rel="icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
 
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
@@ -87,17 +92,23 @@
         <div class="header-logo">
             <a class="site-logo" href="../index.html"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
         </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
-        <nav class="header-nav-wrap">
-            <ul class="header-nav">
-                <li><a href="../index.html#home" title="home">Home</a></li>
-                <li><a href="../index.html#about" title="about">About</a></li>
-                <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
-                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
-                <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
-            </ul>
-        </nav>
 
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+    </ul>
+</nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
     </header> <!-- end s-header -->
@@ -145,16 +156,6 @@
 
 
         <div class="row blog-content" style="position: relative">
-            <!--<div style="position:absolute;top: 90px;left:0;">-->
-                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
-
-                <!---->
-                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent">Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</a><ul><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Load-notMNIST-dataset" title="Load notMNIST dataset">Load notMNIST dataset</a></li><li><a class="toc-href" href="#Reformat-data-for-easier-training" title="Reformat data for easier training">Reformat data for easier training</a></li><li><a class="toc-href" href="#Logistic-regression-with-gradient-descent" title="Logistic regression with gradient descent">Logistic regression with gradient descent</a><ul><li><a class="toc-href" href="#Build-the-Tensorflow-computation-graph" title="Build the Tensorflow computation graph">Build the Tensorflow computation graph</a></li><li><a class="toc-href" href="#Gradient-descent-by-iterating-computation-graph" title="Gradient descent by iterating computation graph">Gradient descent by iterating computation graph</a></li></ul></li><li><a class="toc-href" href="#Logistic-regression-with-SGD_1" title="Logistic regression with SGD">Logistic regression with SGD</a><ul><li><a class="toc-href" href="#Build-computation-graph" title="Build computation graph">Build computation graph</a></li><li><a class="toc-href" href="#Iterate-using-SGD" title="Iterate using SGD">Iterate using SGD</a></li></ul></li><li><a class="toc-href" href="#2-layer-NN-with-ReLU-units_1" title="2-layer NN with ReLU units">2-layer NN with ReLU units</a><ul><li><a class="toc-href" href="#Build-compuation-graph" title="Build compuation graph">Build compuation graph</a></li><li><a class="toc-href" href="#Run-the-iterations" title="Run the iterations">Run the iterations</a></li></ul></li><li><a class="toc-href" href="#Summary_1" title="Summary">Summary</a></li></ul></li></ul></div>-->
-                <!---->
-
-
-            <!--</div>-->
-
 
             <div class="col-full blog-content__main">
                 
@@ -497,10 +498,10 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 </div>
 <div class="output_area">
-<div id="6a6b9545-ed18-4343-8362-26b03ba39f3a"></div>
+<div id="087cfb57-c245-419c-8d96-dc27e1fbe301"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6a6b9545-ed18-4343-8362-26b03ba39f3a');
+var element = $('#087cfb57-c245-419c-8d96-dc27e1fbe301');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -649,10 +650,10 @@ Test acc: 82.8%
 </div>
 </div>
 <div class="output_area">
-<div id="e0a27464-be9b-4d6c-b828-0efd3498e71c"></div>
+<div id="dff913c3-15f2-41e8-a7a4-e29bb2e76b65"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e0a27464-be9b-4d6c-b828-0efd3498e71c');
+var element = $('#dff913c3-15f2-41e8-a7a4-e29bb2e76b65');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -810,10 +811,10 @@ Test acc: 86.9%
 </div>
 </div>
 <div class="output_area">
-<div id="dea2a36f-7c93-45d7-b1cc-4b9a36347328"></div>
+<div id="e754b66c-8203-4231-928b-96fae6624457"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#dea2a36f-7c93-45d7-b1cc-4b9a36347328');
+var element = $('#e754b66c-8203-4231-928b-96fae6624457');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}

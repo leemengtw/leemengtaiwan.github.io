@@ -43,6 +43,11 @@
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/ipython.css">
     <link rel="stylesheet" type="text/css" href='https://leemengtaiwan.github.io/theme/css/progress-bar.css' />
 
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/tipuesearch.css">
+
     <!-- script
     ================================================== -->
     <script src="https://leemengtaiwan.github.io/theme/js/modernizr.js"></script>
@@ -50,8 +55,8 @@
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="theme/images/favicon.ico" type="image/x-icon"/>
-    <link rel="icon" href="theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
 
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
@@ -77,17 +82,23 @@
         <div class="header-logo">
             <a class="site-logo" href="../index.html"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
         </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
-        <nav class="header-nav-wrap">
-            <ul class="header-nav">
-                <li><a href="../index.html#home" title="home">Home</a></li>
-                <li><a href="../index.html#about" title="about">About</a></li>
-                <!--<li><a href="../index.html#works" title="works">Works</a></li>-->
-                <li class="current"><a href="blog.html" title="blog">Blog</a></li>
-                <!--<li><a href="../index.html#contact" title="contact">Contact</a></li>-->
-            </ul>
-        </nav>
 
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+    </ul>
+</nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
     </header> <!-- end s-header -->
@@ -133,16 +144,6 @@
 
 
         <div class="row blog-content" style="position: relative">
-            <!--<div style="position:absolute;top: 90px;left:0;">-->
-                <!--<i id="toc-icon" class="im im-menu" aria-hidden="true"></i>-->
-
-                <!---->
-                <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="利用 Kinesis 處理串流資料並建立資料湖">利用 Kinesis 處理串流資料並建立資料湖</a><ul><li><a class="toc-href" href="#概觀" title="概觀">概觀</a></li><li><a class="toc-href" href="#建構流程" title="建構流程">建構流程</a></li><li><a class="toc-href" href="#建立一個-Kinesis-data-stream" title="建立一個 Kinesis data stream">建立一個 Kinesis data stream</a><ul><li><a class="toc-href" href="#Scalability" title="Scalability">Scalability</a></li><li><a class="toc-href" href="#How-to-scale" title="How to scale">How to scale</a></li><li><a class="toc-href" href="#Availability" title="Availability">Availability</a></li></ul></li><li><a class="toc-href" href="#建立一個-Firehose-delivery-stream_1" title="建立一個 Firehose delivery stream">建立一個 Firehose delivery stream</a><ul><li><a class="toc-href" href="#Configuration" title="Configuration">Configuration</a></li><li><a class="toc-href" href="#選擇-delivery-stream-目的地" title="選擇 delivery stream 目的地">選擇 delivery stream 目的地</a></li></ul></li><li><a class="toc-href" href="#用-Python-傳串流資料_1" title="用 Python 傳串流資料">用 Python 傳串流資料</a></li><li><a class="toc-href" href="#確認-S3-上的資料" title="確認 S3 上的資料">確認 S3 上的資料</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></li></ul></div>-->
-                <!---->
-
-
-            <!--</div>-->
-
 
             <div class="col-full blog-content__main">
                 
