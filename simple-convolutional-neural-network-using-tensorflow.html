@@ -102,7 +102,16 @@
         <li class="current">
             <a href="../blog.html">Blog</a>
         </li>
+
     </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
 </nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
@@ -151,7 +160,32 @@
 
 
         <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
 
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <!---->
+    <!--<div id="toc-wrap">-->
+        <!--<i class="im im-menu" aria-hidden="true"></i>-->
+        <!---->
+        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Simple Convolutional Neural Network using TensorFlow">Simple Convolutional Neural Network using TensorFlow</a><ul><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Load-notMNIST-dataset" title="Load notMNIST dataset">Load notMNIST dataset</a></li><li><a class="toc-href" href="#Reformat-data" title="Reformat data">Reformat data</a></li><li><a class="toc-href" href="#Helper-for-training-visualization" title="Helper for training visualization">Helper for training visualization</a></li><li><a class="toc-href" href="#NN-with-2-convolutional-layers" title="NN with 2 convolutional layers">NN with 2 convolutional layers</a><ul><li><a class="toc-href" href="#Computation-graph" title="Computation graph">Computation graph</a></li><li><a class="toc-href" href="#Train-the-model-and-visualize-the-result" title="Train the model and visualize the result">Train the model and visualize the result</a></li></ul></li><li><a class="toc-href" href="#Problem-1---Use-pooling-layers-to-reduce-dimensionality_1" title="Problem 1 - Use pooling layers to reduce dimensionality">Problem 1 - Use pooling layers to reduce dimensionality</a><ul><li><a class="toc-href" href="#Build-model-with-pooling-layers" title="Build model with pooling layers">Build model with pooling layers</a></li><li><a class="toc-href" href="#Train-the-model" title="Train the model">Train the model</a></li></ul></li><li><a class="toc-href" href="#Problem-2_1" title="Problem 2">Problem 2</a><ul><li><a class="toc-href" href="#Computation-graph_1" title="Computation graph">Computation graph</a></li><li><a class="toc-href" href="#Train-the-model_1" title="Train the model">Train the model</a></li></ul></li></ul></li></ul></div>-->
+        <!---->
+    <!--</div>-->
+    <!---->
+
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemengtaiwan.github.io/simple-convolutional-neural-network-using-tensorflow.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
             <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
@@ -527,10 +561,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="7b58aedf-74e5-4aee-b904-08591a075eeb"></div>
+<div id="2e0ab58a-3393-412d-9f39-e8f0b42209de"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#7b58aedf-74e5-4aee-b904-08591a075eeb');
+var element = $('#2e0ab58a-3393-412d-9f39-e8f0b42209de');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -1294,10 +1328,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="954df67c-07c6-44ee-9369-fa6e24f4d469"></div>
+<div id="bc9ef5a0-a908-4a83-a0bf-1e5ea3a6ba84"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#954df67c-07c6-44ee-9369-fa6e24f4d469');
+var element = $('#bc9ef5a0-a908-4a83-a0bf-1e5ea3a6ba84');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -1487,10 +1521,10 @@ Test accuracy: 89.4%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="72d37a24-736d-4aff-9bdf-25c678684780"></div>
+<div id="37984e9b-a739-4dcd-b7ff-fd12d57f343a"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#72d37a24-736d-4aff-9bdf-25c678684780');
+var element = $('#37984e9b-a739-4dcd-b7ff-fd12d57f343a');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -2254,10 +2288,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="e7a64571-4515-4275-8c5d-0625125686d5"></div>
+<div id="dddd6835-cb8e-4082-9e5b-9015f4ccde16"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e7a64571-4515-4275-8c5d-0625125686d5');
+var element = $('#dddd6835-cb8e-4082-9e5b-9015f4ccde16');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -2458,10 +2492,10 @@ Test accuracy: 90.7%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="c2a3e41e-1fbe-4b74-b6f2-9c1f250d4ce7"></div>
+<div id="80c11b84-f772-4ed4-97f4-418862a4c92f"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#c2a3e41e-1fbe-4b74-b6f2-9c1f250d4ce7');
+var element = $('#80c11b84-f772-4ed4-97f4-418862a4c92f');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -3225,10 +3259,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="ea7b0be1-1b06-49fe-b090-6820520ec288"></div>
+<div id="5862d61a-e428-404c-bd0b-17c71f06d057"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#ea7b0be1-1b06-49fe-b090-6820520ec288');
+var element = $('#5862d61a-e428-404c-bd0b-17c71f06d057');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -3418,6 +3452,21 @@ var disqus_title = 'Simple Convolutional Neural Network using TensorFlow';
     <script src="https://leemengtaiwan.github.io/theme/js/main.js"></script>
 
     <script type='text/javascript' src='https://leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
 
 </body>
 </html>

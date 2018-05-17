@@ -107,7 +107,16 @@
         <li class="current">
             <a href="../blog.html">Blog</a>
         </li>
+
     </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
 </nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
@@ -156,7 +165,32 @@
 
 
         <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
 
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <!---->
+    <!--<div id="toc-wrap">-->
+        <!--<i class="im im-menu" aria-hidden="true"></i>-->
+        <!---->
+        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent">Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</a><ul><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Load-notMNIST-dataset" title="Load notMNIST dataset">Load notMNIST dataset</a></li><li><a class="toc-href" href="#Reformat-data-for-easier-training" title="Reformat data for easier training">Reformat data for easier training</a></li><li><a class="toc-href" href="#Logistic-regression-with-gradient-descent" title="Logistic regression with gradient descent">Logistic regression with gradient descent</a><ul><li><a class="toc-href" href="#Build-the-Tensorflow-computation-graph" title="Build the Tensorflow computation graph">Build the Tensorflow computation graph</a></li><li><a class="toc-href" href="#Gradient-descent-by-iterating-computation-graph" title="Gradient descent by iterating computation graph">Gradient descent by iterating computation graph</a></li></ul></li><li><a class="toc-href" href="#Logistic-regression-with-SGD_1" title="Logistic regression with SGD">Logistic regression with SGD</a><ul><li><a class="toc-href" href="#Build-computation-graph" title="Build computation graph">Build computation graph</a></li><li><a class="toc-href" href="#Iterate-using-SGD" title="Iterate using SGD">Iterate using SGD</a></li></ul></li><li><a class="toc-href" href="#2-layer-NN-with-ReLU-units_1" title="2-layer NN with ReLU units">2-layer NN with ReLU units</a><ul><li><a class="toc-href" href="#Build-compuation-graph" title="Build compuation graph">Build compuation graph</a></li><li><a class="toc-href" href="#Run-the-iterations" title="Run the iterations">Run the iterations</a></li></ul></li><li><a class="toc-href" href="#Summary_1" title="Summary">Summary</a></li></ul></li></ul></div>-->
+        <!---->
+    <!--</div>-->
+    <!---->
+
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
             <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
@@ -498,10 +532,10 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 </div>
 <div class="output_area">
-<div id="087cfb57-c245-419c-8d96-dc27e1fbe301"></div>
+<div id="935cba76-1f57-48f2-887f-ccf4dbdfbdb3"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#087cfb57-c245-419c-8d96-dc27e1fbe301');
+var element = $('#935cba76-1f57-48f2-887f-ccf4dbdfbdb3');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -650,10 +684,10 @@ Test acc: 82.8%
 </div>
 </div>
 <div class="output_area">
-<div id="dff913c3-15f2-41e8-a7a4-e29bb2e76b65"></div>
+<div id="ce087355-584b-40bb-9e68-e1272c2fd278"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#dff913c3-15f2-41e8-a7a4-e29bb2e76b65');
+var element = $('#ce087355-584b-40bb-9e68-e1272c2fd278');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -811,10 +845,10 @@ Test acc: 86.9%
 </div>
 </div>
 <div class="output_area">
-<div id="e754b66c-8203-4231-928b-96fae6624457"></div>
+<div id="84187305-aea9-45ca-b164-c2462f18d72d"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e754b66c-8203-4231-928b-96fae6624457');
+var element = $('#84187305-aea9-45ca-b164-c2462f18d72d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
@@ -1009,6 +1043,21 @@ var disqus_title = 'Using TensorFlow to Train a Shallow NN with Stochastic Gradi
     <script src="https://leemengtaiwan.github.io/theme/js/main.js"></script>
 
     <script type='text/javascript' src='https://leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
 
 </body>
 </html>

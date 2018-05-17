@@ -96,7 +96,16 @@
         <li class="current">
             <a href="../blog.html">Blog</a>
         </li>
+
     </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
 </nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
@@ -142,7 +151,32 @@
 
 
         <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
 
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <!---->
+    <!--<div id="toc-wrap">-->
+        <!--<i class="im im-menu" aria-hidden="true"></i>-->
+        <!---->
+        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="為何資料科學家需要學習 SQL">為何資料科學家需要學習 SQL</a><ul><li><a class="toc-href" href="#使用-SQL-與數據對話" title="使用 SQL 與數據對話">使用 SQL 與數據對話</a></li><li><a class="toc-href" href="#用-Python-達到-SQL-查詢效果" title="用 Python 達到 SQL 查詢效果">用 Python 達到 SQL 查詢效果</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li><li><a class="toc-href" href="#推薦閱讀" title="推薦閱讀">推薦閱讀</a></li></ul></li></ul></div>-->
+        <!---->
+    <!--</div>-->
+    <!---->
+
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemengtaiwan.github.io/why-you-need-to-learn-sql-as-a-data-scientist.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
             <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
@@ -578,6 +612,21 @@ var disqus_title = '為何資料科學家需要學習 SQL';
     <script src="https://leemengtaiwan.github.io/theme/js/main.js"></script>
 
     <script type='text/javascript' src='https://leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
 
 </body>
 </html>

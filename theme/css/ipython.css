@@ -78,25 +78,34 @@ div.article-in-tag-page a:hover {
 
 /*左側導覽行*/
 #left-navigation {
+  display: none;
   position: -webkit-sticky; /* Safari */
   position: sticky;
-  top: 86px;
+  top: 200px;
   margin-left: -20px;
+  margin-bottom: -150px;
+  padding-top: 8px;
+  z-index: 1;
 }
-
 #left-navigation i {
+  color: grey;
+  opacity: 0.6;
   margin-bottom: 20px;
 }
 
-/*調整 blog content 讓 content 跟左側導覽對齊*/
-/*.blog-content__main {*/
-  /*margin-top: -96px;*/
-/*}*/
 
-/*左側 Table Of Content, Search 共用部分*/
+@media screen and (max-width: 980px) {
+  #left-navigation  { opacity: 0 }
+}
+
+
+/*左側各個 component 共用部分*/
 #toc-wrap, #toc-wrap > #toc, #search-wrap, #search {
   position: -webkit-sticky; /* Safari */
   position: sticky;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 #toc-wrap > #toc, #search-wrap > #search {
@@ -107,7 +116,7 @@ div.article-in-tag-page a:hover {
 #toc-wrap:hover #toc {
   display: block;
   float: right;
-  margin-bottom: -400px;
+  margin-bottom: -215px;
   margin-left: 10px;
   background-color: white;
   -webkit-box-shadow: 0 0 1em #777777;
@@ -116,6 +125,8 @@ div.article-in-tag-page a:hover {
   -moz-border-radius: 5px;
   padding-top: 10px;
   padding-right: 23px;
+  position: relative;
+  top: -15px;
 }
 
 #toc-wrap #toc > ul:first-child {
@@ -133,16 +144,41 @@ div.article-in-tag-page a:hover {
 /*左側搜尋*/
 #search-wrap:hover #search {
   display: block;
-  float: right;
-  margin-bottom: -400px;
   margin-left: 10px;
   background-color: white;
   -webkit-box-shadow: 0 0 1em #777777;
   -moz-box-shadow: 0 0 1em #777777;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
+  position: relative;
+  top: -2px;
 }
 
 #search {
   margin-top: -20px;
+  height: 40px;
 }
+
+.tipue_search_right {
+  height: 40px;
+}
+
+#tipue_search_input {
+  height: 40px;
+  padding: 0 10px!important;
+}
+
+
+/*頂端搜尋欄*/
+/*.search-container {*/
+  /*display: inline-block;*/
+/*}*/
+
+/*.search-container input[type=text] {*/
+  /*display: inline-block;*/
+  /*border: none;*/
+  /*color: #000000;*/
+  /*background-color: #FFF;*/
+  /*background-clip: content-box;*/
+  /*padding: 0;*/
+/*}*/

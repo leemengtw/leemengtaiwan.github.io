@@ -98,7 +98,16 @@
         <li class="current">
             <a href="../blog.html">Blog</a>
         </li>
+
     </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
 </nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
@@ -146,7 +155,32 @@
 
 
         <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
 
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <!---->
+    <!--<div id="toc-wrap">-->
+        <!--<i class="im im-menu" aria-hidden="true"></i>-->
+        <!---->
+        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="AWS Data Migration Service - 從 MongoDB 遷移到 Redshift">AWS Data Migration Service - 從 MongoDB 遷移到 Redshift</a><ul><li><a class="toc-href" href="#使用案例" title="使用案例">使用案例</a></li><li><a class="toc-href" href="#AWS-DMS-基本介紹" title="AWS DMS 基本介紹">AWS DMS 基本介紹</a></li><li><a class="toc-href" href="#基本遷移步驟" title="基本遷移步驟">基本遷移步驟</a></li><li><a class="toc-href" href="#建立-replication-instance" title="建立 replication instance">建立 replication instance</a></li><li><a class="toc-href" href="#確保-replication-instance-能連結到來源-/-目標資料庫" title="確保 replication instance 能連結到來源 / 目標資料庫">確保 replication instance 能連結到來源 / 目標資料庫</a><ul><li><a class="toc-href" href="#MongoDB-as-Source-Database" title="MongoDB as Source Database">MongoDB as Source Database</a><ul><li><a class="toc-href" href="#Metadata-mode" title="Metadata mode">Metadata mode</a></li><li><a class="toc-href" href="#Numbers-of-documents-to-scan" title="Numbers of documents to scan">Numbers of documents to scan</a></li></ul></li><li><a class="toc-href" href="#Redshift-as-Target-Database_1" title="Redshift as Target Database">Redshift as Target Database</a></li></ul></li><li><a class="toc-href" href="#定義-replication-task_1" title="定義 replication task">定義 replication task</a><ul><li><a class="toc-href" href="#Selection-Rules" title="Selection Rules">Selection Rules</a></li><li><a class="toc-href" href="#Transformation-Rules" title="Transformation Rules">Transformation Rules</a></li></ul></li><li><a class="toc-href" href="#Debugging_1" title="Debugging">Debugging</a></li></ul></li></ul></div>-->
+        <!---->
+    <!--</div>-->
+    <!---->
+
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemengtaiwan.github.io/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
             <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
@@ -668,6 +702,21 @@ var disqus_title = 'AWS Data Migration Service - 從 MongoDB 遷移到 Redshift'
     <script src="https://leemengtaiwan.github.io/theme/js/main.js"></script>
 
     <script type='text/javascript' src='https://leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
 
 </body>
 </html>

@@ -96,7 +96,16 @@
         <li class="current">
             <a href="../blog.html">Blog</a>
         </li>
+
     </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
 </nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
@@ -142,7 +151,32 @@
 
 
         <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
 
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <!---->
+    <!--<div id="toc-wrap">-->
+        <!--<i class="im im-menu" aria-hidden="true"></i>-->
+        <!---->
+        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學家為何需要了解資料工程">資料科學家為何需要了解資料工程</a><ul><li><a class="toc-href" href="#目錄" title="目錄">目錄</a></li><li><a class="toc-href" href="#資料科學家的一天" title="資料科學家的一天">資料科學家的一天</a><ul><li><a class="toc-href" href="#資料準備" title="資料準備">資料準備</a></li><li><a class="toc-href" href="#第一挑戰：資料量大增" title="第一挑戰：資料量大增">第一挑戰：資料量大增</a></li><li><a class="toc-href" href="#第二挑戰：非結構化資料" title="第二挑戰：非結構化資料">第二挑戰：非結構化資料</a></li></ul></li><li><a class="toc-href" href="#資料為本_1" title="資料為本">資料為本</a></li><li><a class="toc-href" href="#資料管道" title="資料管道">資料管道</a><ul><li><a class="toc-href" href="#一些關鍵技術" title="一些關鍵技術">一些關鍵技術</a></li></ul></li><li><a class="toc-href" href="#資料倉儲_1" title="資料倉儲">資料倉儲</a><ul><li><a class="toc-href" href="#一些關鍵技術_1" title="一些關鍵技術">一些關鍵技術</a></li></ul></li><li><a class="toc-href" href="#資料湖_1" title="資料湖">資料湖</a><ul><li><a class="toc-href" href="#一些關鍵技術_2" title="一些關鍵技術">一些關鍵技術</a></li></ul></li><li><a class="toc-href" href="#如何實際應用資料工程？_1" title="如何實際應用資料工程？">如何實際應用資料工程？</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>-->
+        <!---->
+    <!--</div>-->
+    <!---->
+
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemengtaiwan.github.io/why-you-need-to-learn-data-engineering-as-a-data-scientist.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
             <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
@@ -678,6 +712,21 @@ var disqus_title = '資料科學家為何需要了解資料工程';
     <script src="https://leemengtaiwan.github.io/theme/js/main.js"></script>
 
     <script type='text/javascript' src='https://leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
 
 </body>
 </html>

@@ -91,7 +91,16 @@
         <li class="current">
             <a href="../blog.html">Blog</a>
         </li>
+
     </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
 </nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
@@ -119,7 +128,20 @@
         </div> <!-- end page-header -->
 
         <div class="row blog-content" style="position: relative">
+<div id="left-navigation" style="display: block">
 
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <!---->
+
+</div>
             <div class="col-full blog-content__main">
                     <div class="article-in-tag-page">
                         <h2>
@@ -250,6 +272,7 @@ $(document).ready(function() {
          'newWindow': false,
          'wholeWords': false,
          'showURL': false,
+         'minimumLength': 2,
              'contentLocation': 'tipuesearch_content.json'
      });
 });

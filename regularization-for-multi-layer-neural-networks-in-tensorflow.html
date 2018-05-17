@@ -101,7 +101,16 @@
         <li class="current">
             <a href="../blog.html">Blog</a>
         </li>
+
     </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
 </nav>
         <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
@@ -150,7 +159,32 @@
 
 
         <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
 
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <!---->
+    <!--<div id="toc-wrap">-->
+        <!--<i class="im im-menu" aria-hidden="true"></i>-->
+        <!---->
+        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Regularization for Multi-layer Neural Networks in Tensorflow">Regularization for Multi-layer Neural Networks in Tensorflow</a><ul><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Load-NotMNIST-dataset" title="Load NotMNIST dataset">Load NotMNIST dataset</a></li><li><a class="toc-href" href="#Reformat-dataset" title="Reformat dataset">Reformat dataset</a><ul><li><a class="toc-href" href="#Using-Accuracy-as-Default-Metric" title="Using Accuracy as Default Metric">Using Accuracy as Default Metric</a></li></ul></li><li><a class="toc-href" href="#3-layer-NN-as-base-model_1" title="3-layer NN as base model">3-layer NN as base model</a><ul><li><a class="toc-href" href="#Hyper-parameters" title="Hyper parameters">Hyper parameters</a></li><li><a class="toc-href" href="#Build-model" title="Build model">Build model</a></li><li><a class="toc-href" href="#Train-model-without-regularization" title="Train model without regularization">Train model without regularization</a></li></ul></li><li><a class="toc-href" href="#L2-regularization_1" title="L2 regularization">L2 regularization</a></li><li><a class="toc-href" href="#Case-of-overfitting" title="Case of overfitting">Case of overfitting</a></li><li><a class="toc-href" href="#Dropout" title="Dropout">Dropout</a></li><li><a class="toc-href" href="#Boost-performance-by-using-Multi-layer-NN" title="Boost performance by using Multi-layer NN">Boost performance by using Multi-layer NN</a></li></ul></li></ul></div>-->
+        <!---->
+    <!--</div>-->
+    <!---->
+
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemengtaiwan.github.io/regularization-for-multi-layer-neural-networks-in-tensorflow.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
             <div class="col-full blog-content__main">
                 
 <div class="cell border-box-sizing text_cell rendered">
@@ -498,10 +532,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="de832517-d340-4eb1-8e2f-3ede7b9bcda1"></div>
+<div id="a9727007-7122-4d82-8e38-95e13e7489df"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#de832517-d340-4eb1-8e2f-3ede7b9bcda1');
+var element = $('#a9727007-7122-4d82-8e38-95e13e7489df');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -563,10 +597,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="d8f36966-e04e-448b-8dde-80fc87cc8d28"></div>
+<div id="c0aecfad-6508-420b-af63-0847a71738ba"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#d8f36966-e04e-448b-8dde-80fc87cc8d28');
+var element = $('#c0aecfad-6508-420b-af63-0847a71738ba');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -620,10 +654,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="d51ced2e-2c9e-46b2-b05a-9df12f301479"></div>
+<div id="a5eb814f-1449-489f-bdc6-512b50f39709"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#d51ced2e-2c9e-46b2-b05a-9df12f301479');
+var element = $('#a5eb814f-1449-489f-bdc6-512b50f39709');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -677,10 +711,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="5f5861fe-2c3e-4c25-9f9e-778e77fc2862"></div>
+<div id="1726a517-2cd3-43df-bc63-5138ec7a65bc"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#5f5861fe-2c3e-4c25-9f9e-778e77fc2862');
+var element = $('#1726a517-2cd3-43df-bc63-5138ec7a65bc');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -740,10 +774,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="6b09b61b-ba3f-4a54-88d9-d649e2d96fe1"></div>
+<div id="405e1af7-5c15-42e9-b250-cde7a466201b"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6b09b61b-ba3f-4a54-88d9-d649e2d96fe1');
+var element = $('#405e1af7-5c15-42e9-b250-cde7a466201b');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -925,6 +959,21 @@ var disqus_title = 'Regularization for Multi-layer Neural Networks in Tensorflow
     <script src="https://leemengtaiwan.github.io/theme/js/main.js"></script>
 
     <script type='text/javascript' src='https://leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
 
 </body>
 </html>
