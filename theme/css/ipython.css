@@ -182,3 +182,27 @@ div.article-in-tag-page a:hover {
   /*background-clip: content-box;*/
   /*padding: 0;*/
 /*}*/
+
+
+/*首頁 maillist 訂閱按鈕*/
+div.cta__action a {
+  color: #FFFFFF;
+}
+div.cta__content a:hover {
+  cursor: pointer;
+}
+
+/*文章內 maillist 訂閱*/
+#article-inner-subscribe a:hover {
+  cursor: pointer;
+}
+#article-inner-subscribe a {
+  color: #0D0A0B;
+}
+
+/*文章內顯示前後文章的 block*/
+#article-inner-neighbor-pages {
+  margin-top: 3.9rem;
+}
+
+

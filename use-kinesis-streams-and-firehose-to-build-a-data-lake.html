@@ -11,7 +11,7 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>利用 Kinesis 處理串流資料並建立資料湖</title>
+<title>LeeMeng - 利用 Kinesis 處理串流資料並建立資料湖</title>
     <!--- article-specific meta data
     ================================================== -->
         <meta name="description" content="資料湖的核心概念是將所有可用的資料全部整合在一個邏輯上相近的地方以供企業自由結合並做各式各樣的運用。資料湖可以用很多方式建立，這裏我們主要介紹如何利用 Amazon Kinesis 將串流資料 (streaming data) 載入資料湖。" />
@@ -593,7 +593,7 @@
 </div>
 
 
-                <!--Tags-->
+                <!-- Tags -->
                 <p class="blog-content__tags">
                     <span>Post Tags</span>
 
@@ -617,9 +617,34 @@
 
 
 
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <!--<div id="article-inner-subscribe" class="blog-content__pagenav">-->
+                    <!--<div class="blog-content__nav">-->
+                        <!--<div class="blog-content__prev">-->
+                            <!--<a class="open-popup" rel="subscribe">-->
+                                <!--<span>Get Latest Arrivals</span>-->
+                                <!--訂閱最新文章-->
+                            <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="blog-content__next">-->
+                            <!--<p>-->
+                                <!--跟資料科學相關的最新文章直接送到家。</br>-->
+                                <!--只要加入訂閱名單，當新文章出爐時，</br>-->
+                                <!--你將能馬上收到通知 <i class="im im-mail" aria-hidden="true"></i>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="blog-content__all">-->
+                        <!--<a class="open-popup btn btn&#45;&#45;primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!-- end Mail-list-subscribe -->
 
                 <!--Pagination-->
-                <div class="blog-content__pagenav">
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
                         <div class="blog-content__prev">
                             <a href="https://leemengtaiwan.github.io/data-visualization-from-matplotlib-to-ggplot2.html" rel="prev">
@@ -641,8 +666,12 @@
                         </a>
                     </div>
                 </div>
+                <!-- end Pagination-->
 
             </div><!-- end blog-content__main -->
+
+
+        </div>
         </div> <!-- end blog-content -->
 
     </article>
@@ -740,6 +769,23 @@ var disqus_title = '利用 Kinesis 處理串流資料並建立資料湖';
     });
     </script>
 
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
 
 </body>
 </html>

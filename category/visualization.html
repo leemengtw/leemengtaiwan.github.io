@@ -175,7 +175,7 @@
 
 <!-- about
 ================================================== -->
-<section id="about" class="s-about target-section">
+<section id="about" class="s-about target-section" style="padding-bottom: 1rem">
 
     <div class="row narrow section-intro has-bottom-sep">
         <div class="col-full text-center">
@@ -183,7 +183,7 @@
             <h1>More About Me</h1>
             <p class="lead">
                 資料科學家，現居東京。軟體工程出身，最近努力學習資料科學並加以應用。<br/>
-                假日在東京市區騎著腳踏車冒險、尋找美食。懶得動的時候就待在咖啡廳寫寫程式 <i class="im im-coffee" aria-hidden="true"></i><br/>
+                假日在東京市區騎著腳踏車冒險、尋找美食。懶得動時就待在咖啡廳寫寫程式 <i class="im im-coffee" aria-hidden="true"></i><br/>
             </p>
         </div>
     </div>
@@ -650,7 +650,7 @@
 
 <!-- blog
 ================================================== -->
-<section id="blog" class="s-blog target-section">
+<section id="blog" class="s-blog target-section" style="padding-top:14rem">
 
     <div class="row narrow section-intro has-bottom-sep">
         <div class="col-full">
@@ -704,30 +704,24 @@
 </section> <!-- end s-blog -->
 
 
-<!--&lt;!&ndash; s-cta-->
-<!--================================================== &ndash;&gt;-->
+<!-- s-cta
+================================================== -->
 <!--<section class="s-cta">-->
-
     <!--<div class="row narrow cta">-->
-
         <!--<div class="col-full cta__content">-->
+        <!--<h2 class="h01"><a class="open-popup">訂閱最新文章</a></h2>-->
 
-            <!--<h2 class="h01"><a href="http://www.dreamhost.com/r.cgi?287326|STYLESHOUT">Styleshout Recommends Dreamhost.</a></h2>-->
-
-            <!--<p class="lead">-->
-            <!--Looking for an awesome and reliable webhosting? Try <a href="http://www.dreamhost.com/r.cgi?287326|STYLESHOUT">DreamHost</a>.-->
-            <!--Get <span>$50 off</span> when you sign up with the promocode <span>styleshout</span>.-->
-            <!--</p>-->
-
-            <!--<div class="cta__action">-->
-                <!--<a class="btn btn&#45;&#45;primary btn&#45;&#45;large" href="http://www.dreamhost.com/r.cgi?287326|STYLESHOUT">Sign Up Now</a>-->
-            <!--</div>-->
-
+        <!--<p class="lead">-->
+            <!--跟資料科學相關的最新文章直接送到家。<br>-->
+            <!--只要加入訂閱名單，當新文章出爐時，</br>-->
+            <!--你將能馬上收到通知 <i class="im im-mail" aria-hidden="true"></i>-->
+        <!--</p>-->
+        <!--<div class="cta__action">-->
+            <!--<a class="open-popup btn btn&#45;&#45;primary btn&#45;&#45;large" style="color: #FFFFFF">Subscribe</a>-->
         <!--</div>-->
-
     <!--</div> &lt;!&ndash; end cta &ndash;&gt;-->
 
-<!--</section>-->
+<!--</div></section>-->
 
 
 <!--&lt;!&ndash; s-stats-->
@@ -946,8 +940,27 @@
 
 <script>
     $(document).ready(function() {
-        $('#home').css('background-position', '100% center');
+        $('#home').css('background-position', '80% center');
     });
+</script>
+
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
 </script>
 
 </body>

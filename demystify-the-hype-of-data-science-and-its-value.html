@@ -11,7 +11,7 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>揭開資料科學的神秘面紗</title>
+<title>LeeMeng - 揭開資料科學的神秘面紗</title>
     <!--- article-specific meta data
     ================================================== -->
         <meta name="description" content="市面上有大量資料科學相關課程、書籍供我們自由學習，但你有想過為何我們需要學習資料科學嗎？為什麼資料科學現在那麼夯？我們應該拿資料科學來做什麼？抽離技術實作或者分析手法的討論，這篇文章試著用簡單的經濟學解釋其背後原因。希望閱讀完本文的讀者能了解為何資料科學在資訊時代扮演重要角色，以及我們要怎麼有效率地把握「資料科學力」以創造更大的價值。" />
@@ -746,7 +746,7 @@
 </div>
 
 
-                <!--Tags-->
+                <!-- Tags -->
                 <p class="blog-content__tags">
                     <span>Post Tags</span>
 
@@ -760,9 +760,34 @@
 
 
 
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <!--<div id="article-inner-subscribe" class="blog-content__pagenav">-->
+                    <!--<div class="blog-content__nav">-->
+                        <!--<div class="blog-content__prev">-->
+                            <!--<a class="open-popup" rel="subscribe">-->
+                                <!--<span>Get Latest Arrivals</span>-->
+                                <!--訂閱最新文章-->
+                            <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="blog-content__next">-->
+                            <!--<p>-->
+                                <!--跟資料科學相關的最新文章直接送到家。</br>-->
+                                <!--只要加入訂閱名單，當新文章出爐時，</br>-->
+                                <!--你將能馬上收到通知 <i class="im im-mail" aria-hidden="true"></i>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="blog-content__all">-->
+                        <!--<a class="open-popup btn btn&#45;&#45;primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!-- end Mail-list-subscribe -->
 
                 <!--Pagination-->
-                <div class="blog-content__pagenav">
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
                         <div class="blog-content__prev">
                             <a href="https://leemengtaiwan.github.io/intuitive-understandind-of-bayes-rules-and-learn-from-experience.html" rel="prev">
@@ -784,8 +809,12 @@
                         </a>
                     </div>
                 </div>
+                <!-- end Pagination-->
 
             </div><!-- end blog-content__main -->
+
+
+        </div>
         </div> <!-- end blog-content -->
 
     </article>
@@ -883,6 +912,23 @@ var disqus_title = '揭開資料科學的神秘面紗';
     });
     </script>
 
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
 
 </body>
 </html>

@@ -11,7 +11,7 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>SQLite 筆記</title>
+<title>LeeMeng - SQLite 筆記</title>
     <!--- article-specific meta data
     ================================================== -->
         <meta name="description" content="這篇主要紀錄使用 SQLite shell 下 SQL Query 的指令。" />
@@ -282,7 +282,7 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
 </div>
 
 
-                <!--Tags-->
+                <!-- Tags -->
                 <p class="blog-content__tags">
                     <span>Post Tags</span>
 
@@ -319,9 +319,34 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
 
 
 
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <!--<div id="article-inner-subscribe" class="blog-content__pagenav">-->
+                    <!--<div class="blog-content__nav">-->
+                        <!--<div class="blog-content__prev">-->
+                            <!--<a class="open-popup" rel="subscribe">-->
+                                <!--<span>Get Latest Arrivals</span>-->
+                                <!--訂閱最新文章-->
+                            <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="blog-content__next">-->
+                            <!--<p>-->
+                                <!--跟資料科學相關的最新文章直接送到家。</br>-->
+                                <!--只要加入訂閱名單，當新文章出爐時，</br>-->
+                                <!--你將能馬上收到通知 <i class="im im-mail" aria-hidden="true"></i>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="blog-content__all">-->
+                        <!--<a class="open-popup btn btn&#45;&#45;primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!-- end Mail-list-subscribe -->
 
                 <!--Pagination-->
-                <div class="blog-content__pagenav">
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
                         <div class="blog-content__prev">
                             <a href="https://leemengtaiwan.github.io/seaborn-cheat-sheet.html" rel="prev">
@@ -343,8 +368,12 @@ INSERT INTO Departments(Code,Name,Budget) VALUES(14,'IT',65000);
                         </a>
                     </div>
                 </div>
+                <!-- end Pagination-->
 
             </div><!-- end blog-content__main -->
+
+
+        </div>
         </div> <!-- end blog-content -->
 
     </article>
@@ -442,6 +471,23 @@ var disqus_title = 'SQLite 筆記';
     });
     </script>
 
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
 
 </body>
 </html>

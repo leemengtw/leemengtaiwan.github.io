@@ -11,7 +11,7 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title>
+<title>LeeMeng - Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title>
     <!--- article-specific meta data
     ================================================== -->
         <meta name="description" content="The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers." />
@@ -532,10 +532,10 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 </div>
 <div class="output_area">
-<div id="0d676544-aa52-413c-9877-9b85da1efb8d"></div>
+<div id="ef45a3cf-53ee-47fb-98be-476dc93574eb"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#0d676544-aa52-413c-9877-9b85da1efb8d');
+var element = $('#ef45a3cf-53ee-47fb-98be-476dc93574eb');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -684,10 +684,10 @@ Test acc: 82.8%
 </div>
 </div>
 <div class="output_area">
-<div id="ae26dc1c-f3ed-4306-bdf4-7964a1e7fd29"></div>
+<div id="325061b3-6926-41b4-bd8b-37bc51830927"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#ae26dc1c-f3ed-4306-bdf4-7964a1e7fd29');
+var element = $('#325061b3-6926-41b4-bd8b-37bc51830927');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -845,10 +845,10 @@ Test acc: 86.9%
 </div>
 </div>
 <div class="output_area">
-<div id="de54e276-187c-4e26-a5bd-6db43b76826d"></div>
+<div id="829d7abc-7741-46f2-bb68-0d6a58689766"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#de54e276-187c-4e26-a5bd-6db43b76826d');
+var element = $('#829d7abc-7741-46f2-bb68-0d6a58689766');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
@@ -881,7 +881,7 @@ Test acc: 88.7%
 </div>
 
 
-                <!--Tags-->
+                <!-- Tags -->
                 <p class="blog-content__tags">
                     <span>Post Tags</span>
 
@@ -937,9 +937,34 @@ Test acc: 88.7%
 
 
 
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <!--<div id="article-inner-subscribe" class="blog-content__pagenav">-->
+                    <!--<div class="blog-content__nav">-->
+                        <!--<div class="blog-content__prev">-->
+                            <!--<a class="open-popup" rel="subscribe">-->
+                                <!--<span>Get Latest Arrivals</span>-->
+                                <!--訂閱最新文章-->
+                            <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="blog-content__next">-->
+                            <!--<p>-->
+                                <!--跟資料科學相關的最新文章直接送到家。</br>-->
+                                <!--只要加入訂閱名單，當新文章出爐時，</br>-->
+                                <!--你將能馬上收到通知 <i class="im im-mail" aria-hidden="true"></i>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="blog-content__all">-->
+                        <!--<a class="open-popup btn btn&#45;&#45;primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!-- end Mail-list-subscribe -->
 
                 <!--Pagination-->
-                <div class="blog-content__pagenav">
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
                         <div class="blog-content__prev">
                             <a href="https://leemengtaiwan.github.io/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="prev">
@@ -961,8 +986,12 @@ Test acc: 88.7%
                         </a>
                     </div>
                 </div>
+                <!-- end Pagination-->
 
             </div><!-- end blog-content__main -->
+
+
+        </div>
         </div> <!-- end blog-content -->
 
     </article>
@@ -1060,6 +1089,23 @@ var disqus_title = 'Using TensorFlow to Train a Shallow NN with Stochastic Gradi
     });
     </script>
 
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
 
 </body>
 </html>
