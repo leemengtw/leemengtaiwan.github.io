@@ -48,6 +48,9 @@ DATE_FORMATS = {
 
 
 # Feed generation is usually not desired when developing
+FEED_DOMAIN = SITEURL
+FEED_ALL_RSS = 'feeds/all.rss.xml'
+
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
@@ -78,7 +81,8 @@ MAIL = 'mailto:b9875001@gmail.com'
 # enable Pelican to use plugins for additional features
 MARKUP = ('md', 'ipynb')
 PLUGIN_PATHS = ['/Users/leemeng/reproduce-test/pelican-plugins']
-PLUGINS = ['pelican-ipynb.markup', 'sitemap', 'pelican-toc', 'tipue_search']
+# PLUGINS = ['pelican-ipynb.markup', 'sitemap', 'pelican-toc', 'share_post', 'tipue_search']
+PLUGINS = ['pelican-ipynb.markup', 'sitemap', 'pelican-toc', 'share_post']
 IGNORE_FILES = ['.ipynb_checkpoints']
 
 

@@ -13,8 +13,16 @@ from pelicanconf import *
 SITEURL = 'https://leemengtaiwan.github.io'
 RELATIVE_URLS = False
 
+# Parse content and save as JSON for searching
+PLUGINS += ['tipue_search']
+PLUGINS = list(set(PLUGINS))
+
+
+# Feeds
+FEED_DOMAIN = SITEURL
+FEED_ALL_RSS = 'feeds/all.rss.xml'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
-CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
+# CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
 
