@@ -96,3 +96,17 @@ Metadata template for Notebooks
 "Image": "image name in theme/images/background/ folder",
 "Image_credit_url": "",
 ```
+
+Meta Cell template
+
+```markdown
+- author: Lee Meng
+- date: 2018-07-01 12:00
+- title: New Post
+- slug: just-a-test-url
+- tags: 機器學習, R
+- description: This is a description
+- summary: This is a summary
+- image: andy-kelly-402111-unsplash.jpg
+- image_credit_url: https://www.google.com
+```

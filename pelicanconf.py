@@ -80,11 +80,11 @@ MAIL = 'mailto:b9875001@gmail.com'
 
 # enable Pelican to use plugins for additional features
 MARKUP = ('md', 'ipynb')
-PLUGIN_PATHS = ['/Users/leemeng/reproduce-test/pelican-plugins']
+PLUGIN_PATHS = ['/Users/meng.lee/git/blog/pelican-plugins']
 # PLUGINS = ['pelican-ipynb.markup', 'sitemap', 'pelican-toc', 'share_post', 'tipue_search']
 PLUGINS = ['pelican-ipynb.markup', 'sitemap', 'pelican-toc', 'share_post']
 IGNORE_FILES = ['.ipynb_checkpoints']
-
+IPYNB_USE_METACELL = True
 
 TOC = {
     'TOC_HEADERS'       : '^h[1-6]', # What headers should be included in
@@ -160,7 +160,9 @@ DEFAULT_CATEGORY = 'Miscellaneous'
 
 
 # Pelican default theme for dev
-# THEME = "/Users/leemeng/Documents/Code/pelican-jupyter-notebook/themes/pelican-default"
-THEME = "/Users/leemeng/Documents/Code/pelican-jupyter-notebook/themes/Hola10"
+THEME = "/Users/meng.lee/git/blog/pelican-jupyter-notebook/themes/Hola10"
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search']
 PAGINATED_DIRECT_TEMPLATES = ['index', 'blog']
+
+# Copy notebook for downloading
+IPYNB_NB_OUTPUT = True
