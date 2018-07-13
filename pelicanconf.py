@@ -165,4 +165,14 @@ DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog'
 PAGINATED_DIRECT_TEMPLATES = ['index', 'blog']
 
 # Copy notebook for downloading
-IPYNB_NB_OUTPUT = True
+IPYNB_NB_OUTPUT = False
+
+
+# Google Page View Plugin setting
+# Reference: https://github.com/jhshi/pelican.plugins.ga_page_view
+GOOGLE_SERVICE_ACCOUNT = 'blog-usage@blog-usage.iam.gserviceaccount.com'
+GOOGLE_KEY_FILE = './Blog-usage-0799d847dd8f.p12'
+GA_START_DATE = '2018-01-01'
+GA_END_DATE = 'today'
+GA_METRIC = 'ga:pageviews'
+POPULAR_POST_START = 'A month ago'

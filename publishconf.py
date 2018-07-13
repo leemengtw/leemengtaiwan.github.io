@@ -14,7 +14,7 @@ SITEURL = 'https://leemengtaiwan.github.io'
 RELATIVE_URLS = False
 
 # Parse content and save as JSON for searching
-PLUGINS += ['tipue_search']
+PLUGINS += ['tipue_search', 'ga_page_view']
 PLUGINS = list(set(PLUGINS))
 
 
