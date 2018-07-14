@@ -1,177 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>LeeMeng</title><link>https://leemengtaiwan.github.io/</link><description></description><lastBuildDate>Sat, 07 Jul 2018 20:30:00 +0900</lastBuildDate><item><title>資料科學家 L 的奇幻旅程(1)：新人不得不問的 2 個問題</title><link>https://leemengtaiwan.github.io/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html</link><description>&lt;p&gt;為了讓有志成為資料科學家，或是單純想要了解的讀者們能理解資料科學是如何實際被企業應用，以及讓自己多一點反思的機會，趁著最近開始在 SmartNews 的新工作，我打算開始紀錄自己平常的工作內容以及一些經驗分享。作為系列文的第一篇文章，我們將探討一個資料科學家在進入新公司熟悉環境的時候，除了問該裝什麼工具以外，可以問的兩個重要問題。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Sat, 07 Jul 2018 20:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-07-07:/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html</guid><category>資料科學</category><category>data-science</category><category>日誌</category></item><item><title>從彼此學習 - 淺談機器學習以及人類學習</title><link>https://leemengtaiwan.github.io/some-thought-on-learning-from-machine-learning.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;說到近年最熱門的機器學習（Machine Learning）或者人工智慧（Artificial Intelligence），因為知識背景以及觀點的不同，幾乎每個人都有不一樣的見解。雖然我們有千百種定義、無數的專業術語，這篇文章希望用直觀的方式以及具體的例子，讓讀者能夠在跳入一大堆 ML 的教學文章以及線上課程之前，能以一個更高層次且人性化的角度理解機器學習，並進而思考要如何開啟自己的機器學習旅程。&lt;/p&gt;
-&lt;p&gt;不僅如此，你將發現機器學習並不是冷冰冰的科學，隨處可見人類的巧思；就算不是資料科學家，你也能從『機器學習』獲得啟發，將一些概念用在改善『自己的學習』。&lt;/p&gt;
-&lt;p&gt;讓我們開始吧！&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="目錄"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Sat, 16 Jun 2018 17:20:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-06-16:/some-thought-on-learning-from-machine-learning.html</guid><category>機器學習</category></item><item><title>從經驗中學習 - 直觀理解貝氏定理及其應用</title><link>https://leemengtaiwan.github.io/intuitive-understandind-of-bayes-rules-and-learn-from-experience.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;a href="https://zh.wikipedia.org/wiki/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86"&gt;貝氏定理（Bayes' theorem）&lt;/a&gt;是機率論中，一個概念簡單卻非常強大的定理。有了機率論的存在，人們才能理性且合理地評估未知事物發生的可能性（例：今天的下雨機率有多少？我中樂透的可能性有多高？），並透過貝氏定理搭配經驗法則來不斷地改善目前的認知，協助我們做更好的決策。&lt;/p&gt;
-&lt;p&gt;英國數學家&lt;a href="https://zh.wikipedia.org/wiki/%E5%93%88%E7%BD%97%E5%BE%B7%C2%B7%E6%9D%B0%E5%BC%97%E9%87%8C%E6%96%AF"&gt;哈羅德·傑弗里斯&lt;/a&gt;甚至&lt;a href="https://en.wikipedia.org/wiki/Bayes%27_theorem#cite_note-1"&gt;說過&lt;/a&gt;：&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Fri, 25 May 2018 15:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-05-25:/intuitive-understandind-of-bayes-rules-and-learn-from-experience.html</guid><category>貝氏定理</category><category>機率</category><category>機器學習</category></item><item><title>揭開資料科學的神秘面紗</title><link>https://leemengtaiwan.github.io/demystify-the-hype-of-data-science-and-its-value.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;幾乎每天我們都能看到跟資料科學（Data Science）相關的新聞與文章，像是最近 &lt;a href="https://www.bnext.com.tw/article/49070/google-ai-phone-call-assistant-duplex-ethical-social-implications"&gt;Google 利用遞迴神經網路建立可以跟真人對話而不被發現的語音助理&lt;/a&gt;、 &lt;a href="https://www.inside.com.tw/2018/04/24/data-scientist-interview"&gt;成為 Apple 等公司的資料科學家前必讀的面試題目&lt;/a&gt;等等。&lt;/p&gt;
-&lt;p&gt;市面上有大量資料科學相關課程、書籍供我們自由學習，事實上，多到一個人不可能看完。你有想過為何我們需要學習資料科學嗎？為什麼資料科學現在那麼夯？我們應該拿資料科學來做什麼？&lt;/p&gt;
-&lt;p&gt;抽離技術實作或者分析手法的討論，這篇文章試著用簡單的經濟學原理回答這幾個問題。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;希望閱讀完本文的讀者能了解為何資料科學在資訊時代扮演重要角色，以及我們要怎麼有效率地把握「資料科學力」以創造更大的價值。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="目錄"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Fri, 11 May 2018 21:10:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-05-11:/demystify-the-hype-of-data-science-and-its-value.html</guid><category>data-science</category></item><item><title>為何資料科學家需要學習 SQL</title><link>https://leemengtaiwan.github.io/why-you-need-to-learn-sql-as-a-data-scientist.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;這篇簡單討論&lt;a href="https://zh.wikipedia.org/wiki/SQL"&gt;結構化查詢語言（SQL）&lt;/a&gt;在概念上跟命令式程式語言如 Python 有什麼不同之處，以及在什麼樣的情況下我們會想要利用 SQL 做資料分析。&lt;/p&gt;
-&lt;p&gt;這篇注重在為何你會想要使用 SQL 做資料分析，而非 SQL 本身功能的教學。如果要學習 SQL 本身，可以參考最後面的&lt;a href="#推薦閱讀"&gt;推薦閱讀&lt;/a&gt;。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="使用-SQL-與數據對話"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Mon, 30 Apr 2018 23:50:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-04-30:/why-you-need-to-learn-sql-as-a-data-scientist.html</guid><category>SQL</category><category>data-science</category></item><item><title>資料科學家為何需要了解資料工程</title><link>https://leemengtaiwan.github.io/why-you-need-to-learn-data-engineering-as-a-data-scientist.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;透過描述資料科學家的一天日常，本文將簡單介紹資料工程（Data Engineering）的概念、其如何跟資料科學相關。以及最重要的，作為一個資料科學家（Data Scientist）應該如何學習並善用這些知識來創造最大價值。&lt;/p&gt;
-&lt;p&gt;身為一個資料科學家，擁有資料工程的知識可以提升工作效率，點亮你的方向並加速專案前進。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="目錄"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Mon, 23 Apr 2018 22:55:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-04-23:/why-you-need-to-learn-data-engineering-as-a-data-scientist.html</guid><category>data-science</category><category>data engineering</category></item><item><title>淺談資料視覺化以及 ggplot2 實踐</title><link>https://leemengtaiwan.github.io/data-visualization-from-matplotlib-to-ggplot2.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;這篇主要描述自己以往在利用 Python 做資料視覺化 (data visualization) 時常犯的思維瑕疵，而該思維如何在接觸 R 的 &lt;a href="http://ggplot2.org/"&gt;ggplot2&lt;/a&gt; 以後得到改善。&lt;/p&gt;
-&lt;p&gt;本文會試著說明資料視覺化的本質為何，以及在設計視覺化時，概念上應該包含什麼要素以及步驟。最後展示如何透過 ggplot2 活用前述的概念，來實際做資料視覺化。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="目錄"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Sat, 14 Apr 2018 15:10:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-04-14:/data-visualization-from-matplotlib-to-ggplot2.html</guid><category>R</category><category>visualization</category><category>ggplot2</category></item><item><title>利用 Kinesis 處理串流資料並建立資料湖</title><link>https://leemengtaiwan.github.io/use-kinesis-streams-and-firehose-to-build-a-data-lake.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;所謂的&lt;a href="https://en.wikipedia.org/wiki/Data_lake"&gt;資料湖 (data lake) &lt;/a&gt; 指的是一企業裡頭所有形式的資料的集合。這些資料包含原始資料 (raw data)，以及經過轉換的衍生資料 (derived data)。&lt;/p&gt;
-&lt;p&gt;資料湖的核心概念是將所有可用的資料全部整合在一個邏輯上相近的地方以供企業自由結合並做各式各樣的運用。資料湖可以用很多方式建立，這裏我們主要介紹如何利用 &lt;a href="https://aws.amazon.com/tw/kinesis/"&gt;Amazon Kinesis&lt;/a&gt; 將串流資料 (streaming data) 載入資料湖。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="概觀"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Wed, 04 Apr 2018 21:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-04-04:/use-kinesis-streams-and-firehose-to-build-a-data-lake.html</guid><category>python</category><category>aws</category><category>kinesis</category></item><item><title>AWS Data Migration Service - 從 MongoDB 遷移到 Redshift</title><link>https://leemengtaiwan.github.io/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;同樣一份資料因應不同的使用案例，可能需要使用不同的存取方式。而針對這些不同的存取方式，我們通常需要選擇最適合的資料庫來最佳化使用者體驗。&lt;/p&gt;
-&lt;p&gt;這篇文章將簡單介紹如何使用 &lt;a href="https://aws.amazon.com/tw/dms/"&gt;AWS Database Migration Service&lt;/a&gt; (以下簡稱 AWS DMS )來快速地達到我們的目標：將 MongoDB 資料遷移到 Redshift 上。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="使用案例"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Tue, 27 Mar 2018 18:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-03-27:/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html</guid><category>aws</category><category>database</category><category>mongodb</category><category>redshift</category></item><item><title>Designing Data-Intensive Applications (1) - 序言</title><link>https://leemengtaiwan.github.io/designing-data-intensive-applications-1-preface.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;最近在拜讀 &lt;a href="http://martin.kleppmann.com/"&gt;Martin Kleppmann&lt;/a&gt; 的 &lt;a href="https://dataintensive.net/"&gt;Designing Data-Intensive Applications&lt;/a&gt;，
-覺得受益匪淺，且我也相信透過 
-&lt;a href="http://blog.xxc.idv.tw/km/%E8%B2%BB%E6%9B%BC%E7%9A%84%E5%AD%B8%E7%BF%92%E6%8A%80%E5%B7%A7-the-feynman-technique.html"&gt;Feynman Technique&lt;/a&gt; 
-將學到的東西用最淺顯易懂的方式表達能幫助自己內化這些知識，遂嘗試把閱讀後的心得記錄在此。&lt;/p&gt;
-&lt;p&gt;另外在提到書內內容時都會盡量使用英文原文，不另做名詞的翻譯，以方便對照書內內容。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="何謂-data-intensive-applications"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Sat, 24 Mar 2018 15:33:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-03-24:/designing-data-intensive-applications-1-preface.html</guid><category>Software Engineering</category><category>data</category></item><item><title>Google Data Studio 基礎</title><link>https://leemengtaiwan.github.io/google-data-studio-basics.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;a href="https://cloud.google.com/data-studio/"&gt;Google Data Studio&lt;/a&gt; 是 Google 推出的一個 Dashboard / Reporting 的服務，讓我們可以利用多種&lt;a href="https://support.google.com/datastudio/answer/7530149?hl=en&amp;amp;ref_topic=6370347"&gt;連結器&lt;/a&gt;將儲存在如 Google Analytics、 Google 試算表及 Google BigQuery 等特定資料來源的資料做出漂亮的 visualization ，用資料講故事而不用自己設計 UI。公司內部雖然有自己的 dashboards 不過想說多試一些方案沒有壞處，而且現在 Data Studio 還是 Beta 版本，雖然介面是中文，說明文件還只有英文，想說把學到的一些技巧以及使用心得記錄下來。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="將-Google-試算表的資料可視化"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Tue, 13 Mar 2018 16:34:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-03-13:/google-data-studio-basics.html</guid><category>google</category><category>data science</category><category>visualization</category></item><item><title>Pelican 實戰手冊(主題篇)</title><link>https://leemengtaiwan.github.io/build-a-pelican-powered-blog-like-a-pro.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;有些人可能已經注意到這個 blog 是用 &lt;a href="https://github.com/getpelican/pelican"&gt;Pelican&lt;/a&gt; 所寫成並且 host 在 &lt;a href="https://github.com/leemengtaiwan/leemengtaiwan.github.io"&gt;Github&lt;/a&gt; 上。這篇主要紀錄如何使用 &lt;a href="http://jinja.pocoo.org/docs/2.10/"&gt;Jinja2&lt;/a&gt; 自訂主題。&lt;/p&gt;
-&lt;p&gt;Pelican 是一個用 Python 寫的靜態網頁生成器, 可以幫我們把 reStructedText, Markdown file 甚至 &lt;a href="http://jupyter.org/"&gt;Jupyer notebook&lt;/a&gt; 轉成靜態的 HTML 檔案。 靜態網頁的好處就是我們不需要一個 web server 或者是資料庫來管理內容, 可以把 HTML 檔案 host 在想要的地方，比方說 &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt;。用 Pelican 官網一句來介紹的話就是：&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Mon, 05 Mar 2018 15:00:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-03-05:/build-a-pelican-powered-blog-like-a-pro.html</guid><category>python</category><category>pelican</category><category>jinja2</category></item><item><title>BeautifulSoup 筆記</title><link>https://leemengtaiwan.github.io/beautifulsoup-cheat-sheet.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Beautifulsoup 是一個可以幫助我們 parse HTML 的 lib, 這篇主要紀錄使用 beautifulsoup 時常用的指令。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Fri, 02 Mar 2018 15:34:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-03-02:/beautifulsoup-cheat-sheet.html</guid><category>python</category><category>beautifulsoup</category><category>html</category></item><item><title>Seaborn 筆記</title><link>https://leemengtaiwan.github.io/seaborn-cheat-sheet.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;這篇記錄我在使用 &lt;a href="https://seaborn.pydata.org/"&gt;seaborn&lt;/a&gt; 做資料分析還有 visualization 時常用的 code.
-一般慣例會把 seaborn 更名成 &lt;code&gt;sns&lt;/code&gt; for reference.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Fri, 02 Mar 2018 00:10:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-03-02:/seaborn-cheat-sheet.html</guid><category>python</category><category>seaborn</category></item><item><title>SQLite 筆記</title><link>https://leemengtaiwan.github.io/sqlite-note.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h1 id="Table-of-Contents"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Fri, 23 Feb 2018 22:00:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-02-23:/sqlite-note.html</guid><category>SQL</category><category>SQLite</category></item><item><title>Find Word Semantic by Using Word2vec in TensorFlow</title><link>https://leemengtaiwan.github.io/find-word-semantic-by-using-word2vec-in-tensorflow.html</link><description>
+<rss version="2.0"><channel><title>LeeMeng</title><link>https://leemengtaiwan.github.io/</link><description></description><lastBuildDate>Sat, 07 Jul 2018 20:30:00 +0900</lastBuildDate><item><title>資料科學家 L 的奇幻旅程(1)：新人不得不問的 2 個問題</title><link>https://leemengtaiwan.github.io/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html</link><description>&lt;p&gt;為了讓有志成為資料科學家，或是單純想要了解的讀者們能理解資料科學是如何實際被企業應用，以及讓自己多一點反思的機會，趁著最近開始在 SmartNews 的新工作，我打算開始紀錄自己平常的工作內容以及一些經驗分享。作為系列文的第一篇文章，我們將探討一個資料科學家在進入新公司熟悉環境的時候，除了問該裝什麼工具以外，可以問的兩個重要問題。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Sat, 07 Jul 2018 20:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-07-07:/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html</guid><category>資料科學</category><category>data-science</category><category>日誌</category></item><item><title>從彼此學習 - 淺談機器學習以及人類學習</title><link>https://leemengtaiwan.github.io/some-thought-on-learning-from-machine-learning.html</link><description>&lt;p&gt;說到近年最熱門的機器學習或者人工智慧，因為知識背景以及觀點的不同，幾乎每個人都有不一樣的見解。雖然我們有千百種定義、無數的專業術語，這篇文章希望用直觀的方式以及具體的例子，讓讀者能夠在跳入一大堆 ML 的教學文章以及線上課程之前，能以一個更高層次且人性化的角度理解機器學習，並進而思考要如何開啟自己的機器學習旅程。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Sat, 16 Jun 2018 17:20:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-06-16:/some-thought-on-learning-from-machine-learning.html</guid><category>機器學習</category><category>machine learning</category></item><item><title>從經驗中學習 - 直觀理解貝氏定理及其應用</title><link>https://leemengtaiwan.github.io/intuitive-understandind-of-bayes-rules-and-learn-from-experience.html</link><description>&lt;p&gt;貝氏定理（Bayes' theorem）是機率論中，一個概念簡單卻非常強大的定理。有了機率論的存在，人們才能理性且合理地評估未知事物發生的可能性（例：今天的下雨機率有多少？我中樂透的可能性有多高？），並透過貝氏定理搭配經驗法則來不斷地改善目前的認知，協助我們做更好的決策。這篇將利用生活上我們（或人工智慧）常需要考慮的事情當作引子，如今天的下雨機率是多少？來直觀地了解貝氏定理是怎麼被應用在各式各樣的地方。我們甚至可以效仿貝氏定理的精神，讓自己能更理性地評估未知並從經驗中學習。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Fri, 25 May 2018 15:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-05-25:/intuitive-understandind-of-bayes-rules-and-learn-from-experience.html</guid><category>貝氏定理</category><category>機率</category><category>機器學習</category></item><item><title>揭開資料科學的神秘面紗</title><link>https://leemengtaiwan.github.io/demystify-the-hype-of-data-science-and-its-value.html</link><description>&lt;p&gt;市面上有大量資料科學相關課程、書籍供我們自由學習，但你有想過為何我們需要學習資料科學嗎？為什麼資料科學現在那麼夯？我們應該拿資料科學來做什麼？抽離技術實作或者分析手法的討論，這篇文章試著用簡單的經濟學解釋其背後原因。希望閱讀完本文的讀者能了解為何資料科學在資訊時代扮演重要角色，以及我們要怎麼有效率地把握「資料科學力」以創造更大的價值。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Fri, 11 May 2018 21:10:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-05-11:/demystify-the-hype-of-data-science-and-its-value.html</guid><category>資料科學</category><category>data-science</category></item><item><title>為何資料科學家需要學習 SQL</title><link>https://leemengtaiwan.github.io/why-you-need-to-learn-sql-as-a-data-scientist.html</link><description>&lt;p&gt;這篇將簡單討論資料科學家必備的能力之一：結構化查詢語言（SQL）在概念上跟命令式程式語言如 Python 有什麼不同之處，以及在什麼樣的情況下我們會想要利用 SQL 做資料分析。這篇注重在為何你會想要使用 SQL 做資料分析，而非 SQL 本身功能的教學。如果要學習 SQL 本身，可以參考本文最後面的推薦閱讀。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Mon, 30 Apr 2018 23:50:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-04-30:/why-you-need-to-learn-sql-as-a-data-scientist.html</guid><category>資料科學</category><category>SQL</category><category>data-science</category></item><item><title>資料科學家為何需要了解資料工程</title><link>https://leemengtaiwan.github.io/why-you-need-to-learn-data-engineering-as-a-data-scientist.html</link><description>&lt;p&gt;透過描述資料科學家的一天日常，本文將簡單介紹資料工程（Data Engineering）的概念、其如何跟資料科學相關。以及最重要的，作為一個資料科學家應該如何學習並善用這些知識來創造最大價值。身為一個資料科學家，擁有資料工程的知識可以提升工作效率，點亮你的方向並加速專案前進。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Mon, 23 Apr 2018 22:55:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-04-23:/why-you-need-to-learn-data-engineering-as-a-data-scientist.html</guid><category>資料科學</category><category>資料工程</category><category>data-science</category><category>data engineering</category></item><item><title>淺談資料視覺化以及 ggplot2 實踐</title><link>https://leemengtaiwan.github.io/data-visualization-from-matplotlib-to-ggplot2.html</link><description>&lt;p&gt;這篇主要描述自己以往在利用 Python 做資料視覺化時常犯的思維瑕疵，而該思維如何在接觸 R 的 ggplot2 以後得到改善。本文會試著說明資料視覺化的本質為何，以及在設計視覺化時，概念上應該包含什麼要素以及步驟。最後展示如何透過 ggplot2 活用前述的概念，來實際做資料視覺化。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Sat, 14 Apr 2018 15:10:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-04-14:/data-visualization-from-matplotlib-to-ggplot2.html</guid><category>R</category><category>visualization</category><category>ggplot2</category><category>資料視覺化</category></item><item><title>利用 Kinesis 處理串流資料並建立資料湖</title><link>https://leemengtaiwan.github.io/use-kinesis-streams-and-firehose-to-build-a-data-lake.html</link><description>&lt;p&gt;所謂的資料湖指的是一企業裡頭所有形式的資料的集合。這些資料包含原始資料，以及經過轉換的衍生資料。資料湖的核心概念是將所有可用的資料全部整合在一個邏輯上相近的地方以供企業自由結合並做各式各樣的運用。資料湖可以用很多方式建立，這裏我們主要介紹如何利用 Amazon Kinesis 將串流資料載入資料湖。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Wed, 04 Apr 2018 21:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-04-04:/use-kinesis-streams-and-firehose-to-build-a-data-lake.html</guid><category>資料工程</category><category>python</category><category>aws</category><category>kinesis</category></item><item><title>AWS Data Migration Service - 從 MongoDB 遷移到 Redshift</title><link>https://leemengtaiwan.github.io/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html</link><description>&lt;p&gt;同樣一份資料因應不同的使用案例，可能需要使用不同的存取方式。而針對這些不同的存取方式，我們通常需要選擇最適合的資料庫來最佳化使用者體驗。這篇文章將簡單介紹如何使用 AWS Database Migration Service來快速地達到我們的目標：將 MongoDB 資料遷移到 Redshift 上。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Tue, 27 Mar 2018 18:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-03-27:/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html</guid><category>aws</category><category>資料庫</category><category>資料工程</category></item><item><title>Designing Data-Intensive Applications (1) - 序言</title><link>https://leemengtaiwan.github.io/designing-data-intensive-applications-1-preface.html</link><description>&lt;p&gt;最近在拜讀 Martin Kleppmann 的 Designing Data-Intensive Applications， 覺得受益匪淺，且我也相信透過 Feynman Technique 將學到的東西用最淺顯易懂的方式表達能幫助自己內化這些知識，遂嘗試把閱讀後的心得記錄在此。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Sat, 24 Mar 2018 15:33:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-03-24:/designing-data-intensive-applications-1-preface.html</guid><category>資料工程</category></item><item><title>Google Data Studio 基礎</title><link>https://leemengtaiwan.github.io/google-data-studio-basics.html</link><description>&lt;p&gt;Google Data Studio 是 Google 推出的一個儀表板服務，讓我們可以利用多種連結器將儲存在如 Google Analytics、 Google 試算表及 Google BigQuery 等特定資料來源的資料做出漂亮的 visualization ，用資料講故事而不用自己設計 UI。這篇把學到的一些技巧以及使用心得記錄下來。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Tue, 13 Mar 2018 16:34:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-03-13:/google-data-studio-basics.html</guid><category>資料科學</category><category>data-science</category><category>資料視覺化</category></item><item><title>Pelican 實戰手冊(主題篇)</title><link>https://leemengtaiwan.github.io/build-a-pelican-powered-blog-like-a-pro.html</link><description>&lt;p&gt;Pelican 是一個用 Python 寫的靜態網頁生成器, 可以幫我們把 reStructedText, Markdown file 甚至 Jupyer notebook 轉成靜態的 HTML 檔案。 有些人可能已經注意到這個部落格是用 Pelican 所寫成並且 host 在 Github 上的。這篇主要紀錄如何使用 Jinja2 自訂主題。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Mon, 05 Mar 2018 15:00:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-03-05:/build-a-pelican-powered-blog-like-a-pro.html</guid><category>資料科學</category><category>data-science</category><category>日誌</category></item><item><title>BeautifulSoup 筆記</title><link>https://leemengtaiwan.github.io/beautifulsoup-cheat-sheet.html</link><description>&lt;p&gt;Beautifulsoup 是一個可以幫助我們 parse HTML 的函式庫，不管是在寫爬蟲還是做 HTML 檔案的處理都很方便。這篇主要紀錄使用 beautifulsoup 時常用的指令。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Fri, 02 Mar 2018 15:34:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-03-02:/beautifulsoup-cheat-sheet.html</guid><category>python</category><category>beautifulsoup</category><category>html</category></item><item><title>Seaborn 筆記</title><link>https://leemengtaiwan.github.io/seaborn-cheat-sheet.html</link><description>&lt;p&gt;這篇記錄我在使用 seaborn 做資料分析還有 visualization 時常用的 code. 一般慣例會把 seaborn 更名成 sns for reference.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Fri, 02 Mar 2018 00:10:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-03-02:/seaborn-cheat-sheet.html</guid><category>python</category><category>seaborn</category><category>資料視覺化</category></item><item><title>SQLite 筆記</title><link>https://leemengtaiwan.github.io/sqlite-note.html</link><description>&lt;p&gt;這篇主要紀錄使用 SQLite shell 下 SQL Query 的指令。基本上在 shell 裡頭都是用 dot-command, 使用 .help 可以顯示所有可用的指令。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Fri, 23 Feb 2018 22:00:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2018-02-23:/sqlite-note.html</guid><category>SQL</category><category>SQLite</category><category>資料庫</category></item><item><title>Find Word Semantic by Using Word2vec in TensorFlow</title><link>https://leemengtaiwan.github.io/find-word-semantic-by-using-word2vec-in-tensorflow.html</link><description>
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The goal of this assignment is to train a Word2Vec skip-gram model over &lt;a href="http://mattmahoney.net/dc/textdata"&gt;Text8&lt;/a&gt; data using Tensorflow.&lt;/p&gt;
-&lt;p&gt;Word2vec is a kind of vector space model (VSM) in natural language processing (NLP) where the core assumption/intuition is that words that appear in similar 'context' share similar meaning and they should be near in the vector space. So what word2vec trying to do is to find a vector representation (embedding) for each word in our training corpus where words with similar meanings are near in the vector space.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Sat, 30 Sep 2017 18:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2017-09-30:/find-word-semantic-by-using-word2vec-in-tensorflow.html</guid><category>Python</category><category>TensorFlow</category><category>Word2Vec</category><category>NLP</category><category>VSM</category></item><item><title>Simple Convolutional Neural Network using TensorFlow</title><link>https://leemengtaiwan.github.io/simple-convolutional-neural-network-using-tensorflow.html</link><description>
+&lt;p&gt;Word2vec is a kind of vector space model (VSM) in natural language processing (NLP) where the core assumption/intuition is that words that appear in similar 'context' share similar meaning and they should …&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Sat, 30 Sep 2017 18:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2017-09-30:/find-word-semantic-by-using-word2vec-in-tensorflow.html</guid><category>Python</category><category>TensorFlow</category><category>Word2Vec</category><category>NLP</category><category>VSM</category></item><item><title>Simple Convolutional Neural Network using TensorFlow</title><link>https://leemengtaiwan.github.io/simple-convolutional-neural-network-using-tensorflow.html</link><description>
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The goal here is to practice building convolutional neural networks to classify &lt;a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html"&gt;notMNIST&lt;/a&gt; characters using TensorFlow.
-As image size become bigger and bigger, it become unpractical to train fully-connected NN because there will be just too many parameters and thus the model will overfit very soon. And CNN solve this problem by weight sharing.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Tue, 26 Sep 2017 18:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2017-09-26:/simple-convolutional-neural-network-using-tensorflow.html</guid><category>Python</category><category>Tensorflow</category><category>Deep Learning</category><category>Convolutional Neural Network</category><category>CNN</category><category>Deep Learning by Google</category><category>Machine Learning Engineer by kaggle</category><category>Udacity</category></item><item><title>Regularization for Multi-layer Neural Networks in Tensorflow</title><link>https://leemengtaiwan.github.io/regularization-for-multi-layer-neural-networks-in-tensorflow.html</link><description>
+As image size become bigger and bigger, it become unpractical to train fully-connected NN because there will be just too many parameters and thus the model will overfit very soon. And CNN solve this …&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Tue, 26 Sep 2017 18:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2017-09-26:/simple-convolutional-neural-network-using-tensorflow.html</guid><category>Python</category><category>Tensorflow</category><category>Deep Learning</category><category>Convolutional Neural Network</category><category>CNN</category><category>Deep Learning by Google</category><category>Machine Learning Engineer by kaggle</category><category>Udacity</category></item><item><title>Regularization for Multi-layer Neural Networks in Tensorflow</title><link>https://leemengtaiwan.github.io/regularization-for-multi-layer-neural-networks-in-tensorflow.html</link><description>
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -183,17 +21,26 @@ The original notebook can be found &lt;a href="https://github.com/tensorflow/ten
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Import-libraries"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Mon, 25 Sep 2017 16:00:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2017-09-25:/regularization-for-multi-layer-neural-networks-in-tensorflow.html</guid><category>Tensorflow</category><category>Python</category><category>Deep Learning</category><category>Regularization</category><category>Deep Learning by Google</category><category>Machine Learning Engineer by kaggle</category><category>Udacity</category></item><item><title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title><link>https://leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</link><description>
+&lt;h2 id="Import-libraries"&gt;Import libraries&lt;a class="anchor-link" href="#Import-libraries"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# These are all the modules we'll be using later. Make sure you can import them&lt;/span&gt;
+&lt;span class="c1"&gt;# before proceeding further.&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;print_function&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;tqdm&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;tnrange&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;import …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Mon, 25 Sep 2017 16:00:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2017-09-25:/regularization-for-multi-layer-neural-networks-in-tensorflow.html</guid><category>Tensorflow</category><category>Python</category><category>Deep Learning</category><category>Regularization</category><category>Deep Learning by Google</category><category>Machine Learning Engineer by kaggle</category><category>Udacity</category></item><item><title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title><link>https://leemengtaiwan.github.io/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</link><description>
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Thu, 21 Sep 2017 23:50:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2017-09-21:/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</guid><category>Python</category><category>TensorFlow</category><category>Deep Learning</category><category>Neural Networks</category><category>Optimization</category><category>NotMNIST</category><category>Machine Learning</category><category>Image Recognition</category><category>SGD</category><category>Gradient Descent</category><category>Deep Learning by Google</category><category>Machine Learning Engineer by kaggle</category><category>Udacity</category></item><item><title>Simple Image Recognition using NotMNIST dataset</title><link>https://leemengtaiwan.github.io/simple-image-recognition-using-notmnist-dataset.html</link><description>
+&lt;p&gt;The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization …&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Thu, 21 Sep 2017 23:50:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2017-09-21:/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</guid><category>Python</category><category>TensorFlow</category><category>Deep Learning</category><category>Neural Networks</category><category>Optimization</category><category>NotMNIST</category><category>Machine Learning</category><category>Image Recognition</category><category>SGD</category><category>Gradient Descent</category><category>Deep Learning by Google</category><category>Machine Learning Engineer by kaggle</category><category>Udacity</category></item><item><title>Simple Image Recognition using NotMNIST dataset</title><link>https://leemengtaiwan.github.io/simple-image-recognition-using-notmnist-dataset.html</link><description>
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Today we're going to do some simple image recogintion using NotMNIST dataset. But before creating model for prediction, it's more important to explore, clean and normalize our dataset in order to make the learning go smoother when we actually build predictive models.&lt;/p&gt;
-&lt;p&gt;I motified the &lt;a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb"&gt;notebook&lt;/a&gt; from Udacity's online Deep learning course and the objective of this assignment is to learn about &lt;strong&gt;simple data curation practices&lt;/strong&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Tue, 19 Sep 2017 20:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2017-09-19:/simple-image-recognition-using-notmnist-dataset.html</guid><category>Python</category><category>Matplotlib</category><category>Data Preprocessing</category><category>Data Cleaning</category><category>NotMNIST</category><category>Sklearn</category><category>Machine Learning</category><category>Image Recognition</category><category>Udacity</category></item><item><title>Purpose of this blog</title><link>https://leemengtaiwan.github.io/purpose-of-this-blog.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h1 id="Table-of-Contents"&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Sun, 17 Sep 2017 12:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2017-09-17:/purpose-of-this-blog.html</guid><category>python</category><category>pelican</category><category>data science</category><category>blogging</category></item></channel></rss>
+&lt;p&gt;I motified the &lt;a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb"&gt;notebook&lt;/a&gt; from Udacity's online Deep …&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Tue, 19 Sep 2017 20:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2017-09-19:/simple-image-recognition-using-notmnist-dataset.html</guid><category>Python</category><category>Matplotlib</category><category>Data Preprocessing</category><category>Data Cleaning</category><category>NotMNIST</category><category>Sklearn</category><category>Machine Learning</category><category>Image Recognition</category><category>Udacity</category></item><item><title>Purpose of this blog</title><link>https://leemengtaiwan.github.io/purpose-of-this-blog.html</link><description>&lt;p&gt;第一篇文章做一點 blog 的簡介，打算把自己在學 data science 還有 machine learning 過程中寫的筆記還有在 MOOC 上課的 code (主要是 jupyter notebook) 記錄下來方便自己以後搜尋。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Lee Meng</dc:creator><pubDate>Sun, 17 Sep 2017 12:30:00 +0900</pubDate><guid isPermaLink="false">tag:leemengtaiwan.github.io,2017-09-17:/purpose-of-this-blog.html</guid><category>python</category><category>pelican</category><category>資料科學</category><category>blogging</category></item></channel></rss>
