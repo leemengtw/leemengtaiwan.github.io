@@ -32,8 +32,8 @@ git remote add leemengtaiwan https://github.com/leemengtaiwan/pelican-toc.git
 git fetch leemengtaiwan
 git checkout leemengtaiwan/master
 ...
-git commit -m "Finish!"
 git checkout -b dev
+git commit -m "Finish!"
 git push --set-upstream leemengtaiwan dev
 ```
 
@@ -61,6 +61,13 @@ cd leemengtaiwan.github.io
 python copy_static_files.py; pelican content
 ```
 
+只更新特定文章
+```commandline
+pelican content -r 
+```
+
+
+
 開啟 HTTP 伺服器確認
 ```commandline
 cd leemengtaiwan.github.io/output
@@ -75,27 +82,13 @@ git commit -m "Update A post"
 發布文章到 master branch
 ```commandline
 cd leemengtaiwan.github.io/
-pelican content -s publishconf.py -v
+pelican content -s publishconf.py
 python add_templates.py
 ghp-import output -b master -m "Commit Message Here"
 git push origin master
 ```
 
 ## 文章內容
-
-Metadata template for Notebooks
-
-```text
-"Author": "Lee Meng",
-"Date": "2018-04-13 21:10",
-"Category": "",
-"Title": "",
-"Slug": "data-visualization-from-matplotlib-to-ggplot2",
-"Tags": "R, ",
-"Description": "",
-"Image": "image name in theme/images/background/ folder",
-"Image_credit_url": "",
-```
 
 Meta Cell template
 
@@ -109,4 +102,6 @@ Meta Cell template
 - summary: This is a summary
 - image: andy-kelly-402111-unsplash.jpg
 - image_credit_url: https://www.google.com
+- enable_notebook_download: true
+
 ```

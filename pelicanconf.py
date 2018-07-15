@@ -33,7 +33,6 @@ EXTRA_PATH_METADATA = {
 # }
 
 
-
 TIMEZONE = 'Asia/Tokyo'
 DEFAULT_LANG = 'zh-hant-tw'
 DATE_FORMATS = {
@@ -81,8 +80,7 @@ MAIL = 'mailto:b9875001@gmail.com'
 # enable Pelican to use plugins for additional features
 MARKUP = ('md', 'ipynb')
 PLUGIN_PATHS = ['/Users/meng.lee/git/blog/pelican-plugins']
-# PLUGINS = ['pelican-ipynb.markup', 'sitemap', 'pelican-toc', 'share_post', 'tipue_search']
-PLUGINS = ['pelican-ipynb.markup', 'sitemap', 'pelican-toc', 'share_post']
+PLUGINS = ['pelican-ipynb.markup', 'pelican-toc']
 IGNORE_FILES = ['.ipynb_checkpoints']
 IPYNB_USE_METACELL = True
 
@@ -97,8 +95,6 @@ TOC = {
 
     'TOC_INCLUDE_TITLE': 'true',     # If 'true' include title in toc
 }
-
-
 
 
 # Jinja extensions
@@ -122,41 +118,9 @@ IPYNB_USE_META_SUMMARY = False
 IPYNB_IGNORE_CSS = True
 STATIC_CHECK_IF_MODIFIED = True
 
-
-# DISQUS settings
-# DISQUS_SITENAME = "leemengtaiwan"
-# DISQUS_SECRET_KEY = '5VlHrNMlpJ9f6wKT3nSC3O1lVKYlUetlB9a0eFaqXYqRII2LJWTjsdxeBF4m54Bb'
-# DISQUS_PUBLIC_KEY = '4aHNPuCwkVqbu7Mzn7VYoiJh39hV0kIUAgdfAgyiIY9U4VQsJqdQgPiFdxujTsNf'
-
-# Google analytics for checking
-# GOOGLE_ANALYTICS = "UA-106559980-1"
-
-
-# Sitemap settings
-SITEMAP = {
-    "format": "xml",
-    "priorities": {
-        "articles": 0.7,
-        "indexes": 0.5,
-        "pages": 0.3,
-    },
-    "changefreqs": {
-        "articles": "always",
-        "indexes": "hourly",
-        "pages": "monthly",
-    }
-}
-
-
 # Use sub-folder as categories
 USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'Miscellaneous'
-
-# Theme Prod
-# first five templates are default. Add customized templates here
-# THEME = "/Users/leemeng/Documents/Code/pelican-jupyter-notebook"
-# DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives',
-#                     'about', 'search']
 
 
 # Pelican default theme for dev
@@ -164,15 +128,9 @@ THEME = "/Users/meng.lee/git/blog/pelican-jupyter-notebook/themes/Hola10"
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search']
 PAGINATED_DIRECT_TEMPLATES = ['index', 'blog']
 
-# Copy notebook for downloading
-IPYNB_NB_OUTPUT = False
+# Copy notebook to output folder for downloading
+# reference: `ARTICLE_SAVE_AS` in http://docs.getpelican.com/en/3.6.3/settings.html
+IPYNB_NB_SAVE_AS = 'notebooks/{slug}.ipynb'
 
-
-# Google Page View Plugin setting
-# Reference: https://github.com/jhshi/pelican.plugins.ga_page_view
-GOOGLE_SERVICE_ACCOUNT = 'blog-usage@blog-usage.iam.gserviceaccount.com'
-GOOGLE_KEY_FILE = './Blog-usage-0799d847dd8f.p12'
-GA_START_DATE = '2018-01-01'
-GA_END_DATE = 'today'
-GA_METRIC = 'ga:pageviews'
-POPULAR_POST_START = 'A month ago'
+# Email receiving setting
+EMAIL_FORM_ACTION = "https://formspree.io/b98705001@gmail.com"
