@@ -410,7 +410,7 @@ over element that should close gallery
 }
 
 .pswp__button, .pswp__button--arrow--left:before, .pswp__button--arrow--right:before {
-    background: url(../images/photoswipe/default-skin.png) 0 0 no-repeat;
+    background: url(../theme/images/photoswipe/default-skin.png) 0 0 no-repeat;
     background-size: 264px 88px;
     width: 44px;
     height: 44px;
@@ -419,7 +419,7 @@ over element that should close gallery
 @media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
     /* Serve SVG sprite if browser supports SVG and resolution is more than 105dpi */
     .pswp--svg .pswp__button, .pswp--svg .pswp__button--arrow--left:before, .pswp--svg .pswp__button--arrow--right:before {
-        background-image: url(images/photoswipe/default-skin.svg);
+        background-image: url(../theme/images/photoswipe/default-skin.svg);
     }
     .pswp--svg .pswp__button--arrow--left, .pswp--svg .pswp__button--arrow--right {
         background: none;
@@ -735,7 +735,7 @@ a.pswp__share--download:hover {
 
 .pswp__preloader--active .pswp__preloader__icn {
     /* We use .gif in browsers that don't support CSS animation */
-    background: url(..images/photoswipe/preloader.gif) 0 0 no-repeat;
+    background: url(../theme/images/photoswipe/preloader.gif) 0 0 no-repeat;
 }
 
 .pswp--css_animation .pswp__preloader--active {

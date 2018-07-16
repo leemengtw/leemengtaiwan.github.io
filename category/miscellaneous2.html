@@ -33,13 +33,15 @@
 
     <!-- CSS
     ================================================== -->
-    <!--<link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'/>-->
-    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
+    <!--for customized css in individual page-->
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/ipython.css">
     <link rel="stylesheet" type="text/css" href='https://leemengtaiwan.github.io/theme/css/progress-bar.css' />
+
+
 
     <!--TiqueSearch-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
@@ -185,7 +187,7 @@
             <h3>About</h3>
             <h1>More About Me</h1>
             <p class="lead">
-                資料科學家，現居東京。軟體工程出身，致力於將資校科學與資料工程做完美結合。<br/>
+                資料科學家，現居東京。軟體工程出身，致力於將資校科學與資料工程做完美結合 <i class="im im-flask" aria-hidden="true"></i><br/>
                 假日在東京市區騎著腳踏車冒險、尋找美食。懶得動時就待在咖啡廳寫寫程式 <i class="im im-coffee" aria-hidden="true"></i><br/>
             </p>
         </div>
@@ -197,7 +199,7 @@
             <h3>All of us are unique.</h3>
             <p>
                 依照不同業界、不同的環境需求，甚至是所處的企業的發展階段，一個資料科學家（Data Scientist）所累積的經驗、點的技能都會有所不同。
-                更遑論是一個像我一樣，從碼農做到資料工程，又轉到資料科學家的人了。
+                更遑論是一個像我一樣，從軟體工程做到資料工程，又轉到資料科學家的人了。
             </p>
             <p>
                 資料科學是透過理解資料，從資料中萃取有意義的價值與洞見。而為了達到這目的，
@@ -205,7 +207,7 @@
             </p>
             <p>
                 要客觀且定量地衡量一個資料科學家在以上各領域的專業程度不容易。我試著以最熟悉的資料工程為基準，
-                設置熟悉度為 100，則在與其他領域比較之後，可以得到對應的相對分數。最後就成了右邊（或者下面）這個超級主觀的衡量表，博君一笑。
+                設置熟悉度為 100 %，則在與其他領域比較之後，可以得到對應的相對分數。最後就成了右邊（或者下面）這個超級主觀的衡量表，博君一笑。
             </p>
             <p>
                 歡迎跟我說說你在各領域的熟悉程度
@@ -221,33 +223,34 @@
             <ul class="skill-bars">
                 <li>
                 <div class="progress percent50"><span>50%</span></div>
-                <strong>商業智慧（Business Intelligence）</strong>
+                <strong>商業智慧</strong>
                 </li>
                 <li>
-                <div class="progress percent45"><span>45%</span></div>
-                <strong>資料視覺化（Data Visualization）</strong>
+                <div class="progress percent65"><span>65%</span></div>
+                <strong>資料視覺化</strong>
                 </li>
                 <li>
                 <div class="progress percent100"><span>100%</span></div>
-                <strong>資料工程（Data Engineering）</strong>
+                <strong>資料工程</strong>
                 </li>
                 <li>
                 <div class="progress percent75"><span>75%</span></div>
-                <strong>程式設計（Programming）</strong>
+                <strong>程式設計</strong>
                 </li>
                 <li>
-                <div class="progress percent60"><span>60%</span></div>
-                <strong>資料分析（Data Analysis）</strong>
+                <div class="progress percent55"><span>55%</span></div>
+                <strong>資料分析</strong>
                 </li>
                 <li>
-                <div class="progress percent45"><span>45%</span></div>
-                <strong>機器學習（Machine Learning）</strong>
+                <div class="progress percent70"><span>70%</span></div>
+                <strong>機器學習</strong>
                 </li>
             </ul>
         </div>
 
     </div> <!-- end about-content -->
 
+    <!--start about-content buttons-->
     <!--<div class="row about-content about-content&#45;&#45;buttons">-->
 
         <!--<div class="col-six tab-full left">-->
@@ -257,82 +260,91 @@
             <!--<a href="#0" class="btn full-width">Hire Me Now</a>-->
         <!--</div>-->
 
-    <!--</div> &lt;!&ndash; end about-content buttons &ndash;&gt;-->
+    <!--</div> -->
+    <!-- end about-content buttons -->
 
-    <!--<div class="row about-content about-content&#45;&#45;timeline">-->
+    <!--start about-content timeline-->
+    <div class="row about-content about-content--timeline">
 
-        <!--<div class="col-full text-center">-->
-            <!--<h3>My Work Experience.</h3>-->
-        <!--</div>-->
+        <div class="col-full text-center">
+            <h3>My Work Experience.</h3>
+        </div>
 
-        <!--<div class="col-six tab-full left">-->
-            <!--<div class="timeline">-->
+        <div class="col-six tab-full left">
+            <div class="timeline">
+                <div class="timeline__block">
+                    <div class="timeline__bullet"></div>
+                    <div class="timeline__header">
+                        <p class="timeline__timeframe">2018/06 - 現在</p>
+                        <h3>SmartNews Japan</h3>
+                        <h5>Data Scientist</h5>
+                    </div>
+                    <div class="timeline__desc">
+                        <p>「成為完美結合資料工程與資料科學的資料科學家」。<br/>
+                        分析部分專注在建立預測顧客價值（Life Time Value）、每日活躍使用者人數等重要 KPI 的預測模型。
+                            資料工程則包含改善並維護資料管理平台，以建立一個更有效率且可簡單共享分析結果的資料科學環境。
+                        </p>
+                    </div>
+                </div> <!-- end timeline__block -->
 
-                <!--<div class="timeline__block">-->
-                    <!--<div class="timeline__bullet"></div>-->
-                    <!--<div class="timeline__header">-->
-                        <!--<p class="timeline__timeframe">2018/06 - 現在</p>-->
-                        <!--<h3>SmartNews Japan</h3>-->
-                        <!--<h5>Data Scientist</h5>-->
-                    <!--</div>-->
-                    <!--<div class="timeline__desc">-->
-                        <!--<p></p>-->
-                    <!--</div>-->
-                <!--</div> &lt;!&ndash; end timeline__block &ndash;&gt;-->
+                <div class="timeline__block">
+                    <div class="timeline__bullet"></div>
+                    <div class="timeline__header">
+                        <p class="timeline__timeframe">2017/01 - 2018/06</p>
+                        <h3>MarketEnterprise Co</h3>
+                        <h5>Data Scientist</h5>
+                    </div>
+                    <div class="timeline__desc">
+                        <p>分析銷售資料以及實作資料工程。依不同專案進行 ad hoc 分析並直接提供洞見與建議給決策管理者，以增加營收或改善員工生產力；
+                            實作企業用儀表板（Dashboard）背後所需的資料匯總、套用商業邏輯以及資料處理排程；建立非技術人員也能使用的 SQL 分析平台；
+                            設計並實作預測模型以評估顧客成交率等 KPI。</p>
+                    </div>
+                </div> <!-- end timeline__block -->
 
-                <!--<div class="timeline__block">-->
-                    <!--<div class="timeline__bullet"></div>-->
-                    <!--<div class="timeline__header">-->
-                        <!--<p class="timeline__timeframe">2017/01 - 2018/06</p>-->
-                        <!--<h3>MarketEnterprise Co</h3>-->
-                        <!--<h5>Data Scientist</h5>-->
-                    <!--</div>-->
-                    <!--<div class="timeline__desc">-->
-                        <!--<p></p>-->
-                    <!--</div>-->
-                <!--</div> &lt;!&ndash; end timeline__block &ndash;&gt;-->
+            </div> <!-- end timeline -->
+        </div> <!-- end left -->
 
-            <!--</div> &lt;!&ndash; end timeline &ndash;&gt;-->
-        <!--</div> &lt;!&ndash; end left &ndash;&gt;-->
+        <div class="col-six tab-full right">
+            <div class="timeline">
 
-        <!--<div class="col-six tab-full right">-->
-            <!--<div class="timeline">-->
+                <div class="timeline__block">
+                    <div class="timeline__bullet"></div>
+                    <div class="timeline__header">
+                        <p class="timeline__timeframe">2016/06 - 2017/01</p>
+                        <h3>MarketEnterprise Co</h3>
+                        <h5>Software Engineer</h5>
+                    </div>
+                    <div class="timeline__desc">
+                        <p>主要專注在利用 Python 以及 <a href="https://aws.amazon.com/tw/">AWS</a> 來設計資訊系統以及開發企業內部系統所需的 API 。 如使用 <a href="https://aws.amazon.com/tw/lambda/">AWS Lambda</a>
+                            進行資料流的處理（ETL）、開發並改善電子商務網站的搜尋引擎（主要使用 <a href="https://www.mongodb.com/cloud/atlas/lp/general">MongoDB</a>、<a href="https://www.elastic.co/products/elasticsearch">ElasticSearch</a> ）。</p>
+                    </div>
+                </div> <!-- end timeline__block -->
 
-                <!--<div class="timeline__block">-->
-                    <!--<div class="timeline__bullet"></div>-->
-                    <!--<div class="timeline__header">-->
-                        <!--<p class="timeline__timeframe">2016/06 - 2017/01</p>-->
-                        <!--<h3>MarketEnterprise Co</h3>-->
-                        <!--<h5>Software Engineer</h5>-->
-                    <!--</div>-->
-                    <!--<div class="timeline__desc">-->
-                        <!--<p></p>-->
-                    <!--</div>-->
-                <!--</div> &lt;!&ndash; end timeline__block &ndash;&gt;-->
+                <div class="timeline__block">
+                    <div class="timeline__bullet"></div>
+                    <div class="timeline__header">
+                        <p class="timeline__timeframe">2013/09 - 2015/06</p>
+                        <h3>National Taiwan University</h3>
+                        <h5>Master of Information Management</h5>
+                    </div>
+                    <div class="timeline__desc">
+                        <p>研究領域包含資料探勘以及推薦系統。
+                            論文 <a href="http://aisel.aisnet.org/cgi/viewcontent.cgi?article=1014&context=pacis2015">An Effective Friend Recommendation Method Using Learning to Rank and Social Influence</a> 的共同作者，
+                            該論文被登錄在 <a href="http://aisel.aisnet.org/pacis2015/index.3.html">Pacific Asia Conference on Information Systems (PACIS)</a>。另擔任演算法、資料結構以及資料探勘等課程之助教。</p>
+                    </div>
+                </div> <!-- end timeline__block -->
 
-                <!--<div class="timeline__block">-->
-                    <!--<div class="timeline__bullet"></div>-->
-                    <!--<div class="timeline__header">-->
-                        <!--<p class="timeline__timeframe">2013/09 - 2015/06</p>-->
-                        <!--<h3>National Taiwan University</h3>-->
-                        <!--<h5>Master of Information Management</h5>-->
-                    <!--</div>-->
-                    <!--<div class="timeline__desc">-->
-                        <!--<p></p>-->
-                    <!--</div>-->
-                <!--</div> &lt;!&ndash; end timeline__block &ndash;&gt;-->
+            </div> <!-- end timeline -->
+        </div> <!-- end right -->
 
-            <!--</div> &lt;!&ndash; end timeline &ndash;&gt;-->
-        <!--</div> &lt;!&ndash; end right &ndash;&gt;-->
-
-    <!--</div> &lt;!&ndash; end about-content timeline &ndash;&gt;-->
+    </div> <!-- end about-content timeline -->
 
 </section> <!-- end about -->
 
 
 <!-- works
 ================================================== -->
-<!--<section id="works" class="s-works target-section">-->
+<!--<section id="works" class="s-works target-section" style="text-align: initialb.">-->
 
     <!--<div class="row narrow section-intro has-bottom-sep">-->
         <!--<div class="col-full">-->
@@ -350,9 +362,9 @@
                 <!--<div class="item-folio">-->
 
                     <!--<div class="item-folio__thumb">-->
-                        <!--<a href="static/images/portfolio/gallery/g-beetle.jpg" class="thumb-link" title="The Beetle Car" data-size="1050x700">-->
-                            <!--<img src="static/images/portfolio/beetle.jpg"-->
-                                 <!--srcset="static/images/portfolio/beetle.jpg 1x, images/portfolio/beetle@2x.jpg 2x" alt="">-->
+                        <!--<a href="theme/images/portfolio/gallery/g-beetle.jpg" class="thumb-link" title="The Beetle Car" data-size="1050x700">-->
+                            <!--<img src="theme/images/portfolio/beetle.jpg"-->
+                                 <!--srcset="theme/images/portfolio/beetle.jpg 1x, theme/images/portfolio/beetle@2x.jpg 2x" alt="">-->
                             <!--<span class="shadow-overlay"></span>-->
                         <!--</a>-->
                     <!--</div>-->
@@ -381,9 +393,9 @@
                 <!--<div class="item-folio">-->
 
                     <!--<div class="item-folio__thumb">-->
-                        <!--<a href="static/images/portfolio/gallery/g-lighthouse.jpg" class="thumb-link" title="Lighthouse" data-size="1050x700">-->
-                            <!--<img src="static/images/portfolio/lighthouse.jpg"-->
-                                 <!--srcset="static/images/portfolio/lighthouse.jpg 1x, images/portfolio/lighthouse@2x.jpg 2x" alt="">-->
+                        <!--<a href="theme/images/portfolio/gallery/g-lighthouse.jpg" class="thumb-link" title="Lighthouse" data-size="1050x700">-->
+                            <!--<img src="theme/images/portfolio/lighthouse.jpg"-->
+                                 <!--srcset="theme/images/portfolio/lighthouse.jpg 1x, theme/images/portfolio/lighthouse@2x.jpg 2x" alt="">-->
                             <!--<span class="shadow-overlay"></span>-->
                         <!--</a>-->
                     <!--</div>-->
@@ -412,9 +424,9 @@
                 <!--<div class="item-folio">-->
 
                     <!--<div class="item-folio__thumb">-->
-                        <!--<a href="static/images/portfolio/gallery/g-salad.jpg" class="thumb-link" data-size="1050x700">-->
-                            <!--<img src="static/images/portfolio/salad.jpg"-->
-                                 <!--srcset="static/images/portfolio/salad.jpg 1x, images/portfolio/salad@2x.jpg 2x" alt="">-->
+                        <!--<a href="theme/images/portfolio/gallery/g-salad.jpg" class="thumb-link" data-size="1050x700">-->
+                            <!--<img src="theme/images/portfolio/salad.jpg"-->
+                                 <!--srcset="theme/images/portfolio/salad.jpg 1x, theme/images/portfolio/salad@2x.jpg 2x" alt="">-->
                             <!--<span class="shadow-overlay"></span>-->
                         <!--</a>-->
                     <!--</div>-->
@@ -443,9 +455,9 @@
                 <!--<div class="item-folio">-->
 
                     <!--<div class="item-folio__thumb">-->
-                        <!--<a href="static/images/portfolio/gallery/g-woodcraft.jpg" class="thumb-link" data-size="1050x700">-->
-                            <!--<img src="static/images/portfolio/woodcraft.jpg"-->
-                                 <!--srcset="static/images/portfolio/woodcraft.jpg 1x, images/portfolio/woodcraft@2x.jpg 2x" alt="">-->
+                        <!--<a href="theme/images/portfolio/gallery/g-woodcraft.jpg" class="thumb-link" data-size="1050x700">-->
+                            <!--<img src="theme/images/portfolio/woodcraft.jpg"-->
+                                 <!--srcset="theme/images/portfolio/woodcraft.jpg 1x, theme/images/portfolio/woodcraft@2x.jpg 2x" alt="">-->
                             <!--<span class="shadow-overlay"></span>-->
                         <!--</a>-->
                     <!--</div>-->
@@ -474,9 +486,9 @@
                 <!--<div class="item-folio">-->
 
                     <!--<div class="item-folio__thumb">-->
-                        <!--<a href="static/images/portfolio/gallery/g-skaterboy.jpg" class="thumb-link" data-size="1050x700">-->
-                            <!--<img src="static/images/portfolio/skaterboy.jpg"-->
-                                 <!--srcset="static/images/portfolio/skaterboy.jpg 1x, images/portfolio/skaterboy@2x.jpg 2x" alt="">-->
+                        <!--<a href="theme/images/portfolio/gallery/g-skaterboy.jpg" class="thumb-link" data-size="1050x700">-->
+                            <!--<img src="theme/images/portfolio/skaterboy.jpg"-->
+                                 <!--srcset="theme/images/portfolio/skaterboy.jpg 1x, theme/images/portfolio/skaterboy@2x.jpg 2x" alt="">-->
                             <!--<span class="shadow-overlay"></span>-->
                         <!--</a>-->
                     <!--</div>-->
@@ -505,9 +517,9 @@
                 <!--<div class="item-folio">-->
 
                     <!--<div class="item-folio__thumb">-->
-                        <!--<a href="static/images/portfolio/gallery/g-liberty.jpg" class="thumb-link" data-size="1050x700">-->
-                            <!--<img src="static/images/portfolio/liberty.jpg"-->
-                                 <!--srcset="static/images/portfolio/liberty.jpg 1x, images/portfolio/liberty@2x.jpg 2x" alt="">-->
+                        <!--<a href="theme/images/portfolio/gallery/g-liberty.jpg" class="thumb-link" data-size="1050x700">-->
+                            <!--<img src="theme/images/portfolio/liberty.jpg"-->
+                                 <!--srcset="theme/images/portfolio/liberty.jpg 1x, theme/images/portfolio/liberty@2x.jpg 2x" alt="">-->
                             <!--<span class="shadow-overlay"></span>-->
                         <!--</a>-->
                     <!--</div>-->
@@ -536,9 +548,9 @@
                 <!--<div class="item-folio">-->
 
                     <!--<div class="item-folio__thumb">-->
-                        <!--<a href="static/images/portfolio/gallery/g-minimalismo.jpg" class="thumb-link" data-size="1050x700">-->
-                            <!--<img src="static/images/portfolio/minimalismo.jpg"-->
-                                 <!--srcset="static/images/portfolio/minimalismo.jpg 1x, images/portfolio/minimalismo@2x.jpg 2x" alt="">-->
+                        <!--<a href="theme/images/portfolio/gallery/g-minimalismo.jpg" class="thumb-link" data-size="1050x700">-->
+                            <!--<img src="theme/images/portfolio/minimalismo.jpg"-->
+                                 <!--srcset="theme/images/portfolio/minimalismo.jpg 1x, theme/images/portfolio/minimalismo@2x.jpg 2x" alt="">-->
                             <!--<span class="shadow-overlay"></span>-->
                         <!--</a>-->
                     <!--</div>-->
@@ -567,9 +579,9 @@
                 <!--<div class="item-folio">-->
 
                     <!--<div class="item-folio__thumb">-->
-                        <!--<a href="static/images/portfolio/gallery/g-shutterbug.jpg" class="thumb-link" data-size="1050x700">-->
-                            <!--<img src="static/images/portfolio/shutterbug.jpg"-->
-                                 <!--srcset="static/images/portfolio/shutterbug.jpg 1x, images/portfolio/shutterbug@2x.jpg 2x" alt="">-->
+                        <!--<a href="theme/images/portfolio/gallery/g-shutterbug.jpg" class="thumb-link" data-size="1050x700">-->
+                            <!--<img src="theme/images/portfolio/shutterbug.jpg"-->
+                                 <!--srcset="theme/images/portfolio/shutterbug.jpg 1x, theme/images/portfolio/shutterbug@2x.jpg 2x" alt="">-->
                             <!--<span class="shadow-overlay"></span>-->
                         <!--</a>-->
                     <!--</div>-->
@@ -601,8 +613,8 @@
 
 
 
-<!--&lt;!&ndash; testimonials-->
-<!--================================================== &ndash;&gt;-->
+<!-- testimonials
+================================================== -->
 <!--<div class="s-testimonials">-->
 
     <!--<div class="overlay"></div>-->
@@ -618,7 +630,7 @@
         <!--<div class="col-full testimonials__slider">-->
 
             <!--<div class="testimonials__slide">-->
-                <!--<img src="static/images/avatars/user-01.jpg" alt="Author image" class="testimonials__avatar">-->
+                <!--<img src="theme/images/avatars/user-01.jpg" alt="Author image" class="testimonials__avatar">-->
                 <!--<p>Qui ipsam temporibus quisquam velMaiores eos cumque distinctio nam accusantium ipsum.-->
                 <!--Laudantium quia consequatur molestias delectus culpa facere hic dolores aperiam. Accusantium quos qui praesentium corpori.</p>-->
                 <!--<div class="testimonials__author h06">-->
@@ -628,7 +640,7 @@
             <!--</div>-->
 
             <!--<div class="testimonials__slide">-->
-                <!--<img src="static/images/avatars/user-05.jpg" alt="Author image" class="testimonials__avatar">-->
+                <!--<img src="theme/images/avatars/user-05.jpg" alt="Author image" class="testimonials__avatar">-->
                 <!--<p>Excepturi nam cupiditate culpa doloremque deleniti repellat. Veniam quos repellat voluptas animi adipisci.-->
                 <!--Nisi eaque consequatur. Quasi voluptas eius distinctio. Atque eos maxime. Qui ipsam temporibus quisquam vel.</p>-->
                 <!--<div class="testimonials__author h06">-->
@@ -638,7 +650,7 @@
             <!--</div>-->
 
             <!--<div class="testimonials__slide">-->
-                <!--<img src="static/images/avatars/user-02.jpg" alt="Author image" class="testimonials__avatar">-->
+                <!--<img src="theme/images/avatars/user-02.jpg" alt="Author image" class="testimonials__avatar">-->
                 <!--<p>Repellat dignissimos libero. Qui sed at corrupti expedita voluptas odit. Nihil ea quia nesciunt. Ducimus aut sed ipsam.-->
                 <!--Autem eaque officia cum exercitationem sunt voluptatum accusamus. Quasi voluptas eius distinctio.</p>-->
                 <!--<div class="testimonials__author h06">-->
@@ -680,7 +692,7 @@
                     <div class="blog-date">
                         <a href="https://leemengtaiwan.github.io/use-kinesis-streams-and-firehose-to-build-a-data-lake.html">2018-04-04 (Wed)</a>
                         <br>
-                        185 views
+                        187 views
                     </div>
 
                     <h2 class="h01">
@@ -701,7 +713,7 @@
                     <div class="blog-date">
                         <a href="https://leemengtaiwan.github.io/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html">2018-03-27 (Tue)</a>
                         <br>
-                        60 views
+                        61 views
                     </div>
 
                     <h2 class="h01">
@@ -739,7 +751,7 @@
                     <div class="blog-date">
                         <a href="https://leemengtaiwan.github.io/google-data-studio-basics.html">2018-03-13 (Tue)</a>
                         <br>
-                        114 views
+                        117 views
                     </div>
 
                     <h2 class="h01">
@@ -795,7 +807,7 @@
         </div>
         <div class="col-block stats__col ">
             <div class="stats__count">
-                18333
+                18479
             </div>
             <h4>Page Views</h4>
         </div>
