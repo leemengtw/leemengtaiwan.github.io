@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 資料科學文摘 Vol.3 Pandas、Docker 以及數據時代的反思</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="不同於上週的文摘，這週的選文比較技術以及實作導向。本週將導讀 3 篇使用 Python 以及 Pandas 的文章，並鼓勵讀者實際動手學習。我們也會看到如何使用 Docker 來讓資料科學變得更簡單，並提供一個有趣的貓咪圖片辨識 App 給有興趣的讀者參考。最後，讓我們分別看看哈佛商業評論以及美國前首席資料科學家 DJ Patil 談談如何讓資料科學在企業內普及，以及數據時代我們面臨的各種道德議題。" />
+        <meta name="keywords" content="文摘, Pandas, SQL, Docker, 資料科學" />
+        <meta name="tags" content="文摘" />
+        <meta name="tags" content="Pandas" />
+        <meta name="tags" content="SQL" />
+        <meta name="tags" content="Docker" />
+        <meta name="tags" content="資料科學" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemengtaiwan.github.io/theme/images/background/thought-catalog-575840-unsplash.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemengtaiwan.github.io/drafts/data-science-digest-volume-3.html" />
+        <meta property="og:title" content="資料科學文摘 Vol.3 Pandas、Docker 以及數據時代的反思" />
+        <meta property="og:description" content="不同於上週的文摘，這週的選文比較技術以及實作導向。本週將導讀 3 篇使用 Python 以及 Pandas 的文章，並鼓勵讀者實際動手學習。我們也會看到如何使用 Docker 來讓資料科學變得更簡單，並提供一個有趣的貓咪圖片辨識 App 給有興趣的讀者參考。最後，讓我們分別看看哈佛商業評論以及美國前首席資料科學家 DJ Patil 談談如何讓資料科學在企業內普及，以及數據時代我們面臨的各種道德議題。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemengtaiwan.github.io/theme/css/progress-bar.css' />
+
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemengtaiwan.github.io/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemengtaiwan.github.io/theme/js/modernizr.js"></script>
+    <script src="https://leemengtaiwan.github.io/theme/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemengtaiwan.github.io/theme/images/background/thought-catalog-575840-unsplash.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemengtaiwan.github.io/tag/wen-zhai.html" rel="tag">文摘</a>
+                            <a href="https://leemengtaiwan.github.io/tag/pandas.html" rel="tag">Pandas</a>
+                            <a href="https://leemengtaiwan.github.io/tag/sql.html" rel="tag">SQL</a>
+                            <a href="https://leemengtaiwan.github.io/tag/docker.html" rel="tag">Docker</a>
+                            <a href="https://leemengtaiwan.github.io/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemengtaiwan.github.io/drafts/data-science-digest-volume-3.html" title="">
+                            資料科學文摘 Vol.3 Pandas、Docker 以及數據時代的反思
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2018-08-10 (Fri)</li>
+                        <li class="page-view">
+                            1 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <!---->
+    <!--<div id="toc-wrap">-->
+        <!--<i class="im im-menu" aria-hidden="true"></i>-->
+        <!---->
+        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學文摘 Vol.3 Pandas、Docker 以及數據時代的反思">資料科學文摘 Vol.3 Pandas、Docker 以及數據時代的反思</a><ul><li><a class="toc-href" href="#本週閱讀清單" title="本週閱讀清單">本週閱讀清單</a></li><li><a class="toc-href" href="#How-to-Master-Your-Skills-for-Pandas?" title="How to Master Your Skills for Pandas?">How to Master Your Skills for Pandas?</a></li><li><a class="toc-href" href="#How-to-rewrite-your-SQL-queries-in-Pandas,-and-more" title="How to rewrite your SQL queries in Pandas, and more">How to rewrite your SQL queries in Pandas, and more</a></li><li><a class="toc-href" href="#Learn-Functional-Python-in-10-Minutes" title="Learn Functional Python in 10 Minutes">Learn Functional Python in 10 Minutes</a></li><li><a class="toc-href" href="#Docker-for-Data-Scientists" title="Docker for Data Scientists">Docker for Data Scientists</a><ul><li><a class="toc-href" href="#Try-It-Yourself" title="Try It Yourself">Try It Yourself</a></li></ul></li><li><a class="toc-href" href="#The-Democratization-of-Data-Science_1" title="The Democratization of Data Science">The Democratization of Data Science</a></li><li><a class="toc-href" day="" href="#Data" of="" reckoning'="" s="" s-day-of-reckoning'="" title="Data">Data's day of reckoning</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>-->
+        <!---->
+    <!--</div>-->
+    <!---->
+
+
+</div>
+            <div class="col-full blog-content__main">
+                
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>不同於上週的<a href="https://leemengtaiwan.github.io/data-science-digest-volume-2.html">文摘 Vol.2 產品理解以及 DS / DE 之路</a>，這週的選文比較技術以及實作導向。本週將導讀 3 篇使用 Python 以及 Pandas 的文章，並鼓勵讀者實際動手學習。我們也會看到如何使用 Docker 來讓資料科學變得更簡單，並提供一個有趣的貓咪圖片辨識 App 給有興趣的讀者參考。最後，讓我們分別看看哈佛商業評論以及美國前首席資料科學家 DJ Patil 談談如何讓資料科學在企業內普及，以及數據時代我們面臨的各種道德議題。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="本週閱讀清單">本週閱讀清單<a class="anchor-link" href="#本週閱讀清單">&para;</a></h2><ul>
+<li>Pandas、Python<ul>
+<li><a href="#How-to-Master-Your-Skills-for-Pandas?">How to Master Your Skills for Pandas?</a></li>
+<li><a href="#How-to-rewrite-your-SQL-queries-in-Pandas,-and-more">How to rewrite your SQL queries in Pandas, and more</a></li>
+<li><a href="#Learn-Functional-Python-in-10-Minutes">Learn Functional Python in 10 Minutes</a></li>
+</ul>
+</li>
+<li>Docker    <ul>
+<li><a href="#Docker-for-Data-Scientists">Docker for Data Scientists</a></li>
+<li><a href="#Try-It-Yourself">Cat Recognizer: A flask app showcasing how to recognize cats using Tensorflow</a></li>
+</ul>
+</li>
+<li>數據時代的反思<ul>
+<li><a href="#The-Democratization-of-Data-Science">The Democratization of Data Science</a></li>
+<li><a href="#Data's-day-of-reckoning">Data's day of reckoning</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-Master-Your-Skills-for-Pandas?"><a href="https://engmrk.com/module5-introduction-to-pandas/">How to Master Your Skills for Pandas?</a><a class="anchor-link" href="#How-to-Master-Your-Skills-for-Pandas?">&para;</a></h2><center>
+<a href="https://engmrk.com/module5-introduction-to-pandas/" target="_blacnk">
+<img src="images/digests/Module-5-Introduction-to-Pandas.png" style="width:90%"/>
+</a>
+</center><p>Python 裡頭最著名的資料處理 library 非 <a href="https://pandas.pydata.org/">Pandas</a> 莫屬了。<a href="https://engmrk.com/module5-introduction-to-pandas/">這篇文章</a>使用互動式的環境，列出挺完整的 Pandas 指令讓讀者可以邊參考 sample code 邊自己動手玩玩看。</p>
+<p>其中包含各種利用 Series 以及 Dataframe 兩種 Pandas 常見的資料格式來對數據進行各種操作，適合沒碰過 Pandas 的新手以及想要重新 refresh 語法的人。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-rewrite-your-SQL-queries-in-Pandas,-and-more"><a href="https://codeburst.io/how-to-rewrite-your-sql-queries-in-pandas-and-more-149d341fc53e">How to rewrite your SQL queries in Pandas, and more</a><a class="anchor-link" href="#How-to-rewrite-your-SQL-queries-in-Pandas,-and-more">&para;</a></h2><p><center>
+<a href="https://codeburst.io/how-to-rewrite-your-sql-queries-in-pandas-and-more-149d341fc53e" target="_blacnk">
+<img src="images/digests/kofu-pandas.jpeg" style="width:90%"/>
+</a>
+</center>
+提供常見的 SQL 查詢以及其對應的 Pandas 寫法。一個有效率的資料科學家通常需要 SQL 及 pandas 兼具。雖然這篇一開始的目標讀者是那些已經熟悉 SQL 並打算使用 Pandas 的讀者，我認為熟悉 Pandas 但還不了解 SQL 的同學們也能從這篇學到點東西。</p>
+<p>這篇適合至少懂 Python 或是 SQL 並想學習另外一個語言的讀者。如果你想要深入了解 SQL 或是其與 Python 之間的差異，你可以看看我之前寫的<a href="https://leemengtaiwan.github.io/why-you-need-to-learn-sql-as-a-data-scientist.html">為何資料科學家需要學習 SQL</a>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Learn-Functional-Python-in-10-Minutes"><a href="https://hackernoon.com/learn-functional-python-in-10-minutes-to-2d1651dece6f">Learn Functional Python in 10 Minutes</a><a class="anchor-link" href="#Learn-Functional-Python-in-10-Minutes">&para;</a></h2><center>
+<a href="https://hackernoon.com/learn-functional-python-in-10-minutes-to-2d1651dece6f" target="_blank">
+<img src="images/digests/1_ZXixptvL4rzkx3EDuj38xw.jpg" style="width:90%"/>
+</a>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://bobbywlindsey.com/data-science/2018/07/16/docker-for-data-scientists/">這篇 Hackernon 文章</a>則簡單介紹 Functional Programming 在 Python 可以如何被實作，函式（function）是怎麼被視為 Python 的第一公民以及我們能如何活用函式如 Map、Filter 函式。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你剛起步，想要有效率地學習 Python 的話，我建議可以從 <a href="https://www.python-course.eu/list_comprehension.php">List comprehension</a> 開始學起。</p>
+<p>一個簡單的例子是假設我們想從一個 List 中取得大於 50 的數字：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">larger_than_50</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">l</span> <span class="k">if</span> <span class="n">e</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">larger_than_50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[100, 70]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>文章的後半段則透過 The Zen of Python （Python 的禪學）來說明為何使用 List comprehension 會比使用傳統 Functional Programming 中的 Map、Filter 函式來得簡單。</p>
+<p>Python 有一個著名的彩蛋，你可以利用 <code>import this</code> 來顯示 The Zen of Python，它提供使用 Python 的人一個簡單的開發準則，具體如下：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">this</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Docker-for-Data-Scientists"><a href="https://bobbywlindsey.com/data-science/2018/07/16/docker-for-data-scientists/">Docker for Data Scientists</a><a class="anchor-link" href="#Docker-for-Data-Scientists">&para;</a></h2><p><center>
+<a href="https://bobbywlindsey.com/data-science/2018/07/16/docker-for-data-scientists/" target="_blank">
+<img src="images/digests/docker-flickr.jpg" style="width:90%"/>
+</a>
+</center>
+很簡單地說明常見的 <a href="https://www.docker.com/">Docker</a> 術語以及使用 Docker 可以為資料科學家帶來的好處：</p>
+<ul>
+<li>節省建置開發 / 分析環境所需的時間</li>
+<li>增加可重現性（Reproducibility）</li>
+<li>抽象化作業系統（OS）的概念，再也沒有只能在 Mac 跑而不能在 Windows 跑的問題</li>
+</ul>
+<p>這篇提供非常初級的指令來開始在本機環境使用 Docker，可以嘗試看看。</p>
+<p>在 Smartnews 我則是使用 <a href="https://aws.amazon.com/tw/ecs/">Amazon Elastic Container Service</a> 來開發一些資料科學家們會用到的分析工具，如大家的好朋友 <a href="https://jupyterhub.readthedocs.io/en/stable/">Jupyter Hub</a>、Airbnb 開發的 BI 工具 <a href="https://github.com/apache/incubator-superset">Superset</a>。之後有機會會另外撰文分享經驗。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Try-It-Yourself">Try It Yourself<a class="anchor-link" href="#Try-It-Yourself">&para;</a></h3><p>Docker 讓我們可以快速重現其他人的分析環境或者是有趣的 application。如果你想馬上感受 Docker 的威力，可以看看我之前利用 <a href="https://www.tensorflow.org/">Tensorflow</a> 以及 <a href="http://flask.pocoo.org/">Flask</a> 實作的一個貓咪圖片辨識的 <a href="https://github.com/leemengtaiwan/cat-recognition-app">Github repo</a>（feat. <a href="https://github.com/mnicnc404">CNC</a>）：</p>
+<center>
+<a href="https://github.com/leemengtaiwan/cat-recognition-app" target="_blank">
+<img src="images/digests/cat-recog-cover.jpg" style="width:90%"/>
+</a>
+<br/>
+<a href="https://github.com/leemengtaiwan/cat-recognition-app" target="_blank">Cat Recognizer</a>
+       ：利用 Tensorflow, Flask 實作 App 並使用 Docker 快速與他人分享成果
+    <br/>
+<br/>
+<br/>
+</center><p>雖然 <a href="https://github.com/leemengtaiwan/cat-recognition-app">Github repo</a> 上也有教學指南，想要最快速地在你的電腦上使用這個 App 的話，下載 <a href="https://www.docker.com/">Docker</a> 並開啟 Daemon 後，使用命令列輸入以下指令：</p>
+<div class="highlight"><pre><span></span>docker pull leemeng/cat
+docker run -dp <span class="m">1234</span>:5000 leemeng/cat
+</pre></div>
+<p>接著在瀏覽器輸入 <code>localhost:1234</code> 應該就能開始使用了。如果你有興趣了解如何一步步打造這樣的 ML 應用，可以留言跟我說。</p>
+<p>不過現在讓我們繼續看剩下的 2 篇好文章：）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-Democratization-of-Data-Science_1"><a href="https://hbr.org/2018/07/the-democratization-of-data-science">The Democratization of Data Science</a><a class="anchor-link" href="#The-Democratization-of-Data-Science">&para;</a></h2><center>
+<a href="https://hbr.org/2018/07/the-democratization-of-data-science" target="_blank">
+<img src="images/digests/jul18-27-833771544-Patricia-Toth-McCormick-1200x675.jpg" style="width:90%"/>
+</a>
+</center><p><a href="https://hbr.org/">哈佛商業評論（Harvard Business Review, HBR）</a>在這篇文章裏頭敘述為何不只是針對資料科學家，提升所有人的「資料素養」對一個企業來說是一件非常重要的事情。</p>
+<p>最明顯的優點是可以讓數據團隊專注在：</p>
+<ul>
+<li>解決更高層次的企業問題</li>
+<li>建立分析工具以加速所有部門的數據分析</li>
+</ul>
+<p>而不是處理每個部門的「資料瑣事」。</p>
+<p>這個議題並非只跟企業的管理階層相關。對一個資料科學家來說，想辦法利用資料工程（Data Engineering）等方式來自動化如「建立簡單儀表板」的工作，並教導各個部門實際的使用方式，可以讓你一勞永逸，避免永遠在處理非常瑣碎的「資料瑣事」，專著在更大的目標。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>你不會因為自己不是會計師就不遵守專案預算；你也不會因為不是資料科學家就不提升資料素養。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data's-day-of-reckoning"><a href="https://www.oreilly.com/ideas/datas-day-of-reckoning">Data's day of reckoning</a><a class="anchor-link" href="#Data's-day-of-reckoning">&para;</a></h2><p><center>
+<a href="https://www.oreilly.com/ideas/datas-day-of-reckoning" target="_blank">
+<img src="images/digests/shower-of-sparks-3115784_1280.jpg" style="width:90%"/>
+</a>
+</center>
+生活在數據驅動時代的我們或許都能感受到世界變化的快速。</p>
+<p>美國前首席資料科學家 <a href="https://www.oreilly.com/people/15b77-dj-patil">DJ Patil</a> 認為不管是資料科學、機器學習還是人工智慧領域，「道德倫理」以及「安全隱私」議題都應該越來越被重視。</p>
+<p>電腦科學（Computer Science）時代最著名的安全議題非 SQL 注入<a href="https://zh.wikipedia.org/zh-hant/SQL%E8%B3%87%E6%96%99%E9%9A%B1%E7%A2%BC%E6%94%BB%E6%93%8A">（SQL Injection）</a>莫屬了。如同這個議題，在數據驅動時代，我們也會面臨類似道德以及數據保護的議題，像是人工智慧模型產生具有偏見的預測、以及最近的 <a href="https://zh.wikipedia.org/wiki/%E6%AD%90%E7%9B%9F%E4%B8%80%E8%88%AC%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E8%A6%8F%E7%AF%84">GDPR</a> 等等。</p>
+<p>在教育方面，DJ Patil 認為我們應該教育下一代在數據處理時，應該遵守的準則並將其被納入課綱；以數據驅動的公司則需要將這些想法都納入企業文化，在招聘資料科學家的時候，除了考慮他 / 她的分析能力以外，也要評估道德倫理的部分。</p>
+<p>身為一個資料科學家，除了技術層面的提升，也應該稍微了解這些議題。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>We can build a future we want to live in, or we can build a nightmare. The choice is up to us.</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Pandas、SQL、Docker、資料素養的培養以及數據時代的道德倫理問題等等，這週我們也看了不少資料科學相關的文章，希望你有從這篇文章裡頭學到點東西。</p>
+<p>雖然因為篇幅關係沒辦法把所有實際的 Python 指令列在這邊，我希望透過摘要的方式能讓沒時間的你也能學習、初步地了解資料科學並進一步發現自己有興趣的地方鑽研。</p>
+<p>有時間的話我推薦實際閱讀這些文章（當然也可以閱讀其他你自己收藏的文章，也歡迎分享），也可以試試看我寫的 <a href="https://github.com/leemengtaiwan/cat-recognition-app">Cat Recognizer</a> 並留言跟我說說你的想法。</p>
+<p>之後一樣會定期更新，可以點擊下面的訂閱。如果有其他對這篇文章有興趣的朋友，也請幫忙分享給他 / 她：）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That's it for this week, stay tuned and happy data science!</p>
+</div>
+</div>
+</div>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemengtaiwan.github.io/tag/wen-zhai.html" rel="tag">文摘</a>
+                        <a href="https://leemengtaiwan.github.io/tag/pandas.html" rel="tag">Pandas</a>
+                        <a href="https://leemengtaiwan.github.io/tag/sql.html" rel="tag">SQL</a>
+                        <a href="https://leemengtaiwan.github.io/tag/docker.html" rel="tag">Docker</a>
+                        <a href="https://leemengtaiwan.github.io/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                    </span>
+
+                </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '資料科學文摘 Vol.3 Pandas、Docker 以及數據時代的反思';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemengtaiwan.github.io/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemengtaiwan.github.io/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemengtaiwan.github.io/theme/js/plugins.js"></script>
+    <script src="https://leemengtaiwan.github.io/theme/js/main.js"></script>
+
+    <script type='text/javascript' src='https://leemengtaiwan.github.io/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemengtaiwan.github.io/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+
+</body>
+</html>
