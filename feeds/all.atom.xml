@@ -1,5 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-08-03T14:20:00+09:00</updated><entry><title>資料科學文摘 Vol.2 產品理解以及 DS / DE 之路</title><link href="https://leemengtaiwan.github.io/data-science-digest-volume-2.html" rel="alternate"></link><published>2018-08-03T14:20:00+09:00</published><updated>2018-08-03T14:20:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-08-03:/data-science-digest-volume-2.html</id><summary type="html">&lt;p&gt;這週一樣會透過導讀一些優質文章，讓讀者了解 3 個問題：為何一個專業的資料科學家需要具備「產品理解」？ 何謂「顧客流失分析」？ 我們該如何使用 Python（XGBoost）來建立簡單的預測模型以改善產品？ 此外，我們也將簡單介紹在資料科學領域中逐漸崛起的「資料工程師」，其職責以及專業跟「資料科學家」有何不同。最後也會分享一些與資料科學家/資料工程師相關的文章。&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-08-10T21:00:00+09:00</updated><entry><title>資料科學文摘 Vol.3 Pandas、Docker 以及數據時代的反思</title><link href="https://leemengtaiwan.github.io/data-science-digest-volume-3.html" rel="alternate"></link><published>2018-08-10T21:00:00+09:00</published><updated>2018-08-10T21:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-08-10:/data-science-digest-volume-3.html</id><summary type="html">&lt;p&gt;不同於上週的文摘，這週的選文比較技術以及實作導向。本週將導讀 3 篇使用 Python 以及 Pandas 的文章，並鼓勵讀者實際動手學習。我們也會看到如何使用 Docker 來讓資料科學變得更簡單，並提供一個有趣的貓咪圖片辨識 App 給有興趣的讀者參考。最後，讓我們分別看看哈佛商業評論以及美國前首席資料科學家 DJ Patil 談談如何讓資料科學在企業內普及，以及數據時代我們面臨的各種道德議題。&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;不同於上週的&lt;a href="https://leemengtaiwan.github.io/data-science-digest-volume-2.html"&gt;文摘 Vol.2 產品理解以及 DS / DE 之路&lt;/a&gt;，這週的選文比較技術以及實作導向。本週將導讀 3 篇使用 Python 以及 Pandas 的文章，並鼓勵讀者實際動手學習。我們也會看到如何使用 Docker 來讓資料科學變得更簡單，並提供一個有趣的貓咪圖片辨識 App 給有興趣的讀者參考。最後，讓我們分別看看哈佛商業評論以及美國前首席資料科學家 DJ Patil 談談如何讓資料科學在企業內普及，以及數據時代我們面臨的各種道德議題。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="本週閱讀清單"&gt;本週閱讀清單&lt;a class="anchor-link" href="#本週閱讀清單"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Pandas、Python&lt;ul&gt;
+&lt;li&gt;&lt;a href="#How-to-Master-Your-Skills-for-Pandas?"&gt;How to Master Your Skills for Pandas?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#How-to-rewrite-your-SQL-queries-in-Pandas,-and-more"&gt;How to rewrite your SQL queries in Pandas, and more&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#Learn-Functional-Python-in-10-Minutes"&gt;Learn Functional Python in 10 Minutes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Docker    &lt;ul&gt;
+&lt;li&gt;&lt;a href="#Docker-for-Data-Scientists"&gt;Docker for Data Scientists&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#Try-It-Yourself"&gt;Cat Recognizer: A flask app showcasing how to recognize cats using Tensorflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;數據時代的反思&lt;ul&gt;
+&lt;li&gt;&lt;a href="#The-Democratization-of-Data-Science"&gt;The Democratization of Data Science&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#Data's-day-of-reckoning"&gt;Data's day of reckoning&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="How-to-Master-Your-Skills-for-Pandas?"&gt;&lt;a href="https://engmrk.com/module5-introduction-to-pandas/"&gt;How to Master Your Skills for Pandas?&lt;/a&gt;&lt;a class="anchor-link" href="#How-to-Master-Your-Skills-for-Pandas?"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;center&gt;
+&lt;a href="https://engmrk.com/module5-introduction-to-pandas/" target="_blacnk"&gt;
+&lt;img src="images/digests/Module-5-Introduction-to-Pandas.png" style="width:90%"/&gt;
+&lt;/a&gt;
+&lt;/center&gt;&lt;p&gt;Python 裡頭最著名的資料處理 library 非 &lt;a href="https://pandas.pydata.org/"&gt;Pandas&lt;/a&gt; 莫屬了。&lt;a href="https://engmrk.com/module5-introduction-to-pandas/"&gt;這篇文章&lt;/a&gt;使用互動式的環境，列出挺完整的 Pandas 指令讓讀者可以邊參考 sample code 邊自己動手玩玩看。&lt;/p&gt;
+&lt;p&gt;其中包含各種利用 Series 以及 Dataframe 兩種 Pandas 常見的資料格式來對數據進行各種操作，適合沒碰過 Pandas 的新手以及想要重新 refresh 語法的人。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="How-to-rewrite-your-SQL-queries-in-Pandas,-and-more"&gt;&lt;a href="https://codeburst.io/how-to-rewrite-your-sql-queries-in-pandas-and-more-149d341fc53e"&gt;How to rewrite your SQL queries in Pandas, and more&lt;/a&gt;&lt;a class="anchor-link" href="#How-to-rewrite-your-SQL-queries-in-Pandas,-and-more"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;center&gt;
+&lt;a href="https://codeburst.io/how-to-rewrite-your-sql-queries-in-pandas-and-more-149d341fc53e" target="_blacnk"&gt;
+&lt;img src="images/digests/kofu-pandas.jpeg" style="width:90%"/&gt;
+&lt;/a&gt;
+&lt;/center&gt;
+提供常見的 SQL 查詢以及其對應的 Pandas 寫法。一個有效率的資料科學家通常需要 SQL 及 pandas 兼具。雖然這篇一開始的目標讀者是那些已經熟悉 SQL 並打算使用 Pandas 的讀者，我認為熟悉 Pandas 但還不了解 SQL 的同學們也能從這篇學到點東西。&lt;/p&gt;
+&lt;p&gt;這篇適合至少懂 Python 或是 SQL 並想學習另外一個語言的讀者。如果你想要深入了解 SQL 或是其與 Python 之間的差異，你可以看看我之前寫的&lt;a href="https://leemengtaiwan.github.io/why-you-need-to-learn-sql-as-a-data-scientist.html"&gt;為何資料科學家需要學習 SQL&lt;/a&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Learn-Functional-Python-in-10-Minutes"&gt;&lt;a href="https://hackernoon.com/learn-functional-python-in-10-minutes-to-2d1651dece6f"&gt;Learn Functional Python in 10 Minutes&lt;/a&gt;&lt;a class="anchor-link" href="#Learn-Functional-Python-in-10-Minutes"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;center&gt;
+&lt;a href="https://hackernoon.com/learn-functional-python-in-10-minutes-to-2d1651dece6f" target="_blank"&gt;
+&lt;img src="images/digests/1_ZXixptvL4rzkx3EDuj38xw.jpg" style="width:90%"/&gt;
+&lt;/a&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;a href="https://bobbywlindsey.com/data-science/2018/07/16/docker-for-data-scientists/"&gt;這篇 Hackernon 文章&lt;/a&gt;則簡單介紹 Functional Programming 在 Python 可以如何被實作，函式（function）是怎麼被視為 Python 的第一公民以及我們能如何活用函式如 Map、Filter 函式。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;如果你剛起步，想要有效率地學習 Python 的話，我建議可以從 &lt;a href="https://www.python-course.eu/list_comprehension.php"&gt;List comprehension&lt;/a&gt; 開始學起。&lt;/p&gt;
+&lt;p&gt;一個簡單的例子是假設我們想從一個 List 中取得大於 50 的數字：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;70&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;larger_than_50&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;larger_than_50&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;[100, 70]
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;文章的後半段則透過 The Zen of Python （Python 的禪學）來說明為何使用 List comprehension 會比使用傳統 Functional Programming 中的 Map、Filter 函式來得簡單。&lt;/p&gt;
+&lt;p&gt;Python 有一個著名的彩蛋，你可以利用 &lt;code&gt;import this&lt;/code&gt; 來顯示 The Zen of Python，它提供使用 Python 的人一個簡單的開發準則，具體如下：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;this&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Docker-for-Data-Scientists"&gt;&lt;a href="https://bobbywlindsey.com/data-science/2018/07/16/docker-for-data-scientists/"&gt;Docker for Data Scientists&lt;/a&gt;&lt;a class="anchor-link" href="#Docker-for-Data-Scientists"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;center&gt;
+&lt;a href="https://bobbywlindsey.com/data-science/2018/07/16/docker-for-data-scientists/" target="_blank"&gt;
+&lt;img src="images/digests/docker-flickr.jpg" style="width:90%"/&gt;
+&lt;/a&gt;
+&lt;/center&gt;
+很簡單地說明常見的 &lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt; 術語以及使用 Docker 可以為資料科學家帶來的好處：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;節省建置開發 / 分析環境所需的時間&lt;/li&gt;
+&lt;li&gt;增加可重現性（Reproducibility）&lt;/li&gt;
+&lt;li&gt;抽象化作業系統（OS）的概念，再也沒有只能在 Mac 跑而不能在 Windows 跑的問題&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這篇提供非常初級的指令來開始在本機環境使用 Docker，可以嘗試看看。&lt;/p&gt;
+&lt;p&gt;在 Smartnews 我則是使用 &lt;a href="https://aws.amazon.com/tw/ecs/"&gt;Amazon Elastic Container Service&lt;/a&gt; 來開發一些資料科學家們會用到的分析工具，如大家的好朋友 &lt;a href="https://jupyterhub.readthedocs.io/en/stable/"&gt;Jupyter Hub&lt;/a&gt;、Airbnb 開發的 BI 工具 &lt;a href="https://github.com/apache/incubator-superset"&gt;Superset&lt;/a&gt;。之後有機會會另外撰文分享經驗。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Try-It-Yourself"&gt;Try It Yourself&lt;a class="anchor-link" href="#Try-It-Yourself"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Docker 讓我們可以快速重現其他人的分析環境或者是有趣的 application。如果你想馬上感受 Docker 的威力，可以看看我之前利用 &lt;a href="https://www.tensorflow.org/"&gt;Tensorflow&lt;/a&gt; 以及 &lt;a href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt; 實作的一個貓咪圖片辨識的 &lt;a href="https://github.com/leemengtaiwan/cat-recognition-app"&gt;Github repo&lt;/a&gt;（feat. &lt;a href="https://github.com/mnicnc404"&gt;CNC&lt;/a&gt;）：&lt;/p&gt;
+&lt;center&gt;
+&lt;a href="https://github.com/leemengtaiwan/cat-recognition-app" target="_blank"&gt;
+&lt;img src="images/digests/cat-recog-cover.jpg" style="width:90%"/&gt;
+&lt;/a&gt;
+&lt;br/&gt;
+&lt;a href="https://github.com/leemengtaiwan/cat-recognition-app" target="_blank"&gt;Cat Recognizer&lt;/a&gt;
+       ：利用 Tensorflow, Flask 實作 App 並使用 Docker 快速與他人分享成果
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;&lt;p&gt;雖然 &lt;a href="https://github.com/leemengtaiwan/cat-recognition-app"&gt;Github repo&lt;/a&gt; 上也有教學指南，想要最快速地在你的電腦上使用這個 App 的話，下載 &lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt; 並開啟 Daemon 後，使用命令列輸入以下指令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker pull leemeng/cat
+docker run -dp &lt;span class="m"&gt;1234&lt;/span&gt;:5000 leemeng/cat
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;接著在瀏覽器輸入 &lt;code&gt;localhost:1234&lt;/code&gt; 應該就能開始使用了。如果你有興趣了解如何一步步打造這樣的 ML 應用，可以留言跟我說。&lt;/p&gt;
+&lt;p&gt;不過現在讓我們繼續看剩下的 2 篇好文章：）&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="The-Democratization-of-Data-Science_1"&gt;&lt;a href="https://hbr.org/2018/07/the-democratization-of-data-science"&gt;The Democratization of Data Science&lt;/a&gt;&lt;a class="anchor-link" href="#The-Democratization-of-Data-Science"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;center&gt;
+&lt;a href="https://hbr.org/2018/07/the-democratization-of-data-science" target="_blank"&gt;
+&lt;img src="images/digests/jul18-27-833771544-Patricia-Toth-McCormick-1200x675.jpg" style="width:90%"/&gt;
+&lt;/a&gt;
+&lt;/center&gt;&lt;p&gt;&lt;a href="https://hbr.org/"&gt;哈佛商業評論（Harvard Business Review, HBR）&lt;/a&gt;在這篇文章裏頭敘述為何不只是針對資料科學家，提升所有人的「資料素養」對一個企業來說是一件非常重要的事情。&lt;/p&gt;
+&lt;p&gt;最明顯的優點是可以讓數據團隊專注在：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;解決更高層次的企業問題&lt;/li&gt;
+&lt;li&gt;建立分析工具以加速所有部門的數據分析&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而不是處理每個部門的「資料瑣事」。&lt;/p&gt;
+&lt;p&gt;這個議題並非只跟企業的管理階層相關。對一個資料科學家來說，想辦法利用資料工程（Data Engineering）等方式來自動化如「建立簡單儀表板」的工作，並教導各個部門實際的使用方式，可以讓你一勞永逸，避免永遠在處理非常瑣碎的「資料瑣事」，專著在更大的目標。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;blockquote&gt;&lt;p&gt;你不會因為自己不是會計師就不遵守專案預算；你也不會因為不是資料科學家就不提升資料素養。&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Data's-day-of-reckoning"&gt;&lt;a href="https://www.oreilly.com/ideas/datas-day-of-reckoning"&gt;Data's day of reckoning&lt;/a&gt;&lt;a class="anchor-link" href="#Data's-day-of-reckoning"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;center&gt;
+&lt;a href="https://www.oreilly.com/ideas/datas-day-of-reckoning" target="_blank"&gt;
+&lt;img src="images/digests/shower-of-sparks-3115784_1280.jpg" style="width:90%"/&gt;
+&lt;/a&gt;
+&lt;/center&gt;
+生活在數據驅動時代的我們或許都能感受到世界變化的快速。&lt;/p&gt;
+&lt;p&gt;美國前首席資料科學家 &lt;a href="https://www.oreilly.com/people/15b77-dj-patil"&gt;DJ Patil&lt;/a&gt; 認為不管是資料科學、機器學習還是人工智慧領域，「道德倫理」以及「安全隱私」議題都應該越來越被重視。&lt;/p&gt;
+&lt;p&gt;電腦科學（Computer Science）時代最著名的安全議題非 SQL 注入&lt;a href="https://zh.wikipedia.org/zh-hant/SQL%E8%B3%87%E6%96%99%E9%9A%B1%E7%A2%BC%E6%94%BB%E6%93%8A"&gt;（SQL Injection）&lt;/a&gt;莫屬了。如同這個議題，在數據驅動時代，我們也會面臨類似道德以及數據保護的議題，像是人工智慧模型產生具有偏見的預測、以及最近的 &lt;a href="https://zh.wikipedia.org/wiki/%E6%AD%90%E7%9B%9F%E4%B8%80%E8%88%AC%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E8%A6%8F%E7%AF%84"&gt;GDPR&lt;/a&gt; 等等。&lt;/p&gt;
+&lt;p&gt;在教育方面，DJ Patil 認為我們應該教育下一代在數據處理時，應該遵守的準則並將其被納入課綱；以數據驅動的公司則需要將這些想法都納入企業文化，在招聘資料科學家的時候，除了考慮他 / 她的分析能力以外，也要評估道德倫理的部分。&lt;/p&gt;
+&lt;p&gt;身為一個資料科學家，除了技術層面的提升，也應該稍微了解這些議題。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;blockquote&gt;&lt;p&gt;We can build a future we want to live in, or we can build a nightmare. The choice is up to us.&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="結語"&gt;結語&lt;a class="anchor-link" href="#結語"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Pandas、SQL、Docker、資料素養的培養以及數據時代的道德倫理問題等等，這週我們也看了不少資料科學相關的文章，希望你有從這篇文章裡頭學到點東西。&lt;/p&gt;
+&lt;p&gt;雖然因為篇幅關係沒辦法把所有實際的 Python 指令列在這邊，我希望透過摘要的方式能讓沒時間的你也能學習、初步地了解資料科學並進一步發現自己有興趣的地方鑽研。&lt;/p&gt;
+&lt;p&gt;有時間的話我推薦實際閱讀這些文章（當然也可以閱讀其他你自己收藏的文章，也歡迎分享），也可以試試看我寫的 &lt;a href="https://github.com/leemengtaiwan/cat-recognition-app"&gt;Cat Recognizer&lt;/a&gt; 並留言跟我說說你的想法。&lt;/p&gt;
+&lt;p&gt;之後一樣會定期更新，希望收到第一手消息的話可以點擊下面的訂閱。另外如果你有其他會對這篇文章有興趣的朋友，也請幫忙分享給他 / 她：）&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;That's it for this week, stay tuned and happy data science!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="文摘"></category><category term="Pandas"></category><category term="SQL"></category><category term="Docker"></category><category term="資料科學"></category></entry><entry><title>資料科學文摘 Vol.2 產品理解以及 DS / DE 之路</title><link href="https://leemengtaiwan.github.io/data-science-digest-volume-2.html" rel="alternate"></link><published>2018-08-03T14:20:00+09:00</published><updated>2018-08-03T14:20:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-08-03:/data-science-digest-volume-2.html</id><summary type="html">&lt;p&gt;這週一樣會透過導讀一些優質文章，讓讀者了解 3 個問題：為何一個專業的資料科學家需要具備「產品理解」？ 何謂「顧客流失分析」？ 我們該如何使用 Python（XGBoost）來建立簡單的預測模型以改善產品？ 此外，我們也將簡單介紹在資料科學領域中逐漸崛起的「資料工程師」，其職責以及專業跟「資料科學家」有何不同。最後也會分享一些與資料科學家/資料工程師相關的文章。&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -8313,10 +8586,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="12a8d209-faea-46d0-bd9e-8534fb70e359"&gt;&lt;/div&gt;
+&lt;div id="88099d58-db1f-4c99-91b2-9f7e78868ac1"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#12a8d209-faea-46d0-bd9e-8534fb70e359');
+var element = $('#88099d58-db1f-4c99-91b2-9f7e78868ac1');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -11593,10 +11866,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="a7128f53-6e04-41ee-b2ac-4cd38cdd986b"&gt;&lt;/div&gt;
+&lt;div id="cda35adf-ce16-4157-9c35-7a7a4c32eace"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#a7128f53-6e04-41ee-b2ac-4cd38cdd986b');
+var element = $('#cda35adf-ce16-4157-9c35-7a7a4c32eace');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -12360,10 +12633,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="3069abcc-561a-4e05-9cd4-ac1bd2abd023"&gt;&lt;/div&gt;
+&lt;div id="168215e5-4882-4840-a92f-2db9d76e01bd"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3069abcc-561a-4e05-9cd4-ac1bd2abd023');
+var element = $('#168215e5-4882-4840-a92f-2db9d76e01bd');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -12553,10 +12826,10 @@ Test accuracy: 89.4%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="0c5c4f4a-69dd-4616-82f7-1285d4971530"&gt;&lt;/div&gt;
+&lt;div id="ae6f0e3b-a4b6-40f9-aefe-a92626a11b35"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#0c5c4f4a-69dd-4616-82f7-1285d4971530');
+var element = $('#ae6f0e3b-a4b6-40f9-aefe-a92626a11b35');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -13320,10 +13593,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="04605fb5-95e7-481f-b4df-2411a4744c57"&gt;&lt;/div&gt;
+&lt;div id="810269ab-4a50-4d74-a92b-88b9c4dabea1"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#04605fb5-95e7-481f-b4df-2411a4744c57');
+var element = $('#810269ab-4a50-4d74-a92b-88b9c4dabea1');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -13524,10 +13797,10 @@ Test accuracy: 90.7%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="bf4de37f-da68-4c2e-a536-6f548daa62ad"&gt;&lt;/div&gt;
+&lt;div id="95610d71-4617-45b0-b942-1aca803c62ef"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#bf4de37f-da68-4c2e-a536-6f548daa62ad');
+var element = $('#95610d71-4617-45b0-b942-1aca803c62ef');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14291,10 +14564,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="ea9bd767-9a79-4984-871a-d288af81dc2c"&gt;&lt;/div&gt;
+&lt;div id="ceb092a8-0845-48bc-a433-4dae0fe991f3"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#ea9bd767-9a79-4984-871a-d288af81dc2c');
+var element = $('#ceb092a8-0845-48bc-a433-4dae0fe991f3');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -14700,10 +14973,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="e17ecfef-bbfb-46d2-a7e0-3ea42bfc46dc"&gt;&lt;/div&gt;
+&lt;div id="2dd8aa5d-df91-4f84-883e-d6fb7f3acaed"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#e17ecfef-bbfb-46d2-a7e0-3ea42bfc46dc');
+var element = $('#2dd8aa5d-df91-4f84-883e-d6fb7f3acaed');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -14765,10 +15038,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="70307f33-ab1a-41d9-8669-5c46d61fd870"&gt;&lt;/div&gt;
+&lt;div id="2f630e05-62e6-43f3-95af-3420dd10262d"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#70307f33-ab1a-41d9-8669-5c46d61fd870');
+var element = $('#2f630e05-62e6-43f3-95af-3420dd10262d');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -14822,10 +15095,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="2be74159-a06b-483a-b1e6-185c400d8d10"&gt;&lt;/div&gt;
+&lt;div id="0cc31d39-a614-4337-a24c-789ea1b69437"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#2be74159-a06b-483a-b1e6-185c400d8d10');
+var element = $('#0cc31d39-a614-4337-a24c-789ea1b69437');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -14879,10 +15152,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="608fb7d3-c041-4f10-baa4-1e8a2ad7f1e4"&gt;&lt;/div&gt;
+&lt;div id="ada8152b-af46-4c51-8fb1-eea32a0e1bc9"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#608fb7d3-c041-4f10-baa4-1e8a2ad7f1e4');
+var element = $('#ada8152b-af46-4c51-8fb1-eea32a0e1bc9');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -14942,10 +15215,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="7e6056f2-eba0-4a48-b854-02520211aec9"&gt;&lt;/div&gt;
+&lt;div id="85754551-936a-4791-a859-9f4a4608fba7"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#7e6056f2-eba0-4a48-b854-02520211aec9');
+var element = $('#85754551-936a-4791-a859-9f4a4608fba7');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -15315,10 +15588,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="1fd5ae04-424e-4b20-85af-ccb8b7d8d402"&gt;&lt;/div&gt;
+&lt;div id="a9dda5ac-2a13-4683-ba81-f71537df4e6c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#1fd5ae04-424e-4b20-85af-ccb8b7d8d402');
+var element = $('#a9dda5ac-2a13-4683-ba81-f71537df4e6c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -15467,10 +15740,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="cf18d8c9-ea95-4f5c-9459-6dfbbf72844e"&gt;&lt;/div&gt;
+&lt;div id="22e00a4f-aa1a-4a02-8071-3f7a30fc41d7"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#cf18d8c9-ea95-4f5c-9459-6dfbbf72844e');
+var element = $('#22e00a4f-aa1a-4a02-8071-3f7a30fc41d7');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -15628,10 +15901,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="d51a98a1-b65d-4a9f-9b48-7baa54bc9f71"&gt;&lt;/div&gt;
+&lt;div id="47e59875-629d-426a-8f68-309dea6276ce"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#d51a98a1-b65d-4a9f-9b48-7baa54bc9f71');
+var element = $('#47e59875-629d-426a-8f68-309dea6276ce');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
