@@ -11,10 +11,10 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>LeeMeng - 生活中的資料工程 - 如何用 Python 及 Airflow 實作一個漫畫連載通知 App</title>
+<title>LeeMeng - 如何用 Python 及 Airflow 輕鬆追漫畫連載</title>
     <!--- article-specific meta data
     ================================================== -->
-        <meta name="description" content="Airflow 是一個以 Python 開發的工作流管理系統，也是資料工程不可或缺的利器之一。近年不管是資料科學家、資料工程師還是任何需要處理數據的軟體工程師，Airflow 都是他們用來建構 ETL 以及處理批量資料的首選之一。這篇文章希望透過 Python 及 Airflow 實作一個簡單有趣的漫畫連載通知 App 的方式，讓讀者了解 Airflow 背後的運作原理、建立資料工程的知識基礎，並在閱讀本文後發揮自己的創意，實際應用 Airflow 來解決自己以及企業的數據問題。" />
+        <meta name="description" content="Airflow 是一個以 Python 開發的工作流管理系統，也是資料工程不可或缺的利器之一。近年不管是資料科學家、資料工程師還是任何需要處理數據的軟體工程師，Airflow 都是他們用來建構 ETL 以及處理批量資料的首選之一。這篇文章希望以一個簡易的漫畫連載通知 App 作為引子，讓讀者直觀地了解 Airflow 背後的運作原理、建立資料工程的知識基礎，並在閱讀本文後發揮自己的創意，實際應用 Airflow 來解決並自動化自己及企業的數據問題。" />
         <meta name="keywords" content="Python, Airflow, 資料工程, Selenium, Slack" />
         <meta name="tags" content="Python" />
         <meta name="tags" content="Airflow" />
@@ -27,9 +27,9 @@
     ================================================== -->
         <meta property="og:image" content="https://leemengtaiwan.github.io/theme/images/background/raj-eiamworakul-603747-unsplash.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://leemengtaiwan.github.io/drafts/how-i-use-python-and-airflow-to-implement-a-comic-notification-app.html" />
-        <meta property="og:title" content="生活中的資料工程 - 如何用 Python 及 Airflow 實作一個漫畫連載通知 App" />
-        <meta property="og:description" content="Airflow 是一個以 Python 開發的工作流管理系統，也是資料工程不可或缺的利器之一。近年不管是資料科學家、資料工程師還是任何需要處理數據的軟體工程師，Airflow 都是他們用來建構 ETL 以及處理批量資料的首選之一。這篇文章希望透過 Python 及 Airflow 實作一個簡單有趣的漫畫連載通知 App 的方式，讓讀者了解 Airflow 背後的運作原理、建立資料工程的知識基礎，並在閱讀本文後發揮自己的創意，實際應用 Airflow 來解決自己以及企業的數據問題。" />
+        <meta property="og:url" content="https://leemengtaiwan.github.io/drafts/how-i-use-python-and-airflow-to-help-me-catch-up-with-latest-comic-with-ease.html" />
+        <meta property="og:title" content="如何用 Python 及 Airflow 輕鬆追漫畫連載" />
+        <meta property="og:description" content="Airflow 是一個以 Python 開發的工作流管理系統，也是資料工程不可或缺的利器之一。近年不管是資料科學家、資料工程師還是任何需要處理數據的軟體工程師，Airflow 都是他們用來建構 ETL 以及處理批量資料的首選之一。這篇文章希望以一個簡易的漫畫連載通知 App 作為引子，讓讀者直觀地了解 Airflow 背後的運作原理、建立資料工程的知識基礎，並在閱讀本文後發揮自己的創意，實際應用 Airflow 來解決並自動化自己及企業的數據問題。" />
 
     <!-- mobile specific metas
     ================================================== -->
@@ -139,12 +139,12 @@
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="https://leemengtaiwan.github.io/drafts/how-i-use-python-and-airflow-to-implement-a-comic-notification-app.html" title="">
-                            生活中的資料工程 - 如何用 Python 及 Airflow 實作一個漫畫連載通知 App
+                        <a href="https://leemengtaiwan.github.io/drafts/how-i-use-python-and-airflow-to-help-me-catch-up-with-latest-comic-with-ease.html" title="">
+                            如何用 Python 及 Airflow 輕鬆追漫畫連載
                         </a>
                     </h1>
                     <ul class="page-header__meta">
-                        <li class="date">2018-08-15 (Wed)</li>
+                        <li class="date">2018-08-17 (Fri)</li>
                         <li class="page-view">
                             1 views
                         </li>
@@ -176,7 +176,7 @@
     <!--<div id="toc-wrap">-->
         <!--<i class="im im-menu" aria-hidden="true"></i>-->
         <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="生活中的資料工程 - 如何用 Python 及 Airflow 實作一個漫畫連載通知 App">生活中的資料工程 - 如何用 Python 及 Airflow 實作一個漫畫連載通知 App</a><ul><li><a class="toc-href" href="#章節傳送門" title="章節傳送門">章節傳送門</a></li><li><a class="toc-href" href="#需求：連載通知-App" title="需求：連載通知 App">需求：連載通知 App</a></li><li><a class="toc-href" href="#Python-及-Airflow-實作-App" title="Python 及 Airflow 實作 App">Python 及 Airflow 實作 App</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>-->
+        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="如何用 Python 及 Airflow 輕鬆追漫畫連載">如何用 Python 及 Airflow 輕鬆追漫畫連載</a><ul><li><a class="toc-href" href="#章節傳送門" title="章節傳送門">章節傳送門</a></li><li><a class="toc-href" href="#所以為何要這-App-？" title="所以為何要這 App ？">所以為何要這 App ？</a></li><li><a class="toc-href" href="#為何要-Airflow-？" title="為何要 Airflow ？">為何要 Airflow ？</a></li><li><a class="toc-href" href="#Python-實作" title="Python 實作">Python 實作</a></li><li><a class="toc-href" href="#為何要-Airflow？" title="為何要 Airflow？">為何要 Airflow？</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>-->
         <!---->
     <!--</div>-->
     <!---->
@@ -190,7 +190,8 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://airflow.apache.org/">Airflow</a> 是一個從 Airbnb 誕生並開源，以 <a href="https://www.python.org/">Python</a> 寫成的<a href="https://zh.wikipedia.org/wiki/%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F">工作流管理系統（Workflow Management System）</a>，也是<a href="https://github.com/apache/incubator-airflow#who-uses-airflow">各大企業</a>的資料工程環節中不可或缺的利器之一。</p>
 <p>近年不管是資料科學家、資料工程師還是任何需要處理數據的軟體工程師，Airflow 都是他們用來建構穩定可靠的 ETL 以及定期處理批量資料的首選之一。（事實上在 <a href="https://www.smartnews.com/en/">SmartNews</a>，除了 DS/DE，會使用 Airflow 的軟體工程師也不在少數）</p>
-<p>儘管它的方便以及強大，在完全熟悉 Airflow 之前，因為有些專業術語以及資料工程概念的存在，不少初學者（包含當時的我）在剛開始的時候容易撞壁。有些 DS 則是因為平常沒有使用需求，導致不熟悉 Airflow，等到進了企業裡頭需要建立 ETL 工作時才開始手忙腳亂。</p>
+<p>儘管它的方便以及強大，在完全熟悉 Airflow 之前，因為有些專業術語以及資料工程概念的存在，不少初學者（包含當時的我）在剛開始的時候容易四處撞壁。另外如果一開始就以 ETL 當作 Airflow 的使用案例的話，未免過於枯燥乏味且缺少共鳴。</p>
+<p>因此這篇文章希望以一個簡易的漫畫連載通知 App 作為引子，讓讀者能夠專注在了解 Airflow 的使用方式，以及學習如何建立一個工作流的基礎。如果你對資料工程有興趣，不太熟悉 Airflow 但有基本的 Python 程式基礎（或是純粹對追漫畫連載有興趣），我相信這篇文章應該會很適合你。</p>
 </div>
 </div>
 </div>
@@ -199,29 +200,32 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <a href="https://airflow.apache.org/" target="_blank">
-<img src="{filename}images/airflow/app.png" style="width:90%"/>
+<img src="https://leemengtaiwan.github.io/images/airflow/app.jpg" style="width:90%"/>
 </a>
-<p>[漫畫連載 App](https://github.com/leemengtaiwan/awesome-datascience-tw/blob/master/airflow/dags/notify_new_comic.py)：我們將利用 Airflow、[Selenium](http://selenium-python.readthedocs.io/)、[Slack](https://slack.com/) 來實作它（All written in [Python](https://www.python.org/)）</p>
+<p>Slack 截圖：追漫畫應該要是件輕鬆的事情。<br/>我們將利用 Airflow 及
+        <a href="http://selenium-python.readthedocs.io/" target="_blank">Selenium </a>來實作一個像這樣會每天從 <a href="https://slack.com/" target="_blank">Slack</a> 推送最新漫畫連載的 App
+    <br/>
 <br/>
-</center>
+</p></center>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這篇文章希望透過使用 Python 及 Airflow 實作一個簡單的漫畫連載通知 App，讓讀者能直觀地了解 Airflow 背後的運作原理以及學習建立資料管道（Data Pipeline）的基礎。如果你對資料工程有興趣，不太熟悉 Airflow 但有基本的 Python 程式基礎（或是純粹對我們將要實作的 App 有興趣），我相信這篇文章應該會很適合你。</p>
-<p>P.S. 想複習 ETL 概念的讀者可以參考先前的文章：<a href="https://leemengtaiwan.github.io/why-you-need-to-learn-data-engineering-as-a-data-scientist.html#%E8%B3%87%E6%96%99%E7%AE%A1%E9%81%93">資料科學家為何需要了解資料工程</a></p>
-<p>前言夠長了，讓我們開始吧！</p>
+<p>想重新複習 ETL 概念的讀者可以參考先前的文章：<a href="https://leemengtaiwan.github.io/why-you-need-to-learn-data-engineering-as-a-data-scientist.html#%E8%B3%87%E6%96%99%E7%AE%A1%E9%81%93">資料科學家為何需要了解資料工程</a>。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="章節傳送門">章節傳送門<a class="anchor-link" href="#章節傳送門">&para;</a></h2><ul>
-<li><a href="#需求：連載通知-App">宅宅需求：漫畫連載通知 App</a></li>
-<li><a href="#Python-及-Airflow-實作">Python 及 Airflow 實作</a></li>
+<h2 id="章節傳送門">章節傳送門<a class="anchor-link" href="#章節傳送門">&para;</a></h2><p>為讓讀者完整了解開發這個 App 的背景脈絡、我是怎麼設計 App 邏輯以及選擇 Airflow 的原因，在實際開始寫 Python 之前有兩小節介紹。</p>
+<p>如果你迫不及待，想馬上看怎麼用 Python 來實作，可以直接跳到 <a href="#Python-實作">Python 實作</a>之後再回來查看前面章節。雖然我建議按照順序閱讀：）</p>
+<ul>
+<li><a href="#所以為何要這-App-？">所以為何要這 App ？</a></li>
+<li><a href="#為何要-Airflow-？">為何要 Airflow ？</a></li>
+<li><a href="#Python-實作">Python 實作</a></li>
 <li><a href="#結語">結語</a></li>
 </ul>
 </div>
@@ -230,20 +234,20 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="需求：連載通知-App">需求：連載通知 App<a class="anchor-link" href="#需求：連載通知-App">&para;</a></h2>
+<h2 id="所以為何要這-App-？">所以為何要這 App ？<a class="anchor-link" href="#所以為何要這-App-？">&para;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>我想平常有在網路上追漫畫連載的讀者們應該都了解，市面上的漫畫網站通常都不是會員制的，更不用說「在新連載出的時候自動通知您！」這種推送功能（Push Notification）了。也因為這樣，導致我常常需要三不五時上去這些漫畫網站，看自己所有關注的漫畫到底出了最新一話了沒。可想而知，答案通常是否定的。（一週出一次每天檢查也沒用啊啊啊）</p>
-<p>如果你只看海賊王一個漫畫（索隆好帥！），這或許沒什麼負擔。但我不只關注海賊王，還看很多其他漫畫；讓事情更糟的是，到最後你會：</p>
+<p>平常有在網路上追漫畫連載的讀者們應該都了解，市面上的漫畫網站通常都不是會員制的。更不用說「在新連載出的時候自動通知您！」這種推送功能（Push Notification）了。也因為這樣，導致我常常三不五時上去這些漫畫網站，看每個關注的漫畫到底出了最新一話了沒。可想而知，答案通常是否定的。（一週出一次每天檢查也沒用啊啊啊）</p>
+<p>如果你只看海賊王一個漫畫（索隆好帥！），這或許沒什麼負擔。但就像上面 Slack 截圖顯示的，我不只關注海賊王，還看很多其他漫畫。讓事情更糟的是，到最後你會發現：</p>
 <ul>
 <li>不記得自己到底在追哪些漫畫</li>
-<li>每一部漫畫最後是看到第幾話</li>
+<li>每一部漫畫最後到底是看到第幾話</li>
 <li>上一話是什麼時候出的</li>
-<li>有幾話是新出而你還沒看的</li>
+<li>有幾話是新出而你還沒看的 </li>
 </ul>
 <center>
 <a href="https://airflow.apache.org/" target="_blank">
@@ -251,34 +255,62 @@
 </a>
 <p>手動追最新連載經常讓我追到懷疑人生</p>
 <br/>
-</center><p>這時候如果有一個 App 幫我們解決上述問題，當新連載出的時候</p>
+</center><p>追漫畫連載應該要是個輕鬆且享受的事情。在一個人人會寫 code 的時代，何不自己做個 App 幫我們自動「檢查新連載」這件事情呢？</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Python-及-Airflow-實作-App">Python 及 Airflow 實作 App<a class="anchor-link" href="#Python-及-Airflow-實作-App">&para;</a></h2>
+<h2 id="為何要-Airflow-？">為何要 Airflow ？<a class="anchor-link" href="#為何要-Airflow-？">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Requirement</span><span class="p">:</span>
-<span class="n">Python</span> <span class="n">knowledge</span>
-<span class="n">我鼓勵你</span> <span class="n">follow</span> <span class="n">這篇文章的步驟</span>
-
-
-
-<span class="n">Why</span> <span class="n">bother</span> airflow<span class="o">?</span>
-<span class="n">你想要做的是資料處理</span><span class="err">，</span><span class="n">而不是建立</span> <span class="n">ＷＭＳ</span>
-<span class="o">*</span> <span class="n">Why</span> <span class="ow">not</span> <span class="n">python</span> <span class="n">script</span><span class="err">?</span> <span class="n">墨菲定律</span><span class="err">，</span> <span class="n">Retry</span> <span class="n">automatically</span>
-<span class="o">*</span> <span class="n">Schedule</span><span class="p">:</span> <span class="n">Corn</span> <span class="n">possible</span><span class="p">,</span> <span class="n">but</span> <span class="n">dependencies</span> <span class="n">難以管理</span>
-<span class="o">*</span> <span class="n">why</span> <span class="n">airflow</span> <span class="ow">not</span> <span class="n">Azakaban</span><span class="err">?</span> <span class="n">Apache</span> <span class="n">incubator</span> <span class="err">，</span><span class="n">簡單</span> <span class="n">UI</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>概念上我們可以把此 App 需要做的工作按照「順序」由上往下列出來：</p>
+<ul>
+<li>取得使用者的閱讀紀錄</li>
+<li>去漫畫網站看有沒有新的章節</li>
+<li>跟紀錄比較，有沒有新連載？<ul>
+<li>沒有：<ul>
+<li>什麼都不幹，結束</li>
+</ul>
+</li>
+<li>有：<ul>
+<li>寄 Slack 通知</li>
+<li>更新閱讀紀錄</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>我知道你在想什麼，要實作這個 App 的邏輯一點都不難。事實上我們已經完整定義這 App 的工作流了，只剩寫個 Python script 把每個工作的邏輯實作出來而已，為何需要 Airflow ？</p>
+<p>在你往下滑前給個提示：這個 App 還有一個必要功能沒被提到。</p>
 </div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemengtaiwan.github.io/images/airflow/thought-2123970_1280.jpg" style="width:90%"/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>對！顯而易見的，這個 App 必須定期地、重複地去執行上述的工作流（Workflow）。</p>
+<p>我們可不希望它只在明天早上去檢查新連載。我們希望它明天、下個月或是明年的今天都在運作。這也是為何我們需要一個像是 Airflow 的<a href="https://zh.wikipedia.org/wiki/%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F">工作流管理系統（Workflow Management System）</a>。Airflow 能幫我們：</p>
+<ul>
+<li>排程工作流，定期執行</li>
+<li>確保工作流內的工作按照順序被執行</li>
+<li>各個工作失敗時自動重試（<a href="https://zh.wikipedia.org/wiki/%E6%91%A9%E8%8F%B2%E5%AE%9A%E7%90%86">墨菲定律</a>）</li>
+<li>簡單易懂的 Web UI 方便管理工作流</li>
+</ul>
 </div>
 </div>
 </div>
@@ -289,9 +321,86 @@
 <a href="https://airflow.apache.org/" target="_blank">
 <img src="https://leemengtaiwan.github.io/images/airflow/airflow.gif" style="width:90%"/>
 </a>
-<p>除了背後實作以外，Airflow 的網頁 UI 讓資料工程師（DS） / 資料工程師（DE） 可以更輕鬆地管理及排程 ETL 工作（後面會詳細介紹）</p>
+<p>Airflow 的 Web UI 讓我們能更輕鬆地管理及排程工作</p>
 <br/>
 </center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Show</span> <span class="n">me</span> <span class="n">the</span> <span class="n">code</span><span class="o">!</span>!!<span class="o">[](</span>show-me-the-code.png<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Python-實作">Python 實作<a class="anchor-link" href="#Python-實作">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="err">&mdash;</span><span class="o">-</span>
+<span class="n">一步步開發</span> <span class="n">app</span><span class="p">,</span> <span class="n">iteration</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+
+<span class="n">從只有一個</span> <span class="n">dummy</span> <span class="n">task</span><span class="p">(</span><span class="n">do</span> <span class="n">everything</span> <span class="n">here</span><span class="o">!)</span> 的 一個 dag 開始
+<span class="n">介紹</span> <span class="n">dag</span>
+<span class="n">測試單一</span> <span class="n">task</span> 
+<span class="n">測試整個</span> <span class="n">dag</span> 
+
+<span class="n">加所有dummy</span>  <span class="n">task</span><span class="err">，</span> <span class="n">設定整個</span> <span class="n">dependencies</span> 
+<span class="n">介紹</span> <span class="n">xcom</span> 
+<span class="n">測試整個</span> <span class="n">dag</span>
+
+<span class="n">實際加功能進去</span>
+<span class="n">分每個</span> <span class="n">function</span> <span class="n">介紹</span>
+
+<span class="n">事後監控</span>
+
+<span class="n">看漫畫</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="為何要-Airflow？">為何要 Airflow？<a class="anchor-link" href="#為何要-Airflow？">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Why</span> <span class="n">bother</span> airflow<span class="o">?</span>
+<span class="n">你想要做的是資料處理</span><span class="err">，</span><span class="n">而不是建立</span> <span class="n">ＷＭＳ</span>
+<span class="o">*</span> <span class="n">Why</span> <span class="ow">not</span> <span class="n">python</span> <span class="n">script</span><span class="err">?</span> <span class="n">墨菲定律</span><span class="err">，</span> <span class="n">Retry</span> <span class="n">automatically</span>
+<span class="o">*</span> <span class="n">Schedule</span><span class="p">:</span> <span class="n">Corn</span> <span class="n">possible</span><span class="p">,</span> <span class="n">but</span> <span class="n">dependencies</span> <span class="n">難以管理</span>
+<span class="o">*</span> <span class="n">why</span> <span class="n">airflow</span> <span class="ow">not</span> <span class="n">Azakaban</span><span class="err">?</span> <span class="n">Apache</span> <span class="n">incubator</span> <span class="err">，</span><span class="n">簡單</span> <span class="n">UI</span>
+
+<span class="n">在我們的漫畫</span> <span class="n">case</span> <span class="n">中</span> <span class="n">airflow</span> <span class="n">是一個</span> <span class="n">overkill</span><span class="p">,</span> <span class="n">但這篇文章希望透過go</span> <span class="n">though</span> <span class="n">這個問題讓讀者熟悉</span> <span class="n">airflow</span> <span class="n">的運作</span><span class="err">，</span><span class="n">為解決企業等級的問題做好準備</span><span class="err">。</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -306,9 +415,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">在我們的漫畫</span> <span class="n">case</span> <span class="n">中</span> <span class="n">airflow</span> <span class="n">是一個</span> <span class="n">overkill</span><span class="p">,</span> <span class="n">但這篇文章希望透過go</span> <span class="n">though</span> <span class="n">這個問題讓讀者熟悉</span> <span class="n">airflow</span> <span class="n">的運作</span><span class="err">，</span><span class="n">為解決企業等級的問題做好準備</span><span class="err">。</span>
-
-<span class="n">你甚至也可以選擇時用其它語言</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="p">,</span> <span class="n">JAVA</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">你甚至也可以選擇時用其它語言</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="p">,</span> <span class="n">JAVA</span><span class="p">)</span>
 
 
 <span class="n">期望在讀者們能在閱讀文章之後實際應用</span> <span class="n">Airflow</span> <span class="n">來解決自己以及企業的問題</span><span class="err">。</span>
@@ -445,7 +552,7 @@
 
 <script type="text/javascript">
 var disqus_shortname = 'leemengtaiwan';
-var disqus_title = '生活中的資料工程 - 如何用 Python 及 Airflow 實作一個漫畫連載通知 App';
+var disqus_title = '如何用 Python 及 Airflow 輕鬆追漫畫連載';
 
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
