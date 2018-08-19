@@ -44,6 +44,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -125,6 +128,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="Simple Image Recognition using NotMNIST dataset">Simple Image Recognition using NotMNIST dataset</a><ul><li><a class="toc-href" href="#Workflow" title="Workflow">Workflow</a></li><li><a class="toc-href" href="#After-finishing-this-notebook,-we-learn" title="After finishing this notebook, we learn">After finishing this notebook, we learn</a></li><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Dataset" title="Dataset">Dataset</a></li><li><a class="toc-href" href="#Extract-the-dataset-into-folders-by-characters" title="Extract the dataset into folders by characters">Extract the dataset into folders by characters</a></li><li><a class="toc-href" href="#Problem-1---Sample-some-images-in-dataset-and-render-them" title="Problem 1 - Sample some images in dataset and render them">Problem 1 - Sample some images in dataset and render them</a><ul><li><a class="toc-href" href="#For-each-character-folder-in-dataset,-randomly-choose-one-picture-in-it-and-render-them-horizontally" title="For each character folder in dataset, randomly choose one picture in it and render them horizontally">For each character folder in dataset, randomly choose one picture in it and render them horizontally</a></li></ul></li><li><a class="toc-href" href="#Data-curation_1" title="Data curation">Data curation</a><ul><li><a class="toc-href" href="#Debugging" title="Debugging">Debugging</a></li></ul></li><li><a class="toc-href" href="#Problem-2_1" title="Problem 2">Problem 2</a><ul><li><a class="toc-href" href="#Load--test-data-and--show-normalized-images-for-each-pickled-dataset" title="Load  test data and  show normalized images for each pickled dataset">Load  test data and  show normalized images for each pickled dataset</a></li></ul></li><li><a class="toc-href" href="#Problem-3_1" title="Problem 3">Problem 3</a></li><li><a class="toc-href" href="#Merge-seperate-character-dataset-together-(for-all-training/test/valid)" title="Merge seperate character dataset together (for all training/test/valid)">Merge seperate character dataset together (for all training/test/valid)</a></li><li><a class="toc-href" href="#Randomize-data" title="Randomize data">Randomize data</a></li><li><a class="toc-href" href="#Problem-4---Sanity-check-after-shuffling-dataset" title="Problem 4 - Sanity check after shuffling dataset">Problem 4 - Sanity check after shuffling dataset</a></li><li><a class="toc-href" href="#Serialize-dataset-for-later-usage" title="Serialize dataset for later usage">Serialize dataset for later usage</a></li><li><a class="toc-href" href="#Problem-5---Remove-overlapping-samples-in-test/valid-set" title="Problem 5 - Remove overlapping samples in test/valid set">Problem 5 - Remove overlapping samples in test/valid set</a><ul><li><a class="toc-href" href="#Find-duplicate-images-in-test-set" title="Find duplicate images in test set">Find duplicate images in test set</a></li><li><a class="toc-href" href="#Duplicate-images-in-validation-set" title="Duplicate images in validation set">Duplicate images in validation set</a></li><li><a class="toc-href" href="#Serialize-sanitized-dataset-for-later-model-performance-comparison" title="Serialize sanitized dataset for later model performance comparison">Serialize sanitized dataset for later model performance comparison</a></li></ul></li><li><a class="toc-href" href="#Problem-6---Build-naive-classifier-using-logistic-regression_1" title="Problem 6 - Build naive classifier using logistic regression">Problem 6 - Build naive classifier using logistic regression</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -176,14 +188,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Simple Image Recognition using NotMNIST dataset">Simple Image Recognition using NotMNIST dataset</a><ul><li><a class="toc-href" href="#Workflow" title="Workflow">Workflow</a></li><li><a class="toc-href" href="#After-finishing-this-notebook,-we-learn" title="After finishing this notebook, we learn">After finishing this notebook, we learn</a></li><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Dataset" title="Dataset">Dataset</a></li><li><a class="toc-href" href="#Extract-the-dataset-into-folders-by-characters" title="Extract the dataset into folders by characters">Extract the dataset into folders by characters</a></li><li><a class="toc-href" href="#Problem-1---Sample-some-images-in-dataset-and-render-them" title="Problem 1 - Sample some images in dataset and render them">Problem 1 - Sample some images in dataset and render them</a><ul><li><a class="toc-href" href="#For-each-character-folder-in-dataset,-randomly-choose-one-picture-in-it-and-render-them-horizontally" title="For each character folder in dataset, randomly choose one picture in it and render them horizontally">For each character folder in dataset, randomly choose one picture in it and render them horizontally</a></li></ul></li><li><a class="toc-href" href="#Data-curation_1" title="Data curation">Data curation</a><ul><li><a class="toc-href" href="#Debugging" title="Debugging">Debugging</a></li></ul></li><li><a class="toc-href" href="#Problem-2_1" title="Problem 2">Problem 2</a><ul><li><a class="toc-href" href="#Load--test-data-and--show-normalized-images-for-each-pickled-dataset" title="Load  test data and  show normalized images for each pickled dataset">Load  test data and  show normalized images for each pickled dataset</a></li></ul></li><li><a class="toc-href" href="#Problem-3_1" title="Problem 3">Problem 3</a></li><li><a class="toc-href" href="#Merge-seperate-character-dataset-together-(for-all-training/test/valid)" title="Merge seperate character dataset together (for all training/test/valid)">Merge seperate character dataset together (for all training/test/valid)</a></li><li><a class="toc-href" href="#Randomize-data" title="Randomize data">Randomize data</a></li><li><a class="toc-href" href="#Problem-4---Sanity-check-after-shuffling-dataset" title="Problem 4 - Sanity check after shuffling dataset">Problem 4 - Sanity check after shuffling dataset</a></li><li><a class="toc-href" href="#Serialize-dataset-for-later-usage" title="Serialize dataset for later usage">Serialize dataset for later usage</a></li><li><a class="toc-href" href="#Problem-5---Remove-overlapping-samples-in-test/valid-set" title="Problem 5 - Remove overlapping samples in test/valid set">Problem 5 - Remove overlapping samples in test/valid set</a><ul><li><a class="toc-href" href="#Find-duplicate-images-in-test-set" title="Find duplicate images in test set">Find duplicate images in test set</a></li><li><a class="toc-href" href="#Duplicate-images-in-validation-set" title="Duplicate images in validation set">Duplicate images in validation set</a></li><li><a class="toc-href" href="#Serialize-sanitized-dataset-for-later-model-performance-comparison" title="Serialize sanitized dataset for later model performance comparison">Serialize sanitized dataset for later model performance comparison</a></li></ul></li><li><a class="toc-href" href="#Problem-6---Build-naive-classifier-using-logistic-regression_1" title="Problem 6 - Build naive classifier using logistic regression">Problem 6 - Build naive classifier using logistic regression</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -7314,6 +7323,26 @@ var disqus_title = 'Simple Image Recognition using NotMNIST dataset';
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

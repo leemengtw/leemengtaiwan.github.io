@@ -39,6 +39,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -120,6 +123,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="淺談資料視覺化以及 ggplot2 實踐">淺談資料視覺化以及 ggplot2 實踐</a><ul><li><a class="toc-href" href="#目錄" title="目錄">目錄</a></li><li><a class="toc-href" href="#資料視覺化是資料與圖的直接映射？" title="資料視覺化是資料與圖的直接映射？">資料視覺化是資料與圖的直接映射？</a></li><li><a class="toc-href" href="#資料視覺化應該是-.." title="資料視覺化應該是 ..">資料視覺化應該是 ..</a><ul><li><a class="toc-href" href="#先確認觀眾及目的" title="先確認觀眾及目的">先確認觀眾及目的</a></li><li><a class="toc-href" href="#正式定義" title="正式定義">正式定義</a></li><li><a class="toc-href" href="#一個簡單例子" title="一個簡單例子">一個簡單例子</a></li><li><a class="toc-href" href="#圖像的分層文法" title="圖像的分層文法">圖像的分層文法</a></li></ul></li><li><a class="toc-href" href="#ggplot2-實踐_1" title="ggplot2 實踐">ggplot2 實踐</a><ul><li><a class="toc-href" href="#載入-packages" title="載入 packages">載入 packages</a></li><li><a class="toc-href" href="#載入資料-+-簡單資料處理" title="載入資料 + 簡單資料處理">載入資料 + 簡單資料處理</a></li><li><a class="toc-href" href="#簡單資料視覺化" title="簡單資料視覺化">簡單資料視覺化</a></li><li><a class="toc-href" href="#基本層數缺一不可" title="基本層數缺一不可">基本層數缺一不可</a></li><li><a class="toc-href" href="#另個簡單例子" title="另個簡單例子">另個簡單例子</a></li><li><a class="toc-href" href="#複雜例子" title="複雜例子">複雜例子</a></li></ul></li><li><a class="toc-href" href="#結語_1" title="結語">結語</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -170,14 +182,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="淺談資料視覺化以及 ggplot2 實踐">淺談資料視覺化以及 ggplot2 實踐</a><ul><li><a class="toc-href" href="#目錄" title="目錄">目錄</a></li><li><a class="toc-href" href="#資料視覺化是資料與圖的直接映射？" title="資料視覺化是資料與圖的直接映射？">資料視覺化是資料與圖的直接映射？</a></li><li><a class="toc-href" href="#資料視覺化應該是-.." title="資料視覺化應該是 ..">資料視覺化應該是 ..</a><ul><li><a class="toc-href" href="#先確認觀眾及目的" title="先確認觀眾及目的">先確認觀眾及目的</a></li><li><a class="toc-href" href="#正式定義" title="正式定義">正式定義</a></li><li><a class="toc-href" href="#一個簡單例子" title="一個簡單例子">一個簡單例子</a></li><li><a class="toc-href" href="#圖像的分層文法" title="圖像的分層文法">圖像的分層文法</a></li></ul></li><li><a class="toc-href" href="#ggplot2-實踐_1" title="ggplot2 實踐">ggplot2 實踐</a><ul><li><a class="toc-href" href="#載入-packages" title="載入 packages">載入 packages</a></li><li><a class="toc-href" href="#載入資料-+-簡單資料處理" title="載入資料 + 簡單資料處理">載入資料 + 簡單資料處理</a></li><li><a class="toc-href" href="#簡單資料視覺化" title="簡單資料視覺化">簡單資料視覺化</a></li><li><a class="toc-href" href="#基本層數缺一不可" title="基本層數缺一不可">基本層數缺一不可</a></li><li><a class="toc-href" href="#另個簡單例子" title="另個簡單例子">另個簡單例子</a></li><li><a class="toc-href" href="#複雜例子" title="複雜例子">複雜例子</a></li></ul></li><li><a class="toc-href" href="#結語_1" title="結語">結語</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -2828,6 +2837,26 @@ var disqus_title = '淺談資料視覺化以及 ggplot2 實踐';
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

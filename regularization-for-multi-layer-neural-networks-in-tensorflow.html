@@ -42,6 +42,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -123,6 +126,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="Regularization for Multi-layer Neural Networks in Tensorflow">Regularization for Multi-layer Neural Networks in Tensorflow</a><ul><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Load-NotMNIST-dataset" title="Load NotMNIST dataset">Load NotMNIST dataset</a></li><li><a class="toc-href" href="#Reformat-dataset" title="Reformat dataset">Reformat dataset</a><ul><li><a class="toc-href" href="#Using-Accuracy-as-Default-Metric" title="Using Accuracy as Default Metric">Using Accuracy as Default Metric</a></li></ul></li><li><a class="toc-href" href="#3-layer-NN-as-base-model_1" title="3-layer NN as base model">3-layer NN as base model</a><ul><li><a class="toc-href" href="#Hyper-parameters" title="Hyper parameters">Hyper parameters</a></li><li><a class="toc-href" href="#Build-model" title="Build model">Build model</a></li><li><a class="toc-href" href="#Train-model-without-regularization" title="Train model without regularization">Train model without regularization</a></li></ul></li><li><a class="toc-href" href="#L2-regularization_1" title="L2 regularization">L2 regularization</a></li><li><a class="toc-href" href="#Case-of-overfitting" title="Case of overfitting">Case of overfitting</a></li><li><a class="toc-href" href="#Dropout" title="Dropout">Dropout</a></li><li><a class="toc-href" href="#Boost-performance-by-using-Multi-layer-NN" title="Boost performance by using Multi-layer NN">Boost performance by using Multi-layer NN</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -148,7 +160,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2017-09-25 (Mon)</li>
                         <li class="page-view">
-                            154 views
+                            155 views
                         </li>
                     </ul>
 
@@ -174,14 +186,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Regularization for Multi-layer Neural Networks in Tensorflow">Regularization for Multi-layer Neural Networks in Tensorflow</a><ul><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Load-NotMNIST-dataset" title="Load NotMNIST dataset">Load NotMNIST dataset</a></li><li><a class="toc-href" href="#Reformat-dataset" title="Reformat dataset">Reformat dataset</a><ul><li><a class="toc-href" href="#Using-Accuracy-as-Default-Metric" title="Using Accuracy as Default Metric">Using Accuracy as Default Metric</a></li></ul></li><li><a class="toc-href" href="#3-layer-NN-as-base-model_1" title="3-layer NN as base model">3-layer NN as base model</a><ul><li><a class="toc-href" href="#Hyper-parameters" title="Hyper parameters">Hyper parameters</a></li><li><a class="toc-href" href="#Build-model" title="Build model">Build model</a></li><li><a class="toc-href" href="#Train-model-without-regularization" title="Train model without regularization">Train model without regularization</a></li></ul></li><li><a class="toc-href" href="#L2-regularization_1" title="L2 regularization">L2 regularization</a></li><li><a class="toc-href" href="#Case-of-overfitting" title="Case of overfitting">Case of overfitting</a></li><li><a class="toc-href" href="#Dropout" title="Dropout">Dropout</a></li><li><a class="toc-href" href="#Boost-performance-by-using-Multi-layer-NN" title="Boost performance by using Multi-layer NN">Boost performance by using Multi-layer NN</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -552,10 +561,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="a8f88edb-d300-4372-87e2-d2b09b368098"></div>
+<div id="7c09a11a-c58c-4150-b271-99f06ebe06b8"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a8f88edb-d300-4372-87e2-d2b09b368098');
+var element = $('#7c09a11a-c58c-4150-b271-99f06ebe06b8');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -617,10 +626,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="d07ffacd-b282-4eae-af20-79c675cdc31a"></div>
+<div id="5bb9029d-49f4-46dd-a7bf-6693a0a73a84"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#d07ffacd-b282-4eae-af20-79c675cdc31a');
+var element = $('#5bb9029d-49f4-46dd-a7bf-6693a0a73a84');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -674,10 +683,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="49ca4dae-3b92-42c5-bd65-cedbe56ff4d4"></div>
+<div id="77cdd4dd-85c6-4db4-82ab-c2ad69d618f7"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#49ca4dae-3b92-42c5-bd65-cedbe56ff4d4');
+var element = $('#77cdd4dd-85c6-4db4-82ab-c2ad69d618f7');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -731,10 +740,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="e2507d53-20e7-4d88-acf6-ee648c161c1a"></div>
+<div id="8e676e89-8ec4-4ba3-91a1-69c94edefecf"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e2507d53-20e7-4d88-acf6-ee648c161c1a');
+var element = $('#8e676e89-8ec4-4ba3-91a1-69c94edefecf');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -794,10 +803,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="24d10dcb-fe45-4404-aed9-68d104b461bf"></div>
+<div id="1fab6c65-409c-4bcb-bc03-62b955fca34d"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#24d10dcb-fe45-4404-aed9-68d104b461bf');
+var element = $('#1fab6c65-409c-4bcb-bc03-62b955fca34d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -1053,6 +1062,26 @@ var disqus_title = 'Regularization for Multi-layer Neural Networks in Tensorflow
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

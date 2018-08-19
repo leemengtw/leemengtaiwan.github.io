@@ -37,6 +37,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -118,6 +121,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="揭開資料科學的神秘面紗">揭開資料科學的神秘面紗</a><ul><li><a class="toc-href" href="#目錄" title="目錄">目錄</a></li><li><a class="toc-href" href="#聽說你想當資料科學家？" title="聽說你想當資料科學家？">聽說你想當資料科學家？</a></li><li><a class="toc-href" href="#資料科學到底在夯什麼？" title="資料科學到底在夯什麼？">資料科學到底在夯什麼？</a></li><li><a class="toc-href" href="#啊所以那個資料科學勒？" title="啊所以那個資料科學勒？">啊所以那個資料科學勒？</a></li><li><a class="toc-href" href="#充實你的資料科學力" title="充實你的資料科學力">充實你的資料科學力</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -140,7 +152,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-05-11 (Fri)</li>
                         <li class="page-view">
-                            2,400 views
+                            2,402 views
                         </li>
                     </ul>
 
@@ -166,14 +178,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="揭開資料科學的神秘面紗">揭開資料科學的神秘面紗</a><ul><li><a class="toc-href" href="#目錄" title="目錄">目錄</a></li><li><a class="toc-href" href="#聽說你想當資料科學家？" title="聽說你想當資料科學家？">聽說你想當資料科學家？</a></li><li><a class="toc-href" href="#資料科學到底在夯什麼？" title="資料科學到底在夯什麼？">資料科學到底在夯什麼？</a></li><li><a class="toc-href" href="#啊所以那個資料科學勒？" title="啊所以那個資料科學勒？">啊所以那個資料科學勒？</a></li><li><a class="toc-href" href="#充實你的資料科學力" title="充實你的資料科學力">充實你的資料科學力</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -963,6 +972,26 @@ var disqus_title = '揭開資料科學的神秘面紗';
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

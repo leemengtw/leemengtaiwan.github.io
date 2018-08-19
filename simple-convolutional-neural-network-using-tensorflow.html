@@ -43,6 +43,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -124,6 +127,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="Simple Convolutional Neural Network using TensorFlow">Simple Convolutional Neural Network using TensorFlow</a><ul><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Load-notMNIST-dataset" title="Load notMNIST dataset">Load notMNIST dataset</a></li><li><a class="toc-href" href="#Reformat-data" title="Reformat data">Reformat data</a></li><li><a class="toc-href" href="#Helper-for-training-visualization" title="Helper for training visualization">Helper for training visualization</a></li><li><a class="toc-href" href="#NN-with-2-convolutional-layers" title="NN with 2 convolutional layers">NN with 2 convolutional layers</a><ul><li><a class="toc-href" href="#Computation-graph" title="Computation graph">Computation graph</a></li><li><a class="toc-href" href="#Train-the-model-and-visualize-the-result" title="Train the model and visualize the result">Train the model and visualize the result</a></li></ul></li><li><a class="toc-href" href="#Problem-1---Use-pooling-layers-to-reduce-dimensionality_1" title="Problem 1 - Use pooling layers to reduce dimensionality">Problem 1 - Use pooling layers to reduce dimensionality</a><ul><li><a class="toc-href" href="#Build-model-with-pooling-layers" title="Build model with pooling layers">Build model with pooling layers</a></li><li><a class="toc-href" href="#Train-the-model" title="Train the model">Train the model</a></li></ul></li><li><a class="toc-href" href="#Problem-2_1" title="Problem 2">Problem 2</a><ul><li><a class="toc-href" href="#Computation-graph_1" title="Computation graph">Computation graph</a></li><li><a class="toc-href" href="#Train-the-model_1" title="Train the model">Train the model</a></li></ul></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -175,14 +187,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Simple Convolutional Neural Network using TensorFlow">Simple Convolutional Neural Network using TensorFlow</a><ul><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Load-notMNIST-dataset" title="Load notMNIST dataset">Load notMNIST dataset</a></li><li><a class="toc-href" href="#Reformat-data" title="Reformat data">Reformat data</a></li><li><a class="toc-href" href="#Helper-for-training-visualization" title="Helper for training visualization">Helper for training visualization</a></li><li><a class="toc-href" href="#NN-with-2-convolutional-layers" title="NN with 2 convolutional layers">NN with 2 convolutional layers</a><ul><li><a class="toc-href" href="#Computation-graph" title="Computation graph">Computation graph</a></li><li><a class="toc-href" href="#Train-the-model-and-visualize-the-result" title="Train the model and visualize the result">Train the model and visualize the result</a></li></ul></li><li><a class="toc-href" href="#Problem-1---Use-pooling-layers-to-reduce-dimensionality_1" title="Problem 1 - Use pooling layers to reduce dimensionality">Problem 1 - Use pooling layers to reduce dimensionality</a><ul><li><a class="toc-href" href="#Build-model-with-pooling-layers" title="Build model with pooling layers">Build model with pooling layers</a></li><li><a class="toc-href" href="#Train-the-model" title="Train the model">Train the model</a></li></ul></li><li><a class="toc-href" href="#Problem-2_1" title="Problem 2">Problem 2</a><ul><li><a class="toc-href" href="#Computation-graph_1" title="Computation graph">Computation graph</a></li><li><a class="toc-href" href="#Train-the-model_1" title="Train the model">Train the model</a></li></ul></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -581,10 +590,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="9c13ea12-8473-4e61-b717-c2912ac62de3"></div>
+<div id="111bc3af-a354-4bf4-8ee7-79c90f7f6532"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#9c13ea12-8473-4e61-b717-c2912ac62de3');
+var element = $('#111bc3af-a354-4bf4-8ee7-79c90f7f6532');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -1348,10 +1357,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="ba621157-268c-490c-8a1a-284ea593b2c3"></div>
+<div id="389929f7-e6c4-40dd-84d4-c04515068cac"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#ba621157-268c-490c-8a1a-284ea593b2c3');
+var element = $('#389929f7-e6c4-40dd-84d4-c04515068cac');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -1541,10 +1550,10 @@ Test accuracy: 89.4%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="fbd3c9cb-d043-48e5-8792-697f58e70f2f"></div>
+<div id="8a83eee1-635d-418a-b162-492ca4bb2054"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#fbd3c9cb-d043-48e5-8792-697f58e70f2f');
+var element = $('#8a83eee1-635d-418a-b162-492ca4bb2054');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -2308,10 +2317,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="322fd6ae-e683-4d29-a965-844213ce690d"></div>
+<div id="cf4e2124-989f-43ef-87eb-b55047424359"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#322fd6ae-e683-4d29-a965-844213ce690d');
+var element = $('#cf4e2124-989f-43ef-87eb-b55047424359');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -2512,10 +2521,10 @@ Test accuracy: 90.7%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="a766f2be-5f39-4206-b4ee-c69bcf05147a"></div>
+<div id="93c7dbb6-4621-4f58-9deb-e7056f85247f"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#a766f2be-5f39-4206-b4ee-c69bcf05147a');
+var element = $('#93c7dbb6-4621-4f58-9deb-e7056f85247f');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -3279,10 +3288,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="1eacc42a-c316-4e8b-8202-a6a95a4524d5"></div>
+<div id="c30055b5-0bea-4439-81a5-8ce85a2858ec"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#1eacc42a-c316-4e8b-8202-a6a95a4524d5');
+var element = $('#c30055b5-0bea-4439-81a5-8ce85a2858ec');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -3546,6 +3555,26 @@ var disqus_title = 'Simple Convolutional Neural Network using TensorFlow';
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

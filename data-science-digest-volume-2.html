@@ -39,6 +39,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -120,6 +123,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學文摘 Vol.2 產品理解以及 DS / DE 之路">資料科學文摘 Vol.2 產品理解以及 DS / DE 之路</a><ul><li><a class="toc-href" href="#本週閱讀清單" title="本週閱讀清單">本週閱讀清單</a></li><li><a class="toc-href" href="#Why-Data-Scientists-Must-Focus-on-Developing-Product-Sense" title="Why Data Scientists Must Focus on Developing Product Sense">Why Data Scientists Must Focus on Developing Product Sense</a></li><li><a class="toc-href" href="#Product-Scientist-@-Medium" title="Product Scientist @ Medium">Product Scientist @ Medium</a></li><li><a class="toc-href" href="#Introduction-to-Churn-Prediction-in-Python" title="Introduction to Churn Prediction in Python">Introduction to Churn Prediction in Python</a></li><li><a class="toc-href" href="#Data-engineering:-A-quick-and-simple-definition" title="Data engineering: A quick and simple definition">Data engineering: A quick and simple definition</a></li><li><a class="toc-href" href="#How-To-Become-A-Data-Scientist-in-12-Months" title="How To Become A Data Scientist in 12 Months">How To Become A Data Scientist in 12 Months</a></li><li><a class="toc-href" href="#Infographic-&ndash;-13-Common-Mistakes-Amateur-Data-Scientists-Make-and-How-to-Avoid-Them" title="Infographic &ndash; 13 Common Mistakes Amateur Data Scientists Make and How to Avoid Them">Infographic &ndash; 13 Common Mistakes Amateur Data Scientists Make and How to Avoid Them</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -144,7 +156,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-08-03 (Fri)</li>
                         <li class="page-view">
-                            576 views
+                            578 views
                         </li>
                     </ul>
 
@@ -170,14 +182,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學文摘 Vol.2 產品理解以及 DS / DE 之路">資料科學文摘 Vol.2 產品理解以及 DS / DE 之路</a><ul><li><a class="toc-href" href="#本週閱讀清單" title="本週閱讀清單">本週閱讀清單</a></li><li><a class="toc-href" href="#Why-Data-Scientists-Must-Focus-on-Developing-Product-Sense" title="Why Data Scientists Must Focus on Developing Product Sense">Why Data Scientists Must Focus on Developing Product Sense</a></li><li><a class="toc-href" href="#Product-Scientist-@-Medium" title="Product Scientist @ Medium">Product Scientist @ Medium</a></li><li><a class="toc-href" href="#Introduction-to-Churn-Prediction-in-Python" title="Introduction to Churn Prediction in Python">Introduction to Churn Prediction in Python</a></li><li><a class="toc-href" href="#Data-engineering:-A-quick-and-simple-definition" title="Data engineering: A quick and simple definition">Data engineering: A quick and simple definition</a></li><li><a class="toc-href" href="#How-To-Become-A-Data-Scientist-in-12-Months" title="How To Become A Data Scientist in 12 Months">How To Become A Data Scientist in 12 Months</a></li><li><a class="toc-href" href="#Infographic-&ndash;-13-Common-Mistakes-Amateur-Data-Scientists-Make-and-How-to-Avoid-Them" title="Infographic &ndash; 13 Common Mistakes Amateur Data Scientists Make and How to Avoid Them">Infographic &ndash; 13 Common Mistakes Amateur Data Scientists Make and How to Avoid Them</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -608,6 +617,26 @@ var disqus_title = '資料科學文摘 Vol.2 產品理解以及 DS / DE 之路';
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

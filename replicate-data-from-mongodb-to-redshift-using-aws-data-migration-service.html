@@ -38,6 +38,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -119,6 +122,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="AWS Data Migration Service - 從 MongoDB 遷移到 Redshift">AWS Data Migration Service - 從 MongoDB 遷移到 Redshift</a><ul><li><a class="toc-href" href="#使用案例" title="使用案例">使用案例</a></li><li><a class="toc-href" href="#AWS-DMS-基本介紹" title="AWS DMS 基本介紹">AWS DMS 基本介紹</a></li><li><a class="toc-href" href="#基本遷移步驟" title="基本遷移步驟">基本遷移步驟</a></li><li><a class="toc-href" href="#建立-replication-instance" title="建立 replication instance">建立 replication instance</a></li><li><a class="toc-href" href="#確保-replication-instance-能連結到來源-/-目標資料庫" title="確保 replication instance 能連結到來源 / 目標資料庫">確保 replication instance 能連結到來源 / 目標資料庫</a><ul><li><a class="toc-href" href="#MongoDB-as-Source-Database" title="MongoDB as Source Database">MongoDB as Source Database</a><ul><li><a class="toc-href" href="#Metadata-mode" title="Metadata mode">Metadata mode</a></li><li><a class="toc-href" href="#Numbers-of-documents-to-scan" title="Numbers of documents to scan">Numbers of documents to scan</a></li></ul></li><li><a class="toc-href" href="#Redshift-as-Target-Database_1" title="Redshift as Target Database">Redshift as Target Database</a></li></ul></li><li><a class="toc-href" href="#定義-replication-task_1" title="定義 replication task">定義 replication task</a><ul><li><a class="toc-href" href="#Selection-Rules" title="Selection Rules">Selection Rules</a></li><li><a class="toc-href" href="#Transformation-Rules" title="Transformation Rules">Transformation Rules</a></li></ul></li><li><a class="toc-href" href="#Debugging_1" title="Debugging">Debugging</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -168,14 +180,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="AWS Data Migration Service - 從 MongoDB 遷移到 Redshift">AWS Data Migration Service - 從 MongoDB 遷移到 Redshift</a><ul><li><a class="toc-href" href="#使用案例" title="使用案例">使用案例</a></li><li><a class="toc-href" href="#AWS-DMS-基本介紹" title="AWS DMS 基本介紹">AWS DMS 基本介紹</a></li><li><a class="toc-href" href="#基本遷移步驟" title="基本遷移步驟">基本遷移步驟</a></li><li><a class="toc-href" href="#建立-replication-instance" title="建立 replication instance">建立 replication instance</a></li><li><a class="toc-href" href="#確保-replication-instance-能連結到來源-/-目標資料庫" title="確保 replication instance 能連結到來源 / 目標資料庫">確保 replication instance 能連結到來源 / 目標資料庫</a><ul><li><a class="toc-href" href="#MongoDB-as-Source-Database" title="MongoDB as Source Database">MongoDB as Source Database</a><ul><li><a class="toc-href" href="#Metadata-mode" title="Metadata mode">Metadata mode</a></li><li><a class="toc-href" href="#Numbers-of-documents-to-scan" title="Numbers of documents to scan">Numbers of documents to scan</a></li></ul></li><li><a class="toc-href" href="#Redshift-as-Target-Database_1" title="Redshift as Target Database">Redshift as Target Database</a></li></ul></li><li><a class="toc-href" href="#定義-replication-task_1" title="定義 replication task">定義 replication task</a><ul><li><a class="toc-href" href="#Selection-Rules" title="Selection Rules">Selection Rules</a></li><li><a class="toc-href" href="#Transformation-Rules" title="Transformation Rules">Transformation Rules</a></li></ul></li><li><a class="toc-href" href="#Debugging_1" title="Debugging">Debugging</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -793,6 +802,26 @@ var disqus_title = 'AWS Data Migration Service - 從 MongoDB 遷移到 Redshift'
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

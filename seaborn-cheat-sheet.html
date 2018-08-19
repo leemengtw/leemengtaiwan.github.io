@@ -38,6 +38,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -119,6 +122,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="Seaborn 筆記">Seaborn 筆記</a><ul><li><a class="toc-href" href="#基本設定" title="基本設定">基本設定</a></li><li><a class="toc-href" href="#Histogram" title="Histogram">Histogram</a></li><li><a class="toc-href" href="#Scatter-plot" title="Scatter plot">Scatter plot</a></li><li><a class="toc-href" href="#Correlation-matrix-/-Heatmap" title="Correlation matrix / Heatmap">Correlation matrix / Heatmap</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -168,14 +180,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Seaborn 筆記">Seaborn 筆記</a><ul><li><a class="toc-href" href="#基本設定" title="基本設定">基本設定</a></li><li><a class="toc-href" href="#Histogram" title="Histogram">Histogram</a></li><li><a class="toc-href" href="#Scatter-plot" title="Scatter plot">Scatter plot</a></li><li><a class="toc-href" href="#Correlation-matrix-/-Heatmap" title="Correlation matrix / Heatmap">Correlation matrix / Heatmap</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -874,6 +883,26 @@ var disqus_title = 'Seaborn 筆記';
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

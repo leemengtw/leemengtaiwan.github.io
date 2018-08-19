@@ -38,6 +38,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -119,6 +122,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="從經驗中學習 - 直觀理解貝氏定理及其應用">從經驗中學習 - 直觀理解貝氏定理及其應用</a><ul><li><a class="toc-href" href="#今天會下雨嗎？" title="今天會下雨嗎？">今天會下雨嗎？</a></li><li><a class="toc-href" href="#讓我們帶點數字進去" title="讓我們帶點數字進去">讓我們帶點數字進去</a></li><li><a class="toc-href" href="#貝氏定理初顯鋒芒" title="貝氏定理初顯鋒芒">貝氏定理初顯鋒芒</a></li><li><a class="toc-href" href="#大雄不死心：單純貝式" title="大雄不死心：單純貝式">大雄不死心：單純貝式</a></li><li><a class="toc-href" href="#動動腦時間" title="動動腦時間">動動腦時間</a></li><li><a class="toc-href" href="#從人腦到電腦：讓機器幫我們做判斷" title="從人腦到電腦：讓機器幫我們做判斷">從人腦到電腦：讓機器幫我們做判斷</a></li><li><a class="toc-href" href="#小心！你的經驗可靠嗎？" title="小心！你的經驗可靠嗎？">小心！你的經驗可靠嗎？</a></li><li><a class="toc-href" href="#總結" title="總結">總結</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -142,7 +154,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-05-25 (Fri)</li>
                         <li class="page-view">
-                            2,888 views
+                            2,892 views
                         </li>
                     </ul>
 
@@ -168,14 +180,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="從經驗中學習 - 直觀理解貝氏定理及其應用">從經驗中學習 - 直觀理解貝氏定理及其應用</a><ul><li><a class="toc-href" href="#今天會下雨嗎？" title="今天會下雨嗎？">今天會下雨嗎？</a></li><li><a class="toc-href" href="#讓我們帶點數字進去" title="讓我們帶點數字進去">讓我們帶點數字進去</a></li><li><a class="toc-href" href="#貝氏定理初顯鋒芒" title="貝氏定理初顯鋒芒">貝氏定理初顯鋒芒</a></li><li><a class="toc-href" href="#大雄不死心：單純貝式" title="大雄不死心：單純貝式">大雄不死心：單純貝式</a></li><li><a class="toc-href" href="#動動腦時間" title="動動腦時間">動動腦時間</a></li><li><a class="toc-href" href="#從人腦到電腦：讓機器幫我們做判斷" title="從人腦到電腦：讓機器幫我們做判斷">從人腦到電腦：讓機器幫我們做判斷</a></li><li><a class="toc-href" href="#小心！你的經驗可靠嗎？" title="小心！你的經驗可靠嗎？">小心！你的經驗可靠嗎？</a></li><li><a class="toc-href" href="#總結" title="總結">總結</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -890,6 +899,26 @@ var disqus_title = '從經驗中學習 - 直觀理解貝氏定理及其應用';
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

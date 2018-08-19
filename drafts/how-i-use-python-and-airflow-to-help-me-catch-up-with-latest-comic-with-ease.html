@@ -40,6 +40,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -121,6 +124,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="如何用 Python 追漫畫連載 - Airflow 從零到專精之路">如何用 Python 追漫畫連載 - Airflow 從零到專精之路</a><ul><li><a class="toc-href" href="#追連載：一個-Airflow-的輕鬆使用案例" title="追連載：一個 Airflow 的輕鬆使用案例">追連載：一個 Airflow 的輕鬆使用案例</a></li><li><a class="toc-href" href="#章節傳送門" title="章節傳送門">章節傳送門</a></li><li><a class="toc-href" href="#所以為何要這-App-？" title="所以為何要這 App ？">所以為何要這 App ？</a></li><li><a class="toc-href" href="#工作流概念-&amp;-Airflow" title="工作流概念 &amp; Airflow">工作流概念 &amp; Airflow</a></li><li><a class="toc-href" href="#Python-&amp;-Airflow-實作" title="Python &amp; Airflow 實作">Python &amp; Airflow 實作</a><ul><li><a class="toc-href" href="#建置-Airflow-環境" title="建置 Airflow 環境">建置 Airflow 環境</a></li><li><a class="toc-href" href="#Airflow-基本概念" title="Airflow 基本概念">Airflow 基本概念</a></li><li><a class="toc-href" href="#App-版本一：大鍋炒" title="App 版本一：大鍋炒">App 版本一：大鍋炒</a><ul><li><a class="toc-href" href="#輕鬆排程" title="輕鬆排程">輕鬆排程</a></li><li><a class="toc-href" href="#Operator：將實作邏輯跟-DAG-排程分離" title="Operator：將實作邏輯跟 DAG 排程分離">Operator：將實作邏輯跟 DAG 排程分離</a></li><li><a class="toc-href" href="#測試開發-Airflow-工作" title="測試開發 Airflow 工作">測試開發 Airflow 工作</a></li></ul></li><li><a class="toc-href" href="#App-版本二：模組化_1" title="App 版本二：模組化">App 版本二：模組化</a><ul><li><a class="toc-href" href="#Airflow-排程器" title="Airflow 排程器">Airflow 排程器</a></li><li><a class="toc-href" href="#手動觸發-DAG" title="手動觸發 DAG">手動觸發 DAG</a></li><li><a class="toc-href" href="#定義工作流程" title="定義工作流程">定義工作流程</a></li><li><a class="toc-href" href="#第一則-Slack-訊息" title="第一則 Slack 訊息">第一則 Slack 訊息</a></li><li><a class="toc-href" href="#Backfill：回到過去" title="Backfill：回到過去">Backfill：回到過去</a></li><li><a class="toc-href" href="#工作之間的訊息交換" title="工作之間的訊息交換">工作之間的訊息交換</a></li></ul></li><li><a class="toc-href" href="#App-版本三：填填樂_1" title="App 版本三：填填樂">App 版本三：填填樂</a><ul><li><a class="toc-href" href="#Selenium" title="Selenium">Selenium</a></li></ul></li></ul></li><li><a class="toc-href" href="#為何要-Airflow？_2" title="為何要 Airflow？">為何要 Airflow？</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -172,14 +184,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="如何用 Python 追漫畫連載 - Airflow 從零到專精之路">如何用 Python 追漫畫連載 - Airflow 從零到專精之路</a><ul><li><a class="toc-href" href="#追連載：一個-Airflow-的輕鬆使用案例" title="追連載：一個 Airflow 的輕鬆使用案例">追連載：一個 Airflow 的輕鬆使用案例</a></li><li><a class="toc-href" href="#章節傳送門" title="章節傳送門">章節傳送門</a></li><li><a class="toc-href" href="#所以為何要這-App-？" title="所以為何要這 App ？">所以為何要這 App ？</a></li><li><a class="toc-href" href="#工作流概念-&amp;-Airflow" title="工作流概念 &amp; Airflow">工作流概念 &amp; Airflow</a></li><li><a class="toc-href" href="#Python-&amp;-Airflow-實作" title="Python &amp; Airflow 實作">Python &amp; Airflow 實作</a><ul><li><a class="toc-href" href="#建置-Airflow-環境" title="建置 Airflow 環境">建置 Airflow 環境</a></li><li><a class="toc-href" href="#Airflow-基本概念" title="Airflow 基本概念">Airflow 基本概念</a></li><li><a class="toc-href" href="#App-版本一：大鍋炒" title="App 版本一：大鍋炒">App 版本一：大鍋炒</a><ul><li><a class="toc-href" href="#輕鬆排程" title="輕鬆排程">輕鬆排程</a></li><li><a class="toc-href" href="#Operator：將實作邏輯跟-DAG-排程分離" title="Operator：將實作邏輯跟 DAG 排程分離">Operator：將實作邏輯跟 DAG 排程分離</a></li><li><a class="toc-href" href="#測試開發-Airflow-工作" title="測試開發 Airflow 工作">測試開發 Airflow 工作</a></li></ul></li><li><a class="toc-href" href="#App-版本二：模組化_1" title="App 版本二：模組化">App 版本二：模組化</a><ul><li><a class="toc-href" href="#定義工作流程" title="定義工作流程">定義工作流程</a></li><li><a class="toc-href" href="#工作之間的訊息交換" title="工作之間的訊息交換">工作之間的訊息交換</a></li><li><a class="toc-href" href="#開始排程" title="開始排程">開始排程</a></li></ul></li><li><a class="toc-href" href="#App-版本三：填填樂_1" title="App 版本三：填填樂">App 版本三：填填樂</a><ul><li><a class="toc-href" href="#Selenium" title="Selenium">Selenium</a></li></ul></li></ul></li><li><a class="toc-href" href="#為何要-Airflow？_2" title="為何要 Airflow？">為何要 Airflow？</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
 
 </div>
@@ -216,7 +225,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="追連載：一個-Airflow-的輕鬆使用案例">追連載：一個 Airflow 的輕鬆使用案例<a class="anchor-link" href="#追連載：一個-Airflow-的輕鬆使用案例">&para;</a></h2><p>這篇文章希望以一個簡易的漫畫連載通知 App 作為引子，讓讀者能夠在了解工作流程的概念以及 Airflow 的使用方式的同時不失趣味性。讀者也將學會如何建立一個能在 Airflow 上運行的工作流程。等掌握基礎以後，你將能輕鬆地用從本文學到的知識做更進階的應用。</p>
+<h2 id="追連載：一個-Airflow-的輕鬆使用案例">追連載：一個 Airflow 的輕鬆使用案例<a class="anchor-link" href="#追連載：一個-Airflow-的輕鬆使用案例">&para;</a></h2><p>因此這篇文章希望以一個簡易的漫畫連載通知 App 作為引子，讓讀者能夠在了解工作流程的概念以及 Airflow 的使用方式的同時兼具趣味性以及實用性。讀者也將學會如何建立一個能在 Airflow 上運行的工作流程。等掌握基礎以後，你將能輕鬆地用從本文學到的知識做更進階的應用。</p>
 <p>如果你對資料工程有興趣，不太熟悉 Airflow 但有基本的 Python 程式基礎的話（或是純粹對用 Python 寫一個漫畫連載通知 App 有興趣），我相信這篇文章應該會很適合你。</p>
 </div>
 </div>
@@ -258,7 +267,14 @@
 <li><a href="#測試開發-Airflow-工作">測試開發 Airflow 工作</a></li>
 </ul>
 </li>
-<li><a href="#App-版本二：模組化">App 版本二：模組化</a></li>
+<li><a href="#App-版本二：模組化">App 版本二：模組化</a><ul>
+<li><a href="#Airflow-排程器">Airflow 排程器</a></li>
+<li><a href="#手動觸發-DAG">手動觸發 DAG</a></li>
+<li><a href="#定義工作流程">定義工作流程</a></li>
+<li><a href="#第一則-Slack-訊息">第一則 Slack 訊息</a></li>
+<li><a href="#Backfill：回到過去">Backfill：回到過去</a></li>
+</ul>
+</li>
 <li><a href="#App-版本三：填填樂">App 版本三：填填樂</a></li>
 </ul>
 </li>
@@ -426,7 +442,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemengtaiwan.github.io/images/airflow/show-me-the-code.jpg" style="width:90%"/>
-<p>接下來都是 Python，保證沒有更多 blabla</p>
+<p>接下來不只是 Python 程式碼，而是大量的 Python 程式碼</p>
 </center>
 </div>
 </div>
@@ -662,7 +678,7 @@ airflow initdb
 </ul>
 </li>
 </ul>
-<p>這些是「邏輯上」的工作，而在 <code>comic_app_v1</code> DAG 裡頭，為了方便說明，我們將它們全部包起來，定義成一個 Airflow 理解的工作如 <code>superman_task</code>。（在 <a href="#App-版本二：模組化">App 版本二：模組化</a>章節裡，我們則會分別為這些「邏輯工作」建立他們自己的 Airflow 工作）。</p>
+<p>這些是「邏輯上」的工作，而在 <code>comic_app_v1</code> DAG 裡頭，為了方便說明，我們將它們全部包起來，定義成一個 Airflow 理解的工作如 <code>superman_task</code>。（在 <a href="#app-v2">App 版本二：模組化</a>章節裡，我們則會分別為這些「邏輯工作」建立他們自己的 Airflow 工作）。</p>
 <p>回到 Opeartor 的話題。在 Airflow 裡頭，DAG 只知道有哪些工作以及這些工作之間的執行順序。而實際上這些工作要怎麼被完成，其實作邏輯則是由各種 <a href="https://airflow.apache.org/code.html#operators">Operator</a> 負責。</p>
 <p>你可以想像 <a href="https://airflow.apache.org/code.html#airflow.operators">Opeartors</a> 就是幫我們完成特定種類工作的小幫手，像是一些常見的例子：</p>
 <ul>
@@ -720,12 +736,14 @@ airflow initdb
 <div class="highlight"><pre><span></span>airflow <span class="nb">test</span> comic_app_v1 superman_task <span class="m">2018</span>-08-18
 </pre></div>
 <p>這行指令是讓 Airflow 幫我們測試 <code>comic_app_v1</code> DAG 裡頭的 <code>superman_task</code> 工作，並假設這個 DAG 是在 <code>2018-08-18</code> 這個日期被執行。</p>
+<p>題外話：事實上 <code>airflow test</code> 只能測試單一工作，而不能測試整個 DAG。關於 DAG 的測試我們在後面的<a href="#Airflow-排程器">Airflow 排程器</a> 章節會詳細說明。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>回到測試單一工作的話題。</p>
 <p>從上面的程式碼你可能已經注意到，我埋了個小彩蛋，每次執行都會有不同的執行結果。</p>
 <p>幸運的話你會得到下面這種：</p>
 <div class="highlight"><pre><span></span>airflow <span class="nb">test</span> comic_app_v1 superman_task <span class="m">2018</span>-08-01
@@ -807,7 +825,7 @@ airflow initdb
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="App-版本二：模組化_1">App 版本二：模組化<a class="anchor-link" href="#App-版本二：模組化">&para;</a></h3>
+<h3 id="App-版本二：模組化_1"><a name="app-v2"></a>App 版本二：模組化<a class="anchor-link" href="#App-版本二：模組化">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -905,7 +923,7 @@ airflow initdb
         <span class="n">task_id</span><span class="o">=</span><span class="s1">'send_notification'</span><span class="p">,</span>
         <span class="n">token</span><span class="o">=</span><span class="s2">"YOUR_SLACK_TOKEN"</span><span class="p">,</span>
         <span class="n">channel</span><span class="o">=</span><span class="s1">'#comic-notification'</span><span class="p">,</span>
-        <span class="n">text</span><span class="o">=</span><span class="s2">"[Slack Message] 海賊王有新番了!"</span><span class="p">,</span>
+        <span class="n">text</span><span class="o">=</span><span class="s2">"[{{ ds }}] 海賊王有新番了!"</span><span class="p">,</span>
         <span class="n">icon_url</span><span class="o">=</span><span class="s1">'http://airbnb.io/img/projects/airflow3.png'</span>
     <span class="p">)</span>
 
@@ -926,7 +944,7 @@ airflow initdb
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>天啊這可比 <code>comic_app_v1</code> DAG 的程式碼長了不少！</p>
-<p>但實際上從上到下，這個 <code>comic_app_v2</code> DAG 的架構也就分三個區塊：</p>
+<p>不過在你開始懷疑自己適不適合寫 Airflow DAG 之前讓我提醒你一下。實際上這個 <code>comic_app_v2</code> DAG 的架構從上到下也就分為三個區塊：</p>
 <ol>
 <li>用 <code>def</code> 定義負責實作的 Python 函式（們）</li>
 <li>在 DAG 利用各種 <code>Operator</code> 定義 DAG 工作（大部分是 <code>PythonOperator</code>，並使用 <code>python_callable</code> 指定執行步驟 1 定義的函式）</li>
@@ -945,7 +963,7 @@ airflow initdb
 <img src="https://leemengtaiwan.github.io/images/airflow/comic_app_v2_graph_view.png" style="width:90%"/>
 </a>
 <p>Airflow Web UI 裡頭的 Graph View 幫我們視覺化 DAG 的工作流程<br/>
-        （<a ,="" href="https://leemengtaiwan.github.io/images/airflow/comic_app_v2_graph_view.gif" target="_blank">這個 GIF 展示如何從 Airflow 開啟此畫面</a>）
+        （<a ,="" href="https://leemengtaiwan.github.io/images/airflow/comic_app_v2_graph_view.gif" target="_blank">這個 GIF 展示如何從 Airflow UI 開啟此畫面</a>）
 </p></center>
 </div>
 </div>
@@ -954,7 +972,7 @@ airflow initdb
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Airflow 工作寫成英文是為了方便使用 <code>airflow test</code> 指令測試每個工作。</p>
-<p>儘管如此，這不就是我們 App 的邏輯嗎？</p>
+<p>儘管工作名稱都是英文，你應該不會覺得陌生。因為這就是我們 App 的邏輯：</p>
 <ul>
 <li>取得使用者的閱讀紀錄（get_read_history）</li>
 <li>去漫畫網站看有沒有新的章節（check_comic_info）</li>
@@ -968,6 +986,186 @@ airflow initdb
 </ul>
 </li>
 </ul>
+<p>看來這應該不是巧合：）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Airflow-排程器">Airflow 排程器<a class="anchor-link" href="#Airflow-排程器">&para;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如同當初測試 <code>comic_app_v1</code> DAG 裡頭的 <code>superman_task</code> 工作一樣，在我們讓 <code>comic_app_v2</code> DAG 上線以前，應該分別測試所有新增的工作，確保它們的執行結果如我們預期：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>airflow <span class="nb">test</span> comic_app_v2 get_read_history <span class="m">2018</span>-01-01
+取得使用者的閱讀紀錄
+
+airflow <span class="nb">test</span> comic_app_v2 check_comic_info <span class="m">2018</span>-01-01
+跟紀錄比較，有沒有新連載？
+
+airflow <span class="nb">test</span> comic_app_v2 new_comic_available <span class="m">2018</span>-01-01
+去漫畫網站看有沒有新的章節
+
+...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>假設我們已經做完所有工作的測試，想讓 <code>comic_app_v2</code> DAG 開始被 Airflow 排程，除了已經被開啟的 Airflow 網頁伺服器以外，我們需要另外開啟 Airflow 排程器（Scheduler）。</p>
+<p>因為目前為止一直在運轉的 Airflow 網頁伺服器只負責：</p>
+<ul>
+<li>顯示 DAG 資訊，如工作流程圖、各個 DAG 的運行狀況以及 Logs</li>
+<li>讓我們輕鬆地終止/開始 DAG 排程（在有排程器的前提）</li>
+</ul>
+<p>而實際要執行 DAG、分配每個工作的運算資源則需要 Airflow 排程器。Airflow 的架構圖能幫助我們理解這件事情：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemengtaiwan.github.io/images/airflow/airflow-architecture.png" style="width:70%"/>
+<p>
+<a href="https://medium.com/@dustinstansbury/understanding-apache-airflows-key-concepts-a96efed52b1a" target="_blank">Airflow 架構圖</a>：Scheduler 是實際做排程、呼叫 Worker 執行工作的傢伙；我們熟悉的 Webserver 則提供一個 Web UI 讓我們可以輕鬆檢視工作執行時產生的 Logs、DAG 的程式碼以及工作的執行結果；所有資料都被存在 Metadata Database 裡頭。
+    </p>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>事不宜遲，讓我們啟動 Airflow 排程器吧！</p>
+<p>現在再打開一個 terminal，進入 <code>airflow-tutorials</code> 資料夾後設定環境：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">AIRFLOW_HOME</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">"</span>
+<span class="nb">source</span> activate airflow-tutorials
+</pre></div>
+<p>接著啟動排程器：</p>
+<div class="highlight"><pre><span></span>airflow scheduler
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>到目前為止你應該有 3 個 terminal 各司其職：</p>
+<ul>
+<li>用來輸入 <code>airflow</code> 相關指令的 terminal</li>
+<li>Airflow Webserver</li>
+<li>Airflow Scheduler</li>
+</ul>
+<p>我保証不會再多了。</p>
+<p>有了排程器以後，在左邊將 <code>comic_app_v2</code> DAG 設成「On」後，點擊右邊「Trigger Dag」按鈕可以呼叫排程器馬上開始執行該 DAG。先讓我們按下去以後，再讓我解釋這樣做有什麼意義。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<a ,="" href="https://leemengtaiwan.github.io/images/airflow/trigger-dag-demo.gif" target="_blank">
+<img src="https://leemengtaiwan.github.io/images/airflow/ready-to-trigger-dag.png" style="width:90%"/>
+</a>
+<p>在左邊將 DAG 設成「On」後，可以利用右邊「Trigger Dag」按鈕呼叫排程器馬上開始執行該 DAG <br/>
+        （<a ,="" href="https://leemengtaiwan.github.io/images/airflow/trigger-dag-demo.gif" target="_blank">這個 GIF 展示如何從 Airflow UI 觸發一個 DAG</a>）
+</p></center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為了避免預料之外的排程，Airflow 所有 DAG 的預設狀態都是暫停的（Paused），也就是上圖中如 <code>comic_app_v1</code> 左邊的「Off」。只有在你將 DAG 的狀態設定成如圖中的 <code>comic_app_v2</code> 的「On」，排程器才會開始為其做排程。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="手動觸發-DAG">手動觸發 DAG<a class="anchor-link" href="#手動觸發-DAG">&para;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>雖說將一個 DAG 取消暫停（Unpause）可以讓它成為 Airflow 的排程對象，實際上 Airflow 的排程又分兩種方式：</p>
+<ul>
+<li>手動觸發（Trigger）<ul>
+<li>常用在測試 DAG 或是有意外發生，需要手動重新執行 DAG 的時候</li>
+</ul>
+</li>
+<li>定期執行（Scheduled）<ul>
+<li>也就是所謂的「正式上線」。</li>
+<li>依照 DAG 的 <code>start_date</code> 及 <code>schedule_interval</code> 設定決定何時執行</li>
+</ul>
+</li>
+</ul>
+<p>現在讓我們先專注在手動觸發。</p>
+<p>當然你也可以在不透過 Web UI 的情況下，直接利用 terminal 取消暫停一個 DAG 並觸發它：</p>
+<pre><code>airflow unpause comic_app_v2
+airflow trigger_dag comic_app_v2</code></pre>
+<p>理論上我們剛剛手動觸發的 <code>comic_app_v2</code> 應該已經跑完了。重新整理你應該會看到 Airflow UI 顯示 DAG 已被成功執行的畫面：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemengtaiwan.github.io/images/airflow/success-dag.png" style="width:90%"/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>從 Web UI 我們可以清楚地看到剛剛手動觸發的 <code>comic_app_v2</code> DAG 已經被 Airflow 排程器拿去執行，產生一個新的 DAG Run 並成功執行。DAG 跟 DAG Run 的差異在於前者只是個定義好的工作流程，後者則是該 DAG 在某個時間點實際被排程器拿去執行（Run）過後的結果。</p>
+<p>接著點擊右邊 Links 中長得像太陽的 Graph View 按鈕後就可以看到這個 DAG Run 的執行狀況：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemengtaiwan.github.io/images/airflow/success-tasks-in-dag.png" style="width:90%"/>
+<p>
+        將游標放在右邊的「Success」狀態按鈕上可以顯示此 DAG Run 中被成功執行的工作（圖內的工作從左到右被執行）
+    </p>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我們可以清楚地看到這個 DAG Run 完美地模擬了我們 App 在檢查到新連載情報時送 Slack 訊息給我們的情境。</p>
 </div>
 </div>
 </div>
@@ -981,38 +1179,103 @@ airflow initdb
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="工作之間的訊息交換">工作之間的訊息交換<a class="anchor-link" href="#工作之間的訊息交換">&para;</a></h4>
+<p>要在 DAG 裡頭定義出如上圖的工作流程也非常的直觀，讓我們參考這兩個工作：</p>
+<ul>
+<li>yes_generate_notification</li>
+<li>send_notification</li>
+</ul>
+<p>它們在 <code>dag/comic_app_v2.py</code> 裡頭被這樣定義（節錄最重要的部分）：</p>
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">'comic_app_v2'</span><span class="p">,</span> <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+
+    <span class="o">...</span>
+
+    <span class="n">generate_notification</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s1">'yes_generate_notification'</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">)</span>
+
+    <span class="n">send_notification</span> <span class="o">=</span> <span class="n">SlackAPIPostOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s1">'send_notification'</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">)</span>
+
+    <span class="c1"># define workflow</span>
+    <span class="n">generate_notification</span> <span class="o">&gt;&gt;</span> <span class="n">send_notification</span> <span class="o">&gt;&gt;</span> <span class="o">...</span>
+</pre></div>
+<p>你可以發現在 <code>comic_app_v2</code> DAG 裡，我們分別定義好這兩個工作以後，在最下面用 <code>&gt;&gt;</code> 語法告訴 Airflow 這兩個工作的相依性：</p>
+<ul>
+<li><code>yes_generate_notification</code> 工作要在 <code>send_notification</code> 之前執行</li>
+</ul>
+<p>針對其他工作，我們也是用相同語法將它們串起來，你可以回到 <a href="#app-v2">App 版本二：模組化</a> 章節確認，我等你。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="開始排程">開始排程<a class="anchor-link" href="#開始排程">&para;</a></h4>
+<h4 id="第一則-Slack-訊息">第一則 Slack 訊息<a class="anchor-link" href="#第一則-Slack-訊息">&para;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>第一則 Slack 訊息</p>
-<div class="highlight"><pre><span></span>python dags/comic_app_v2.py
+<p>現在我們已經知道如何用 Python 定義 Airflow 的工作流程（DAG），也實際讓 Airflow 排程器執行 <code>comic_app_v2</code> DAG，現在讓我們將注意力放到剛剛下圖的 <code>send_notificiation</code> 工作。</p>
+<center>
+<img src="https://leemengtaiwan.github.io/images/airflow/success-tasks-in-dag.png" style="width:90%"/>
+<p>
+        依照 Opeartor 種類不同，工作在 Web UI 上顯示的背景顏色也有所不同，方便區分。
+    </p>
+<br/>
+</center><p>你會發現它的顏色跟其他工作不一樣，這是因為它並不是一個 <code>PythonOperator</code> 而是 <code>SlackAPIPostOperator</code>。由此 Operator 定義的工作並不會呼叫一個 Python 函式，而是直接呼叫 Slack API 來傳送訊息。下面是我們在當初落落長的 <code>comic_app_v2</code> DAG 裡頭定義的 <code>send_notificiation</code>：</p>
+<div class="highlight"><pre><span></span><span class="n">send_notification</span> <span class="o">=</span> <span class="n">SlackAPIPostOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s1">'send_notification'</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">"YOUR_SLACK_TOKEN"</span><span class="p">,</span>
+    <span class="n">channel</span><span class="o">=</span><span class="s1">'#comic-notification'</span><span class="p">,</span>
+    <span class="n">text</span><span class="o">=</span><span class="s2">"[{{ ds }}] 海賊王有新番了!"</span><span class="p">,</span>
+    <span class="n">icon_url</span><span class="o">=</span><span class="s1">'http://airbnb.io/img/projects/airflow3.png'</span>
+<span class="p">)</span>
+</pre></div>
+<center>
+<img src="https://leemengtaiwan.github.io/images/airflow/first-slack-message.png" style="width:90%"/>
+<p>
+</p>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Backfill：回到過去">Backfill：回到過去<a class="anchor-link" href="#Backfill：回到過去">&para;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">![](</span>success-dag.png<span class="o">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">![](</span>dag-never-end-because-of-absence-of-scheduler.png<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>airflow test comic_app_v2 get_read_history 2018-01-01</code></pre>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>airflow unpause comic_app_v2
-airflow trigger_dag comic_app_v2</code></pre>
+<h4 id="工作之間的訊息交換">工作之間的訊息交換<a class="anchor-link" href="#工作之間的訊息交換">&para;</a></h4>
 </div>
 </div>
 </div>
@@ -1070,19 +1333,6 @@ airflow trigger_dag comic_app_v2</code></pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center>
-<img src="https://leemengtaiwan.github.io/images/airflow/airflow-architecture.png" style="width:90%"/>
-<p>
-<a href="https://medium.com/@dustinstansbury/understanding-apache-airflows-key-concepts-a96efed52b1a" target="_blank">Airflow 架構圖</a>
-</p>
-<br/>
-</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="為何要-Airflow？_2">為何要 Airflow？<a class="anchor-link" href="#為何要-Airflow？">&para;</a></h2>
 </div>
 </div>
@@ -1110,25 +1360,20 @@ airflow trigger_dag comic_app_v2</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">你甚至也可以選擇時用其它語言</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="p">,</span> <span class="n">JAVA</span><span class="p">)</span>
-
-
-<span class="n">this</span> <span class="n">app</span> <span class="ow">is</span> <span class="n">batch</span><span class="o">-</span><span class="n">based</span><span class="p">,</span> <span class="ow">not</span> <span class="n">realtime</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">fit</span> <span class="k">for</span> <span class="n">airflow</span>
-
-<span class="n">期望在讀者們能在閱讀文章之後實際應用</span> <span class="n">Airflow</span> <span class="n">來解決自己以及企業的問題</span><span class="err">。</span>
-
-<span class="err">「</span><span class="n">你也可以推薦漫畫給我</span><span class="err">」</span>
-<span class="n">不過老實說</span><span class="err">，</span><span class="n">我偶爾還是習慣動作會去檢查新的漫畫出來了沒</span><span class="err">。</span>
-<span class="o">-</span> <span class="n">結語</span><span class="err">：</span> <span class="n">你想自動化什麼</span><span class="err">？</span> <span class="n">implement</span> <span class="n">it</span> <span class="ow">and</span> <span class="n">tell</span> <span class="n">me</span><span class="o">!</span> 
-
-
-<span class="n">之後將在奇幻旅程</span> <span class="mi">2</span> <span class="n">提到我在</span> <span class="n">SmartNews</span> <span class="n">裡頭是怎麼使用</span> <span class="n">Airflow</span> <span class="n">的</span><span class="err">，</span><span class="n">歡迎訂閱</span>
-</pre></div>
-</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>一本關於 Airflow 的輕小說。本文透過大量對話，以及實際操作畫面，讓完全沒有接觸過資料工程或者 Airflow 的讀者在跟著實現一個漫畫連載 App 的過程中逐漸掌握 Airflow 的精神</p>
+<p>將章節傳送門的介紹設定為「toc 螢幕截圖」，推薦讀者閱讀</p>
+<p>你甚至也可以選擇時用其它語言 (e.g., JAVA)</p>
+<p>this app is batch-based, not realtime, which is not a fit for airflow</p>
+<p>期望在讀者們能在閱讀文章之後實際應用 Airflow 來解決自己以及企業的問題。</p>
+<p>「你也可以推薦漫畫給我」
+不過老實說，我偶爾還是習慣動作會去檢查新的漫畫出來了沒。</p>
+<ul>
+<li>結語： 你想自動化什麼？ implement it and tell me! </li>
+</ul>
+<p>之後將在奇幻旅程 2 提到我在 SmartNews 裡頭是怎麼使用 Airflow 的，歡迎訂閱</p>
 </div>
 </div>
 </div>
@@ -1354,6 +1599,26 @@ var disqus_title = '如何用 Python 追漫畫連載 - Airflow 從零到專精�
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

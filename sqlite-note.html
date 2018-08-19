@@ -38,6 +38,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -119,6 +122,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="SQLite 筆記">SQLite 筆記</a><ul><li><a class="toc-href" href="#Table-of-Contents" title="Table of Contents">Table of Contents</a><ul><li><a class="toc-href" href="#Prettier-output" title="Prettier output">Prettier output</a><ul><li><a class="toc-href" href="#調整每一個-column-寬度" title="調整每一個 column 寬度">調整每一個 column 寬度</a></li></ul></li><li><a class="toc-href" href="#在-sqlite3-shell-裡清空畫面_1" title="在 sqlite3 shell 裡清空畫面">在 sqlite3 shell 裡清空畫面</a></li><li><a class="toc-href" href="#使用-SQL-script-建立-tables" title="使用 SQL script 建立 tables">使用 SQL script 建立 tables</a></li><li><a class="toc-href" href="#顯示目前的-tables" title="顯示目前的 tables">顯示目前的 tables</a></li><li><a class="toc-href" href="#顯示-table-schema" title="顯示 table schema">顯示 table schema</a></li><li><a class="toc-href" href="#顯示-indexes" title="顯示 indexes">顯示 indexes</a></li></ul></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -168,14 +180,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="SQLite 筆記">SQLite 筆記</a><ul><li><a class="toc-href" href="#Table-of-Contents" title="Table of Contents">Table of Contents</a><ul><li><a class="toc-href" href="#Prettier-output" title="Prettier output">Prettier output</a><ul><li><a class="toc-href" href="#調整每一個-column-寬度" title="調整每一個 column 寬度">調整每一個 column 寬度</a></li></ul></li><li><a class="toc-href" href="#在-sqlite3-shell-裡清空畫面_1" title="在 sqlite3 shell 裡清空畫面">在 sqlite3 shell 裡清空畫面</a></li><li><a class="toc-href" href="#使用-SQL-script-建立-tables" title="使用 SQL script 建立 tables">使用 SQL script 建立 tables</a></li><li><a class="toc-href" href="#顯示目前的-tables" title="顯示目前的 tables">顯示目前的 tables</a></li><li><a class="toc-href" href="#顯示-table-schema" title="顯示 table schema">顯示 table schema</a></li><li><a class="toc-href" href="#顯示-indexes" title="顯示 indexes">顯示 indexes</a></li></ul></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -522,6 +531,26 @@ var disqus_title = 'SQLite 筆記';
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

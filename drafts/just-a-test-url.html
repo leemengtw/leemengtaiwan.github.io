@@ -37,6 +37,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -118,6 +121,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="New Post">New Post</a><ul><li><a class="toc-href" href="#步驟" title="步驟">步驟</a></li><li><a class="toc-href" href="#前處理資料" title="前處理資料">前處理資料</a></li><li><a class="toc-href" href="#顯示處理後圖片" title="顯示處理後圖片">顯示處理後圖片</a></li><li><a class="toc-href" href="#定義-loss-function" title="定義 loss function">定義 loss function</a></li><li><a class="toc-href" href="#建立模型" title="建立模型">建立模型</a></li><li><a class="toc-href" href="#將模型圖寫到-Tensorboard-以供確認" title="將模型圖寫到 Tensorboard 以供確認">將模型圖寫到 Tensorboard 以供確認</a></li><li><a class="toc-href" href="#定義-Optimizer,-Scheduler" title="定義 Optimizer, Scheduler">定義 Optimizer, Scheduler</a></li><li><a class="toc-href" href="#訓練模型" title="訓練模型">訓練模型</a></li><li><a class="toc-href" href="#Load-model" title="Load model">Load model</a></li><li><a class="toc-href" href="#Todo" title="Todo">Todo</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -166,14 +178,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="New Post">New Post</a><ul><li><a class="toc-href" href="#步驟" title="步驟">步驟</a></li><li><a class="toc-href" href="#前處理資料" title="前處理資料">前處理資料</a></li><li><a class="toc-href" href="#顯示處理後圖片" title="顯示處理後圖片">顯示處理後圖片</a></li><li><a class="toc-href" href="#定義-loss-function" title="定義 loss function">定義 loss function</a></li><li><a class="toc-href" href="#建立模型" title="建立模型">建立模型</a></li><li><a class="toc-href" href="#將模型圖寫到-Tensorboard-以供確認" title="將模型圖寫到 Tensorboard 以供確認">將模型圖寫到 Tensorboard 以供確認</a></li><li><a class="toc-href" href="#定義-Optimizer,-Scheduler" title="定義 Optimizer, Scheduler">定義 Optimizer, Scheduler</a></li><li><a class="toc-href" href="#訓練模型" title="訓練模型">訓練模型</a></li><li><a class="toc-href" href="#Load-model" title="Load model">Load model</a></li><li><a class="toc-href" href="#Todo" title="Todo">Todo</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
 
     <div id="download-notebook">
@@ -1022,6 +1031,26 @@ var disqus_title = 'New Post';
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

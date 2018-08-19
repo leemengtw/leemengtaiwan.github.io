@@ -48,6 +48,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -129,6 +132,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent">Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</a><ul><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Load-notMNIST-dataset" title="Load notMNIST dataset">Load notMNIST dataset</a></li><li><a class="toc-href" href="#Reformat-data-for-easier-training" title="Reformat data for easier training">Reformat data for easier training</a></li><li><a class="toc-href" href="#Logistic-regression-with-gradient-descent" title="Logistic regression with gradient descent">Logistic regression with gradient descent</a><ul><li><a class="toc-href" href="#Build-the-Tensorflow-computation-graph" title="Build the Tensorflow computation graph">Build the Tensorflow computation graph</a></li><li><a class="toc-href" href="#Gradient-descent-by-iterating-computation-graph" title="Gradient descent by iterating computation graph">Gradient descent by iterating computation graph</a></li></ul></li><li><a class="toc-href" href="#Logistic-regression-with-SGD_1" title="Logistic regression with SGD">Logistic regression with SGD</a><ul><li><a class="toc-href" href="#Build-computation-graph" title="Build computation graph">Build computation graph</a></li><li><a class="toc-href" href="#Iterate-using-SGD" title="Iterate using SGD">Iterate using SGD</a></li></ul></li><li><a class="toc-href" href="#2-layer-NN-with-ReLU-units_1" title="2-layer NN with ReLU units">2-layer NN with ReLU units</a><ul><li><a class="toc-href" href="#Build-compuation-graph" title="Build compuation graph">Build compuation graph</a></li><li><a class="toc-href" href="#Run-the-iterations" title="Run the iterations">Run the iterations</a></li></ul></li><li><a class="toc-href" href="#Summary_1" title="Summary">Summary</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -154,7 +166,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2017-09-21 (Thu)</li>
                         <li class="page-view">
-                            867 views
+                            877 views
                         </li>
                     </ul>
 
@@ -180,14 +192,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent">Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</a><ul><li><a class="toc-href" href="#Import-libraries" title="Import libraries">Import libraries</a></li><li><a class="toc-href" href="#Load-notMNIST-dataset" title="Load notMNIST dataset">Load notMNIST dataset</a></li><li><a class="toc-href" href="#Reformat-data-for-easier-training" title="Reformat data for easier training">Reformat data for easier training</a></li><li><a class="toc-href" href="#Logistic-regression-with-gradient-descent" title="Logistic regression with gradient descent">Logistic regression with gradient descent</a><ul><li><a class="toc-href" href="#Build-the-Tensorflow-computation-graph" title="Build the Tensorflow computation graph">Build the Tensorflow computation graph</a></li><li><a class="toc-href" href="#Gradient-descent-by-iterating-computation-graph" title="Gradient descent by iterating computation graph">Gradient descent by iterating computation graph</a></li></ul></li><li><a class="toc-href" href="#Logistic-regression-with-SGD_1" title="Logistic regression with SGD">Logistic regression with SGD</a><ul><li><a class="toc-href" href="#Build-computation-graph" title="Build computation graph">Build computation graph</a></li><li><a class="toc-href" href="#Iterate-using-SGD" title="Iterate using SGD">Iterate using SGD</a></li></ul></li><li><a class="toc-href" href="#2-layer-NN-with-ReLU-units_1" title="2-layer NN with ReLU units">2-layer NN with ReLU units</a><ul><li><a class="toc-href" href="#Build-compuation-graph" title="Build compuation graph">Build compuation graph</a></li><li><a class="toc-href" href="#Run-the-iterations" title="Run the iterations">Run the iterations</a></li></ul></li><li><a class="toc-href" href="#Summary_1" title="Summary">Summary</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -552,10 +561,10 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 </div>
 <div class="output_area">
-<div id="021804af-c4a4-4273-a090-6b4475e34676"></div>
+<div id="600ae7c7-01c3-478a-8d5a-1b27a951aa42"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#021804af-c4a4-4273-a090-6b4475e34676');
+var element = $('#600ae7c7-01c3-478a-8d5a-1b27a951aa42');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -704,10 +713,10 @@ Test acc: 82.8%
 </div>
 </div>
 <div class="output_area">
-<div id="312c0d2e-74ef-490c-b0a1-e44e46afaadd"></div>
+<div id="010b2389-8854-4f95-98cd-33dfbae13db6"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#312c0d2e-74ef-490c-b0a1-e44e46afaadd');
+var element = $('#010b2389-8854-4f95-98cd-33dfbae13db6');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -865,10 +874,10 @@ Test acc: 86.9%
 </div>
 </div>
 <div class="output_area">
-<div id="1fbe8d45-cbc2-4a71-8e2b-c661682a2b7f"></div>
+<div id="b0ee21a3-f763-4da9-aca9-fe6011f70ac3"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#1fbe8d45-cbc2-4a71-8e2b-c661682a2b7f');
+var element = $('#b0ee21a3-f763-4da9-aca9-fe6011f70ac3');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
@@ -1137,6 +1146,26 @@ var disqus_title = 'Using TensorFlow to Train a Shallow NN with Stochastic Gradi
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

@@ -39,6 +39,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -120,6 +123,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學文摘 Vol.1 AutoML、Airflow 及 DAU">資料科學文摘 Vol.1 AutoML、Airflow 及 DAU</a><ul><li><a class="toc-href" href="#在開始閱讀之前" title="在開始閱讀之前">在開始閱讀之前</a></li><li><a class="toc-href" href="#本週分享：機器學習、資料工程及-App-分析" title="本週分享：機器學習、資料工程及 App 分析">本週分享：機器學習、資料工程及 App 分析</a></li><li><a class="toc-href" href="#What-do-machine-learning-practitioners-actually-do" title="What do machine learning practitioners actually do">What do machine learning practitioners actually do</a></li><li><a class="toc-href" href="#An-Opinionated-Introduction-to-AutoML-and-Neural-Architecture-Search" title="An Opinionated Introduction to AutoML and Neural Architecture Search">An Opinionated Introduction to AutoML and Neural Architecture Search</a></li><li><a automl:="" class="toc-href" cutting="" href="#Google" hype'="" s="" s-automl:-cutting-through-the-hype'="" the="" through="" title="Google">Google's AutoML: Cutting Through the Hype</a></li><li><a class="toc-href" href="#Airflow:-a-workflow-management-platform" title="Airflow: a workflow management platform">Airflow: a workflow management platform</a></li><li><a class="toc-href" href="#DAU/MAU-is-an-important-metric-to-measure-engagement,-but-here&rsquo;s-where-it-fails" title="DAU/MAU is an important metric to measure engagement, but here&rsquo;s where it fails">DAU/MAU is an important metric to measure engagement, but here&rsquo;s where it fails</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -144,7 +156,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-07-29 (Sun)</li>
                         <li class="page-view">
-                            1,180 views
+                            1,182 views
                         </li>
                     </ul>
 
@@ -170,14 +182,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學文摘 Vol.1 AutoML、Airflow 及 DAU">資料科學文摘 Vol.1 AutoML、Airflow 及 DAU</a><ul><li><a class="toc-href" href="#在開始閱讀之前" title="在開始閱讀之前">在開始閱讀之前</a></li><li><a class="toc-href" href="#本週分享：機器學習、資料工程及-App-分析" title="本週分享：機器學習、資料工程及 App 分析">本週分享：機器學習、資料工程及 App 分析</a></li><li><a class="toc-href" href="#What-do-machine-learning-practitioners-actually-do" title="What do machine learning practitioners actually do">What do machine learning practitioners actually do</a></li><li><a class="toc-href" href="#An-Opinionated-Introduction-to-AutoML-and-Neural-Architecture-Search" title="An Opinionated Introduction to AutoML and Neural Architecture Search">An Opinionated Introduction to AutoML and Neural Architecture Search</a></li><li><a automl:="" class="toc-href" cutting="" href="#Google" hype'="" s="" s-automl:-cutting-through-the-hype'="" the="" through="" title="Google">Google's AutoML: Cutting Through the Hype</a></li><li><a class="toc-href" href="#Airflow:-a-workflow-management-platform" title="Airflow: a workflow management platform">Airflow: a workflow management platform</a></li><li><a class="toc-href" href="#DAU/MAU-is-an-important-metric-to-measure-engagement,-but-here&rsquo;s-where-it-fails" title="DAU/MAU is an important metric to measure engagement, but here&rsquo;s where it fails">DAU/MAU is an important metric to measure engagement, but here&rsquo;s where it fails</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -588,6 +597,26 @@ var disqus_title = '資料科學文摘 Vol.1 AutoML、Airflow 及 DAU';
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

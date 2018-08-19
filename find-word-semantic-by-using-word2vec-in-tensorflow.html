@@ -40,6 +40,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -121,6 +124,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="Find Word Semantic by Using Word2vec in TensorFlow">Find Word Semantic by Using Word2vec in TensorFlow</a><ul><li><a class="toc-href" href="#Libraries" title="Libraries">Libraries</a></li><li><a class="toc-href" href="#Raw-text-data" title="Raw text data">Raw text data</a><ul><li><a class="toc-href" href="#Download-/-load-data" title="Download / load data">Download / load data</a></li><li><a class="toc-href" href="#Turn-data-into-words" title="Turn data into words">Turn data into words</a></li><li><a class="toc-href" href="#Look-into-text-corpus" title="Look into text corpus">Look into text corpus</a></li></ul></li><li><a class="toc-href" href="#Create-training-data_1" title="Create training data">Create training data</a><ul><li><a class="toc-href" href="#Decide-dictionary-size" title="Decide dictionary size">Decide dictionary size</a></li><li><a class="toc-href" href="#Build-dictionary-and-transform-text-corpus-into-sequence-of-numbers" title="Build dictionary and transform text corpus into sequence of numbers">Build dictionary and transform text corpus into sequence of numbers</a></li><li><a class="toc-href" href="#See-transformed-text-corpus" title="See transformed text corpus">See transformed text corpus</a></li></ul></li><li><a class="toc-href" href="#Function-to-generate-a-training-batch-for-the-skip-gram-model._1" title="Function to generate a training batch for the skip-gram model.">Function to generate a training batch for the skip-gram model.</a></li><li><a class="toc-href" href="#Word2Vec-skip-gram-model." title="Word2Vec skip-gram model.">Word2Vec skip-gram model.</a><ul><li><a class="toc-href" href="#Computation-graph" title="Computation graph">Computation graph</a></li><li><a class="toc-href" href="#Train-the-model" title="Train the model">Train the model</a></li></ul></li><li><a class="toc-href" href="#Transform-embedding-into-2D-using-t-SNE_1" title="Transform embedding into 2D using t-SNE">Transform embedding into 2D using t-SNE</a></li><li><a class="toc-href" href="#Visualize-result" title="Visualize result">Visualize result</a></li><li><a class="toc-href" href="#Todo" title="Todo">Todo</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -172,14 +184,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="Find Word Semantic by Using Word2vec in TensorFlow">Find Word Semantic by Using Word2vec in TensorFlow</a><ul><li><a class="toc-href" href="#Libraries" title="Libraries">Libraries</a></li><li><a class="toc-href" href="#Raw-text-data" title="Raw text data">Raw text data</a><ul><li><a class="toc-href" href="#Download-/-load-data" title="Download / load data">Download / load data</a></li><li><a class="toc-href" href="#Turn-data-into-words" title="Turn data into words">Turn data into words</a></li><li><a class="toc-href" href="#Look-into-text-corpus" title="Look into text corpus">Look into text corpus</a></li></ul></li><li><a class="toc-href" href="#Create-training-data_1" title="Create training data">Create training data</a><ul><li><a class="toc-href" href="#Decide-dictionary-size" title="Decide dictionary size">Decide dictionary size</a></li><li><a class="toc-href" href="#Build-dictionary-and-transform-text-corpus-into-sequence-of-numbers" title="Build dictionary and transform text corpus into sequence of numbers">Build dictionary and transform text corpus into sequence of numbers</a></li><li><a class="toc-href" href="#See-transformed-text-corpus" title="See transformed text corpus">See transformed text corpus</a></li></ul></li><li><a class="toc-href" href="#Function-to-generate-a-training-batch-for-the-skip-gram-model._1" title="Function to generate a training batch for the skip-gram model.">Function to generate a training batch for the skip-gram model.</a></li><li><a class="toc-href" href="#Word2Vec-skip-gram-model." title="Word2Vec skip-gram model.">Word2Vec skip-gram model.</a><ul><li><a class="toc-href" href="#Computation-graph" title="Computation graph">Computation graph</a></li><li><a class="toc-href" href="#Train-the-model" title="Train the model">Train the model</a></li></ul></li><li><a class="toc-href" href="#Transform-embedding-into-2D-using-t-SNE_1" title="Transform embedding into 2D using t-SNE">Transform embedding into 2D using t-SNE</a></li><li><a class="toc-href" href="#Visualize-result" title="Visualize result">Visualize result</a></li><li><a class="toc-href" href="#Todo" title="Todo">Todo</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -841,10 +850,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 </div>
 </div>
 <div class="output_area">
-<div id="e9f51c67-c71d-4ddd-9e41-73fc23522e10"></div>
+<div id="e0ad62e5-2596-4426-b85d-46024efe9b1f"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e9f51c67-c71d-4ddd-9e41-73fc23522e10');
+var element = $('#e0ad62e5-2596-4426-b85d-46024efe9b1f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -3966,6 +3975,26 @@ var disqus_title = 'Find Word Semantic by Using Word2vec in TensorFlow';
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>

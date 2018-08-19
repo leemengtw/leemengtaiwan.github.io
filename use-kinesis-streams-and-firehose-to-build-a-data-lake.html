@@ -39,6 +39,9 @@
     <!--for customized css in individual page-->
         <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/bootstrap.min.css">
 
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/toc-nav.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemengtaiwan.github.io/theme/css/main.css">
@@ -120,6 +123,15 @@
     </header> <!-- end s-header -->
 
 
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="利用 Kinesis 處理串流資料並建立資料湖">利用 Kinesis 處理串流資料並建立資料湖</a><ul><li><a class="toc-href" href="#概觀" title="概觀">概觀</a></li><li><a class="toc-href" href="#建構流程" title="建構流程">建構流程</a></li><li><a class="toc-href" href="#建立一個-Kinesis-data-stream" title="建立一個 Kinesis data stream">建立一個 Kinesis data stream</a><ul><li><a class="toc-href" href="#Scalability" title="Scalability">Scalability</a></li><li><a class="toc-href" href="#How-to-scale" title="How to scale">How to scale</a></li><li><a class="toc-href" href="#Availability" title="Availability">Availability</a></li></ul></li><li><a class="toc-href" href="#建立一個-Firehose-delivery-stream_1" title="建立一個 Firehose delivery stream">建立一個 Firehose delivery stream</a><ul><li><a class="toc-href" href="#Configuration" title="Configuration">Configuration</a></li><li><a class="toc-href" href="#選擇-delivery-stream-目的地" title="選擇 delivery stream 目的地">選擇 delivery stream 目的地</a></li></ul></li><li><a class="toc-href" href="#用-Python-傳串流資料_1" title="用 Python 傳串流資料">用 Python 傳串流資料</a></li><li><a class="toc-href" href="#確認-S3-上的資料" title="確認 S3 上的資料">確認 S3 上的資料</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
@@ -170,14 +182,11 @@
         </div>
     </div>
 
-    <!---->
-    <!--<div id="toc-wrap">-->
-        <!--<i class="im im-menu" aria-hidden="true"></i>-->
-        <!---->
-        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="利用 Kinesis 處理串流資料並建立資料湖">利用 Kinesis 處理串流資料並建立資料湖</a><ul><li><a class="toc-href" href="#概觀" title="概觀">概觀</a></li><li><a class="toc-href" href="#建構流程" title="建構流程">建構流程</a></li><li><a class="toc-href" href="#建立一個-Kinesis-data-stream" title="建立一個 Kinesis data stream">建立一個 Kinesis data stream</a><ul><li><a class="toc-href" href="#Scalability" title="Scalability">Scalability</a></li><li><a class="toc-href" href="#How-to-scale" title="How to scale">How to scale</a></li><li><a class="toc-href" href="#Availability" title="Availability">Availability</a></li></ul></li><li><a class="toc-href" href="#建立一個-Firehose-delivery-stream_1" title="建立一個 Firehose delivery stream">建立一個 Firehose delivery stream</a><ul><li><a class="toc-href" href="#Configuration" title="Configuration">Configuration</a></li><li><a class="toc-href" href="#選擇-delivery-stream-目的地" title="選擇 delivery stream 目的地">選擇 delivery stream 目的地</a></li></ul></li><li><a class="toc-href" href="#用-Python-傳串流資料_1" title="用 Python 傳串流資料">用 Python 傳串流資料</a></li><li><a class="toc-href" href="#確認-S3-上的資料" title="確認 S3 上的資料">確認 S3 上的資料</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></li></ul></div>-->
-        <!---->
-    <!--</div>-->
-    <!---->
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
     <div id="social-wrap" style="cursor: pointer">
         <a class="open-popup" title="訂閱最新文章">
@@ -820,6 +829,26 @@ var disqus_title = '利用 Kinesis 處理串流資料並建立資料湖';
     });
   });
 </script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
 
 </body>
 </html>
