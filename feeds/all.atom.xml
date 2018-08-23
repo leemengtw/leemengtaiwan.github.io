@@ -2321,7 +2321,7 @@ Medium 的人說明他們在找的 Product Scientist 應該要有什麼特質：
 &lt;p&gt;為了做這些分析，資料團隊需要建立可靠的資料管道及 ETL，來確保有資料可供分析以及保證資料的品質。&lt;/p&gt;
 &lt;p&gt;Airflow 是一個由 Airbnb 開發，以 Python 實作的工作流管理系統（Workflow Management System, WMS）。 Airflow 被設計來幫助資料科學家們專注在建構資料管道的邏輯，而不是擔心如果資料管道中間出了什麼差錯時該怎麼維護、重新啟動工作流。（Airflow 有會自己重試失敗工作、當失敗時通知工程師等方便功能）。&lt;/p&gt;
 &lt;p&gt;Airflow 現在已經進入 &lt;a href="https://incubator.apache.org/"&gt;Apache 孵化器&lt;/a&gt;，前景可期。其作者 &lt;a href="https://medium.com/@maximebeauchemin"&gt;Maxime Beauchemin&lt;/a&gt; 在這篇用淺顯易懂的方式解說 Airflow，值得一看。手癢的朋友可以參考 &lt;a href="http://pythonhosted.org/airflow/start.html"&gt;Quickstart&lt;/a&gt; 以及 &lt;a href="http://pythonhosted.org/airflow/tutorial.html"&gt;Tutorial&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;SmartNews 也有在使用 Airflow，之後也會寫一篇 Airflow 的新手指南，敬請密切關注：）&lt;/p&gt;
+&lt;p&gt;SmartNews 也有在使用 Airflow，我也寫了一篇給新手看的 Airflow 的指南：「&lt;a href="https://leemengtaiwan.github.io/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html"&gt;一段 Airflow 與資料工程的故事：談如何用 Python 追漫畫連載&lt;/a&gt;」，你可以參考看看：）&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -10261,10 +10261,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="d1979817-f228-41f9-b918-67e347b9b589"&gt;&lt;/div&gt;
+&lt;div id="2c018a1c-03c8-4b07-8c24-cd69f09369e4"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#d1979817-f228-41f9-b918-67e347b9b589');
+var element = $('#2c018a1c-03c8-4b07-8c24-cd69f09369e4');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -13541,10 +13541,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="650a156d-adaa-4bb7-8e8b-d40038ab21fa"&gt;&lt;/div&gt;
+&lt;div id="ca2bc3e0-1717-408e-b6e0-0e076c9464e5"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#650a156d-adaa-4bb7-8e8b-d40038ab21fa');
+var element = $('#ca2bc3e0-1717-408e-b6e0-0e076c9464e5');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14308,10 +14308,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="67dcd459-9fac-4ae1-b09e-fe61220d2b28"&gt;&lt;/div&gt;
+&lt;div id="6da3c2d9-0467-464a-9c62-674e5552c78c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#67dcd459-9fac-4ae1-b09e-fe61220d2b28');
+var element = $('#6da3c2d9-0467-464a-9c62-674e5552c78c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -14501,10 +14501,10 @@ Test accuracy: 89.4%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="94ad68db-9327-422d-9f99-15ed05703b0e"&gt;&lt;/div&gt;
+&lt;div id="3f4cfffb-11d0-4937-a78f-b4b55bea1116"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#94ad68db-9327-422d-9f99-15ed05703b0e');
+var element = $('#3f4cfffb-11d0-4937-a78f-b4b55bea1116');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -15268,10 +15268,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="ad15f4b8-8fd4-4702-8d91-995a3542dd9d"&gt;&lt;/div&gt;
+&lt;div id="a3197627-eddf-421f-8a95-677b885d849f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#ad15f4b8-8fd4-4702-8d91-995a3542dd9d');
+var element = $('#a3197627-eddf-421f-8a95-677b885d849f');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -15472,10 +15472,10 @@ Test accuracy: 90.7%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="3db4c7ce-34f3-491d-9aa6-85036b01b7d8"&gt;&lt;/div&gt;
+&lt;div id="efab9ab4-9b57-4dcb-8930-70ea9858d0f5"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3db4c7ce-34f3-491d-9aa6-85036b01b7d8');
+var element = $('#efab9ab4-9b57-4dcb-8930-70ea9858d0f5');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -16239,10 +16239,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="02e58fcb-cf6d-4655-a13d-9d3878d0277f"&gt;&lt;/div&gt;
+&lt;div id="34157713-ead0-4e03-8285-6f48d2f71255"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#02e58fcb-cf6d-4655-a13d-9d3878d0277f');
+var element = $('#34157713-ead0-4e03-8285-6f48d2f71255');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -16648,10 +16648,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="7665e1f8-eed9-4344-a942-91619234c96c"&gt;&lt;/div&gt;
+&lt;div id="366d50d2-d38b-42dc-a8e9-2699b1db0988"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#7665e1f8-eed9-4344-a942-91619234c96c');
+var element = $('#366d50d2-d38b-42dc-a8e9-2699b1db0988');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -16713,10 +16713,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="62d73c1f-3157-4ef7-99f7-654d368bd440"&gt;&lt;/div&gt;
+&lt;div id="eb5bb283-aef5-4ef3-b01d-4bc298b390dd"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#62d73c1f-3157-4ef7-99f7-654d368bd440');
+var element = $('#eb5bb283-aef5-4ef3-b01d-4bc298b390dd');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -16770,10 +16770,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="4cfdbf73-e505-4a95-9a30-a445dd6f9edc"&gt;&lt;/div&gt;
+&lt;div id="f5cb3f57-2d32-4473-94a3-e428c7aa742a"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#4cfdbf73-e505-4a95-9a30-a445dd6f9edc');
+var element = $('#f5cb3f57-2d32-4473-94a3-e428c7aa742a');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -16827,10 +16827,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="fb1333de-3dad-43f3-b15c-ee367a2c366b"&gt;&lt;/div&gt;
+&lt;div id="5af24599-08e9-40d4-b8e6-ca63b4929e16"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#fb1333de-3dad-43f3-b15c-ee367a2c366b');
+var element = $('#5af24599-08e9-40d4-b8e6-ca63b4929e16');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -16890,10 +16890,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="6bf09e48-e0fc-4830-97f2-cb2c70b1c3a1"&gt;&lt;/div&gt;
+&lt;div id="289a2ab9-4934-49ec-a3fe-04e3525a9e44"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#6bf09e48-e0fc-4830-97f2-cb2c70b1c3a1');
+var element = $('#289a2ab9-4934-49ec-a3fe-04e3525a9e44');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -17263,10 +17263,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="f3b2136d-98e6-42ec-8b6b-dac974993d68"&gt;&lt;/div&gt;
+&lt;div id="76354c16-a287-4360-9689-15121333f917"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f3b2136d-98e6-42ec-8b6b-dac974993d68');
+var element = $('#76354c16-a287-4360-9689-15121333f917');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -17415,10 +17415,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="0b33965c-c452-4e5b-95b3-29b638109dd0"&gt;&lt;/div&gt;
+&lt;div id="9594b945-091e-4f09-a3a1-0713836de3fa"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#0b33965c-c452-4e5b-95b3-29b638109dd0');
+var element = $('#9594b945-091e-4f09-a3a1-0713836de3fa');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -17576,10 +17576,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="e5dbc7f9-13f8-40ca-b504-ccae07fb42a8"&gt;&lt;/div&gt;
+&lt;div id="fe1e8b3b-40bb-4bde-8a6f-9b1b860b412f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#e5dbc7f9-13f8-40ca-b504-ccae07fb42a8');
+var element = $('#fe1e8b3b-40bb-4bde-8a6f-9b1b860b412f');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
