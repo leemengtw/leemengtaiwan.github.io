@@ -893,7 +893,7 @@ airflow &lt;span class="nb"&gt;test&lt;/span&gt; comic_app_v2 new_comic_availabl
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;到目前為止你應該有 3 個 terminal 各司其職：&lt;/p&gt;
+&lt;p&gt;到目前為止你應該有 3 個 terminals 各司其職：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;用來輸入 &lt;code&gt;airflow&lt;/code&gt; 相關指令的 terminal&lt;/li&gt;
 &lt;li&gt;Airflow Webserver&lt;/li&gt;
@@ -1114,7 +1114,7 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
     &lt;span class="n"&gt;icon_url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'http://airbnb.io/img/projects/airflow3.png'&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;注意 &lt;code&gt;text&lt;/code&gt; 參數的值。 &lt;code&gt;{{ ds }]&lt;/code&gt; 實際上是 &lt;a href="https://airflow.apache.org/tutorial.html#templating-with-jinja"&gt;Jinja&lt;/a&gt; 語法，它允許我們將 Python 變數渲染（Render）到字串裡頭，動態地產生文本。這就像是我們有個變數 &lt;code&gt;ds&lt;/code&gt;，然後利用 &lt;code&gt;format&lt;/code&gt; 語法一樣：&lt;/p&gt;
+&lt;p&gt;注意 &lt;code&gt;text&lt;/code&gt; 參數的值。 &lt;code&gt;{{ ds }}&lt;/code&gt; 實際上是 &lt;a href="https://airflow.apache.org/tutorial.html#templating-with-jinja"&gt;Jinja&lt;/a&gt; 語法，它允許我們將 Python 變數渲染（Render）到字串裡頭，動態地產生文本。這就像是我們有個變數 &lt;code&gt;ds&lt;/code&gt;，然後利用 &lt;code&gt;format&lt;/code&gt; 語法一樣：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;text = "[{ds}] 海賊王有新番了!".format(ds=ds)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;而這邊的重點是 Airflow 在執行一個 DAG 的時候會提供一些預設的&lt;a href="https://airflow.apache.org/code.html?highlight=macros#macros"&gt;環境變數&lt;/a&gt;供我們使用，像是：&lt;/p&gt;
 &lt;ul&gt;
@@ -1302,7 +1302,7 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;DAG&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'comic_app_v2'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;default_args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;default_args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;dag&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;保持好習慣，修改完程式碼以後用 Python 確認 DAG 沒語法錯誤。：&lt;/p&gt;
+&lt;p&gt;保持好習慣，修改完程式碼以後用 Python 確認 DAG 沒語法錯誤：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python dags/comic_app_v2.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;通常 Airflow 沒多久就會重新載入最新的程式碼。如果你懷疑程式碼沒有被更新，可以點擊 Airflow UI 首頁中 &lt;code&gt;comic_app_v2&lt;/code&gt; DAG 最右邊 Links 裡頭的「Refresh」按鈕。&lt;/p&gt;
@@ -1326,11 +1326,12 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;img src="https://leemengtaiwan.github.io/images/airflow/success-dags.png" style="width:90%"/&gt;
 &lt;br/&gt;
 &lt;/center&gt;&lt;p&gt;除了第一個 DAG Run 是我們之前手動觸發以外（你可以從它的 Run Id 以及最右邊的 External Trigger 看出），其他三個都是 Airflow 排程器實際排程並執行的結果（一樣你可以從它們的 Run Id 看出端倪）。&lt;/p&gt;
-&lt;p&gt;同時我的 Slack 作響。我們可以看到儘管執行日期相異，三個被排程的 DAG Runs 按照順序通知我有新番。海賊王一週出一次，想必其中有幾個是 fake news。&lt;/p&gt;
+&lt;p&gt;同時我的 Slack 作響。我們可以看到儘管執行日期相異，三個被排程的 DAG Runs 按照順序通知我有新番。&lt;/p&gt;
 &lt;center&gt;
 &lt;img src="https://leemengtaiwan.github.io/images/airflow/three-slack-messages.png" style="width:90%"/&gt;
 &lt;br/&gt;
-&lt;/center&gt;&lt;p&gt;不管如何，我們在這章節成功讓 Airflow 排程器從好幾天前開始自動排程 &lt;code&gt;comic_app_v2&lt;/code&gt; DAG 並確認結果成功！&lt;/p&gt;
+&lt;/center&gt;&lt;p&gt;嗯 .. 海賊王一週出一次，想必其中有幾個是 fake news。&lt;/p&gt;
+&lt;p&gt;不管如何，我們在這章節成功讓 Airflow 排程器從好幾天前開始自動排程 &lt;code&gt;comic_app_v2&lt;/code&gt; DAG 並確認結果成功！&lt;/p&gt;
 &lt;p&gt;如果我不將 Airflow 排程器關掉的話，之後每天的 0 點（UTC）它都會幫我執行 &lt;code&gt;comic_app_v2&lt;/code&gt; DAG。沒有意外的話，或許 Airflow 排程器可以幫我們持續排程此 DAG 到西元 2100 年，希望到時海賊王已經完結，不用叫孫子燒給我了。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -10261,10 +10262,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="438567ea-c07e-4824-bf02-006e890b0ef9"&gt;&lt;/div&gt;
+&lt;div id="bca22f8e-7d1a-4d1b-8c85-afb17fd19580"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#438567ea-c07e-4824-bf02-006e890b0ef9');
+var element = $('#bca22f8e-7d1a-4d1b-8c85-afb17fd19580');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -13541,10 +13542,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="3687610a-3fde-43dc-8699-d2bc37ef7c8e"&gt;&lt;/div&gt;
+&lt;div id="704cd2d0-9055-4513-b9a0-df65b2e3dedf"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3687610a-3fde-43dc-8699-d2bc37ef7c8e');
+var element = $('#704cd2d0-9055-4513-b9a0-df65b2e3dedf');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14308,10 +14309,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="d1a9a4fa-6e4c-4ee6-b974-28cea196f302"&gt;&lt;/div&gt;
+&lt;div id="a72f9faf-b169-4032-9cf9-bee585e1809e"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#d1a9a4fa-6e4c-4ee6-b974-28cea196f302');
+var element = $('#a72f9faf-b169-4032-9cf9-bee585e1809e');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -14501,10 +14502,10 @@ Test accuracy: 89.4%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="2435f6b3-4b9f-46c3-ad59-4d52b51b6556"&gt;&lt;/div&gt;
+&lt;div id="850b3956-c15b-4eeb-add1-d70b2cde168f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#2435f6b3-4b9f-46c3-ad59-4d52b51b6556');
+var element = $('#850b3956-c15b-4eeb-add1-d70b2cde168f');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -15268,10 +15269,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="9c960f37-4658-41a1-b1a6-0291041cb00f"&gt;&lt;/div&gt;
+&lt;div id="02120df9-4e03-488b-be69-8eeed84b2ccd"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9c960f37-4658-41a1-b1a6-0291041cb00f');
+var element = $('#02120df9-4e03-488b-be69-8eeed84b2ccd');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -15472,10 +15473,10 @@ Test accuracy: 90.7%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="dfaad066-a085-4798-af1c-f679eb5765a9"&gt;&lt;/div&gt;
+&lt;div id="4f1319fe-3ed6-45eb-9011-771307eff73f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#dfaad066-a085-4798-af1c-f679eb5765a9');
+var element = $('#4f1319fe-3ed6-45eb-9011-771307eff73f');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -16239,10 +16240,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="2550ea9a-4429-46f0-8898-76d4f45fdfa1"&gt;&lt;/div&gt;
+&lt;div id="b8535c28-c97a-4976-a9db-6e0db63a0b4d"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#2550ea9a-4429-46f0-8898-76d4f45fdfa1');
+var element = $('#b8535c28-c97a-4976-a9db-6e0db63a0b4d');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -16648,10 +16649,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="f1f8560a-6bee-4f72-8508-53c4a815e8be"&gt;&lt;/div&gt;
+&lt;div id="1c0f5f3b-ee35-4c38-85ba-e6733414ce18"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f1f8560a-6bee-4f72-8508-53c4a815e8be');
+var element = $('#1c0f5f3b-ee35-4c38-85ba-e6733414ce18');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -16713,10 +16714,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="79ac5e5f-8ad1-473d-9874-fdc9fb59a3a9"&gt;&lt;/div&gt;
+&lt;div id="25f9a116-2ceb-47e1-b409-a1608e3286b8"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#79ac5e5f-8ad1-473d-9874-fdc9fb59a3a9');
+var element = $('#25f9a116-2ceb-47e1-b409-a1608e3286b8');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -16770,10 +16771,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="879566ca-b96e-452d-8b24-8969bd3dcc63"&gt;&lt;/div&gt;
+&lt;div id="883c04ef-7f8e-4dac-be29-d9d4db367514"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#879566ca-b96e-452d-8b24-8969bd3dcc63');
+var element = $('#883c04ef-7f8e-4dac-be29-d9d4db367514');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -16827,10 +16828,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="bc88283c-f55d-4295-88e2-b139c92c4f07"&gt;&lt;/div&gt;
+&lt;div id="23dd7d2d-61b8-46f7-b0b4-3c2108ce2447"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#bc88283c-f55d-4295-88e2-b139c92c4f07');
+var element = $('#23dd7d2d-61b8-46f7-b0b4-3c2108ce2447');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -16890,10 +16891,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="fb7f86ae-04c8-49d8-9f91-99568fb6b293"&gt;&lt;/div&gt;
+&lt;div id="d4d4295b-08a9-4064-8c26-5ef58455ce6a"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#fb7f86ae-04c8-49d8-9f91-99568fb6b293');
+var element = $('#d4d4295b-08a9-4064-8c26-5ef58455ce6a');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -17263,10 +17264,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="0f25a6ce-8adc-4c6b-8f4c-0482e5a4f0d5"&gt;&lt;/div&gt;
+&lt;div id="cc3c9c63-87e5-4181-857b-095d50300cbc"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#0f25a6ce-8adc-4c6b-8f4c-0482e5a4f0d5');
+var element = $('#cc3c9c63-87e5-4181-857b-095d50300cbc');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -17415,10 +17416,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="0ca2be78-7e44-44d9-b6a9-c5c009f9b0c7"&gt;&lt;/div&gt;
+&lt;div id="ba385bbb-27d2-4877-811a-a43f7e6e4dfc"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#0ca2be78-7e44-44d9-b6a9-c5c009f9b0c7');
+var element = $('#ba385bbb-27d2-4877-811a-a43f7e6e4dfc');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -17576,10 +17577,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="4489be96-c4b7-48af-bbfe-2e576ba2aab4"&gt;&lt;/div&gt;
+&lt;div id="7c6a86d9-8be9-49f8-bd44-cbfb68225968"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#4489be96-c4b7-48af-bbfe-2e576ba2aab4');
+var element = $('#7c6a86d9-8be9-49f8-bd44-cbfb68225968');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
