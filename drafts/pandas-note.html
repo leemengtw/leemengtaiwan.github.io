@@ -11,21 +11,22 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>LeeMeng - Designing Data-Intensive Applications (1) - 序言</title>
+<title>LeeMeng - Pandas</title>
     <!--- article-specific meta data
     ================================================== -->
-        <meta name="description" content="最近在拜讀 Martin Kleppmann 的 Designing Data-Intensive Applications， 覺得受益匪淺，且我也相信透過 Feynman Technique 將學到的東西用最淺顯易懂的方式表達能幫助自己內化這些知識，遂嘗試把閱讀後的心得記錄在此。" />
-        <meta name="keywords" content="資料工程" />
-        <meta name="tags" content="資料工程" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="文摘, 資料科學" />
+        <meta name="tags" content="文摘" />
+        <meta name="tags" content="資料科學" />
 
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="https://leemengtaiwan.github.io/theme/images/background/eugene-lim-263830-unsplash.jpg" />
+        <meta property="og:image" content="https://leemengtaiwan.github.io/theme/images/background/doors-1767562_1280.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://leemengtaiwan.github.io/designing-data-intensive-applications-1-preface.html" />
-        <meta property="og:title" content="Designing Data-Intensive Applications (1) - 序言" />
-        <meta property="og:description" content="最近在拜讀 Martin Kleppmann 的 Designing Data-Intensive Applications， 覺得受益匪淺，且我也相信透過 Feynman Technique 將學到的東西用最淺顯易懂的方式表達能幫助自己內化這些知識，遂嘗試把閱讀後的心得記錄在此。" />
+        <meta property="og:url" content="https://leemengtaiwan.github.io/drafts/pandas-note.html" />
+        <meta property="og:title" content="Pandas" />
+        <meta property="og:description" content="" />
 
     <!-- mobile specific metas
     ================================================== -->
@@ -124,7 +125,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="Designing Data-Intensive Applications (1) - 序言">Designing Data-Intensive Applications (1) - 序言</a><ul><li><a class="toc-href" href="#何謂-data-intensive-applications" title="何謂 data-intensive applications">何謂 data-intensive applications</a></li><li><a class="toc-href" href="#何謂資料密集" title="何謂資料密集">何謂資料密集</a></li><li><a class="toc-href" href="#一句話總結" title="一句話總結">一句話總結</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="Pandas">Pandas</a><ul><li><a class="toc-href" href="#選擇子集" title="選擇子集">選擇子集</a></li><li><a class="toc-href" href="#看-columns-裡頭的值的分佈" title="看 columns 裡頭的值的分佈">看 columns 裡頭的值的分佈</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -133,24 +134,25 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemengtaiwan.github.io/theme/images/background/eugene-lim-263830-unsplash.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemengtaiwan.github.io/theme/images/background/doors-1767562_1280.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
-                            <a href="https://leemengtaiwan.github.io/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                            <a href="https://leemengtaiwan.github.io/tag/wen-zhai.html" rel="tag">文摘</a>
+                            <a href="https://leemengtaiwan.github.io/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="https://leemengtaiwan.github.io/designing-data-intensive-applications-1-preface.html" title="">
-                            Designing Data-Intensive Applications (1) - 序言
+                        <a href="https://leemengtaiwan.github.io/drafts/pandas-note.html" title="">
+                            Pandas
                         </a>
                     </h1>
                     <ul class="page-header__meta">
-                        <li class="date">2018-03-24 (Sat)</li>
+                        <li class="date">2018-08-27 (Mon)</li>
                         <li class="page-view">
-                            49 views
+                            1 views
                         </li>
                     </ul>
 
@@ -182,26 +184,6 @@
         </a>
     </div>
 
-    <div id="social-wrap" style="cursor: pointer">
-        <a class="open-popup" title="訂閱最新文章">
-            <i class="im im-newspaper-o" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemengtaiwan.github.io/designing-data-intensive-applications-1-preface.html" target="_blank" title="分享到 Facebook">
-            <i class="im im-facebook" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemengtaiwan.github.io/designing-data-intensive-applications-1-preface.html&title=Designing%20Data-Intensive%20Applications%20%281%29%20-%20%E5%BA%8F%E8%A8%80&summary=%E6%9C%80%E8%BF%91%E5%9C%A8%E6%8B%9C%E8%AE%80%20Martin%20Kleppmann%20%E7%9A%84%20Designing%20Data-Intensive%20Applications%EF%BC%8C%20%E8%A6%BA%E5%BE%97%E5%8F%97%E7%9B%8A%E5%8C%AA%E6%B7%BA%EF%BC%8C%E4%B8%94%E6%88%91%E4%B9%9F%E7%9B%B8%E4%BF%A1%E9%80%8F%E9%81%8E%20Feynman%20Technique%20%E5%B0%87%E5%AD%B8%E5%88%B0%E7%9A%84%E6%9D%B1%E8%A5%BF%E7%94%A8%E6%9C%80%E6%B7%BA%E9%A1%AF%E6%98%93%E6%87%82%E7%9A%84%E6%96%B9%E5%BC%8F%E8%A1%A8%E9%81%94%E8%83%BD%E5%B9%AB%E5%8A%A9%E8%87%AA%E5%B7%B1%E5%85%A7%E5%8C%96%E9%80%99%E4%BA%9B%E7%9F%A5%E8%AD%98%EF%BC%8C%E9%81%82%E5%98%97%E8%A9%A6%E6%8A%8A%E9%96%B1%E8%AE%80%E5%BE%8C%E7%9A%84%E5%BF%83%E5%BE%97%E8%A8%98%E9%8C%84%E5%9C%A8%E6%AD%A4%E3%80%82&source=https%3A//leemengtaiwan.github.io/designing-data-intensive-applications-1-preface.html" target="_blank" title="分享到 LinkedIn">
-            <i class="im im-linkedin" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://twitter.com/intent/tweet?text=Designing%20Data-Intensive%20Applications%20%281%29%20-%20%E5%BA%8F%E8%A8%80&url=https%3A//leemengtaiwan.github.io/designing-data-intensive-applications-1-preface.html" target="_blank" title="分享到 Twitter">
-            <i class="im im-twitter" aria-hidden="true"></i>
-        </a>
-    </div>
 
 </div>
             <div class="col-full blog-content__main">
@@ -209,93 +191,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>最近在拜讀 <a href="http://martin.kleppmann.com/">Martin Kleppmann</a> 的 <a href="https://dataintensive.net/">Designing Data-Intensive Applications</a>，
-覺得受益匪淺，且我也相信透過 
-<a href="http://blog.xxc.idv.tw/km/%E8%B2%BB%E6%9B%BC%E7%9A%84%E5%AD%B8%E7%BF%92%E6%8A%80%E5%B7%A7-the-feynman-technique.html">Feynman Technique</a> 
-將學到的東西用最淺顯易懂的方式表達能幫助自己內化這些知識，遂嘗試把閱讀後的心得記錄在此。</p>
-<p>另外在提到書內內容時都會盡量使用英文原文，不另做名詞的翻譯，以方便對照書內內容。</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="何謂-data-intensive-applications">何謂 data-intensive applications<a class="anchor-link" href="#何謂-data-intensive-applications">&para;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>所謂的 data-intensive applications 如同名稱所示，專注在如何有效率地處理、儲存<a href="#何謂資料密集">密集資料</a>。通常一個這樣的系統的後端要用多種方式處理資料，而不是只用一個資料庫就結束了。（雖然對 end users 來說可能看起來像這樣）</p>
-<p>舉個簡單例子，一個電子商務網頁的後端除了做為 <a href="https://zh.wikipedia.org/wiki/%E7%B7%9A%E4%B8%8A%E4%BA%A4%E6%98%93%E8%99%95%E7%90%86">OLTP</a> 的 NoSQL 資料庫 (e.g., MongoDB) 以外，可能還有：</p>
-<ul>
-<li>一個專門存放網頁快取的資料庫 (e.g. Redis) </li>
-<li>給資料科學家分析用的資料倉儲 (e.g., Redshift) </li>
-<li>處理 streaming events 的 messaging queue (e.g., Kafka)</li>
-<li>定期將 NoSQL 資料庫的資料做 <a href="https://zh.wikipedia.org/wiki/ETL">ETL</a> 存到 資料倉儲的批次處理 (e.g., Hive jobs)</li>
-</ul>
-<p>光是要把以上所列的資料庫 / 分散式系統 / 資料流 以有系統的方式組合起來就需要大量經驗，更遑論還要達到以下三個要求了：</p>
-<ul>
-<li>可靠性 (reliable): 像是 zero-down time, 很短的回應時間 etc</li>
-<li>規模性 (scalable): 即使之後資料量增加，系統也能很好地運作</li>
-<li>維護性 (maintainable): 容易改善、新增功能的系統設計</li>
-</ul>
-<center>
-<img src="images/ddia/jigsaw-puzzle.png" style="width:90%"/>
-</center>
-<center>
-<a href="http://www.jigsaw-puzzle-club.co.uk/" target="_blank">Image Credit</a>
-<font color="purple">: 如何了解各個 data system 的優缺點並予以組合</font><br/>
-</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>儘管我們不可能熟悉所有資料庫以及分散式系統的細節，了解他們背後設計的核心理念、演算法以及大致上的運作方式能讓我們了解每個 data system 的特性以及優缺點，依照不同的使用案例選擇最適合的 data system 並予以組合。</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="何謂資料密集">何謂資料密集<a class="anchor-link" href="#何謂資料密集">&para;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>書中所指的「密集」資料有以下所列的特徵（一個以上）：</p>
-<ul>
-<li>大量資料</li>
-<li>資料的（格式、 schema etc）變動速度很快</li>
-<li>資料有複雜結構</li>
-</ul>
-<p>針對「資料有複雜結構」以及「資料變動很快」這點，最為人所知的 solution 就是 NoSQL 等允許彈性 schema 的資料庫的崛起；
-而針對「資料量很大」這點，則端看使用案例有各式各樣的資料庫、分散式系統。舉幾個例子：</p>
-<ul>
-<li>能有效儲存大量資料的 Google BigTable</li>
-<li>以欄 (column) 為單位儲存以壓縮大量資料的資料倉儲 Redshift</li>
-<li>Amazon 的 Single-leader Replication - DynamoDB</li>
-<li>專門處理 realtime streaming data 的 Kafka, RabbitMQ etc.</li>
-</ul>
-<p>如同前述，以上提到的系統依照它們想要解決的問題的特性，背後都會有一些假設以及 trade-off 。了解這些背後的原理可以讓我們了解哪些工具在什麼時候最 powerful 。</p>
-<p>這本書主要分成三部分來闡述，抓到大方向會比較容易閱讀：</p>
-<ul>
-<li>針對單一機器上的資料，有哪些常用的資料儲存/處理方法</li>
-<li>類似前一部份，闡述針對分散式系統的資料儲存/處理方法</li>
-<li>資料密集型應用：如何將多個 data systems 組合起來</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="一句話總結">一句話總結<a class="anchor-link" href="#一句話總結">&para;</a></h2>
+<h2 id="選擇子集">選擇子集<a class="anchor-link" href="#選擇子集">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -303,7 +199,33 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>在資料密集的時代，我們的最終目標在於如何將各式各樣的 data systems 以有系統的方式「組合」起來，以建立一個可靠、具規模性以及維護性的系統。</p></blockquote></div>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">customers</span> <span class="o">=</span> <span class="n">customers</span><span class="p">[</span><span class="n">customers</span> <span class="o">&gt;=</span> <span class="mi">35</span><span class="p">]</span>
+<span class="n">products</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="n">products</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">]</span>
+
+<span class="n">reduced_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'customer_id'</span><span class="p">:</span> <span class="n">customers</span><span class="o">.</span><span class="n">index</span><span class="p">}))</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'product_id'</span><span class="p">:</span> <span class="n">products</span><span class="o">.</span><span class="n">index</span><span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="看-columns-裡頭的值的分佈">看 columns 裡頭的值的分佈<a class="anchor-link" href="#看-columns-裡頭的值的分佈">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">customers</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'customer_id'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">products</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'product_id'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+<span class="n">quantiles</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.96</span><span class="p">,</span> <span class="mf">0.97</span><span class="p">,</span> <span class="mf">0.98</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.995</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">,</span> <span class="mf">0.9999</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'customers</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">customers</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">quantiles</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'products</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">products</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">quantiles</span><span class="p">))</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -315,10 +237,33 @@
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
-                        <a href="https://leemengtaiwan.github.io/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                        <a href="https://leemengtaiwan.github.io/tag/wen-zhai.html" rel="tag">文摘</a>
+                        <a href="https://leemengtaiwan.github.io/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
                     </span>
 
                 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -377,18 +322,6 @@
                 <!--Pagination-->
                 <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
-                        <div class="blog-content__prev">
-                            <a href="https://leemengtaiwan.github.io/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html" rel="prev">
-                                <span>Previous Post</span>
-                                AWS Data Migration Service - 從 MongoDB 遷移到 Redshift
-                            </a>
-                        </div>
-                        <div class="blog-content__next">
-                            <a href="https://leemengtaiwan.github.io/google-data-studio-basics.html" rel="next">
-                                <span>Next Post</span>
-                                Google Data Studio 基礎
-                            </a>
-                        </div>
                     </div>
 
                     <div class="blog-content__all">
@@ -417,7 +350,7 @@
 
 <script type="text/javascript">
 var disqus_shortname = 'leemengtaiwan';
-var disqus_title = 'Designing Data-Intensive Applications (1) - 序言';
+var disqus_title = 'Pandas';
 
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

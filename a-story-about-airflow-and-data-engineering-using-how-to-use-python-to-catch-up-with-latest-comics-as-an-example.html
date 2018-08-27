@@ -158,7 +158,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-08-21 (Tue)</li>
                         <li class="page-view">
-                            2,064 views
+                            2,199 views
                         </li>
                     </ul>
 
@@ -508,6 +508,7 @@ airflow initdb
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>理想上把 <code>AIRFLOW_HOME</code> 加入到 <code>~/.bash_profile</code> 裡頭之後會比較輕鬆，不過現在不做也沒關係。</p>
+<p>【2018/08/27 加註】如果沒有設定 <code>export AIRFLOW_HOME="$(pwd)"</code> 就執行 <code>airflow initdb</code>的話，會讓 Airflow 使用作者當初測試時使用的路徑，而不是你 <code>git clone</code> 下來的 repo 的路徑而造成問題，務必記得設定。</p>
 <p>在環境都搞定之後，我們可以啟動 Airflow 的網頁伺服器：</p>
 </div>
 </div>
