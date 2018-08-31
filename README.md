@@ -102,6 +102,21 @@ Meta Cell template
 - summary: This is a summary
 - image: andy-kelly-402111-unsplash.jpg
 - image_credit_url: https://www.google.com
-- enable_notebook_download: true
+- enable_notebook_download: false
+- status: draft
 
 ```
+
+文摘用 template
+```html
+## []()
+<center>
+    <a href="" target="_blacnk">
+        <img src="images/digests/" style="width:90%"/>
+    </a>
+</center>
+```
+
+
+
+
