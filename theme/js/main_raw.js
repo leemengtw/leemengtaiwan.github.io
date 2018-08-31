@@ -182,7 +182,7 @@
             $folioItems.each(function(i) {
 
                 $(this).on('click', function(e) {
-                    e.preventDefault();
+                    //e.preventDefault();
                     var options = {
                         index: i,
                         showHideOpacity: true
