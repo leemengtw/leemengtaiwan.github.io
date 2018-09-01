@@ -8,9 +8,8 @@ SITETITLE = 'All About DataScience'
 SITEURL = ''
 SITE_DESCRIPTION_LIST = [
     "現居東京的資料科學家 L 在數據世界裡頭的所想、所學以及所感。這個網站紀錄了所有我的個人資訊，包含工作經歷、",
-    "做過的專案以及與資料科學相關的文章。不只是資料科學家，處在資訊時代的各行各業都需要能活用資料科學的人才。",
-    "透過分享自己的學習心得以及業界經驗，我希望能讓更多人接觸到資料科學的奧秘。此部落格主要會提及資料科學、資料工程、",
-    "機器學習及資料視覺化技巧"
+    "做過的專案以及與資料科學相關的文章。透過分享自己的學習心得以及業界經驗，我希望能讓更多人接觸到資料科學的奧秘。",
+    "此部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。"
 ]
 SITE_DESCRIPTION = "".join(SITE_DESCRIPTION_LIST)
 
@@ -24,14 +23,14 @@ STATIC_PATHS = [
     'extra/robots.txt',
     'extra/favicon.ico',
     'extra/.htaccess',
-    'extra/CNAME'
+    # 'extra/CNAME'
 ]
 
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
     'extra/favicon.ico': {'path': 'favicon.ico'},
     'extra/.htaccess': {'path': '.htaccess'},
-    'extra/CNAME': {'path': 'CNAME'}
+    # 'extra/CNAME': {'path': 'CNAME'}
 }
 
 # Use draft as default for preventing publish unfinished articles.
