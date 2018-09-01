@@ -6,8 +6,15 @@ AUTHOR = 'Lee Meng'
 SITENAME = "LeeMeng"
 SITETITLE = 'All About DataScience'
 SITEURL = ''
-SITE_DESCRIPTION = "部落格, 資料科學, Python, R, 機器學習, 資料分析, 資料視覺化, 軟體工程, 資料工程, 雲端運算"
-SITE_KEYWORDS = "部落格, 資料科學, Python, R, 機器學習, 資料分析, 資料視覺化, 軟體工程, 資料工程, 雲端運算"
+SITE_DESCRIPTION_LIST = [
+    "現居東京的資料科學家 L 在數據世界裡頭的所想、所學以及所感。這個網站紀錄了所有我的個人資訊，包含工作經歷、",
+    "做過的專案以及與資料科學相關的文章。不只是資料科學家，處在資訊時代的各行各業都需要能活用資料科學的人才。",
+    "透過分享自己的學習心得以及業界經驗，我希望能讓更多人接觸到資料科學的奧秘。此部落格主要會提及資料科學、資料工程、",
+    "機器學習及資料視覺化技巧"
+]
+SITE_DESCRIPTION = "".join(SITE_DESCRIPTION_LIST)
+
+SITE_KEYWORDS = "部落格, 資料科學, Python, R, 機器學習, 資料分析, 資料視覺化, 軟體工程, 資料工程, 雲端運算, blog, data science, machine learning, data analysis, data visualization, data engineering"
 PATH = 'content'
 
 # Set path for stat files like favicon and robot.txt
@@ -16,13 +23,15 @@ STATIC_PATHS = [
     'Udacity/Deep Learning/images',
     'extra/robots.txt',
     'extra/favicon.ico',
-    'extra/.htaccess'
+    'extra/.htaccess',
+    'extra/CNAME'
 ]
 
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
     'extra/favicon.ico': {'path': 'favicon.ico'},
-    'extra/.htaccess': {'path': '.htaccess'}
+    'extra/.htaccess': {'path': '.htaccess'},
+    'extra/CNAME': {'path': 'CNAME'}
 }
 
 # Use draft as default for preventing publish unfinished articles.
@@ -47,14 +56,14 @@ DATE_FORMATS = {
 
 
 # Feed generation is usually not desired when developing
-FEED_DOMAIN = SITEURL
-FEED_ALL_RSS = 'feeds/all.rss.xml'
-
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
+# FEED_DOMAIN = SITEURL
+# FEED_ALL_RSS = 'feeds/all.rss.xml'
+#
+# FEED_ALL_ATOM = None
+# CATEGORY_FEED_ATOM = None
+# TRANSLATION_FEED_ATOM = None
+# AUTHOR_FEED_ATOM = None
+# AUTHOR_FEED_RSS = None
 
 # github settings
 # GITHUB_URL = "https://github.com/leemengtaiwan"
@@ -104,7 +113,7 @@ JINJA_ENVIRONMENT = {
 
 # Pagination
 # https://github.com/getpelican/pelican/blob/master/docs/settings.rst#pagination
-DEFAULT_PAGINATION = 7
+DEFAULT_PAGINATION = 11
 NUM_TOP_TAGS = 5
 NUM_ARTICLES_HOMEPAGE = 4
 # PAGINATION_PATTERNS = (
@@ -125,7 +134,9 @@ DEFAULT_CATEGORY = 'Miscellaneous'
 
 # Pelican default theme for dev
 THEME = "/Users/meng.lee/git/blog/pelican-jupyter-notebook/themes/Hola10"
+# DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search', 'blog-dev']
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search']
+# PAGINATED_DIRECT_TEMPLATES = ['index', 'blog', 'blog-dev']
 PAGINATED_DIRECT_TEMPLATES = ['index', 'blog']
 
 # Copy notebook to output folder for downloading
