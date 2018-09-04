@@ -11,7 +11,7 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>LeeMeng - 為何身為資料科學家的你需要學習 Docker：一個快速指南</title>
+<title>LeeMeng - 4 種你能在數據科學中活用 Docker 的方式</title>
     <!--- article-specific meta data
     ================================================== -->
         <meta name="description" content="TEST" />
@@ -22,10 +22,10 @@
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="https://leemengtaiwan.github.io/theme/images/background/docker-cover.png" />
+        <meta property="og:image" content="https://leemengtaiwan.github.io/theme/images/background/docker-cover.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://leemengtaiwan.github.io/drafts/why-you-need-to-learn-docker-as-a-data-scientist-a-quick-guide.html" />
-        <meta property="og:title" content="為何身為資料科學家的你需要學習 Docker：一個快速指南" />
+        <meta property="og:url" content="https://leemengtaiwan.github.io/drafts/4-ways-you-can-leverge-the-power-of-docker-in-data-science-area.html" />
+        <meta property="og:title" content="4 種你能在數據科學中活用 Docker 的方式" />
         <meta property="og:description" content="TEST" />
 
     <!-- mobile specific metas
@@ -124,7 +124,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="為何身為資料科學家的你需要學習 Docker：一個快速指南">為何身為資料科學家的你需要學習 Docker：一個快速指南</a><ul><li><a class="toc-href" href="#Docker-Cheat-Sheet" title="Docker Cheat Sheet">Docker Cheat Sheet</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="4 種你能在數據科學中活用 Docker 的方式">4 種你能在數據科學中活用 Docker 的方式</a><ul><li><a class="toc-href" href="#什麼是-Docker：一隻大鯨魚" title="什麼是 Docker：一隻大鯨魚">什麼是 Docker：一隻大鯨魚</a></li><li><a class="toc-href" href="#實戰演練：貓咪辨識-App" title="實戰演練：貓咪辨識 App">實戰演練：貓咪辨識 App</a></li><li><a class="toc-href" href="#4-種活用-Docker-的方式" title="4 種活用 Docker 的方式">4 種活用 Docker 的方式</a></li><li><a class="toc-href" href="#Docker-Cheat-Sheet" title="Docker Cheat Sheet">Docker Cheat Sheet</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -133,7 +133,7 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemengtaiwan.github.io/theme/images/background/docker-cover.png)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemengtaiwan.github.io/theme/images/background/docker-cover.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
@@ -144,12 +144,12 @@
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="https://leemengtaiwan.github.io/drafts/why-you-need-to-learn-docker-as-a-data-scientist-a-quick-guide.html" title="">
-                            為何身為資料科學家的你需要學習 Docker：一個快速指南
+                        <a href="https://leemengtaiwan.github.io/drafts/4-ways-you-can-leverge-the-power-of-docker-in-data-science-area.html" title="">
+                            4 種你能在數據科學中活用 Docker 的方式
                         </a>
                     </h1>
                     <ul class="page-header__meta">
-                        <li class="date">2018-09-03 (Mon)</li>
+                        <li class="date">2018-09-04 (Tue)</li>
                         <li class="page-view">
                             1 views
                         </li>
@@ -187,6 +187,152 @@
 </div>
             <div class="col-full blog-content__main">
                 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>今天我們來聊聊如何將 <a href="https://zh.wikipedia.org/wiki/Docker_(%E8%BB%9F%E9%AB%94">Docker</a> 應用在資料科學領域裡頭吧！</p>
+<p>在這篇文章裡頭，我們會用一些簡單的比喻來說明何謂 Docker，以及身為資料科學家的我常使用 Docker 的 4 種方式。我們不會深入探討 Docker 本身的實作技術，但會讓你對如何在資料科學領域使用 Docker 有個高層次的理解。</p>
+<p>這篇適合 2 種讀者：</p>
+<ul>
+<li>對 Docker 有基本知識，想讓自己的 Workflow 更有效率的資料科學家</li>
+<li>熟悉 Docker，但想了解如何將其應用到資料科學領域的工程師</li>
+</ul>
+<p>讓我們開始吧！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="什麼是-Docker：一隻大鯨魚">什麼是 Docker：一隻大鯨魚<a class="anchor-link" href="#什麼是-Docker：一隻大鯨魚">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在解釋何謂 Docker 之前，讓我把你可能已經非常熟悉的雲端運算（Cloud Computing）老朋友叫出來。</p>
+<p><a href="https://aws.amazon.com/tw/">Amazon Web Service（AWS）</a>、<a href="https://cloud.google.com/">Google 雲端平台（GCP）</a> 以及 <a href="https://azure.microsoft.com/zh-tw/">Microsoft Azure</a> 大概是大家最耳熟能詳的幾家雲端計算 / 服務平台了。隨著時代的演進，這些平台提供越來越多樣的機器學習 API，讓使用者不需做複雜的開發，透過一個 HTTP 要求就能直接使用各種酷炫的服務，比方說：</p>
+<ul>
+<li><a href="https://aws.amazon.com/tw/lex/">Amazon Lex</a> 讓你使用 Amazon Alexa 的深度學習技術建立聊天機器人</li>
+<li><a href="https://cloud.google.com/vision/">Google Cloud Vision API</a> 讓你快速建立一個圖像辨識服務</li>
+<li><a href="https://azure.microsoft.com/zh-tw/services/cognitive-services/content-moderator/">Azure Content Moderate API</a> 讓你自動審核網路上的圖片以及文字</li>
+</ul>
+<p>儘管如此，很多時候只使用這些現成的 API 並不能滿足我們這些資料科學家（<strong>D</strong>ata <strong>S</strong>cientist）的野心。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemengtaiwan.github.io/images/docker/network-2402637_1280.jpg" style="width:90%"/>
+</center>
+<center>
+    如何運用雲端運算來 scale 各種數據處理工作是一個 DS / DE 常問的問題
+    <br/>
+<br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>除了各家雲端平台提供的 API 以外，事實上很多時候一個 DS 會利用雲端運算來完成一些日常工作：</p>
+<ul>
+<li>開發並訓練自己的機器學習模型</li>
+<li>部署（上線）機器學習服務 &amp; Data Product</li>
+<li>對大量數據做批次處理，將結果儲存後顯示在儀表板上</li>
+<li>部署一些新的分析工具來提升工作效率</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>對，我知道你在想什麼，以上工作並不只包含「資料科學」啊！</p>
+<p>除了統計分析以及演算法，你可能還需要了解軟體工程、資料工程以及 <a href="https://zh.wikipedia.org/wiki/DevOps">DevOps</a> ...</p>
+<p>你可能覺得一個 DS 要在各種 deadlines 內完成以上所有事情是不可能的。不過後面我們會發現，活用 Docker 的超能力能讓你事半功倍：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>Docker - Build, Ship, and Run Any App, Anywhere</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>想像時間。</p>
+<p>如果你把雲端運算的平台想像成一個充滿運算能力的大海的話，Docker 就是一隻可愛的大鯨魚，將上述所有我們想要做的數據處理工作，一個個封裝成獨立的貨櫃，載著它們在這大海上漫遊。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemengtaiwan.github.io/images/docker/1_JAJ910fg52ODIRZjHXASBQ.png" style="width:90%"/>
+</center>
+<center>
+<a href="https://towardsdatascience.com/how-docker-can-help-you-become-a-more-effective-data-scientist-7fc048ef91d5" target="_blank">Docker</a> 提供的抽象化讓我們能輕鬆地運行任何想使用的資料科學工具、軟體而不需糾結於建置底層的環境
+    <br/>
+<br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你稍微暸解 Docker 術語的話，就會明白這一個個貨櫃實際上就代表著 Docker 裡頭一個個所謂的容器（Container）。</p>
+<p>每個容器（貨櫃）裡頭，理想上都是一個完整的 App。且最重要的是，包含了能讓這個 App 完整執行的所有必要的環境。這邊說的環境可以是</p>
+<ul>
+<li>App 需要的各種 Python 函式庫，如特定版本的 TensorFlow、Pandas 及 Scikit-learn</li>
+<li>MySQL、MongoDB 等 App 會用到的資料庫</li>
+<li>App 會用到的資料集（如果資料量不大的話）</li>
+<li>特定的作業系統如 Linux</li>
+</ul>
+<p>也就是你平常在本地端（local）開發一個專案時會需要的所有東西。</p>
+<p>實際上每個容器的執行都是自給自足的（self-contained），跟啟動該容器的大環境沒有關係。以我們前面的比喻來說的話，每個貨櫃（容器）就是我們想要 Docker 幫我們運送（執行）的東西，而不管 Docker 這隻鯨魚現在在哪個海洋（大環境），它都能幫我們完成工作。</p>
+<p>這邊所謂的「海洋」則只是一個擁有計算資源的地方，可以是任何一家雲端服務平台如 AWS、GCP、Azure，甚至是你現在在用的那台筆電（只是以運算資源來看，可能只能稱得上是小湖泊）。</p>
+<p>這些說明很抽象，讓我們實際操作 Docker 來體會一下這些概念。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">把</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="實戰演練：貓咪辨識-App">實戰演練：貓咪辨識 App<a class="anchor-link" href="#實戰演練：貓咪辨識-App">&para;</a></h2><p>scale, 開一百個貨櫃</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4-種活用-Docker-的方式">4 種活用 Docker 的方式<a class="anchor-link" href="#4-種活用-Docker-的方式">&para;</a></h2>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -279,6 +425,16 @@ Status: Downloaded newer image for leemeng/cat:latest
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Docker-Cheat-Sheet">Docker Cheat Sheet<a class="anchor-link" href="#Docker-Cheat-Sheet">&para;</a></h2><p>我會新增，你可能提供我沒講到的。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">抽象化</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -414,7 +570,7 @@ Status: Downloaded newer image for leemeng/cat:latest
 
 <script type="text/javascript">
 var disqus_shortname = 'leemengtaiwan';
-var disqus_title = '為何身為資料科學家的你需要學習 Docker：一個快速指南';
+var disqus_title = '4 種你能在數據科學中活用 Docker 的方式';
 
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
