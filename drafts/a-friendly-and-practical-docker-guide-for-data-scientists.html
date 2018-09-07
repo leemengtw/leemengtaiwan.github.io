@@ -11,7 +11,7 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>LeeMeng - 3 種你能在數據科學中活用 Docker 的方式：新手指南</title>
+<title>LeeMeng - 一個給資料科學家看的 Docker 簡易指南</title>
     <!--- article-specific meta data
     ================================================== -->
         <meta name="description" content="TEST" />
@@ -24,8 +24,8 @@
     ================================================== -->
         <meta property="og:image" content="https://leemengtaiwan.github.io/theme/images/background/docker-cover.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://leemengtaiwan.github.io/drafts/3-ways-you-can-leverge-the-power-of-docker-in-data-science-area.html" />
-        <meta property="og:title" content="3 種你能在數據科學中活用 Docker 的方式：新手指南" />
+        <meta property="og:url" content="https://leemengtaiwan.github.io/drafts/a-friendly-and-practical-docker-guide-for-data-scientists.html" />
+        <meta property="og:title" content="一個給資料科學家看的 Docker 簡易指南" />
         <meta property="og:description" content="TEST" />
 
     <!-- mobile specific metas
@@ -124,7 +124,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="3 種你能在數據科學中活用 Docker 的方式：新手指南">3 種你能在數據科學中活用 Docker 的方式：新手指南</a><ul><li><a class="toc-href" href="#雲端運算-&amp;-Docker" title="雲端運算 &amp; Docker">雲端運算 &amp; Docker</a></li><li><a class="toc-href" href="#Docker：可愛的大鯨魚" title="Docker：可愛的大鯨魚">Docker：可愛的大鯨魚</a></li><li><a class="toc-href" href="#鯨魚背上的貨櫃-=-Docker-容器" title="鯨魚背上的貨櫃 = Docker 容器">鯨魚背上的貨櫃 = Docker 容器</a></li><li><a class="toc-href" href="#貨櫃（Docker-容器）從哪來" title="貨櫃（Docker 容器）從哪來">貨櫃（Docker 容器）從哪來</a></li><li><a class="toc-href" href="#千層派登場：Docker-映像檔" title="千層派登場：Docker 映像檔">千層派登場：Docker 映像檔</a></li><li><a class="toc-href" href="#實際動手做" title="實際動手做">實際動手做</a></li><li><a class="toc-href" href="#Docker-實戰演練：貓咪辨識-App" title="Docker 實戰演練：貓咪辨識 App">Docker 實戰演練：貓咪辨識 App</a></li><li><a class="toc-href" href="#開發、訓練並部署自己的機器學習模型" title="開發、訓練並部署自己的機器學習模型">開發、訓練並部署自己的機器學習模型</a></li><li><a class="toc-href" href="#對大量數據做批次處理，將結果儲存後顯示在儀表板上" title="對大量數據做批次處理，將結果儲存後顯示在儀表板上">對大量數據做批次處理，將結果儲存後顯示在儀表板上</a></li><li><a class="toc-href" href="#部署一些新的分析工具來提升工作效率" title="部署一些新的分析工具來提升工作效率">部署一些新的分析工具來提升工作效率</a></li><li><a class="toc-href" href="#Docker-Cheat-Sheet" title="Docker Cheat Sheet">Docker Cheat Sheet</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="一個給資料科學家看的 Docker 簡易指南">一個給資料科學家看的 Docker 簡易指南</a><ul><li><a class="toc-href" href="#雲端運算-&amp;-Docker" title="雲端運算 &amp; Docker">雲端運算 &amp; Docker</a></li><li><a class="toc-href" href="#Docker：可愛的大鯨魚" title="Docker：可愛的大鯨魚">Docker：可愛的大鯨魚</a></li><li><a class="toc-href" href="#鯨魚背上的貨櫃：Docker-容器" title="鯨魚背上的貨櫃：Docker 容器">鯨魚背上的貨櫃：Docker 容器</a></li><li><a class="toc-href" href="#貨櫃（Docker-容器）從哪來" title="貨櫃（Docker 容器）從哪來">貨櫃（Docker 容器）從哪來</a></li><li><a class="toc-href" href="#追求規模性：Docker-映像檔的誕生" title="追求規模性：Docker 映像檔的誕生">追求規模性：Docker 映像檔的誕生</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -144,8 +144,8 @@
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="https://leemengtaiwan.github.io/drafts/3-ways-you-can-leverge-the-power-of-docker-in-data-science-area.html" title="">
-                            3 種你能在數據科學中活用 Docker 的方式：新手指南
+                        <a href="https://leemengtaiwan.github.io/drafts/a-friendly-and-practical-docker-guide-for-data-scientists.html" title="">
+                            一個給資料科學家看的 Docker 簡易指南
                         </a>
                     </h1>
                     <ul class="page-header__meta">
@@ -271,7 +271,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>你可能覺得一個 DS 要在各種 deadlines 內完成以上所有事情是不可能的。不過後面我們會發現，活用 Docker 能讓這些工作變得簡單許多。</p>
+<p>你可能覺得一個 DS 要在各種 deadlines 內完成以上所有的事情是不可能的。不過後面我們會發現，活用 Docker 能讓這些工作變得簡單許多。</p>
 <p>如果你已經很熟悉 Docker，可以點擊<a href="#three-tasks">上面 3 個工作的任一連結</a>，直接開始了解如何應用 Docker 在這些案例裡頭。</p>
 <p>對那些不太熟悉 Docker 的你，也別擔心，讓我們花點篇幅以 DS 的角度了解 Docker 到底是什麼技術。我保證學會使用 Docker 以後，能讓你的開發效率至少增加 2 倍。</p>
 </div>
@@ -298,8 +298,6 @@
 <img src="https://leemengtaiwan.github.io/images/docker/1_JAJ910fg52ODIRZjHXASBQ.png" style="width:90%"/>
 </center>
 <center>
-<a href="https://towardsdatascience.com/how-docker-can-help-you-become-a-more-effective-data-scientist-7fc048ef91d5" target="_blank">Docker</a> 提供的抽象化讓我們能輕鬆地運行任何想使用的資料科學工具、軟體而不需花費過多時間在建置底層的環境
-    <br/>
 <br/>
 <br/>
 </center>
@@ -316,14 +314,15 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>如果你把雲端運算的平台想像成一個充滿水（運算資源）的大海的話，Docker 就是一隻可愛的大鯨魚。這隻鯨魚將上述所有 DS 想要做的數據處理工作、執行的 App，一個個封裝成彼此獨立的貨櫃，並載著它們在這大海上自由漫遊。</p>
+<p>如果你把雲端運算的平台想像成一個充滿運算資源的大海的話，Docker 就是一隻在裡頭悠遊的大鯨魚。這隻鯨魚將上述所有 DS 想要做的數據處理工作、執行的 App，一個個封裝成彼此獨立的貨櫃，並載著它們在這大海上自由漫遊。</p>
+<p><a href="https://towardsdatascience.com/how-docker-can-help-you-become-a-more-effective-data-scientist-7fc048ef91d5" target="_blank">Docker</a> 提供的抽象化讓我們能輕鬆地運行任何想使用的資料科學工具、軟體而不需花費過多時間在理解底層環境。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="鯨魚背上的貨櫃-=-Docker-容器">鯨魚背上的貨櫃 = Docker 容器<a class="anchor-link" href="#鯨魚背上的貨櫃-=-Docker-容器">&para;</a></h2><p>如果你稍微暸解 Docker 的話，就會明白這一個個假想的貨櫃實際上就代表著 Docker 術語裡頭一個個的容器（Container）。</p>
+<h2 id="鯨魚背上的貨櫃：Docker-容器">鯨魚背上的貨櫃：Docker 容器<a class="anchor-link" href="#鯨魚背上的貨櫃：Docker-容器">&para;</a></h2><p>實際上這一個個假想的貨櫃就代表著 Docker 術語裡頭的容器（Container）。</p>
 <p>每個容器一般來說，都是一個「完整」的 App。DS 常用的 App 可以是：</p>
 <ul>
 <li>一個包含 <a href="https://www.tensorflow.org/">TensorFlow</a> 函式庫的 <a href="http://jupyter.org/">Jupyter Notebook</a></li>
@@ -381,8 +380,9 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>實際上每個容器（container）的執行環境都是自給自足的（self-contained），你可以把它想像成非常輕量的<a href="https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8">虛擬機器</a>，其執行結果不會因為啟動該容器的計算環境不同而受到影響，在任何地方（Anywhere）都能執行，且執行的結果都是一樣的。</p>
-<p>以我們前面的比喻來說的話，每個貨櫃（容器 / App）都是我們想要 Docker 幫我們運送（執行）的東西，而不管 Docker 這隻鯨魚現在在哪個海洋（計算環境）裡頭，它都能使命必達。</p>
+<p>因為連 OS 都被包起來了，實際上每個容器（container）的執行環境都是自給自足的（self-contained）。</p>
+<p>你可以把它想像成非常輕量的<a href="https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8">虛擬機器</a>，其執行結果不會因為啟動該容器的計算環境不同而受到影響，在任何地方（Anywhere）都能執行，且執行的結果都是一樣的。</p>
+<p>以我們前面的比喻來說的話，每個貨櫃（容器 / App）都是我們想要 Docker 幫我們運送（執行）的東西，而不管 Docker 這隻鯨魚（或大船）現在在哪個海洋（計算環境）裡頭，它都能使命必達。</p>
 </div>
 </div>
 </div>
@@ -404,7 +404,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這邊所謂的「計算環境」指的是一個擁有計算資源，且我們實際運行 Docker 的地方。這計算環境可以是任何一家雲端服務平台，如 AWS 的某台 <a href="https://aws.amazon.com/tw/ec2/">EC2 機器</a>之上、一個包含數千台機器的群集（Cluster），或是你現在用來看本文的筆電。只要 Docker 能在該計算環境下運行，它就能幫我們在該環境「之上」運送任何貨櫃（執行任何容器 / App）。</p>
+<p>這邊所謂的「計算環境」指的是一個擁有計算資源，且我們實際運行 Docker 的地方。這計算環境可以是任何一家雲端服務平台，如 AWS 的某台 <a href="https://aws.amazon.com/tw/ec2/">EC2 機器</a>之上、<a href="https://cloud.google.com/kubernetes-engine/">GCP</a> 上一個包含數千台機器的群集（Cluster），或是你現在用來看本文的筆電。只要 Docker 能在該計算環境下運行，它就能幫我們在該環境「之上」運送任何貨櫃（執行任何容器 / App）。</p>
 <p>簡單來說：</p>
 </div>
 </div>
@@ -413,7 +413,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>Docker 幫我們抽象化在任何 OS 上建置資料科學環境的工作。只要給 Docker 一個我們想使用的 App 的容器，它就能幫你在任何地方執行它。</p></blockquote></div>
+<div class=" highlight hl-ipython3"><blockquote><p>Docker 幫我們抽象化在任何 OS 上建置資料科學環境的工作。只要給 Docker 一個我們想使用的 App 的容器，它就能幫你在任何地方執行它並供我們使用。</p></blockquote></div>
 </div>
 </div>
 </div>
@@ -464,10 +464,33 @@
 
 <span class="k">CMD</span><span class="s"> ["/run_jupyter.sh", "--allow-root"]</span>
 </pre></div>
-<p>除了 <code>RUN</code>、<code>CMD</code> 等 Docker 專屬的關鍵字以後，你會發現這份 Dockfile 其實就只是記錄了你平常可能在本地開發時也會使用的 <code>pip install</code> 指令來安裝 Python 函式庫。差別在於利用第一行的 <code>FROM ubuntu:16.04</code> 的指令，我們要求 Docker 在這個容器裡頭建置一個 Ubuntu OS ，並在裡頭安裝這些函式庫。</p>
-<h2 id="千層派登場：Docker-映像檔">千層派登場：Docker 映像檔<a class="anchor-link" href="#千層派登場：Docker-映像檔">&para;</a></h2><p>聽完以上的解釋，你可能會覺得在我們要啟動一個新容器的時候，Docker 就是看著 Dockerfile 裡頭的步驟，一步一步地建置環境後交給我們使用。</p>
-<p>這樣的理解基本沒有大問題，但想一想，</p>
-<p>但 Docker 這隻大鯨魚聰明的地方在於它知道，有時候你會想要利用同一份 Dockerfile 產生好幾個一模一樣的容器(s)；有時候不同容器所使用的環境有重複部分（比方說容器 A 跟容器 B 都需要用 Ubuntu OS），這時候與其在你每次要啟動一個容器的時候拿出 Dockerfile 建置環境，不如事先偷跑，在你還沒有啟動一個容器的時候，它就先跑一次該 Dockerfile 把建置的環境存下來，等你之後要真的開啟一個容器的時候，它就能馬上把那個已經建置好的環境打開給你用。</p>
+<p>除了 <code>RUN</code>、<code>CMD</code> 等 Docker 專屬的關鍵字以後，你會發現這份 Dockfile 其實就只是記錄了你平常可能在本地開發時也會使用的 <code>pip install</code> 指令來安裝 Python 函式庫。差別在於利用第一行的 <code>FROM ubuntu:16.04</code> 的指令，我們要求 Docker 在這個容器裡頭建置一個 Ubuntu OS 後，在其之上安裝這些函式庫。</p>
+<h2 id="追求規模性：Docker-映像檔的誕生">追求規模性：Docker 映像檔的誕生<a class="anchor-link" href="#追求規模性：Docker-映像檔的誕生">&para;</a></h2><p>聽完以上的解釋，你可能會覺得在我們每次要啟動一個新的容器的時候，Docker 就得拿出 Dockerfile，一步步建置該容器的環境以後，再交給我們使用。</p>
+<p>這樣的實作也不是不行，但很沒有效率。為什麼？</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemengtaiwan.github.io/images/airflow/thought-2123970_1280.jpg" style="width:90%"/>
+<br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因為有時為了規模性（Scalability）的考量，你會想要用同一份 Dockerfile 在短時間內迅速地產生好幾個一模一樣的容器(s)：</p>
+<ul>
+<li>用多個相同的機器學習模型對大量的新數據做預測</li>
+<li>使用多個相同 Python Script 來處理大量數據</li>
+</ul>
+<p>這時候與其在每次要啟動新的容器時就拿出 Dockerfile 從頭建置環境，我們可以先用這個 Dockerfile 把所有建置環境所需的步驟先做好一遍，然後存成一個 Docker 映像檔（image）。</p>
+<p>等你之後真的要開始使用容器的時候， Docker 就能馬上利用該映像檔，啟動 1 個（或 100 個）相同的容器給你。</p>
 </div>
 </div>
 </div>
@@ -503,6 +526,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span>docker pull tensorflow/tensorflow
 </pre></div>
+<p>千層派登場：</p>
 <div class="highlight"><pre><span></span>$ docker pull tensorflow/tensorflow
 Using default tag: latest
 latest: Pulling from tensorflow/tensorflow
@@ -530,158 +554,6 @@ Status: Downloaded newer image <span class="k">for</span> tensorflow/tensorflow:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這些說明對第一次接觸 Docker 的你可能還是顯得很抽象，接下來讓我們實際操作 Docker 來體會一下這些概念。</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="實際動手做">實際動手做<a class="anchor-link" href="#實際動手做">&para;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Docker-實戰演練：貓咪辨識-App">Docker 實戰演練：貓咪辨識 App<a class="anchor-link" href="#Docker-實戰演練：貓咪辨識-App">&para;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">最好說明</span> <span class="n">Docker</span> <span class="n">的方式就是自己建立一個</span> <span class="n">App</span>
-
-<span class="n">眼尖的你會發現</span><span class="err">，</span><span class="n">我們在</span><span class="p">[</span><span class="n">資料科學文摘</span> <span class="n">Vol</span><span class="o">.</span><span class="mi">3</span> <span class="n">的</span> <span class="n">Docker</span> <span class="k">for</span> <span class="n">Data</span> <span class="n">Scientists</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leemeng</span><span class="o">.</span><span class="n">tw</span><span class="o">/</span><span class="n">data</span><span class="o">-</span><span class="n">science</span><span class="o">-</span><span class="n">digest</span><span class="o">-</span><span class="n">volume</span><span class="o">-</span><span class="mf">3.</span><span class="n">html</span><span class="c1">#Docker-for-Data-Scientists) 裡頭的 [Try it Yourself](https://leemeng.tw/data-science-digest-volume-3.html#Try-It-Yourself) 有稍微提到</span>
-
-
-
-<span class="n">scale</span><span class="p">,</span> <span class="n">開一百個貨櫃</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="開發、訓練並部署自己的機器學習模型">開發、訓練並部署自己的機器學習模型<a class="anchor-link" href="#開發、訓練並部署自己的機器學習模型">&para;</a></h2><h2 id="對大量數據做批次處理，將結果儲存後顯示在儀表板上">對大量數據做批次處理，將結果儲存後顯示在儀表板上<a class="anchor-link" href="#對大量數據做批次處理，將結果儲存後顯示在儀表板上">&para;</a></h2><h2 id="部署一些新的分析工具來提升工作效率">部署一些新的分析工具來提升工作效率<a class="anchor-link" href="#部署一些新的分析工具來提升工作效率">&para;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>身為一個 DS ，你會想說沒時間學這些，但你只要學 Docker 就夠了，leverage the power of devops。</p>
-<blockquote><p>the antacode to complexity is abstraction</p>
-</blockquote>
-<p>章節</p>
-<ul>
-<li>Big pictures - why docker?</li>
-<li>範例</li>
-<li>Hands on </li>
-</ul>
-<p>如何快速建立環境，效率化</p>
-<p>嘗試各種新 tools 而不需要建環境</p>
-<ul>
-<li>Superset</li>
-<li>JupyterHub</li>
-<li>Machine learning / data product<ul>
-<li>以貓咪 app 為例</li>
-<li>最近幾篇用 Keras + flask 的文章看有沒有 docker</li>
-</ul>
-</li>
-<li>快速進入 production<ul>
-<li>AWS ECR</li>
-<li>sagemaker</li>
-</ul>
-</li>
-</ul>
-<p>別人寫好的分析</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span>docker pull leemeng/cat
-docker run -p <span class="m">1234</span>:5000 leemeng/cat
-</pre></div>
-<div class="highlight"><pre><span></span>Using default tag: latest
-latest: Pulling from leemeng/cat
-85b1f47fba49: Pull complete
-ba6bd283713a: Pull complete
-817c8cd48a09: Pull complete
-47cc0ed96dc3: Pull complete
-4a36819a59dc: Pull complete
-db9a0221399f: Pull complete
-7a511a7689b6: Pull complete
-1223757f6914: Pull complete
-1402462a2f89: Pull complete
-99f801751722: Pull complete
-da1f8a029642: Pull complete
-Digest: sha256:7a65f2a9d60b73320733541d4a3263de7b512b0963ff2ab12139f763af67aa47
-Status: Downloaded newer image for leemeng/cat:latest
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>
-<img src="https://leemengtaiwan.github.io/images/docker/cat-demo.jpg" style="width:90%"/>
-</center>
-<center>
-    貓咪測試員一號
-    <br/>
-<br/>
-<br/>
-</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="err">```</span>
-<span class="n">sudo</span>  <span class="n">docker</span> <span class="n">ps</span> <span class="o">--</span><span class="nb">format</span> <span class="s2">"table {{.ID}}</span><span class="se">\t</span><span class="s2">{{.Image}}</span><span class="se">\t</span><span class="s2">{{.Names}}"</span>
-<span class="n">CONTAINER</span> <span class="n">ID</span>        <span class="n">IMAGE</span>               <span class="n">NAMES</span>
-<span class="mi">6</span><span class="n">c358757fcca</span>        <span class="n">jupyterhub</span><span class="o">-</span><span class="n">user</span>     <span class="n">jupyter</span><span class="o">-</span><span class="n">leemengtaiwan</span>
-<span class="mi">83</span><span class="n">d70c2584ac</span>        <span class="n">jupyterhub</span>          <span class="n">jupyterhub</span>
-<span class="mi">5</span><span class="n">da5308aab6f</span>        <span class="n">postgres</span><span class="p">:</span><span class="mf">9.5</span>        <span class="n">jupyterhub</span><span class="o">-</span><span class="n">db</span>
-<span class="err">```</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Docker-Cheat-Sheet">Docker Cheat Sheet<a class="anchor-link" href="#Docker-Cheat-Sheet">&para;</a></h2><p>我會新增，你可能提供我沒講到的。</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">抽象化</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">下次問問別人</span><span class="err">：</span><span class="n">你的</span> <span class="n">Docker</span> <span class="n">Image</span> <span class="n">呢</span><span class="err">？</span>
-</pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -807,7 +679,7 @@ Status: Downloaded newer image for leemeng/cat:latest
 
 <script type="text/javascript">
 var disqus_shortname = 'leemengtaiwan';
-var disqus_title = '3 種你能在數據科學中活用 Docker 的方式：新手指南';
+var disqus_title = '一個給資料科學家看的 Docker 簡易指南';
 
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
