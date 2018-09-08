@@ -1,5 +1,634 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-08-29T00:30:00+09:00</updated><entry><title>資料科學文摘 Vol.4 數據科學 MMORPG 上線！你，選好自己的角色了嗎？</title><link href="https://leemengtaiwan.github.io/data-science-digest-volume-4-choose-your-own-character-in-data-science-role-play-game.html" rel="alternate"></link><published>2018-08-29T00:30:00+09:00</published><updated>2018-08-29T00:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-08-29:/data-science-digest-volume-4-choose-your-own-character-in-data-science-role-play-game.html</id><summary type="html">&lt;p&gt;這篇文摘透過多篇跟資料科學家相關的文章，闡述資料科學家這個職業近年可能產生，或者是已經正在發生的一些職涯趨勢。透過掌握大局觀，讓對資料科學領域感興趣的讀者能夠理性地思考自己未來如何進入這塊領域，並在符合自己興趣以及能力的情況下，發揮自己最大的價值。我們將探討在這個什麼職業都跟數據扯上關係的年代，你要如何在「全球數據科學 MMORPG」裡頭，找出自己的定位以及角色。&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="https://leemengtaiwan.github.io/" rel="alternate"></link><link href="https://leemengtaiwan.github.io/feeds/all.atom.xml" rel="self"></link><id>https://leemengtaiwan.github.io/</id><updated>2018-09-08T19:00:00+09:00</updated><entry><title>給資料科學家的 Docker 指南：3 種活用 Docker 的方式（上）</title><link href="https://leemengtaiwan.github.io/3-ways-you-can-leverage-the-power-of-docker-in-data-science-part-1-learn-the-basic.html" rel="alternate"></link><published>2018-09-08T19:00:00+09:00</published><updated>2018-09-08T19:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-09-08:/3-ways-you-can-leverage-the-power-of-docker-in-data-science-part-1-learn-the-basic.html</id><summary type="html">&lt;p&gt;本系列文章將分上下篇，本篇將直觀解釋 Docker 概念，並說明資料科學家能如何利用 Docker 來改善自己的開發效率；下篇則將分享作者在實際從事資料科學家時，為了解決一些數據問題而時常碰到的 3 種 Docker 使用方式。在本篇中，我們首先將透過一些簡單的比喻來直觀地理解 Docker，並讓讀者在閱讀本文後能馬上開始利用 Docker 來加速自己的開發效率，並為下篇的進階內容打好基礎。&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;今天我們來聊聊如何將 &lt;a href="https://zh.wikipedia.org/wiki/Docker_(%E8%BB%9F%E9%AB%94)" target="_blank"&gt;Docker&lt;/a&gt; 應用在資料科學領域裡頭吧！&lt;/p&gt;
+&lt;p&gt;全文共分上下 2 篇。在這篇裡頭，我們將透過一些簡單的比喻來直觀地理解何謂 Docker，並讓你能在閱讀本文後馬上利用 Docker 來加速你的開發效率；在下篇的內容當中，我則會分享一個資料科學家（&lt;strong&gt;D&lt;/strong&gt;ata &lt;strong&gt;S&lt;/strong&gt;cientist：DS）為了解決一些數據問題而時常碰到的 3 種 Docker 使用方式。&lt;/p&gt;
+&lt;p&gt;不管是哪一篇，我們都不會深入探討 Docker 本身是以什麼技術被實現的。反之，我們將會以 DS 的角度，專注在「應用」層面：如何把 Docker 實際應用在資料科學以及資料工程領域裡頭。&lt;/p&gt;
+&lt;p&gt;這系列文章適合 2 種讀者：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;對 Docker 完全沒有概念，但想讓自己的 Workflow 更有效率的資料科學家&lt;/li&gt;
+&lt;li&gt;熟悉 Docker，但好奇其在資料科學領域如何被應用的工程師&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;讓我們開始吧！&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="雲端運算-&amp;amp;-Docker"&gt;雲端運算 &amp;amp; Docker&lt;a class="anchor-link" href="#雲端運算-&amp;amp;-Docker"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;在解釋何謂 Docker 之前，讓我把你已經非常熟悉的雲端運算（Cloud Computing）老朋友叫出來。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://aws.amazon.com/tw/"&gt;Amazon Web Service（AWS）&lt;/a&gt;、&lt;a href="https://cloud.google.com/"&gt;Google 雲端平台（GCP）&lt;/a&gt; 以及 &lt;a href="https://azure.microsoft.com/zh-tw/"&gt;Microsoft Azure&lt;/a&gt; 大概是大家最耳熟能詳的幾家雲端計算 / 服務平台了。隨著時代的演進，這些平台提供越來越多樣的機器學習 API，讓開發人員不需做複雜的開發，透過一個 HTTP 要求就能直接使用各種酷炫的服務，比方說：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://aws.amazon.com/tw/lex/"&gt;Amazon Lex&lt;/a&gt; 讓你使用 Amazon Alexa 的深度學習技術建立聊天機器人&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/vision/"&gt;Google Cloud Vision API&lt;/a&gt; 讓你快速建立一個圖像辨識服務&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://azure.microsoft.com/zh-tw/services/cognitive-services/content-moderator/"&gt;Azure Content Moderate API&lt;/a&gt; 讓你自動審核網路上的圖片以及文字&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;儘管如此，很多時候只使用這些現成的 API 並不能滿足我們這些 DS 以及企業的野心。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemengtaiwan.github.io/images/docker/network-2402637_1280.jpg" style="width:90%"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    比起使用現成 API，如何運用雲端運算來 scale 各種數據處理工作是一個 DS / DE 更常問的問題
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;a name="three-tasks"&gt;&lt;/a&gt;除了直接用各家雲端平台提供的 API 以外，一個 DS 可能更常需要利用雲端上的計算資源來完成以下的工作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;部署一些新的分析工具來嘗試提升自己及分析團隊的效率&lt;/li&gt;
+&lt;li&gt;開發、訓練、部署並規模化（scale）自己的機器學習模型&lt;/li&gt;
+&lt;li&gt;對大量數據做批次處理，將結果儲存後顯示在儀表板上&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;事實上，這就是本系列文章最想要跟你分享的 3 件 DS 可以活用 Docker 來最大化產出的案例。&lt;/p&gt;
+&lt;p&gt;當我們透過這篇文章（上篇）熟悉了 Docker 的基本概念以及操作以後，就能在下篇裡頭深入地探討它們。因此在這篇先讓我們專注在學習 Docker 的基礎知識吧！&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;雖然我們現在不會細談，但如果你再看一次上面的 3 個工作的話，會發現裡頭可不只包含資料科學（Data Science）。除了建置儀表板以及設計 ML 演算法以外，這裡頭還包含了不少軟體工程、資料工程甚至 &lt;a href="https://zh.wikipedia.org/wiki/DevOps"&gt;DevOps&lt;/a&gt; 成分。當然資料工程師（&lt;strong&gt;D&lt;/strong&gt;ata &lt;strong&gt;E&lt;/strong&gt;ngineer）很樂意幫助你，但如果你想要快速地自己兜出一些方法呢？你該用什麼工具？&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemengtaiwan.github.io/images/docker/work-2005640_1280.jpg" style="width:90%"/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;你可能覺得一個 DS 要在各種 deadlines 內完成以上所有的事情是不可能的。不過後面我們會慢慢發現，活用 Docker 能讓這些工作變得簡單許多。&lt;/p&gt;
+&lt;p&gt;接著就讓我們以 DS 的角度了解 Docker 到底是什麼技術。我相信閱讀接下來的文章，對你之後開發效率的提升是一個非常好的投資。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Docker：可愛的大鯨魚"&gt;Docker：可愛的大鯨魚&lt;a class="anchor-link" href="#Docker：可愛的大鯨魚"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;首先看看以下這張 Docker 示意圖：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemengtaiwan.github.io/images/docker/1_JAJ910fg52ODIRZjHXASBQ.png" style="width:90%"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;有什麼感覺嗎？注意到上圖包含了 3 個要素：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;海洋&lt;/li&gt;
+&lt;li&gt;鯨魚&lt;/li&gt;
+&lt;li&gt;貨櫃&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;現在讓我們發揮點想像力。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;如果你把雲端運算的平台想像成一個充滿運算資源的&lt;strong&gt;大海&lt;/strong&gt;的話，Docker 就是如圖中在裡頭悠遊的大&lt;strong&gt;鯨魚&lt;/strong&gt;。這隻&lt;strong&gt;鯨魚&lt;/strong&gt;將上述所有 DS 想要做的數據處理工作、執行的 App，一個個封裝成彼此獨立的&lt;strong&gt;貨櫃&lt;/strong&gt;，並載著它們在這大海上運行。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://towardsdatascience.com/how-docker-can-help-you-become-a-more-effective-data-scientist-7fc048ef91d5" target="_blank"&gt;Docker&lt;/a&gt; 提供的抽象化讓我們能輕鬆地運行任何想使用的資料科學工具、軟體而不需花費過多時間在建置底層環境。&lt;/p&gt;
+&lt;p&gt;我知道你可能還是沒什麼感覺，讓我們看下去。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="鯨魚背上的貨櫃：Docker-容器"&gt;鯨魚背上的貨櫃：Docker 容器&lt;a class="anchor-link" href="#鯨魚背上的貨櫃：Docker-容器"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;實際上這一個個假想的貨櫃就代表著 Docker 術語裡頭的容器（Container）。&lt;/p&gt;
+&lt;p&gt;「容器」顧名思義，是一個「容納」了某些東西的「器具」。&lt;/p&gt;
+&lt;p&gt;一般而言，一個容器裡通常會包含了一個完整的 App。這邊的 App 不是手機上的 App，而是指廣義的應用程式（&lt;strong&gt;App&lt;/strong&gt;lication）。&lt;/p&gt;
+&lt;p&gt;DS 常用的 App 可以是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一個包含 &lt;a href="https://www.tensorflow.org/"&gt;TensorFlow&lt;/a&gt; 函式庫的 &lt;a href="http://jupyter.org/"&gt;Jupyter Notebook 伺服器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;一個 ML 產品，如透過已訓練的模型來判斷圖片裡頭有沒有貓咪的 &lt;a href="https://github.com/leemengtaiwan/cat-recognition-app"&gt;Flask App&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;一個 SQL 查詢以及資料視覺化的工具，如 &lt;a href="https://github.com/apache/incubator-superset"&gt;Superset&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;一個簡單的 Python Script，針對輸入的大量數據做處理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要從頭建構這些 App 的環境不是不可能，但除了基本的 &lt;code&gt;pip install&lt;/code&gt; 以外你還需要花不少工夫；更令人困擾的是，很多時候你在 Mac、Windows 上安裝環境的步驟，到了雲端上的 Linux 機器上就完全行不通了。&lt;/p&gt;
+&lt;p&gt;如果這時候有人先幫我們把一個在哪邊都能跑的 App 環境建好，我們不是就能馬上開始使用各種分析工具，進行各種有趣的分析，而不用煩惱底層如不同 OS 的差異了嗎？&lt;/p&gt;
+&lt;p&gt;Docker 的容器就是這樣的一個概念，幫你事先將一個 App 所需要的所有環境，包含作業系統都「容納」在一起。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemengtaiwan.github.io/images/docker/docker-inside-container.png" style="width:90%"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://stackoverflow.com/a/50489813/2447655" target="_blank"&gt;Docker&lt;/a&gt; 將一個 App 會使用到的程式語言函式庫（JAVA、Python、R）、資料庫、甚至作業系統（OS）都包在一個自給自足的容器（CONTAINER）裡頭。想使用某個 App 的 DS 不用從頭建置環境，只需利用 Docker 啟動該容器即可開始工作
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;容器裡頭不只包含 App 自己本身的程式碼，也涵蓋了所有能讓這個 App 順利執行的必要環境：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;App 需要的各種 Python 函式庫，如特定版本的 TensorFlow、Pandas 及 Jupyter Notebook&lt;/li&gt;
+&lt;li&gt;MySQL、MongoDB 等 App 會用到的資料庫&lt;/li&gt;
+&lt;li&gt;App 會用到的各種 metadata、資料集&lt;/li&gt;
+&lt;li&gt;各種 OS 限定的驅動程式（drivers）、依賴函式庫&lt;/li&gt;
+&lt;li&gt;（把所有你想得到的東西填進來）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;包羅萬象。&lt;/p&gt;
+&lt;p&gt;因此只要我們能利用 Docker 把一個 App 需要執行的環境全部包在一個容器裡頭，我們就能在任何有 Docker 的地方啟動並運行該容器。不再需要每次重新建置環境，也不用考慮不同機器上的安裝問題。&lt;/p&gt;
+&lt;p&gt;而這正是 Docker 最強大的地方：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;blockquote&gt;&lt;p&gt;Docker - Build, Ship, and Run Any App, Anywhere&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;因為連 OS 都被包起來了，實際上每個容器（container）的執行環境都是自給自足的（self-contained）。&lt;/p&gt;
+&lt;p&gt;你可以把它想像成非常輕量的&lt;a href="https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8"&gt;虛擬機器&lt;/a&gt;，其執行結果不會因為啟動該容器的「計算環境」不同而受到影響，在任何地方（Anywhere）都能順利被執行，且執行的結果都是一樣的。&lt;/p&gt;
+&lt;p&gt;以我們前面的比喻來說的話，每個貨櫃（容器 / App）都是我們想要 Docker 幫我們運送（執行）的東西，而不管 Docker 這隻鯨魚（或大船）現在在哪個海洋（計算環境）裡頭，它都能使命必達。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemengtaiwan.github.io/images/docker/container-on-the-sea.jpg" style="width:90%"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://flipboard.com/topic/container" target="_blank"&gt;Docker&lt;/a&gt; 就像艘大船，幫我們在任何海洋（計算環境）上運送我們的貨櫃（容器）
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;有一點值得澄清的是，就算 Docker 幫我們抽象化建置一個 App 環境的工作，在執行一個容器的時候，我們還是需要實際的計算資源來跑這些容器。&lt;/p&gt;
+&lt;p&gt;因此前面所謂的「計算環境」指的是一個擁有計算資源（CPU、GPU、記憶體 etc）且我們實際運行 Docker 的地方。這計算環境可以是任何一家雲端服務平台上的機器，如 AWS 的某台 &lt;a href="https://aws.amazon.com/tw/ec2/"&gt;EC2 機器&lt;/a&gt;、&lt;a href="https://cloud.google.com/kubernetes-engine/"&gt;GCP&lt;/a&gt; 上一個包含數千台機器的群集（Cluster），或是你現在用來看本文的筆電。只要 Docker 能在該計算環境下運行，它就能幫我們在該環境「之上」執行任何容器。&lt;/p&gt;
+&lt;p&gt;簡單來說：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;blockquote&gt;&lt;p&gt;Docker 幫我們抽象化在任何 OS 上建置環境的工作。只要給 Docker 一個容器，它就能在任何地方啟動該容器以供你使用。&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;現在你對 Docker 以及容器概念有個高層次的理解了，讓我們來看看這些 Docker 容器實際上是怎麼來的吧！&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="貨櫃（Docker-容器）從哪來"&gt;貨櫃（Docker 容器）從哪來&lt;a class="anchor-link" href="#貨櫃（Docker-容器）從哪來"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;在了解 Docker 這隻大鯨魚能幫我們運行任意的容器 / App 以後，你腦中浮現的第一個問題應該是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;這些容器（貨櫃）最初是怎麼被產生的？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;非常好的一個問題。&lt;/p&gt;
+&lt;p&gt;事實上，要產生一個新的 Docker 容器，Docker 需要一份「環境安裝步驟書」來讓它幫我們自動地建置容器內的環境，比方說使用什麼 OS，用什麼版本的 TensorFlow 等等。這份步驟書在 Docker 的世界裡被稱作 &lt;a href="https://docs.docker.com/engine/reference/builder/"&gt;Dockerfile&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;舉個例子，以下是 Tensorflow 官方釋出的一個 &lt;a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/docker/Dockerfile"&gt;Dockerfile&lt;/a&gt;（截錄重要部分）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="s"&gt; ubuntu:16.04&lt;/span&gt;
+
+...
+
+&lt;span class="k"&gt;RUN&lt;/span&gt; pip --no-cache-dir install &lt;span class="se"&gt;\&lt;/span&gt;
+        ipykernel &lt;span class="se"&gt;\&lt;/span&gt;
+        jupyter &lt;span class="se"&gt;\&lt;/span&gt;
+        numpy &lt;span class="se"&gt;\&lt;/span&gt;
+        pandas &lt;span class="se"&gt;\&lt;/span&gt;
+        sklearn &lt;span class="se"&gt;\&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+    python -m ipykernel.kernelspec
+
+...
+
+&lt;span class="c"&gt;# Install TensorFlow CPU version from central repo&lt;/span&gt;
+&lt;span class="k"&gt;RUN&lt;/span&gt; pip --no-cache-dir install &lt;span class="se"&gt;\&lt;/span&gt;
+    http://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.0.0-cp27-none-linux_x86_64.whl
+
+...
+
+&lt;span class="k"&gt;CMD&lt;/span&gt;&lt;span class="s"&gt; ["/run_jupyter.sh", "--allow-root"]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;除了 &lt;code&gt;RUN&lt;/code&gt;、&lt;code&gt;CMD&lt;/code&gt; 等 Docker 專屬的關鍵字以後，你會發現這份 Dockfile 裡頭的指令其實跟你平常在本地開發時也會使用的指令如 &lt;code&gt;pip install&lt;/code&gt; 沒有相差太多。差別在於透過第一行的 &lt;code&gt;FROM ubuntu:16.04&lt;/code&gt; 指令，我們要求 Docker 在這個容器裡頭建置一個 Ubuntu OS 後，在其之上安裝這些函式庫。&lt;/p&gt;
+&lt;h2 id="追求規模性：Docker-映像檔的誕生"&gt;追求規模性：Docker 映像檔的誕生&lt;a class="anchor-link" href="#追求規模性：Docker-映像檔的誕生"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;聽完以上的解釋，你可能會覺得在我們每次要啟動一個新的容器的時候，Docker 就得拿出 Dockerfile，一步步建置該容器的環境。&lt;/p&gt;
+&lt;p&gt;這樣的實作也不是不行，但很沒有效率。為什麼？&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemengtaiwan.github.io/images/airflow/thought-2123970_1280.jpg" style="width:90%"/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;其中一個考量是可擴展性（Scalability）。&lt;/p&gt;
+&lt;p&gt;有時你會想要用同一份 Dockerfile 在短時間內迅速地產生好幾個一模一樣的容器(s)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用多個相同的機器學習模型，同時對大量的新數據做批次預測&lt;/li&gt;
+&lt;li&gt;使用多個相同的 Python Script 來處理大量數據&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這時候與其在每次要啟動新的容器時才拿出 Dockerfile 建置環境，Docker 可以事先用這個 Dockerfile 把建置環境所需的步驟先做好一遍，然後把該環境「拍張照」，存成一個 Docker 映像檔（image）後等待之後的使用。&lt;/p&gt;
+&lt;p&gt;等你決定要開始使用容器的時候，因為我們已經有一個環境的快照（Snapshot），Docker 就能利用該映像檔，快速地啟動 1 個（或 100 個）相同的容器給你。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemengtaiwan.github.io/images/docker/docker-three-basic-elements.png" style="width:90%"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;a href="https://medium.com/platformer-blog/practical-guide-on-writing-a-dockerfile-for-your-application-89376f88b3b5" target="_blank"&gt;Docker 三元素&lt;/a&gt;： Dockerfile、Docker 映像檔以及 Docker 容器
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;到了這邊，我們已經了解 Docker 最基本也是最重要的概念：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;blockquote&gt;&lt;p&gt;Docker 利用 Dockerfile 預先建置好一個 Docker 映像檔。在使用者想要使用容器的時候，以該映像檔為基礎，運行一個對應的 Docker 容器&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;坐而言不如起而行。&lt;/p&gt;
+&lt;p&gt;在掌握了這些概念以後，我相信你也迫不及待地想要開始使用 Docker 了，接下來就讓我們實際操作 Docker 來體會一下它的威力。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Docker-映像檔：法式千層酥"&gt;Docker 映像檔：法式千層酥&lt;a class="anchor-link" href="#Docker-映像檔：法式千層酥"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;不管是 Windows 或是 Mac 用戶，你都可以很輕鬆地在&lt;a href="https://www.docker.com/get-started"&gt;官方網站&lt;/a&gt;下載 Docker 並安裝。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;a href="https://www.docker.com/get-started" target="_blank"&gt;
+&lt;img src="https://leemengtaiwan.github.io/images/docker/website.png" style="width:90%"/&gt;
+&lt;/a&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;下載完以後啟動 Docker，大鯨魚就會在你的筆電上開始閒晃，等待你的指示。一般而言，我們會在 terminal 使用各種 &lt;code&gt;docker&lt;/code&gt; 指令來跟大鯨魚溝通。&lt;/p&gt;
+&lt;p&gt;當 Docker 就緒以後，依照我們前面的所學，你會需要一個 Dockerfile 或是 Docker 映像檔來產生一個 Docker 容器。就像 &lt;a href="https://github.com/"&gt;Github&lt;/a&gt; 是一個被大家拿來分享程式碼的地方，&lt;a href="https://hub.docker.com/"&gt;Dockerhub&lt;/a&gt; 則被用來分享 Dockerfile 以及 Docker 映像檔。&lt;/p&gt;
+&lt;p&gt;假設我們現在要開始一個新的 TensorFlow 專案，並且想透過 Jupyter Notebook 進行開發，最省力的方式就是從 Dockerhub 下載一個 &lt;a href="https://hub.docker.com/r/tensorflow/tensorflow/"&gt;TensorFlow 官方&lt;/a&gt;幫我們弄好的 Docker 映像檔。&lt;/p&gt;
+&lt;p&gt;讓我們打開一個 terminal 並輸入 &lt;code&gt;docker pull&lt;/code&gt; 指令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker pull tensorflow/tensorflow
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;第 1 個 &lt;code&gt;tensorflow&lt;/code&gt; 代表 Tensorflow 的官方 Dockerhub repository，就跟 Github repository 的概念相同；第 2 個則是容器名稱。&lt;/p&gt;
+&lt;p&gt;你會看到當 Docker 在下載映像檔的時候，同時也在建置環境，而其環境會分成一層一層（Layer）的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker pull tensorflow/tensorflow
+Using default tag: latest
+latest: Pulling from tensorflow/tensorflow
+3b37166ec614: Already exists
+ba077e1ddb3a: Already exists
+34c83d2bc656: Already exists
+84b69b6e4743: Already exists
+0f72e97e1f61: Already exists
+6086c6484ab2: Pull &lt;span class="nb"&gt;complete&lt;/span&gt;
+25817b9e5842: Pull &lt;span class="nb"&gt;complete&lt;/span&gt;
+5252e5633f1c: Pull &lt;span class="nb"&gt;complete&lt;/span&gt;
+8de57ae4ad7d: Pull &lt;span class="nb"&gt;complete&lt;/span&gt;
+4b7717108c3b: Pull &lt;span class="nb"&gt;complete&lt;/span&gt;
+b65e9e47e80a: Pull &lt;span class="nb"&gt;complete&lt;/span&gt;
+006d31e013ea: Pull &lt;span class="nb"&gt;complete&lt;/span&gt;
+700521cc53f3: Pull &lt;span class="nb"&gt;complete&lt;/span&gt;
+Digest: sha256:f45d87bd473bf999241afe444748a2d3a9be24f8d736a808277b4f3e32159566
+Status: Downloaded newer image &lt;span class="k"&gt;for&lt;/span&gt; tensorflow/tensorflow:latest
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;我們不會細談 Docker 實作細節，但你可以想像 Docker 映像檔是一個法式千層酥（Mille Feuille）。&lt;/p&gt;
+&lt;p&gt;這時候的 Docker 是一名蛋糕師傅，利用 Dockerfile 作為食譜，逐行執行裡頭的指令以建立一層層的環境。每做出一層新的環境，就把它加在目前所有環境的上面，最後成為一個 Docker 映像檔。&lt;/p&gt;
+&lt;p&gt;這樣做有 2 個好處：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;當你對 Dockerfile 做變動的時候，Docker 可以只針對被改變的那一層環境做修改，而不用重建每一層，減少建置環境所需要的時間&lt;/li&gt;
+&lt;li&gt;有利用到一樣環境的不同映像檔可以分享部分結果（如上面的 &lt;code&gt;Already exists&lt;/code&gt;）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemengtaiwan.github.io/images/docker/mille_feuille.jpg" style="width:90%"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    一個 Docker 映像檔就像是蛋糕師傅利用 Dockerfile 食譜做出來的法式千層酥
+    &lt;br/&gt;
+    （誠摯地希望你不是晚上看本文，餓了）
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;依照你的網路速度，下載映像檔所需的時間可能有所不同。&lt;/p&gt;
+&lt;p&gt;在下載完成以後，輸入 &lt;code&gt;docker images&lt;/code&gt; 指令可以顯示所有目前本地端擁有的 Docker 映像檔：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker images tensorflow/tensorflow
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+tensorflow/tensorflow   latest              76fb62c3cb89        &lt;span class="m"&gt;2&lt;/span&gt; weeks ago         &lt;span class="m"&gt;1&lt;/span&gt;.23GB
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;這邊因為我的環境裡已經有一大堆的映像檔，我在 &lt;code&gt;docker images&lt;/code&gt; 後面加入額外的篩選器來告訴 Docker 只顯示 &lt;code&gt;tensorflow&lt;/code&gt; repository 裡頭的 &lt;code&gt;tensorflow&lt;/code&gt; 容器。&lt;/p&gt;
+&lt;p&gt;有了映像檔以後，最令人期待的時刻終於來臨了！&lt;/p&gt;
+&lt;p&gt;我們現在要呼叫 Docker 幫我們從這個映像檔產生並執行（run）一個新的 Docker 容器：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run -it -p &lt;span class="m"&gt;1234&lt;/span&gt;:8888 tensorflow/tensorflow
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;短短一行指令，包含了 3 個你不可不知的重要概念：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;利用 &lt;code&gt;docker run&lt;/code&gt; 來告訴 Docker 我們要利用 &lt;code&gt;tensorflow/tensorflow&lt;/code&gt; 映像檔來運行一個容器。實際上 Docker 容器就是在 Docker 映像檔的環境之上再加 1 層可執行的環境供你使用（貫徹千層酥的理念） &lt;/li&gt;
+&lt;li&gt;利用 &lt;code&gt;-it&lt;/code&gt; 參數來告訴 Docker 我們同時要建立一個互動式的 TTY 連線，讓容器內的結果直接顯示在我們的 terminal 裡頭，彷彿我們在本地環境下執行該 App 一樣。我們之後還可以直接在 terminal 使用 Ctrl + C 或 Command + C 來終止容器&lt;/li&gt;
+&lt;li&gt;利用 &lt;code&gt;-p 1234:8888&lt;/code&gt; 告訴 Docker 我們將會透過本地端的 &lt;code&gt;1234&lt;/code&gt; port 來連到容器裡頭的 &lt;code&gt;8888&lt;/code&gt; port&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;你可以透過&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run --help
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;來查看所有 &lt;code&gt;docker run&lt;/code&gt; 可以使用的參數。&lt;/p&gt;
+&lt;p&gt;另外，一個 DS 應該都知道，&lt;code&gt;8888&lt;/code&gt; 是 Jupyter Notebook 預設的 port。因此我們的企圖就跟司馬昭之心一樣，打算透過本地端的 &lt;code&gt;1234&lt;/code&gt; port 連到在容器裡頭跑的 Jupyter Notebook。&lt;/p&gt;
+&lt;p&gt;現在打開你的瀏覽器並輸入 &lt;code&gt;localhost:1234&lt;/code&gt;，應該就能連到容器內部的 Jupyter Notebook 伺服器：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemengtaiwan.github.io/images/docker/tensorflow-notebook.png" style="width:90%"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    容器內的 Juypter Notebook 畫面，所有環境包含 TensorFlow 都已經幫你設置好
+    &lt;br/&gt;
+    （輸入你在啟動容器的 terminal 裡看到的 token 就能通過認證）
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;對你沒看錯，你已經用 Docker 建置了一個完整的資料科學環境，裡頭有 TensorFlow 以及 Jupyter Notebook。&lt;/p&gt;
+&lt;p&gt;而你只需要 2 個指令：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker pull tensorflow/tensorflow&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run -it -p 1234:8888 tensorflow/tensorflow&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;建置環境什麼的交給 Docker 吧，你已經能馬上開始實作機器學習模型了。&lt;/p&gt;
+&lt;p&gt;有些 DS 可能會覺得他的 &lt;a href="https://anaconda.org/"&gt;Anaconda&lt;/a&gt; 或者是 pip 功能爐火純青，不需要用到 Docker 也能自己在本地建出這樣的環境。其實沒錯，如果你只是開發個人專案，說真的不學 Docker 也沒關係（喂！）&lt;/p&gt;
+&lt;p&gt;但就如我們在下篇會看到的，當你在開發企業等級的數據處理工作、機器學習模型的時候，你可不能永遠躲在你的本地環境裡頭。當你習慣於在不透過 Docker 的情況下在本機建置環境，等到要在各種雲端平台上的機器重現你的結果的時候，你就會發現不妙了。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="利用-Docker-分享你的成果"&gt;利用 Docker 分享你的成果&lt;a class="anchor-link" href="#利用-Docker-分享你的成果"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;為了加強你使用 Docker 的動機，讓我再給個例子。&lt;/p&gt;
+&lt;p&gt;有持續關注我文章的讀者會發現，我在&lt;a href="https://leemengtaiwan.github.io/data-science-digest-volume-3.html"&gt;資料科學文摘 Vol.3 Pandas、Docker 以及數據時代的反思&lt;/a&gt;裡頭有提到，Docker 除了讓我們免除建置環境的痛苦以外，也能讓我們與他人簡單地分享開發結果。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/leemengtaiwan/cat-recognition-app"&gt;Cat Recognizer&lt;/a&gt; 是我用 TensorFlow 以及 &lt;a href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt; 實作的一個非常 naive 的貓咪辨識 App。&lt;/p&gt;
+&lt;p&gt;如同我們前面所說的，我事先將所有此 App 需要的環境用一個 &lt;a href="https://github.com/leemengtaiwan/cat-recognition-app/blob/master/Dockerfile"&gt;Dockerfile&lt;/a&gt; 定義、全部包在一個 Docker 映像檔後分享在 &lt;a href="https://hub.docker.com/r/leemeng/"&gt;Docker Hub&lt;/a&gt; 上面。&lt;/p&gt;
+&lt;p&gt;任何想要使用此 App 的人，只需要利用 Docker 輸入兩行指令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker pull leemeng/cat
+docker run -it -p &lt;span class="m"&gt;2468&lt;/span&gt;:5000 leemeng/cat
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;接著他們就能在瀏覽器輸入 &lt;code&gt;localhost:2468&lt;/code&gt; 來看到我的 App：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemengtaiwan.github.io/images/docker/cat-demo.jpg" style="width:90%"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    Docker 讓你與其他人分享成果，不須額外做一大堆環境設定
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;當然這個 ML App 在預測能力以及 UI 上都不完美，但這邊重點是你能利用 Docker 與他人快速地分享成果。如果你有想到其他利用 Docker 封裝好的 ML App 例子（或者是你接下來打算做一個自己的），非常歡迎留言讓我知道它們的存在：）&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="總結"&gt;總結&lt;a class="anchor-link" href="#總結"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;呼！看完本文以後，相信你現在應該對 Docker 有個非常清楚的認識了：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker 是一個能幫我們在各種不同 OS 上建置開發環境的工具&lt;/li&gt;
+&lt;li&gt;Docker 三元素包含 Dockerfile、Docker 映像檔（Image）以及 Docker 容器（Container）&lt;/li&gt;
+&lt;li&gt;Docker 利用 Dockerfile 預先建置好一個 Docker 映像檔。在使用者想要使用容器的時候，以該映像檔為基礎，運行一個對應的 Docker 容器&lt;/li&gt;
+&lt;li&gt;Docker Hub 上有各式各樣可以直接供使用的映像檔&lt;/li&gt;
+&lt;li&gt;你只需要 &lt;code&gt;docker pull&lt;/code&gt; 及 &lt;code&gt;docker run&lt;/code&gt; 就能開始一個分析專案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;給自己鼓鼓掌！&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemengtaiwan.github.io/images/docker/1_JAJ910fg52ODIRZjHXASBQ.png" style="width:90%"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    現在這張 Docker 的示意圖在你眼裡應該變得平易近人許多
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;正因為我們是資料科學家，利用 Docker能幫我們抽象化很多不必要的環境建置工作，加速我們的開發效率。&lt;/p&gt;
+&lt;p&gt;在本系列文章的下篇出爐之前，我鼓勵你先&lt;a href="https://www.docker.com/get-started"&gt;下載 Docker&lt;/a&gt;，並開始在 &lt;a href="https://hub.docker.com/"&gt;Docker Hub&lt;/a&gt; 或者 Google 搜尋一些你感興趣的映像檔，甚至自己寫一個 Dockerfile 將你目前的專案打包起來跟別人分享。&lt;/p&gt;
+&lt;p&gt;雖然我們這篇因為篇幅關係沒有細講，但只要有一個 Dockerfile，你就能使用 &lt;code&gt;docker build&lt;/code&gt; 來輕鬆建立一個自給自足的 Docker 映像檔。一個 Dockerfile 也不難寫，像是上面貓咪的 App 的 Dockerfile 也不過就如此幾行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="s"&gt; python:3.6.3&lt;/span&gt;
+&lt;span class="k"&gt;MAINTAINER&lt;/span&gt;&lt;span class="s"&gt; Meng Lee "b98705001@gmail.com"&lt;/span&gt;
+COPY ./requirements.txt /app/requirements.txt
+&lt;span class="k"&gt;WORKDIR&lt;/span&gt;&lt;span class="s"&gt; /app&lt;/span&gt;
+&lt;span class="k"&gt;RUN&lt;/span&gt; pip install -r requirements.txt
+COPY . /app
+&lt;span class="k"&gt;ENTRYPOINT&lt;/span&gt;&lt;span class="s"&gt; [ "python3" ]&lt;/span&gt;
+&lt;span class="k"&gt;CMD&lt;/span&gt;&lt;span class="s"&gt; ["app.py"]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在本篇裡頭我們都是在自己的機器上使用 Docker。在下篇，我們將利用本篇學到的 Docker 知識，將其運用在浩瀚無垠的雲端平台之上，去最大化我們的影響力。&lt;/p&gt;
+&lt;p&gt;在那之前你可以先熟悉熟悉 Docker，下次遇到你的 DS 同事時，可以問問他/她：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;blockquote&gt;&lt;p&gt;嘿！你的 Docker Image 呢？&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="資料科學"></category><category term="Docker"></category></entry><entry><title>資料科學文摘 Vol.4 數據科學 MMORPG 上線！你，選好自己的角色了嗎？</title><link href="https://leemengtaiwan.github.io/data-science-digest-volume-4-choose-your-own-character-in-data-science-role-play-game.html" rel="alternate"></link><published>2018-08-29T00:30:00+09:00</published><updated>2018-08-29T00:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemengtaiwan.github.io,2018-08-29:/data-science-digest-volume-4-choose-your-own-character-in-data-science-role-play-game.html</id><summary type="html">&lt;p&gt;這篇文摘透過多篇跟資料科學家相關的文章，闡述資料科學家這個職業近年可能產生，或者是已經正在發生的一些職涯趨勢。透過掌握大局觀，讓對資料科學領域感興趣的讀者能夠理性地思考自己未來如何進入這塊領域，並在符合自己興趣以及能力的情況下，發揮自己最大的價值。我們將探討在這個什麼職業都跟數據扯上關係的年代，你要如何在「全球數據科學 MMORPG」裡頭，找出自己的定位以及角色。&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -2152,9 +2781,9 @@ Namespaces are one honking great idea -- let's do more of those!
 &lt;br/&gt;
 &lt;/center&gt;&lt;p&gt;雖然 &lt;a href="https://github.com/leemengtaiwan/cat-recognition-app"&gt;Github repo&lt;/a&gt; 上也有教學指南，想要最快速地在你的電腦上使用這個 App 的話，下載 &lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt; 並開啟 Daemon 後，使用命令列輸入以下指令：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker pull leemeng/cat
-docker run -dp &lt;span class="m"&gt;1234&lt;/span&gt;:5000 leemeng/cat
+docker run -it -p &lt;span class="m"&gt;2468&lt;/span&gt;:5000 leemeng/cat
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;接著在瀏覽器輸入 &lt;code&gt;localhost:1234&lt;/code&gt; 應該就能開始使用了。如果你有興趣了解如何一步步打造這樣的 ML 應用，可以留言跟我說。&lt;/p&gt;
+&lt;p&gt;接著在瀏覽器輸入 &lt;code&gt;localhost:2468&lt;/code&gt; 應該就能開始使用了。如果你想多了解點 Docker，可以參考我寫的&lt;a href="https://leemengtaiwan.github.io/3-ways-you-can-leverage-the-power-of-docker-in-data-science-part-1-learn-the-basic.html"&gt;給資料科學家的 Docker 指南：3 種活用 Docker 的方式（上）&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;不過現在讓我們繼續看剩下的 2 篇好文章：）&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -10547,10 +11176,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="82130f5c-72a8-47ef-a9ea-bfb945601343"&gt;&lt;/div&gt;
+&lt;div id="7726d206-764d-42fd-987d-0e54315e2a34"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#82130f5c-72a8-47ef-a9ea-bfb945601343');
+var element = $('#7726d206-764d-42fd-987d-0e54315e2a34');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -13827,10 +14456,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="48460e59-08ea-4d2d-831b-e9fc80f72fca"&gt;&lt;/div&gt;
+&lt;div id="23e76715-5ec4-458d-a062-b8102ce27b62"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#48460e59-08ea-4d2d-831b-e9fc80f72fca');
+var element = $('#23e76715-5ec4-458d-a062-b8102ce27b62');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14594,10 +15223,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="cc867cdc-f69c-47b7-af0c-60ce338582eb"&gt;&lt;/div&gt;
+&lt;div id="a7fe98f8-beca-4ece-8624-cf4c9053ff17"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#cc867cdc-f69c-47b7-af0c-60ce338582eb');
+var element = $('#a7fe98f8-beca-4ece-8624-cf4c9053ff17');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -14787,10 +15416,10 @@ Test accuracy: 89.4%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="ae335463-40df-4209-9c41-e8c11b9bc88d"&gt;&lt;/div&gt;
+&lt;div id="2ef4eb2d-7f70-45aa-a196-a407be43162c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#ae335463-40df-4209-9c41-e8c11b9bc88d');
+var element = $('#2ef4eb2d-7f70-45aa-a196-a407be43162c');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -15554,10 +16183,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="17d9fd8f-91a5-4afb-84bd-b905c4cb7784"&gt;&lt;/div&gt;
+&lt;div id="25a42a50-eea2-435f-bf61-edce8b95bfda"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#17d9fd8f-91a5-4afb-84bd-b905c4cb7784');
+var element = $('#25a42a50-eea2-435f-bf61-edce8b95bfda');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -15758,10 +16387,10 @@ Test accuracy: 90.7%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="d2992ee9-8ee8-4e23-bf27-85e1f415652a"&gt;&lt;/div&gt;
+&lt;div id="e249b95e-7d31-4d9b-b671-418d0f42c66c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#d2992ee9-8ee8-4e23-bf27-85e1f415652a');
+var element = $('#e249b95e-7d31-4d9b-b671-418d0f42c66c');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -16525,10 +17154,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="fa89a03a-85fb-4288-a477-799bf43d74d1"&gt;&lt;/div&gt;
+&lt;div id="9dc6fa69-9dc7-49ea-99a3-d9ca14f3dd19"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#fa89a03a-85fb-4288-a477-799bf43d74d1');
+var element = $('#9dc6fa69-9dc7-49ea-99a3-d9ca14f3dd19');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -16934,10 +17563,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="3dba3a2f-dc11-4fdb-aa22-2c8c97a0f890"&gt;&lt;/div&gt;
+&lt;div id="51db8985-87a9-46f1-ac84-53065e2a9d4c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3dba3a2f-dc11-4fdb-aa22-2c8c97a0f890');
+var element = $('#51db8985-87a9-46f1-ac84-53065e2a9d4c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -16999,10 +17628,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="d4e0b5cf-f532-4713-ada2-2afda3c56ded"&gt;&lt;/div&gt;
+&lt;div id="17356fa1-29a6-4ce2-b9a6-ec3eb3fd38ea"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#d4e0b5cf-f532-4713-ada2-2afda3c56ded');
+var element = $('#17356fa1-29a6-4ce2-b9a6-ec3eb3fd38ea');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -17056,10 +17685,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="311c9a22-50c4-478e-bc44-57a1809f3c31"&gt;&lt;/div&gt;
+&lt;div id="6bf137fc-cda7-4f5f-b431-4eac9982d7b0"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#311c9a22-50c4-478e-bc44-57a1809f3c31');
+var element = $('#6bf137fc-cda7-4f5f-b431-4eac9982d7b0');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -17113,10 +17742,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="055b64a5-6b3f-4eb0-9f90-a4063d68fa9f"&gt;&lt;/div&gt;
+&lt;div id="ea018fee-5d97-4f76-b654-ef4766bc3eb7"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#055b64a5-6b3f-4eb0-9f90-a4063d68fa9f');
+var element = $('#ea018fee-5d97-4f76-b654-ef4766bc3eb7');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -17176,10 +17805,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="300ebf54-0e77-4c24-b61e-664b2d8f4208"&gt;&lt;/div&gt;
+&lt;div id="62d1e945-72fa-4f6b-8777-7e9c4698864a"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#300ebf54-0e77-4c24-b61e-664b2d8f4208');
+var element = $('#62d1e945-72fa-4f6b-8777-7e9c4698864a');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -17549,10 +18178,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="6bfdcdac-4285-4348-aada-77022256a180"&gt;&lt;/div&gt;
+&lt;div id="bf8ab494-ffcb-4922-8ea8-c318084ba21a"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#6bfdcdac-4285-4348-aada-77022256a180');
+var element = $('#bf8ab494-ffcb-4922-8ea8-c318084ba21a');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -17701,10 +18330,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="933c5deb-8d56-4218-93cc-b5273f2400ae"&gt;&lt;/div&gt;
+&lt;div id="415f8e6a-1518-46c2-bae8-93e2d74e08b3"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#933c5deb-8d56-4218-93cc-b5273f2400ae');
+var element = $('#415f8e6a-1518-46c2-bae8-93e2d74e08b3');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -17862,10 +18491,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="7b47f3eb-4024-489b-93e4-ac919228940b"&gt;&lt;/div&gt;
+&lt;div id="e1d69c24-60d2-4cbf-90f9-2f918e7c890c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#7b47f3eb-4024-489b-93e4-ac919228940b');
+var element = $('#e1d69c24-60d2-4cbf-90f9-2f918e7c890c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
