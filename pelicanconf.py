@@ -23,14 +23,14 @@ STATIC_PATHS = [
     'extra/robots.txt',
     'extra/favicon.ico',
     'extra/.htaccess',
-    # 'extra/CNAME'
+    'extra/CNAME'
 ]
 
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
     'extra/favicon.ico': {'path': 'favicon.ico'},
     'extra/.htaccess': {'path': '.htaccess'},
-    # 'extra/CNAME': {'path': 'CNAME'}
+    'extra/CNAME': {'path': 'CNAME'}
 }
 
 # Use draft as default for preventing publish unfinished articles.
