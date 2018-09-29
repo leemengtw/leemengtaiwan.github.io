@@ -1,0 +1,190 @@
+//general styles
+
+.vzb-cl-rainbow-legend {
+  display: none;
+}
+
+[data-dlg="moreoptions"] {
+  .vzb-cl-rainbow-legend {
+    display: block;
+  }
+}
+
+.vzb-cl-outer {
+
+  .vzb-cl-holder {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .vzb-cl-colorlist {
+    overflow: hidden;
+  }
+
+  .vzb-cl-option {
+    @include rtl {
+      padding-left: 0;
+      padding-right: 15px;
+    }
+    padding-bottom: 5px;
+    padding-top: 5px;
+    cursor: pointer;
+    padding-left: 15px;
+
+    .vzb-cl-color-sample {
+      @include rtl {
+        margin-left: 10px;
+        margin-right: 0;
+      }
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .vzb-cl-color-legend {
+      display: inline-block;
+      vertical-align: super;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &.vzb-cl-compact {
+      display: inline-block;
+      float: left;
+      .vzb-cl-color-legend {
+        display: none;
+      }
+    }
+  }
+  .vzb-cl-labelscale {
+    top: 5px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    height: 50px;
+    svg {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 25px;
+      height: 20px;
+      .tick line {
+        stroke: none;
+      }
+    }
+    .vzb-cl-subtitle {
+      top: 30px;
+      position: relative;
+      padding-bottom: 5px;
+    }
+  }
+
+  .vzb-cl-rainbow-legend {
+    top: 0;
+    left: 0;
+    height: 12px;
+    position: absolute;
+    circle {
+      cursor: pointer;
+    }
+  }
+
+  .vzb-cl-rainbow {
+    height: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 6px;
+  }
+  .vzb-cl-minimap {
+    height: 145px;
+    width: 100%;
+    svg {height: 100%;}
+  }
+  .vzb-cl-subtitle-text {
+    display: block;
+    white-space: normal;
+  }
+
+  .vzb-cl-more-hint {
+    position: absolute;
+    bottom: 0;
+    opacity: 0.3;
+    right: 0;
+    font-size: $vzb-font-size-small;
+  }
+
+  .vzb-cl-select-dialog {
+    opacity: 1;
+    position: absolute;
+    display: block;
+    padding: 5px 15px;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 20px;
+    right: 20px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background: $vzb-color-primary-lightest;
+    z-index: 1;
+
+    &-item {
+      @include rtl {
+        float: right;
+      }
+      float: left;
+      margin: 3px auto;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &-moreoptions {
+        display: none;
+      }
+
+      &-disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+
+      &-tooltip {
+        white-space: normal;
+        font-size: $vzb-font-size-small;
+      }
+    }
+
+    &-close {
+      @include rtl {
+        left: 5px;
+        right: auto;
+      }
+      cursor: pointer;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &-title {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  }
+
+}
+
+.vzb-moreoptions {
+  .vzb-cl-select-dialog-item-moreoptions {
+    display: block;
+  }
+}

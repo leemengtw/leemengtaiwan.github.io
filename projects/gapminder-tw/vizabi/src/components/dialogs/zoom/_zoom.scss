@@ -1,0 +1,61 @@
+
+.vzb-tool-dialogs {
+  .vzb-dialogs-dialog {
+    &[data-dlg="zoom"] {
+      @import '../../zoombuttonlist/zoombuttonlist';
+      .vzb-panwitharrow-switch,
+      .vzb-zoomonscrolling-switch,
+      .vzb-adaptminmaxzoom-switch {
+        display: none;
+      }
+      &.vzb-moreoptions {
+        .vzb-dialog-title {
+          margin-bottom: 15px;
+          .vzb-dialog-zoom-buttonlist {
+            padding-top: 10px;
+          }
+        }
+        .vzb-dialog-zoom-buttonlist {
+          @include rtl {
+            padding-right: 15px;
+          }
+          padding-left: 15px;
+        }
+        .vzb-panwitharrow-switch,
+        .vzb-zoomonscrolling-switch,
+        .vzb-adaptminmaxzoom-switch {
+          display: block;
+        }
+      }
+      &.vzb-sidebar {
+        >.vzb-dialog-modal {
+          >.vzb-dialog-title {
+            display: flex;
+            align-items: center;
+            padding-top: 0;
+            .vzb-dialog-zoom-buttonlist {
+              @include rtl {
+                padding-left: 0;
+              }
+              background-color: $vzb-color-primary-lightest;
+              vertical-align: middle;
+            }
+          }
+        }
+  	  }
+    }
+  }
+}
+
+//responsiveness
+&.vzb-large {
+  &.vzb-dialog-expand-true {
+    .vzb-dialogs-dialog {
+      &[data-dlg="zoom"] {
+        &.vzb-sidebar {
+          flex: none;
+        }
+      }
+    }
+  }
+}

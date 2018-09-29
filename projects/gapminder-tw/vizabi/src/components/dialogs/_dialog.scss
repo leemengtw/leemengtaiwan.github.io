@@ -1,0 +1,661 @@
+$vzb-dialog-content-height: 250px;
+.vzb-dialog-shadow {
+  @include box-shadow(0, 8px, 15px, rgba(0, 0, 0, 0.24));
+  transition: 300ms ease-in-out;
+  border-top: 1px solid #f7f7f7;
+}
+.vzb-tool-dialogs {
+  .vzb-dialogs-dialog {
+    width: 280px;
+    margin: 0;
+    //margin-left: -140px;
+    vertical-align: top;
+    background-color: #fff;
+    //text-align: left;
+    display: block;
+    position: absolute;
+    overflow: hidden;
+
+    .vzb-dialog-title {
+      color: $vzb-color-primary;
+      font-size: $vzb-font-size-regular;
+      //font-weight: bold;
+      margin: 48px 20px 15px;
+      display: inline-block;
+      //align-self: flex-start;
+
+      span {
+        vertical-align: middle;
+      }
+
+      .vzb-ip-select {
+        color: $vzb-color-primary-darkest;
+        line-height: 21px;
+      }
+    }
+
+    .vzb-dialog-content {
+      color: $vzb-color-grey-dark;
+      font-family: $vzb-font-family-alt;
+      font-size: $vzb-font-size-small;
+      //max-height: $vzb-dialog-content-height;
+      overflow: hidden;
+      overflow-y: auto;
+      padding: 0 20px 2px;
+
+      &.vzb-dialog-content-fixed {
+        height: $vzb-dialog-content-height;
+      }
+
+      input[type=radio] {
+        cursor: pointer;
+
+        +span {
+          cursor: pointer;
+        }
+
+        &[disabled=true] {
+          cursor: default;
+          opacity: 0.7;
+
+          +span {
+            cursor: default;
+            color: $vzb-color-primary-light;
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+
+    input[type=text],
+    input[type=search] {
+      @include border-radius(4px);
+      @include box-sizing(border-box);
+      font-size: 1em; //inherit from dialog content
+      border: 1px solid rgba($vzb-color-grey, 0.4);
+      padding: 9px;
+      display: block;
+      width: 100%;
+      outline: none;
+      font-family: $vzb-font-family-alt;
+
+      &:focus {
+        border: 1px solid rgba($vzb-color-grey, 0.6);
+      }
+    }
+
+    input[type=search] {
+      @include rtl {
+        padding-left: 14px;
+        padding-right: 9px;
+      }
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      display: inline-block;
+      padding-right: 14px;
+      box-shadow: none;
+
+      &::-webkit-search-cancel-button,
+      &::-webkit-search-decoration {
+        -webkit-appearance: none;
+      }
+      &::-webkit-search-cancel-button {
+        margin: 0;
+      }
+
+      &::-ms-clear {
+        display: none;
+        margin: 0;
+      }
+
+      &:not(:focus) ~ button[type=reset] {
+        visibility: hidden;
+      }
+
+      ~ button[type=reset] {
+        @include rtl {
+          margin-left: 0;
+          margin-right: -18px;
+        }
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 10px;
+        margin-left: -18px;
+        padding: 3px 1px;
+        border: 0;
+        outline: none;
+        color: $vzb-color-primary-dark;
+        background: $vzb-color-white;
+        transition: visibility 0.1s;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 900;
+        opacity: 0.7;
+        &:hover {
+          opacity: 1;
+          visibility: visible;
+        }
+        &::after {
+          content: "✕";
+          position: relative;
+        }
+      }
+
+      &:not(:valid) ~ button[type=reset] {
+        visibility: hidden;
+      }
+    }
+
+    .vzb-dialog-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 7px 20px;
+      .vzb-dialog-control {
+        flex: 100 1 auto;
+        width: auto;
+        min-width: 0;
+        display: block;
+      }
+    }
+
+    .vzb-dialog-control {
+      display: table-cell;
+      width: 100%;
+      vertical-align: middle;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+    .vzb-dialog-button {
+      display: table-cell;
+      width: auto;
+      cursor: pointer;
+      padding: 8px;
+      color: $vzb-color-grey;
+      font-family: $vzb-font-family;
+      text-align: center;
+      text-transform: uppercase;
+
+      &:first-child {
+        @include rtl {
+          padding-left: 8px;
+          padding-right: 0;
+        }
+        padding-left: 0;
+      }
+
+      &:last-child {
+        @include rtl {
+          padding-left: 0;
+          padding-right: 8px;
+        }
+        padding-right: 0;
+      }
+
+      &.vzb-label-primary {
+        color: $vzb-color-primary;
+        font-weight: bold;
+      }
+
+      &:hover {
+        color: $vzb-color-primary-dark;
+      }
+    }
+
+    .vzb-dialog-br {
+      border-top: 1px solid #ededed;
+      width: 100%;
+      height: 28px;
+      margin-top: 28px;
+    }
+
+    .thumb-tack-class {
+      @include rtl {
+        margin-left: 8px;
+        margin-right: 0;
+      }
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      border: 1px solid #cce6ed;
+      display: inline-block;
+      position: relative;
+      float: right;
+      margin-right: 8px;
+      margin-top: 8px;
+
+      path {
+        fill: $vzb-color-primary-strong;
+      }
+    }
+
+    .thumb-tack-class-ico {
+      position: absolute !important;
+      left: 7px !important;
+      top: 4px !important;
+      cursor: pointer;
+    }
+
+    .thumb-tack-class-ico-drag {
+      cursor: move;
+
+      svg {
+        @include translate(4px, 3.5px);
+        cursor: move;
+      }
+    }
+
+    .thumb-tack-class-ico-pin {
+      svg {
+        @include translate(4px, 4px);
+      }
+    }
+
+    .thumb-tack-class-ico::before {
+      color: $vzb-color-primary-strong !important;
+
+    }
+
+    .vzb-dialog-checkbox {
+      display: block;
+      height: 18px;
+      margin: 6px 0;
+      position: relative;
+
+      input[type=checkbox] {
+        @extend .vzb-hidden;
+      }
+
+      label {
+        @include position(absolute, 0 null null null);
+        @include rtl {
+          padding-left: 1px;
+          padding-right: 0;
+        }
+        padding-right: 1px;//IE, Edge workaround for issue with scrollWidth(so:30900154)
+        white-space: nowrap;
+        cursor: pointer;
+        max-width: 100%;
+        text-indent: 27px;
+        line-height: 22px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color 0.3s;
+
+        &.vzb-find-item-brokendata {
+          color: $vzb-color-primary-light;
+          text-decoration: line-through;
+        }
+
+        &::before {
+          @include position(absolute, 0 null null 0);
+          @include border-radius(4px);
+          @include rtl {
+            left: auto;
+            right: 0;
+          }
+          content: '';
+          cursor: pointer;
+          width: 18px;
+          height: 18px;
+          background: $vzb-color-primary-lightest;
+          border: 1px solid rgba($vzb-color-primary, 0.2);
+        }
+
+        &::after {
+          @include position(absolute, 5px null null 5px);
+          @include opacity(0);
+          @include rotate(-45deg);
+          @include rtl {
+            left: auto;
+            right: 5px;
+          }
+          content: '';
+          width: 8px;
+          height: 4px;
+          background: transparent;
+          border: 3px solid $vzb-color-primary;
+          border-top: 0;
+          border-right: 0;
+        }
+      }
+
+      input[type=checkbox]:checked + label::before {
+        border: 1px solid rgba($vzb-color-primary, 0.5);
+      }
+
+      input[type=checkbox]:checked + label::after {
+        @include opacity(1);
+      }
+    }
+
+    &.notransition {
+      transition: max-height;
+    }
+
+    .vzb-dialog-sublabel {
+      color: $vzb-color-primary;
+      font-weight: bold;
+      margin-bottom: 16px;
+      .vzb-ip-select {
+        color: $vzb-color-primary-darkest;
+        font-weight: normal;
+      }
+    }
+
+    .vzb-dialog-paragraph {
+      margin-bottom: 20px;
+    }
+
+    &.pinned {
+      .thumb-tack-class-ico-pin {
+        background-color: $vzb-color-primary-strong;
+        border: 1px solid $vzb-color-primary-strong;
+
+        path {
+          fill: $vzb-color-white;
+        }
+      }
+
+      .thumb-tack-class-ico::before {
+        color: #fff !important;
+
+      }
+    }
+  }
+
+  &:not(.vzb-no-hover) {
+    .vzb-dialog-checkbox {
+      label:hover::after {
+        @include opacity(0.3);
+      }
+    }
+  }
+
+  .vzb-top-dialog {
+    visibility: hidden;
+    &.vzb-popup {
+      z-index: -2;
+      &.vzb-active {
+        z-index: 20;
+        visibility: visible;
+      }
+      >.vzb-dialog-modal {
+        display: flex;
+        flex-direction: column;
+        >.thumb-tack-class {
+          @include rtl {
+            left: 0;
+            right: auto;
+          }
+          position: absolute;
+          right: 0;
+          &.thumb-tack-class-ico-drag {
+            @include rtl {
+              left: 34px;
+              right: auto;
+            }
+            right: 34px;
+          }
+        }
+        >.vzb-dialog-title {
+          flex: none;
+        }
+        >.vzb-dialog-buttons {
+          flex: none;
+          .vzb-dialog-button {
+            flex: 1 1 auto;
+            display: block;
+          }    
+        }
+        >.vzb-dialog-content {
+          flex: 1 1 auto;
+        }
+      }
+    }
+  }
+
+  .vzb-moreoptions {
+    position: static;
+    box-shadow: none;
+    .vzb-dialog-modal {
+      >.thumb-tack-class {
+        &.thumb-tack-class-ico-pin,
+        &.thumb-tack-class-ico-drag {
+          display: none;
+        }
+      }
+      >.vzb-dialog-title {
+        display: block;
+        position: relative;
+        margin: 0 0 20px;
+        padding: 0;
+        .vzb-ip-holder {
+          @include rtl {
+            margin-left: 10px;
+            margin-right: 15px;
+          }
+          margin-top: 25px;
+          margin-left: 15px;
+          margin-right: 10px;
+        }
+      }
+      >.vzb-dialog-content {
+        font-size: $vzb-font-size-regular;
+        padding-bottom: 10px;
+      }
+      >.vzb-dialog-buttons {
+        padding-top: 0;
+        padding-bottom: 0;
+        [data-click=closeDialog] {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @import '../brushslider/brushslider';
+  @import '../brushslider/bubblesize/bubblesize';
+  @import '../brushslider/sizeslider/sizeslider';
+  @import '../brushslider/singlehandleslider/singlehandleslider';
+  @import '../indicatorpicker/indicatorpicker';
+  @import '../minmaxinputs/minmaxinputs';
+  @import '../colorlegend/colorlegend';
+  @import '../simplecheckbox/simplecheckbox';
+  @import '../draggablelist/draggablelist';
+}
+
+//responsiveness
+&.vzb-large,
+&.vzb-medium {
+  .vzb-tool-dialogs {
+    .vzb-dialogs-dialog {
+      &.vzb-top-dialog {
+        top: 20px;
+        bottom: auto;
+      }
+      &.vzb-popup {
+        @include rtl {
+          right: calc(100% - 330px);
+          margin-left: $size-button-list;
+          margin-right: 0;
+        }
+        @include position(absolute, 20px -10px auto auto);
+        margin-right: $size-button-list;
+        &.vzb-active {
+          @include rtl {
+            right: calc(100% - 330px);
+          }
+          @include position(absolute, 20px -10px auto auto);
+        }
+      }
+    }
+  }
+}
+
+&.vzb-small {
+
+  // issues: 369 & 442
+  .vzb-tool-dialogs {
+    .vzb-dialogs-dialog {
+
+      &.vzb-popup {
+        >.vzb-dialog-modal {
+          >.vzb-dialog-title {
+            padding: 0;
+            margin: 20px 20px 10px;
+          }
+
+          >.vzb-dialog-buttons {
+            padding: 0 20px 5px;
+          }
+        }
+      }
+
+      &.vzb-popup.vzb-active {
+        top: auto;
+      }
+    }
+  }
+
+  .vzb-presentationmode-switch {
+    pointer-events: none;
+
+    .vzb-dialog-checkbox {
+      input[type=checkbox] + label {
+        background-color: $vzb-color-grey;
+        border: 1px solid rgba($vzb-color-grey-dark, 0.5);
+      }
+
+      input[type=checkbox] + label::after {
+        @include opacity(0);
+      }
+    }
+  }
+
+  &.vzb-portrait {
+    .vzb-tool-dialogs {
+      .vzb-dialogs-dialog {
+        &.vzb-popup {
+          @include position(absolute, null 0 -450px 0);
+          margin: auto;
+          &.vzb-active {
+            @include position(absolute, null 0 45px 0);
+          }
+        }
+      }
+    }
+  }
+  &.vzb-landscape {
+    .vzb-dialogs-dialog {
+      &.vzb-popup {
+        @include rtl {
+          left: -10px;
+          right: auto;
+          margin-left: $size-button-list;
+          margin-right: 0;
+        }
+        @include position(absolute, -1000px -10px auto auto);
+        margin-right: $size-button-list;
+        &.vzb-active {
+          @include rtl {
+            left: -10px;
+            right: auto;
+          }
+          @include position(absolute, 5px -10px auto auto);
+        }
+      }
+    }
+  }
+}
+
+&.vzb-large {
+  &.vzb-dialog-expand-true {
+    .vzb-tool-dialogs {
+      >.vzb-dialogs-dialog {
+        &.vzb-top-dialog {
+          margin-right: 30px;
+          top: auto;
+          bottom: 70px;
+          left: 110%;
+        }
+        &.vzb-popup {
+          @include rtl {
+            margin-left: 30px;
+            margin-right: 0;
+            right: calc(100% - 300px);
+          }
+          @include position(absolute, auto -10px 70px auto);
+          &.vzb-active {
+            @include rtl {
+              right: calc(100% - 300px);
+            }
+            @include position(absolute, auto -10px 70px auto);
+          }
+        }
+        &.vzb-sidebar {
+          visibility: visible;
+          display: block;
+          margin: 5px 5px 2px;
+          position: static;
+          box-shadow: none;
+          background-color: $vzb-color-primary-lightest;
+          border-bottom: 1px solid rgba(200, 200, 200, 0.4);
+          z-index: initial;
+
+          .vzb-dialog-buttons {
+            display: none;
+            padding: 5px 25px;
+          }
+
+          .vzb-dialog-modal {
+            flex: auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            .thumb-tack-class {
+              &.thumb-tack-class-ico-pin,
+              &.thumb-tack-class-ico-drag {
+                display: none;
+              }
+            }
+          }
+
+          .vzb-dialog-title {
+            @include rtl {
+              margin-left: 0;
+              margin-right: 20px;
+            }
+            margin: 5px 0 5px 20px;
+            flex: none;
+          }
+
+          .vzb-dialog-button {
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+}
+
+@import 'about/about';
+@import 'colors/colors';
+@import 'axes/axes';
+@import 'find/find';
+@import 'side/side';
+@import 'size/size';
+@import 'label/label';
+@import 'zoom/zoom';
+@import 'stack/stack';
+@import 'moreoptions/moreoptions';
+@import 'timedisplay/timedisplay';
+@import 'grouping/grouping';
