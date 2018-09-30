@@ -11,22 +11,21 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>LeeMeng - 用 60 秒了解台灣的發展過程以及全球定位：給台灣人的 GapMinder</title>
+<title>LeeMeng - 如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀</title>
     <!--- article-specific meta data
     ================================================== -->
         <meta name="description" content="" />
-        <meta name="keywords" content="資料視覺化, GapMinder, 資料科學" />
-        <meta name="tags" content="資料視覺化" />
+        <meta name="keywords" content="GapMinder, 資料視覺化" />
         <meta name="tags" content="GapMinder" />
-        <meta name="tags" content="資料科學" />
+        <meta name="tags" content="資料視覺化" />
 
 
     <!--- Open Graph Object metas
     ================================================== -->
         <meta property="og:image" content="https://leemeng.tw/theme/images/background/taiwan-in-the-center-of-earth.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://leemeng.tw/drafts/gapminder-tw.html" />
-        <meta property="og:title" content="用 60 秒了解台灣的發展過程以及全球定位：給台灣人的 GapMinder" />
+        <meta property="og:url" content="https://leemeng.tw/drafts/gapminder.html" />
+        <meta property="og:title" content="如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀" />
         <meta property="og:description" content="" />
 
     <!-- mobile specific metas
@@ -128,7 +127,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="用 60 秒了解台灣的發展過程以及全球定位：給台灣人的 GapMinder">用 60 秒了解台灣的發展過程以及全球定位：給台灣人的 GapMinder</a><ul><li><a class="toc-href" href="#背景" title="背景">背景</a></li><li><a class="toc-href" href="#一些數據" title="一些數據">一些數據</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀">如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀</a><ul><li><a class="toc-href" href="#本文章節" title="本文章節">本文章節</a></li><li><a class="toc-href" href="#所以什麼是-GapMinder" title="所以什麼是 GapMinder">所以什麼是 GapMinder</a></li><li><a class="toc-href" href="#所以我們現在有什麼台灣資料？" title="所以我們現在有什麼台灣資料？">所以我們現在有什麼台灣資料？</a></li><li><a class="toc-href" href="#背景：小心鴻溝！" title="背景：小心鴻溝！">背景：小心鴻溝！</a></li><li><a class="toc-href" href="#小心過度關注-outlier-！" title="小心過度關注 outlier ！">小心過度關注 outlier ！</a></li><li><a class="toc-href" href="#一些數據" title="一些數據">一些數據</a></li><li><a class="toc-href" href="#懷疑數據" title="懷疑數據">懷疑數據</a></li><li><a class="toc-href" href="#你能做些什麼？" title="你能做些什麼？">你能做些什麼？</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li><li><a class="toc-href" href="#貢獻-/-更多例子" title="貢獻 / 更多例子">貢獻 / 更多例子</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -143,14 +142,13 @@
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
-                            <a href="https://leemeng.tw/tag/zi-liao-shi-jue-hua.html" rel="tag">資料視覺化</a>
                             <a href="https://leemeng.tw/tag/gapminder.html" rel="tag">GapMinder</a>
-                            <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                            <a href="https://leemeng.tw/tag/zi-liao-shi-jue-hua.html" rel="tag">資料視覺化</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="https://leemeng.tw/drafts/gapminder-tw.html" title="">
-                            用 60 秒了解台灣的發展過程以及全球定位：給台灣人的 GapMinder
+                        <a href="https://leemeng.tw/drafts/gapminder.html" title="">
+                            如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀
                         </a>
                     </h1>
                     <ul class="page-header__meta">
@@ -189,6 +187,47 @@
 
 
 </div>
+
+            <div class="col-full blog-content__main">
+                <div class="cell border-box-sizing code_cell rendered">
+                    <div class="input">
+                        <div class="inner_cell">
+                            <div class="input_area">
+                                <div class=" highlight hl-ipython3">
+                                    <blockquote>
+                                        <p>
+                                            我要你看到統計數據背後的個別故事，也要你看到個別故事背後的統計數據。不靠數據無法了解世界，但光靠數據也無法了解世界。
+                                            <br/>
+                                            <span style="float:right">── 漢斯・羅斯林，《真確》<span>
+                                        </p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell border-box-sizing text_cell rendered" style="margin-top: 8rem">
+                    <p>
+                        如果你是第一次來到這裡，在進一步說明之前，我想請你：
+                    </p>
+                    <div class="inner_cell">
+                        <div class="text_cell_render border-box-sizing rendered_html">
+                            <ol>
+                                <li>在下面的泡泡圖中搜尋並選取「台灣」</li>
+                                <li>確保右下的 TRAILS 圖標有被選擇，以顯示台灣的發展軌跡</li>
+                                <li>準備花 30 秒感受世界從 1800 年開始的變化，並觀察台灣跟其他國家的相對位置</li>
+                                <li>點擊左下的播放鍵開始觀看動畫</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <p>
+                        還等什麼，動手吧！
+                    </p>
+                </div>
+                <br/>
+            </div>
+
+
             <link rel="stylesheet" href="https://leemeng.tw/projects/gapminder-tw/webserver/css/vizabi.css">
             <link rel="stylesheet" href="https://leemeng.tw/projects/gapminder-tw/webserver/css/bubblechart.css">
             <style>
@@ -226,7 +265,66 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="背景">背景<a class="anchor-link" href="#背景">&para;</a></h2>
+<p><br/>
+<br/>
+拉回上圖，再稍微花個 10 秒鐘咀嚼一下你所看到的。</p>
+<p>現在告訴我，你看到了什麼？</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>每天被大量資訊轟炸，你可能不太習慣動腦思考。但讓我提醒你一下，就在剛剛的 30 秒內，你重現了過去 200 年至今全世界的經濟（所得收入）與社會（平均壽命）發展狀況！這可不是小時候歷史老師會秀給你看的東西。我不知道你感受如何，但在我<a href="https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen">第一次見識到此圖</a>的時候，內心可說是激動得不得了！</p>
+<p>專注在台灣身上，你甚至還可以發現一些值得注意的現象：</p>
+<ul>
+<li>1939 至 1945 年，人民所得以及平均壽命的大幅下降（二戰）</li>
+<li>1945 至 1953 年國民平均壽命的大幅提升</li>
+<li>1960 年代戰後經濟與社會的快速發展</li>
+<li>2000 年後國民平均壽命再次以不小的幅度上升</li>
+<li>...</li>
+</ul>
+<p>你應該還有很多其他發現，並且迫不及待地想要了解更多。（你可以玩一玩泡泡圖後再繼續閱讀，沒問題！）</p>
+<p>透過值得信賴的數據（比方說<a href="https://www.gapminder.org/data/documentation/gd004/">聯合國數據</a>）以及良好的數據呈現方式（泡泡圖），你能在很短時間內「正確」地掌握全世界趨勢以及台灣的發展狀況。儘管媒體總是報憂不報喜，你會發現全世界大致上變得越來越好；你也會發現以「人均收入」以及「平均壽命」的角度來看，台灣的表現在全世界也是名列前茅，這點值得我們欣慰及驕傲。</p>
+<center>
+<img src="https://leemeng.tw/images/gapminder/factfulness-cover.jpg" style="width:90%"/>
+</center>
+<center>
+    《真確》是 2018 年由瑞典全球公衛教授<a href="(https://zh.wikipedia.org/zh-tw/%E6%B1%89%E6%96%AF%C2%B7%E7%BD%97%E6%96%AF%E6%9E%97)" target="_blank">漢斯・羅斯林（Hans Rosling）</a>所撰。透過閱讀這本書，羅斯林教授教會我們如何以數據為基礎、並使用正確的心態來理解世界，是一本深具啟發性的著作。而本頁的「泡泡圖」則是他用來向世界傳達知識的工具。（圖片來源：<a href="https://meet.eslite.com/tw/tc/product/201807030007" target="_blank">迷誠品</a>）
+    <br/>
+<br/>
+<br/>
+</center><p>需要先讓你知道的是，文中的泡泡圖（Bubble Chart）以及所有的國際數據，並非我獨立完成，而是由漢斯・羅斯林教授與他所創辦的 <a href="https://www.gapminder.org/">GapMinder 基金會</a>所開發、維護並開源的。事實上，你甚至可以直接拜訪他們的<a href="https://www.gapminder.org/tools/">官方頁面</a>來使用同樣的泡泡圖。我懂你想問我什麼：那為何要在這裡「再」弄一個泡泡圖出來呢？</p>
+<p>本文接下來馬上就會針對此問題做解釋。</p>
+<p>更重要的是，我會說明裡頭有哪些台灣數據可供你使用，也會闡述如何利用這些數據以及泡泡圖，並搭配《真確》一書中羅斯林教授教給我們的原則，來更深入瞭解台灣的歷史發展以及世界定位。</p>
+<p>如果你想要進一步了解此泡泡圖的背後故事以及培養一個正確、積極的世界觀的話，歡迎繼續往下閱讀：）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="本文章節">本文章節<a class="anchor-link" href="#本文章節">&para;</a></h2><p>TODO</p>
+<p>一個非常簡單的問題就變成</p>
+<p>本文接下來將會闡述這點，</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>為何不直接看官網就好？</li>
+</ul>
+<p>你已經可以開始在 x,y 選擇不同的發展指標來看（急著探索或者是回訪者），但如果你想要進一步了解產生此圖的背後故事以及培養一個正確積極的世界觀的話，歡迎看下去：）
+（以 hanse 的 10 條守則，舉台灣的資料為例）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="所以什麼是-GapMinder">所以什麼是 GapMinder<a class="anchor-link" href="#所以什麼是-GapMinder">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -234,12 +332,73 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">像</span> <span class="n">hans</span> <span class="n">loing</span>  <span class="n">致敬</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">與其整天看</span>
+
+
+<span class="n">這種資料視覺化的威力</span><span class="err">！</span>
+
+<span class="n">閱讀過</span><span class="err">《</span><span class="n">真確</span><span class="err">》</span><span class="n">一書的</span>
+
+
+
+<span class="n">為何要正確世界觀</span><span class="err">？</span><span class="n">了解差異</span><span class="err">，</span><span class="n">以合理衡量</span><span class="err">（</span><span class="n">比方說同溫層</span><span class="err">）</span>
+
+<span class="n">做個</span> <span class="n">gapminder</span> <span class="n">test</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="所以我們現在有什麼台灣資料？">所以我們現在有什麼台灣資料？<a class="anchor-link" href="#所以我們現在有什麼台灣資料？">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="背景：小心鴻溝！">背景：小心鴻溝！<a class="anchor-link" href="#背景：小心鴻溝！">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">我去官網用不就好了嗎</span><span class="err">？</span><span class="n">為何要在這邊看</span><span class="err">？</span>
+<span class="o">-</span> <span class="n">非聯合國會員</span> <span class="err">（</span><span class="n">所以沒顯示</span><span class="err">）</span>
+<span class="o">-</span> <span class="n">全英文</span><span class="err">，</span><span class="n">更不用說翻譯了</span>
+
+
+<span class="n">像</span> <span class="n">hans</span> <span class="n">loing</span>  <span class="n">致敬</span>
 
 
 <span class="n">政府常常在說公開資料</span><span class="err">，</span><span class="n">但是沒有人用也等於沒用</span>
+
+<span class="n">gap</span> <span class="n">minder</span><span class="p">:</span> <span class="n">mind</span> <span class="n">the</span> <span class="n">gap</span><span class="o">!</span> 世界不是二分法！
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="小心過度關注-outlier-！">小心過度關注 outlier ！<a class="anchor-link" href="#小心過度關注-outlier-！">&para;</a></h2><ul>
+<li>印尼強震（<a href="https://asean.thenewslens.com/article/105086?tnl_source=fb01）">https://asean.thenewslens.com/article/105086?tnl_source=fb01）</a></li>
+</ul>
 </div>
 </div>
 </div>
@@ -253,8 +412,31 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>數據背後的故事。</p>
+<p>儘管用大量的數據以及這種圖表，讓我們彷彿站在上帝視角綜觀一切，我們也需要注意到數據背後的故事。
+（而且就算我們看到台灣整體不錯，也要注意也是有人過得苦。除了平均也要看分佈）</p>
 <p>我們不完美，有很多要改進，但是我們一直在進步</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="懷疑數據">懷疑數據<a class="anchor-link" href="#懷疑數據">&para;</a></h2><p>data doubt</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="你能做些什麼？">你能做些什麼？<a class="anchor-link" href="#你能做些什麼？">&para;</a></h2><p>如果你是資料科學家： 一圖勝過千言萬語，以圖為輔，培養說故事能力
+如果你是家長、老師： help your child and studnet know the world by triggering their curiousity, not by cramming them numbers. 探討 why 而不是 
+協助翻譯！
+聯絡 Gapminder, 加入更多台灣資料
+查看 真確 一書
+查看 gapminder 官網，查看 dollar street
+對世界多點好奇，探索！
+幫忙分享！
+截圖告訴我，你有什麼發現</p>
 </div>
 </div>
 </div>
@@ -267,12 +449,21 @@
 </div>
 我們需要更多台灣資料（給自己，給下一代）！
 
+Caveat
+- 裡頭是對世界的基本素養，資料濃縮變得易懂了，但是我們不能只看平均（所得分佈越來越誇張）
 
 
 致謝：
 - gapminder
- 
-
+-hans roling, 雖然他已經不在人世，我要謝謝他帶我用更宏觀、正確的態度來理解世界，帶給我無數啟發。這篇文章是我對他的致敬。
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="貢獻-/-更多例子">貢獻 / 更多例子<a class="anchor-link" href="#貢獻-/-更多例子">&para;</a></h2><p>跟我說你覺得你可以貢獻什麼，或者去 push GapMinder, 增加更多台灣資料</p>
+<p>如果你發現什麼有趣的發現，歡迎跟我說，我會更新到文章裡頭！</p>
+</div>
+</div>
+</div>
 
 
                 <!-- Tags -->
@@ -280,9 +471,8 @@
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
-                        <a href="https://leemeng.tw/tag/zi-liao-shi-jue-hua.html" rel="tag">資料視覺化</a>
                         <a href="https://leemeng.tw/tag/gapminder.html" rel="tag">GapMinder</a>
-                        <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-shi-jue-hua.html" rel="tag">資料視覺化</a>
                     </span>
 
                 </p>
@@ -400,7 +590,7 @@
 
 <script type="text/javascript">
 var disqus_shortname = 'leemengtaiwan';
-var disqus_title = '用 60 秒了解台灣的發展過程以及全球定位：給台灣人的 GapMinder';
+var disqus_title = '如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀';
 
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
