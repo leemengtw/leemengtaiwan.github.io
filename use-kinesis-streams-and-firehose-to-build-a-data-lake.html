@@ -158,7 +158,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-04-04 (Wed)</li>
                         <li class="page-view">
-                            312 views
+                            315 views
                         </li>
                     </ul>
 
@@ -246,6 +246,7 @@
 <center>
     Simple Dataflow
     <font color="purple">: 將 streaming data 透過 Kinesis 保存在 S3</font>
+<br/>
 <br/>
 </center>
 </div>
@@ -377,6 +378,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/kinesis/create-delivery-stream.png" style="width:80%"/>
+<br/>
 </center>
 </div>
 </div>
@@ -432,6 +434,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/kinesis/firehose-select-destination.png" style="width:80%"/>
+<br/>
 </center>
 </div>
 </div>
@@ -570,6 +573,7 @@
 <p>注意因為上面的 5 個事件在 $5 * 5 = 25$ 秒內就產生了。且因為我們前面設定 Firehose delivery stream 的 Buffer interval 為 60 秒，Firehose 會把以上的事件的訊息全部串接起來，放到一個檔案裡頭，而不是分成五個檔案：</p>
 <center>
 <img src="images/kinesis/s3-bucket-path.png" style="width:80%"/>
+<br/>
 </center><p>而實際檔案的內容如下：</p>
 <div class="highlight"><pre><span></span>{"event_id": "56262", "timestamp": 1522740951, "event_type": "write_post"}
 {"event_id": "35672", "timestamp": 1522740956 ...
@@ -597,6 +601,7 @@
 </ul>
 <center>
 <img src="images/kinesis/kinesis-firehose-intro.png" style="width:80%"/>
+<br/>
 </center><p>但這邊時間有限，之後有機會再來記錄資料湖之後的分析筆記。</p>
 </div>
 </div>

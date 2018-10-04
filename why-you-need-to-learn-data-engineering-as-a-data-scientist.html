@@ -158,7 +158,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-04-23 (Mon)</li>
                         <li class="page-view">
-                            4,947 views
+                            4,966 views
                         </li>
                     </ul>
 
@@ -255,7 +255,7 @@
 <p>等為人津津樂道的面向。</p>
 <p>的確，這些都在資料科學的範疇裡頭，但實際上佔用多數資料科學家大部分時間，卻常被忽略的部分是資料準備：</p>
 <center>
-<img src="images/data-engineering/data-scientist-work-pie-chart.png" style="width:90%"/>
+<img src="images/data-engineering/data-scientist-work-pie-chart.png" style=""/>
 </center>
 <center>
 <a href="https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/#5d0184f76f63" target="_blank">Forbes</a>
@@ -312,12 +312,13 @@ ramen <span class="o">&lt;-</span> ramen_all <span class="o">%&gt;%</span>
 <p>你殫精竭慮，最後決定去問公司內一位資深的<a href="https://medium.freecodecamp.org/the-rise-of-the-data-engineer-91be18f1e603">資料工程師（Data Engineer）</a>該怎麼解決這問題。</p>
 <p>該仁兄施了點你不曉得的魔法，過了幾分鐘從 Slack 丟來個神秘的 URL。連到上面，你發現熟悉的 <a href="http://jupyter.org/">Jupyter Nook</a> 介面，而且 CSV 還幫你載好了 &Sigma;(ﾟдﾟ;</p>
 <center>
-<img src="images/data-engineering/jupyter-notebook.png" style="width:90%"/>
+<img src="images/data-engineering/jupyter-notebook.png" style=""/>
 </center>
 <center>
 <a href="https://www.ithome.com.tw/news/121497" target="_blank">Bonus</a>
 <font color="purple">: </font>Jupyter Lab 是 Jupyter Notebook 的改善版，大推
     <br/>
+<br/>
 </center><p>你開心地在資料工程師幫你搞定的機器上做出分析，最後在大家面前做口頭報告。大家針對報告的反應不錯，但坐在底下的廣告部門的人這時候提問了：</p>
 <p>「可以把這些銷售紀錄跟廣告點擊的串流日誌（log）合在一起分析嗎？這樣我們會有更多有趣的結果！」</p>
 <p>你的頭又痛了起來。</p>
@@ -329,12 +330,13 @@ ramen <span class="o">&lt;-</span> ramen_all <span class="o">%&gt;%</span>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="第二挑戰：非結構化資料">第二挑戰：非結構化資料<a class="anchor-link" href="#第二挑戰：非結構化資料">&para;</a></h3><p>除了資料量級的差異，一個資料科學家在企業裡頭會遇到的另外一個挑戰是非結構化資料（Unstructured Data）的快速增加。你如何將各種不同格式（JSON、存取日誌、CSV 等）的資料以有效率的方式跟平常熟悉的關聯式資料庫如 <a href="https://www.postgresql.org/">PostgreSQL</a> 裡頭的資料結合以供分析？</p>
 <center>
-<img src="images/data-engineering/increasing-dark-data.png" style="width:90%"/>
+<img src="images/data-engineering/increasing-dark-data.png" style=""/>
 </center>
 <center>
 <a href="https://www.slideshare.net/AmazonWebServices/how-to-build-a-data-lake-with-aws-glue-data-catalog-abd213r" target="_blank">AWS Reinvent</a>
 <font color="purple">: </font>非結構化資料快速增加，但因為不存在關聯式資料庫裡，無法直接被拿來分析
     <br/>
+<br/>
 </center><p>如果我們能寫一個簡單的 <a href="https://zh.wikipedia.org/wiki/SQL">SQL</a> 查詢，把銷售資料（sales）跟廣告點擊（clicks）資料依照共有的鍵值 <code>sale_id</code> 合起來該有多好：</p>
 <pre><code>SELECT *
 FROM sales AS s
@@ -392,6 +394,7 @@ ON s.sale_id = c.sale_id</code></pre>
 <a href="https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007" target="_blank">資料科學的金字塔層級要求</a>
 <font color="purple">: </font>你需要建立好資料科學的基礎設施才有本錢往「上」發展
     <br/>
+<br/>
 </center>
 </div>
 </div>
@@ -452,12 +455,13 @@ ON s.sale_id = c.sale_id</code></pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/data-engineering/etl-flow.png" style="width:90%"/>
+<img src="images/data-engineering/etl-flow.png" style=""/>
 </center>
 <center>
 <a href="https://robinhood.engineering/why-robinhood-uses-airflow-aed13a9a90c8" target="_blank">ETL</a>
 <font color="purple">: </font>從資料來源擷取、轉換資料並將其導入目的地
     <br/>
+<br/>
 </center>
 </div>
 </div>
@@ -479,12 +483,13 @@ ON s.sale_id = c.sale_id</code></pre>
 <li>轉變資料格式（例：從 JSON 到適合資料倉儲的格式如 <a href="https://parquet.apache.org/">Parquet</a>）</li>
 </ul>
 <center>
-<img src="images/data-engineering/man-on-data-pipeline.png" style="width:90%"/>
+<img src="images/data-engineering/man-on-data-pipeline.png" style=""/>
 </center>
 <center>
 <a href="https://unsplash.com/photos/xNdPWGJ6UCQ?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">資料工程師</a>
 <font color="purple">: </font>建構資料管道以讓大量的資料可供分析
     <br/>
+<br/>
 </center><p>這些轉換都是為了讓之後使用資料的資料科學家們能更輕鬆地分析資料。為了建置可靠的資料管道 / ETL 流程，我們常會需要使用一些管理工具像是 <a href="https://airflow.apache.org/">Airflow</a>、 <a href="https://aws.amazon.com/tw/glue/">AWS Glue</a> 以確保資料的處理如同我們預期。</p>
 <h3 id="一些關鍵技術">一些關鍵技術<a class="anchor-link" href="#一些關鍵技術">&para;</a></h3><ul>
 <li>Hadoop 生態環境</li>
@@ -515,12 +520,13 @@ ON s.sale_id = c.sale_id</code></pre>
 也就是說資料庫的綱要（Schema）在建立資料管道的時候就已經被決定了：這種模式稱之為 Schema-on-Write。這是為了確保資料在被放進資料倉儲的時候就已經是可以分析的形式，方便資料科學家分析。</p>
 <p>你可以想像資料工程師在建構資料管道 / ETL 的時候，得對原始資料做大量的轉換以讓資料在被<strong>寫</strong>入資料倉儲時就已經符合一開始定義的 Schema。而資料倉儲最常被拿來使用的一個資料模型（Data Model）是所謂的 <a href="https://en.wikipedia.org/wiki/Dimensional_modeling">Dimensional Modeling</a>（Stars / Snowflaks Schema）。</p>
 <center>
-<img src="images/data-engineering/star-schema.png" style="width:90%"/>
+<img src="images/data-engineering/star-schema.png" style=""/>
 </center>
 <center>
 <a href="http://publib.boulder.ibm.com/tividd/td/TEDW/SC32-1497-00/en_US/HTML/srfmst158.htm" target="_blank">資料倉儲最被廣泛使用的 Data Model</a>
 <font color="purple">: </font>Stars Schema
     <br/>
+<br/>
 </center><p>資料工程師將企業最重要的事件（如：使用者下了訂單、發了一個 Facebook 動態）放到最中間的 Fact Table，並且為了可以使用所有想像得到的維度來分析這些事件，會把事件本身的維度（Dimensions）再分別存在外圍的多個 Dimension Tables。常見的維度有：</p>
 <ul>
 <li>時間（此事件什麼時候產生、年月份、星期幾等）</li>
@@ -545,12 +551,13 @@ ON s.sale_id = c.sale_id</code></pre>
 <p><a href="https://aws.amazon.com/tw/athena/">AWS Athena</a> 就是一個 AWS 依照這樣的想法打造的服務。</p>
 <p>舉個簡單的例子，假設我們現在想把<a href="#資料科學家的一天">資料科學家的一天</a>提到的銷售資料以及廣告資料合併起來做分析，在 AWS 上我們可以實作一個這樣的資料管道：</p>
 <center>
-<img src="images/data-engineering/data-lake-example.png" style="width:90%"/>
+<img src="images/data-engineering/data-lake-example.png" style=""/>
 </center>
 <center>
     利用 AWS Athena 及 AWS Glue 實作以資料湖為基礎的分析架構
     <font color="purple">: </font>即時合併並分析不同格式的資料
     <br/>
+<br/>
 </center><p>我們將存在關聯式資料庫的銷售資料透過 ETL 存到資料湖（AWS S3）裡頭以後，利用 AWS Glue 將資料的中繼資料（Meta Data）存在資料目錄（Data Catalogue）底頭。常見的中繼資料有</p>
 <ul>
 <li>表格定義（有哪些欄位，如：<code>sale_id</code>）</li>
@@ -594,12 +601,13 @@ ON s.sale_id = c.sale_id</code></pre>
 </ul>
 <p>在你思考過以上幾個問題以後，你就會發現為何過往有些資料科學的專案進展緩慢了。這時候與其一直在等待資料的到來，你可以把你想到的幾個問題拿去跟相關的工程師討論。相信我，從你開口跟他們討論如何解決資料基礎設施的瓶頸這點開始，他們將不再視你為「那個只想要拿到資料」的敵人，而是同伴。</p>
 <center>
-<img src="images/data-engineering/hadoop-framework.png" style="width:90%"/>
+<img src="images/data-engineering/hadoop-framework.png" style=""/>
 </center>
 <center>
 <a href="https://medium.com/@ssola/becoming-a-data-engineer-5e0f14048d42" target="_blank">Hadoop 的分散式基礎設施</a>
 <font color="purple">: </font>要學的東西太多，不如就用雲端服務吧
     <br/>
+<br/>
 </center><p>假如很不幸，你們公司沒有專業的工程師，而你得自己想辦法兜出一個可以處理這些大量資料的方法，我會建議先從現存的全受管（Full-Managed）雲端服務找能解決痛點的方案。</p>
 <p>使用現成的雲端服務來建置資料基礎有幾個好處：</p>
 <ul>
