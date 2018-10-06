@@ -28,9 +28,9 @@
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="https://leemeng.tw/theme/images/background/default.jpg" />
+        <meta property="og:image" content="/theme/images/background/default.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://leemeng.tw/simple-convolutional-neural-network-using-tensorflow.html" />
+        <meta property="og:url" content="/simple-convolutional-neural-network-using-tensorflow.html" />
         <meta property="og:title" content="Simple Convolutional Neural Network using TensorFlow" />
         <meta property="og:description" content="The goal here is to practice building convolutional neural networks to classify notMNIST characters using TensorFlow. As image size become bigger and bigger, it become unpractical to train fully-connected NN because there will be just too many parameters and thus the model will overfit very soon. And CNN solve this problem by weight sharing. We will start by building a CNN with two convolutional layers connected by a fully connected layer and then try also pooling layer and other thing to improve the model performance." />
 
@@ -41,42 +41,32 @@
     <!-- CSS
     ================================================== -->
     <!--for customized css in individual page-->
-        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.min.css">
 
     <!--for showing toc navigation which slide in from left-->
-        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/toc-nav.css">
 
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
-    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+    <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='/theme/css/progress-bar.css' />
 
 
     <!--TiqueSearch-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
-    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
-    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/tipuesearch.css">
 
     <!-- script
     ================================================== -->
-    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
-    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+    <script src="/theme/js/modernizr.js"></script>
+    <script src="/theme/js/pace.min.js"></script>
 
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
-
-<!-- Global Site Tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)};
-  gtag('js', new Date());
-
-  gtag('config', 'UA-106559980-1');
-</script>
 
 
 
@@ -90,7 +80,7 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+            <a class="site-logo" href="../index.html"><img src="/theme/images/logo.png" alt="Homepage"></a>
         </div>
 <!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
@@ -142,28 +132,28 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/default.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/default.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
-                            <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
-                            <a href="https://leemeng.tw/tag/tensorflow.html" rel="tag">Tensorflow</a>
-                            <a href="https://leemeng.tw/tag/deep-learning.html" rel="tag">Deep Learning</a>
-                            <a href="https://leemeng.tw/tag/convolutional-neural-network.html" rel="tag">Convolutional Neural Network</a>
-                            <a href="https://leemeng.tw/tag/cnn.html" rel="tag">CNN</a>
+                            <a href="/tag/python.html" rel="tag">Python</a>
+                            <a href="/tag/tensorflow.html" rel="tag">Tensorflow</a>
+                            <a href="/tag/deep-learning.html" rel="tag">Deep Learning</a>
+                            <a href="/tag/convolutional-neural-network.html" rel="tag">Convolutional Neural Network</a>
+                            <a href="/tag/cnn.html" rel="tag">CNN</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="https://leemeng.tw/simple-convolutional-neural-network-using-tensorflow.html" title="">
+                        <a href="/simple-convolutional-neural-network-using-tensorflow.html" title="">
                             Simple Convolutional Neural Network using TensorFlow
                         </a>
                     </h1>
                     <ul class="page-header__meta">
                         <li class="date">2017-09-26 (Tue)</li>
                         <li class="page-view">
-                            62 views
+                            1 views
                         </li>
                     </ul>
 
@@ -194,26 +184,6 @@
         </a>
     </div>
 
-    <div id="social-wrap" style="cursor: pointer">
-        <a class="open-popup" title="訂閱最新文章">
-            <i class="im im-newspaper-o" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/simple-convolutional-neural-network-using-tensorflow.html" target="_blank" title="分享到 Facebook">
-            <i class="im im-facebook" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/simple-convolutional-neural-network-using-tensorflow.html&title=Simple%20Convolutional%20Neural%20Network%20using%20TensorFlow&summary=The%20goal%20here%20is%20to%20practice%20building%20convolutional%20neural%20networks%20to%20classify%20notMNIST%20characters%20using%20TensorFlow.%0AAs%20image%20size%20become%20bigger%20and%20bigger%2C%20it%20become%20unpractical%20to%20train%20fully-connected%20NN%20because%20there%20will%20be%20just%20too%20many%20parameters%20and%20thus%20the%20model%20will%20overfit%20very%20soon.%20And%20CNN%20solve%20this%20%E2%80%A6&source=https%3A//leemeng.tw/simple-convolutional-neural-network-using-tensorflow.html" target="_blank" title="分享到 LinkedIn">
-            <i class="im im-linkedin" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://twitter.com/intent/tweet?text=Simple%20Convolutional%20Neural%20Network%20using%20TensorFlow&url=https%3A//leemeng.tw/simple-convolutional-neural-network-using-tensorflow.html" target="_blank" title="分享到 Twitter">
-            <i class="im im-twitter" aria-hidden="true"></i>
-        </a>
-    </div>
 
 </div>
 
@@ -593,10 +563,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="4d17df15-e1be-4671-8ad1-4bc0dc413ecc"></div>
+<div id="2bbd2a08-f53e-410f-b452-8337dfdd3dc3"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#4d17df15-e1be-4671-8ad1-4bc0dc413ecc');
+var element = $('#2bbd2a08-f53e-410f-b452-8337dfdd3dc3');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -1360,10 +1330,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="5fccb8a3-ab0f-406d-91cb-ab1001b27817"></div>
+<div id="a91ac3a9-133c-458a-9e24-a63818f75af7"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#5fccb8a3-ab0f-406d-91cb-ab1001b27817');
+var element = $('#a91ac3a9-133c-458a-9e24-a63818f75af7');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -1553,10 +1523,10 @@ Test accuracy: 89.4%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="54f5dba1-52bd-4a42-9014-a2d63a8c695f"></div>
+<div id="f849bdd5-0c42-4b9a-9316-f03713adb877"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#54f5dba1-52bd-4a42-9014-a2d63a8c695f');
+var element = $('#f849bdd5-0c42-4b9a-9316-f03713adb877');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -2320,10 +2290,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="b0ac8ec6-9cd0-4bb9-9aaf-388e49719c68"></div>
+<div id="f41e0b1a-915b-4b86-b2b6-38fe22a5ae46"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b0ac8ec6-9cd0-4bb9-9aaf-388e49719c68');
+var element = $('#f41e0b1a-915b-4b86-b2b6-38fe22a5ae46');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -2524,10 +2494,10 @@ Test accuracy: 90.7%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="0b644a5f-33c1-40bc-b5f1-8004a4888e5a"></div>
+<div id="0ccd1d1c-310b-4957-9169-3bef3c87cd9b"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#0b644a5f-33c1-40bc-b5f1-8004a4888e5a');
+var element = $('#0ccd1d1c-310b-4957-9169-3bef3c87cd9b');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -3291,10 +3261,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="30c586e3-78d1-4c28-8405-5f65b01a7f45"></div>
+<div id="6e41f476-466c-45c7-a05c-529660a49529"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#30c586e3-78d1-4c28-8405-5f65b01a7f45');
+var element = $('#6e41f476-466c-45c7-a05c-529660a49529');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -3336,14 +3306,14 @@ Test accuracy: 94.6%
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
-                        <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
-                        <a href="https://leemeng.tw/tag/tensorflow.html" rel="tag">Tensorflow</a>
-                        <a href="https://leemeng.tw/tag/deep-learning.html" rel="tag">Deep Learning</a>
-                        <a href="https://leemeng.tw/tag/convolutional-neural-network.html" rel="tag">Convolutional Neural Network</a>
-                        <a href="https://leemeng.tw/tag/cnn.html" rel="tag">CNN</a>
-                        <a href="https://leemeng.tw/tag/deep-learning-by-google.html" rel="tag">Deep Learning by Google</a>
-                        <a href="https://leemeng.tw/tag/machine-learning-engineer-by-kaggle.html" rel="tag">Machine Learning Engineer by kaggle</a>
-                        <a href="https://leemeng.tw/tag/udacity.html" rel="tag">Udacity</a>
+                        <a href="/tag/python.html" rel="tag">Python</a>
+                        <a href="/tag/tensorflow.html" rel="tag">Tensorflow</a>
+                        <a href="/tag/deep-learning.html" rel="tag">Deep Learning</a>
+                        <a href="/tag/convolutional-neural-network.html" rel="tag">Convolutional Neural Network</a>
+                        <a href="/tag/cnn.html" rel="tag">CNN</a>
+                        <a href="/tag/deep-learning-by-google.html" rel="tag">Deep Learning by Google</a>
+                        <a href="/tag/machine-learning-engineer-by-kaggle.html" rel="tag">Machine Learning Engineer by kaggle</a>
+                        <a href="/tag/udacity.html" rel="tag">Udacity</a>
                     </span>
 
                 </p>
@@ -3426,13 +3396,13 @@ Test accuracy: 94.6%
                 <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
                         <div class="blog-content__prev">
-                            <a href="https://leemeng.tw/find-word-semantic-by-using-word2vec-in-tensorflow.html" rel="prev">
+                            <a href="/find-word-semantic-by-using-word2vec-in-tensorflow.html" rel="prev">
                                 <span>Previous Post</span>
                                 Find Word Semantic by Using Word2vec in TensorFlow
                             </a>
                         </div>
                         <div class="blog-content__next">
-                            <a href="https://leemeng.tw/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="next">
+                            <a href="/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="next">
                                 <span>Next Post</span>
                                 Regularization for Multi-layer Neural Networks in Tensorflow
                             </a>
@@ -3455,25 +3425,6 @@ Test accuracy: 94.6%
 
     </article>
 
-<div class="comments-wrap">
-    <div id="comments" class="row">
-        <div class="col-full">
-            <div id="disqus_thread"></div>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-var disqus_shortname = 'leemengtaiwan';
-var disqus_title = 'Simple Convolutional Neural Network using TensorFlow';
-
-(function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
     <!-- footer
@@ -3483,7 +3434,7 @@ var disqus_title = 'Simple Convolutional Neural Network using TensorFlow';
             <div class="col-full">
 
                 <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                    <a class="footer-site-logo" href="#0"><img src="/theme/images/logo.png" alt="Homepage"></a>
                 </div>
 
                 <ul class="footer-social">
@@ -3528,12 +3479,12 @@ var disqus_title = 'Simple Convolutional Neural Network using TensorFlow';
 
         <!-- Javascript
     ================================================== -->
-    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
-    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
-    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script src="/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="/theme/js/plugins.js"></script>
+    <script src="/theme/js/main.js"></script>
 
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+    <script type='text/javascript' src='/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
 
     <!--show and hide left navigation by scrolling-->
     <script>
