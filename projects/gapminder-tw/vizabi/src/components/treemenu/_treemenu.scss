@@ -1,0 +1,585 @@
+.vzb-tool-treemenu {
+  @include position(absolute, 0 0 null null);
+  z-index: 9998;
+  width: 100%;
+  height: 100%;
+
+  .vzb-treemenu-background {
+    background-color: $vzb-color-grey-lightest;
+    opacity: 0.4;
+    width: 100%;
+    height: 100%;
+  }
+  .vzb-treemenu-wrap-outer {
+    @include box-shadow(0, 8px, 15px, rgba(0, 0, 0, 0.24));
+    position: absolute;
+    background-color: #fff;
+    border-top: 1px solid #f7f7f7;
+    padding: 0;
+    &.vzb-treemenu-abs-pos-vert {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    &.vzb-treemenu-abs-pos-horiz {
+      margin-right: 0;
+      margin-left: 0;
+    }
+
+    .vzb-treemenu-wrap {
+      transition: 300ms ease-in-out;
+      padding: 0 25px 10px;
+      overflow-y: auto;
+
+      * {
+        box-sizing: border-box;
+      }
+
+      &.notransition {
+        transition: none;
+      }
+
+      .vzb-treemenu-close {
+        @include rtl {
+          float: left;
+          left: -15px;
+          right: auto;
+        }
+        position: relative;
+        float: right;
+        top: 10px;
+        right: -15px;
+        .vzb-treemenu-close-icon {
+          fill: $vzb-color-primary;
+          fill-opacity: 0.7;
+          width: 25px;
+          height: 25px;
+          cursor: pointer;
+
+          &:hover {
+            fill-opacity: 1;
+          }
+        }
+      }
+      .vzb-treemenu-title {
+        @include rtl {
+          padding-left: 25px;
+          padding-right: 10px;
+        }
+        display: inline-block;
+        color: $vzb-color-primary;
+        font-size: $vzb-font-size-medium;
+        padding: 25px 25px 10px 5px;
+      }
+      .vzb-treemenu-scaletypes {
+        @include rtl {
+          left: -10px;
+          right: auto;
+          float: left;
+        }
+        position: relative;
+        right: -10px;
+        top: 30px;
+        font-size: $vzb-font-size-small;
+        font-family: $vzb-font-family-alt;
+        float: right;
+
+        span {
+          padding: 2px 5px;
+          border: 1px solid $vzb-color-primary-light;
+          color: $vzb-color-primary-darkest;
+          margin-left: -1px;
+          cursor: pointer;
+          &:hover {
+            background-color: $vzb-color-grey-light;
+            color: $vzb-color-primary-strong;
+          }
+          &:first-child {
+            @include rtl {
+              border-radius: 0 4px 4px 0;
+            }
+            border-radius: 4px 0 0 4px;
+          }
+          &:last-child {
+            @include rtl {
+              border-radius: 4px 0 0 4px;
+            }
+            border-radius: 0 4px 4px 0;
+          }
+        }
+
+        .vzb-treemenu-scaletypes-active {
+          background-color: $vzb-color-grey-light;
+          color: $vzb-color-primary-strong;
+          pointer-events: none;
+        }
+        .vzb-treemenu-scaletypes-disabled {
+          visibility: hidden;
+          color: $vzb-color-grey-light;
+          border: 0;
+          pointer-events: none;
+        }
+      }
+      .vzb-treemenu-search-wrap {
+        padding: 5px;
+      }
+      .vzb-treemenu-search {
+        @include border-radius(4px);
+        @include box-sizing(border-box);
+        width: 100%;
+        display: block;
+        border: 1px solid rgba($vzb-color-grey, 0.4);
+        padding: 9px;
+        outline: none;
+        font-size: $vzb-font-size-small;
+        font-family: $vzb-font-family-alt;
+
+        &:focus {
+          border: 1px solid rgba($vzb-color-grey, 0.6);
+        }
+        + .vzb-treemenu-list {
+          position: relative;
+          margin-top: 10px;
+          left: 0;
+        }
+      }
+      .vzb-treemenu-list,
+      .vzb-treemenu-list-top {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        left: 100%;
+        &.vzb-treemenu-horizontal .vzb-treemenu-list,
+        &.vzb-treemenu-horizontal {
+          > .vzb-treemenu-list-item {
+            height: 38px;
+            padding: 0;
+            .vzb-treemenu-list-item-label {
+              @include rtl {
+                span {
+                  margin-right: 5px;
+                }
+              }
+              line-height: 17px;
+              padding: 10px 0;
+            }
+          }
+          > .vzb-treemenu-list-item-children {
+            &::after {
+              @include rtl {
+                left: 0;
+              }
+              content: '';
+              display: block;
+              position: relative;
+              left: calc(100% - 17px);
+              top: -42px;
+              width: 0;
+              height: 0;
+              border: 6px solid transparent;
+              border-left: 6px solid $vzb-color-grey-dark;
+              pointer-events: none;
+              z-index: 1;
+            }
+
+            .vzb-treemenu-list-item-label[children="true"] {
+              @include rtl {
+                padding-left: 0;
+                padding-right: 12px;
+                span {
+                  margin-right: 25px;
+                }
+              }
+              padding-left: 20px;
+              &::after {
+                @include rtl {
+                  left: 0;
+                }
+                display: block;
+                position: relative;
+                left: -20px;
+                top: -17px;
+                width: 25px;
+                height: 17px;
+                pointer-events: none;
+                z-index: 1;
+                text-align: center;
+              }
+            }
+            .vzb-treemenu-list-item-label[type="folder"] {
+              &::after {
+                content: "📁";
+              }
+            }
+            .vzb-treemenu-list-item-label[type="dataset"] {
+              &::after {
+                content: "📚";
+              }
+            }
+
+            &:hover {
+              &::after {
+                background-color: $vzb-color-grey-light;
+                outline: 5px solid $vzb-color-grey-light;
+              }
+
+              > .vzb-treemenu-list-item-label[children="true"]::after {
+                background-color: $vzb-color-grey-light;
+              }
+            }
+          }
+        }
+        &.vzb-treemenu-vertical .vzb-treemenu-list,
+        &.vzb-treemenu-vertical {
+          > .vzb-treemenu-list-item {
+            .vzb-treemenu-list-item-label {
+              @include rtl {
+                span {
+                  margin-left: 25px;
+                  margin-right: 5px;
+                }
+              }
+              line-height: 16px;
+              padding: 10px 0;
+            }
+          }
+          > .vzb-treemenu-list-item-children {
+            position: relative;
+
+            &::before {
+              @include rtl {
+                left: 5px;
+                right: auto;
+                border-left-color: transparent;
+                border-right-color: $vzb-color-grey-dark;
+              }
+              content: '';
+              display: block;
+              position: absolute;
+              right: 5px;
+              width: 0;
+              height: 0;
+              border: 6px solid transparent;
+              border-left: 6px solid $vzb-color-grey-dark;
+              margin-top: 12px;
+              pointer-events: none;
+              z-index: 1;
+            }
+
+            .vzb-treemenu-list-item-label[children="true"] {
+              @include rtl {
+                padding-left: 0;
+                padding-right: 20px;
+              }
+              padding-left: 20px;
+              &::before {
+                @include rtl {
+                  right: 0;
+                }
+                display: block;
+                position: absolute;
+                left: 0;
+                width: 25px;
+                pointer-events: none;
+                z-index: 1;
+                text-align: center;
+              }
+            }
+            .vzb-treemenu-list-item-label[type="folder"] {
+              &::before {
+                content: "📁";
+              }
+            }
+            .vzb-treemenu-list-item-label[type="dataset"] {
+              &::before {
+                content: "📚";
+              }
+            }
+
+            &.marquee:hover {
+              &::before {
+                background-color: $vzb-color-grey-light;
+                outline: 5px solid $vzb-color-grey-light;
+              }
+
+              .vzb-treemenu-list-item-label[children="true"]::before {
+                  background-color: $vzb-color-grey-light;
+              }
+            }
+          }
+        }
+      }
+
+      .vzb-treemenu-list-outer {
+        position: absolute;
+        background-color: #fff;
+        .vzb-treemenu-list {
+          display: none;
+        }
+
+        &.vzb-treemenu-horizontal {
+          @include box-shadow(4px, 8px, 15px, rgba(0, 0, 0, 0.2));
+          width: 0;
+          top: 0;
+          bottom: 0;
+          left: 100%;
+          z-index: 2;
+          .vzb-treemenu-list {
+            overflow-y: auto;
+            max-height: 100%;
+            .vzb-treemenu-list-item:not(.vzb-treemenu-list-item-children) {
+              .vzb-treemenu-list-item-label span {
+                margin-right: 5px;
+              }
+            }
+          }
+          &.active {
+            top: -1px;
+            bottom: 0;
+            clear: both;
+            border-left: 1px solid $vzb-color-grey-light;
+            border-top: 1px solid #f7f7f7;
+            >.vzb-treemenu-list {
+              display: block;
+            }
+          }
+          &.vzb-treemenu-list-item-leaf {
+            background-color: $vzb-color-primary-lightest;
+            overflow: hidden;
+            cursor: pointer;
+            .vzb-treemenu-leaf-content {
+              overflow-y: auto;
+              max-height: calc(100% - 60px);
+              .vzb-treemenu-leaf-content-item {
+                padding: 10px 15px 0;
+                display: block;
+                overflow: hidden;
+                white-space: normal;
+                text-overflow: ellipsis;
+                position: relative;
+                color: $vzb-color-grey-dark;
+                font-size: $vzb-font-size-small;
+                font-family: $vzb-font-family-alt;
+                &.vzb-treemenu-leaf-content-item-title {
+                  font-size: $vzb-font-size-regular;
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+        }
+        &.vzb-treemenu-vertical {
+          @include rtl {
+            padding-left: 0;
+            padding-right: 15px;
+          }
+          position: relative;
+          border: 0;
+          background-color: #fff;
+          left: 0;
+          padding-left: 15px;
+          height: 0;
+          &.active {
+            height: auto;
+            top: inherit;
+            bottom: inherit;
+            >.vzb-treemenu-list {
+              display: block;
+            }
+          }
+          &.vzb-treemenu-list-item-leaf {
+            height: 0;
+          }
+        }
+      }
+
+      .vzb-treemenu-list-item {
+        padding: 5px 0;
+        background-color: $vzb-color-white;
+        overflow: hidden;
+        white-space: nowrap;
+        > .vzb-treemenu-list-item-label {
+          left: 0;
+        }
+
+        &:hover {
+          background-color: $vzb-color-grey-light;
+          > .vzb-treemenu-list-item-label {
+            span {
+              text-overflow: clip;
+            }
+          }
+        }
+        &.item-active:not(.vzb-treemenu-list-item-children) {
+          > span {
+            color: $vzb-color-accent-orange;
+          }
+        }
+        &.item-active {
+          > span {
+            font-weight: bold;
+          }
+        }
+        &.marquee:not(:hover) {
+          > .vzb-treemenu-list-item-label span {
+            width: auto !important;
+            //text-overflow: ellipsis;
+          }
+        }
+        &.marquee:hover {
+          > .vzb-treemenu-list-item-label {
+            span {
+              @include rtl {
+                transform: translate3d(100%, 0, 0);
+              }
+              transform: translate3d(-100%, 0, 0);
+              text-overflow: inherit;
+              overflow: visible;
+              animation: marquee 5s linear infinite;
+              &::after {
+                @include rtl {
+                  padding-left: 0;
+                  padding-right: 30px; //must be equal owner 'space' in marqueeToogle;
+                }
+                content: attr(data-content);
+                padding-left: 30px; //must be equal owner 'space' in marqueeToogle;
+              }
+            }
+          }
+        }
+        + .vzb-treemenu-list-item-special {
+          margin-top: 15px;
+        }
+      }
+      .vzb-treemenu-list-item-label {
+        padding: 5px 0;
+        margin: 0;
+        display: block;
+        cursor: pointer;
+        color: $vzb-color-grey-dark;
+        font-size: $vzb-font-size-small;
+        font-family: $vzb-font-family-alt;
+        span {
+          @include rtl {
+            padding-right: 0;
+            padding-left: 1px;
+          }
+          padding-right: 1px;
+          display: block;
+          position: relative;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          margin: 0 25px 0 5px;
+        }
+      }
+
+    }
+    &.vzb-treemenu-open-left-side {
+      .vzb-treemenu-horizontal {
+        &.vzb-treemenu-list-outer {
+          &.active {
+            left: auto;
+            right: 100%;
+          }
+        }
+        &.vzb-treemenu-list-top,
+        .vzb-treemenu-list-outer .vzb-treemenu-list {
+          > .vzb-treemenu-list-item {
+            > .vzb-treemenu-list-item-label span {
+              margin-right: 5px;
+            }
+          }
+          > .vzb-treemenu-list-item-children {
+            &::after {
+              @include rtl {
+                right: calc(100% - 14px);
+              }
+              left: 2px;
+              border: 6px solid transparent;
+              border-right: 6px solid $vzb-color-grey-dark;
+            }
+            .vzb-treemenu-list-item-label[children="true"] {
+              @include rtl {
+                padding-left: 16px;
+                padding-right: 0;
+              }
+              padding-left: 34px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//marquee animation
+@keyframes marquee {
+  from {
+    transform: none;
+  }
+}
+
+&.vzb-small {
+  .vzb-treemenu-wrap-outer {
+    @include position(absolute, 10% null null 10%);
+    width: 80%;
+    height: 80%;
+
+    .vzb-treemenu-wrap {
+      max-height: 100%;
+      .vzb-treemenu-list-item {
+        padding: 0;
+      }
+    }
+
+    &.vzb-align-x-center {
+      left: 50%;
+    }
+    .active {
+      display: block;
+    }
+  }
+}
+
+&.vzb-medium {
+  .vzb-treemenu-wrap-outer {
+    &.vzb-align-y-top {
+      top: 40px;
+    }
+    &.vzb-align-y-bottom {
+      bottom: 5px + $size-timeslider;
+    }
+    &.vzb-align-x-left {
+      left: 60px;
+    }
+    &.vzb-align-x-right {
+      right: 60px;
+    }
+    &.vzb-align-x-center {
+      left: 50%;
+   }
+
+  }
+}
+
+&.vzb-large,
+&.vzb-presentation {
+  .vzb-treemenu-wrap-outer {
+    &.vzb-align-y-top {
+      top: 50px;
+    }
+    &.vzb-align-y-bottom {
+      bottom: 30px + $size-timeslider;
+    }
+    &.vzb-align-x-left {
+      left: 60px;
+    }
+    &.vzb-align-x-right {
+      right: 60px;
+    }
+    &.vzb-align-x-center {
+      left: 50%;
+    }
+  }
+}

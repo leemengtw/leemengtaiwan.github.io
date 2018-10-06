@@ -68,6 +68,13 @@ div.output_subarea pre {
   width: 100%;
 }
 
+/*置中 markdown 裡頭 引進的 VIDEO */
+.blog-content__main video {
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+
 /*各別 tag 頁面內的文章格式*/
 div.article-in-tag-page a {
   color: black

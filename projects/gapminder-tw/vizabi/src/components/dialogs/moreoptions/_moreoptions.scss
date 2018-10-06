@@ -1,0 +1,58 @@
+.vzb-tool-dialogs {
+  .vzb-dialogs-dialog {
+    &[data-dlg='moreoptions'] {
+      @import '../../buttonlist/optionsbuttonlist/optionsbuttonlist';
+      >.vzb-dialog-modal {
+        >.vzb-dialog-content {
+          padding: 0;
+          >.vzb-accordion {
+            margin-top: 1px;
+            .vzb-accordion-section {
+              transition: none;
+              overflow: hidden;
+              max-height: 41px;
+              padding-bottom: 10px;
+              width: auto;
+              border: 0;
+              .vzb-dialog-title>span:first-child {
+                @include rtl {
+                  padding-left: 15px;
+                  padding-right: 10px;
+                }
+                display: block;
+                padding: 9px 15px 10px 10px;
+                height: 40px;
+                background-color: $vzb-color-primary-lightest;
+                cursor: pointer;
+                text-transform: uppercase;
+                &::after {
+                  @include rtl {
+                    @include rotate(225deg);
+                    left: 20px;
+                    right: auto;
+                  }
+                  @include rotate(45deg);
+                  content: '';
+                  position: absolute;
+                  top: 18px;
+                  right: 20px;
+                  width: 5px;
+                  height: 5px;
+                  border-right: 1px solid $vzb-color-primary;
+                  border-top: 1px solid $vzb-color-primary;
+                }
+              }
+              &.vzb-accordion-active {
+                max-height: 500px;
+                transition: max-height 0.3s ease-in-out;
+                .vzb-dialog-title>span:first-child::after {
+                  @include rotate(135deg);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

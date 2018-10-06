@@ -641,7 +641,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/thought-2123970_1280.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/thought-2123970_1280.jpg" style=""/&gt;
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;/center&gt;
@@ -1295,7 +1295,7 @@ COPY . /app
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
 &lt;a href="https://airflow.apache.org/" target="_blank"&gt;
-&lt;img src="https://leemeng.tw/images/airflow/app.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/app.jpg" style=""/&gt;
 &lt;/a&gt;
 &lt;p&gt;Slack 截圖：追漫畫應該要是件輕鬆的事情。&lt;br/&gt;我們將利用 Airflow 來實作一個像這樣會每天從 &lt;a href="https://slack.com/" target="_blank"&gt;Slack&lt;/a&gt; 推送最新漫畫連載的 App
     &lt;br/&gt;
@@ -1330,7 +1330,7 @@ COPY . /app
 &lt;p&gt;為讓讀者完整了解開發這個 App 的背景脈絡、此 App 的執行邏輯以及使用 Airflow 來定期執行 App 的原因，在我們實際開始寫 Python 之前有兩小節的解說。&lt;/p&gt;
 &lt;p&gt;如果你已經有 Airflow 及工作流程的基礎知識，且迫不及待想看 Python 程式碼，可以直接跳到 &lt;a href="#Python-&amp;amp;-Airflow-實作"&gt;Python 實作 &amp;amp; Airflow 操作&lt;/a&gt;章節之後再回來查看前面段落。&lt;/p&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/toc-demo.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/toc-demo.jpg" style=""/&gt;
 &lt;p&gt;
         這篇文章章節不少，你有時可能會需要回到前面章節回顧一些內容。活用左側放大鏡按鈕下面的章節傳送門能讓你更輕鬆地徜徉在本文的 Airflow 世界（此功能因為作者時間有限，目前只在寬螢幕實現）
     &lt;/p&gt;
@@ -1358,7 +1358,7 @@ COPY . /app
 &lt;/ul&gt;
 &lt;center&gt;
 &lt;a href="https://airflow.apache.org/" target="_blank"&gt;
-&lt;img src="https://leemeng.tw/images/airflow/tim-gouw-68319-unsplash.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/tim-gouw-68319-unsplash.jpg" style=""/&gt;
 &lt;/a&gt;
 &lt;p&gt;手動追最新連載經常讓我追到懷疑人生&lt;/p&gt;
 &lt;br/&gt;
@@ -1405,7 +1405,7 @@ COPY . /app
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
 &lt;a href="https://airflow.apache.org/" target="_blank"&gt;
-&lt;img src="https://leemeng.tw/images/airflow/www-headsmartmedia-com-179929-unsplash.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/www-headsmartmedia-com-179929-unsplash.jpg" style=""/&gt;
 &lt;/a&gt;
 &lt;p&gt;我們的 App 實際上就是一個完整的工作流程。&lt;br/&gt;
        App 從工作 A 執行到工作 B 就像是水從上游 A 流動到下游 B 一樣。&lt;/p&gt;
@@ -1427,7 +1427,7 @@ COPY . /app
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/thought-2123970_1280.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/thought-2123970_1280.jpg" style=""/&gt;
 &lt;br/&gt;
 &lt;br/&gt;
 &lt;/center&gt;
@@ -1462,7 +1462,7 @@ COPY . /app
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
 &lt;a href="https://airflow.apache.org/" target="_blank"&gt;
-&lt;img src="https://leemeng.tw/images/airflow/airflow.gif" style=""/&gt;
+&lt;img src="{filename}images/airflow/airflow.gif" style=""/&gt;
 &lt;/a&gt;
 &lt;p&gt;Airflow 的 &lt;a href="https://airflow.apache.org/" target="_blank"&gt;Web UI&lt;/a&gt; 讓我們能更輕鬆地管理及排程工作流程（後面我們會實際利用此 UI 管理並開發 App）&lt;/p&gt;
 &lt;br/&gt;
@@ -1494,7 +1494,7 @@ COPY . /app
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/show-me-the-code.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/show-me-the-code.jpg" style=""/&gt;
 &lt;p&gt;[Warning] 接下來不只給你 Python 程式碼，而是給你大量的 Python 程式碼&lt;/p&gt;
 &lt;/center&gt;
 &lt;/div&gt;
@@ -1572,7 +1572,7 @@ airflow initdb
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/first-impression-of-airflow-web-ui.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/first-impression-of-airflow-web-ui.jpg" style=""/&gt;
 &lt;p&gt;Airflow Web UI 首頁：顯示所有已定義的工作流程（DAG）。&lt;br/&gt;
         圖中的 3 個 DAG 就對應到我們接下來逐漸改善 App 時產生的三個 App 版本&lt;/p&gt;
 &lt;/center&gt;
@@ -1695,7 +1695,7 @@ airflow initdb
 &lt;p&gt;乍看之下沒什麼了不起的，就是些設定。&lt;/p&gt;
 &lt;p&gt;但如果你有自己從頭實作過資料管道的經驗或者使用過 &lt;a href="https://zh.wikipedia.org/wiki/Cron"&gt;Cron&lt;/a&gt; 排程 ETL，就能體會 Airflow 這樣的「Configuration as Code」有多麽的強大：你只做一些設定（Config），Airflow 就幫你自動建立可靠、失敗時會自動重試的工作流程。&lt;/p&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/utah-mechanical-contractors-1103725_1280.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/utah-mechanical-contractors-1103725_1280.jpg" style=""/&gt;
 &lt;p&gt;按幾個按鈕就能做出可靠的工作流程，將自動化、失敗重試、相依性管理全部交給 Airflow&lt;/p&gt;
 &lt;/center&gt;&lt;p&gt;這些排程設定為了方便管理，一般都另外定義在 &lt;code&gt;default_args&lt;/code&gt; 變數並放在 script 的最上面。&lt;/p&gt;
 &lt;/div&gt;
@@ -2036,11 +2036,11 @@ airflow initdb
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;a ,="" href="https://leemeng.tw/images/airflow/comic_app_v2_graph_view.gif" target="_blank"&gt;
-&lt;img src="https://leemeng.tw/images/airflow/comic_app_v2_graph_view.png" style=""/&gt;
+&lt;a ,="" href="{filename}images/airflow/comic_app_v2_graph_view.gif" target="_blank"&gt;
+&lt;img src="{filename}images/airflow/comic_app_v2_graph_view.png" style=""/&gt;
 &lt;/a&gt;
 &lt;p&gt;Airflow Web UI 裡頭的 Graph View 幫我們視覺化 DAG 的工作流程&lt;br/&gt;
-        （&lt;a ,="" href="https://leemeng.tw/images/airflow/comic_app_v2_graph_view.gif" target="_blank"&gt;這個 GIF 展示如何從 Airflow UI 開啟此畫面&lt;/a&gt;）
+        （&lt;a ,="" href="{filename}images/airflow/comic_app_v2_graph_view.gif" target="_blank"&gt;這個 GIF 展示如何從 Airflow UI 開啟此畫面&lt;/a&gt;）
     &lt;/p&gt;
 &lt;/center&gt;
 &lt;/div&gt;
@@ -2116,7 +2116,7 @@ airflow &lt;span class="nb"&gt;test&lt;/span&gt; comic_app_v2 new_comic_availabl
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/airflow-architecture.png" style="width:70%"/&gt;
+&lt;img src="{filename}images/airflow/airflow-architecture.png" style="width:70%"/&gt;
 &lt;p&gt;
 &lt;a href="https://medium.com/@dustinstansbury/understanding-apache-airflows-key-concepts-a96efed52b1a" target="_blank"&gt;Airflow 架構圖&lt;/a&gt;：Scheduler 是實際做排程、呼叫 Worker 執行工作的傢伙；我們熟悉的 Webserver 則提供一個 Web UI 讓我們可以輕鬆檢視工作執行時產生的 Logs、DAG 的程式碼以及工作的執行結果；所有資料都被存在 Metadata Database 裡頭。
     &lt;/p&gt;
@@ -2163,11 +2163,11 @@ airflow &lt;span class="nb"&gt;test&lt;/span&gt; comic_app_v2 new_comic_availabl
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;a ,="" href="https://leemeng.tw/images/airflow/trigger-dag-demo.gif" target="_blank"&gt;
-&lt;img src="https://leemeng.tw/images/airflow/ready-to-trigger-dag.png" style=""/&gt;
+&lt;a ,="" href="{filename}images/airflow/trigger-dag-demo.gif" target="_blank"&gt;
+&lt;img src="{filename}images/airflow/ready-to-trigger-dag.png" style=""/&gt;
 &lt;/a&gt;
 &lt;p&gt;在左邊將 DAG 設成「On」後，可以利用右邊「Trigger Dag」按鈕呼叫排程器馬上開始執行該 DAG &lt;br/&gt;
-        （&lt;a ,="" href="https://leemeng.tw/images/airflow/trigger-dag-demo.gif" target="_blank"&gt;這個 GIF 展示如何從 Airflow UI 觸發一個 DAG&lt;/a&gt;）
+        （&lt;a ,="" href="{filename}images/airflow/trigger-dag-demo.gif" target="_blank"&gt;這個 GIF 展示如何從 Airflow UI 觸發一個 DAG&lt;/a&gt;）
 &lt;/p&gt;&lt;/center&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2213,7 +2213,7 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/success-dag.png" style=""/&gt;
+&lt;img src="{filename}images/airflow/success-dag.png" style=""/&gt;
 &lt;br/&gt;
 &lt;/center&gt;
 &lt;/div&gt;
@@ -2231,7 +2231,7 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/success-tasks-in-dag.png" style=""/&gt;
+&lt;img src="{filename}images/airflow/success-tasks-in-dag.png" style=""/&gt;
 &lt;p&gt;
         將游標放在右邊的「Success」狀態按鈕上可以顯示此 DAG Run 中被成功執行的工作（圖內的工作從左到右被執行）&lt;br/&gt;
         注意圖中 DAG Run 的 ID： manual_2018-08-19... 表示這是一個在 2018-08-19 被手動觸發的 DAG Run。
@@ -2252,7 +2252,7 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/first-slack-message.png" style=""/&gt;
+&lt;img src="{filename}images/airflow/first-slack-message.png" style=""/&gt;
 &lt;p&gt;
         comic_app_v2 DAG 如果發現有新連載就會寄一個罐頭 Slack 訊息，包含 DAG 執行日期。因為我是在 2018-08-19 當天手動觸發此 DAG，因此日期即為 2018-08-19。後面我們會看到如何客製化 Slack 訊息內容。
     &lt;/p&gt;
@@ -2337,7 +2337,7 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然後我們就得到前面看過的工作流程圖了：&lt;/p&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/comic_app_v2_graph_view.png" style=""/&gt;
+&lt;img src="{filename}images/airflow/comic_app_v2_graph_view.png" style=""/&gt;
 &lt;/center&gt;&lt;p&gt;你也可以回到 &lt;a href="#app-v2"&gt;App 版本二：模組化&lt;/a&gt;章節，確認 &lt;code&gt;comic_app_v2&lt;/code&gt; 完整的程式碼後再利用左邊的傳送門回來，我等你。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2355,7 +2355,7 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;現在你應該已經了解如何使用 &lt;code&gt;PythonOperator&lt;/code&gt; 建立一個新的工作，並利用 &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; 語法定義 Airflow 的工作流程（DAG）了。我們也實際觸發 &lt;code&gt;comic_app_v2&lt;/code&gt; DAG 讓 Airflow 排程器幫我們排程，最後收到一個 Slack 訊息。&lt;/p&gt;
 &lt;p&gt;現在讓我們仔細研究一下負責寄 Slack 訊息的工作，也就是下圖的 &lt;code&gt;send_notificiation&lt;/code&gt;：&lt;/p&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/comic_app_v2_graph_view.png" style=""/&gt;
+&lt;img src="{filename}images/airflow/comic_app_v2_graph_view.png" style=""/&gt;
 &lt;p&gt;
         依照 Opeartor 種類不同，工作在 Web UI 上顯示的背景顏色也有所不同，方便區分。
     &lt;/p&gt;
@@ -2384,7 +2384,7 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Airflow 會將實際執行該 DAG 的日期設定為執行日期（execute_date）。因此 &lt;code&gt;ds&lt;/code&gt; 即為 &lt;code&gt;2018-08-19&lt;/code&gt;，&lt;code&gt;SlackAPIPostOperator&lt;/code&gt; 裡頭的 &lt;code&gt;"[{{ ds }}] 海賊王有新番了!"&lt;/code&gt; 就會被渲染成 &lt;code&gt;[2018-08-19] 海賊王有新番了!&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;最後我們就得到這個 Slack 訊息：&lt;/p&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/first-slack-message.png" style=""/&gt;
+&lt;img src="{filename}images/airflow/first-slack-message.png" style=""/&gt;
 &lt;br/&gt;
 &lt;/center&gt;&lt;p&gt;現在你也了解使用 Jinja 語法可以動態地調整每次 DAG 運行的邏輯以及執行結果。讓我們實際將 &lt;code&gt;comic_app_v2&lt;/code&gt; DAG 丟上線試試看吧！&lt;/p&gt;
 &lt;/div&gt;
@@ -2433,7 +2433,7 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;也就是 2100 年 1 月 2 號 0 點 0 分的時候，將 &lt;code&gt;comic_app_v2&lt;/code&gt; DAG 拿出來做第一次執行，而該 DAG Run 的執行日期為 2100 年 1 月 1 號 0 點 0 分。&lt;/p&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/black-man-question.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/black-man-question.jpg" style=""/&gt;
 &lt;p&gt;
         我知道你現在可能滿臉黑人問號，但讓我們好好想一想這到底是怎麼一回事。
     &lt;/p&gt;
@@ -2541,7 +2541,7 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;將 start_date 設為今天（8 月 20 號）&lt;strong&gt;以前&lt;/strong&gt;的日期，並啟動 Airflow 排程器的話，就會讓 Airflow 排程器馬上開始排程執行日期為 start_date 的 DAG Run，並且一直執行到最新的 DAG Run 為止。&lt;/p&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/time-machine.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/time-machine.jpg" style=""/&gt;
 &lt;p&gt;
     Airflow 排程器彷彿就像台時光機器，幫我們排程那些執行日期在過去的 DAG Run，重建過去。
     &lt;/p&gt;
@@ -2563,7 +2563,7 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;問題時間。&lt;/p&gt;
 &lt;p&gt;將 &lt;code&gt;comic_app_v2&lt;/code&gt; DAG 的 start_date 設定成 2018 年 8 月 17 號以後，在作者撰文的 8 月 20 號晚間 10 點為止， Airflow 會排程幾次 DAG Runs？它們分別的執行日期為何？花個幾秒鐘思考，確定你知道答案。（schedule_interval 一樣為 &lt;code&gt;@daily&lt;/code&gt; ）&lt;/p&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/clock-1274699_1280.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/clock-1274699_1280.jpg" style=""/&gt;
 &lt;p&gt;
         滴答滴答，你能在我們的時光機完成工作之前想出答案嗎？
     &lt;/p&gt;
@@ -2577,12 +2577,12 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;8 月 20 號的 DAG Run 則要等到 8 月 21 號 0 點才會被執行。&lt;/p&gt;
 &lt;p&gt;喝杯水重新載入 UI，我們可以從 Airflow UI 裡頭確認 &lt;code&gt;comic_app_v2&lt;/code&gt; DAG 總共有 4 個成功的 DAG Runs：&lt;/p&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/success-dags.png" style=""/&gt;
+&lt;img src="{filename}images/airflow/success-dags.png" style=""/&gt;
 &lt;br/&gt;
 &lt;/center&gt;&lt;p&gt;除了第一個 DAG Run 是我們之前手動觸發以外（你可以從它的 Run Id 以及最右邊的 External Trigger 看出），其他三個都是 Airflow 排程器實際排程並執行的結果（一樣你可以從它們的 Run Id 看出端倪）。&lt;/p&gt;
 &lt;p&gt;同時我的 Slack 作響。我們可以看到儘管執行日期相異，三個被排程的 DAG Runs 按照順序通知我有新番。&lt;/p&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/three-slack-messages.png" style=""/&gt;
+&lt;img src="{filename}images/airflow/three-slack-messages.png" style=""/&gt;
 &lt;br/&gt;
 &lt;/center&gt;&lt;p&gt;嗯 .. 海賊王一週出一次，想必其中有幾個是 fake news。&lt;/p&gt;
 &lt;p&gt;不管如何，我們在這章節成功讓 Airflow 排程器從好幾天前開始自動排程 &lt;code&gt;comic_app_v2&lt;/code&gt; DAG 並確認結果成功！&lt;/p&gt;
@@ -2606,7 +2606,7 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;因為 &lt;code&gt;comic_app_v3&lt;/code&gt; DAG 為了處理 JSON 檔案、利用 &lt;a href="http://selenium-python.readthedocs.io/" target="_blank"&gt;Selenium&lt;/a&gt; 存取網頁等事情，其程式碼變得比只用 &lt;code&gt;print()&lt;/code&gt; 的 &lt;code&gt;comic_app_v2&lt;/code&gt; DAG 要長得多，且其程式碼很大一部份已經不直接跟 Airflow 相關了。&lt;/p&gt;
 &lt;p&gt;我相信大部分的讀者是為了學習 Airflow 而來，而不是看我東 try 西 try 來實作這個 App。當然，如果你有興趣且想要練習如何建立一個自己的漫畫連載 App，你可以嘗試將實作邏輯填入到 &lt;code&gt;comic_app_v2&lt;/code&gt; DAG 裡頭的各個 Python 函式即可，或者直接執行我已經實作好所有邏輯的 &lt;code&gt;comic_app_v3&lt;/code&gt; DAG，這個我們在後面的&lt;a href="#quick-start"&gt;如何建立你自己的連載通知 App（懶人法）&lt;/a&gt;章節會有詳細講解。&lt;/p&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/BLOG-fill-in-the-blank@1X.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/BLOG-fill-in-the-blank@1X.jpg" style=""/&gt;
 &lt;p&gt;
         填填樂：以 comic_app_v2 建立好的工作流程為基礎，實作每個工作的邏輯就像是填空題一般，將邏輯填入對應的 Python 函式就好。（comic_app_v3 也是從 comic_app_v2 為基礎開發的，工作流程一模一樣）
     &lt;/p&gt;
@@ -2712,7 +2712,7 @@ airflow trigger_dag comic_app_v2&lt;/code&gt;&lt;/pre&gt;
 &lt;h4 id="在工作流程內加入條件分支"&gt;在工作流程內加入條件分支&lt;a class="anchor-link" href="#在工作流程內加入條件分支"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;有時候我們會想要在工作流程裡頭加入分支，當某條件符合的時候執行這個分支，當不符合的時候執行別的分支。&lt;/p&gt;
 &lt;p&gt;比方說我們的 App 就含有這樣的邏輯：&lt;/p&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/comic_app_v2_graph_view.png" style=""/&gt;
+&lt;img src="{filename}images/airflow/comic_app_v2_graph_view.png" style=""/&gt;
 &lt;p&gt;利用 BranchPythonOperator 實現 Airflow DAG 裡的條件分支
     &lt;/p&gt;
 &lt;/center&gt;&lt;p&gt;圖中的 &lt;code&gt;check_comic_info&lt;/code&gt; 「上游」工作會去漫畫網頁檢查有沒有新的連載，依照結果的不同，我們希望不同分支被執行：&lt;/p&gt;
@@ -2811,7 +2811,7 @@ conda install -c conda-forge selenium
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;一切順利的話，幾秒鐘之後，你會在自己的 Slack Workspace 及 channel 底下收到這個測試訊息：&lt;/p&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/real-slack-message.png" style=""/&gt;
+&lt;img src="{filename}images/airflow/real-slack-message.png" style=""/&gt;
 &lt;p&gt;
     圖中的 channel 會隨著你實際的設定改變
     &lt;/p&gt;
@@ -2825,7 +2825,7 @@ conda install -c conda-forge selenium
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;center&gt;
-&lt;img src="https://leemeng.tw/images/airflow/comic-website.jpg" style=""/&gt;
+&lt;img src="{filename}images/airflow/comic-website.jpg" style=""/&gt;
 &lt;p&gt;
         上頭 comic.json 裡頭，海賊王的 "1152" 就代表該漫畫主頁在動漫狂的連結中的數字（1152.html）
     &lt;/p&gt;

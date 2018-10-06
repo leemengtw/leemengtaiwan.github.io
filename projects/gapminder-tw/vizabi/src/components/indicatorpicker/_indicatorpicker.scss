@@ -1,0 +1,66 @@
+.vzb-ip-holder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .vzb-ip-select {
+    @include rtl {
+      padding-left: 21px;
+      padding-right: 5px;
+      margin-left: 5px;
+      margin-right: 11px;
+    }
+    display: block;
+    flex: 1 1 auto;
+    min-width: 0;
+    position: relative;
+    margin: 0 10px;
+    padding: 5px 21px 5px 5px;
+    border: 1px solid $vzb-color-primary-darkest;
+    border-radius: 4px;
+    cursor: pointer;
+    //max-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    text-align: center;
+    &::after {
+      @include rtl {
+        left: 5px;
+        right: auto;
+      }
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 6px solid transparent;
+      border-top: 12px solid $vzb-color-primary-darkest;
+      top: 0.7em;
+      right: 5px;
+    }
+    &:hover {
+      background-color: $vzb-color-grey-light;
+    }
+  }
+  .vzb-ip-info {
+    @extend %vzb-chart-info;
+    display: block;
+    flex: 0 0 auto;
+    height: 1.1em;
+    width: 1.1em;
+    .vzb-icon {
+      overflow: visible;
+      width: 1.1em;
+      height: 1.1em;
+    }
+  }
+}
+
+.vzb-sidebar {
+  .vzb-ip-select {
+    @include rtl {
+      margin-left: 2px;
+      margin-right: 11px;
+    }
+    margin-right: 2px;
+  }
+}
