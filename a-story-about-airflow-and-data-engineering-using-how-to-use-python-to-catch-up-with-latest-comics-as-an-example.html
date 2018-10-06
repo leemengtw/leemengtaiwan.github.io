@@ -25,9 +25,9 @@
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="https://leemeng.tw/theme/images/background/raj-eiamworakul-603747-unsplash.jpg" />
+        <meta property="og:image" content="/theme/images/background/raj-eiamworakul-603747-unsplash.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html" />
+        <meta property="og:url" content="/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html" />
         <meta property="og:title" content="一段 Airflow 與資料工程的故事：談如何用 Python 追漫畫連載" />
         <meta property="og:description" content="Airflow 是一個以 Python 開發的工作流管理系統，也是資料工程不可或缺的利器之一。近年不管是資料科學家、資料工程師還是任何需要處理數據的軟體工程師，Airflow 都是他們用來建構 ETL 以及處理批量資料的首選之一。這篇文章希望以一個簡易的漫畫連載通知 App 作為引子，讓讀者直觀地了解 Airflow 背後的運作原理、建立資料工程的知識基礎，並在閱讀本文後發揮自己的創意，實際應用 Airflow 來解決並自動化自己及企業的數據問題。" />
 
@@ -38,42 +38,32 @@
     <!-- CSS
     ================================================== -->
     <!--for customized css in individual page-->
-        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.min.css">
 
     <!--for showing toc navigation which slide in from left-->
-        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/toc-nav.css">
 
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
-    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+    <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='/theme/css/progress-bar.css' />
 
 
     <!--TiqueSearch-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
-    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
-    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/tipuesearch.css">
 
     <!-- script
     ================================================== -->
-    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
-    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+    <script src="/theme/js/modernizr.js"></script>
+    <script src="/theme/js/pace.min.js"></script>
 
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
-
-<!-- Global Site Tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)};
-  gtag('js', new Date());
-
-  gtag('config', 'UA-106559980-1');
-</script>
 
 
 
@@ -87,7 +77,7 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+            <a class="site-logo" href="../index.html"><img src="/theme/images/logo.png" alt="Homepage"></a>
         </div>
 <!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
@@ -139,28 +129,32 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/raj-eiamworakul-603747-unsplash.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/raj-eiamworakul-603747-unsplash.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
-                            <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
-                            <a href="https://leemeng.tw/tag/airflow.html" rel="tag">Airflow</a>
-                            <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
-                            <a href="https://leemeng.tw/tag/selenium.html" rel="tag">Selenium</a>
-                            <a href="https://leemeng.tw/tag/slack.html" rel="tag">Slack</a>
+                            <a href="/tag/python.html" rel="tag">Python</a>
+                            <a href="/tag/airflow.html" rel="tag">Airflow</a>
+                            <a href="/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                            <a href="/tag/selenium.html" rel="tag">Selenium</a>
+                            <a href="/tag/slack.html" rel="tag">Slack</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html" title="">
+                        <a href="/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html" title="">
                             一段 Airflow 與資料工程的故事：談如何用 Python 追漫畫連載
                         </a>
                     </h1>
                     <ul class="page-header__meta">
                         <li class="date">2018-08-21 (Tue)</li>
                         <li class="page-view">
+<<<<<<< HEAD
                             3,953 views
+=======
+                            1 views
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
                         </li>
                     </ul>
 
@@ -191,26 +185,6 @@
         </a>
     </div>
 
-    <div id="social-wrap" style="cursor: pointer">
-        <a class="open-popup" title="訂閱最新文章">
-            <i class="im im-newspaper-o" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html" target="_blank" title="分享到 Facebook">
-            <i class="im im-facebook" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html&title=%E4%B8%80%E6%AE%B5%20Airflow%20%E8%88%87%E8%B3%87%E6%96%99%E5%B7%A5%E7%A8%8B%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%9A%E8%AB%87%E5%A6%82%E4%BD%95%E7%94%A8%20Python%20%E8%BF%BD%E6%BC%AB%E7%95%AB%E9%80%A3%E8%BC%89&summary=Airflow%20%E6%98%AF%E4%B8%80%E5%80%8B%E4%BB%A5%20Python%20%E9%96%8B%E7%99%BC%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1%EF%BC%8C%E4%B9%9F%E6%98%AF%E8%B3%87%E6%96%99%E5%B7%A5%E7%A8%8B%E4%B8%8D%E5%8F%AF%E6%88%96%E7%BC%BA%E7%9A%84%E5%88%A9%E5%99%A8%E4%B9%8B%E4%B8%80%E3%80%82%E8%BF%91%E5%B9%B4%E4%B8%8D%E7%AE%A1%E6%98%AF%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%AE%B6%E3%80%81%E8%B3%87%E6%96%99%E5%B7%A5%E7%A8%8B%E5%B8%AB%E9%82%84%E6%98%AF%E4%BB%BB%E4%BD%95%E9%9C%80%E8%A6%81%E8%99%95%E7%90%86%E6%95%B8%E6%93%9A%E7%9A%84%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%EF%BC%8CAirflow%20%E9%83%BD%E6%98%AF%E4%BB%96%E5%80%91%E7%94%A8%E4%BE%86%E5%BB%BA%E6%A7%8B%20ETL%20%E4%BB%A5%E5%8F%8A%E8%99%95%E7%90%86%E6%89%B9%E9%87%8F%E8%B3%87%E6%96%99%E7%9A%84%E9%A6%96%E9%81%B8%E4%B9%8B%E4%B8%80%E3%80%82%E9%80%99%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%8C%E6%9C%9B%E4%BB%A5%E4%B8%80%E5%80%8B%E7%B0%A1%E6%98%93%E7%9A%84%E6%BC%AB%E7%95%AB%E9%80%A3%E8%BC%89%E9%80%9A%E7%9F%A5%20App%20%E4%BD%9C%E7%82%BA%E5%BC%95%E5%AD%90%EF%BC%8C%E8%AE%93%E8%AE%80%E8%80%85%E7%9B%B4%E8%A7%80%E5%9C%B0%E4%BA%86%E8%A7%A3%20Airflow%20%E8%83%8C%E5%BE%8C%E7%9A%84%E9%81%8B%E4%BD%9C%E5%8E%9F%E7%90%86%E3%80%81%E5%BB%BA%E7%AB%8B%E8%B3%87%E6%96%99%E5%B7%A5%E7%A8%8B%E7%9A%84%E7%9F%A5%E8%AD%98%E5%9F%BA%E7%A4%8E%EF%BC%8C%E4%B8%A6%E5%9C%A8%E9%96%B1%E8%AE%80%E6%9C%AC%E6%96%87%E5%BE%8C%E7%99%BC%E6%8F%AE%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%B5%E6%84%8F%EF%BC%8C%E5%AF%A6%E9%9A%9B%E6%87%89%E7%94%A8%20Airflow%20%E4%BE%86%E8%A7%A3%E6%B1%BA%E4%B8%A6%E8%87%AA%E5%8B%95%E5%8C%96%E8%87%AA%E5%B7%B1%E5%8F%8A%E4%BC%81%E6%A5%AD%E7%9A%84%E6%95%B8%E6%93%9A%E5%95%8F%E9%A1%8C%E3%80%82&source=https%3A//leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html" target="_blank" title="分享到 LinkedIn">
-            <i class="im im-linkedin" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://twitter.com/intent/tweet?text=%E4%B8%80%E6%AE%B5%20Airflow%20%E8%88%87%E8%B3%87%E6%96%99%E5%B7%A5%E7%A8%8B%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%9A%E8%AB%87%E5%A6%82%E4%BD%95%E7%94%A8%20Python%20%E8%BF%BD%E6%BC%AB%E7%95%AB%E9%80%A3%E8%BC%89&url=https%3A//leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html" target="_blank" title="分享到 Twitter">
-            <i class="im im-twitter" aria-hidden="true"></i>
-        </a>
-    </div>
 
 </div>
 
@@ -232,7 +206,7 @@
 <p><a href="https://airflow.apache.org/">Airflow</a> 是一個從 Airbnb 誕生並開源，以 <a href="https://www.python.org/">Python</a> 寫成的<a href="https://zh.wikipedia.org/wiki/%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F">工作流程管理系統（Workflow Management System）</a>，也是<a href="https://github.com/apache/incubator-airflow#who-uses-airflow">各大企業</a>的資料工程環節中不可或缺的利器之一。</p>
 <p>近年不管是資料科學家、資料工程師還是任何需要處理數據的軟體工程師，Airflow 都是他們用來建構可靠的 ETL 以及定期處理批量資料的首選之一。（事實上在 <a href="https://www.smartnews.com/en/">SmartNews</a>，除了 DS/DE，會使用 Airflow 的軟體工程師也不在少數）</p>
 <center>
-<img src="https://leemeng.tw/images/journal/smartnews-dmp.png" style=""/>
+<img src="/images/journal/smartnews-dmp.png" style=""/>
 </center>
 <center>
     我們在
@@ -258,7 +232,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <a href="https://airflow.apache.org/" target="_blank">
-<img src="https://leemeng.tw/images/airflow/app.jpg" style=""/>
+<img src="/images/airflow/app.jpg" style=""/>
 </a>
 <p>Slack 截圖：追漫畫應該要是件輕鬆的事情。<br/>我們將利用 Airflow 來實作一個像這樣會每天從 <a href="https://slack.com/" target="_blank">Slack</a> 推送最新漫畫連載的 App
     <br/>
@@ -293,7 +267,7 @@
 <p>為讓讀者完整了解開發這個 App 的背景脈絡、此 App 的執行邏輯以及使用 Airflow 來定期執行 App 的原因，在我們實際開始寫 Python 之前有兩小節的解說。</p>
 <p>如果你已經有 Airflow 及工作流程的基礎知識，且迫不及待想看 Python 程式碼，可以直接跳到 <a href="#Python-&amp;-Airflow-實作">Python 實作 &amp; Airflow 操作</a>章節之後再回來查看前面段落。</p>
 <center>
-<img src="https://leemeng.tw/images/airflow/toc-demo.jpg" style=""/>
+<img src="/images/airflow/toc-demo.jpg" style=""/>
 <p>
         這篇文章章節不少，你有時可能會需要回到前面章節回顧一些內容。活用左側放大鏡按鈕下面的章節傳送門能讓你更輕鬆地徜徉在本文的 Airflow 世界（此功能因為作者時間有限，目前只在寬螢幕實現）
     </p>
@@ -321,7 +295,7 @@
 </ul>
 <center>
 <a href="https://airflow.apache.org/" target="_blank">
-<img src="https://leemeng.tw/images/airflow/tim-gouw-68319-unsplash.jpg" style=""/>
+<img src="/images/airflow/tim-gouw-68319-unsplash.jpg" style=""/>
 </a>
 <p>手動追最新連載經常讓我追到懷疑人生</p>
 <br/>
@@ -368,7 +342,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <a href="https://airflow.apache.org/" target="_blank">
-<img src="https://leemeng.tw/images/airflow/www-headsmartmedia-com-179929-unsplash.jpg" style=""/>
+<img src="/images/airflow/www-headsmartmedia-com-179929-unsplash.jpg" style=""/>
 </a>
 <p>我們的 App 實際上就是一個完整的工作流程。<br/>
        App 從工作 A 執行到工作 B 就像是水從上游 A 流動到下游 B 一樣。</p>
@@ -390,7 +364,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/airflow/thought-2123970_1280.jpg" style=""/>
+<img src="/images/airflow/thought-2123970_1280.jpg" style=""/>
 <br/>
 <br/>
 </center>
@@ -425,7 +399,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <a href="https://airflow.apache.org/" target="_blank">
-<img src="https://leemeng.tw/images/airflow/airflow.gif" style=""/>
+<img src="/images/airflow/airflow.gif" style=""/>
 </a>
 <p>Airflow 的 <a href="https://airflow.apache.org/" target="_blank">Web UI</a> 讓我們能更輕鬆地管理及排程工作流程（後面我們會實際利用此 UI 管理並開發 App）</p>
 <br/>
@@ -457,7 +431,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/airflow/show-me-the-code.jpg" style=""/>
+<img src="/images/airflow/show-me-the-code.jpg" style=""/>
 <p>[Warning] 接下來不只給你 Python 程式碼，而是給你大量的 Python 程式碼</p>
 </center>
 </div>
@@ -535,7 +509,7 @@ airflow initdb
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/airflow/first-impression-of-airflow-web-ui.jpg" style=""/>
+<img src="/images/airflow/first-impression-of-airflow-web-ui.jpg" style=""/>
 <p>Airflow Web UI 首頁：顯示所有已定義的工作流程（DAG）。<br/>
         圖中的 3 個 DAG 就對應到我們接下來逐漸改善 App 時產生的三個 App 版本</p>
 </center>
@@ -658,7 +632,7 @@ airflow initdb
 <p>乍看之下沒什麼了不起的，就是些設定。</p>
 <p>但如果你有自己從頭實作過資料管道的經驗或者使用過 <a href="https://zh.wikipedia.org/wiki/Cron">Cron</a> 排程 ETL，就能體會 Airflow 這樣的「Configuration as Code」有多麽的強大：你只做一些設定（Config），Airflow 就幫你自動建立可靠、失敗時會自動重試的工作流程。</p>
 <center>
-<img src="https://leemeng.tw/images/airflow/utah-mechanical-contractors-1103725_1280.jpg" style=""/>
+<img src="/images/airflow/utah-mechanical-contractors-1103725_1280.jpg" style=""/>
 <p>按幾個按鈕就能做出可靠的工作流程，將自動化、失敗重試、相依性管理全部交給 Airflow</p>
 </center><p>這些排程設定為了方便管理，一般都另外定義在 <code>default_args</code> 變數並放在 script 的最上面。</p>
 </div>
@@ -999,11 +973,11 @@ airflow initdb
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<a ,="" href="https://leemeng.tw/images/airflow/comic_app_v2_graph_view.gif" target="_blank">
-<img src="https://leemeng.tw/images/airflow/comic_app_v2_graph_view.png" style=""/>
+<a ,="" href="/images/airflow/comic_app_v2_graph_view.gif" target="_blank">
+<img src="/images/airflow/comic_app_v2_graph_view.png" style=""/>
 </a>
 <p>Airflow Web UI 裡頭的 Graph View 幫我們視覺化 DAG 的工作流程<br/>
-        （<a ,="" href="https://leemeng.tw/images/airflow/comic_app_v2_graph_view.gif" target="_blank">這個 GIF 展示如何從 Airflow UI 開啟此畫面</a>）
+        （<a ,="" href="/images/airflow/comic_app_v2_graph_view.gif" target="_blank">這個 GIF 展示如何從 Airflow UI 開啟此畫面</a>）
     </p>
 </center>
 </div>
@@ -1079,7 +1053,7 @@ airflow <span class="nb">test</span> comic_app_v2 new_comic_available <span clas
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/airflow/airflow-architecture.png" style="width:70%"/>
+<img src="/images/airflow/airflow-architecture.png" style="width:70%"/>
 <p>
 <a href="https://medium.com/@dustinstansbury/understanding-apache-airflows-key-concepts-a96efed52b1a" target="_blank">Airflow 架構圖</a>：Scheduler 是實際做排程、呼叫 Worker 執行工作的傢伙；我們熟悉的 Webserver 則提供一個 Web UI 讓我們可以輕鬆檢視工作執行時產生的 Logs、DAG 的程式碼以及工作的執行結果；所有資料都被存在 Metadata Database 裡頭。
     </p>
@@ -1126,11 +1100,11 @@ airflow <span class="nb">test</span> comic_app_v2 new_comic_available <span clas
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<a ,="" href="https://leemeng.tw/images/airflow/trigger-dag-demo.gif" target="_blank">
-<img src="https://leemeng.tw/images/airflow/ready-to-trigger-dag.png" style=""/>
+<a ,="" href="/images/airflow/trigger-dag-demo.gif" target="_blank">
+<img src="/images/airflow/ready-to-trigger-dag.png" style=""/>
 </a>
 <p>在左邊將 DAG 設成「On」後，可以利用右邊「Trigger Dag」按鈕呼叫排程器馬上開始執行該 DAG <br/>
-        （<a ,="" href="https://leemeng.tw/images/airflow/trigger-dag-demo.gif" target="_blank">這個 GIF 展示如何從 Airflow UI 觸發一個 DAG</a>）
+        （<a ,="" href="/images/airflow/trigger-dag-demo.gif" target="_blank">這個 GIF 展示如何從 Airflow UI 觸發一個 DAG</a>）
 </p></center>
 </div>
 </div>
@@ -1176,7 +1150,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/airflow/success-dag.png" style=""/>
+<img src="/images/airflow/success-dag.png" style=""/>
 <br/>
 </center>
 </div>
@@ -1194,7 +1168,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/airflow/success-tasks-in-dag.png" style=""/>
+<img src="/images/airflow/success-tasks-in-dag.png" style=""/>
 <p>
         將游標放在右邊的「Success」狀態按鈕上可以顯示此 DAG Run 中被成功執行的工作（圖內的工作從左到右被執行）<br/>
         注意圖中 DAG Run 的 ID： manual_2018-08-19... 表示這是一個在 2018-08-19 被手動觸發的 DAG Run。
@@ -1215,7 +1189,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/airflow/first-slack-message.png" style=""/>
+<img src="/images/airflow/first-slack-message.png" style=""/>
 <p>
         comic_app_v2 DAG 如果發現有新連載就會寄一個罐頭 Slack 訊息，包含 DAG 執行日期。因為我是在 2018-08-19 當天手動觸發此 DAG，因此日期即為 2018-08-19。後面我們會看到如何客製化 Slack 訊息內容。
     </p>
@@ -1300,7 +1274,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 </pre></div>
 <p>然後我們就得到前面看過的工作流程圖了：</p>
 <center>
-<img src="https://leemeng.tw/images/airflow/comic_app_v2_graph_view.png" style=""/>
+<img src="/images/airflow/comic_app_v2_graph_view.png" style=""/>
 </center><p>你也可以回到 <a href="#app-v2">App 版本二：模組化</a>章節，確認 <code>comic_app_v2</code> 完整的程式碼後再利用左邊的傳送門回來，我等你。</p>
 </div>
 </div>
@@ -1318,7 +1292,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 <p>現在你應該已經了解如何使用 <code>PythonOperator</code> 建立一個新的工作，並利用 <code>&gt;&gt;</code> 語法定義 Airflow 的工作流程（DAG）了。我們也實際觸發 <code>comic_app_v2</code> DAG 讓 Airflow 排程器幫我們排程，最後收到一個 Slack 訊息。</p>
 <p>現在讓我們仔細研究一下負責寄 Slack 訊息的工作，也就是下圖的 <code>send_notificiation</code>：</p>
 <center>
-<img src="https://leemeng.tw/images/airflow/comic_app_v2_graph_view.png" style=""/>
+<img src="/images/airflow/comic_app_v2_graph_view.png" style=""/>
 <p>
         依照 Opeartor 種類不同，工作在 Web UI 上顯示的背景顏色也有所不同，方便區分。
     </p>
@@ -1347,7 +1321,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 <p>Airflow 會將實際執行該 DAG 的日期設定為執行日期（execute_date）。因此 <code>ds</code> 即為 <code>2018-08-19</code>，<code>SlackAPIPostOperator</code> 裡頭的 <code>"[{{ ds }}] 海賊王有新番了!"</code> 就會被渲染成 <code>[2018-08-19] 海賊王有新番了!</code>。</p>
 <p>最後我們就得到這個 Slack 訊息：</p>
 <center>
-<img src="https://leemeng.tw/images/airflow/first-slack-message.png" style=""/>
+<img src="/images/airflow/first-slack-message.png" style=""/>
 <br/>
 </center><p>現在你也了解使用 Jinja 語法可以動態地調整每次 DAG 運行的邏輯以及執行結果。讓我們實際將 <code>comic_app_v2</code> DAG 丟上線試試看吧！</p>
 </div>
@@ -1396,7 +1370,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 </pre></div>
 <p>也就是 2100 年 1 月 2 號 0 點 0 分的時候，將 <code>comic_app_v2</code> DAG 拿出來做第一次執行，而該 DAG Run 的執行日期為 2100 年 1 月 1 號 0 點 0 分。</p>
 <center>
-<img src="https://leemeng.tw/images/airflow/black-man-question.jpg" style=""/>
+<img src="/images/airflow/black-man-question.jpg" style=""/>
 <p>
         我知道你現在可能滿臉黑人問號，但讓我們好好想一想這到底是怎麼一回事。
     </p>
@@ -1504,7 +1478,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>將 start_date 設為今天（8 月 20 號）<strong>以前</strong>的日期，並啟動 Airflow 排程器的話，就會讓 Airflow 排程器馬上開始排程執行日期為 start_date 的 DAG Run，並且一直執行到最新的 DAG Run 為止。</p>
 <center>
-<img src="https://leemeng.tw/images/airflow/time-machine.jpg" style=""/>
+<img src="/images/airflow/time-machine.jpg" style=""/>
 <p>
     Airflow 排程器彷彿就像台時光機器，幫我們排程那些執行日期在過去的 DAG Run，重建過去。
     </p>
@@ -1526,7 +1500,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 <p>問題時間。</p>
 <p>將 <code>comic_app_v2</code> DAG 的 start_date 設定成 2018 年 8 月 17 號以後，在作者撰文的 8 月 20 號晚間 10 點為止， Airflow 會排程幾次 DAG Runs？它們分別的執行日期為何？花個幾秒鐘思考，確定你知道答案。（schedule_interval 一樣為 <code>@daily</code> ）</p>
 <center>
-<img src="https://leemeng.tw/images/airflow/clock-1274699_1280.jpg" style=""/>
+<img src="/images/airflow/clock-1274699_1280.jpg" style=""/>
 <p>
         滴答滴答，你能在我們的時光機完成工作之前想出答案嗎？
     </p>
@@ -1540,12 +1514,12 @@ airflow trigger_dag comic_app_v2</code></pre>
 <p>8 月 20 號的 DAG Run 則要等到 8 月 21 號 0 點才會被執行。</p>
 <p>喝杯水重新載入 UI，我們可以從 Airflow UI 裡頭確認 <code>comic_app_v2</code> DAG 總共有 4 個成功的 DAG Runs：</p>
 <center>
-<img src="https://leemeng.tw/images/airflow/success-dags.png" style=""/>
+<img src="/images/airflow/success-dags.png" style=""/>
 <br/>
 </center><p>除了第一個 DAG Run 是我們之前手動觸發以外（你可以從它的 Run Id 以及最右邊的 External Trigger 看出），其他三個都是 Airflow 排程器實際排程並執行的結果（一樣你可以從它們的 Run Id 看出端倪）。</p>
 <p>同時我的 Slack 作響。我們可以看到儘管執行日期相異，三個被排程的 DAG Runs 按照順序通知我有新番。</p>
 <center>
-<img src="https://leemeng.tw/images/airflow/three-slack-messages.png" style=""/>
+<img src="/images/airflow/three-slack-messages.png" style=""/>
 <br/>
 </center><p>嗯 .. 海賊王一週出一次，想必其中有幾個是 fake news。</p>
 <p>不管如何，我們在這章節成功讓 Airflow 排程器從好幾天前開始自動排程 <code>comic_app_v2</code> DAG 並確認結果成功！</p>
@@ -1569,7 +1543,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 <p>因為 <code>comic_app_v3</code> DAG 為了處理 JSON 檔案、利用 <a href="http://selenium-python.readthedocs.io/" target="_blank">Selenium</a> 存取網頁等事情，其程式碼變得比只用 <code>print()</code> 的 <code>comic_app_v2</code> DAG 要長得多，且其程式碼很大一部份已經不直接跟 Airflow 相關了。</p>
 <p>我相信大部分的讀者是為了學習 Airflow 而來，而不是看我東 try 西 try 來實作這個 App。當然，如果你有興趣且想要練習如何建立一個自己的漫畫連載 App，你可以嘗試將實作邏輯填入到 <code>comic_app_v2</code> DAG 裡頭的各個 Python 函式即可，或者直接執行我已經實作好所有邏輯的 <code>comic_app_v3</code> DAG，這個我們在後面的<a href="#quick-start">如何建立你自己的連載通知 App（懶人法）</a>章節會有詳細講解。</p>
 <center>
-<img src="https://leemeng.tw/images/airflow/BLOG-fill-in-the-blank@1X.jpg" style=""/>
+<img src="/images/airflow/BLOG-fill-in-the-blank@1X.jpg" style=""/>
 <p>
         填填樂：以 comic_app_v2 建立好的工作流程為基礎，實作每個工作的邏輯就像是填空題一般，將邏輯填入對應的 Python 函式就好。（comic_app_v3 也是從 comic_app_v2 為基礎開發的，工作流程一模一樣）
     </p>
@@ -1675,7 +1649,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 <h4 id="在工作流程內加入條件分支">在工作流程內加入條件分支<a class="anchor-link" href="#在工作流程內加入條件分支">&para;</a></h4><p>有時候我們會想要在工作流程裡頭加入分支，當某條件符合的時候執行這個分支，當不符合的時候執行別的分支。</p>
 <p>比方說我們的 App 就含有這樣的邏輯：</p>
 <center>
-<img src="https://leemeng.tw/images/airflow/comic_app_v2_graph_view.png" style=""/>
+<img src="/images/airflow/comic_app_v2_graph_view.png" style=""/>
 <p>利用 BranchPythonOperator 實現 Airflow DAG 裡的條件分支
     </p>
 </center><p>圖中的 <code>check_comic_info</code> 「上游」工作會去漫畫網頁檢查有沒有新的連載，依照結果的不同，我們希望不同分支被執行：</p>
@@ -1774,7 +1748,7 @@ conda install -c conda-forge selenium
 </pre></div>
 <p>一切順利的話，幾秒鐘之後，你會在自己的 Slack Workspace 及 channel 底下收到這個測試訊息：</p>
 <center>
-<img src="https://leemeng.tw/images/airflow/real-slack-message.png" style=""/>
+<img src="/images/airflow/real-slack-message.png" style=""/>
 <p>
     圖中的 channel 會隨著你實際的設定改變
     </p>
@@ -1788,7 +1762,7 @@ conda install -c conda-forge selenium
 <span class="p">}</span>
 </pre></div>
 <center>
-<img src="https://leemeng.tw/images/airflow/comic-website.jpg" style=""/>
+<img src="/images/airflow/comic-website.jpg" style=""/>
 <p>
         上頭 comic.json 裡頭，海賊王的 "1152" 就代表該漫畫主頁在動漫狂的連結中的數字（1152.html）
     </p>
@@ -1899,11 +1873,11 @@ conda install -c conda-forge selenium
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
-                        <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
-                        <a href="https://leemeng.tw/tag/airflow.html" rel="tag">Airflow</a>
-                        <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
-                        <a href="https://leemeng.tw/tag/selenium.html" rel="tag">Selenium</a>
-                        <a href="https://leemeng.tw/tag/slack.html" rel="tag">Slack</a>
+                        <a href="/tag/python.html" rel="tag">Python</a>
+                        <a href="/tag/airflow.html" rel="tag">Airflow</a>
+                        <a href="/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                        <a href="/tag/selenium.html" rel="tag">Selenium</a>
+                        <a href="/tag/slack.html" rel="tag">Slack</a>
                     </span>
 
                 </p>
@@ -1946,13 +1920,13 @@ conda install -c conda-forge selenium
                 <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
                         <div class="blog-content__prev">
-                            <a href="https://leemeng.tw/data-science-digest-volume-4-choose-your-own-character-in-data-science-role-play-game.html" rel="prev">
+                            <a href="/data-science-digest-volume-4-choose-your-own-character-in-data-science-role-play-game.html" rel="prev">
                                 <span>Previous Post</span>
                                 資料科學文摘 Vol.4 數據科學 MMORPG 上線！你，選好自己的角色了嗎？
                             </a>
                         </div>
                         <div class="blog-content__next">
-                            <a href="https://leemeng.tw/data-science-digest-volume-3.html" rel="next">
+                            <a href="/data-science-digest-volume-3.html" rel="next">
                                 <span>Next Post</span>
                                 資料科學文摘 Vol.3 Pandas、Docker 以及數據時代的反思
                             </a>
@@ -1975,25 +1949,6 @@ conda install -c conda-forge selenium
 
     </article>
 
-<div class="comments-wrap">
-    <div id="comments" class="row">
-        <div class="col-full">
-            <div id="disqus_thread"></div>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-var disqus_shortname = 'leemengtaiwan';
-var disqus_title = '一段 Airflow 與資料工程的故事：談如何用 Python 追漫畫連載';
-
-(function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
     <!-- footer
@@ -2003,7 +1958,7 @@ var disqus_title = '一段 Airflow 與資料工程的故事：談如何用 Pytho
             <div class="col-full">
 
                 <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                    <a class="footer-site-logo" href="#0"><img src="/theme/images/logo.png" alt="Homepage"></a>
                 </div>
 
                 <ul class="footer-social">
@@ -2048,12 +2003,12 @@ var disqus_title = '一段 Airflow 與資料工程的故事：談如何用 Pytho
 
         <!-- Javascript
     ================================================== -->
-    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
-    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
-    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script src="/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="/theme/js/plugins.js"></script>
+    <script src="/theme/js/main.js"></script>
 
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+    <script type='text/javascript' src='/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
 
     <!--show and hide left navigation by scrolling-->
     <script>

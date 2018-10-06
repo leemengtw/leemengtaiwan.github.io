@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 揭開資料科學的神秘面紗</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="市面上有大量資料科學相關課程、書籍供我們自由學習，但你有想過為何我們需要學習資料科學嗎？為什麼資料科學現在那麼夯？我們應該拿資料科學來做什麼？抽離技術實作或者分析手法的討論，這篇文章試著用簡單的經濟學解釋其背後原因。希望閱讀完本文的讀者能了解為何資料科學在資訊時代扮演重要角色，以及我們要怎麼有效率地把握「資料科學力」以創造更大的價值。" />
+        <meta name="keywords" content="資料科學, data-science" />
+        <meta name="tags" content="資料科學" />
+        <meta name="tags" content="data-science" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/yoann-boyer-276971-unsplash.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemeng.tw/demystify-the-hype-of-data-science-and-its-value.html" />
+        <meta property="og:title" content="揭開資料科學的神秘面紗" />
+        <meta property="og:description" content="市面上有大量資料科學相關課程、書籍供我們自由學習，但你有想過為何我們需要學習資料科學嗎？為什麼資料科學現在那麼夯？我們應該拿資料科學來做什麼？抽離技術實作或者分析手法的討論，這篇文章試著用簡單的經濟學解釋其背後原因。希望閱讀完本文的讀者能了解為何資料科學在資訊時代扮演重要角色，以及我們要怎麼有效率地把握「資料科學力」以創造更大的價值。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="揭開資料科學的神秘面紗">揭開資料科學的神秘面紗</a><ul><li><a class="toc-href" href="#目錄" title="目錄">目錄</a></li><li><a class="toc-href" href="#聽說你想當資料科學家？" title="聽說你想當資料科學家？">聽說你想當資料科學家？</a></li><li><a class="toc-href" href="#資料科學到底在夯什麼？" title="資料科學到底在夯什麼？">資料科學到底在夯什麼？</a></li><li><a class="toc-href" href="#啊所以那個資料科學勒？" title="啊所以那個資料科學勒？">啊所以那個資料科學勒？</a></li><li><a class="toc-href" href="#充實你的資料科學力" title="充實你的資料科學力">充實你的資料科學力</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/yoann-boyer-276971-unsplash.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                            <a href="https://leemeng.tw/tag/data-science.html" rel="tag">data-science</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemeng.tw/demystify-the-hype-of-data-science-and-its-value.html" title="">
+                            揭開資料科學的神秘面紗
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2018-05-11 (Fri)</li>
+                        <li class="page-view">
+                            2,612 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
+
+    <div id="social-wrap" style="cursor: pointer">
+        <a class="open-popup" title="訂閱最新文章">
+            <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/demystify-the-hype-of-data-science-and-its-value.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/demystify-the-hype-of-data-science-and-its-value.html&title=%E6%8F%AD%E9%96%8B%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E7%9A%84%E7%A5%9E%E7%A7%98%E9%9D%A2%E7%B4%97&summary=%E5%B8%82%E9%9D%A2%E4%B8%8A%E6%9C%89%E5%A4%A7%E9%87%8F%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E7%9B%B8%E9%97%9C%E8%AA%B2%E7%A8%8B%E3%80%81%E6%9B%B8%E7%B1%8D%E4%BE%9B%E6%88%91%E5%80%91%E8%87%AA%E7%94%B1%E5%AD%B8%E7%BF%92%EF%BC%8C%E4%BD%86%E4%BD%A0%E6%9C%89%E6%83%B3%E9%81%8E%E7%82%BA%E4%BD%95%E6%88%91%E5%80%91%E9%9C%80%E8%A6%81%E5%AD%B8%E7%BF%92%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%97%8E%EF%BC%9F%E7%82%BA%E4%BB%80%E9%BA%BC%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E7%8F%BE%E5%9C%A8%E9%82%A3%E9%BA%BC%E5%A4%AF%EF%BC%9F%E6%88%91%E5%80%91%E6%87%89%E8%A9%B2%E6%8B%BF%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E4%BE%86%E5%81%9A%E4%BB%80%E9%BA%BC%EF%BC%9F%E6%8A%BD%E9%9B%A2%E6%8A%80%E8%A1%93%E5%AF%A6%E4%BD%9C%E6%88%96%E8%80%85%E5%88%86%E6%9E%90%E6%89%8B%E6%B3%95%E7%9A%84%E8%A8%8E%E8%AB%96%EF%BC%8C%E9%80%99%E7%AF%87%E6%96%87%E7%AB%A0%E8%A9%A6%E8%91%97%E7%94%A8%E7%B0%A1%E5%96%AE%E7%9A%84%E7%B6%93%E6%BF%9F%E5%AD%B8%E8%A7%A3%E9%87%8B%E5%85%B6%E8%83%8C%E5%BE%8C%E5%8E%9F%E5%9B%A0%E3%80%82%E5%B8%8C%E6%9C%9B%E9%96%B1%E8%AE%80%E5%AE%8C%E6%9C%AC%E6%96%87%E7%9A%84%E8%AE%80%E8%80%85%E8%83%BD%E4%BA%86%E8%A7%A3%E7%82%BA%E4%BD%95%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%9C%A8%E8%B3%87%E8%A8%8A%E6%99%82%E4%BB%A3%E6%89%AE%E6%BC%94%E9%87%8D%E8%A6%81%E8%A7%92%E8%89%B2%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%88%91%E5%80%91%E8%A6%81%E6%80%8E%E9%BA%BC%E6%9C%89%E6%95%88%E7%8E%87%E5%9C%B0%E6%8A%8A%E6%8F%A1%E3%80%8C%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%8A%9B%E3%80%8D%E4%BB%A5%E5%89%B5%E9%80%A0%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%83%B9%E5%80%BC%E3%80%82&source=https%3A//leemeng.tw/demystify-the-hype-of-data-science-and-its-value.html" target="_blank" title="分享到 LinkedIn">
+            <i class="im im-linkedin" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://twitter.com/intent/tweet?text=%E6%8F%AD%E9%96%8B%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E7%9A%84%E7%A5%9E%E7%A7%98%E9%9D%A2%E7%B4%97&url=https%3A//leemeng.tw/demystify-the-hype-of-data-science-and-its-value.html" target="_blank" title="分享到 Twitter">
+            <i class="im im-twitter" aria-hidden="true"></i>
+        </a>
+    </div>
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>幾乎每天我們都能看到跟資料科學（Data Science）相關的新聞與文章，像是最近 <a href="https://www.bnext.com.tw/article/49070/google-ai-phone-call-assistant-duplex-ethical-social-implications">Google 利用遞迴神經網路建立可以跟真人對話而不被發現的語音助理</a>、 <a href="https://www.inside.com.tw/2018/04/24/data-scientist-interview">成為 Apple 等公司的資料科學家前必讀的面試題目</a>等等。</p>
+<p>市面上有大量資料科學相關課程、書籍供我們自由學習，事實上，多到一個人不可能看完。你有想過為何我們需要學習資料科學嗎？為什麼資料科學現在那麼夯？我們應該拿資料科學來做什麼？</p>
+<p>抽離技術實作或者分析手法的討論，這篇文章試著用簡單的經濟學原理回答這幾個問題。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>希望閱讀完本文的讀者能了解為何資料科學在資訊時代扮演重要角色，以及我們要怎麼有效率地把握「資料科學力」以創造更大的價值。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="目錄">目錄<a class="anchor-link" href="#目錄">&para;</a></h2><p>本文大致上會分成以下段落：</p>
+<ul>
+<li><a href="#聽說你想當資料科學家？">聽說你想當資料科學家？</a></li>
+<li><a href="#資料科學到底在夯什麼？">資料科學到底在夯什麼？</a></li>
+<li><a href="#啊所以那個資料科學勒？">啊所以那個資料科學勒？</a></li>
+<li><a href="#充實你的資料科學力">充實你的資料科學力</a></li>
+<li><a href="#結語">結語</a></li>
+</ul>
+<p>讓我們開始吧！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="聽說你想當資料科學家？">聽說你想當資料科學家？<a class="anchor-link" href="#聽說你想當資料科學家？">&para;</a></h2><p>資料科學大概是近年最夯的流行語之一了。不管在哪邊，你都可以聽到媒體相關的報導：</p>
+<ul>
+<li><a href="https://taronews.tw/2018/05/07/34472/">食農教育科研成果農業大數據結合資料科學</a></li>
+<li><a href="https://www.inside.com.tw/2018/04/24/data-scientist-interview">想成為資料科學家？來挑戰 Google、FB、Apple 等六間公司人工智慧最新面試題</a></li>
+<li><a href="http://www.digitimes.com.tw/iot/article.asp?cat=130&amp;cat1=&amp;cat2=&amp;id=0000529979_36M8SBKK8S3C4K8O2RHKM&amp;social_share=y">台灣產業AI化 最大問題人才不足</a></li>
+<li><a href="https://www.ithome.com.tw/news/121342">成為搶手資料科學家應具備什麼技能？先學Python準沒錯</a></li>
+</ul>
+<p>... 族繁不及備載。</p>
+<p>而因為企業對擁有資料科學能力的人才需求大，想成為資料科學家（Data Scientist）的同學們也不少，相關的教學文章、線上課程如雨後春筍般湧現。這邊我沒辦法把它們一一列出，但你可以前往一些知名的線上課程平台如 <a href="https://www.coursera.org/">Coursera</a>、<a href="https://www.udemy.com/">Udemy</a>、<a href="https://www.datacamp.com/">DataCamp</a> 並搜尋「資料科學」（或者 Data Science）就知道我的意思了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/data-science/datacamp-courses.png" style=""/>
+</center>
+<center>
+<a href="https://www.datacamp.com/" target="_blank">DataCamp</a>
+<font color="purple">: </font>基本上全部都是資料科學相關課程，寫程式寫到飽
+    <br/>
+<br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果我們把這些新聞報導或者教學課程，依照主題/領域做個粗略分類的話，還可以得到一些關鍵字：</p>
+<ul>
+<li>大數據（Big Data）</li>
+<li>人工智慧（Artificial Intelligence）</li>
+<li>資料視覺化（Data Visualization）</li>
+<li>機器學習（Machine Learning）</li>
+<li>深度學習（Deep Learning）</li>
+<li>統計分析（Statistical Analytics）</li>
+<li>雲端運算 （Cloud Computing）</li>
+<li>Python、R、SQL</li>
+<li>...</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/data-science/sean-pollock-203658-unsplash.jpg" style=""/>
+</center>
+<center>
+<a href="https://unsplash.com/photos/PhYq704ffdA?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">資料科學</a>
+<font color="purple">: </font>涵蓋大量領域，各領域的專業知識就像一棟棟大樓將你包圍吞噬
+    <br/>
+<br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>想學習資料科學的同學這時候就頭疼了：</p>
+<ul>
+<li>「全部都要學嗎？從哪邊開始 .. 」</li>
+<li>「選 <a href="https://zh.wikipedia.org/wiki/Python">Python</a> 或是 <a href="https://zh.wikipedia.org/wiki/R%E8%AF%AD%E8%A8%80">R 語言</a>？還是先學 <a href="https://zh.wikipedia.org/wiki/SQL">SQL</a>？」</li>
+<li>「資料視覺化要學 Python 的 <a href="https://matplotlib.org/">Matplotlib</a> 還是 R 的 <a href="http://ggplot2.org/">ggplot2</a> ？」</li>
+</ul>
+<p>現在有些網站很用心，為了解決你的煩惱，還將相關的課程集結起來成一個<a href="https://www.coursera.org/specializations/data-science-python">專業課程（Specialization）</a>讓你一步一步跟著學。</p>
+<p>勤學如你，上了幾門課以後學會如何利用 <a href="https://www.coursera.org/learn/python-machine-learning">Python 做簡單的機器學習模型</a>、<a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1">使用 R 做資料視覺化</a>，甚至也懂得<a href="https://www.datacamp.com/courses/intro-to-sql-for-data-science">使用 SQL 存取資料庫</a>。</p>
+<p>恭喜！你是個資料科學家了！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>...</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>痾.. 這麼簡單？好像哪裡怪怪的？</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>...</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你會不會開始思考：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>所以到底啥是資料科學？資料科學到底在夯什麼？為什麼我要學資料科學？</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>實際上會這樣想的不止你一人。在仔細思考並給上述問題一個合理的解釋之前，就算學了再多門課，充其量只是在不斷擴充自己的「資料科學工具盒」，但卻不知道「為何要買這些工具」、「要拿這些工具做什麼」。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/data-science/barn-images-12223-unsplash.jpg" style=""/>
+</center>
+<center>
+<a href="https://unsplash.com/photos/t5YUoHW6zRo?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">資料科學工具箱</a>
+<font color="purple">: </font>琳瑯滿目，酷！但你要用這些工具創造或是改善什麼？
+    <br/>
+<br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因為你學的是方便實踐資料科學的程式語言、工具、方法論（Methodology），而不是「為什麼資料科學重要」。我會用剩下的篇幅試著對此問題給出一套解釋。解釋方法有很多種，所以非常歡迎在底下留言分享你的看法。</p>
+<p>不過現在，且聽我娓娓道來。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="資料科學到底在夯什麼？">資料科學到底在夯什麼？<a class="anchor-link" href="#資料科學到底在夯什麼？">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>除了耳熟能詳的「技術發展快速」、「資料量龐大」的理由以外，資料科學之所以那麼夯，背後還有一個可想而知的巨大推手：「商業利益」。</p>
+<p>要進一步解釋這個概念，我們可以從 Google 首席經濟學家 <a href="https://zh.wikipedia.org/wiki/%E5%93%88%E5%B0%94%C2%B7%E8%8C%83%E9%87%8C%E5%AE%89">哈爾&middot;范里安</a> 在 2009 年接受麥肯錫的訪問，探討<a href="https://www.mckinsey.com/industries/high-tech/our-insights/hal-varian-on-how-the-web-challenges-managers">網際網路對企業的挑戰</a>中看出一些端倪。（真知灼見，建議作課外閱讀）</p>
+<p>近年網際網路快速發展。要在網路上發表內容，對任何人或者任何企業來說都是輕而易舉的事情。這邊說的內容（Content）可以是任意資訊，比如説：</p>
+<ul>
+<li>一則 Facebook 粉絲團貼文</li>
+<li>一則銷售青島啤酒的網頁</li>
+<li>一個教你學習資料科學的線上課程網頁</li>
+<li>一篇部落格文章（像你正在看的這篇）</li>
+</ul>
+<p>因為傳播媒介以及科技的進步，要在網路上發布這些資訊並讓他人注意到的成本趨近於零，而其導致的結果就是<a href="https://www.ithome.com.tw/article/87190">全球的資訊量急速成長</a>。被稱為人工智慧之父之一的經濟學家 <a href="http://wiki.mbalib.com/zh-tw/%E8%B5%AB%E4%BC%AF%E7%89%B9%C2%B7%E8%A5%BF%E8%92%99">赫伯特&middot;西蒙</a> 針對這種現象就曾說過一句<a href="https://en.wikiquote.org/wiki/Herbert_A._Simon">名言</a>：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>在一個資訊豐富的世界裡頭，資訊量的富裕導致人們注意力的貧窮。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>以個人的角度來看，在時間以及精力有限的情況下，我們每天能接受資訊的時間以及注意力都是有限的。如何分配這些寶貴的注意力以接收對的資訊，變成現代人的課題。</p>
+<p>痛點即商機。很多企業透過解決這個<a href="https://zh.wikipedia.org/wiki/%E8%B3%87%E8%A8%8A%E8%B6%85%E8%BC%89">資料超載（Information Overload）</a>的問題來提供使用者價值：</p>
+<ol>
+<li>漫畫網站把所有知名漫畫整理在一起供你閱讀<ul>
+<li>價值：統整、數位化、自動更新散落各地的漫畫資訊</li>
+</ul>
+</li>
+<li>Google 提供搜尋功能給你<ul>
+<li>價值：讓你快速找到存在地球上的任何相關資訊</li>
+</ul>
+</li>
+<li>Youtube 讓你免費看到飽<ul>
+<li>價值：讓你隨時看全世界最新的貓咪影片</li>
+</ul>
+</li>
+<li>只要喊「+1」Facebook 粉絲團就免費把「珍貴」的內容給你<ul>
+<li>價值：給你數位內容如新產品資訊、整理過後的旅遊資訊等</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>天下沒有白吃的午餐，企業願意這麼做必定有得到什麼。你的確取得了免費的數位內容（文章、影片、漫畫），但又付出了什麼？</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/data-science/velizar-ivanov-540528-unsplash.jpg" style=""/>
+</center>
+<center>
+<a href="https://unsplash.com/photos/lz_VB9yEc_c?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">資訊時代最珍貴的資源</a>
+<font color="purple">: </font>人們（與喵）的關注
+    <br/>
+<br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>實際上，不管是閱讀文章、觀看影片、瀏覽漫畫，你都是在拿了你最寶貴的「注意力」跟企業交換這些價值。而在成功獲得你目光的同時，這些企業則透過秀廣告給你來獲利（例 1 - 3，暫不考慮 AdBlock）。</p>
+<p>註：在這邊，「注意力」跟「時間」有些微秒差異。不過你只要回想昨天晚上跟朋友或是家人吃飯的時候，各自滑手機的景象就可以了：你把「時間」花在跟身旁的人吃飯，卻把「注意力」（或者說是關注）放在手機裡頭的數位資訊。（如果你沒用手機，我很抱歉。）</p>
+<p>例 4 很有趣，你是拿「你自己以及你朋友圈的人的注意力」來做價值交換（你的留言讓 Facebook 的演算法自動推播該貼文到你朋友的動態牆上，粉絲團賺到他們的關注），但基本上是同樣的道理。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/data-science/rawpixel-552390-unsplash.jpg" style=""/>
+</center>
+<center>
+<a href="https://unsplash.com/photos/PUyuhpHr9Z4?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">資訊時代最常見的價值交換</a>
+<font color="purple">: </font>給我你的關注，我就給你免費資訊（外加廣告）
+    <br/>
+<br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>以經濟學的角度來重述前面的觀點，現在的資訊時代最不缺的資源就是「資料」；稀有、價值高且需要小心分配的稀有財是「人們的注意力」。在這個資訊爆炸的時代，企業透過加工處理大量的原始資料，產生新產品、服務及價值來換取該稀有財：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>誰能善用資料科學的力量、從現有數據創造新價值、服務或產品，並以此吸引人們珍貴的關注，就能獲得商機。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這就是為何資料科學那麼夯的其中一個原因：從資料中創造新價值，進而產生商業利益。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="啊所以那個資料科學勒？">啊所以那個資料科學勒？<a class="anchor-link" href="#啊所以那個資料科學勒？">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>聽到上面的例子，有些人的想法可能是：</p>
+<ul>
+<li>「哇這些企業好狡猾把我的注意力都偷走了！」</li>
+<li>「這樣回覆 +1 好有罪惡感喔嗚嗚」</li>
+<li>「好險我用 AdBlock 嘻嘻」</li>
+</ul>
+<p>但這邊重點是要說明，這種依靠廣告的商業模式已經行之多年。Facebook、Google 等企業為了抓住我們的目光，持續不斷地在精進，以求能有效率地儲存、處理以及分析由我們產生的大量數據。</p>
+<p>而他們用來處理、分析、視覺化以及理解數據的這些程式語言、工具、方法論的總集合就構成所謂的資料科學。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>搜集、理解、分析、處理、視覺化資料數據並從中萃取有用的價值就是資料科學。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>讓我們以一個簡單的 Google 搜尋做更進一步的解釋。</p>
+<p>想像你在 Google 上搜尋「 data science courses 」後可能跑出以下結果：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/data-science/google.png" style=""/>
+</center>
+<center>
+    Google 日常：搜尋結果之上有幾個相關廣告
+    <br/>
+<br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>沒什麼特別的，Google 日常不是嗎？</p>
+<p>現在試著做以下步驟：</p>
+<ol>
+<li>開一個新的分頁/視窗</li>
+<li>隨便搜尋一個你有興趣的商品/產品，記下出現的幾個廣告還有它們的順序。</li>
+<li>隨便點幾個連結或者什麼都不做</li>
+</ol>
+<p>重複步驟 2 跟 3 幾次以後，你應該可以觀察到顯示的廣告消失或者順序改變了：而這是因為背後有 Google 的廣告競價系統在運作。下面是這系統的超級簡化示意圖：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/data-science/google-bidding-system.png" style=""/>
+</center>
+<center>
+    Google 廣告競價：運用使用者的行為資料，即時地推算出該使用者點擊各廣告的機率。搭配業主的出價，選出適當的廣告顯示。
+    <br/>
+<br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>要完成此系統需要強大的資料科學技術支持。只有一個人搜尋的時候事情還好辦，但你得知道，在本文撰寫當下，Google <a href="http://www.internetlivestats.com/one-second/#google-band">平均 1 秒鐘處理 67, 000 筆</a>搜尋。試著想像一下，為了實現這個系統，Google 可能需要完成以下幾件事情：</p>
+<ul>
+<li>使用深度學習進行自然語言處理，判斷使用者輸入的語言以及想要表達什麼</li>
+<li>即時處理所有使用者查詢的串流數據</li>
+<li>利用使用者過往的瀏覽紀錄來預測點擊某廣告的機率</li>
+<li>在公司內部監控目前台灣使用者的搜尋趨勢（類似 <a href="https://trends.google.com.tw/trends/">Google Trend</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>機器學習、統計分析、大數據 ... 這些工作運用到的技術，不就是那些我們在<a href="#聽說你想當資料科學家？">聽說你想當資料科學家</a>章節裡頭看到的關鍵字嗎？</p>
+<p>我們這篇只以 Google 的廣告系統為例，但實際上現在幾乎可以說是全世界都在想辦法利用資料科學的力量來處理資料並創造新的價值、服務、公司。看看現在的新創，有哪些沒有用到資料科學？</p>
+<p>所以你現在知道為何資料科學那麼重要了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>全世界都在想辦法活用資料科學以從龐大數據中為使用者創造更多價值。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="充實你的資料科學力">充實你的資料科學力<a class="anchor-link" href="#充實你的資料科學力">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>綜觀資料科學一詞萌芽到最近的過程，全世界的資料量<a href="https://www.ithome.com.tw/article/87190">持續成長</a>，而人們也不斷地在想辦法追趕這些資料：</p>
+<ul>
+<li>用最有效率的方式儲存這些資料</li>
+<li>用最快的速度處理及分析這些資料</li>
+<li>對這些資料做實驗，重複再重複測試不同的假說及演算法</li>
+<li>快速地從資料萃取出新的洞見（Insight）</li>
+<li>以這些洞見創造新的價值、產品、服務</li>
+<li>加速以上步驟所需要的循環時間</li>
+</ul>
+<p>如同前面 Google 的例子，這些都是資料科學。</p>
+<p>你會發現，所謂的資料科學（Data Science）就是對資料（Data）做科學、有系統地（Scientific）的處理罷了。資料科學一詞或許誕生沒多久，但對資料做科學這概念老早就存在了。只是近年因為</p>
+<ul>
+<li>數據量的快速成長（如<a href="http://technews.tw/2017/06/07/seagate-one-fifth-of-global-data-will-be-real-time-and-most-of-them-belongs-to-internet-of-things/">物聯網裝置的火紅</a>）</li>
+<li>運算能力的進步</li>
+<li>人工智慧的突破</li>
+</ul>
+<p>等等原因，讓我們更急迫地想辦法用以往做不到的方式來理解這個世界的龐大數據。 <a href="https://www.youtube.com/watch?v=F1wlCerC40E">Youtube 現在能夠分析出你喜歡看貓咪影片</a>，<a href="https://www.bnext.com.tw/article/49070/google-ai-phone-call-assistant-duplex-ethical-social-implications">Google 可以建立跟真人對話而不被發現的語音助理</a>。這些都是他們利用資料科學，從現有的大量數據創造額外價值的例子。如同<a href="https://www.safaribooksonline.com/library/view/what-is-data/9781449336080/ch01.html">這篇</a>所說的：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>未來是屬於那些能從大量資料數據創造價值的企業以及人才的。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>一個好消息是：</p>
+<ul>
+<li>一企業擁有的資料量</li>
+<li>一企業裡能夠處理、分析此資料量的資料科學人才數量</li>
+</ul>
+<p>這兩者在多數企業都是不成比例的（後者短缺），因此擁有資料科學能力的人才薪水可以說是水漲船高。而這當然也變成為何近年那麼多人想成為資料科學家的動機（儘管有些人可能不知道背後原因）。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/data-science/stefan-stefancik-257625-unsplash.jpg" style=""/>
+</center>
+<center>
+<a href="https://unsplash.com/photos/UCZF1sXcejo?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">了解資料科學相關知識的人才</a>
+<font color="purple">: </font>是大多數的企業積極尋找的對象
+    <br/>
+<br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在了解這點以後，你可以先想想自己的興趣在哪裡、想用資料科學創造什麼價值。這邊想強調的是，先思考你能透過資料科學，創造什麼新的「價值」，而不是什麼「商業利益」。</p>
+<p>如同我們前面看到的，資料科學是現行廣告經濟的背後推手，但為何我們願意看 Google、Facebook 丟給我們的廣告？那是因為他們「先」從資料創造了價值（方便的搜尋功能、社群網路功能）從而取得我們的關注。</p>
+<p>實際上，在取得關注以後，你的商業模式不是一定要秀廣告給使用者看。訂閱制（Subscription）或會員制是一個替代方案： NetFlix 和 Amazon 都是這樣。甚至，你可以<a href="https://www.bnext.com.tw/article/49041/google-fb-business-model">不像 Google 一樣思考</a>，使用新的商業模型。</p>
+<p>但「商業模式」不是這篇想討論的議題。重點是「價值」：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>在資訊爆炸的時代，各行各業的每個人都需要學習善用資料科學，從資料數據創造新的使用者價值。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>事實上，與其想著要成為一個資料科學家，不如先好好想想，在自己目前所在的業界、公司、職位能怎麼利用手邊的資料數據搭配資料科學來創造新的價值。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你耐心地看到這邊，代表我得到你最珍貴的關注了，賺賺賺！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>稍微複習一下，我們在這篇文章開頭假想了一個有志學習資料科學的同學。在他/她學習資料科學的過程產生了幾個疑問：「為何資料科學那麼夯？」「為何我們需要資料科學？」</p>
+<p>而本篇則以非常簡單的經濟學供給概念，加上 Google 以及 Facebook 的運作方式來說明現在的企業是怎麽利用資料科學來創造新的使用者價值來交換人們的關注。</p>
+<p>我們接著說著為何今後各行各業都需要「資料科學力」來處理日益增加的資料數據並為人們建立新的價值。事實上很多職稱不是「資料科學家」的人現在都已經在做著資料科學：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>搜集、理解、分析、處理、視覺化資料數據並從中萃取有用的價值</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>當年網際網路開始蓬勃發展，軟體工程師是最夯最潮的行業。儘管現在工程師的重要性並沒有下降，隨著人們的程式能力穩定上升，軟體工程師回歸平凡，甚至還有人戲稱為「碼農」、「程式猿」。</p>
+<p>歷史總是不斷重演。</p>
+<p>或許再過幾年，等人們的資料科學力上升到一定階段，資料科學變成呼吸喝水般的知識以後，資料科學家們也會被人戲稱為「資料農」。</p>
+<p>或許當你幾年後遇到我，我可能這樣回你：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>嘿！我就只是個資料農！你也是嗎？</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        <a href="https://leemeng.tw/tag/data-science.html" rel="tag">data-science</a>
+                    </span>
+
+                </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a href="https://leemeng.tw/intuitive-understandind-of-bayes-rules-and-learn-from-experience.html" rel="prev">
+                                <span>Previous Post</span>
+                                從經驗中學習 - 直觀理解貝氏定理及其應用
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <a href="https://leemeng.tw/why-you-need-to-learn-sql-as-a-data-scientist.html" rel="next">
+                                <span>Next Post</span>
+                                為何資料科學家需要學習 SQL
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '揭開資料科學的神秘面紗';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
+
+</body>
+</html>

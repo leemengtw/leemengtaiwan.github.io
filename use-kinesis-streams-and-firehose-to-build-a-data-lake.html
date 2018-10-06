@@ -24,9 +24,9 @@
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="https://leemeng.tw/theme/images/background/jackson-hendry-435713-unsplash.jpg" />
+        <meta property="og:image" content="/theme/images/background/jackson-hendry-435713-unsplash.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://leemeng.tw/use-kinesis-streams-and-firehose-to-build-a-data-lake.html" />
+        <meta property="og:url" content="/use-kinesis-streams-and-firehose-to-build-a-data-lake.html" />
         <meta property="og:title" content="利用 Kinesis 處理串流資料並建立資料湖" />
         <meta property="og:description" content="所謂的資料湖指的是一企業裡頭所有形式的資料的集合。這些資料包含原始資料，以及經過轉換的衍生資料。資料湖的核心概念是將所有可用的資料全部整合在一個邏輯上相近的地方以供企業自由結合並做各式各樣的運用。資料湖可以用很多方式建立，這裏我們主要介紹如何利用 Amazon Kinesis 將串流資料載入資料湖。" />
 
@@ -37,42 +37,32 @@
     <!-- CSS
     ================================================== -->
     <!--for customized css in individual page-->
-        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.min.css">
 
     <!--for showing toc navigation which slide in from left-->
-        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/toc-nav.css">
 
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
-    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+    <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='/theme/css/progress-bar.css' />
 
 
     <!--TiqueSearch-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
-    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
-    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/tipuesearch.css">
 
     <!-- script
     ================================================== -->
-    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
-    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+    <script src="/theme/js/modernizr.js"></script>
+    <script src="/theme/js/pace.min.js"></script>
 
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
-
-<!-- Global Site Tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)};
-  gtag('js', new Date());
-
-  gtag('config', 'UA-106559980-1');
-</script>
 
 
 
@@ -86,7 +76,7 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+            <a class="site-logo" href="../index.html"><img src="/theme/images/logo.png" alt="Homepage"></a>
         </div>
 <!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
@@ -138,27 +128,31 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/jackson-hendry-435713-unsplash.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/jackson-hendry-435713-unsplash.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
-                            <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
-                            <a href="https://leemeng.tw/tag/python.html" rel="tag">python</a>
-                            <a href="https://leemeng.tw/tag/aws.html" rel="tag">aws</a>
-                            <a href="https://leemeng.tw/tag/kinesis.html" rel="tag">kinesis</a>
+                            <a href="/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                            <a href="/tag/python.html" rel="tag">python</a>
+                            <a href="/tag/aws.html" rel="tag">aws</a>
+                            <a href="/tag/kinesis.html" rel="tag">kinesis</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="https://leemeng.tw/use-kinesis-streams-and-firehose-to-build-a-data-lake.html" title="">
+                        <a href="/use-kinesis-streams-and-firehose-to-build-a-data-lake.html" title="">
                             利用 Kinesis 處理串流資料並建立資料湖
                         </a>
                     </h1>
                     <ul class="page-header__meta">
                         <li class="date">2018-04-04 (Wed)</li>
                         <li class="page-view">
+<<<<<<< HEAD
                             316 views
+=======
+                            1 views
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
                         </li>
                     </ul>
 
@@ -189,26 +183,6 @@
         </a>
     </div>
 
-    <div id="social-wrap" style="cursor: pointer">
-        <a class="open-popup" title="訂閱最新文章">
-            <i class="im im-newspaper-o" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/use-kinesis-streams-and-firehose-to-build-a-data-lake.html" target="_blank" title="分享到 Facebook">
-            <i class="im im-facebook" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/use-kinesis-streams-and-firehose-to-build-a-data-lake.html&title=%E5%88%A9%E7%94%A8%20Kinesis%20%E8%99%95%E7%90%86%E4%B8%B2%E6%B5%81%E8%B3%87%E6%96%99%E4%B8%A6%E5%BB%BA%E7%AB%8B%E8%B3%87%E6%96%99%E6%B9%96&summary=%E6%89%80%E8%AC%82%E7%9A%84%E8%B3%87%E6%96%99%E6%B9%96%E6%8C%87%E7%9A%84%E6%98%AF%E4%B8%80%E4%BC%81%E6%A5%AD%E8%A3%A1%E9%A0%AD%E6%89%80%E6%9C%89%E5%BD%A2%E5%BC%8F%E7%9A%84%E8%B3%87%E6%96%99%E7%9A%84%E9%9B%86%E5%90%88%E3%80%82%E9%80%99%E4%BA%9B%E8%B3%87%E6%96%99%E5%8C%85%E5%90%AB%E5%8E%9F%E5%A7%8B%E8%B3%87%E6%96%99%EF%BC%8C%E4%BB%A5%E5%8F%8A%E7%B6%93%E9%81%8E%E8%BD%89%E6%8F%9B%E7%9A%84%E8%A1%8D%E7%94%9F%E8%B3%87%E6%96%99%E3%80%82%E8%B3%87%E6%96%99%E6%B9%96%E7%9A%84%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E6%98%AF%E5%B0%87%E6%89%80%E6%9C%89%E5%8F%AF%E7%94%A8%E7%9A%84%E8%B3%87%E6%96%99%E5%85%A8%E9%83%A8%E6%95%B4%E5%90%88%E5%9C%A8%E4%B8%80%E5%80%8B%E9%82%8F%E8%BC%AF%E4%B8%8A%E7%9B%B8%E8%BF%91%E7%9A%84%E5%9C%B0%E6%96%B9%E4%BB%A5%E4%BE%9B%E4%BC%81%E6%A5%AD%E8%87%AA%E7%94%B1%E7%B5%90%E5%90%88%E4%B8%A6%E5%81%9A%E5%90%84%E5%BC%8F%E5%90%84%E6%A8%A3%E7%9A%84%E9%81%8B%E7%94%A8%E3%80%82%E8%B3%87%E6%96%99%E6%B9%96%E5%8F%AF%E4%BB%A5%E7%94%A8%E5%BE%88%E5%A4%9A%E6%96%B9%E5%BC%8F%E5%BB%BA%E7%AB%8B%EF%BC%8C%E9%80%99%E8%A3%8F%E6%88%91%E5%80%91%E4%B8%BB%E8%A6%81%E4%BB%8B%E7%B4%B9%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%20Amazon%20Kinesis%20%E5%B0%87%E4%B8%B2%E6%B5%81%E8%B3%87%E6%96%99%E8%BC%89%E5%85%A5%E8%B3%87%E6%96%99%E6%B9%96%E3%80%82&source=https%3A//leemeng.tw/use-kinesis-streams-and-firehose-to-build-a-data-lake.html" target="_blank" title="分享到 LinkedIn">
-            <i class="im im-linkedin" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://twitter.com/intent/tweet?text=%E5%88%A9%E7%94%A8%20Kinesis%20%E8%99%95%E7%90%86%E4%B8%B2%E6%B5%81%E8%B3%87%E6%96%99%E4%B8%A6%E5%BB%BA%E7%AB%8B%E8%B3%87%E6%96%99%E6%B9%96&url=https%3A//leemeng.tw/use-kinesis-streams-and-firehose-to-build-a-data-lake.html" target="_blank" title="分享到 Twitter">
-            <i class="im im-twitter" aria-hidden="true"></i>
-        </a>
-    </div>
 
 </div>
 
@@ -637,10 +611,10 @@
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
-                        <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
-                        <a href="https://leemeng.tw/tag/python.html" rel="tag">python</a>
-                        <a href="https://leemeng.tw/tag/aws.html" rel="tag">aws</a>
-                        <a href="https://leemeng.tw/tag/kinesis.html" rel="tag">kinesis</a>
+                        <a href="/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                        <a href="/tag/python.html" rel="tag">python</a>
+                        <a href="/tag/aws.html" rel="tag">aws</a>
+                        <a href="/tag/kinesis.html" rel="tag">kinesis</a>
                     </span>
 
                 </p>
@@ -705,13 +679,13 @@
                 <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
                         <div class="blog-content__prev">
-                            <a href="https://leemeng.tw/data-visualization-from-matplotlib-to-ggplot2.html" rel="prev">
+                            <a href="/data-visualization-from-matplotlib-to-ggplot2.html" rel="prev">
                                 <span>Previous Post</span>
                                 淺談資料視覺化以及 ggplot2 實踐
                             </a>
                         </div>
                         <div class="blog-content__next">
-                            <a href="https://leemeng.tw/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html" rel="next">
+                            <a href="/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html" rel="next">
                                 <span>Next Post</span>
                                 AWS Data Migration Service - 從 MongoDB 遷移到 Redshift
                             </a>
@@ -734,25 +708,6 @@
 
     </article>
 
-<div class="comments-wrap">
-    <div id="comments" class="row">
-        <div class="col-full">
-            <div id="disqus_thread"></div>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-var disqus_shortname = 'leemengtaiwan';
-var disqus_title = '利用 Kinesis 處理串流資料並建立資料湖';
-
-(function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
     <!-- footer
@@ -762,7 +717,7 @@ var disqus_title = '利用 Kinesis 處理串流資料並建立資料湖';
             <div class="col-full">
 
                 <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                    <a class="footer-site-logo" href="#0"><img src="/theme/images/logo.png" alt="Homepage"></a>
                 </div>
 
                 <ul class="footer-social">
@@ -807,12 +762,12 @@ var disqus_title = '利用 Kinesis 處理串流資料並建立資料湖';
 
         <!-- Javascript
     ================================================== -->
-    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
-    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
-    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script src="/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="/theme/js/plugins.js"></script>
+    <script src="/theme/js/main.js"></script>
 
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+    <script type='text/javascript' src='/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
 
     <!--show and hide left navigation by scrolling-->
     <script>

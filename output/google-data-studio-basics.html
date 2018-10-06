@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - Google Data Studio 基礎</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="Google Data Studio 是 Google 推出的一個儀表板服務，讓我們可以利用多種連結器將儲存在如 Google Analytics、 Google 試算表及 Google BigQuery 等特定資料來源的資料做出漂亮的 visualization ，用資料講故事而不用自己設計 UI。這篇把學到的一些技巧以及使用心得記錄下來。" />
+        <meta name="keywords" content="資料科學, data-science, 資料視覺化" />
+        <meta name="tags" content="資料科學" />
+        <meta name="tags" content="data-science" />
+        <meta name="tags" content="資料視覺化" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/jonathan-velasquez-160775-unsplash.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemeng.tw/google-data-studio-basics.html" />
+        <meta property="og:title" content="Google Data Studio 基礎" />
+        <meta property="og:description" content="Google Data Studio 是 Google 推出的一個儀表板服務，讓我們可以利用多種連結器將儲存在如 Google Analytics、 Google 試算表及 Google BigQuery 等特定資料來源的資料做出漂亮的 visualization ，用資料講故事而不用自己設計 UI。這篇把學到的一些技巧以及使用心得記錄下來。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="Google Data Studio 基礎">Google Data Studio 基礎</a><ul><li><a class="toc-href" href="#將-Google-試算表的資料可視化" title="將 Google 試算表的資料可視化">將 Google 試算表的資料可視化</a></li><li><a class="toc-href" href="#條件欄位應用" title="條件欄位應用">條件欄位應用</a></li><li><a class="toc-href" href="#篩選器（filter）應用" title="篩選器（filter）應用">篩選器（filter）應用</a></li><li><a class="toc-href" href="#維度-VS-指標" title="維度 VS 指標">維度 VS 指標</a></li><li><a class="toc-href" href="#資料透視表-(Pivot-Table)" title="資料透視表 (Pivot Table)">資料透視表 (Pivot Table)</a></li><li><a class="toc-href" href="#限制" title="限制">限制</a></li><li><a class="toc-href" href="#實戰演練" title="實戰演練">實戰演練</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/jonathan-velasquez-160775-unsplash.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                            <a href="https://leemeng.tw/tag/data-science.html" rel="tag">data-science</a>
+                            <a href="https://leemeng.tw/tag/zi-liao-shi-jue-hua.html" rel="tag">資料視覺化</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemeng.tw/google-data-studio-basics.html" title="">
+                            Google Data Studio 基礎
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2018-03-13 (Tue)</li>
+                        <li class="page-view">
+                            272 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
+
+    <div id="social-wrap" style="cursor: pointer">
+        <a class="open-popup" title="訂閱最新文章">
+            <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/google-data-studio-basics.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/google-data-studio-basics.html&title=Google%20Data%20Studio%20%E5%9F%BA%E7%A4%8E&summary=Google%20Data%20Studio%20%E6%98%AF%20Google%20%E6%8E%A8%E5%87%BA%E7%9A%84%E4%B8%80%E5%80%8B%E5%84%80%E8%A1%A8%E6%9D%BF%E6%9C%8D%E5%8B%99%EF%BC%8C%E8%AE%93%E6%88%91%E5%80%91%E5%8F%AF%E4%BB%A5%E5%88%A9%E7%94%A8%E5%A4%9A%E7%A8%AE%E9%80%A3%E7%B5%90%E5%99%A8%E5%B0%87%E5%84%B2%E5%AD%98%E5%9C%A8%E5%A6%82%20Google%20Analytics%E3%80%81%20Google%20%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%8F%8A%20Google%20BigQuery%20%E7%AD%89%E7%89%B9%E5%AE%9A%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90%E7%9A%84%E8%B3%87%E6%96%99%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E7%9A%84%20visualization%20%EF%BC%8C%E7%94%A8%E8%B3%87%E6%96%99%E8%AC%9B%E6%95%85%E4%BA%8B%E8%80%8C%E4%B8%8D%E7%94%A8%E8%87%AA%E5%B7%B1%E8%A8%AD%E8%A8%88%20UI%E3%80%82%E9%80%99%E7%AF%87%E6%8A%8A%E5%AD%B8%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97%E8%A8%98%E9%8C%84%E4%B8%8B%E4%BE%86%E3%80%82&source=https%3A//leemeng.tw/google-data-studio-basics.html" target="_blank" title="分享到 LinkedIn">
+            <i class="im im-linkedin" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://twitter.com/intent/tweet?text=Google%20Data%20Studio%20%E5%9F%BA%E7%A4%8E&url=https%3A//leemeng.tw/google-data-studio-basics.html" target="_blank" title="分享到 Twitter">
+            <i class="im im-twitter" aria-hidden="true"></i>
+        </a>
+    </div>
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://cloud.google.com/data-studio/">Google Data Studio</a> 是 Google 推出的一個 Dashboard / Reporting 的服務，讓我們可以利用多種<a href="https://support.google.com/datastudio/answer/7530149?hl=en&amp;ref_topic=6370347">連結器</a>將儲存在如 Google Analytics、 Google 試算表及 Google BigQuery 等特定資料來源的資料做出漂亮的 visualization ，用資料講故事而不用自己設計 UI。公司內部雖然有自己的 dashboards 不過想說多試一些方案沒有壞處，而且現在 Data Studio 還是 Beta 版本，雖然介面是中文，說明文件還只有英文，想說把學到的一些技巧以及使用心得記錄下來。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="將-Google-試算表的資料可視化">將 Google 試算表的資料可視化<a class="anchor-link" href="#將-Google-試算表的資料可視化">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為了快速展示 Data Studio 的功能，我們將使用<a href="https://data.gov.tw/">政府資料開放平臺</a>上由交通部觀光局提供的<a href="https://data.gov.tw/dataset/45444">105年來台旅客性別統計</a>資料。將 CSV 檔案下載下來，稍微簡化格式後上傳到 Google 試算表以當作報表的資料來源。下圖是簡化後的資料：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/google-data-studio/table-preview.png" style=""/>
+</center>
+<center>
+<a href="https://data.gov.tw/dataset/45444" target="_blank">資料來源</a>
+<font color="purple">: 2016年來台旅客性別統計</font><br/>
+    每一列代表某地區 / 國家的訪台人數以及男女比
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="條件欄位應用">條件欄位應用<a class="anchor-link" href="#條件欄位應用">&para;</a></h2><p><a href="https://support.google.com/datastudio/answer/7359285">條件欄位</a>讓我們可以針對試算表裡頭每一列做 IF ELSE 判斷，依照判斷結果給予不同的值。現在假設我們想知道有多少國家的男性遊客過半數，可以使用簡易的評量表來計算：</p>
+<center>
+<img src="images/google-data-studio/male-over-half.png"/>
+</center>
+<center>
+<font color="purple">訪台男性遊客過半國家佔全部國家的比例<br/>
+</font></center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我們發現高達八成的國家（有些是區域）的訪台男性遊客較女性為多。我們可以調查其他國家的訪客性別比，看是不是只有台灣有此現象。要產生分母的「國家數」很直覺，我們只要新增一個欄位並計算有幾個國家即可：</p>
+<center>
+<img src="images/google-data-studio/num_countries_as_metric.png"/>
+</center>
+<center>
+<font color="purple">新增一個名為「國家數」的欄位<br/>
+</font></center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>但要計算分子的「男性遊客過半國家數」就稍微 tricky 了。我們想做的是，針對每一國家（每一列），只有在該國訪台男性遊客百分比過半（超過 50%)的時候才會被納入結果。而 Data Studio 的<a href="https://support.google.com/datastudio/answer/7359285">條件欄位</a>就是專門針對這種情況設計的。</p>
+<center>
+<img src="images/google-data-studio/conditional-calculated-field.png" style="width:70%"/>
+</center>
+<center>
+<font color="purple">使用 CASE 語法對每一列做 IF-ELSE 判斷<br/>
+</font></center><p>上面的公式用白話來說就是：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>針對每一列的國家，看它的「男性百分比」欄位的值有沒有大於50。有的話值為1，否則為0。在針對每列做完條件判斷以後再把所有 1 加起來，就等於符合條件的國家數。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="篩選器（filter）應用">篩選器（filter）應用<a class="anchor-link" href="#篩選器（filter）應用">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>根據上個分析，我們知道女性遊客過半的國家只佔 20%。假設我們想確切知道是哪些國家的女性遊客過半，可以從女性百分比最高的國家開始列出男女比：</p>
+<center>
+<img src="images/google-data-studio/multibar-female-over-half.png" style="width:100%"/>
+</center>
+<center>
+<font color="purple">訪台女性遊客過半國家<br/>
+</font></center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我們發現女性遊客過半的都是亞洲國家，或許我們可以簡單解釋成這些國家與台灣的距離短，適合女性遊客拜訪。而為了讓圖表易讀，上面這張組合圖額外建立一個篩選器來過濾掉男性遊客比女性多的國家：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/google-data-studio/female-more-than-half.png" style="width:70%"/>
+</center>
+<center>
+<font color="purple">新增一個篩選器以過濾男性遊客比例較高的國家<br/></font>
+    註：一般的長條圖可以直接透過設定限制長條圖數目
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="維度-VS-指標">維度 VS 指標<a class="anchor-link" href="#維度-VS-指標">&para;</a></h2><p>在 Data Studio 裡頭，了解<a href="https://support.google.com/datastudio/answer/6402048?ref_topic=7441655&amp;utm_source=product&amp;utm_medium=cta&amp;utm_campaign=wwr&amp;utm_content=dims_mets">維度跟指標的差異</a>很重要。</p>
+<p>以我們現在的資料集為例，每一列就是一筆紀錄（record），每一行則是一個欄位。每個欄位則是維度或指標。</p>
+<ul>
+<li>指標（Metric，底下藍色）<ul>
+<li>數值型欄位，有經過「匯總」，負責 quantify 資料</li>
+<li>如「國家數」、「總人數」</li>
+</ul>
+</li>
+<li>維度（Dimension，底下綠色）<ul>
+<li>分類型欄位，負責 qualify 資料</li>
+<li>如「國家」、「居住地」</li>
+</ul>
+</li>
+</ul>
+<center>
+<img src="images/google-data-studio/metric-versus-dimension.png" style=""/>
+</center>
+<center>
+<font color="purple">fx 則代表是額外利用公式建立的欄位</font><br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>像我們前面定義的「男性遊客過半國家數」欄位因為有經過 <code>SUM</code> 公式匯總成為一個數值，因此為一個指標（藍）。而如果我們透過 <code>CASE</code> 語法新定義一個「男性過半」欄位如下：</p>
+<center>
+<img src="images/google-data-studio/define-a-dimension-with-case-syntax.png" style="width:70%"/>
+</center><p>此欄位沒有經過匯總因此被視為維度，在上一張圖被標為綠色。因此一句話總結維度跟指標的功能就是：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>維度負責「描述」資料； 指標則負責「衡量」資料。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="資料透視表-(Pivot-Table)">資料透視表 (Pivot Table)<a class="anchor-link" href="#資料透視表-(Pivot-Table)">&para;</a></h2><p>資料透視表很適合拿來看在不同條件下某個指標的表現。下圖是一個依照</p>
+<ul>
+<li>居住地</li>
+<li>國家</li>
+</ul>
+<p>兩個維度計算「男性人數」指標的資料透視表：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/google-data-studio/pivot-table.png" style=""/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>依照<a href="https://support.google.com/datastudio/answer/7516660?hl=en">官方文件</a>有幾點值得注意：</p>
+<ul>
+<li>資料透視表最多處理 50,000 筆資料，為了避免 scan 資料太花時間，可以額外建立一些篩選器 subset 資料</li>
+<li>列維度跟欄維度最多可以分別設定 2 個維度（上例列欄各設定 1 個維度）</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="限制">限制<a class="anchor-link" href="#限制">&para;</a></h2><p>可能因為還處在 beta 版本，在這篇文章寫的時候（2018/03）試用了一陣子發現 Data Studio 也有一些使用案例沒有辦法做到，像是：</p>
+<ul>
+<li>篩選器（filter）只能設定像是「欄位 C 大於 X」這種條件，而不能做「當欄位 C1 &gt; 欄位 C2」這種欄位間的比較。</li>
+<li>同上，條件欄位也只能設定像是「欄位 C 大於某固定值 X」的條件</li>
+<li>資料透視表包含的資料稍多 (&gt; 2000筆)就開始變慢 ..</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="實戰演練">實戰演練<a class="anchor-link" href="#實戰演練">&para;</a></h2><p>這篇文章用的報表連結在<a href="https://datastudio.google.com/open/19a--FnAQ9asll18anhv7negoXGO0fpyH">此</a>，可以自己試試不同 visualization。有任何 feedback 也歡迎聯絡。</p>
+<center>
+<img src="images/google-data-studio/google-data-studio-preview.png" style="width:70%"/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        <a href="https://leemeng.tw/tag/data-science.html" rel="tag">data-science</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-shi-jue-hua.html" rel="tag">資料視覺化</a>
+                    </span>
+
+                </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a href="https://leemeng.tw/designing-data-intensive-applications-1-preface.html" rel="prev">
+                                <span>Previous Post</span>
+                                Designing Data-Intensive Applications (1) - 序言
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <a href="https://leemeng.tw/build-a-pelican-powered-blog-like-a-pro.html" rel="next">
+                                <span>Next Post</span>
+                                Pelican 實戰手冊(主題篇)
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = 'Google Data Studio 基礎';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
+
+</body>
+</html>

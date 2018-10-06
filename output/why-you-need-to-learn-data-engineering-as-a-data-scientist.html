@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 資料科學家為何需要了解資料工程</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="透過描述資料科學家的一天日常，本文將簡單介紹資料工程（Data Engineering）的概念、其如何跟資料科學相關。以及最重要的，作為一個資料科學家應該如何學習並善用這些知識來創造最大價值。身為一個資料科學家，擁有資料工程的知識可以提升工作效率，點亮你的方向並加速專案前進。" />
+        <meta name="keywords" content="資料科學, 資料工程, data-science, data engineering" />
+        <meta name="tags" content="資料科學" />
+        <meta name="tags" content="資料工程" />
+        <meta name="tags" content="data-science" />
+        <meta name="tags" content="data engineering" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/wil-stewart-14962-unsplash.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemeng.tw/why-you-need-to-learn-data-engineering-as-a-data-scientist.html" />
+        <meta property="og:title" content="資料科學家為何需要了解資料工程" />
+        <meta property="og:description" content="透過描述資料科學家的一天日常，本文將簡單介紹資料工程（Data Engineering）的概念、其如何跟資料科學相關。以及最重要的，作為一個資料科學家應該如何學習並善用這些知識來創造最大價值。身為一個資料科學家，擁有資料工程的知識可以提升工作效率，點亮你的方向並加速專案前進。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學家為何需要了解資料工程">資料科學家為何需要了解資料工程</a><ul><li><a class="toc-href" href="#目錄" title="目錄">目錄</a></li><li><a class="toc-href" href="#資料科學家的一天" title="資料科學家的一天">資料科學家的一天</a><ul><li><a class="toc-href" href="#資料準備" title="資料準備">資料準備</a></li><li><a class="toc-href" href="#第一挑戰：資料量大增" title="第一挑戰：資料量大增">第一挑戰：資料量大增</a></li><li><a class="toc-href" href="#第二挑戰：非結構化資料" title="第二挑戰：非結構化資料">第二挑戰：非結構化資料</a></li></ul></li><li><a class="toc-href" href="#資料為本_1" title="資料為本">資料為本</a></li><li><a class="toc-href" href="#資料管道" title="資料管道">資料管道</a><ul><li><a class="toc-href" href="#一些關鍵技術" title="一些關鍵技術">一些關鍵技術</a></li></ul></li><li><a class="toc-href" href="#資料倉儲_1" title="資料倉儲">資料倉儲</a><ul><li><a class="toc-href" href="#一些關鍵技術_1" title="一些關鍵技術">一些關鍵技術</a></li></ul></li><li><a class="toc-href" href="#資料湖_1" title="資料湖">資料湖</a><ul><li><a class="toc-href" href="#一些關鍵技術_2" title="一些關鍵技術">一些關鍵技術</a></li></ul></li><li><a class="toc-href" href="#如何實際應用資料工程？_1" title="如何實際應用資料工程？">如何實際應用資料工程？</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/wil-stewart-14962-unsplash.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                            <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                            <a href="https://leemeng.tw/tag/data-science.html" rel="tag">data-science</a>
+                            <a href="https://leemeng.tw/tag/data-engineering.html" rel="tag">data engineering</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemeng.tw/why-you-need-to-learn-data-engineering-as-a-data-scientist.html" title="">
+                            資料科學家為何需要了解資料工程
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2018-04-23 (Mon)</li>
+                        <li class="page-view">
+                            4,987 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
+
+    <div id="social-wrap" style="cursor: pointer">
+        <a class="open-popup" title="訂閱最新文章">
+            <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/why-you-need-to-learn-data-engineering-as-a-data-scientist.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/why-you-need-to-learn-data-engineering-as-a-data-scientist.html&title=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%AE%B6%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E8%B3%87%E6%96%99%E5%B7%A5%E7%A8%8B&summary=%E9%80%8F%E9%81%8E%E6%8F%8F%E8%BF%B0%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%AE%B6%E7%9A%84%E4%B8%80%E5%A4%A9%E6%97%A5%E5%B8%B8%EF%BC%8C%E6%9C%AC%E6%96%87%E5%B0%87%E7%B0%A1%E5%96%AE%E4%BB%8B%E7%B4%B9%E8%B3%87%E6%96%99%E5%B7%A5%E7%A8%8B%EF%BC%88Data%20Engineering%EF%BC%89%E7%9A%84%E6%A6%82%E5%BF%B5%E3%80%81%E5%85%B6%E5%A6%82%E4%BD%95%E8%B7%9F%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E7%9B%B8%E9%97%9C%E3%80%82%E4%BB%A5%E5%8F%8A%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%EF%BC%8C%E4%BD%9C%E7%82%BA%E4%B8%80%E5%80%8B%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%AE%B6%E6%87%89%E8%A9%B2%E5%A6%82%E4%BD%95%E5%AD%B8%E7%BF%92%E4%B8%A6%E5%96%84%E7%94%A8%E9%80%99%E4%BA%9B%E7%9F%A5%E8%AD%98%E4%BE%86%E5%89%B5%E9%80%A0%E6%9C%80%E5%A4%A7%E5%83%B9%E5%80%BC%E3%80%82%E8%BA%AB%E7%82%BA%E4%B8%80%E5%80%8B%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%AE%B6%EF%BC%8C%E6%93%81%E6%9C%89%E8%B3%87%E6%96%99%E5%B7%A5%E7%A8%8B%E7%9A%84%E7%9F%A5%E8%AD%98%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%8D%87%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87%EF%BC%8C%E9%BB%9E%E4%BA%AE%E4%BD%A0%E7%9A%84%E6%96%B9%E5%90%91%E4%B8%A6%E5%8A%A0%E9%80%9F%E5%B0%88%E6%A1%88%E5%89%8D%E9%80%B2%E3%80%82&source=https%3A//leemeng.tw/why-you-need-to-learn-data-engineering-as-a-data-scientist.html" target="_blank" title="分享到 LinkedIn">
+            <i class="im im-linkedin" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://twitter.com/intent/tweet?text=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%AE%B6%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E8%B3%87%E6%96%99%E5%B7%A5%E7%A8%8B&url=https%3A//leemeng.tw/why-you-need-to-learn-data-engineering-as-a-data-scientist.html" target="_blank" title="分享到 Twitter">
+            <i class="im im-twitter" aria-hidden="true"></i>
+        </a>
+    </div>
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>透過描述資料科學家的一天日常，本文將簡單介紹資料工程（Data Engineering）的概念、其如何跟資料科學相關。以及最重要的，作為一個資料科學家（Data Scientist）應該如何學習並善用這些知識來創造最大價值。</p>
+<p>身為一個資料科學家，擁有資料工程的知識可以提升工作效率，點亮你的方向並加速專案前進。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="目錄">目錄<a class="anchor-link" href="#目錄">&para;</a></h2><ul>
+<li><a href="#資料科學家的一天">資料科學家的一天</a><ul>
+<li><a href="#資料準備">資料準備</a></li>
+<li><a href="#第一挑戰：資料量大增">第一挑戰：資料量大增</a></li>
+<li><a href="#第二挑戰：非結構化資料">第二挑戰：非結構化資料</a></li>
+</ul>
+</li>
+<li><a href="#資料為本">資料為本</a></li>
+<li><a href="#資料管道">資料管道</a></li>
+<li><a href="#資料倉儲">資料倉儲</a></li>
+<li><a href="#資料湖">資料湖</a></li>
+<li><a href="#如何實際應用資料工程？">如何實際應用資料工程？</a></li>
+<li><a href="#結語">結語</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="資料科學家的一天">資料科學家的一天<a class="anchor-link" href="#資料科學家的一天">&para;</a></h2><p>一說到資料科學，在你腦海中浮現的幾個關鍵字可能是：</p>
+<ul>
+<li>資料分析</li>
+<li>資料視覺化</li>
+<li>A.I. / 機器學習</li>
+</ul>
+<p>等為人津津樂道的面向。</p>
+<p>的確，這些都在資料科學的範疇裡頭，但實際上佔用多數資料科學家大部分時間，卻常被忽略的部分是資料準備：</p>
+<center>
+<img src="images/data-engineering/data-scientist-work-pie-chart.png" style=""/>
+</center>
+<center>
+<a href="https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/#5d0184f76f63" target="_blank">Forbes</a>
+<font color="purple">: </font>依據調查，多數資料科學家花 80 % 的時候在準備資料
+    <br/>
+</center><h3 id="資料準備">資料準備<a class="anchor-link" href="#資料準備">&para;</a></h3><p>說到資料準備，你可能會聯想到我們在前一篇<a href="data-visualization-from-matplotlib-to-ggplot2.html#載入資料-+-簡單資料處理">淺談資料視覺化以及 ggplot2 實踐</a>裡頭，使用 R 語言做的簡單資料清理：</p>
+<div class="highlight"><pre><span></span><span class="c1"># 將 CSV 檔案載入成資料框架（dataframe）</span>
+ramen_all <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">"datasets//ramen-ratings.csv"</span><span class="p">)</span>
+<span class="c1"># 將「星星數」轉成定量資料</span>
+ramen_all<span class="o">$</span>Stars <span class="o">&lt;-</span> <span class="kp">as.numeric</span><span class="p">(</span>ramen_all<span class="o">$</span>Stars<span class="p">)</span> 
+<span class="c1"># Subset 資料</span>
+ramen <span class="o">&lt;-</span> ramen_all <span class="o">%&gt;%</span>
+  filter<span class="p">(</span>Country <span class="o">%in%</span> count<span class="p">(</span>ramen_all<span class="p">,</span> Country<span class="p">,</span> sort <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> drop<span class="o">=</span><span class="kc">TRUE</span><span class="p">])</span> <span class="o">%&gt;%</span>
+  filter<span class="p">(</span>Style <span class="o">%in%</span> count<span class="p">(</span>ramen_all<span class="p">,</span> Style<span class="p">,</span> sort <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="m">1</span> <span class="p">,</span> drop<span class="o">=</span><span class="kc">TRUE</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在做分析之前，我們做了以下的步驟來準備資料：</p>
+<ul>
+<li>讀進<code>ramen-ratings.csv</code></li>
+<li>轉變某些欄位的資料型態</li>
+<li>依照一些條件取出想要分析的資料</li>
+</ul>
+<p>雖然資料量不大，你仍然可以試著想像我們實際上建立了一個 <a href="https://zh.wikipedia.org/wiki/ETL">ETL</a> 工作：</p>
+<ul>
+<li>將資料從來源（硬碟）擷取出來（<strong>E</strong>xtract）</li>
+<li>做了一些轉換（<strong>T</strong>ransform）</li>
+<li>載入（<strong>L</strong>oad）目的地（記憶體）</li>
+</ul>
+<p>假設我們把一般的資料分析專案分為以下兩階段：</p>
+<ol>
+<li>資料準備：將資料轉換成適合分析的格式</li>
+<li>資料分析：探索資料、建構預測模型</li>
+</ol>
+<p>上面的 ETL 就屬於第一個步驟。又因為此資料集大概只包含 5,000 筆資料，步驟 1 所花的時間跟步驟 2 的所需時間相比，可以說微乎其微，它不會是你做資料科學的一個 bottleneck。</p>
+<p>但如果你要處理的資料量是這個的 1,000 倍大呢？你還能馬上進入分析階段嗎？</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="第一挑戰：資料量大增">第一挑戰：資料量大增<a class="anchor-link" href="#第一挑戰：資料量大增">&para;</a></h3><p>實際上一個資料科學家每天需要分析的資料量可能要乘上幾個級數。現在假設你從銷售部門拿到一個包含數百萬筆銷售紀錄，大小為 60G 的 CSV 檔案，我想你應該不會想要直接打開它，即使它在某些人眼裡還不夠資格稱為大數據 (&acute;；&omega;；｀)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你殫精竭慮，最後決定去問公司內一位資深的<a href="https://medium.freecodecamp.org/the-rise-of-the-data-engineer-91be18f1e603">資料工程師（Data Engineer）</a>該怎麼解決這問題。</p>
+<p>該仁兄施了點你不曉得的魔法，過了幾分鐘從 Slack 丟來個神秘的 URL。連到上面，你發現熟悉的 <a href="http://jupyter.org/">Jupyter Nook</a> 介面，而且 CSV 還幫你載好了 &Sigma;(ﾟдﾟ;</p>
+<center>
+<img src="images/data-engineering/jupyter-notebook.png" style=""/>
+</center>
+<center>
+<a href="https://www.ithome.com.tw/news/121497" target="_blank">Bonus</a>
+<font color="purple">: </font>Jupyter Lab 是 Jupyter Notebook 的改善版，大推
+    <br/>
+<br/>
+</center><p>你開心地在資料工程師幫你搞定的機器上做出分析，最後在大家面前做口頭報告。大家針對報告的反應不錯，但坐在底下的廣告部門的人這時候提問了：</p>
+<p>「可以把這些銷售紀錄跟廣告點擊的串流日誌（log）合在一起分析嗎？這樣我們會有更多有趣的結果！」</p>
+<p>你的頭又痛了起來。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="第二挑戰：非結構化資料">第二挑戰：非結構化資料<a class="anchor-link" href="#第二挑戰：非結構化資料">&para;</a></h3><p>除了資料量級的差異，一個資料科學家在企業裡頭會遇到的另外一個挑戰是非結構化資料（Unstructured Data）的快速增加。你如何將各種不同格式（JSON、存取日誌、CSV 等）的資料以有效率的方式跟平常熟悉的關聯式資料庫如 <a href="https://www.postgresql.org/">PostgreSQL</a> 裡頭的資料結合以供分析？</p>
+<center>
+<img src="images/data-engineering/increasing-dark-data.png" style=""/>
+</center>
+<center>
+<a href="https://www.slideshare.net/AmazonWebServices/how-to-build-a-data-lake-with-aws-glue-data-catalog-abd213r" target="_blank">AWS Reinvent</a>
+<font color="purple">: </font>非結構化資料快速增加，但因為不存在關聯式資料庫裡，無法直接被拿來分析
+    <br/>
+<br/>
+</center><p>如果我們能寫一個簡單的 <a href="https://zh.wikipedia.org/wiki/SQL">SQL</a> 查詢，把銷售資料（sales）跟廣告點擊（clicks）資料依照共有的鍵值 <code>sale_id</code> 合起來該有多好：</p>
+<pre><code>SELECT *
+FROM sales AS s
+INNER JOIN clicks AS c
+ON s.sale_id = c.sale_id</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你想著想著就到下班時間了。</p>
+<p>「算了，還是先回家睡個覺，明天再厚著臉皮問資料工程師吧！反正之前他也幫我在<a href="https://zh.wikipedia.org/wiki/%E8%B3%87%E6%96%99%E5%80%89%E5%84%B2">資料倉儲（Data Warehouse）</a>加了新的表格。」</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="資料為本_1">資料為本<a class="anchor-link" href="#資料為本">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>從上面這個資料科學家的一天，我們得到什麼啟示？</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>資料（的基礎設施）為資料科學之基礎 - 巧婦難為無米之炊</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>老實說這個例子裡頭的資料科學家已經非常幸運：公司裡有資料工程師能幫他把大量、複雜格式的資料做 ETL 並以資料倉儲中的一個新表格（Table）的方式呈現轉換過後的資料以供他使用。硬要說稍微不方便的地方，頂多就是該資料科學家得等資料工程師搞定好資料就是了。</p>
+<p>然而因為資料工程師是一個很新的職位，多數的企業現在並沒有這樣的人存在。大多數的資料科學家只能自己下海，想辦法生出可以用的資料。實際上，<a href="https://hackernoon.com/@mrogati?source=post_header_lockup">Monica Rogati</a> 在 <a href="https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007">The AI Hierarchy of Needs</a> 提到，一些常見的資料科學專案像是</p>
+<ul>
+<li>建置 AI </li>
+<li>建置簡單的機器學習模型</li>
+<li>資料分析</li>
+</ul>
+<p>都得建立在「有完善且可靠的資料」這個基礎之下：</p>
+<center>
+<img src="images/data-engineering/ai-need.png" style="width:80%"/>
+</center>
+<center>
+<a href="https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007" target="_blank">資料科學的金字塔層級要求</a>
+<font color="purple">: </font>你需要建立好資料科學的基礎設施才有本錢往「上」發展
+    <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>以金字塔最下三層為例，要讓資料科學的專案順利進行，你最少要（由下而上）：</p>
+<ol>
+<li>持續搜集（COLLECT）原始資料</li>
+<li>將該資料轉移（MOVE / STORE）到適合分析的地方如資料倉儲、<a href="https://itw01.com/G4DCESL.html">資料湖</a></li>
+<li>轉換（TRANSFORM）被轉移的資料，進行前處理以方便分析</li>
+</ol>
+<p>我認爲資料工程的重頭戲在上面的 2, 3 點：將資料以「轉換好」的形式「送」到可供分析的地方。（當然也可以先送再轉換，或者不轉換，詳見下面章節的<a href="#資料湖">資料湖</a>）</p>
+<p>身為資料科學家，如果你夠幸運，公司內部有專業的資料工程師幫你把上面這件事情做好，恭喜！你可以多專注在分析以及建置預測模型上面；
+但假設公司裡頭只有資料科學家，而企業又想要處理大數據的話，抱歉，你得擔起這個攤子，想辦法把資料的基本設施搞定：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>每個成功的資料科學家背後都有個偉大的資料工程師。或者該資料科學家就是那個資料工程師。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>身為資料科學家，如果我們也能了解資料工程相關的知識的話，不就能更快地、更有效率地進行資料分析了嗎？</p>
+<p>這個想法即是所謂的<a href="http://www.effectiveengineer.com/blog/master-adjacent-disciplines">從鄰近專業（Adjacent Disciplines）學習</a>：透過學習跟本業息息相關的資料工程，資料科學家可以加速資料科學的專案進行，並為個人以及團隊創造更大價值。想閱讀更多，可以看看<a href="https://medium.com/@rchang/a-beginners-guide-to-data-engineering-part-i-4227c5c457d7">在 Airbnb 工作的資料科學家怎麼說</a>。</p>
+<p>接著讓我們稍微聊聊到底什麼是資料工程以及一些相關例子。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="資料管道">資料管道<a class="anchor-link" href="#資料管道">&para;</a></h2><p>依照前面的論述，資料工程最主要的目的就是建構資料科學的基本設施（Infrastructure）。而這些基礎設施裡頭一個很重要的部分是<a href="https://www.alooma.com/answers/what-is-the-difference-between-a-data-pipeline-and-an-etl-pipeline">資料管道（Data Pipeline）</a>的建置：將資料從來源 <strong>S</strong>ource 導向目的地 
+<strong>T</strong>arget 以供之後的利用。有必要的話，對資料進行一些轉換。</p>
+<p>一些簡單的例子像是我們之前部落格提到的：</p>
+<ul>
+<li><a href="replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html">將 NoSQL（MongoDB） 資料導向資料倉儲（Redshift）</a></li>
+<li><a href="use-kinesis-streams-and-firehose-to-build-a-data-lake.html">將串流資料（Kinesis）導向資料湖（AWS S3）</a></li>
+</ul>
+<p>從上面的例子也可以看到，實際上資料管道是一個涵蓋範圍很廣的詞彙，包含</p>
+<ul>
+<li>即時的串流資料處理</li>
+<li>Batch 處理（如：每 12 小時作一次）</li>
+</ul>
+<p>ETL 做的事情跟資料管道類似，但偏重在 Batch 處理，這篇文章將 ETL 視為資料管道裡頭的一個子集。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/data-engineering/etl-flow.png" style=""/>
+</center>
+<center>
+<a href="https://robinhood.engineering/why-robinhood-uses-airflow-aed13a9a90c8" target="_blank">ETL</a>
+<font color="purple">: </font>從資料來源擷取、轉換資料並將其導入目的地
+    <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>資料的來源或目的地可以是：</p>
+<ul>
+<li>分散式檔案儲存系統（如 <a href="https://zh.wikipedia.org/wiki/Apache_Hadoop">HDFS</a>、<a href="https://aws.amazon.com/tw/s3/">AWS S3</a>）</li>
+<li>一般的資料庫 / 資料倉儲（如 <a href="https://aws.amazon.com/tw/redshift/getting-started/">AWS Redshift</a>）</li>
+<li>...</li>
+</ul>
+<p>ETL 最重要的是轉換步驟，一些常見的轉換包含：</p>
+<ul>
+<li>改變欄位名稱</li>
+<li>去除空值（Missing Value）</li>
+<li>套用商業邏輯，事先做資料整合（Aggregate）</li>
+<li>轉變資料格式（例：從 JSON 到適合資料倉儲的格式如 <a href="https://parquet.apache.org/">Parquet</a>）</li>
+</ul>
+<center>
+<img src="images/data-engineering/man-on-data-pipeline.png" style=""/>
+</center>
+<center>
+<a href="https://unsplash.com/photos/xNdPWGJ6UCQ?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">資料工程師</a>
+<font color="purple">: </font>建構資料管道以讓大量的資料可供分析
+    <br/>
+<br/>
+</center><p>這些轉換都是為了讓之後使用資料的資料科學家們能更輕鬆地分析資料。為了建置可靠的資料管道 / ETL 流程，我們常會需要使用一些管理工具像是 <a href="https://airflow.apache.org/">Airflow</a>、 <a href="https://aws.amazon.com/tw/glue/">AWS Glue</a> 以確保資料的處理如同我們預期。</p>
+<h3 id="一些關鍵技術">一些關鍵技術<a class="anchor-link" href="#一些關鍵技術">&para;</a></h3><ul>
+<li>Hadoop 生態環境</li>
+<li>分散式系統上的 ETL 設計</li>
+<li>SQL-on-Hadoop 的專案了解（如 Apache Hive, Spark SQL, Fackbook Presto）</li>
+<li>資料流程管理（如 Airflow、AWS Glue）</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>那經過資料管道處理後的資料要怎麼存取/分析？依照存取方式的不同，資料管道的架構方式也會有所不同。</p>
+<p>而存取資料的方式大概可以分為兩種：</p>
+<ul>
+<li><a href="https://medium.com/@rchang/a-beginners-guide-to-data-engineering-part-i-4227c5c457d7">資料倉儲（Data Warehousing）</a></li>
+<li><a href="https://itw01.com/G4DCESL.html">資料湖（Data Lake）</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="資料倉儲_1">資料倉儲<a class="anchor-link" href="#資料倉儲">&para;</a></h2><p>資料倉儲的概念就跟實際的倉儲相同：你在這邊將原料（原始資料）轉化成可以消化的產品（資料庫裡頭的經過整理的一筆筆紀錄）並存起來方便之後分析。</p>
+<p>這邊最重要的概念是：為了方便商業智慧的萃取，在將資料放入資料倉儲前，資料科學家 / 資料工程師需要花很多的心力決定資料庫綱目（Database Schema）要長什麼樣子。
+也就是說資料庫的綱要（Schema）在建立資料管道的時候就已經被決定了：這種模式稱之為 Schema-on-Write。這是為了確保資料在被放進資料倉儲的時候就已經是可以分析的形式，方便資料科學家分析。</p>
+<p>你可以想像資料工程師在建構資料管道 / ETL 的時候，得對原始資料做大量的轉換以讓資料在被<strong>寫</strong>入資料倉儲時就已經符合一開始定義的 Schema。而資料倉儲最常被拿來使用的一個資料模型（Data Model）是所謂的 <a href="https://en.wikipedia.org/wiki/Dimensional_modeling">Dimensional Modeling</a>（Stars / Snowflaks Schema）。</p>
+<center>
+<img src="images/data-engineering/star-schema.png" style=""/>
+</center>
+<center>
+<a href="http://publib.boulder.ibm.com/tividd/td/TEDW/SC32-1497-00/en_US/HTML/srfmst158.htm" target="_blank">資料倉儲最被廣泛使用的 Data Model</a>
+<font color="purple">: </font>Stars Schema
+    <br/>
+<br/>
+</center><p>資料工程師將企業最重要的事件（如：使用者下了訂單、發了一個 Facebook 動態）放到最中間的 Fact Table，並且為了可以使用所有想像得到的維度來分析這些事件，會把事件本身的維度（Dimensions）再分別存在外圍的多個 Dimension Tables。常見的維度有：</p>
+<ul>
+<li>時間（此事件什麼時候產生、年月份、星期幾等）</li>
+<li>商品的製造商的資料、其他細節</li>
+<li>...</li>
+</ul>
+<p>因為看起來就像是一個星星，因此被命名為 Stars Schema。Snowflakes 則是其變形。</p>
+<h3 id="一些關鍵技術_1">一些關鍵技術<a class="anchor-link" href="#一些關鍵技術">&para;</a></h3><p>在資料倉儲的部分，關鍵的技術與概念有：</p>
+<ul>
+<li>了解正規化（Normalization）的好處</li>
+<li>分散式 SQL 查詢引擎的原理（如 <a href="https://prestodb.io/">Presto</a>）</li>
+<li>分析專用的資料模型的設計原理（如 Stars / Snowflakes schema）</li>
+<li>了解分散式系統背後各種 JOIN 的原理（Sort-Merge JOINs、Broadcast Hash JOINs、Paritioned Hash JOINs 等）</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="資料湖_1">資料湖<a class="anchor-link" href="#資料湖">&para;</a></h2><p>「每天新增的資料量太多，要把所有想分析的資料都做詳細的 Schema 轉換再存入資料倉儲太花人力成本。總之先把這些資料原封不動地存到分散式檔案儲存系統上，之後利用如 <a href="https://aws.amazon.com/tw/glue/">AWS Glue</a> 等服務將資料的 schema 爬出來並分析。」這就是以資料湖為核心的資料管道架構想法。一般這種存取資料的方式我們稱之為 Schema-on-Read，因為 Schema 是在實際載入原始資料的時候才被使用。</p>
+<p><a href="https://aws.amazon.com/tw/athena/">AWS Athena</a> 就是一個 AWS 依照這樣的想法打造的服務。</p>
+<p>舉個簡單的例子，假設我們現在想把<a href="#資料科學家的一天">資料科學家的一天</a>提到的銷售資料以及廣告資料合併起來做分析，在 AWS 上我們可以實作一個這樣的資料管道：</p>
+<center>
+<img src="images/data-engineering/data-lake-example.png" style=""/>
+</center>
+<center>
+    利用 AWS Athena 及 AWS Glue 實作以資料湖為基礎的分析架構
+    <font color="purple">: </font>即時合併並分析不同格式的資料
+    <br/>
+<br/>
+</center><p>我們將存在關聯式資料庫的銷售資料透過 ETL 存到資料湖（AWS S3）裡頭以後，利用 AWS Glue 將資料的中繼資料（Meta Data）存在資料目錄（Data Catalogue）底頭。常見的中繼資料有</p>
+<ul>
+<li>表格定義（有哪些欄位，如：<code>sale_id</code>）</li>
+<li>各個欄位的資料型態</li>
+<li>各個欄位實際在原始資料（如 CSV ）裡頭的排列順序</li>
+</ul>
+<p>接著我們就可以利用提到的 SQL 查詢把銷售資料跟廣告資料合併：</p>
+<pre><code>SELECT *
+FROM sales AS s
+INNER JOIN clicks AS c
+ON s.sale_id = c.sale_id</code></pre>
+<p>收到以上的 SQL 查詢，Athena 會分別把銷售資料以及廣告資料依照對應的資料目錄解析資料後合併再回傳結果給我們。</p>
+<p>我認為今後這種以資料湖為基礎的分析架構會越來越熱門，原因如下：</p>
+<ul>
+<li>非結構化資料量越來越大，花費人力在事前為資料倉儲建立完整的 schema 越來越不實際</li>
+<li>分散式 SQL 查詢服務像是 Athena 抽象化複雜的資料格式，允許資料科學家下 SQL 查詢做 ad-hoc 分析</li>
+<li>透過 Parquet / ORC 等資料格式來自動減少資料湖沒有做正規化而導致的效能損失</li>
+</ul>
+<h3 id="一些關鍵技術_2">一些關鍵技術<a class="anchor-link" href="#一些關鍵技術">&para;</a></h3><p>雖然再過幾年，等到資料工程的人才增加，資料科學家或許可以完全不用介意背後的資料基礎設施的建置，但近幾年這部分可能還是要靠資料科學家自己實作。</p>
+<ul>
+<li>資料湖的概念</li>
+<li>AWS Glue + AWS Athena 的運用（Bonus: Serverless 分析架構，不需管理機器）</li>
+<li>Hive MetaData Store</li>
+</ul>
+<p>在資料湖的例子我主要都用 AWS 的服務來舉例，但你可以自由使用其他雲端服務或者 Hadoop。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="如何實際應用資料工程？_1">如何實際應用資料工程？<a class="anchor-link" href="#如何實際應用資料工程？">&para;</a></h2><p>首先你得先了解目前環境的資料基礎設施。而為了釐清這點，你可以問自己或者相關人員以下問題：</p>
+<ul>
+<li>資料科學的金字塔，我們建到哪一層了？</li>
+<li>我們過去有哪些專案是在取得、準備資料階段就陷入瓶頸？</li>
+<li>我們有專業的資料工程師或相關人員在做資料倉儲或者是資料湖的準備嗎？</li>
+<li>我們的資料是儲存在什麼分散式檔案儲存系統上面？ HDFS 還是 S3？</li>
+<li>我們是怎麼管理/監管 ETL 工作的？ 要考慮用 Airflow 嗎？</li>
+<li>要建構一個新的資料管道的話，要自己架 Hadoop 群集還是使用雲端服務？</li>
+<li>...</li>
+</ul>
+<p>在你思考過以上幾個問題以後，你就會發現為何過往有些資料科學的專案進展緩慢了。這時候與其一直在等待資料的到來，你可以把你想到的幾個問題拿去跟相關的工程師討論。相信我，從你開口跟他們討論如何解決資料基礎設施的瓶頸這點開始，他們將不再視你為「那個只想要拿到資料」的敵人，而是同伴。</p>
+<center>
+<img src="images/data-engineering/hadoop-framework.png" style=""/>
+</center>
+<center>
+<a href="https://medium.com/@ssola/becoming-a-data-engineer-5e0f14048d42" target="_blank">Hadoop 的分散式基礎設施</a>
+<font color="purple">: </font>要學的東西太多，不如就用雲端服務吧
+    <br/>
+<br/>
+</center><p>假如很不幸，你們公司沒有專業的工程師，而你得自己想辦法兜出一個可以處理這些大量資料的方法，我會建議先從現存的全受管（Full-Managed）雲端服務找能解決痛點的方案。</p>
+<p>使用現成的雲端服務來建置資料基礎有幾個好處：</p>
+<ul>
+<li>Pay-as-you-go，通常是用多少花多少</li>
+<li>Proof-of-concept，你可以直接開始嘗試建立最重要的商業邏輯而非架機器</li>
+<li>Serverless 架構，不需管理機器（如 AWS Glue + Athena）</li>
+<li>導入成本降低（相較於自己架 Hadoop Cluster）</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2><p>我嘗試在這篇文章說明資料工程對資料科學家的重要，以及你可以如何開始學習資料工程。</p>
+<p>在這個大數據時代，資料科學家的價值在於找出「大量」資料背後的潛在價值，不要反而讓「資料量太多」這邊成了你最大的限制。
+從雲端服務開始，多學一點資料工程，讓你的資料科學專案前進地更快吧！</p>
+<p>如果你有任何想法想要提出或分享，都歡迎在底下留言或者透過社群網站聯絡我 B-)</p>
+</div>
+</div>
+</div>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                        <a href="https://leemeng.tw/tag/data-science.html" rel="tag">data-science</a>
+                        <a href="https://leemeng.tw/tag/data-engineering.html" rel="tag">data engineering</a>
+                    </span>
+
+                </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a href="https://leemeng.tw/why-you-need-to-learn-sql-as-a-data-scientist.html" rel="prev">
+                                <span>Previous Post</span>
+                                為何資料科學家需要學習 SQL
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <a href="https://leemeng.tw/data-visualization-from-matplotlib-to-ggplot2.html" rel="next">
+                                <span>Next Post</span>
+                                淺談資料視覺化以及 ggplot2 實踐
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '資料科學家為何需要了解資料工程';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
+
+</body>
+</html>

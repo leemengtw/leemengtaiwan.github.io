@@ -1,0 +1,215 @@
+
+/*隱藏 anchor link, 只在 hover 的時候顯示*/
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+
+/*去除表格 border */
+.table th {
+  border: 0px;
+
+}
+
+th, td {
+  border: 0px;
+}
+
+/*微調 boostrap table 格式*/
+.table td, .table th {
+  border-top: 0px
+}
+
+.table {
+  font-size: 0.6rem;
+  margin-bottom: 35px;
+}
+
+/*置中 output area 的 圖片*/
+div.output_subarea img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*取消 bootstrap 的 hyperlink hover 效果, 只保留文章裡頭的 a*/
+a:hover {
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+/*取消最底下 tag 的 hover 底線*/
+.blog-content__tags a:hover {
+  text-decoration: none;
+}
+
+
+/*取消 output area 的 code 背景顏色*/
+div.output_subarea pre {
+  background-color: white;
+}
+
+/*置中 markdown 裡頭 引進的圖片*/
+.blog-content__main img {
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+
+/*各別 tag 頁面內的文章格式*/
+div.article-in-tag-page a {
+  color: black
+}
+
+div.article-in-tag-page a:hover {
+  color: #862121;
+}
+
+/*顯示 tag 頁面裡頭文章的縮圖*/
+/*reference: http://jonathannicol.com/blog/2014/06/16/centre-crop-thumbnails-with-css/*/
+
+
+
+
+/*左側導覽行*/
+#left-navigation {
+  display: none;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 200px;
+  margin-left: -20px;
+  margin-bottom: -150px;
+  padding-top: 8px;
+  z-index: 1;
+}
+#left-navigation i {
+  color: grey;
+  opacity: 0.6;
+  margin-bottom: 20px;
+}
+
+
+@media screen and (max-width: 980px) {
+  #left-navigation  { opacity: 0 }
+}
+
+
+/*左側各個 component 共用部分*/
+#toc-wrap, #toc-wrap > #toc, #search-wrap, #search {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#toc-wrap > #toc, #search-wrap > #search {
+  display: none
+}
+
+/*左側 Table of Content*/
+#toc-wrap:hover #toc {
+  display: block;
+  float: right;
+  margin-bottom: -215px;
+  margin-left: 10px;
+  background-color: white;
+  -webkit-box-shadow: 0 0 1em #777777;
+  -moz-box-shadow: 0 0 1em #777777;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  padding-top: 10px;
+  padding-right: 23px;
+  position: relative;
+  top: -107px;
+}
+
+#toc-wrap #toc > ul:first-child {
+  list-style-type: none;
+}
+
+#toc-wrap #toc > ul > li:first-child > a {
+  font-size: 120%
+}
+
+#toc-wrap #toc a:hover {
+  text-decoration: underline;
+}
+
+/*左側搜尋*/
+#search-wrap:hover #search {
+  display: block;
+  margin-left: 10px;
+  background-color: white;
+  -webkit-box-shadow: 0 0 1em #777777;
+  -moz-box-shadow: 0 0 1em #777777;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  position: relative;
+  top: -2px;
+}
+
+#search {
+  margin-top: -20px;
+  height: 40px;
+}
+
+.tipue_search_right {
+  height: 40px;
+}
+
+#tipue_search_input {
+  height: 40px;
+  padding: 0 10px!important;
+}
+
+
+/*頂端搜尋欄*/
+/*.search-container {*/
+  /*display: inline-block;*/
+/*}*/
+
+/*.search-container input[type=text] {*/
+  /*display: inline-block;*/
+  /*border: none;*/
+  /*color: #000000;*/
+  /*background-color: #FFF;*/
+  /*background-clip: content-box;*/
+  /*padding: 0;*/
+/*}*/
+
+
+/*首頁 maillist 訂閱按鈕*/
+div.cta__action a {
+  color: #FFFFFF;
+}
+div.cta__content a:hover {
+  cursor: pointer;
+}
+
+/*文章內 maillist 訂閱*/
+#article-inner-subscribe a:hover {
+  cursor: pointer;
+}
+#article-inner-subscribe a {
+  color: #0D0A0B;
+}
+
+/*文章內顯示前後文章的 block*/
+#article-inner-neighbor-pages {
+  margin-top: 3.9rem;
+}
+
+

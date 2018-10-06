@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 從彼此學習 - 淺談機器學習以及人類學習</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="說到近年最熱門的機器學習或者人工智慧，因為知識背景以及觀點的不同，幾乎每個人都有不一樣的見解。雖然我們有千百種定義、無數的專業術語，這篇文章希望用直觀的方式以及具體的例子，讓讀者能夠在跳入一大堆 ML 的教學文章以及線上課程之前，能以一個更高層次且人性化的角度理解機器學習，並進而思考要如何開啟自己的機器學習旅程。" />
+        <meta name="keywords" content="機器學習, machine learning" />
+        <meta name="tags" content="機器學習" />
+        <meta name="tags" content="machine learning" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/andy-kelly-402111-unsplash.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemeng.tw/some-thought-on-learning-from-machine-learning.html" />
+        <meta property="og:title" content="從彼此學習 - 淺談機器學習以及人類學習" />
+        <meta property="og:description" content="說到近年最熱門的機器學習或者人工智慧，因為知識背景以及觀點的不同，幾乎每個人都有不一樣的見解。雖然我們有千百種定義、無數的專業術語，這篇文章希望用直觀的方式以及具體的例子，讓讀者能夠在跳入一大堆 ML 的教學文章以及線上課程之前，能以一個更高層次且人性化的角度理解機器學習，並進而思考要如何開啟自己的機器學習旅程。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="從彼此學習 - 淺談機器學習以及人類學習">從彼此學習 - 淺談機器學習以及人類學習</a><ul><li><a class="toc-href" href="#目錄" title="目錄">目錄</a></li><li><a class="toc-href" href="#何謂機器學習" title="何謂機器學習">何謂機器學習</a></li><li><a class="toc-href" href="#機器學習實例：智慧咖啡機" title="機器學習實例：智慧咖啡機">機器學習實例：智慧咖啡機</a></li><li><a class="toc-href" href="#如何讓機器學得更好" title="如何讓機器學得更好">如何讓機器學得更好</a><ul><li><a class="toc-href" href="#機器並沒有意識判斷『為什麼』以及何謂『正確』" title="機器並沒有意識判斷『為什麼』以及何謂『正確』">機器並沒有意識判斷『為什麼』以及何謂『正確』</a></li><li><a class="toc-href" href="#機器的世界觀是人類教的" title="機器的世界觀是人類教的">機器的世界觀是人類教的</a></li></ul></li><li><a class="toc-href" href="#如何改善我們的學習_1" title="如何改善我們的學習">如何改善我們的學習</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/andy-kelly-402111-unsplash.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemeng.tw/tag/ji-qi-xue-xi.html" rel="tag">機器學習</a>
+                            <a href="https://leemeng.tw/tag/machine-learning.html" rel="tag">machine learning</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemeng.tw/some-thought-on-learning-from-machine-learning.html" title="">
+                            從彼此學習 - 淺談機器學習以及人類學習
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2018-06-16 (Sat)</li>
+                        <li class="page-view">
+                            726 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
+
+    <div id="social-wrap" style="cursor: pointer">
+        <a class="open-popup" title="訂閱最新文章">
+            <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/some-thought-on-learning-from-machine-learning.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/some-thought-on-learning-from-machine-learning.html&title=%E5%BE%9E%E5%BD%BC%E6%AD%A4%E5%AD%B8%E7%BF%92%20-%20%E6%B7%BA%E8%AB%87%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E4%BB%A5%E5%8F%8A%E4%BA%BA%E9%A1%9E%E5%AD%B8%E7%BF%92&summary=%E8%AA%AA%E5%88%B0%E8%BF%91%E5%B9%B4%E6%9C%80%E7%86%B1%E9%96%80%E7%9A%84%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E6%88%96%E8%80%85%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7%EF%BC%8C%E5%9B%A0%E7%82%BA%E7%9F%A5%E8%AD%98%E8%83%8C%E6%99%AF%E4%BB%A5%E5%8F%8A%E8%A7%80%E9%BB%9E%E7%9A%84%E4%B8%8D%E5%90%8C%EF%BC%8C%E5%B9%BE%E4%B9%8E%E6%AF%8F%E5%80%8B%E4%BA%BA%E9%83%BD%E6%9C%89%E4%B8%8D%E4%B8%80%E6%A8%A3%E7%9A%84%E8%A6%8B%E8%A7%A3%E3%80%82%E9%9B%96%E7%84%B6%E6%88%91%E5%80%91%E6%9C%89%E5%8D%83%E7%99%BE%E7%A8%AE%E5%AE%9A%E7%BE%A9%E3%80%81%E7%84%A1%E6%95%B8%E7%9A%84%E5%B0%88%E6%A5%AD%E8%A1%93%E8%AA%9E%EF%BC%8C%E9%80%99%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%8C%E6%9C%9B%E7%94%A8%E7%9B%B4%E8%A7%80%E7%9A%84%E6%96%B9%E5%BC%8F%E4%BB%A5%E5%8F%8A%E5%85%B7%E9%AB%94%E7%9A%84%E4%BE%8B%E5%AD%90%EF%BC%8C%E8%AE%93%E8%AE%80%E8%80%85%E8%83%BD%E5%A4%A0%E5%9C%A8%E8%B7%B3%E5%85%A5%E4%B8%80%E5%A4%A7%E5%A0%86%20ML%20%E7%9A%84%E6%95%99%E5%AD%B8%E6%96%87%E7%AB%A0%E4%BB%A5%E5%8F%8A%E7%B7%9A%E4%B8%8A%E8%AA%B2%E7%A8%8B%E4%B9%8B%E5%89%8D%EF%BC%8C%E8%83%BD%E4%BB%A5%E4%B8%80%E5%80%8B%E6%9B%B4%E9%AB%98%E5%B1%A4%E6%AC%A1%E4%B8%94%E4%BA%BA%E6%80%A7%E5%8C%96%E7%9A%84%E8%A7%92%E5%BA%A6%E7%90%86%E8%A7%A3%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%EF%BC%8C%E4%B8%A6%E9%80%B2%E8%80%8C%E6%80%9D%E8%80%83%E8%A6%81%E5%A6%82%E4%BD%95%E9%96%8B%E5%95%9F%E8%87%AA%E5%B7%B1%E7%9A%84%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E6%97%85%E7%A8%8B%E3%80%82&source=https%3A//leemeng.tw/some-thought-on-learning-from-machine-learning.html" target="_blank" title="分享到 LinkedIn">
+            <i class="im im-linkedin" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://twitter.com/intent/tweet?text=%E5%BE%9E%E5%BD%BC%E6%AD%A4%E5%AD%B8%E7%BF%92%20-%20%E6%B7%BA%E8%AB%87%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E4%BB%A5%E5%8F%8A%E4%BA%BA%E9%A1%9E%E5%AD%B8%E7%BF%92&url=https%3A//leemeng.tw/some-thought-on-learning-from-machine-learning.html" target="_blank" title="分享到 Twitter">
+            <i class="im im-twitter" aria-hidden="true"></i>
+        </a>
+    </div>
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>說到近年最熱門的機器學習（Machine Learning）或者人工智慧（Artificial Intelligence），因為知識背景以及觀點的不同，幾乎每個人都有不一樣的見解。雖然我們有千百種定義、無數的專業術語，這篇文章希望用直觀的方式以及具體的例子，讓讀者能夠在跳入一大堆 ML 的教學文章以及線上課程之前，能以一個更高層次且人性化的角度理解機器學習，並進而思考要如何開啟自己的機器學習旅程。</p>
+<p>不僅如此，你將發現機器學習並不是冷冰冰的科學，隨處可見人類的巧思；就算不是資料科學家，你也能從『機器學習』獲得啟發，將一些概念用在改善『自己的學習』。</p>
+<p>讓我們開始吧！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="目錄">目錄<a class="anchor-link" href="#目錄">&para;</a></h2><ul>
+<li><a href="#何謂機器學習">何謂機器學習</a></li>
+<li><a href="#機器學習實例：智慧咖啡機">機器學習實例：智慧咖啡機</a></li>
+<li><a href="#如何讓機器學得更好">如何讓機器學得更好</a></li>
+<li><a href="#如何改善我們的學習">如何改善我們的學習</a></li>
+<li><a href="#結語">結語</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="何謂機器學習">何謂機器學習<a class="anchor-link" href="#何謂機器學習">&para;</a></h2><p>多虧了媒體的大量宣傳，我們現在都知道<a href="https://zh.wikipedia.org/wiki/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">機器學習</a>被應用在各個領域。一些常見的例子包含：</p>
+<ul>
+<li>自然語言處理，如 Google 翻譯、iPhone 的 Siri 語音辨識</li>
+<li>推薦系統，如 Amazon 的<a href="https://technews.tw/2016/07/17/amazon-page-system/">『買了這個商品的人同時也購買了 ...』功能</a></li>
+<li>垃圾郵件自動判定，如同我們在<a href="https://leemengtaiwan.github.io/intuitive-understandind-of-bayes-rules-and-learn-from-experience.html">《直觀理解貝氏定理及其應用》</a>一文中談到的</li>
+<li>電腦視覺，如 <a href="https://www.techbang.com/posts/58630-facebook-calls-users-to-upload-nude-photos-in-order-not-to-make-you-the-yan-zhao-door-lead">Facebook 的人臉辨識</a>、Youtube 的影片推薦，影像分類<a href="https://github.com/leemengtaiwan/cat-recognition-app">〈這張照片是貓還是狗？〉</a>等</li>
+</ul>
+<p>例子不勝枚舉。有那麼多應用機器學習的例子，不禁讓人思考，究竟什麼是『機器學習』？</p>
+<p>依照目前機器學習的應用，一個大致上的定義是：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>讓機器學習如何將輸入的資料 X 透過一系列的運算，轉換成指定的輸出 y。並提供一個衡量成功的方式，讓機器知道怎麼修正學習方向。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>有了這個定義，讓我們再看一下上面提到的幾個例子：</p>
+<ul>
+<li>自然語言處理：將得到的英文字串〈輸入〉，轉成中文文字〈輸出〉</li>
+<li>推薦系統：將使用者過去的購買記錄〈輸入〉，轉成使用者可能想要購買的商品列表〈輸出〉</li>
+<li>垃圾郵件判斷：將郵件內文〈輸入〉，轉成該郵件為垃圾信的機率〈輸出〉</li>
+<li>電腦視覺：將一個　400 x 400 像素的圖片，轉成多個標籤的機率〈輸出〉</li>
+</ul>
+<center>
+<a href="https://developers.google.com/machine-learning/practica/image-classification/" target="_blank">
+<img src="images/learn-from-machine/cat-image-classification.PNG" style="" title="Google Machine Learning Practica"/>
+</a>
+</center>
+<center>
+<a href="https://developers.google.com/machine-learning/practica/image-classification/" target="_blank">Google Machine Learning Practica</a>
+<font color="purple">: </font>
+<br/>
+    Google 教你做影像分類，利用機器學習，將充滿著像素的圖片轉換成一個個標籤
+    <br/>
+<br/>
+<br/>
+</center><p>嗯嗯，我想這定義還算合理。</p>
+<p>眼尖的讀者會發現，這邊的例子說明了上述定義的一半：將輸入 X 轉換成輸出 y。為了進一步解釋後半段『衡量成功的方式』，下面讓我們以一個虛構的咖啡機舉例。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="機器學習實例：智慧咖啡機">機器學習實例：智慧咖啡機<a class="anchor-link" href="#機器學習實例：智慧咖啡機">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>假設你是個咖啡愛好者，家裡有好幾台高檔的咖啡機，但每次泡出來的咖啡都不合你胃口。</p>
+<p>經過無數的失敗，忍無可忍，你最後決定向月巴克公司買台『智慧』咖啡機。該咖啡機宣稱可以了解你的個人需求，泡出世界上最符合你胃口的咖啡。</p>
+<p>拆開咖啡機包裝，你興奮地把咖啡豆、砂糖以及牛奶加到該咖啡機裡頭。幾分鐘過後，號稱世界上最好喝的咖啡完成了！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/learn-from-machine/nolan-issac-38299-unsplash.jpg" style=""/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>外觀看起來不錯，你滿懷期待地啜了一口。</p>
+<p>『太甜了吧！砂糖太多了，什麼鳥機器！』</p>
+<p>你怒吼著，幾乎馬上萌生退貨的想法。這時候咖啡機感應到你的抱怨，用很委屈的聲調說：</p>
+<p>『目前調配咖啡的方式為原廠設定。經過統計分析，要得到一個正常台灣人的最佳評分，平均一杯咖啡裡頭的咖啡豆顆數、砂糖匙數以及牛奶的小杯數的比例應該要是 10 比 2 比 3。』</p>
+<p>你只覺得莫名其妙，心想這什麼神奇的比例。而且咖啡機剛剛是在拐彎抹角地說我不正常嗎？</p>
+<p>這時候咖啡機又說話了：</p>
+<p>『為了做出最符合您口味的咖啡，滿分 100 的情況下，請按鈕輸入你認為此杯咖啡值幾分。另外請告訴我是哪邊出了問題，如糖份比例太高還是牛奶太多，以讓我能記住您的喜好。』</p>
+<p>你翻了個白眼，喝杯咖啡還要教機器怎麼調配？哪裡智慧了？</p>
+<p>但為了喝到最符合自己喜好的咖啡，你決定給咖啡機一個機會，好好地調教它。針對眼前這杯咖啡，你把自己的回饋〈評分、調配比例的建議：砂糖太多〉老老實實地輸入進去。</p>
+<p>於是乎就這樣，不知不覺中你已經與月巴克咖啡機一起踏上了調配世界上最好喝咖啡的學習之旅。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/learn-from-machine/david-charles-schuett-362484-unsplash.jpg" style=""/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為了實際了解咖啡機怎麼學習，你翻開咖啡機使用手冊，看到以下內容：</p>
+<hr/>
+<p>《月巴克智慧咖啡機說明指南》</p>
+<ul>
+<li>基本假設；使用者評分 = 使用者滿意程度</li>
+<li>預測使用者給咖啡的評分 <code>y'</code> = <code>w1</code> * 咖啡豆顆數 + <code>w2</code> * 砂糖匙數 + <code>w3</code> * 牛奶小杯數 + 基本分 <code>b</code></li>
+<li>目標：找出一組調配比重 <code>w1, w2, w3, b</code>，使得咖啡機預測的評分 <code>y'</code> 越接近實際的使用者評分 <code>y</code> 越好</li>
+<li>咖啡製作：使用上述比重調配咖啡，使得預測評分 <code>y'</code> 接近 100</li>
+<li>各原料調配比重〈原廠設定〉： <code>w1 = 10, w2 = 2, w3 = 3, b = 60</code></li>
+</ul>
+<p>...</p>
+<hr/>
+<p>你恍然大悟，原來月巴克公司為了讓咖啡機最大化你給咖啡的評分，在咖啡機裡頭建構了一個簡單的<a href="https://zh.wikipedia.org/wiki/%E7%B7%9A%E6%80%A7%E5%9B%9E%E6%AD%B8">線性回歸〈Linear Regression〉</a>模型。</p>
+<p>在這模型裡頭，使用者針對一杯咖啡的評分 <code>y</code> 會受到多個原料的量的影響。每個原料量的影響程度則透過個別的 <code>w</code> 來描述。理想上，如果咖啡機可以找出一組比重〈weights〉 <code>w</code> ，使得咖啡機『預測』出來的評分 <code>y'</code> 跟『實際』使用者給的評分 <code>y</code> 非常相近的話，咖啡機就可以利用該模型來合理地選擇咖啡豆、砂糖以及牛奶的量，調配出一杯預期能獲得你最高評分的咖啡。</p>
+<p>那咖啡機要如何實際『學習』呢？ 或者換句話說，咖啡機要怎麼樣知道它現在用的參數〈<code>w1</code>、<code>b</code>等〉夠不夠好呢？如果不夠好的話，要怎麼修正呢？</p>
+<p>在一開始完全沒有任何使用者回饋的時候，咖啡機可以很合理地使用原廠設定來計算使用者評分 <code>y'</code>。等到你輸入了一些評分 <code>y</code> 以後，將所有從你得到的評分 <code>y</code> 跟咖啡機自己預測的 <code>y'</code> 做比較，看咖啡機做的預測評分跟你的給分差了多少，據此修正原料的比重 <code>w</code> 以及 <code>b</code>。<code>y'</code>跟<code>y</code>的差異讓我們暫時稱作 <code>diff_y</code>。</p>
+<p>修正以後，一般來說我們會得到新的比重　<code>w'</code> 以及 <code>b'</code>。當咖啡機使用 <code>w'</code> 以及 <code>b'</code>產生新的預測評分 <code>y''</code>，其跟你的實際給分 <code>y</code> 也會有一個差距，我們則將其稱作為 <code>diff_y'</code></p>
+<p>當使用新的參數〈<code>w1</code>、<code>b</code>等〉產生的 <code>diff_y'</code> 比原來的 <code>diff_y</code> 來小的時候，我們就能很開心地表示：『這咖啡機幹得真不錯！學到了點東西，能更準確地找出我的喜好！』。</p>
+<p>而在每次獲得你回饋的時候重複上述步驟，咖啡機不斷地修正它用來預估你給咖啡分數的參數，讓預測出來的值 <code>y'</code> 跟你過去所有評分 <code>y</code> 之間的差異都更小。雖然我們這邊不會細講，但在線性回歸裡頭，一個常被用來計算預測值 <code>y'</code> 跟實際值 <code>y</code> 差異的方式是<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95">最小平方法〈Least Squares〉</a>：</p>
+<div class="highlight"><pre><span></span>diff_y = 針對每次使用者的評分 y，機器利用當下的參數產生相對應的 y' 以後，用兩者計算 (y' - y) 的平方並加總它們
+</pre></div>
+<p>你可以看到，當 <code>diff_y</code> 越小，代表咖啡機越能準確地依據目前的原料量，來預測你會給咖啡的評分。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/learn-from-machine/daryan-shamkhali-89504-unsplash.jpg" style=""/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>咖啡機學得很快。經過幾個怒吼以及失望的夜晚，透過你給的回饋，它現在做出的咖啡已經能很穩定地讓你給出 90 分以上的評價。</p>
+<p>透過詢問咖啡機，你現在知道，為了獲得你的高評價，咖啡機學到了以下的模型：</p>
+<ul>
+<li>你給咖啡的評分 = 咖啡豆顆數 * 13 + 砂糖匙數 * 1.2 + 牛奶小杯數 * 1.5 + 基本分 40 分</li>
+</ul>
+<p>這跟一開始為了滿足所有人的原廠設定相比，還差真不少：</p>
+<ul>
+<li>一般使用者評分 = 咖啡豆顆數 * 10 + 砂糖匙數 * 2 + 牛奶小杯數 * 3 + 基本分 60 分</li>
+</ul>
+<p>依照你過去的回〈ㄊㄧㄠˊ〉饋〈ㄐㄧㄠˋ〉，咖啡機發現跟一般人相比，咖啡豆量對你來說，是一杯咖啡好不好喝的重要指標〈13 vs 10〉，砂糖跟牛奶量則反而顯得沒那麼重要。而從基本分來看，咖啡機甚至學到你對咖啡的要求程度比一般人要來得嚴格〈40 vs 60〉，實實在在地說明機器了解你是個專業的咖啡愛好者。</p>
+<p>現在再讓我們看一次前面定義的機器學習：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>讓機器學習如何將輸入的資料 X 透過一系列的運算，轉換成指定的輸出 y。並提供一個衡量成功的方式，讓機器知道怎麼修正學習方向。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>經過上面的咖啡機例子，我們能清楚地歸納出以下幾點：</p>
+<ul>
+<li>咖啡機是在進行機器學習，學習如何用一連串運算，將原物料的量〈咖啡豆顆數等〉<code>X</code> 轉換成使用者評分 <code>y</code></li>
+<li>機器學習裡所謂的一系列運算，在咖啡機的例子裡是進行線性回歸，即 <code>y = w * x + b</code></li>
+<li>咖啡機衡量成功的方式是計算『預測評分 <code>y'</code> 跟實際評分 <code>y</code> 之間的差異大小』，此差異越小，代表學得越好</li>
+<li>衡量成功的方法很重要，因為咖啡機可以知道『努力/學習的方向』</li>
+<li>咖啡機透過反覆地修正參數，進而最小化上述差異，成功地『學習』</li>
+<li>機器學習是學習一組最符合目標的『參數』〈如基本分的 <code>40</code>、咖啡豆顆數的 <code>13</code>〉</li>
+</ul>
+<p>我們可以總結說，咖啡機在你給的回饋以及監督之下，想辦法從三種原料〈咖啡豆、砂糖、牛奶〉中，『學習』出一個最棒的調配比例，以做出一杯能得到你最高評價的咖啡。在機器學習領域裡頭，這實際上被稱作<a href="https://zh.wikipedia.org/wiki/%E7%9B%A3%E7%9D%A3%E5%BC%8F%E5%AD%B8%E7%BF%92">監督式學習〈Supervised Learning〉</a>。</p>
+<p>太棒了，你跟月巴克咖啡機從此過著幸福美滿的日子‧</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="如何讓機器學得更好">如何讓機器學得更好<a class="anchor-link" href="#如何讓機器學得更好">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你閱讀完上面例子，開始思考以下問題：</p>
+<ul>
+<li>『除了原物料的量以外，或許還可以搜集其他類型的資料，像是咖啡機主人的性別、年齡甚至泡咖啡的時間，然後把它們加到模型裡頭以提高預測評分的準度？』</li>
+<li>『除了簡單的線性回歸，我們應該也可以用其他更複雜的模型或演算法來預測使用者的評分？』</li>
+<li>『與其預測使用者評分，能不能建立新的模型，直接預測使用者喜好？』</li>
+<li>『如果咖啡機得到更多我的回饋資料，是不是會更準？』</li>
+<li>『我的喜好會隨很多因素如時間做改變，要怎麼讓咖啡機模擬這情況？』</li>
+<li>『這咖啡機學到最後，是不是只能產生適合我口味的咖啡，而不能產生大家都喜歡的咖啡？』</li>
+</ul>
+<p>我得說聲恭喜，你已經擁有機器學習的思維且準備好進入機器學習的殿堂了。</p>
+<p>但在你摩拳擦掌，準備進入殿堂時，有些人可能會跟你說，近年因為機器學習在各領域發展神速，且機器能使用的訓練資料〈Training Data〉也越來越多，<a href="https://zh.wikipedia.org/wiki/%E5%BC%B7%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7">強人工智慧〈Strong AI〉</a>很快就會出現。不久的未來，我們甚至也不用自己設計演算法以及模型，A.I.會自動幫我們全部做好。也就是：機器會自己讓機器學得更好。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/learn-from-machine/strong-ai.jpg" style=""/>
+</center>
+<center>
+    當強人工智慧出現以後，或許人類就不再被需要了。因為機器會自己讓機器學得更好。
+    <br/>
+<br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>真的嗎？沒有人能真正的預測未來，所以我們無從知曉。</p>
+<p>但至少在接下來幾年，要讓機器學習或者人工智慧再繼續進步，『人類的思考』是不可或缺的重要因素。主要體現在兩個地方：</p>
+<ol>
+<li>機器並沒有意識判斷『為什麼』以及何謂『對的方向』</li>
+<li>機器的世界觀是人類教的</li>
+</ol>
+<h3 id="機器並沒有意識判斷『為什麼』以及何謂『正確』">機器並沒有意識判斷『為什麼』以及何謂『正確』<a class="anchor-link" href="#機器並沒有意識判斷『為什麼』以及何謂『正確』">&para;</a></h3><p>電腦因為有著強大的記憶以及運算能力，在很多任務上面都已經可以超越人類的表現。</p>
+<center>
+<img src="images/learn-from-machine/image-classification-history.PNG" style=""/>
+</center>
+<center>
+<a href="https://chtseng.wordpress.com/2017/11/20/ilsvrc-%E6%AD%B7%E5%B1%86%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%A8%A1%E5%9E%8B/" target="_blank">ILSVRC 歷屆的深度學習模型</a>
+<font color="purple">: </font>近年電腦視覺〈Computer Vision〉領域發展快速，機器學習在影像分類〈Image Classification〉的表現已經超越人眼。
+    <br/>
+<br/>
+<br/>
+</center><p>但能達到這樣的成果的前提，都是因為有人類在設計模型、監督機器學習。</p>
+<p>目前機器學習或是 A.I. 的應用其背後的模型，當你去看裡頭一行行的程式碼的時候，裡頭並不會定義『為什麼』要做這些任務。實際上，在機器學習的過程中，機器並沒有意識到為什麼要做這些任務；而如果沒有人類的介入的話，機器也不會自己定義什麼樣的結果叫做『成功』或『正確』，而也就不知道該往什麼方向學習。</p>
+<ul>
+<li>該讓機器學習什麼</li>
+<li>怎麼定義『正確/成功』，讓機器遵從並往該方向改善</li>
+</ul>
+<p>這兩件事情只有依靠人類來做決定。而其決定將大大地影響機器學習的成果以及品質。機器不會跟你說：</p>
+<p>『我覺得把影片裡面的貓咪識別出來，比識別出交通號誌燈來得重要。』</p>
+<p>『喔... 我覺得我們學的方向怪怪的，讓我們往這個方向學習如何？』</p>
+<p>一個定義出錯的目標函式〈Objective Function〉將永遠無法讓機器學出我們想要的結果。</p>
+<p>針對這點，我們應該：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>找出值得解決的問題，下定我們的目標並明確定義何謂『正確』，以讓機器往該方向學習。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="機器的世界觀是人類教的">機器的世界觀是人類教的<a class="anchor-link" href="#機器的世界觀是人類教的">&para;</a></h3><p>第二點應該也不難理解。一個機器的世界觀基本上取決於兩點：</p>
+<ul>
+<li>人類指定使用的模型〈Model〉</li>
+<li>餵給它的資料〈Data〉</li>
+</ul>
+<p>如同前面咖啡機的線性回歸，我們透過一個簡單的線性模型，教會咖啡機看世界。在咖啡機所認知的世界裡頭，使用者的評分就只會受到三種原物料量的影響：咖啡豆、砂糖及牛奶。這是一個非常簡單的世界，方便我們理解機器學習，但在真實世界上基本上不會成功運作，你需要考慮更多因素。</p>
+<p>如同我們前面有提到，你可能會思考以下問題：</p>
+<ul>
+<li>『我的喜好會隨很多因素如時間做改變，要怎麼讓咖啡機模擬這情況？』</li>
+<li>『除了原物料的量以外，或許還可以搜集其他類型的資料，然後把它們加到模型裡頭以提高預測評分的準度？』</li>
+<li>『除了簡單的線性回歸，我們應該也可以用其他更複雜的模型或演算法來預測使用者的評分？』</li>
+<li>『這咖啡機學到最後，是不是只能產生適合我口味的咖啡，而不能產生大家都喜歡的咖啡？』</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/learn-from-machine/ricardo-resende-692381-unsplash.jpg" style=""/>
+</center>
+<center>
+    我們怎麼看世界，將直接影響機器怎麼看世界。
+    <br/>
+<br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>事實上你已經在思考如何擴充機器的世界觀了。你可以使用各式各樣的模型、更多的資料以讓機器能用更全面的方式來理解這個世界。而這個新的世界觀只能由你來定義。</p>
+<p>〈現在的〉機器不會突然跟你說：</p>
+<p>『嗯... 我覺得我們應該考慮泡咖啡時有沒有下雨，因為這可能會嚴重地影響使用者心情，進而影響評分。』</p>
+<p>『我只依照你的評分做最佳化，可能會有<a href="https://zh.wikipedia.org/wiki/%E9%81%8E%E9%81%A9">過適</a>問題喔！』</p>
+<p>這些問題都是我們必須自己發現並解決，不能只期待機器自動解決〈至少這幾年〉。在機器學習領域裡頭，最怕的不是模型完全不行，而是上述的<a href="https://zh.wikipedia.org/wiki/%E9%81%8E%E9%81%A9">過適〈Overfitting〉</a>問題：機器所看到的資料本身太過侷限，導致其雖然只看到真實世界的一小部分，就誤以為那是全世界。換句話說，機器裡存在著強烈的偏見〈bias〉。前陣子常聽到的案例是<a href="https://www.theguardian.com/technology/2017/dec/04/racist-facial-recognition-white-coders-black-people-police">白人設計出來的臉部辨識模型對黑人有偏見</a>。</p>
+<p>以我們咖啡機的例子來說，如果你家裡只有你一人，咖啡機只需要服務你一人即好；但如果你們是一個家庭，家裡的人都希望咖啡機能為它們弄出好喝的咖啡，則每個人都需要給予咖啡機回饋，以讓咖啡機了解每個人喜好。如果仍然只有你一個人給予咖啡機回饋，其他人不給分，則咖啡機會以為得到的評分來自所有人，誤以為只要最佳化這些評分，就能滿足所有人，其實不然。</p>
+<p>為了讓機器看得更遠更全面，我們應該：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>想辦法在機器學習的模型內融入更多我們的直觀想法〈intuition〉，並讓機器看到更全面的資料，以拓展機器的『世界觀』。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="如何改善我們的學習_1">如何改善我們的學習<a class="anchor-link" href="#如何改善我們的學習">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>閱讀到此，相信你對機器學習已經有個高層次的理解了。</p>
+<p>在對機器學習有個基本的了解以後，我們在前面章節提到為了讓機器學得更好，一個可行的方向是將我們的直觀想法、世界觀轉換成機器可以運算的模型或是目標函式，以讓機器能從聰明的我們身上學習。但換個角度思考，在我們教機器『學習』的時候，應該也能從機器『學習』到什麼才對。</p>
+<p>事實上，很多我們應用在機器學習領域的想法，緊密地跟我們的個人生活息息相關。</p>
+<p>舉個例子，在機器學習中，過適〈Overfitting〉是我們最想要避免的問題。我們不會希望機器只學到事物的表象，或者受到 outliers 的影響，而是希望機器學到更重要的模式〈Pattern〉、趨勢〈Trend〉。所以研究者們透過各種方式來讓機器不要過適：</p>
+<ul>
+<li>輸入更多資料</li>
+<li>用更簡單的模型</li>
+<li>減輕 outliers 的比重</li>
+<li>正規化〈Normalization〉</li>
+<li>...</li>
+</ul>
+<p>而當機器成功地學到了事物的本質，就能精準地預測未來並且概括所有情況〈Generalize〉：</p>
+<ul>
+<li>預測股票漲幅</li>
+<li>預測誰最後會當上總統</li>
+<li>預測詐騙交易</li>
+<li>預測一張照片裡頭有什麼物件</li>
+</ul>
+<p>畢竟，一個只看過貓跟狗照片的機器，不管未來看到什麼，就算是汽車或是人類，也只會將視它們為一定程度的貓或者是狗。</p>
+<p>知名心理學家<a href="https://zh.wikipedia.org/wiki/%E4%BA%9A%E4%BC%AF%E6%8B%89%E7%BD%95%C2%B7%E9%A9%AC%E6%96%AF%E6%B4%9B">馬斯洛</a>曾<a href="https://www.brainyquote.com/authors/abraham_maslow">說過</a>：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>如果你只有一個槌子，你可能就會把每個問題都視為釘子。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/learn-from-machine/tr-veler-671730-unsplash.jpg" style=""/>
+</center>
+<center>
+    不管學習的是機器還是人類，學會概括〈Generalize〉並避免過適〈Overfitting〉是最重要的課題。手中只有槌子的人，什麼問題都看起來像釘子。
+    <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>同樣道理可以應用在人類的學習上。</p>
+<p>當我們只注重在參加各式各樣的線上深度學習〈Deep Learning〉課程，而不去了解機器學習背後的原理就是一種過適；當我們掙扎著要用 Python 還是 R 畫漂亮的圖，而不去理解為何要這樣畫，才能讓觀眾更容易理解時也是一種過適。更不用說一個只了解<a href="https://zh.wikipedia.org/zh-hant/决策树">決策樹〈Decision Tree〉</a>的同學，看到什麼問題都會想要用決策樹來解的案例了。</p>
+<p>學習表象比較簡單沒錯，但不能帶你走很遠。了解趨勢或者模式則讓你看到未來：</p>
+<ul>
+<li>卓越的歷史學家忽視單一歷史事件，透過了解世界整體的歷史脈絡來預測未來</li>
+<li>愛因斯坦觀察到世界的運作原理而推出有名的質能轉換公式 <code>E = mc&sup2;</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><blockquote><p>好的學習方式是理解事物背後的運作的趨勢、模式。為何我們要機器學習？為什麼深度學習會崛起？注重在詢問更多的『為什麼』以理解事物本質。</p></blockquote></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>從一些已經被應用在機器學習的概念獲得啟發，我們可以重新思考並改善我們人類自己的學習。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我們在這篇文章前半段以一個虛構的智慧咖啡機為例，深入探討機器學習的一些基本但十分的重要概念以及運作方式。</p>
+<p>在掌握機器學習的基本概念以後，我們討論了如何以『人』為本，融入我們人類的智慧以讓機器更聰明地學習、了解這個世界。接著，我們用了一點篇幅，討論了看似不相關的『人類學習』以及『機器學習』之間一個共同且最重要的核心目標：『學習如何去概括〈Generalize〉事物並避免過適〈Overfitting〉』。</p>
+<p>現在機器學習〈尤其是深度學習〉跟其他學術領域如統計、電腦科學相比，是一個相對新的領域，大家都還在摸索階段。但正如當年新興的程式設計已經普遍被重視，甚至加入國高中教育一般，我想再過幾年，等機器學習更為成熟後，人們也會開始呼籲將『機器學習』領域的知識納入課綱，成為我們下一代的基本素養之一。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/learn-from-machine/andy-kelly-402111-unsplash.jpg" style=""/>
+</center>
+<center>
+    未來教育模式的改變：
+    <br/>
+    或許『機器學習』會如同『程式設計』素養一般，成為下一代必備的基本知識素養之一
+    <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>或許那就是本篇所提到的『從機器學習中學習』。</p>
+<p>但在那時代到達之前，讓我們開心〈機器〉學習吧！</p>
+</div>
+</div>
+</div>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemeng.tw/tag/ji-qi-xue-xi.html" rel="tag">機器學習</a>
+                        <a href="https://leemeng.tw/tag/machine-learning.html" rel="tag">machine learning</a>
+                    </span>
+
+                </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a href="https://leemeng.tw/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html" rel="prev">
+                                <span>Previous Post</span>
+                                資料科學家 L 的奇幻旅程 Vol.1 新人不得不問的 2 個問題
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <a href="https://leemeng.tw/intuitive-understandind-of-bayes-rules-and-learn-from-experience.html" rel="next">
+                                <span>Next Post</span>
+                                從經驗中學習 - 直觀理解貝氏定理及其應用
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '從彼此學習 - 淺談機器學習以及人類學習';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
+
+</body>
+</html>

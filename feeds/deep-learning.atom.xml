@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng - Deep Learning</title><link href="https://leemeng.tw/" rel="alternate"></link><link href="https://leemeng.tw/feeds/deep-learning.atom.xml" rel="self"></link><id>https://leemeng.tw/</id><updated>2017-09-30T18:30:00+09:00</updated><entry><title>Find Word Semantic by Using Word2vec in TensorFlow</title><link href="https://leemeng.tw/find-word-semantic-by-using-word2vec-in-tensorflow.html" rel="alternate"></link><published>2017-09-30T18:30:00+09:00</published><updated>2017-09-30T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-30:/find-word-semantic-by-using-word2vec-in-tensorflow.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng - Deep Learning</title><link href="/" rel="alternate"></link><link href="/feeds/deep-learning.atom.xml" rel="self"></link><id>/</id><updated>2017-09-30T18:30:00+09:00</updated><entry><title>Find Word Semantic by Using Word2vec in TensorFlow</title><link href="/find-word-semantic-by-using-word2vec-in-tensorflow.html" rel="alternate"></link><published>2017-09-30T18:30:00+09:00</published><updated>2017-09-30T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:None,2017-09-30:/find-word-semantic-by-using-word2vec-in-tensorflow.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -641,10 +641,17 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="7959f35c-75fc-41c2-a6dd-9711b86bb599"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#7959f35c-75fc-41c2-a6dd-9711b86bb599');
+=======
+&lt;div id="c3ab0296-70eb-4401-a297-8cce984071f3"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_widget_view "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#c3ab0296-70eb-4401-a297-8cce984071f3');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -3542,7 +3549,7 @@ AAAAAHiA4Q0AAAAAPPAD6qjcfWntDHEAAAAASUVORK5CYII=
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="Python"></category><category term="TensorFlow"></category><category term="Word2Vec"></category><category term="NLP"></category><category term="VSM"></category></entry><entry><title>Simple Convolutional Neural Network using TensorFlow</title><link href="https://leemeng.tw/simple-convolutional-neural-network-using-tensorflow.html" rel="alternate"></link><published>2017-09-26T18:30:00+09:00</published><updated>2017-09-26T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-26:/simple-convolutional-neural-network-using-tensorflow.html</id><summary type="html">
+</content><category term="Python"></category><category term="TensorFlow"></category><category term="Word2Vec"></category><category term="NLP"></category><category term="VSM"></category></entry><entry><title>Simple Convolutional Neural Network using TensorFlow</title><link href="/simple-convolutional-neural-network-using-tensorflow.html" rel="alternate"></link><published>2017-09-26T18:30:00+09:00</published><updated>2017-09-26T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:None,2017-09-26:/simple-convolutional-neural-network-using-tensorflow.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -3921,10 +3928,17 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="e319e9e2-9c21-4efe-ba6a-846489790645"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#e319e9e2-9c21-4efe-ba6a-846489790645');
+=======
+&lt;div id="2bbd2a08-f53e-410f-b452-8337dfdd3dc3"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_javascript "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#2bbd2a08-f53e-410f-b452-8337dfdd3dc3');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -4688,10 +4702,17 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="529c3862-cdc1-4fc0-817c-6daf574689ab"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#529c3862-cdc1-4fc0-817c-6daf574689ab');
+=======
+&lt;div id="a91ac3a9-133c-458a-9e24-a63818f75af7"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_widget_view "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#a91ac3a9-133c-458a-9e24-a63818f75af7');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -4881,10 +4902,17 @@ Test accuracy: 89.4%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="2a9c1a8e-580c-40e7-9f91-9102ae5ee586"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#2a9c1a8e-580c-40e7-9f91-9102ae5ee586');
+=======
+&lt;div id="f849bdd5-0c42-4b9a-9316-f03713adb877"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_javascript "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#f849bdd5-0c42-4b9a-9316-f03713adb877');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -5648,10 +5676,17 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="8786327c-7ba2-4501-897c-bf939414b68b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#8786327c-7ba2-4501-897c-bf939414b68b');
+=======
+&lt;div id="f41e0b1a-915b-4b86-b2b6-38fe22a5ae46"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_widget_view "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#f41e0b1a-915b-4b86-b2b6-38fe22a5ae46');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -5852,10 +5887,17 @@ Test accuracy: 90.7%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="e0e612d9-3fa7-49a1-b2aa-8cd191e2c2ba"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#e0e612d9-3fa7-49a1-b2aa-8cd191e2c2ba');
+=======
+&lt;div id="0ccd1d1c-310b-4957-9169-3bef3c87cd9b"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_javascript "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#0ccd1d1c-310b-4957-9169-3bef3c87cd9b');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -6619,10 +6661,17 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="a704052f-68e5-4f12-a588-770ce79c2c73"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#a704052f-68e5-4f12-a588-770ce79c2c73');
+=======
+&lt;div id="6e41f476-466c-45c7-a05c-529660a49529"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_widget_view "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#6e41f476-466c-45c7-a05c-529660a49529');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -6657,7 +6706,7 @@ Test accuracy: 94.6%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="Python"></category><category term="Tensorflow"></category><category term="Deep Learning"></category><category term="Convolutional Neural Network"></category><category term="CNN"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Regularization for Multi-layer Neural Networks in Tensorflow</title><link href="https://leemeng.tw/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="alternate"></link><published>2017-09-25T16:00:00+09:00</published><updated>2017-09-25T16:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-25:/regularization-for-multi-layer-neural-networks-in-tensorflow.html</id><summary type="html">
+</content><category term="Python"></category><category term="Tensorflow"></category><category term="Deep Learning"></category><category term="Convolutional Neural Network"></category><category term="CNN"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Regularization for Multi-layer Neural Networks in Tensorflow</title><link href="/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="alternate"></link><published>2017-09-25T16:00:00+09:00</published><updated>2017-09-25T16:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:None,2017-09-25:/regularization-for-multi-layer-neural-networks-in-tensorflow.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -7028,10 +7077,17 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="359d5eed-1b4e-431c-9091-438b8665cdb0"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#359d5eed-1b4e-431c-9091-438b8665cdb0');
+=======
+&lt;div id="2c0161f5-7ba8-4508-a6bb-3e0145058ae8"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_widget_view "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#2c0161f5-7ba8-4508-a6bb-3e0145058ae8');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -7093,10 +7149,17 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="f6d61333-8cb4-4b17-ba83-53b17ba7609e"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#f6d61333-8cb4-4b17-ba83-53b17ba7609e');
+=======
+&lt;div id="16a01524-fab2-4235-a98e-84ef37d275d3"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_widget_view "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#16a01524-fab2-4235-a98e-84ef37d275d3');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -7150,10 +7213,17 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="ab41a9cd-5b50-4a24-844f-3ffcb67d9176"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#ab41a9cd-5b50-4a24-844f-3ffcb67d9176');
+=======
+&lt;div id="e570cc97-4ed6-4797-88cb-0341f6800fe0"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_widget_view "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#e570cc97-4ed6-4797-88cb-0341f6800fe0');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -7207,10 +7277,17 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="ef375a8b-8720-4f36-93e6-0750ff5b44cb"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#ef375a8b-8720-4f36-93e6-0750ff5b44cb');
+=======
+&lt;div id="9a943d6d-0cbb-496e-8d97-d2aae7cc13ad"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_widget_view "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#9a943d6d-0cbb-496e-8d97-d2aae7cc13ad');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -7270,10 +7347,17 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="21db5daa-a76b-4ae4-ba54-63e277215c0e"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#21db5daa-a76b-4ae4-ba54-63e277215c0e');
+=======
+&lt;div id="fecd727b-db6a-43cc-87d6-fa9950c7cc2b"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_widget_view "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#fecd727b-db6a-43cc-87d6-fa9950c7cc2b');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -7299,7 +7383,7 @@ Test acc: 94.3%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="Tensorflow"></category><category term="Python"></category><category term="Deep Learning"></category><category term="Regularization"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title><link href="https://leemeng.tw/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="alternate"></link><published>2017-09-21T23:50:00+09:00</published><updated>2017-09-21T23:50:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-21:/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</id><summary type="html">
+</content><category term="Tensorflow"></category><category term="Python"></category><category term="Deep Learning"></category><category term="Regularization"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title><link href="/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="alternate"></link><published>2017-09-21T23:50:00+09:00</published><updated>2017-09-21T23:50:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:None,2017-09-21:/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -7643,10 +7727,17 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="9f3e7bf2-8436-4a5a-b9c5-7963b443c5d3"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#9f3e7bf2-8436-4a5a-b9c5-7963b443c5d3');
+=======
+&lt;div id="110115ed-40b6-40e6-93c4-dc639569096b"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_widget_view "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#110115ed-40b6-40e6-93c4-dc639569096b');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -7795,10 +7886,17 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="c20b5e1f-0b52-47e1-ac31-ca973b4abc8e"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#c20b5e1f-0b52-47e1-ac31-ca973b4abc8e');
+=======
+&lt;div id="e496dded-bcc2-43cd-aefc-9018594913f8"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_widget_view "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#e496dded-bcc2-43cd-aefc-9018594913f8');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -7956,10 +8054,17 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
+<<<<<<< HEAD
 &lt;div id="8caf236f-cb66-4d9d-977a-964b8f890cf9"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
 var element = $('#8caf236f-cb66-4d9d-977a-964b8f890cf9');
+=======
+&lt;div id="85a28cf1-ab58-43d4-a2b5-6155af80a76f"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_widget_view "&gt;
+&lt;script type="text/javascript"&gt;
+var element = $('#85a28cf1-ab58-43d4-a2b5-6155af80a76f');
+>>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
