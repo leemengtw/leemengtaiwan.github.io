@@ -13,7 +13,7 @@ SITE_DESCRIPTION_LIST = [
 ]
 SITE_DESCRIPTION = "".join(SITE_DESCRIPTION_LIST)
 
-SITE_KEYWORDS = "部落格, 資料科學, Python, R, 機器學習, 資料分析, 資料視覺化, 軟體工程, 資料工程, 雲端運算, blog, data science, machine learning, data analysis, data visualization, data engineering"
+SITE_KEYWORDS = "部落格, 資料科學, Python, R, 機器學習, 資料分析, 資料視覺化, 軟體工程, 資料工程, 雲端運算, 台灣, blog, data science, machine learning, data analysis, data visualization, data engineering, taiwan"
 PATH = 'content'
 
 # Set path for stat files like favicon and robot.txt
@@ -146,6 +146,7 @@ IPYNB_NB_SAVE_AS = 'notebooks/{slug}.ipynb'
 EMAIL_FORM_ACTION = "https://formspree.io/b98705001@gmail.com"
 
 
+# Portfolio setting, order matters
 PROJECTS = [
     {
         "name": "貓咪辨識 App",
