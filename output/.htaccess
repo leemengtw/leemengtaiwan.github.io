@@ -1,3 +1,0 @@
-RewriteCond %{HTTP_HOST} ^www\.leemengtaiwan\.github\.io$
-RewriteRule ^/?$ "http\:\/\/leemengtaiwan\.github\.io\/" [R=301,L]
-

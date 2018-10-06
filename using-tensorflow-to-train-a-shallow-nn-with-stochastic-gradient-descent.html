@@ -33,9 +33,9 @@
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="/theme/images/background/default.jpg" />
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/default.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" />
+        <meta property="og:url" content="https://leemeng.tw/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" />
         <meta property="og:title" content="Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent" />
         <meta property="og:description" content="The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers." />
 
@@ -46,32 +46,42 @@
     <!-- CSS
     ================================================== -->
     <!--for customized css in individual page-->
-        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
 
     <!--for showing toc navigation which slide in from left-->
-        <link rel="stylesheet" type="text/css" href="/theme/css/toc-nav.css">
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
 
-    <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/ipython.css">
-    <link rel="stylesheet" type="text/css" href='/theme/css/progress-bar.css' />
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
 
 
     <!--TiqueSearch-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
-    <link rel="stylesheet" href="/theme/tipuesearch/css/normalize.css">
-    <link rel="stylesheet" href="/theme/tipuesearch/css/tipuesearch.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
 
     <!-- script
     ================================================== -->
-    <script src="/theme/js/modernizr.js"></script>
-    <script src="/theme/js/pace.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
 
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
 
 
 
@@ -85,7 +95,7 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="../index.html"><img src="/theme/images/logo.png" alt="Homepage"></a>
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
         </div>
 <!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
@@ -137,32 +147,28 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/default.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/default.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
-                            <a href="/tag/python.html" rel="tag">Python</a>
-                            <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
-                            <a href="/tag/deep-learning.html" rel="tag">Deep Learning</a>
-                            <a href="/tag/neural-networks.html" rel="tag">Neural Networks</a>
-                            <a href="/tag/optimization.html" rel="tag">Optimization</a>
+                            <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
+                            <a href="https://leemeng.tw/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                            <a href="https://leemeng.tw/tag/deep-learning.html" rel="tag">Deep Learning</a>
+                            <a href="https://leemeng.tw/tag/neural-networks.html" rel="tag">Neural Networks</a>
+                            <a href="https://leemeng.tw/tag/optimization.html" rel="tag">Optimization</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" title="">
+                        <a href="https://leemeng.tw/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" title="">
                             Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent
                         </a>
                     </h1>
                     <ul class="page-header__meta">
                         <li class="date">2017-09-21 (Thu)</li>
                         <li class="page-view">
-<<<<<<< HEAD
                             1,110 views
-=======
-                            1 views
->>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
                         </li>
                     </ul>
 
@@ -193,6 +199,26 @@
         </a>
     </div>
 
+    <div id="social-wrap" style="cursor: pointer">
+        <a class="open-popup" title="訂閱最新文章">
+            <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html&title=Using%20TensorFlow%20to%20Train%20a%20Shallow%20NN%20with%20Stochastic%20Gradient%20Descent&summary=The%20goal%20here%20is%20to%20progressively%20train%20deeper%20and%20more%20accurate%20models%20using%20TensorFlow.%20We%20will%20first%20load%20the%20notMNIST%20dataset%20which%20we%20have%20done%20data%20cleaning.%20For%20the%20classification%20problem%2C%20we%20will%20first%20train%20two%20logistic%20regression%20models%20use%20simple%20gradient%20descent%2C%20stochastic%20gradient%20descent%20%28SGD%29%20respectively%20for%20optimization%20%E2%80%A6&source=https%3A//leemeng.tw/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" target="_blank" title="分享到 LinkedIn">
+            <i class="im im-linkedin" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://twitter.com/intent/tweet?text=Using%20TensorFlow%20to%20Train%20a%20Shallow%20NN%20with%20Stochastic%20Gradient%20Descent&url=https%3A//leemeng.tw/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" target="_blank" title="分享到 Twitter">
+            <i class="im im-twitter" aria-hidden="true"></i>
+        </a>
+    </div>
 
 </div>
 
@@ -538,17 +564,10 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 </div>
 <div class="output_area">
-<<<<<<< HEAD
-<div id="9f3e7bf2-8436-4a5a-b9c5-7963b443c5d3"></div>
+<div id="d89c71de-52bc-469e-918a-917f636a6e82"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#9f3e7bf2-8436-4a5a-b9c5-7963b443c5d3');
-=======
-<div id="110115ed-40b6-40e6-93c4-dc639569096b"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#110115ed-40b6-40e6-93c4-dc639569096b');
->>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
+var element = $('#d89c71de-52bc-469e-918a-917f636a6e82');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -697,17 +716,10 @@ Test acc: 82.8%
 </div>
 </div>
 <div class="output_area">
-<<<<<<< HEAD
-<div id="c20b5e1f-0b52-47e1-ac31-ca973b4abc8e"></div>
+<div id="53bf0a46-bde1-476c-a725-e5b33dd7815b"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#c20b5e1f-0b52-47e1-ac31-ca973b4abc8e');
-=======
-<div id="e496dded-bcc2-43cd-aefc-9018594913f8"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#e496dded-bcc2-43cd-aefc-9018594913f8');
->>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
+var element = $('#53bf0a46-bde1-476c-a725-e5b33dd7815b');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -865,17 +877,10 @@ Test acc: 86.9%
 </div>
 </div>
 <div class="output_area">
-<<<<<<< HEAD
-<div id="8caf236f-cb66-4d9d-977a-964b8f890cf9"></div>
+<div id="b3390880-53f2-4b6f-8e71-81eec9cc4ffd"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#8caf236f-cb66-4d9d-977a-964b8f890cf9');
-=======
-<div id="85a28cf1-ab58-43d4-a2b5-6155af80a76f"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#85a28cf1-ab58-43d4-a2b5-6155af80a76f');
->>>>>>> 36af7bca5de3ccf0cacd999bb54e22eef7b7546a
+var element = $('#b3390880-53f2-4b6f-8e71-81eec9cc4ffd');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
@@ -913,19 +918,19 @@ Test acc: 88.7%
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
-                        <a href="/tag/python.html" rel="tag">Python</a>
-                        <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
-                        <a href="/tag/deep-learning.html" rel="tag">Deep Learning</a>
-                        <a href="/tag/neural-networks.html" rel="tag">Neural Networks</a>
-                        <a href="/tag/optimization.html" rel="tag">Optimization</a>
-                        <a href="/tag/notmnist.html" rel="tag">NotMNIST</a>
-                        <a href="/tag/machine-learning.html" rel="tag">Machine Learning</a>
-                        <a href="/tag/image-recognition.html" rel="tag">Image Recognition</a>
-                        <a href="/tag/sgd.html" rel="tag">SGD</a>
-                        <a href="/tag/gradient-descent.html" rel="tag">Gradient Descent</a>
-                        <a href="/tag/deep-learning-by-google.html" rel="tag">Deep Learning by Google</a>
-                        <a href="/tag/machine-learning-engineer-by-kaggle.html" rel="tag">Machine Learning Engineer by kaggle</a>
-                        <a href="/tag/udacity.html" rel="tag">Udacity</a>
+                        <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
+                        <a href="https://leemeng.tw/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                        <a href="https://leemeng.tw/tag/deep-learning.html" rel="tag">Deep Learning</a>
+                        <a href="https://leemeng.tw/tag/neural-networks.html" rel="tag">Neural Networks</a>
+                        <a href="https://leemeng.tw/tag/optimization.html" rel="tag">Optimization</a>
+                        <a href="https://leemeng.tw/tag/notmnist.html" rel="tag">NotMNIST</a>
+                        <a href="https://leemeng.tw/tag/machine-learning.html" rel="tag">Machine Learning</a>
+                        <a href="https://leemeng.tw/tag/image-recognition.html" rel="tag">Image Recognition</a>
+                        <a href="https://leemeng.tw/tag/sgd.html" rel="tag">SGD</a>
+                        <a href="https://leemeng.tw/tag/gradient-descent.html" rel="tag">Gradient Descent</a>
+                        <a href="https://leemeng.tw/tag/deep-learning-by-google.html" rel="tag">Deep Learning by Google</a>
+                        <a href="https://leemeng.tw/tag/machine-learning-engineer-by-kaggle.html" rel="tag">Machine Learning Engineer by kaggle</a>
+                        <a href="https://leemeng.tw/tag/udacity.html" rel="tag">Udacity</a>
                     </span>
 
                 </p>
@@ -1012,13 +1017,13 @@ Test acc: 88.7%
                 <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
                         <div class="blog-content__prev">
-                            <a href="/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="prev">
+                            <a href="https://leemeng.tw/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="prev">
                                 <span>Previous Post</span>
                                 Regularization for Multi-layer Neural Networks in Tensorflow
                             </a>
                         </div>
                         <div class="blog-content__next">
-                            <a href="/simple-image-recognition-using-notmnist-dataset.html" rel="next">
+                            <a href="https://leemeng.tw/simple-image-recognition-using-notmnist-dataset.html" rel="next">
                                 <span>Next Post</span>
                                 Simple Image Recognition using NotMNIST dataset
                             </a>
@@ -1041,6 +1046,25 @@ Test acc: 88.7%
 
     </article>
 
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = 'Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
     <!-- footer
@@ -1050,7 +1074,7 @@ Test acc: 88.7%
             <div class="col-full">
 
                 <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="/theme/images/logo.png" alt="Homepage"></a>
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
                 </div>
 
                 <ul class="footer-social">
@@ -1095,12 +1119,12 @@ Test acc: 88.7%
 
         <!-- Javascript
     ================================================== -->
-    <script src="/theme/js/jquery-3.2.1.min.js"></script>
-    <script src="/theme/js/plugins.js"></script>
-    <script src="/theme/js/main.js"></script>
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
 
-    <script type='text/javascript' src='/theme/js/progress-bar.js'></script>
-    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
 
     <!--show and hide left navigation by scrolling-->
     <script>
