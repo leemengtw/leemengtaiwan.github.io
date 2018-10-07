@@ -1,5 +1,375 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="https://leemeng.tw/" rel="alternate"></link><link href="https://leemeng.tw/feeds/all.atom.xml" rel="self"></link><id>https://leemeng.tw/</id><updated>2018-09-17T12:00:00+09:00</updated><entry><title>資料科學文摘 Vol.5 數據科學家面臨的挑戰、儀表板設計以及未來的被駭人生</title><link href="https://leemeng.tw/data-science-digest-volume-5-challenges-that-data-scientists-facing-dashboard-design-and-hackable-humans.html" rel="alternate"></link><published>2018-09-17T12:00:00+09:00</published><updated>2018-09-17T12:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2018-09-17:/data-science-digest-volume-5-challenges-that-data-scientists-facing-dashboard-design-and-hackable-humans.html</id><summary type="html">&lt;p&gt;真正的數據科學家面臨的 8 個挑戰是什麼？何時一個資料科學家可以說他 / 她真正地「完成」了工作？ 10 個儀表板設計的原則是什麼？何謂「被駭」人生？為了了解這些跟資料科學息息相關的問題以及可能的解答，這週我們一樣會透過閱讀幾篇文章，來分別了解幾位優秀的資料科學家、UI/UX 設計師甚至是歷史學家是怎麼思考這些問題的。如同以往的文摘，我會附上摘要並穿插自己的心得，供時間寶貴的你參考。&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng</title><link href="https://leemeng.tw/" rel="alternate"></link><link href="https://leemeng.tw/feeds/all.atom.xml" rel="self"></link><id>https://leemeng.tw/</id><updated>2018-10-08T01:50:00+09:00</updated><entry><title>如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀</title><link href="https://leemeng.tw/gapminder.html" rel="alternate"></link><published>2018-10-08T01:50:00+09:00</published><updated>2018-10-08T01:50:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2018-10-08:/gapminder.html</id><summary type="html">&lt;p&gt;這篇文章提供你一個輕鬆探索台灣與世界的資料視覺化工具：GapMinder 中文版。除了工具本身以外，文中會透過大量動態的資訊圖表以及各國公開數據來帶你探索台灣以及世界。閱讀本文之後，你將了解全球的發展趨勢、對台灣的社會、經濟以及能源發展有個基礎認知，並重新建立一個宏觀、積極的世界觀。&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;br/&gt;
+&lt;br/&gt;
+再稍微花個 5 秒鐘咀嚼一下你所看到的。&lt;/p&gt;
+&lt;p&gt;現在問你自己，你看到了什麼？&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;在這個資訊爆炸的時代，大腦為了保護你的心智不被大量數據淹沒，可能已經很習慣性地忽視眼前數據其背後所隱含的意義。&lt;/p&gt;
+&lt;p&gt;但讓我提醒你一下，就在剛剛的 30 秒內，全世界過去 200 年至今的經濟（所得收入）與社會（平均壽命）發展狀況活生生地重現在你眼前！&lt;/p&gt;
+&lt;p&gt;這可不是小時候歷史老師會 / 能秀給你看的東西（至少我的老師沒有）我不知道你感受如何，但在我&lt;a href="https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen"&gt;第一次見識到此圖&lt;/a&gt;的時候，內心可說是激動得不得了！&lt;/p&gt;
+&lt;center&gt;
+&lt;a href="https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen#t-249222" target="_blank"&gt;
+&lt;img src="https://leemeng.tw/images/gapminder/ted-video-screenshot.jpg" style=""/&gt;
+&lt;/a&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    瑞典全球公衛教授 &lt;a href="https://zh.wikipedia.org/zh-tw/%E6%B1%89%E6%96%AF%C2%B7%E7%BD%97%E6%96%AF%E6%9E%97" target="_blank"&gt;漢斯・羅斯林&lt;/a&gt;
+&lt;br/&gt;
+    2006 年在 TED 利用上面的泡泡圖向觀眾們解說世界的經濟與社會發展
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;&lt;p&gt;將專注拉回台灣。看著台灣的發展軌跡，你甚至還可以發現一些值得注意的現象：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1939 至 1945 年，人民所得以及平均壽命走倒車（二戰）&lt;/li&gt;
+&lt;li&gt;1945 至 1953 年國民平均壽命的大幅提升，所得回歸正常&lt;/li&gt;
+&lt;li&gt;1960 年代以後，經濟與社會的持續穩定發展&lt;/li&gt;
+&lt;li&gt;2000 年後成長趨緩&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;除了本身的發展軌跡以外，還可以發現到了 21 世紀，台灣在右上角，名列前茅。&lt;/p&gt;
+&lt;p&gt;&lt;video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/gapminder/taiwan-development.jpg"&gt;
+&lt;source src="https://leemeng.tw/images/gapminder/taiwan-development.mp4" type="video/mp4"/&gt;
+    您的瀏覽器不支援影片標籤，請留言通知我：Ｓ
+&lt;/video&gt;&lt;/p&gt;
+&lt;center&gt;
+    泡泡圖除了可以讓我們觀察世界趨勢，也能同時了解台灣的發展軌跡以及與其他國家的相對位置
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;剛剛在看圖的時候，你應該還有很多其他發現且迫不及待地想要了解更多。&lt;/p&gt;
+&lt;p&gt;事實上，如果在看了剛剛的動畫以後，你突然渴望想要知道更多是很正常的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+        重要的是不要停止問問題，好奇心有其存在的理由。
+        &lt;br/&gt;
+&lt;span style="float:right"&gt;─ 愛因斯坦&lt;/span&gt;
+&lt;br/&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;如果你現在想要更加地了解台灣或是其他不同的國家在各種社會 / 經濟 / 健康指標的發展（如所得收入、兒童死亡率、二氧化碳排放量等），我鼓勵你先上去改改 X 或 Y 軸、點選不同國家，查看結果以後再繼續往下讀。&lt;/p&gt;
+&lt;p&gt;畢竟文章跑不掉，你的好奇心則可能在幾秒鐘後消逝：）&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://leemeng.tw/images/airflow/thought-2123970_1280.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;你回來了嗎？&lt;/p&gt;
+&lt;p&gt;你現在應該已經暸解，透過值得信賴的數據來源（比方說&lt;a href="https://www.gapminder.org/data/documentation/gd004/"&gt;聯合國&lt;/a&gt;）以及良好的呈現方式（文章開頭的泡泡圖），能讓你在很短時間內「正確」地掌握全世界趨勢以及台灣的發展狀況。&lt;/p&gt;
+&lt;p&gt;儘管媒體總是報憂不報喜，你會發現全世界大致上變得越來越好。&lt;/p&gt;
+&lt;p&gt;你也會發現以「人均收入」以及「平均壽命」的角度來看，台灣的表現在全世界也是數一數二，這點值得我們欣慰及驕傲。&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/gapminder/factfulness-cover.jpg" style=""/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    《真確》是 2018 年由漢斯・羅斯林（Hans Rosling）所撰。（圖片來源：&lt;a href="https://meet.eslite.com/tw/tc/product/201807030007" target="_blank"&gt;迷誠品&lt;/a&gt;）
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;&lt;p&gt;在《真確》這本書裡，羅斯林教授闡述如何利用數據以及正確心態來理解世界，是一本深具啟發性的著作。而「泡泡圖」則是他在傳達知識時，經常使用到的工具。&lt;/p&gt;
+&lt;p&gt;首先你需要知道，文中的泡泡圖（Bubble Chart）的開發以及各個國家的數據整理，並非由我獨自完成，而是由漢斯・羅斯林教授與他所創辦的 &lt;a href="https://www.gapminder.org/"&gt;GapMinder 基金會&lt;/a&gt;從多個國際組織（如聯合國、國際衛生組織、世界銀行等）&lt;a href="https://github.com/Gapminder"&gt;蒐集、整理&lt;/a&gt;而來。（給他們點掌聲！）&lt;/p&gt;
+&lt;p&gt;事實上，你可以直接使用&lt;a href="https://www.gapminder.org/tools/"&gt;官方的泡泡圖&lt;/a&gt;，或是像本文一樣，依照&lt;a href="https://bl.ocks.org/angieskazka/ed82b664173a9023fa8a"&gt;這邊的教學&lt;/a&gt;來將泡泡圖內嵌在你自己的網站裡頭。&lt;/p&gt;
+&lt;p&gt;我知道你在想什麼。&lt;/p&gt;
+&lt;p&gt;「既然官方都已經有泡泡圖了，為何你要在這裡再弄一個出來呢？」&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://leemeng.tw/images/gapminder/emily-morter-188019-unsplash.jpg"/&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;非常好的問題，但讓我先賣個關子。&lt;/p&gt;
+&lt;p&gt;我會在&lt;a href="#為何需要本文的泡泡圖？"&gt;為何需要本文的泡泡圖？&lt;/a&gt;章節裡頭仔細說明。（提示：跟台灣有關係）&lt;/p&gt;
+&lt;p&gt;在這邊想先讓你知道的是，文章接下來會說明泡泡圖裡頭有什麼台灣數據可供你探索，以及提供一些探索台灣以及世界的例子，讓你在了解世界的同時熟悉泡泡圖的使用方式。&lt;/p&gt;
+&lt;p&gt;等你熟悉泡泡圖以後，可以利用它來更深入瞭解台灣與以及任何你有興趣的國家，並培養正確的世界觀。最重要的是，在有了正確思維以後，你能怎樣讓世界以及台灣變得更加美好。&lt;/p&gt;
+&lt;p&gt;前言很長，不過接下來才是重頭戲。準備好了就跟上我們的探索之旅吧！&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="本文章節"&gt;本文章節&lt;a class="anchor-link" href="#本文章節"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#為何需要本文的泡泡圖？"&gt;為何需要本文的泡泡圖？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#有什麼台灣數據可供探索？"&gt;有什麼台灣數據可供探索？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#用泡泡圖探索世界"&gt;用泡泡圖探索世界&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#媽媽不生寶寶了：生育率大幅下降"&gt;媽媽不生寶寶了：生育率大幅下降&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#怎麼創造乾淨未來：煤炭消耗與環境污染"&gt;怎麼創造乾淨未來：煤炭消耗與環境污染&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#民主大躍進：我很自由，不過不想參與政治"&gt;民主大躍進：我很自由，不過不想參與政治&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#story-behind-data"&gt;看到數據背後的故事&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#你能怎樣讓世界更好？"&gt;你能怎樣讓世界更好？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="為何需要本文的泡泡圖？"&gt;為何需要本文的泡泡圖？&lt;a class="anchor-link" href="#為何需要本文的泡泡圖？"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;你可能在想，何必要大費周章地弄出自己的泡泡圖。畢竟，只要使用 GapMinder 基金會（以下簡稱 GapMinder）&lt;a href="https://www.gapminder.org/tools/#"&gt;官方釋出的泡泡圖&lt;/a&gt;就可以透過數據來探索「全世界」與「台灣」了啊？&lt;/p&gt;
+&lt;p&gt;這句話只對了前半段。&lt;/p&gt;
+&lt;p&gt;第一個沒有那麼嚴重但是有點令人困擾的問題是，目前官方的泡泡圖只有英文，沒有繁體中文。&lt;/p&gt;
+&lt;p&gt;雖然台灣人的英文能力普遍不差，但是要所有人在看到每個國家的英文名字後馬上反應出來，可不是一件簡單的事情。&lt;/p&gt;
+&lt;p&gt;你還有多少把握可以認出東帝汶或柬埔寨的英文名字？（提示：下圖有其中一個）&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://leemeng.tw/images/gapminder/chuttersnap-176806-unsplash.jpg"/&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;更不用說聯合國以及各個國際組織定義的各式各樣社會 / 經濟 / 公衛指標的英文了。（還記得結核病、旱災或是償債出口比怎麼唸嗎？）&lt;/p&gt;
+&lt;p&gt;我們看泡泡圖的主要目的是為了瞭解世界，而不是學習翻譯各種英文專業術語。&lt;/p&gt;
+&lt;p&gt;就算這樣講，英翻中或許問問 Google 還是勉強可以解決。但官方泡泡圖存在的第二個問題，則非常致命。&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/gapminder/official-page.jpg" style=""/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    GapMinder 釋出的&lt;a href="https://www.gapminder.org/tools/#" target="_blank"&gt;泡泡圖&lt;/a&gt;截圖。在右邊的清單搜尋「 Taiwan 」不會有結果
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;&lt;p&gt;在我撰寫此文的這個時間點（2018 年 10 月），在 &lt;a href="https://www.gapminder.org/tools/#"&gt;GapMinder 上的泡泡圖&lt;/a&gt;裡頭，你並無法找到「 Taiwan 」的存在。&lt;/p&gt;
+&lt;p&gt;沒錯，你可以現在&lt;a href="https://www.gapminder.org/tools/#"&gt;去搜尋看看&lt;/a&gt;。然後你會發現有 2,300 多萬人口的台灣並不存在 GapMinder 的泡泡圖之中。&lt;/p&gt;
+&lt;p&gt;依據 &lt;a href="https://getsatisfaction.com/gapminder/topics/what-happened-to-taiwan-it-used-to-be-included" target="_blank"&gt;GapMinder 的說法&lt;/a&gt;，泡泡圖預設只顯示&lt;a href="http://www.un.org/en/member-states/#gotoT" target="_blank"&gt;聯合國會員國&lt;/a&gt;。因此理所當然地，台灣不會被顯示在上面。&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/gapminder/keith-lee-803568-unsplash.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    儘管沒有在聯合國裡頭，在台灣努力生活的人們確確實實地存在著（&lt;a href="https://unsplash.com/photos/nYq3nW9Z9ok" target="_blank"&gt;圖&lt;/a&gt;為寧夏夜市）
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;&lt;p&gt;2018 年 7 月，GapMinder 表示&lt;a href="https://getsatisfaction.com/gapminder/topics/i-really-want-to-know-what-is-the-latest-situation-of-those-countries" target="_blank"&gt;他們正在想辦法讓非聯合國會員國（如台灣、香港）也能被加到泡泡圖裡頭&lt;/a&gt;，但自從那之後已經過了數個月。&lt;/p&gt;
+&lt;p&gt;我真的不怪他們，畢竟他們是非營利機構，人手有限且已經為世界做出很多貢獻了。&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/gapminder/united-nations-headquarters.jpg" style=""/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    聯合國總部，紐約（圖片來源：&lt;a href="https://foreignpolicy.com/2017/03/13/white-house-seeks-to-cut-billions-in-funding-for-united-nations/" target="_blank"&gt;Foreign Policy&lt;/a&gt;）
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;&lt;p&gt;只是，我無法忍受在閱讀完《真確》並想要開始認真地探索這個世界的時候，發現裡頭竟然沒有熟悉的台灣。&lt;/p&gt;
+&lt;p&gt;後來的故事你大概猜得到了。我開始研究 GapMinder &lt;a href="https://github.com/vizabi/vizabi"&gt;製作泡泡圖的程式碼&lt;/a&gt;以及&lt;a href="https://github.com/open-numbers/ddf--gapminder--systema_globalis"&gt;數據儲存格式&lt;/a&gt;。我寫些程式、閱讀聯合國以及各個國際組織的相關文獻以後，把台灣「駭」進泡泡圖的國家列表裡頭，並將裡頭所有國家以及（幾乎）所有指標翻譯成中文。你在文章開頭看到的泡泡圖就這樣誕生了。（感謝 Google 大神以及咖啡因！）&lt;/p&gt;
+&lt;p&gt;現在，在了解本文泡泡圖的典故之後，讓我們看一下目前的泡泡圖裡頭有哪些台灣數據可供你探索。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="有什麼台灣數據可供探索？"&gt;有什麼台灣數據可供探索？&lt;a class="anchor-link" href="#有什麼台灣數據可供探索？"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;GapMinder 將所有搜集來的資料整理在這個 &lt;a href="https://github.com/open-numbers/ddf--gapminder--systema_globalis"&gt;Github Repo&lt;/a&gt; 裡頭，也是本文泡泡圖的數據來源。&lt;/p&gt;
+&lt;p&gt;理想上，每個指標（如二氧化碳排放量、國民平均壽命、人均收入）都會（或者說都要）包含每個國家及地區每年的資料才能方便我們做比較。但你可以想像，這不太可能實現。&lt;/p&gt;
+&lt;p&gt;實際上，依照不同國家的數據開放狀況、國際組織蒐集數據的方法差異，都有可能造成指標裡頭沒有某些國家的資料。&lt;/p&gt;
+&lt;p&gt;以台灣為例，透過分析 GapMinder 數據來源，我們可以知道，截至目前為止，泡泡圖裡頭總共有 500 多個指標，其中約有 40 % （ 200 個 ）指標含有台灣數據。&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/gapminder/gapminder-indicators-with-twn.svg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    （跟本文的泡泡圖以及數據來源一樣，此圖的資訊也會定期更新）
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;&lt;p&gt;以大分類來看的話，「健康」及「工作」分類有較多的資料可供我們檢視台灣的狀況並同時與其他國家做比較；相較之下，「社會」及「人口」涵蓋的台灣指標較少，公共建設分類則只有 1 個（交通死亡人數）。&lt;/p&gt;
+&lt;p&gt;健康分類中，屬男女的「癌症」相關數據最為完整：大腸癌、胃癌、肝癌、乳癌、攝護腺癌 .. 應有盡有。&lt;/p&gt;
+&lt;p&gt;工作分類則有各個年齡層的失業 / 就業率及「勞動參與率」等指標，你可以自行稍後在泡泡圖上查看。&lt;/p&gt;
+&lt;p&gt;不過實際上，你也不需記住哪些分類有多少台灣數據。&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/gapminder/menu-demo.png"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    利用泡泡圖的選單，我們可以馬上知道每個分類底下有多少指標、有哪些指標有台灣數據、最早的年份為何
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;&lt;p&gt;如果你剛剛有玩泡泡圖的話，可能會好奇在每個分類後面的數字代表什麼。圖中健康分類後面的 &lt;code&gt;（63/166）&lt;/code&gt;　代表在泡泡圖中，健康分類底下總共有 166 個指標，而其中的 63 個有台灣數據。這跟我們上一張長條圖吻合。&lt;/p&gt;
+&lt;p&gt;現在看到上圖第三欄的「肺癌病例數」：指標名稱後面的 &lt;code&gt;（1990 ~&lt;/code&gt; 則代表在該指標中，台灣數據最早可以追溯到西元 1990 年。有了這些額外資訊，可以讓你更方便地探索台灣與世界的關係。&lt;/p&gt;
+&lt;p&gt;值得一提的是，以上的結果僅代表 GapMinder 目前有的數據。他們持續努力地在添加新的數據，而我也預計在未來導入更多的台灣數據。但現在，先讓我們從已有的指標裡頭選幾個來探索看看吧！&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="用泡泡圖探索世界"&gt;用泡泡圖探索世界&lt;a class="anchor-link" href="#用泡泡圖探索世界"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在《真確》裡頭，漢斯・羅斯林教授已經向我們展示了很多很棒的泡泡圖範例。而在這個章節裡頭，我會列出一些自己利用泡泡圖探索世界以及了解台灣的例子。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="媽媽不生寶寶了：生育率大幅下降"&gt;媽媽不生寶寶了：生育率大幅下降&lt;a class="anchor-link" href="#媽媽不生寶寶了：生育率大幅下降"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;很多我們以為是常態的事物，事實上在幾十年前完全不存在。&lt;/p&gt;
+&lt;p&gt;&lt;video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/gapminder/decline-of-female-fertility.jpg"&gt;
+&lt;source src="https://leemeng.tw/images/gapminder/decline-of-female-fertility.mp4" type="video/mp4"/&gt;
+    您的瀏覽器不支援影片標籤，請留言通知我：Ｓ
+&lt;/video&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;以婦女人均嬰兒數為例，在 1950 年前，跟亞洲大多數國家相同，台灣每個婦女平均有 6 個嬰兒。現代大多數的年輕人應該無法想像這件事情。&lt;/p&gt;
+&lt;p&gt;但我們可以看到從 1960 年代開始，婦女人均嬰兒數以不可思議的速度溜滑梯下降，直到近年每位婦女平均只有一名嬰兒。&lt;/p&gt;
+&lt;p&gt;解釋歷史從來不簡單，但我們可以想像在當時，醫療技術以及節育概念還不高，間接造成較高的兒童死亡率。兒童的死亡率高，也就代表平均一位婦女需要生產更多嬰兒來延續後代。要證實這點，我們可以把 X 軸的「人均所得」換成「兒童死亡率」：&lt;/p&gt;
+&lt;p&gt;&lt;video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/gapminder/femaile-fertility-vs-child-death-rate.jpg"&gt;
+&lt;source src="https://leemeng.tw/images/gapminder/femaile-fertility-vs-child-death-rate.mp4" type="video/mp4"/&gt;
+    您的瀏覽器不支援影片標籤，請留言通知我：Ｓ
+&lt;/video&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;不只台灣，我們可以發現全世界有一樣的趨勢：兒童死亡率下降，而同時媽媽們也不需再生那麼多寶寶。這現象很大部分是因為醫療進步、女性教育的普及以及家庭觀念的改變。&lt;/p&gt;
+&lt;p&gt;另外從代表不同洲的顏色可以看到，在 2018 年，所有婦女人均嬰兒數 &amp;gt; 6 的國家都位在非洲。&lt;/p&gt;
+&lt;p&gt;當然，婦女人均嬰兒數減少，同時也代表&lt;a href="https://www.sfaa.gov.tw/SFAA/Pages/ashx/File.ashx?FilePath=~/File/Attach/1613/File_2086.pdf"&gt;高齡化社會的來臨&lt;/a&gt;。讓我們將 X 軸換成「60 歲以上人口佔總人口比例」以後，看看日本的發展：&lt;/p&gt;
+&lt;p&gt;&lt;video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/gapminder/japan-child-death-vs-elder.jpg"&gt;
+&lt;source src="https://leemeng.tw/images/gapminder/japan-child-death-vs-elder.mp4" type="video/mp4"/&gt;
+    您的瀏覽器不支援影片標籤，請留言通知我：Ｓ
+&lt;/video&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.stat.go.jp/data/topics/topi971.html"&gt;日本的高齡化人口比例增加&lt;/a&gt;，也代表青壯年的負擔加重。不只日本，在未來要怎樣建立一個良好的長照制度，在台灣也是一個日漸重要的議題。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="怎麼創造乾淨未來：煤炭消耗與環境污染"&gt;怎麼創造乾淨未來：煤炭消耗與環境污染&lt;a class="anchor-link" href="#怎麼創造乾淨未來：煤炭消耗與環境污染"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;台灣能源供給高度仰賴進口，其進口量長期維持在 97 到 98 ％，而&lt;a href="https://secured-static.greenpeace.org/taiwan/PageFiles/770030/%E5%85%A8%E7%90%83%E6%9A%A8%E5%8F%B0%E7%81%A3%E7%87%83%E7%85%A4%E7%99%BC%E9%9B%BB%E4%B8%8D%E5%8F%AF%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%9C%9F%E7%9B%B8.pdf"&gt;煤炭又為台灣第二大主要進口能源&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;因為碳密度高，燃燒煤炭又會產生比其他化石燃料（石油、天然氣）來得更多的二氧化碳，造成更嚴重的氣候暖化以及環境破壞。讓我們看看從以前到現在，一個台灣人平均消耗的煤炭以及產生的二氧化碳的變化趨勢：&lt;/p&gt;
+&lt;p&gt;&lt;video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/gapminder/coal-consumption.jpg"&gt;
+&lt;source src="https://leemeng.tw/images/gapminder/coal-consumption.mp4" type="video/mp4"/&gt;
+    您的瀏覽器不支援影片標籤，請留言通知我：Ｓ
+&lt;/video&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;我們可以看到從 1990 年起，台灣煤炭的人均消耗量（用來發電）快速增加，而同時人均二氧化碳的排放量也逐年增高。儘管近年趨向穩定，我們可以看到作為對照組的美國在 2010 年以後的人均煤炭消耗量已經低於我們。&lt;/p&gt;
+&lt;p&gt;環境考量以及再生能源的成本下降，讓歐美各國的政府以及能源業者決定投向再生能源懷抱，但台灣似乎還想要&lt;a href="https://www.cmmedia.com.tw/home/articles/9316"&gt;建立燃煤電廠&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://leemeng.tw/images/gapminder/coal-consumption-comparison.jpg"/&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;在 2014 年時，只有哈薩克跟澳大利亞的煤炭消耗量超越我們。而作為世界第一煤炭出口國，澳洲自己也因為大量開挖煤炭而導致大堡礁的生態浩劫。&lt;/p&gt;
+&lt;p&gt;怎麼減少煤炭消耗並維持人民生活水準（如提高再生能源利用率），是台灣的重要議題之一。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="民主大躍進：我很自由，不過不想參與政治"&gt;民主大躍進：我很自由，不過不想參與政治&lt;a class="anchor-link" href="#民主大躍進：我很自由，不過不想參與政治"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;對於現在的台灣人來說，「民主」是如吃飯喝水般的基本存在。&lt;/p&gt;
+&lt;p&gt;但台灣的「民主」一直都存在嗎？要回答這個問題，我們可以看看台灣的&lt;a href="https://zh.wikipedia.org/wiki/%E6%B0%91%E4%B8%BB%E6%8C%87%E6%95%B0"&gt;民主指數（Democracy Index）&lt;/a&gt;發展：&lt;/p&gt;
+&lt;p&gt;&lt;video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/gapminder/democracy-index-tw.jpg"&gt;
+&lt;source src="https://leemeng.tw/images/gapminder/democracy-index-tw.mp4" type="video/mp4"/&gt;
+    您的瀏覽器不支援影片標籤，請留言通知我：Ｓ
+&lt;/video&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;雖然上頭的數據只到 2011 年，但我想要你看的是，1990 年（也是我出生的那年）之後，比起所得提升速度，我們的民主指數的成長速度讓人驚訝，可以說是三級跳！&lt;/p&gt;
+&lt;p&gt;基本上近年台灣的分數變動不大。而在最新的 &lt;a href="http://news.ltn.com.tw/news/politics/breakingnews/2327881"&gt;2017 年全球民主指數&lt;/a&gt;裡頭，台灣則獲得了 7.73 分，全球排名第 33 名。（第一名為挪威，美國 21，日本 23，中國則為 139 名）&lt;/p&gt;
+&lt;p&gt;民主指數滿分為 10 分，由 5 個評量標準做平均：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;選舉過程及多元程度（獲 9.58 分）&lt;/li&gt;
+&lt;li&gt;政府功能（獲 8.21 分）&lt;/li&gt;
+&lt;li&gt;政治參與（獲 6.11 分）&lt;/li&gt;
+&lt;li&gt;政治文化（僅 5.63 分）&lt;/li&gt;
+&lt;li&gt;公民自由度（ 9.12 分）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以看到雖然我們的公民自由度很高，但政治參與以及政治文化不足。&lt;/p&gt;
+&lt;p&gt;我個人認為跟長期無意義的藍綠對抗文化以及年輕一代普遍對政壇上的政治人物冷感有關。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+        要讓民主成功，我們必須參與，而非只是冷眼旁觀。沒有投票的人沒有權利抱怨。
+        &lt;br/&gt;
+&lt;span style="float:right"&gt;─ 路易．路蒙，美國小說家&lt;/span&gt;
+&lt;br/&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;儘管我們的民主程度已經值得讚賞，在公民參與部分還有很多地方可以改善。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="kan-dao-shu-ju-bei-hou-de-gu-shi_1"&gt;&lt;span id="story-behind-data"&gt;看到數據背後的故事&lt;/span&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;在上一章節，我們看了一些利用泡泡圖探索台灣以及世界的例子。&lt;/p&gt;
+&lt;p&gt;相信你也有這種錯覺：搭配著大量數據，泡泡圖彷彿讓你站在上帝的視角綜觀全球。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://leemeng.tw/images/gapminder/gods_point_view_2013_10_08-12.jpg"/&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;但我們不能就這樣停止，自我膨脹地以為彷彿透過泡泡圖裡頭的數據，就已經暸解世間萬物。&lt;/p&gt;
+&lt;p&gt;正如《真確》裡頭漢斯・羅斯林教授跟我們說的：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+        我要你看到統計數據背後的個別故事，也要你看到個別故事背後的統計數據。不靠數據無法了解世界，但光靠數據也無法了解世界。
+    &lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;舉例來說，在我查看台灣婦女在工業（Industry Sector）的勞動比例時，發現一個有趣的現象：&lt;/p&gt;
+&lt;p&gt;&lt;video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/gapminder/female-industry-sector-tw-and-al-jaza-ir.jpg"&gt;
+&lt;source src="https://leemeng.tw/images/gapminder/female-industry-sector-tw-and-al-jaza-ir.mp4" type="video/mp4"/&gt;
+    您的瀏覽器不支援影片標籤，請留言通知我：Ｓ
+&lt;/video&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;工業一般給人的印象就是包含了很多需要體力的工作，因此看到右邊台灣婦女在工業的勞動比例逐年下降（與之相對，服務業勞動比例上升）完全符合我的期待。但是，看看那個&lt;a href="https://zh.wikipedia.org/wiki/%E9%98%BF%E5%B0%94%E5%8F%8A%E5%88%A9%E4%BA%9A#%E7%BB%8F%E6%B5%8E"&gt;阿爾及利亞&lt;/a&gt;！&lt;/p&gt;
+&lt;p&gt;光看那條節節上升的曲線無法幫助我們實際了解阿爾及利亞，如同我們無法光靠數據了解世界。&lt;/p&gt;
+&lt;p&gt;說來慚愧，在觀察到這現象前，儘管小時候從歷史老師的口中聽過它，我完全沒有研究過這個國家。&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/gapminder/algeria-oran.jpg" style=""/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+    阿爾及利亞, &lt;a href="https://zh.wikipedia.org/wiki/%E7%93%A6%E8%B5%AB%E8%98%AD" target="_blank"&gt;瓦赫蘭&lt;/a&gt;（&lt;a href="https://www.ft.com/content/ee80ed52-29de-11e2-a5ca-00144feabdc0" target="_blank"&gt;圖片來源&lt;/a&gt;）
+    &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;&lt;p&gt;透過一些閱讀，我現在了解阿爾及利亞（Algeria）是一個位於非洲北部的國家，1962 年從法國殖民統治下獲得獨立。因為&lt;a href="http://www.hkislam.com/index.php?action-viewnews-itemid-3616"&gt;婦女解放&lt;/a&gt;以及女權運動崛起地相對較其他伊斯蘭國家早，該國的女性在各個階級都很活躍。在勞動市場可以看到她們開大卡車、當加油站工人並穿寬大的工作服；&lt;a href="https://news.un.org/zh/story/2012/05/173592"&gt;女性議員在議會佔的比例&lt;/a&gt;在阿拉伯世界也是獨占鰲頭，最近甚至&lt;a href="https://www.demotivateur.fr/article/algerie-3-200-jeune-femmes-en-bikini-pour-lutter-contre-l-obscurantisme-religieux-10710"&gt;還舉辦比基尼示威&lt;/a&gt;，來呼籲保守的社會給予女性更多自由。&lt;/p&gt;
+&lt;p&gt;在這邊不是要推薦你去阿爾及利亞觀光或是 Google 搜尋比基尼照片。&lt;/p&gt;
+&lt;p&gt;我想強調的是，讓你的好奇心跨越冷冰冰的數字。在透過數據有個宏觀的概念以後，針對你有興趣的問題去實際查查資料，問問人並了解背後的故事。&lt;/p&gt;
+&lt;p&gt;在你開始這麼做以後，會發現世界變得更遼闊，更多采多姿。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="你能怎樣讓世界更好？"&gt;你能怎樣讓世界更好？&lt;a class="anchor-link" href="#你能怎樣讓世界更好？"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;看了那麼多的泡泡圖以及數據，實際上我們可以怎樣讓台灣以及世界變得更好呢？&lt;/p&gt;
+&lt;p&gt;我相信每個人都有自己的想法，但這邊讓我給出一些拙見。&lt;/p&gt;
+&lt;p&gt;如果你是老師或是從事教育業，開始思考要怎麼利用數據來教導學生或是下一代正確的世界觀吧！不要再教他們背誦歷史年表或是生硬數字，而是利用容易理解的資料視覺化工具（如本文的泡泡圖）將過去、現在的世界展示給他們看，刺激他們的好奇心，讓他們自主發問、蒐集資料並想像未來。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://leemeng.tw/images/gapminder/children-ask-questions.jpeg"/&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;如果你是從事經濟 / 社會 / 公衛 / 能源 / 政治 / 國際關係等專業領域的話，重新思考在這個世紀，我們應該要密切關注的人類發展指標吧！&lt;/p&gt;
+&lt;p&gt;舉國民平均所得這個指標來說，我們在文章開頭看到近 200 年來全世界每個國家在國民平均所得皆有改善，但在 21 世紀只看這個就夠了嗎？&lt;/p&gt;
+&lt;p&gt;21 世紀，我們面臨的新問題是貧富差距。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://leemeng.tw/images/gapminder/the-indicator-we-need-in-the-future.jpg"/&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;從「平均所得」這單一數字來看一個國家的經濟發展非常危險，因為這會讓我們忽視一個國家所得的分配。&lt;/p&gt;
+&lt;p&gt;在 21 世紀，我們應該更關注如上圖的指標：「最富有的 10 % 人所擁有的收入份額」，來確保我們不只解決貧困，還會記得要對付社會不平等問題。&lt;/p&gt;
+&lt;p&gt;就算你認為自己不屬於上面兩種人，別擔心！我幫你列了一個自由勾選的行動清單：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;[ ] 查看漢斯・羅斯林&lt;a href="https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen#t-249222" target="_blank"&gt;在 TED 上的演講&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[ ] 閱讀《真確》一書&lt;/li&gt;
+&lt;li&gt;[ ] 使用泡泡圖找出一個有趣發現（然後留言跟大家分享！）&lt;/li&gt;
+&lt;li&gt;[ ] 分享本文以讓更多人開始探索台灣與世界&lt;/li&gt;
+&lt;li&gt;[ ] 查看 GapMinder 官網，尤其是 &lt;a href="https://www.gapminder.org/dollar-street/matrix"&gt;Dollar Street&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[ ] 找出泡泡圖的翻譯錯誤、協助翻譯指標以幫助其他查看的人（有意願可以跟我聯絡！）&lt;/li&gt;
+&lt;li&gt;[ ] 提供新的數據集建議（理想上是有各國且包含台灣的數據）&lt;/li&gt;
+&lt;li&gt;[ ] 加強數據科學力，學習利用數據說故事（尤其適合資料科學家）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最後，最重要的，希望你能對世界多點好奇，盡情探索。你可以用任何方式探索世界，但如果你打算回來玩玩泡泡圖，隨時歡迎！我會持續更新數據來源並將我（和你）的新發現更新到文章裡頭。&lt;/p&gt;
+&lt;p&gt;希望你享受我們這趟探索之旅，並期待再次與你探索世界。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="致謝"&gt;致謝&lt;a class="anchor-link" href="#致謝"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;感謝&lt;a href="https://zh.wikipedia.org/wiki/%E6%B1%89%E6%96%AF%C2%B7%E7%BD%97%E6%96%AF%E6%9E%97"&gt;漢斯・羅斯林&lt;/a&gt;教授，我要謝謝他帶我用更宏觀、積極的態度來理解這個世界並帶給我無數啟發。這篇文章以及文內的泡泡圖是我向他的致敬。&lt;/p&gt;
+&lt;p&gt;（漢斯・羅斯林教授已於 2017 年 2 月 7 日在瑞典烏普薩拉逝世）&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="GapMinder"></category><category term="資料視覺化"></category><category term="資料科學"></category></entry><entry><title>資料科學文摘 Vol.5 數據科學家面臨的挑戰、儀表板設計以及未來的被駭人生</title><link href="https://leemeng.tw/data-science-digest-volume-5-challenges-that-data-scientists-facing-dashboard-design-and-hackable-humans.html" rel="alternate"></link><published>2018-09-17T12:00:00+09:00</published><updated>2018-09-17T12:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2018-09-17:/data-science-digest-volume-5-challenges-that-data-scientists-facing-dashboard-design-and-hackable-humans.html</id><summary type="html">&lt;p&gt;真正的數據科學家面臨的 8 個挑戰是什麼？何時一個資料科學家可以說他 / 她真正地「完成」了工作？ 10 個儀表板設計的原則是什麼？何謂「被駭」人生？為了了解這些跟資料科學息息相關的問題以及可能的解答，這週我們一樣會透過閱讀幾篇文章，來分別了解幾位優秀的資料科學家、UI/UX 設計師甚至是歷史學家是怎麼思考這些問題的。如同以往的文摘，我會附上摘要並穿插自己的心得，供時間寶貴的你參考。&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -11782,10 +12152,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="0693b6da-fac9-4f30-b8ca-e8e4b466814c"&gt;&lt;/div&gt;
+&lt;div id="60476ad8-769f-49a8-9a96-945c0dd48d4b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#0693b6da-fac9-4f30-b8ca-e8e4b466814c');
+var element = $('#60476ad8-769f-49a8-9a96-945c0dd48d4b');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -15062,10 +15432,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="34c00496-baa6-4961-858f-9810b7312bf2"&gt;&lt;/div&gt;
+&lt;div id="e92188c8-4e6c-40b9-aab7-ab707b627854"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#34c00496-baa6-4961-858f-9810b7312bf2');
+var element = $('#e92188c8-4e6c-40b9-aab7-ab707b627854');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -15829,10 +16199,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="76628da0-6682-40de-8f37-672ffdc8ef5b"&gt;&lt;/div&gt;
+&lt;div id="6fde3ece-f2c9-4fab-b4b8-b915674341db"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#76628da0-6682-40de-8f37-672ffdc8ef5b');
+var element = $('#6fde3ece-f2c9-4fab-b4b8-b915674341db');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -16022,10 +16392,10 @@ Test accuracy: 89.4%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="a536c7c2-6738-4204-a279-62fcfd2314d0"&gt;&lt;/div&gt;
+&lt;div id="0a605e38-d3fa-45f3-adce-6c0bc3ba6d59"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#a536c7c2-6738-4204-a279-62fcfd2314d0');
+var element = $('#0a605e38-d3fa-45f3-adce-6c0bc3ba6d59');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -16789,10 +17159,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="7e2af9ee-c0bc-416e-aa4b-1c54925f8c5f"&gt;&lt;/div&gt;
+&lt;div id="b8424c04-c9b7-4724-b2ad-c2c5903fe473"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#7e2af9ee-c0bc-416e-aa4b-1c54925f8c5f');
+var element = $('#b8424c04-c9b7-4724-b2ad-c2c5903fe473');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -16993,10 +17363,10 @@ Test accuracy: 90.7%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="584ab158-b6be-4c3d-9fc0-888f3cb4666c"&gt;&lt;/div&gt;
+&lt;div id="3874ec55-990d-40f2-aaa5-4d9535fb17b2"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#584ab158-b6be-4c3d-9fc0-888f3cb4666c');
+var element = $('#3874ec55-990d-40f2-aaa5-4d9535fb17b2');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -17760,10 +18130,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="ea793fa3-31fc-466c-bb03-b608f599c91e"&gt;&lt;/div&gt;
+&lt;div id="5a5c95e3-1d33-44d3-96e0-00ef9e90bd78"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#ea793fa3-31fc-466c-bb03-b608f599c91e');
+var element = $('#5a5c95e3-1d33-44d3-96e0-00ef9e90bd78');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -18169,10 +18539,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="b8bce34a-2fe8-46f2-ace9-efb87f18c951"&gt;&lt;/div&gt;
+&lt;div id="5d1ed1e0-7c6f-4824-adf5-cdc2d3bac4a4"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#b8bce34a-2fe8-46f2-ace9-efb87f18c951');
+var element = $('#5d1ed1e0-7c6f-4824-adf5-cdc2d3bac4a4');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -18234,10 +18604,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="9236f0ef-f2e0-41dd-9c85-9a63c841a6ce"&gt;&lt;/div&gt;
+&lt;div id="1dd18b44-0045-49b8-856e-337f071c74cd"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9236f0ef-f2e0-41dd-9c85-9a63c841a6ce');
+var element = $('#1dd18b44-0045-49b8-856e-337f071c74cd');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -18291,10 +18661,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="acb31080-7a35-49ca-8544-ba5aab01791b"&gt;&lt;/div&gt;
+&lt;div id="e4428551-a948-4c58-9a50-4c28f630144a"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#acb31080-7a35-49ca-8544-ba5aab01791b');
+var element = $('#e4428551-a948-4c58-9a50-4c28f630144a');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -18348,10 +18718,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="72fe8cac-2393-4fb8-8ee7-550a30b67a44"&gt;&lt;/div&gt;
+&lt;div id="af6800aa-256b-4298-8356-9bf7347e4027"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#72fe8cac-2393-4fb8-8ee7-550a30b67a44');
+var element = $('#af6800aa-256b-4298-8356-9bf7347e4027');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -18411,10 +18781,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="523378d1-fb38-435d-b6dc-db8ccb1b7add"&gt;&lt;/div&gt;
+&lt;div id="2742c3d9-a609-404e-91da-751a7707eb7f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#523378d1-fb38-435d-b6dc-db8ccb1b7add');
+var element = $('#2742c3d9-a609-404e-91da-751a7707eb7f');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -18784,10 +19154,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="a6692fcc-5896-433e-8fb2-8da053bb8a2d"&gt;&lt;/div&gt;
+&lt;div id="a51f9167-db7f-4ff6-9df1-432d14b2c9fe"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#a6692fcc-5896-433e-8fb2-8da053bb8a2d');
+var element = $('#a51f9167-db7f-4ff6-9df1-432d14b2c9fe');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -18936,10 +19306,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="772c777d-3c2d-4ba7-90e2-d059adf7ded3"&gt;&lt;/div&gt;
+&lt;div id="fdc44a0c-126d-4489-ad49-171160b22714"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#772c777d-3c2d-4ba7-90e2-d059adf7ded3');
+var element = $('#fdc44a0c-126d-4489-ad49-171160b22714');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -19097,10 +19467,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="9e0024e2-cedb-4747-ab21-1aee8837b813"&gt;&lt;/div&gt;
+&lt;div id="95e4250a-2b4f-429d-a787-0ea21c507c1c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9e0024e2-cedb-4747-ab21-1aee8837b813');
+var element = $('#95e4250a-2b4f-429d-a787-0ea21c507c1c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
