@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng - Deep Learning</title><link href="https://leemeng.tw/" rel="alternate"></link><link href="https://leemeng.tw/feeds/deep-learning.atom.xml" rel="self"></link><id>https://leemeng.tw/</id><updated>2017-09-30T18:30:00+09:00</updated><entry><title>Find Word Semantic by Using Word2vec in TensorFlow</title><link href="https://leemeng.tw/find-word-semantic-by-using-word2vec-in-tensorflow.html" rel="alternate"></link><published>2017-09-30T18:30:00+09:00</published><updated>2017-09-30T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-30:/find-word-semantic-by-using-word2vec-in-tensorflow.html</id><summary type="html">
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The goal of this assignment is to train a Word2Vec skip-gram model over &lt;a href="http://mattmahoney.net/dc/textdata"&gt;Text8&lt;/a&gt; data using Tensorflow.&lt;/p&gt;
-&lt;p&gt;Word2vec is a kind of vector space model (VSM) in natural language processing (NLP) where the core assumption/intuition is that words that appear in similar 'context' share similar meaning and they should …&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng - Deep Learning</title><link href="https://leemeng.tw/" rel="alternate"></link><link href="https://leemeng.tw/feeds/deep-learning.atom.xml" rel="self"></link><id>https://leemeng.tw/</id><updated>2017-09-30T18:30:00+09:00</updated><entry><title>Find Word Semantic by Using Word2vec in TensorFlow</title><link href="https://leemeng.tw/find-word-semantic-by-using-word2vec-in-tensorflow.html" rel="alternate"></link><published>2017-09-30T18:30:00+09:00</published><updated>2017-09-30T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-30:/find-word-semantic-by-using-word2vec-in-tensorflow.html</id><summary type="html">&lt;p&gt;Naive Word2vec implementation using Tensorflow&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -641,10 +636,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="9584c9aa-7c52-4b7f-9bb0-202a6342fe19"&gt;&lt;/div&gt;
+&lt;div id="80b07855-9138-49b2-8535-a791231ab333"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9584c9aa-7c52-4b7f-9bb0-202a6342fe19');
+var element = $('#80b07855-9138-49b2-8535-a791231ab333');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -3542,12 +3537,7 @@ AAAAAHiA4Q0AAAAAPPAD6qjcfWntDHEAAAAASUVORK5CYII=
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="Python"></category><category term="TensorFlow"></category><category term="Word2Vec"></category><category term="NLP"></category><category term="VSM"></category></entry><entry><title>Simple Convolutional Neural Network using TensorFlow</title><link href="https://leemeng.tw/simple-convolutional-neural-network-using-tensorflow.html" rel="alternate"></link><published>2017-09-26T18:30:00+09:00</published><updated>2017-09-26T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-26:/simple-convolutional-neural-network-using-tensorflow.html</id><summary type="html">
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The goal here is to practice building convolutional neural networks to classify &lt;a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html"&gt;notMNIST&lt;/a&gt; characters using TensorFlow.
-As image size become bigger and bigger, it become unpractical to train fully-connected NN because there will be just too many parameters and thus the model will overfit very soon. And CNN solve this …&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</summary><content type="html">
+</content><category term="Python"></category><category term="TensorFlow"></category><category term="Word2Vec"></category><category term="NLP"></category><category term="VSM"></category></entry><entry><title>Simple Convolutional Neural Network using TensorFlow</title><link href="https://leemeng.tw/simple-convolutional-neural-network-using-tensorflow.html" rel="alternate"></link><published>2017-09-26T18:30:00+09:00</published><updated>2017-09-26T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-26:/simple-convolutional-neural-network-using-tensorflow.html</id><summary type="html">&lt;p&gt;The goal here is to practice building convolutional neural networks to classify notMNIST characters using TensorFlow. As image size become bigger and bigger, it become unpractical to train fully-connected NN because there will be just too many parameters and thus the model will overfit very soon. And CNN solve this problem by weight sharing. We will start by building a CNN with two convolutional layers connected by a fully connected layer and then try also pooling layer and other thing to improve the model performance.&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -3921,10 +3911,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="5b64b00e-a9b7-48e7-80a2-9fc72fe1c5ac"&gt;&lt;/div&gt;
+&lt;div id="d7b4af33-b26c-425f-bfb3-09fc83cdf4c6"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#5b64b00e-a9b7-48e7-80a2-9fc72fe1c5ac');
+var element = $('#d7b4af33-b26c-425f-bfb3-09fc83cdf4c6');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -4688,10 +4678,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="2be08a5c-e9c0-4150-a3d0-758ae29465ef"&gt;&lt;/div&gt;
+&lt;div id="e7fb2164-5741-48e7-b740-c51305dd7f45"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#2be08a5c-e9c0-4150-a3d0-758ae29465ef');
+var element = $('#e7fb2164-5741-48e7-b740-c51305dd7f45');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -4881,10 +4871,10 @@ Test accuracy: 89.4%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="5dc6ce15-7856-4ca7-9ae0-07117d1eb810"&gt;&lt;/div&gt;
+&lt;div id="9b0709aa-b628-483b-8a59-72daed4b9ea2"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#5dc6ce15-7856-4ca7-9ae0-07117d1eb810');
+var element = $('#9b0709aa-b628-483b-8a59-72daed4b9ea2');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -5648,10 +5638,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="1f05d632-d234-4af7-89b3-2b7d385bf39f"&gt;&lt;/div&gt;
+&lt;div id="cd488ead-955f-48bf-a5f2-d1739c5323c6"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#1f05d632-d234-4af7-89b3-2b7d385bf39f');
+var element = $('#cd488ead-955f-48bf-a5f2-d1739c5323c6');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -5852,10 +5842,10 @@ Test accuracy: 90.7%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="326aec22-81db-467f-a5b7-0e64ed1b808c"&gt;&lt;/div&gt;
+&lt;div id="2718fae7-a963-482b-9320-4ce2a5c8dd59"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#326aec22-81db-467f-a5b7-0e64ed1b808c');
+var element = $('#2718fae7-a963-482b-9320-4ce2a5c8dd59');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -6619,10 +6609,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="5c948881-e348-4620-9148-4ce4ae1063dd"&gt;&lt;/div&gt;
+&lt;div id="f6e7b09c-ab81-4bb1-8bf7-bdd32996e70a"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#5c948881-e348-4620-9148-4ce4ae1063dd');
+var element = $('#f6e7b09c-ab81-4bb1-8bf7-bdd32996e70a');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -6657,32 +6647,7 @@ Test accuracy: 94.6%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="Python"></category><category term="Tensorflow"></category><category term="Deep Learning"></category><category term="Convolutional Neural Network"></category><category term="CNN"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Regularization for Multi-layer Neural Networks in Tensorflow</title><link href="https://leemeng.tw/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="alternate"></link><published>2017-09-25T16:00:00+09:00</published><updated>2017-09-25T16:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-25:/regularization-for-multi-layer-neural-networks-in-tensorflow.html</id><summary type="html">
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The goal of this assignment is to explore regularization techniques.
-The original notebook can be found &lt;a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/3_regularization.ipynb"&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Import-libraries"&gt;Import libraries&lt;a class="anchor-link" href="#Import-libraries"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# These are all the modules we'll be using later. Make sure you can import them&lt;/span&gt;
-&lt;span class="c1"&gt;# before proceeding further.&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;print_function&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;tqdm&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;tnrange&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-&lt;span class="kn"&gt;import …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</summary><content type="html">
+</content><category term="Python"></category><category term="Tensorflow"></category><category term="Deep Learning"></category><category term="Convolutional Neural Network"></category><category term="CNN"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Regularization for Multi-layer Neural Networks in Tensorflow</title><link href="https://leemeng.tw/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="alternate"></link><published>2017-09-25T16:00:00+09:00</published><updated>2017-09-25T16:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-25:/regularization-for-multi-layer-neural-networks-in-tensorflow.html</id><summary type="html">&lt;p&gt;The goal of this assignment is to explore regularization techniques.&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -7028,10 +6993,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="19edf36d-006a-4f3f-90bd-37c3bda58ce3"&gt;&lt;/div&gt;
+&lt;div id="327709c6-74df-4e93-8d3c-79f7fedb0b0e"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#19edf36d-006a-4f3f-90bd-37c3bda58ce3');
+var element = $('#327709c6-74df-4e93-8d3c-79f7fedb0b0e');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -7093,10 +7058,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="713a2d2a-3d67-4c93-a9c8-81c1a28ac8b4"&gt;&lt;/div&gt;
+&lt;div id="f190d8ce-9dc5-4239-b637-f0b2894a10e0"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#713a2d2a-3d67-4c93-a9c8-81c1a28ac8b4');
+var element = $('#f190d8ce-9dc5-4239-b637-f0b2894a10e0');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -7150,10 +7115,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="6dd7e44a-fe41-4621-8119-2efb92d349db"&gt;&lt;/div&gt;
+&lt;div id="6c3a2b3c-de3d-4724-8766-b366c9d4afc9"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#6dd7e44a-fe41-4621-8119-2efb92d349db');
+var element = $('#6c3a2b3c-de3d-4724-8766-b366c9d4afc9');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -7207,10 +7172,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="9322456a-23ef-46f7-a6b0-a04d89980392"&gt;&lt;/div&gt;
+&lt;div id="bd2381a6-0ffe-4886-bb89-60aed930e4df"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9322456a-23ef-46f7-a6b0-a04d89980392');
+var element = $('#bd2381a6-0ffe-4886-bb89-60aed930e4df');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -7270,10 +7235,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="820194a0-989c-418d-b6ce-4e95f19893c9"&gt;&lt;/div&gt;
+&lt;div id="06dbece0-536f-41d5-8de2-36b9956c3852"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#820194a0-989c-418d-b6ce-4e95f19893c9');
+var element = $('#06dbece0-536f-41d5-8de2-36b9956c3852');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -7299,11 +7264,7 @@ Test acc: 94.3%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="Tensorflow"></category><category term="Python"></category><category term="Deep Learning"></category><category term="Regularization"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title><link href="https://leemeng.tw/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="alternate"></link><published>2017-09-21T23:50:00+09:00</published><updated>2017-09-21T23:50:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-21:/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</id><summary type="html">
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization …&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</summary><content type="html">
+</content><category term="Tensorflow"></category><category term="Python"></category><category term="Deep Learning"></category><category term="Regularization"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title><link href="https://leemeng.tw/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="alternate"></link><published>2017-09-21T23:50:00+09:00</published><updated>2017-09-21T23:50:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-21:/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</id><summary type="html">&lt;p&gt;The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -7643,10 +7604,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="ffb7f3aa-88fb-47ef-8d57-bf46b223fec0"&gt;&lt;/div&gt;
+&lt;div id="9b13e071-0c00-499f-8121-508ce68b0b73"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#ffb7f3aa-88fb-47ef-8d57-bf46b223fec0');
+var element = $('#9b13e071-0c00-499f-8121-508ce68b0b73');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -7795,10 +7756,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="707eec4d-bf38-4927-892e-765d72fdee19"&gt;&lt;/div&gt;
+&lt;div id="0199fce3-107e-42da-8db9-663a2e0db828"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#707eec4d-bf38-4927-892e-765d72fdee19');
+var element = $('#0199fce3-107e-42da-8db9-663a2e0db828');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -7956,10 +7917,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="3d6b3202-b56e-48c9-8b47-60624763f8f1"&gt;&lt;/div&gt;
+&lt;div id="0ec25219-ae7d-4ae9-9f56-6f2377d6fc73"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3d6b3202-b56e-48c9-8b47-60624763f8f1');
+var element = $('#0ec25219-ae7d-4ae9-9f56-6f2377d6fc73');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
