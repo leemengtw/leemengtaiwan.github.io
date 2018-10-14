@@ -11,10 +11,10 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>LeeMeng - 資料科學文摘 Vol.6 TITLE HERE</title>
+<title>LeeMeng - 資料科學文摘 Vol.6 人類壽命大進展、GAN、數據工廠以及產品分析</title>
     <!--- article-specific meta data
     ================================================== -->
-        <meta name="description" content="YOUR DESCRIPTION" />
+        <meta name="description" content="這週我們一樣保持閱讀的「營養均衡」，從全球平均壽命變化的資料視覺化、深度學習最夯的「對抗生成網路」話題、產品分析框架到理解何謂「數據工廠」，我希望能讓閱讀本文摘的你，廣泛地了解各領域跟「資料」相關的議題，並進一步找出自己的興趣，加以深度探索。" />
         <meta name="keywords" content="文摘, 資料科學" />
         <meta name="tags" content="文摘" />
         <meta name="tags" content="資料科學" />
@@ -22,11 +22,11 @@
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="/theme/images/background/thought-catalog-551737-unsplash.jpg" />
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/thought-catalog-551737-unsplash.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="/data-science-digest-volume-6.html" />
-        <meta property="og:title" content="資料科學文摘 Vol.6 TITLE HERE" />
-        <meta property="og:description" content="YOUR DESCRIPTION" />
+        <meta property="og:url" content="https://leemeng.tw/data-science-digest-volume-6.html" />
+        <meta property="og:title" content="資料科學文摘 Vol.6 人類壽命大進展、GAN、數據工廠以及產品分析" />
+        <meta property="og:description" content="這週我們一樣保持閱讀的「營養均衡」，從全球平均壽命變化的資料視覺化、深度學習最夯的「對抗生成網路」話題、產品分析框架到理解何謂「數據工廠」，我希望能讓閱讀本文摘的你，廣泛地了解各領域跟「資料」相關的議題，並進一步找出自己的興趣，加以深度探索。" />
 
     <!-- mobile specific metas
     ================================================== -->
@@ -35,32 +35,42 @@
     <!-- CSS
     ================================================== -->
     <!--for customized css in individual page-->
-        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
 
     <!--for showing toc navigation which slide in from left-->
-        <link rel="stylesheet" type="text/css" href="/theme/css/toc-nav.css">
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
 
-    <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/ipython.css">
-    <link rel="stylesheet" type="text/css" href='/theme/css/progress-bar.css' />
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
 
 
     <!--TiqueSearch-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
-    <link rel="stylesheet" href="/theme/tipuesearch/css/normalize.css">
-    <link rel="stylesheet" href="/theme/tipuesearch/css/tipuesearch.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
 
     <!-- script
     ================================================== -->
-    <script src="/theme/js/modernizr.js"></script>
-    <script src="/theme/js/pace.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
 
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
 
 
 
@@ -74,7 +84,7 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="../index.html"><img src="/theme/images/logo.png" alt="Homepage"></a>
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
         </div>
 <!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
@@ -117,11 +127,23 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學文摘 Vol.6 TITLE HERE">資料科學文摘 Vol.6 TITLE HERE</a><ul><li><a class="toc-href" href="#本週閱讀清單" title="本週閱讀清單">本週閱讀清單</a><ul><li><a class="toc-href" href="#Data-visualisation,-from-1987-to-today" title="
-Data visualisation, from 1987 to today
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學文摘 Vol.6 人類壽命大進展、GAN、數據工廠以及產品分析">資料科學文摘 Vol.6 人類壽命大進展、GAN、數據工廠以及產品分析</a><ul><li><a class="toc-href" href="#Twice-as-long-&ndash;-life-expectancy-around-the-world" title="
+Twice as long &ndash; life expectancy around the world
 ">
-Data visualisation, from 1987 to today
-</a></li></ul></li><li><a class="toc-href" href="#結語_1" title="結語">結語</a></li></ul></li></ul></div>
+Twice as long &ndash; life expectancy around the world
+</a></li><li><a class="toc-href" href="#Interview-with-Deep-Learning-Researcher-and-The-GANfather:-Dr.-Ian-Goodfellow" title="
+Interview with Deep Learning Researcher and The GANfather: Dr. Ian Goodfellow
+">
+Interview with Deep Learning Researcher and The GANfather: Dr. Ian Goodfellow
+</a></li><li><a class="toc-href" href="#Data-Factories" title="
+Data Factories
+">
+Data Factories
+</a></li><li><a class="toc-href" href="#Engagement-Drives-Stickiness-Drives-Retention-Drives-Growth" title="
+Engagement Drives Stickiness Drives Retention Drives Growth
+">
+Engagement Drives Stickiness Drives Retention Drives Growth
+</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -130,25 +152,25 @@ Data visualisation, from 1987 to today
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/thought-catalog-551737-unsplash.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/thought-catalog-551737-unsplash.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
-                            <a href="/tag/wen-zhai.html" rel="tag">文摘</a>
-                            <a href="/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                            <a href="https://leemeng.tw/tag/wen-zhai.html" rel="tag">文摘</a>
+                            <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="/data-science-digest-volume-6.html" title="">
-                            資料科學文摘 Vol.6 TITLE HERE
+                        <a href="https://leemeng.tw/data-science-digest-volume-6.html" title="">
+                            資料科學文摘 Vol.6 人類壽命大進展、GAN、數據工廠以及產品分析
                         </a>
                     </h1>
                     <ul class="page-header__meta">
-                        <li class="date">2018-10-15 (Mon)</li>
+                        <li class="date">2018-10-14 (Sun)</li>
                         <li class="page-view">
-                            1 views
+                            0 views
                         </li>
                     </ul>
 
@@ -179,6 +201,26 @@ Data visualisation, from 1987 to today
         </a>
     </div>
 
+    <div id="social-wrap" style="cursor: pointer">
+        <a class="open-popup" title="訂閱最新文章">
+            <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/data-science-digest-volume-6.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/data-science-digest-volume-6.html&title=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E6%96%87%E6%91%98%20Vol.6%20%E4%BA%BA%E9%A1%9E%E5%A3%BD%E5%91%BD%E5%A4%A7%E9%80%B2%E5%B1%95%E3%80%81GAN%E3%80%81%E6%95%B8%E6%93%9A%E5%B7%A5%E5%BB%A0%E4%BB%A5%E5%8F%8A%E7%94%A2%E5%93%81%E5%88%86%E6%9E%90&summary=%E9%80%99%E9%80%B1%E6%88%91%E5%80%91%E4%B8%80%E6%A8%A3%E4%BF%9D%E6%8C%81%E9%96%B1%E8%AE%80%E7%9A%84%E3%80%8C%E7%87%9F%E9%A4%8A%E5%9D%87%E8%A1%A1%E3%80%8D%EF%BC%8C%E5%BE%9E%E5%85%A8%E7%90%83%E5%B9%B3%E5%9D%87%E5%A3%BD%E5%91%BD%E8%AE%8A%E5%8C%96%E7%9A%84%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96%E3%80%81%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%9C%80%E5%A4%AF%E7%9A%84%E3%80%8C%E5%B0%8D%E6%8A%97%E7%94%9F%E6%88%90%E7%B6%B2%E8%B7%AF%E3%80%8D%E8%A9%B1%E9%A1%8C%E3%80%81%E7%94%A2%E5%93%81%E5%88%86%E6%9E%90%E6%A1%86%E6%9E%B6%E5%88%B0%E7%90%86%E8%A7%A3%E4%BD%95%E8%AC%82%E3%80%8C%E6%95%B8%E6%93%9A%E5%B7%A5%E5%BB%A0%E3%80%8D%EF%BC%8C%E6%88%91%E5%B8%8C%E6%9C%9B%E8%83%BD%E8%AE%93%E9%96%B1%E8%AE%80%E6%9C%AC%E6%96%87%E6%91%98%E7%9A%84%E4%BD%A0%EF%BC%8C%E5%BB%A3%E6%B3%9B%E5%9C%B0%E4%BA%86%E8%A7%A3%E5%90%84%E9%A0%98%E5%9F%9F%E8%B7%9F%E3%80%8C%E8%B3%87%E6%96%99%E3%80%8D%E7%9B%B8%E9%97%9C%E7%9A%84%E8%AD%B0%E9%A1%8C%EF%BC%8C%E4%B8%A6%E9%80%B2%E4%B8%80%E6%AD%A5%E6%89%BE%E5%87%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E8%88%88%E8%B6%A3%EF%BC%8C%E5%8A%A0%E4%BB%A5%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2%E3%80%82&source=https%3A//leemeng.tw/data-science-digest-volume-6.html" target="_blank" title="分享到 LinkedIn">
+            <i class="im im-linkedin" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://twitter.com/intent/tweet?text=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E6%96%87%E6%91%98%20Vol.6%20%E4%BA%BA%E9%A1%9E%E5%A3%BD%E5%91%BD%E5%A4%A7%E9%80%B2%E5%B1%95%E3%80%81GAN%E3%80%81%E6%95%B8%E6%93%9A%E5%B7%A5%E5%BB%A0%E4%BB%A5%E5%8F%8A%E7%94%A2%E5%93%81%E5%88%86%E6%9E%90&url=https%3A//leemeng.tw/data-science-digest-volume-6.html" target="_blank" title="分享到 Twitter">
+            <i class="im im-twitter" aria-hidden="true"></i>
+        </a>
+    </div>
 
 </div>
 
@@ -188,28 +230,28 @@ Data visualisation, from 1987 to today
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>前言</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="本週閱讀清單">本週閱讀清單<a class="anchor-link" href="#本週閱讀清單">&para;</a></h2><ul>
-<li><a href="#"></a></li>
+<p>文摘來到第 6 篇，不知道這是你看的第幾篇呢？</p>
+<p>這週我們一樣保持閱讀的「營養均衡」，從全球平均壽命變化的資料視覺化、深度學習最夯的「對抗生成網路」話題、產品分析框架到理解何謂「數據工廠」，我希望能讓閱讀本文摘的你，廣泛地了解各領域跟「資料」相關的議題，並進一步找出自己的興趣，加以深度探索。</p>
+<p>本週閱讀清單：</p>
+<ul>
+<li><a href="#Twice-as-long-&ndash;-life-expectancy-around-the-world">Twice as long &ndash; life expectancy around the world</a></li>
+<li><a href="#Interview-with-Deep-Learning-Researcher-and-The-GANfather:-Dr.-Ian-Goodfellow">Interview with Deep Learning Researcher and The GANfather: Dr. Ian Goodfellow</a></li>
+<li><a href="#Data-Factories">Data Factories</a></li>
+<li><a href="#Engagement-Drives-Stickiness-Drives-Retention-Drives-Growth">Engagement Drives Stickiness Drives Retention Drives Growth</a></li>
 </ul>
+<p>讓我們開始閱讀吧！</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Data-visualisation,-from-1987-to-today">
-<a href="https://medium.economist.com/data-visualisation-from-1987-to-today-65d0609c6017">Data visualisation, from 1987 to today</a><a class="anchor-link" href="#Data-visualisation,-from-1987-to-today">&para;</a>
-</h3>
+<h2 id="Twice-as-long-&ndash;-life-expectancy-around-the-world">
+<a href="https://ourworldindata.org/life-expectancy-globally" target="_blank">Twice as long &ndash; life expectancy around the world</a><a class="anchor-link" href="#Twice-as-long-&ndash;-life-expectancy-around-the-world">&para;</a>
+</h2>
 <center>
-<a href="https://medium.economist.com/data-visualisation-from-1987-to-today-65d0609c6017" target="_blank">
-<img src="/images/digests/leroy-stencil-set.jpg"/>
+<a href="https://ourworldindata.org/life-expectancy-globally" target="_blank">
+<img src="https://leemeng.tw/images/digests/life-expectancy.jpg"/>
 </a>
 <br/>
 </center>
@@ -219,7 +261,244 @@ Data visualisation, from 1987 to today
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="結語_1"><a name="ending"></a>結語<a class="anchor-link" href="#結語">&para;</a></h2>
+<p>現在全球健康以及公衛還是存在很多不平等，但別忘了我們已經取得巨大進展。</p>
+<p>如同我們上週在<a href="https://leemeng.tw/gapminder.html">如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀</a>一文中聊到，好的資料視覺化可以幫助我們快速地了解世界。這週牛津大學的經濟學家 <a href="https://www.maxroser.com/about/">Max Roser</a> 用 3 張橫跨 2 世紀的世界地圖，來告訴我們全球平均壽命（Life Expectancy）的變化：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/digests/3-world-maps-of-life-expectancy-e1538651530288.png"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我們可以看到這 200 年來，生活在世界上的人們經歷了 3 個階段：</p>
+<ul>
+<li>在 1800 年以前所有人的平均壽命 &lt; 40 歲，大部分兒童早夭</li>
+<li>在 1950 年，部分地區健康大幅改善，歐美及日本的平均壽命為 60 歲，為非洲整體平均的 2 倍，鴻溝顯而易見</li>
+<li>在 2015 年，幾乎全球所有地區都能活到 60 歲以上，鴻溝逐漸縮小</li>
+</ul>
+<p>我們都希望自己親人及朋友活得長久。就是因為這樣，你更應該感激這 200 年人類取得的進步。</p>
+<p>近 2 世紀人類在健康狀況改善的卓越成就，套句 Max Roser 的說法就是：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        在人類歷史上，這是我們第一次改善了整個人群的健康狀況。在人類健康狀況停滯千年後，封印終於解除。
+                        <br/>
+<span style="float:right">─ Max Roser</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>值得一提的是，在 1950 年，台灣的平均壽命為 55.5 歲，經過了 65 年，來到了 80 歲。平均每 3 年，台灣人的平均壽命增加 1 歲，成長速度不可小覷。</p>
+<p>你也可以用 <a href="https://ourworldindata.org/life-expectancy">Our World in Data</a> 提供的圖表來看看全球變化：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<iframe src="https://ourworldindata.org/grapher/life-expectancy?year=2015" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Interview-with-Deep-Learning-Researcher-and-The-GANfather:-Dr.-Ian-Goodfellow">
+<a href="https://hackernoon.com/interview-with-deep-learning-researcher-and-the-ganfather-dr-ian-goodfellow-cd300863ecff" target="_blank">Interview with Deep Learning Researcher and The GANfather: Dr. Ian Goodfellow</a><a class="anchor-link" href="#Interview-with-Deep-Learning-Researcher-and-The-GANfather:-Dr.-Ian-Goodfellow">&para;</a>
+</h2>
+<center>
+<a href="https://hackernoon.com/interview-with-deep-learning-researcher-and-the-ganfather-dr-ian-goodfellow-cd300863ecff" target="_blank">
+<img src="https://leemeng.tw/images/digests/v2-11b2d0d097085a51360d3756aff65435_1200x500.jpg"/>
+</a>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>伊恩．古德費洛（Ian Goodfellow）是 <a href="https://ai.google/research/people/105214">Google Brain 的研究科學家</a>，最知名的成就是在 2014 年推出<a href="https://buzzorange.com/techorange/2018/03/12/google-super-intern/">生成對抗網路（Generative Adversarial Network, 簡稱 GAN）</a>。GAN 最基本的概念是讓兩個神經網路互相對抗，讓模型可以依靠較少的人類介入以及訓練資料，自己學會高度複雜的工作。自從那之後，GAN 領域的研究一日千里，現在 <a href="https://arxiv.org/abs/1406.2661">arXiv 上該論文有超過 5,000 次引用</a>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/digests/gan-example.jpg"/>
+</center>
+<center>
+                        GAN 有很多用途，像是自動產生高畫質圖片
+                        （圖片來源：<a href="https://youtu.be/AJVyzd0rqdc?t=575" target="_blank">NIPS 2016 Tutorial</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>GAN 有非常多「用途」，像是自動產生圖片、創作音樂、寫詩或是製造假新聞。但在這篇文摘裡頭，讓我們先專注於這篇訪問伊恩的內容。</p>
+<p>在這篇訪談裡頭，伊恩給想開始研究 ML 的人一些建議：</p>
+<ul>
+<li>徹底學好基礎。像是寫程式、除錯、並學習機率及線性代數。很多時候在研究 ML 的時候，幫助你最多的是扎實的基礎，而不是非常前衛的想法（這是他從 Google Brain 創立者<a href="https://zh.wikipedia.org/wiki/%E5%90%B4%E6%81%A9%E8%BE%BE">吳恩達</a>得到的建議）</li>
+<li>沒有什麼運算資源時，要選對研究主題。（沒有像是 Google 那樣等級的運算資源的話，就不要想去實現全世界最快的 <a href="http://www.image-net.org/">ImageNet</a> 分類器）</li>
+<li>一開始找個人家已經做過的題目來磨練你的 ML 能力。這樣做的好處是確保不是你的點子不有效，而只是實現方法錯了。等你掌握基礎之後，再去嘗試你最新的點子。</li>
+</ul>
+<p>如果你現在想開始了解 GAN 的話，可以試試 <a href="https://poloclub.github.io/ganlab/">GAN lab</a>，在網頁上玩玩生成對抗網路。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/digests/gan-lab.jpg"/>
+</center>
+<center>
+                        GAN lab 讓你可以利用網頁瀏覽器直接探索 GAN 並了解其運作原理
+                        （<a href="https://poloclub.github.io/ganlab/" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-Factories">
+<a href="https://stratechery.com/2018/data-factories/" target="_blank">Data Factories</a><a class="anchor-link" href="#Data-Factories">&para;</a>
+</h2>
+<center>
+<a href="https://stratechery.com/2018/data-factories/" target="_blank">
+<img src="https://leemeng.tw/images/digests/data-factory.jpg"/>
+</a>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>身處數據時代，我們應該更關心自己的資料被怎麼利用。</p>
+<p>這篇文章想說的是，其實 Facebook、Google 以及其他廣告業者都是所謂的「數據工廠」，而如果政府要立法規範這些工廠，最有效的方法就是請它們允許使用者看到工廠裡頭的情況。</p>
+<p>我認為「數據工廠」是對 Google 及 Facebook 這種利用數據來創造價值的公司的一個貼切比喻。因為他們除了使用者的行為數據，也從廣告代理商以及第三方數據收集業者取得大量資料。透過將這些原始資料「加工」並產生衍生價值，據此創造巨大收益。</p>
+<p>然而這些「數據工廠」跟一般傳統的「工廠」有一個非常大的差異：誰都無法窺探該「工廠」的內部情況。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/digests/P1-BP885_NIKE3_GR_20140421170339.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>記者可以去 Nike 製造足球的工廠裡頭拍拍照，讓世人知道這些工廠內部的運作情況，但在這年代，你無法去 Facebook 裡頭拍拍照，了解他們是怎麼利用各式各樣的演算法，來「活用」所有跟你相關的資料（你按過讚的內容、瀏覽過的網頁，甚至是你為了雙重認證而輸入的電話號碼）。</p>
+<p>因此立法者以及那些關心自己數據可能被濫用的使用者要了解的是，要規範 Facebook 這種公司，不能只要求 Facebook 公布他們從使用者手上拿到的原始資料（Raw Data），而是應該公布那些他們利用演算法以及結合多種數據來源所產生出的 user profile，讓使用者自行判斷要不要繼續讓該公司使用自己的 profile。</p>
+<p>雖然多數人其實只在乎 Facebook 能不能秀給他們更多的動物影片以及朋友動態，不太在意自己的數據被怎麼拿來獲利。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Engagement-Drives-Stickiness-Drives-Retention-Drives-Growth">
+<a href="https://medium.com/swlh/engagement-drives-stickiness-drives-retention-drives-growth-3a6ac53a7a00" target="_blank">Engagement Drives Stickiness Drives Retention Drives Growth</a><a class="anchor-link" href="#Engagement-Drives-Stickiness-Drives-Retention-Drives-Growth">&para;</a>
+</h2>
+<center>
+<a href="https://medium.com/swlh/engagement-drives-stickiness-drives-retention-drives-growth-3a6ac53a7a00" target="_blank">
+<img src="https://leemeng.tw/images/digests/product-analysis-framework.jpeg"/>
+</a>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在以提供 App 作為服務的公司裡頭，資料科學家大都會需要進行產品分析（Product Analysis）進而改善自家產品。</p>
+<p>這篇文章介紹了 App 產業以及我常在使用的一個分析框架，讓你可以感受一下，實際上 DS 在做產品分析的時候，要看些什麼東西。</p>
+<p>有做過產品分析的你，應該能很快地理解這個流程圖：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/digests/engagement-framework.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這張圖最重要的核心概念是：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        當使用者發現你產品的價值以後，他們會主動回來。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>當使用者發現你的產品的價值後，就會進一步參與使用（Engage），而好的參與程度（Engagement Level）會增加他們對此產品的黏著度（Stickiness），進一步讓他們願意回來繼續使用你的產品（Retentaion）。而有了越來越多的忠實用戶，就能進一步帶給你的產品成長（Growth），不斷持續地這個好的循環。</p>
+<p>在我們理解每個階段代表的意義以後，我們還需要一些指標（indicators）來實際幫助我們了解產品在每個階段的表現。</p>
+<p>像是 Engagement 底下的 TS/DAU 即分別代表「使用時間（<strong>T</strong>ime <strong>S</strong>pent）」以及「每天活躍使用者人數（<strong>D</strong>aily <strong>A</strong>ctive <strong>U</strong>sers）」。這兩個都很常被拿來衡量使用者參與一個產品的程度。有了好的參與程度，一個使用者就更有可能在安裝 7 天後還回來繼續使用（Retention 階段的 D7）。</p>
+<p>這邊沒有篇幅一個個介紹圖中的指標，但要注意的是，在看指標的時候，要去想它是早期指標（Early Indicators）還是延遲指標（Lagging Indicators）。</p>
+<p>比方說你的最終目標是提升每月活躍使用者人數（<strong>M</strong>onthly <strong>A</strong>ctive <strong>U</strong>sers，最右邊 Growth 階段的 MAU）這個延遲指標（延遲在於要過了 1 個月你才知道結果），那你除了看 MAU 以外，還需要去看 TS/DAU 等早期指標。因為 MAU 需要一個月的時間才能計算出來，有時候產品表現差，你從每天使用的人數下降就可以略知一二，可以馬上做調整而不需等到一個月後 MAU 數字難看才大傷腦筋。</p>
+<p>及早發現，及早治療。</p>
+<p>產品分析領域在網路上的資源不多，有機會再跟你分享我的心得。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2><p>呼！這就是本週文摘的內容啦！希望你閱讀後有感覺自己腦中多了點東西，變得聰明了一點。</p>
+<p>社會人口、機器學習、產品分析以及數據隱私的議題，你會發現這些文章儘管領域大相徑庭，他們都與「數據」脫離不了關係。</p>
+<p>在這個時代，任何人的日常生活中都充斥著大量數據。我們需要重新思考、檢視並理解身邊的數據，甚至活用它們來創造更好的世界。</p>
+<p>這也是我寫這系列文章的原因，希望讓更多人（包含我自己）能更輕鬆地用數據理解這個世界。歡迎你點擊下面的訂閱按鈕，未來跟著我一起繼續探索這個世界：）</p>
 </div>
 </div>
 </div>
@@ -230,8 +509,8 @@ Data visualisation, from 1987 to today
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
-                        <a href="/tag/wen-zhai.html" rel="tag">文摘</a>
-                        <a href="/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        <a href="https://leemeng.tw/tag/wen-zhai.html" rel="tag">文摘</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
                     </span>
 
                 </p>
@@ -268,7 +547,7 @@ Data visualisation, from 1987 to today
                 <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
                         <div class="blog-content__next">
-                            <a href="/gapminder.html" rel="next">
+                            <a href="https://leemeng.tw/gapminder.html" rel="next">
                                 <span>Next Post</span>
                                 如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀
                             </a>
@@ -291,6 +570,25 @@ Data visualisation, from 1987 to today
 
     </article>
 
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '資料科學文摘 Vol.6 人類壽命大進展、GAN、數據工廠以及產品分析';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
     <!-- footer
@@ -300,7 +598,7 @@ Data visualisation, from 1987 to today
             <div class="col-full">
 
                 <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="/theme/images/logo.png" alt="Homepage"></a>
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
                 </div>
 
                 <ul class="footer-social">
@@ -345,12 +643,12 @@ Data visualisation, from 1987 to today
 
         <!-- Javascript
     ================================================== -->
-    <script src="/theme/js/jquery-3.2.1.min.js"></script>
-    <script src="/theme/js/plugins.js"></script>
-    <script src="/theme/js/main.js"></script>
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
 
-    <script type='text/javascript' src='/theme/js/progress-bar.js'></script>
-    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
 
     <!--show and hide left navigation by scrolling-->
     <script>
