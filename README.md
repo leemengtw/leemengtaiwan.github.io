@@ -108,15 +108,39 @@ Meta Cell template
 ```
 
 文摘用 template
-```html
-## []()
+```markdown
+!article
+- Data visualisation, from 1987 to today
+- https://medium.economist.com/data-visualisation-from-1987-to-today-65d0609c6017
+- leroy-stencil-set.jpg
+```
+
+單一圖片
+```text
+<img src="{filename}images/gapminder/chuttersnap-176806-unsplash.jpg"/>
+<br>
+```
+
+圖片＋下標
+```text
 <center>
-    <a href="" target="_blacnk">
-        <img src="images/digests/" style="width:90%"/>
-    </a>
+    <img src="{filename}images/gapminder/official-page.jpg" style=""/>
+</center>
+<center>
+    GapMinder 釋出的<a href="https://www.gapminder.org/tools/#" target="_blank">泡泡圖</a>截圖。在右邊的清單搜尋「 Taiwan 」不會有結果
+    <br/>
+    <br/>
 </center>
 ```
 
+video
+```text
+<video loop muted autoplay playsinline poster="{filename}images/gapminder/decline-of-female-fertility.jpg">
+  <source src="{filename}images/gapminder/decline-of-female-fertility.mp4" type="video/mp4">
+    您的瀏覽器不支援影片標籤，請留言通知我：Ｓ
+</video>
+<br>
+```
 
 
 

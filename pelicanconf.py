@@ -124,6 +124,7 @@ NUM_ARTICLES_HOMEPAGE = 4
 # instead of .ipynb-meta files
 IPYNB_USE_META_SUMMARY = False
 IPYNB_IGNORE_CSS = True
+IPYNB_SKIP_CSS = True
 STATIC_CHECK_IF_MODIFIED = True
 
 # Use sub-folder as categories
@@ -163,7 +164,12 @@ PROJECTS = [
         "description": '這是一個利用 Selenium 將 Github Gists 同步到 Evernote 的生產工具。你可以在 <a href="https://github.com/leemengtaiwan/gist-evernote" target="_blank">Github</a> 查看細節。'
     },
     {
-        "thumb": "salad"
+        "name": "GapMinder 中文版",
+        "thumb": "gapminder",
+        "categories": "資料視覺化, 台灣, GapMinder",
+        "link": "https://leemeng.tw/gapminder.html",
+        "link_title": "專案介紹連結",
+        "description": '這是一個利用各國公開數據來探索世界以及台灣的資料視覺化工具。你可以在我的部落格文章<a href="https://leemeng.tw/gapminder.html">如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀</a>實際使用此工具並了解細節'
     },
     {
         "name": "漫畫連載通知 App",
@@ -187,3 +193,13 @@ PROJECTS = [
     },
 
 ]
+
+
+# local ga test
+# PLUGINS += ['ga_page_view']
+# GOOGLE_SERVICE_ACCOUNT = 'blog-usage@blog-usage.iam.gserviceaccount.com'
+# GOOGLE_KEY_FILE = './Blog-usage-0799d847dd8f.p12'
+# GA_START_DATE = '2017-10-01'
+# GA_END_DATE = 'today'
+# GA_METRIC = 'ga:pageviews'
+# POPULAR_POST_START = 'A month ago'
