@@ -135,10 +135,13 @@
 &lt;p&gt;在這篇訪談裡頭，伊恩給想開始研究 ML 的人一些建議：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;徹底學好基礎。像是寫程式、除錯、並學習機率及線性代數。很多時候在研究 ML 的時候，幫助你最多的是扎實的基礎，而不是非常前衛的想法（這是他從 Google Brain 創立者&lt;a href="https://zh.wikipedia.org/wiki/%E5%90%B4%E6%81%A9%E8%BE%BE"&gt;吳恩達&lt;/a&gt;得到的建議）&lt;/li&gt;
-&lt;li&gt;沒有什麼運算資源時，要選對研究主題。（沒有像是 Google 那樣等級的運算資源的話，就不要想去實現全世界最快的 &lt;a href="http://www.image-net.org/"&gt;ImageNet&lt;/a&gt; 分類器）&lt;/li&gt;
-&lt;li&gt;一開始找個人家已經做過的題目來磨練你的 ML 能力。這樣做的好處是確保不是你的點子不有效，而只是實現方法錯了。等你掌握基礎之後，再去嘗試你最新的點子。&lt;/li&gt;
+&lt;li&gt;沒有什麼運算資源時，要選對研究主題。（沒有像是 Google 那樣等級的運算資源的話，就不要想去實現全世界最準的 &lt;a href="http://www.image-net.org/"&gt;ImageNet&lt;/a&gt; 分類器）&lt;/li&gt;
+&lt;li&gt;一開始找個人家已經做過的題目來磨練你的 ML 能力。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;如果你現在想開始了解 GAN 的話，可以試試 &lt;a href="https://poloclub.github.io/ganlab/"&gt;GAN lab&lt;/a&gt;，在網頁上玩玩生成對抗網路。&lt;/p&gt;
+&lt;p&gt;最後一點需要額外解釋一下。&lt;/p&gt;
+&lt;p&gt;如果你在練習 ML 的時候，選擇跟隨前人「已經成功」的東西來實作的話，這樣就算自己實作出來的模型表現不好，你也知道只是你的實作、基本功出了問題，而不是這個點子錯了。接著只要回去複習基本概念、加強實作功力即可。&lt;/p&gt;
+&lt;p&gt;但如果你的 ML 的實作能力沒到一個水平，然後又馬上想要嘗試一個天馬行空的點子／演算法，最後實作出來失敗，你很難知道，到底是點子本身有瑕痴，還是因為你實作能力差而出問題。&lt;/p&gt;
+&lt;p&gt;另外如果你現在就想開始了解 GAN 的話，可以試試 &lt;a href="https://poloclub.github.io/ganlab/"&gt;GAN lab&lt;/a&gt;，在網頁上玩玩生成對抗網路。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -12452,10 +12455,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="95f4c76b-e952-4f06-a9f9-dcc8ebc7db3e"&gt;&lt;/div&gt;
+&lt;div id="652779bc-d177-44d4-9f05-cb17104058e7"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#95f4c76b-e952-4f06-a9f9-dcc8ebc7db3e');
+var element = $('#652779bc-d177-44d4-9f05-cb17104058e7');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -15727,10 +15730,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="88e128e9-e1c1-472a-bc83-895964af4ef9"&gt;&lt;/div&gt;
+&lt;div id="a3f321ad-b833-4762-81bf-277a263e8bed"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#88e128e9-e1c1-472a-bc83-895964af4ef9');
+var element = $('#a3f321ad-b833-4762-81bf-277a263e8bed');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -16494,10 +16497,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="18ed210f-d502-493f-b0fb-2c14cd88de91"&gt;&lt;/div&gt;
+&lt;div id="73b54ee8-077c-41e4-a077-89848051b32d"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#18ed210f-d502-493f-b0fb-2c14cd88de91');
+var element = $('#73b54ee8-077c-41e4-a077-89848051b32d');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -16687,10 +16690,10 @@ Test accuracy: 89.4%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="e8494d0d-1115-43a7-ac92-b0f38d1b7e0a"&gt;&lt;/div&gt;
+&lt;div id="5f2f5411-78a7-4b80-9b9b-7d32914f6325"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#e8494d0d-1115-43a7-ac92-b0f38d1b7e0a');
+var element = $('#5f2f5411-78a7-4b80-9b9b-7d32914f6325');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -17454,10 +17457,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="a3c3773d-9cac-4a48-be5b-563f7006c99f"&gt;&lt;/div&gt;
+&lt;div id="103ed6dc-08c9-45f7-9ae8-58a4f2a8b6a4"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#a3c3773d-9cac-4a48-be5b-563f7006c99f');
+var element = $('#103ed6dc-08c9-45f7-9ae8-58a4f2a8b6a4');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -17658,10 +17661,10 @@ Test accuracy: 90.7%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="08d4ab17-0ba5-458c-806b-9db920eaf5f6"&gt;&lt;/div&gt;
+&lt;div id="a1429c4d-ed0e-4f1e-9910-c9d7a4d6443d"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#08d4ab17-0ba5-458c-806b-9db920eaf5f6');
+var element = $('#a1429c4d-ed0e-4f1e-9910-c9d7a4d6443d');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -18425,10 +18428,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="b17b6f53-44d7-418e-9ea1-5bd0f1aadac2"&gt;&lt;/div&gt;
+&lt;div id="e84fbc40-6454-4a28-a391-c83fe99f43fe"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#b17b6f53-44d7-418e-9ea1-5bd0f1aadac2');
+var element = $('#e84fbc40-6454-4a28-a391-c83fe99f43fe');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -18809,10 +18812,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="c884c957-7ed3-4c26-9e0f-0d3dba05b391"&gt;&lt;/div&gt;
+&lt;div id="df41ae08-e4a4-4745-9ce4-dd761315ae7c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#c884c957-7ed3-4c26-9e0f-0d3dba05b391');
+var element = $('#df41ae08-e4a4-4745-9ce4-dd761315ae7c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -18874,10 +18877,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="ad22ae63-a04a-4e7c-9168-b04fe43fae77"&gt;&lt;/div&gt;
+&lt;div id="13ff2a6a-fb7e-4690-9e07-025363a9cc52"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#ad22ae63-a04a-4e7c-9168-b04fe43fae77');
+var element = $('#13ff2a6a-fb7e-4690-9e07-025363a9cc52');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -18931,10 +18934,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="f1ffcae1-e9e8-4e92-af98-0cb00dea49d1"&gt;&lt;/div&gt;
+&lt;div id="b28a6af1-6aac-461c-ad1a-bc4bcd17d6e1"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f1ffcae1-e9e8-4e92-af98-0cb00dea49d1');
+var element = $('#b28a6af1-6aac-461c-ad1a-bc4bcd17d6e1');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -18988,10 +18991,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="0db9cbb5-9610-427c-b921-189ab9d3ceea"&gt;&lt;/div&gt;
+&lt;div id="0b73d4a4-65f6-4403-afb6-af91cc3a9f9c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#0db9cbb5-9610-427c-b921-189ab9d3ceea');
+var element = $('#0b73d4a4-65f6-4403-afb6-af91cc3a9f9c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -19051,10 +19054,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="8886f17d-188c-4e21-ada4-e3ff576f2ba0"&gt;&lt;/div&gt;
+&lt;div id="7b1a84ba-adb0-4c02-b9e4-495dc84cb24d"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#8886f17d-188c-4e21-ada4-e3ff576f2ba0');
+var element = $('#7b1a84ba-adb0-4c02-b9e4-495dc84cb24d');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -19420,10 +19423,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="f4c9459a-3eca-48f0-8831-4685c6ec78b8"&gt;&lt;/div&gt;
+&lt;div id="9ef90000-ded5-4c7f-9aef-04f2edf1c6e5"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f4c9459a-3eca-48f0-8831-4685c6ec78b8');
+var element = $('#9ef90000-ded5-4c7f-9aef-04f2edf1c6e5');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -19572,10 +19575,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="1b57d5ad-b9aa-4339-adfb-d8101a59364e"&gt;&lt;/div&gt;
+&lt;div id="6b119dec-71a9-4973-9746-ba8bd258898e"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#1b57d5ad-b9aa-4339-adfb-d8101a59364e');
+var element = $('#6b119dec-71a9-4973-9746-ba8bd258898e');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -19733,10 +19736,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="60221b0f-087f-45cb-9053-8ecce040f554"&gt;&lt;/div&gt;
+&lt;div id="ae4a6507-a240-4b47-885a-ddee440c22c9"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#60221b0f-087f-45cb-9053-8ecce040f554');
+var element = $('#ae4a6507-a240-4b47-885a-ddee440c22c9');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
