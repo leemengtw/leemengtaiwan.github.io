@@ -11,23 +11,23 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>LeeMeng - Google Data Studio 基礎</title>
+<title>LeeMeng - 資料科學家 L 的奇幻旅程 Vol.2 如何用資料工程當個時間旅人</title>
     <!--- article-specific meta data
     ================================================== -->
-        <meta name="description" content="Google Data Studio 是 Google 推出的一個儀表板服務，讓我們可以利用多種連結器將儲存在如 Google Analytics、 Google 試算表及 Google BigQuery 等特定資料來源的資料做出漂亮的 visualization ，用資料講故事而不用自己設計 UI。這篇把學到的一些技巧以及使用心得記錄下來。" />
-        <meta name="keywords" content="資料科學, data-science, 資料視覺化" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="日誌, 資料科學, 資料工程" />
+        <meta name="tags" content="日誌" />
         <meta name="tags" content="資料科學" />
-        <meta name="tags" content="data-science" />
-        <meta name="tags" content="資料視覺化" />
+        <meta name="tags" content="資料工程" />
 
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="https://leemeng.tw/theme/images/background/jonathan-velasquez-160775-unsplash.jpg" />
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/kevin-ku-392517-unsplash.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://leemeng.tw/google-data-studio-basics.html" />
-        <meta property="og:title" content="Google Data Studio 基礎" />
-        <meta property="og:description" content="Google Data Studio 是 Google 推出的一個儀表板服務，讓我們可以利用多種連結器將儲存在如 Google Analytics、 Google 試算表及 Google BigQuery 等特定資料來源的資料做出漂亮的 visualization ，用資料講故事而不用自己設計 UI。這篇把學到的一些技巧以及使用心得記錄下來。" />
+        <meta property="og:url" content="https://leemeng.tw/drafts/journey-of-data-scientist-L-part-2-time-traveling-with-data-engineering.html" />
+        <meta property="og:title" content="資料科學家 L 的奇幻旅程 Vol.2 如何用資料工程當個時間旅人" />
+        <meta property="og:description" content="" />
 
     <!-- mobile specific metas
     ================================================== -->
@@ -128,7 +128,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="Google Data Studio 基礎">Google Data Studio 基礎</a><ul><li><a class="toc-href" href="#將-Google-試算表的資料可視化" title="將 Google 試算表的資料可視化">將 Google 試算表的資料可視化</a></li><li><a class="toc-href" href="#條件欄位應用" title="條件欄位應用">條件欄位應用</a></li><li><a class="toc-href" href="#篩選器（filter）應用" title="篩選器（filter）應用">篩選器（filter）應用</a></li><li><a class="toc-href" href="#維度-VS-指標" title="維度 VS 指標">維度 VS 指標</a></li><li><a class="toc-href" href="#資料透視表-(Pivot-Table)" title="資料透視表 (Pivot Table)">資料透視表 (Pivot Table)</a></li><li><a class="toc-href" href="#限制" title="限制">限制</a></li><li><a class="toc-href" href="#實戰演練" title="實戰演練">實戰演練</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學家 L 的奇幻旅程 Vol.2 如何用資料工程當個時間旅人">資料科學家 L 的奇幻旅程 Vol.2 如何用資料工程當個時間旅人</a><ul><li><a class="toc-href" href="#所以什麼是時間旅人" title="所以什麼是時間旅人">所以什麼是時間旅人</a></li><li><a class="toc-href" href="#預測未來，洞察先機" title="預測未來，洞察先機">預測未來，洞察先機</a></li><li><a class="toc-href" href="#回到過去，修正錯誤" title="回到過去，修正錯誤">回到過去，修正錯誤</a></li><li><a class="toc-href" href="#預測未來，洞察先機_1" title="預測未來，洞察先機">預測未來，洞察先機</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -137,26 +137,26 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/jonathan-velasquez-160775-unsplash.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/kevin-ku-392517-unsplash.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
+                            <a href="https://leemeng.tw/tag/ri-zhi.html" rel="tag">日誌</a>
                             <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
-                            <a href="https://leemeng.tw/tag/data-science.html" rel="tag">data-science</a>
-                            <a href="https://leemeng.tw/tag/zi-liao-shi-jue-hua.html" rel="tag">資料視覺化</a>
+                            <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="https://leemeng.tw/google-data-studio-basics.html" title="">
-                            Google Data Studio 基礎
+                        <a href="https://leemeng.tw/drafts/journey-of-data-scientist-L-part-2-time-traveling-with-data-engineering.html" title="">
+                            資料科學家 L 的奇幻旅程 Vol.2 如何用資料工程當個時間旅人
                         </a>
                     </h1>
                     <ul class="page-header__meta">
-                        <li class="date">2018-03-13 (Tue)</li>
+                        <li class="date">2018-11-05 (Mon)</li>
                         <li class="page-view">
-                            303 views
+                            1 views
                         </li>
                     </ul>
 
@@ -187,26 +187,6 @@
         </a>
     </div>
 
-    <div id="social-wrap" style="cursor: pointer">
-        <a class="open-popup" title="訂閱最新文章">
-            <i class="im im-newspaper-o" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/google-data-studio-basics.html" target="_blank" title="分享到 Facebook">
-            <i class="im im-facebook" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/google-data-studio-basics.html&title=Google%20Data%20Studio%20%E5%9F%BA%E7%A4%8E&summary=Google%20Data%20Studio%20%E6%98%AF%20Google%20%E6%8E%A8%E5%87%BA%E7%9A%84%E4%B8%80%E5%80%8B%E5%84%80%E8%A1%A8%E6%9D%BF%E6%9C%8D%E5%8B%99%EF%BC%8C%E8%AE%93%E6%88%91%E5%80%91%E5%8F%AF%E4%BB%A5%E5%88%A9%E7%94%A8%E5%A4%9A%E7%A8%AE%E9%80%A3%E7%B5%90%E5%99%A8%E5%B0%87%E5%84%B2%E5%AD%98%E5%9C%A8%E5%A6%82%20Google%20Analytics%E3%80%81%20Google%20%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%8F%8A%20Google%20BigQuery%20%E7%AD%89%E7%89%B9%E5%AE%9A%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90%E7%9A%84%E8%B3%87%E6%96%99%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E7%9A%84%20visualization%20%EF%BC%8C%E7%94%A8%E8%B3%87%E6%96%99%E8%AC%9B%E6%95%85%E4%BA%8B%E8%80%8C%E4%B8%8D%E7%94%A8%E8%87%AA%E5%B7%B1%E8%A8%AD%E8%A8%88%20UI%E3%80%82%E9%80%99%E7%AF%87%E6%8A%8A%E5%AD%B8%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97%E8%A8%98%E9%8C%84%E4%B8%8B%E4%BE%86%E3%80%82&source=https%3A//leemeng.tw/google-data-studio-basics.html" target="_blank" title="分享到 LinkedIn">
-            <i class="im im-linkedin" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://twitter.com/intent/tweet?text=Google%20Data%20Studio%20%E5%9F%BA%E7%A4%8E&url=https%3A//leemeng.tw/google-data-studio-basics.html" target="_blank" title="分享到 Twitter">
-            <i class="im im-twitter" aria-hidden="true"></i>
-        </a>
-    </div>
 
 </div>
 
@@ -216,21 +196,10 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://cloud.google.com/data-studio/">Google Data Studio</a> 是 Google 推出的一個 Dashboard / Reporting 的服務，讓我們可以利用多種<a href="https://support.google.com/datastudio/answer/7530149?hl=en&amp;ref_topic=6370347">連結器</a>將儲存在如 Google Analytics、 Google 試算表及 Google BigQuery 等特定資料來源的資料做出漂亮的 visualization ，用資料講故事而不用自己設計 UI。公司內部雖然有自己的 dashboards 不過想說多試一些方案沒有壞處，而且現在 Data Studio 還是 Beta 版本，雖然介面是中文，說明文件還只有英文，想說把學到的一些技巧以及使用心得記錄下來。</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="將-Google-試算表的資料可視化">將 Google 試算表的資料可視化<a class="anchor-link" href="#將-Google-試算表的資料可視化">&para;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>為了快速展示 Data Studio 的功能，我們將使用<a href="https://data.gov.tw/">政府資料開放平臺</a>上由交通部觀光局提供的<a href="https://data.gov.tw/dataset/45444">105年來台旅客性別統計</a>資料。將 CSV 檔案下載下來，稍微簡化格式後上傳到 Google 試算表以當作報表的資料來源。下圖是簡化後的資料：</p>
+<p>在奇幻旅程的第一篇：<a href="https://leemeng.tw/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html">新人不得不問的 2 個問題</a>裡頭你已經看到，為何了解企業內部使用的 KPI 以及熟悉公司內部的「數據流動」能讓一個資料科學家在工作上更如魚得水。</p>
+<p>那是一篇稍微正經嚴肅，但我認為對資料科學家來說（<strong>D</strong>ata <strong>S</strong>cientist，後簡稱 DS）很有幫助的一篇文章。不過今天，我想跟你分享一個輕鬆話題：身為 DS 的我，是如何利用資料工程（Data Engineering）在公司裡頭當個「時間旅人」的。</p>
+<p>「時間旅人？你在開玩笑嗎？」</p>
+<p>「資料工程跟時間旅行八竿子沒關係吧！」</p>
 </div>
 </div>
 </div>
@@ -238,12 +207,12 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/google-data-studio/table-preview.png" style=""/>
+<img src="https://leemeng.tw/images/journal/dog-705820_1280.jpg"/>
 </center>
 <center>
-<a href="https://data.gov.tw/dataset/45444" target="_blank">資料來源</a>
-<font color="purple">: 2016年來台旅客性別統計</font><br/>
-    每一列代表某地區 / 國家的訪台人數以及男女比
+                        這可能是現在困惑的你的最佳寫照
+                        <br/>
+<br/>
 </center>
 </div>
 </div>
@@ -251,113 +220,41 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="條件欄位應用">條件欄位應用<a class="anchor-link" href="#條件欄位應用">&para;</a></h2><p><a href="https://support.google.com/datastudio/answer/7359285">條件欄位</a>讓我們可以針對試算表裡頭每一列做 IF ELSE 判斷，依照判斷結果給予不同的值。現在假設我們想知道有多少國家的男性遊客過半數，可以使用簡易的評量表來計算：</p>
-<center>
-<img src="images/google-data-studio/male-over-half.png"/>
-</center>
-<center>
-<font color="purple">訪台男性遊客過半國家佔全部國家的比例<br/>
-</font></center>
+<p>對對對我知道。</p>
+<p>你或許正歪著頭，想著我是不是下了個釣魚標題騙你進來。我得承認自己是個浪漫主義者，常常會將工作上的任務跟看的小說、電影做聯想。但我想，聯想力或許就是人類跟 AI 最大的差距吧！我也不覺得這是件壞事：）</p>
+<p>拉回正題。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>我們發現高達八成的國家（有些是區域）的訪台男性遊客較女性為多。我們可以調查其他國家的訪客性別比，看是不是只有台灣有此現象。要產生分母的「國家數」很直覺，我們只要新增一個欄位並計算有幾個國家即可：</p>
-<center>
-<img src="images/google-data-studio/num_countries_as_metric.png"/>
-</center>
-<center>
-<font color="purple">新增一個名為「國家數」的欄位<br/>
-</font></center>
+<h2 id="所以什麼是時間旅人">所以什麼是時間旅人<a class="anchor-link" href="#所以什麼是時間旅人">&para;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>但要計算分子的「男性遊客過半國家數」就稍微 tricky 了。我們想做的是，針對每一國家（每一列），只有在該國訪台男性遊客百分比過半（超過 50%)的時候才會被納入結果。而 Data Studio 的<a href="https://support.google.com/datastudio/answer/7359285">條件欄位</a>就是專門針對這種情況設計的。</p>
-<center>
-<img src="images/google-data-studio/conditional-calculated-field.png" style="width:70%"/>
-</center>
-<center>
-<font color="purple">使用 CASE 語法對每一列做 IF-ELSE 判斷<br/>
-</font></center><p>上面的公式用白話來說就是：</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>針對每一列的國家，看它的「男性百分比」欄位的值有沒有大於50。有的話值為1，否則為0。在針對每列做完條件判斷以後再把所有 1 加起來，就等於符合條件的國家數。</p></blockquote></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="篩選器（filter）應用">篩選器（filter）應用<a class="anchor-link" href="#篩選器（filter）應用">&para;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>根據上個分析，我們知道女性遊客過半的國家只佔 20%。假設我們想確切知道是哪些國家的女性遊客過半，可以從女性百分比最高的國家開始列出男女比：</p>
-<center>
-<img src="images/google-data-studio/multibar-female-over-half.png" style="width:100%"/>
-</center>
-<center>
-<font color="purple">訪台女性遊客過半國家<br/>
-</font></center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>我們發現女性遊客過半的都是亞洲國家，或許我們可以簡單解釋成這些國家與台灣的距離短，適合女性遊客拜訪。而為了讓圖表易讀，上面這張組合圖額外建立一個篩選器來過濾掉男性遊客比女性多的國家：</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>
-<img src="images/google-data-studio/female-more-than-half.png" style="width:70%"/>
-</center>
-<center>
-<font color="purple">新增一個篩選器以過濾男性遊客比例較高的國家<br/></font>
-    註：一般的長條圖可以直接透過設定限制長條圖數目
-</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="維度-VS-指標">維度 VS 指標<a class="anchor-link" href="#維度-VS-指標">&para;</a></h2><p>在 Data Studio 裡頭，了解<a href="https://support.google.com/datastudio/answer/6402048?ref_topic=7441655&amp;utm_source=product&amp;utm_medium=cta&amp;utm_campaign=wwr&amp;utm_content=dims_mets">維度跟指標的差異</a>很重要。</p>
-<p>以我們現在的資料集為例，每一列就是一筆紀錄（record），每一行則是一個欄位。每個欄位則是維度或指標。</p>
+<p>對我來說，一個理想的「時間旅人」要能掌握兩種超能力：</p>
 <ul>
-<li>指標（Metric，底下藍色）<ul>
-<li>數值型欄位，有經過「匯總」，負責 quantify 資料</li>
-<li>如「國家數」、「總人數」</li>
+<li>能夠回到過去，修正錯誤</li>
+<li>能夠預測未來，洞察先機</li>
 </ul>
-</li>
-<li>維度（Dimension，底下綠色）<ul>
-<li>分類型欄位，負責 qualify 資料</li>
-<li>如「國家」、「居住地」</li>
-</ul>
-</li>
-</ul>
+<p>而事實上後面我們會發現，要實現這兩個能力，除了「資料科學」以外，我們還需要「資料工程」。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/google-data-studio/metric-versus-dimension.png" style=""/>
+<img src="https://leemeng.tw/images/journal/wormhole-2514312_1280.jpg"/>
 </center>
 <center>
-<font color="purple">fx 則代表是額外利用公式建立的欄位</font><br/>
+                        掌握資料工程讓我們可以穿越時空
+                        <br/>
+<br/>
 </center>
 </div>
 </div>
@@ -365,31 +262,79 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>像我們前面定義的「男性遊客過半國家數」欄位因為有經過 <code>SUM</code> 公式匯總成為一個數值，因此為一個指標（藍）。而如果我們透過 <code>CASE</code> 語法新定義一個「男性過半」欄位如下：</p>
-<center>
-<img src="images/google-data-studio/define-a-dimension-with-case-syntax.png" style="width:70%"/>
-</center><p>此欄位沒有經過匯總因此被視為維度，在上一張圖被標為綠色。因此一句話總結維度跟指標的功能就是：</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>維度負責「描述」資料； 指標則負責「衡量」資料。</p></blockquote></div>
-</div>
+<h2 id="預測未來，洞察先機">預測未來，洞察先機<a class="anchor-link" href="#預測未來，洞察先機">&para;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="資料透視表-(Pivot-Table)">資料透視表 (Pivot Table)<a class="anchor-link" href="#資料透視表-(Pivot-Table)">&para;</a></h2><p>資料透視表很適合拿來看在不同條件下某個指標的表現。下圖是一個依照</p>
+<p>如果你也是一名 DS 或是分析人員的話，應該可以猜得到，在資料科學領域裡頭所謂的「預測未來」是指「建立某些預測模型」。</p>
+<p>只不過，光是建立出一個可以做預測的模型並不足夠。</p>
+<p>不管是簡單的決策樹還是神經網路，要讓你想出來的模型發揮最大的影響力，你需要讓它</p>
+<p>資深的 DS 會知道，除了分析數據並建立一個準確的模型以外，</p>
+<p>而在資料工程領域，除了做出一個模型以外</p>
+<p>只不過為何「資料工程」可以帶我們「回到過去並修正錯誤」？</p>
+<p>更重要的問題是：為什麼「錯誤」會產生呢？什麼樣的「錯誤」？</p>
+<p>乍聽這些問題，你可能毫無頭緒。不過我相信你看完下節以後，就會恍然大悟，並對平常在分析的數據以及資料工程有更深的理解。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="回到過去，修正錯誤">回到過去，修正錯誤<a class="anchor-link" href="#回到過去，修正錯誤">&para;</a></h2><p>如果你現在正努力學習資料科學，期待未來能成為一個 DS，你可能會「想像」進了一間新公司以後，前人都已經幫你把所有專案 / 產品分析需要的關鍵績效指標（<strong>K</strong>ey <strong>P</strong>erformance <strong>I</strong>ndicators，即 KPI）定義完成。</p>
+<p>除此之外，所有你需要分析的數據也都被事先建立並存放在<a href="https://leemeng.tw/why-you-need-to-learn-data-engineering-as-a-data-scientist.html#%E8%B3%87%E6%96%99%E5%80%89%E5%84%B2">資料倉儲或是資料湖</a>裡頭供你大展身手。</p>
+<p>而你所需要做的，就是開始下 <a href="https://leemeng.tw/why-you-need-to-learn-sql-as-a-data-scientist.html">SQL 查詢</a>並建立分析模型。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/data-science/sean-pollock-203658-unsplash.jpg"/>
+</center>
+<center>
+                        規模非常大的企業讓你看到自己的渺小，但好處是身為一個 DS，你要擔心的東西可能也比較少（數據品質、KPI 定義 etc）
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你的公司規模如 Facebook、Google 或是 Netflix 那麽龐大，裡頭已經有非常專業的<a href="https://leemeng.tw/data-science-digest-volume-4-choose-your-own-character-in-data-science-role-play-game.html#Beyond-Interactive:-Notebook-Innovation-at-Netflix">資料平台團隊</a>，則或許上述為真。身為一個小小的 DS，你無須擔心什麼 KPI 的定義或是數據品質。</p>
+<p>但很多時候，這種抱持著「KPI 永遠是對的！」的假設需要承擔不小風險。</p>
+<p>一般企業（尤其是新創）在事後發現一直以來追蹤、監視的 KPI 的計算需要修正是常有的事情。最常見的一個例子就是發現當時用來計算 KPI 的 SQL 查詢的邏輯有所瑕疵，而原因可能是：</p>
 <ul>
-<li>居住地</li>
-<li>國家</li>
+<li>之前產品釋出新功能，但使用者利用該功能的 Log 沒有被計算到 KPI 裡頭</li>
+<li>少做了數據品質的檢查，導致表格裡頭有 NULL 的使用者 ID 等問題，無法識別用戶</li>
+<li>KPI 裡頭包含了不該被計算在裡頭的雜訊</li>
 </ul>
-<p>兩個維度計算「男性人數」指標的資料透視表：</p>
+<p>不管是哪項，我們都需要修正該 SQL 查詢、更新 KPI 定義，並將該 SQL 查詢重新丟上 Production 環境的 ETL Pipeline。</p>
+<p>這樣你才能確保新的一天，該 KPI 能以最正確的方式被計算出來（假設我們一天算一次該 KPI）。畢竟如同我們在奇幻旅程的第一篇：<a href="https://leemeng.tw/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html">新人不得不問的 2 個問題</a>裡頭看到的，錯誤的 KPI 數字會讓整個數據團隊或是公司策略走錯方向，影響可說是非常深遠，得及早修正。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/airflow/tim-gouw-68319-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在你努力修正該 SQL 查詢並部署到 Production 環境以後，唷呼！明天我們的 KPI 就會用最正確的邏輯被計算了！</p>
+<p>不過別開心得太早。</p>
+<p>在過去的數個月，甚至數年，該 KPI 已經被顯示在儀表板（Dashboard）上的數字可不會全部「自動地」被以新的邏輯重新計算。</p>
+<p>但同時每個 PM 都拉著你，急著向你確認，到底用了最新的定義以後，該 KPI 過去的數字會變得如何、以及其對過去的分析的影響有多大。</p>
+<p>這時你需要用新的計算邏輯 / KPI 定義來更新過去全部的資料，才能讓你公平地比較過去與現在的數字。</p>
 </div>
 </div>
 </div>
@@ -397,45 +342,111 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/google-data-studio/pivot-table.png" style=""/>
+<img src="https://leemeng.tw/images/journal/carlos-muza-84523-unsplash.jpg"/>
 </center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>依照<a href="https://support.google.com/datastudio/answer/7516660?hl=en">官方文件</a>有幾點值得注意：</p>
-<ul>
-<li>資料透視表最多處理 50,000 筆資料，為了避免 scan 資料太花時間，可以額外建立一些篩選器 subset 資料</li>
-<li>列維度跟欄維度最多可以分別設定 2 個維度（上例列欄各設定 1 個維度）</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="限制">限制<a class="anchor-link" href="#限制">&para;</a></h2><p>可能因為還處在 beta 版本，在這篇文章寫的時候（2018/03）試用了一陣子發現 Data Studio 也有一些使用案例沒有辦法做到，像是：</p>
-<ul>
-<li>篩選器（filter）只能設定像是「欄位 C 大於 X」這種條件，而不能做「當欄位 C1 &gt; 欄位 C2」這種欄位間的比較。</li>
-<li>同上，條件欄位也只能設定像是「欄位 C 大於某固定值 X」的條件</li>
-<li>資料透視表包含的資料稍多 (&gt; 2000筆)就開始變慢 ..</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="實戰演練">實戰演練<a class="anchor-link" href="#實戰演練">&para;</a></h2><p>這篇文章用的報表連結在<a href="https://datastudio.google.com/open/19a--FnAQ9asll18anhv7negoXGO0fpyH">此</a>，可以自己試試不同 visualization。有任何 feedback 也歡迎聯絡。</p>
 <center>
-<img src="images/google-data-studio/google-data-studio-preview.png" style="width:70%"/>
+                        修正了 KPI 定義以及 SQL 語法以後，你要做的是，確保該 KPI 過去存在資料庫裡的數據以及儀表板的數字也都隨之更新
+                        <br/>
+<br/>
 </center>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這時候資料分析能力幫不了你，你需要的是資料工程的知識（或是一個老實的資料工程師，<strong>D</strong>ata <strong>E</strong>ngineer，DE）。</p>
+<p>好消息是，如果你已經有在使用如 <a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">Airflow</a> 等工作流程管理工具來管理你的 ETL，要「回到過去」，並利用最新的計算邏輯來修正過去所有「錯誤的 KPI 數字」 並不是一件太難的事情。</p>
+<p>「將過去排程過的 ETL 工作重新執行」這個任務在各個公司屢見不鮮，在資料工程領域裡頭甚至有其專業術語：Backfill。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/journal/backfilling.jpg"/>
+</center>
+<center>
+                        Backfill：行家才懂的資料工程關鍵字
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Backfill 本身直接翻譯成「回填」，在資料工程領域裡頭，即代表著（用新的計算邏輯 / SQL 查詢）將過去執行過的 ETL 工作重新執行。</p>
+<p>事實上 Backfill 常見到 <a href="https://medium.com/@rchang/a-beginners-guide-to-data-engineering-the-series-finale-2cc92ff14b0">Airbnb 甚至自己用 Airflow 建立了一個 Backfill Framework</a>。</p>
+<p>在<a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">一段 Airflow 與資料工程的故事：談如何用 Python 追漫畫連載</a>一文裡頭，我詳細探討了 Airflow 與資料工程的關係，以及你可以如何利用 Airflow 來「回到過去」，修正一切的錯誤。</p>
+<p>你問我怎麼做 Backfill？</p>
+<p>基本上目前我是使用 Airflow 以及 <a href="https://aws.amazon.com/tw/emr/">Amazon EMR</a> 來重新執行過去所有計算該 KPI 的 ETL 工作，並讓實際的計算運行在 EMR 環境上以 scale。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/airflow/time-machine.jpg"/>
+</center>
+<center>
+                        利用 Airflow 回到過去
+                        （<a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>就算你現在不需自己做資料工程，在求職或者想了解其他公司的數據環境時，可以詢問該公司的資料科學家 / 資料工程師：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        所以你們平常是怎麼做 Backfill ？
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>一個簡單的問題，馬上能凸顯你的專業。</p>
+<p>驚艷對方的同時，又能讓你實際了解非常多該公司數據平台的細節。</p>
+<p>如果你立志成為 DS，且不希望之後操心數據品質或是自己對資料工程沒興趣，那你反而更需要搞清楚，想去的公司的資料工程環境如何，能否讓你專注在數據分析；如果你是想成為 DE，你就能知道這家公司環境適不適合你大展身手。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="預測未來，洞察先機_1">預測未來，洞察先機<a class="anchor-link" href="#預測未來，洞察先機">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2><p>想看家一家公司的ＤＥ 環境，可以問問他們 ｄｓ 或 DE 「你們怎麼說做 backfill的？」既專業，能經驗對方，又能了解非常多該公司平台的細節。</p>
+<p>希望透過這篇文章，能讓你感覺到資料工程並不是一門硬邦邦的領域，且其正等待著你的探索。</p>
+<p>每家企業的 DS　做得事情不一樣
+多寫了幾篇文章，有時總讓我覺得自己是個浪漫主義者。不過每個 DS 都有自己的故事</p>
+</div>
+</div>
 </div>
 
 
@@ -444,12 +455,32 @@
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
+                        <a href="https://leemeng.tw/tag/ri-zhi.html" rel="tag">日誌</a>
                         <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
-                        <a href="https://leemeng.tw/tag/data-science.html" rel="tag">data-science</a>
-                        <a href="https://leemeng.tw/tag/zi-liao-shi-jue-hua.html" rel="tag">資料視覺化</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
                     </span>
 
                 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -522,18 +553,6 @@
                 <!--Pagination-->
                 <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
-                        <div class="blog-content__prev">
-                            <a href="https://leemeng.tw/designing-data-intensive-applications-1-preface.html" rel="prev">
-                                <span>Previous Post</span>
-                                Designing Data-Intensive Applications (1) - 序言
-                            </a>
-                        </div>
-                        <div class="blog-content__next">
-                            <a href="https://leemeng.tw/build-a-pelican-powered-blog-like-a-pro.html" rel="next">
-                                <span>Next Post</span>
-                                Pelican 實戰手冊(主題篇)
-                            </a>
-                        </div>
                     </div>
 
                     <div class="blog-content__all">
@@ -562,7 +581,7 @@
 
 <script type="text/javascript">
 var disqus_shortname = 'leemengtaiwan';
-var disqus_title = 'Google Data Studio 基礎';
+var disqus_title = '資料科學家 L 的奇幻旅程 Vol.2 如何用資料工程當個時間旅人';
 
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
