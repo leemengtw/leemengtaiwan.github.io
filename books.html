@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+    
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - All About DataScience </title>
+    <!--- article-specific meta data
+    ================================================== -->
+    <meta name="description" content="現居東京的資料科學家 L 在數據世界裡頭的所想、所學以及所感。這個網站紀錄了所有我的個人資訊，包含工作經歷、做過的專案以及與資料科學相關的文章。透過分享自己的學習心得以及業界經驗，我希望能讓更多人接觸到資料科學的奧秘。此部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。" />
+    <meta name="keywords" content="部落格, 資料科學, Python, R, 機器學習, 資料分析, 資料視覺化, 軟體工程, 資料工程, 雲端運算, 台灣, blog, data science, machine learning, data analysis, data visualization, data engineering, taiwan" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+            <meta property="og:image" content="https://leemeng.tw/theme/images/hero-bg4.jpg" />
+    <meta property="og:type" content="website" />
+
+        <meta property="og:url" content="https://leemeng.tw/blog.html" />
+        <meta property="og:title" content="All About DataScience" />
+        <meta property="og:description" content="現居東京的資料科學家 L 在數據世界裡頭的所想、所學以及所感。這個網站紀錄了所有我的個人資訊，包含工作經歷、做過的專案以及與資料科學相關的文章。透過分享自己的學習心得以及業界經驗，我希望能讓更多人接觸到資料科學的奧秘。此部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+
+    <!--for showing toc navigation which slide in from left-->
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/abstract/vendor.css">
+	<link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/abstract/brick.css">
+	<link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/abstract/main.css">
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+
+
+            <meta property="og:image" content="https://leemeng.tw/theme/images/hero-bg4.jpg" />
+    <meta property="og:type" content="website" />
+
+        <meta property="og:url" content="https://leemeng.tw/blog.html" />
+        <meta property="og:title" content="All About DataScience" />
+        <meta property="og:description" content="現居東京的資料科學家 L 在數據世界裡頭的所想、所學以及所感。這個網站紀錄了所有我的個人資訊，包含工作經歷、做過的專案以及與資料科學相關的文章。透過分享自己的學習心得以及業界經驗，我希望能讓更多人接觸到資料科學的奧秘。此部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。" />
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/abstract/vendor.css">
+	<link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/abstract/brick.css">
+	<link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/abstract/main.css">
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!-- page header
+    ================================================== -->
+	<section class="page-header page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/books.jpg)">
+	<div class="row page-header__content">
+            <article class="col-full">
+
+                <div class="page-header__info">
+                    <div class="page-header__cat">
+                        We are what we read.
+                    </div>
+                    <!--<div class="page-header__date">-->
+                        <!--X 本書籍-->
+                    <!--</div>-->
+                </div>
+
+                <h1 class="page-header__title">
+					個人書藏
+                </h1>
+                <p>
+					一個人的想法、價值觀、乃至思考方式都深深地受到那些他 / 她平常接觸的書籍與著作影響。這些「精神糧食」都是當你想要真正地了解一個人時的素材。
+					<br/>
+					<br/>
+					這邊記錄了那些為我的生活帶來不少正面影響的著作，提醒自己隨時反思咀嚼。
+					<br/>
+					<br/>
+					歡迎你與我討論閱讀這些書籍後的想法，或是推薦任何好書給我：）
+				</p>
+
+            </article>
+        </div>
+
+    </section> <!-- end page-header -->
+
+    <section id="bricks" style="background: #f5f5f5">
+   	<div class="row masonry">
+
+   		<!-- brick-wrapper -->
+         <div class="bricks-wrapper">
+         	<div class="grid-sizer"></div>
+
+			<article class="brick entry format-standard animate-this">
+                <div class="entry-thumb">
+                  <a href="https://leemeng.tw/gapminder.html" target="_blank" class="thumb-link">
+                      <img src="https://leemeng.tw/theme/images/books/factfull-ness.jpg" alt="真確 Factfullness">
+                  </a>
+                </div>
+
+                <div class="entry-text" style="padding:0.8rem 1.8rem 1.6rem">
+                    <div class="entry-header">
+
+                        <!--<div class="entry-meta">-->
+                            <!--<span class="cat-links">-->
+                                <!---->
+                                <!--&lt;!&ndash;<a href="#">Design</a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<a href="#">Photography</a>&ndash;&gt;-->
+                            <!--</span>-->
+                        <!--</div>-->
+
+                        <h1 class="entry-title" style="font-size: 2.1rem;margin-bottom:0.8rem;font-family: montserrat,sans-serif">
+                            真確 Factfullness
+                        </h1>
+
+                    </div>
+                    <div class="entry-excerpt">
+                       利用數據培養一個積極且正向的世界觀，並看到數據背後的故事。
+                    </div>
+                </div>
+            </article>
+			<article class="brick entry format-standard animate-this">
+                <div class="entry-thumb">
+                  <a target="_blank" class="thumb-link">
+                      <img src="https://leemeng.tw/theme/images/books/21-lessons-for-the-21st-century.jpg" alt="21 世紀的 21 堂課">
+                  </a>
+                </div>
+
+                <div class="entry-text" style="padding:0.8rem 1.8rem 1.6rem">
+                    <div class="entry-header">
+
+                        <!--<div class="entry-meta">-->
+                            <!--<span class="cat-links">-->
+                                <!---->
+                                <!--&lt;!&ndash;<a href="#">Design</a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<a href="#">Photography</a>&ndash;&gt;-->
+                            <!--</span>-->
+                        <!--</div>-->
+
+                        <h1 class="entry-title" style="font-size: 2.1rem;margin-bottom:0.8rem;font-family: montserrat,sans-serif">
+                            21 世紀的 21 堂課
+                        </h1>
+
+                    </div>
+                    <div class="entry-excerpt">
+                       人類面臨的新三大挑戰：核戰、氣候變遷以及科技顛覆。需要全球關注。
+                    </div>
+                </div>
+            </article>
+			<article class="brick entry format-standard animate-this">
+                <div class="entry-thumb">
+                  <a target="_blank" class="thumb-link">
+                      <img src="https://leemeng.tw/theme/images/books/how-will-you-measure-your-life.jpg" alt="你要如何衡量你的人生？">
+                  </a>
+                </div>
+
+                <div class="entry-text" style="padding:0.8rem 1.8rem 1.6rem">
+                    <div class="entry-header">
+
+                        <!--<div class="entry-meta">-->
+                            <!--<span class="cat-links">-->
+                                <!---->
+                                <!--&lt;!&ndash;<a href="#">Design</a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<a href="#">Photography</a>&ndash;&gt;-->
+                            <!--</span>-->
+                        <!--</div>-->
+
+                        <h1 class="entry-title" style="font-size: 2.1rem;margin-bottom:0.8rem;font-family: montserrat,sans-serif">
+                            你要如何衡量你的人生？
+                        </h1>
+
+                    </div>
+                    <div class="entry-excerpt">
+                       了解動機、規劃策略、實際行動。利用商業理論衡量並打造自己及孩子的人生。
+                    </div>
+                </div>
+            </article>
+			<article class="brick entry format-standard animate-this">
+                <div class="entry-thumb">
+                  <a target="_blank" class="thumb-link">
+                      <img src="https://leemeng.tw/theme/images/books/a-brief-history-of-humankind.jpg" alt="人類大歷史">
+                  </a>
+                </div>
+
+                <div class="entry-text" style="padding:0.8rem 1.8rem 1.6rem">
+                    <div class="entry-header">
+
+                        <!--<div class="entry-meta">-->
+                            <!--<span class="cat-links">-->
+                                <!---->
+                                <!--&lt;!&ndash;<a href="#">Design</a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<a href="#">Photography</a>&ndash;&gt;-->
+                            <!--</span>-->
+                        <!--</div>-->
+
+                        <h1 class="entry-title" style="font-size: 2.1rem;margin-bottom:0.8rem;font-family: montserrat,sans-serif">
+                            人類大歷史
+                        </h1>
+
+                    </div>
+                    <div class="entry-excerpt">
+                       金錢、帝國、宗教。三大勢力讓人類社會趨向統一，且我們都活在虛擬現實之中。
+                    </div>
+                </div>
+            </article>
+			<article class="brick entry format-standard animate-this">
+                <div class="entry-thumb">
+                  <a target="_blank" class="thumb-link">
+                      <img src="https://leemeng.tw/theme/images/books/steal-like-an-artist.jpg" alt="點子都是偷來的">
+                  </a>
+                </div>
+
+                <div class="entry-text" style="padding:0.8rem 1.8rem 1.6rem">
+                    <div class="entry-header">
+
+                        <!--<div class="entry-meta">-->
+                            <!--<span class="cat-links">-->
+                                <!---->
+                                <!--&lt;!&ndash;<a href="#">Design</a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<a href="#">Photography</a>&ndash;&gt;-->
+                            <!--</span>-->
+                        <!--</div>-->
+
+                        <h1 class="entry-title" style="font-size: 2.1rem;margin-bottom:0.8rem;font-family: montserrat,sans-serif">
+                            點子都是偷來的
+                        </h1>
+
+                    </div>
+                    <div class="entry-excerpt">
+                       創意的一大來源在於將熟悉的點子應用在不同領域，讓所有人既驚喜又熟悉。
+                    </div>
+                </div>
+            </article>
+			<article class="brick entry format-standard animate-this">
+                <div class="entry-thumb">
+                  <a target="_blank" class="thumb-link">
+                      <img src="https://leemeng.tw/theme/images/books/a-brief-history-of-tomorrow.jpg" alt="人類大命運：從智人到神人">
+                  </a>
+                </div>
+
+                <div class="entry-text" style="padding:0.8rem 1.8rem 1.6rem">
+                    <div class="entry-header">
+
+                        <!--<div class="entry-meta">-->
+                            <!--<span class="cat-links">-->
+                                <!---->
+                                <!--&lt;!&ndash;<a href="#">Design</a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<a href="#">Photography</a>&ndash;&gt;-->
+                            <!--</span>-->
+                        <!--</div>-->
+
+                        <h1 class="entry-title" style="font-size: 2.1rem;margin-bottom:0.8rem;font-family: montserrat,sans-serif">
+                            人類大命運：從智人到神人
+                        </h1>
+
+                    </div>
+                    <div class="entry-excerpt">
+                       當智能與意識脫鉤、生物科技以及 AI 神速發展，新人類的到來勢不可擋。
+                    </div>
+                </div>
+            </article>
+
+         </div> <!-- end brick-wrapper -->
+
+   	</div> <!-- end row -->
+
+   	<!--<div class="row">-->
+
+   		<!--<nav class="pagination">-->
+		      <!--<span class="page-numbers prev inactive">Prev</span>-->
+		   	<!--<span class="page-numbers current">1</span>-->
+		   	<!--<a href="#" class="page-numbers">2</a>-->
+		      <!--<a href="#" class="page-numbers">3</a>-->
+		      <!--<a href="#" class="page-numbers">4</a>-->
+		      <!--<a href="#" class="page-numbers">5</a>-->
+		      <!--<a href="#" class="page-numbers">6</a>-->
+		      <!--<a href="#" class="page-numbers">7</a>-->
+		      <!--<a href="#" class="page-numbers">8</a>-->
+		      <!--<a href="#" class="page-numbers">9</a>-->
+		   	<!--<a href="#" class="page-numbers next">Next</a>-->
+	      <!--</nav>-->
+
+   	<!--</div>-->
+
+   </section> <!-- end bricks -->
+
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+		<script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+	    <script src="https://leemeng.tw/theme/js/abstract/plugins.js"></script>
+	    <script src="https://leemeng.tw/theme/js/abstract/main.js"></script>
+		<script src="https://leemeng.tw/theme/js/plugins.js"></script>
+		<!--manually toggle top nav, reference: https://stackoverflow.com/a/18287434/2447655-->
+		<script>
+			function handler1() {
+				$(".header-nav-wrap").css({display: "block"});
+				$(this).one("click", handler2);
+			}
+
+			function handler2() {
+				$(".header-nav-wrap").css({display: "none"});
+				$(this).one("click", handler1);
+			}
+			$(".header-menu-toggle").one("click", handler1);
+
+		</script>
+
+</body>
+</html>
