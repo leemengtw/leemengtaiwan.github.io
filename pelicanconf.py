@@ -134,9 +134,9 @@ DEFAULT_CATEGORY = 'Miscellaneous'
 
 # Pelican default theme for dev
 THEME = "/Users/meng.lee/git/blog/pelican-jupyter-notebook/themes/Hola10"
-# DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search', 'blog-dev']
-DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search']
-# PAGINATED_DIRECT_TEMPLATES = ['index', 'blog', 'blog-dev']
+DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search', 'books']
+# DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search']
+# PAGINATED_DIRECT_TEMPLATES = ['index', 'blog', 'books']
 PAGINATED_DIRECT_TEMPLATES = ['index', 'blog']
 
 # Copy notebook to output folder for downloading
@@ -193,6 +193,57 @@ PROJECTS = [
     },
 
 ]
+
+
+BOOKS = [
+    {
+        "title": "真確 Factfullness",
+        "image": "factfull-ness.jpg",
+        "summary": "利用數據培養一個積極且正向的世界觀，並看到數據背後的故事。",
+        "link": "https://leemeng.tw/gapminder.html",
+        "categories": []
+    },
+    {
+        "title": "21 世紀的 21 堂課",
+        "image": "21-lessons-for-the-21st-century.jpg",
+        "summary": "人類面臨的新三大挑戰：核戰、氣候變遷以及科技顛覆需要全球關注。",
+        "link": "",
+        "categories": []
+    },
+    {
+        "title": "你要如何衡量你的人生？",
+        "image": "how-will-you-measure-your-life.jpg",
+        "summary": "了解動機、規劃策略、實際行動。利用商業理論衡量並打造自己的理想人生。",
+        "link": "",
+        "categories": []
+    },
+    {
+        "title": "人類大歷史",
+        "image": "a-brief-history-of-humankind.jpg",
+        "summary": "金錢、帝國、宗教。三大勢力讓人類社會趨向統一，且我們都活在虛擬現實之中。",
+        "link": "",
+        "categories": []
+    },
+    {
+        "title": "點子都是偷來的",
+        "image": "steal-like-an-artist.jpg",
+        "summary": "創意的一大來源在於將熟悉的點子應用在不同領域，讓所有人既驚喜又熟悉。",
+        "link": "",
+        "categories": []
+    },
+    {
+        "title": "人類大命運：從智人到神人",
+        "image": "a-brief-history-of-tomorrow.jpg",
+        "summary": "當智能與意識脫鉤、生物科技以及 AI 神速發展，新人類的到來勢不可擋。",
+        "link": "",
+        "categories": []
+    }
+]
+
+
+
+
+
 
 
 # local ga test
