@@ -178,7 +178,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/intuitive-understandind-of-bayes-rules-and-learn-from-experience.html">2018-05-25 (Fri)</a>
                         <br>
-                        3,367 views
+                        3,368 views
                     </div>
 
                     <h2 class="h01">
@@ -202,7 +202,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/demystify-the-hype-of-data-science-and-its-value.html">2018-05-11 (Fri)</a>
                         <br>
-                        2,753 views
+                        2,756 views
                     </div>
 
                     <h2 class="h01">
@@ -225,7 +225,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/why-you-need-to-learn-sql-as-a-data-scientist.html">2018-04-30 (Mon)</a>
                         <br>
-                        3,824 views
+                        3,826 views
                     </div>
 
                     <h2 class="h01">
@@ -249,7 +249,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/why-you-need-to-learn-data-engineering-as-a-data-scientist.html">2018-04-23 (Mon)</a>
                         <br>
-                        5,178 views
+                        5,179 views
                     </div>
 
                     <h2 class="h01">
@@ -274,7 +274,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/data-visualization-from-matplotlib-to-ggplot2.html">2018-04-14 (Sat)</a>
                         <br>
-                        3,725 views
+                        3,726 views
                     </div>
 
                     <h2 class="h01">
@@ -370,7 +370,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/google-data-studio-basics.html">2018-03-13 (Tue)</a>
                         <br>
-                        306 views
+                        307 views
                     </div>
 
                     <h2 class="h01">
@@ -419,13 +419,22 @@
     </div> <!-- end col-full -->
 </div> <!-- end blog-content -->
 
-<div class="row blog-entries-nav">
+<!-- status elements -->
+<div class="scroller-status">
+  <div class="infinite-scroll-request loader-ellips">
+    ...
+  </div>
+  <p class="infinite-scroll-last"></p>
+  <p class="infinite-scroll-error"></p>
+</div>
+
+<div class="row blog-entries-nav pagination">
     <div class="col-full">
         <a href="https://leemeng.tw/blog.html" class="btn btn--stroke">
             <i class="im im-arrow-left"></i>
             Prev
         </a>
-        <a href="https://leemeng.tw/blog3.html" class="btn btn--stroke">
+        <a href="https://leemeng.tw/blog3.html" class="btn btn--stroke pagination__next">
             Next
             <i class="im im-arrow-right"></i>
         </a>
@@ -485,11 +494,24 @@
         <div id="loader"></div>
     </div>
 
-    <!-- Javascript
+        <!-- Javascript
     ================================================== -->
     <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
     <script src="https://leemeng.tw/theme/js/plugins.js"></script>
     <script src="https://leemeng.tw/theme/js/main.js"></script>
+
+
+    <!--init Infinite Scroll-->
+    <!--reference: https://infinite-scroll.com/demo/full-page/-->
+    <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
+    <script>
+        $('.blog-list').infiniteScroll({
+          path: '.pagination__next',
+          append: '.col-block',
+          status: '.scroller-status',
+          hideNav: '.pagination',
+        });
+    </script>
 
 </body>
 </html>

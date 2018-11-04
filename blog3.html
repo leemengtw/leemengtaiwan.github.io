@@ -305,7 +305,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html">2017-09-21 (Thu)</a>
                         <br>
-                        1,260 views
+                        1,263 views
                     </div>
 
                     <h2 class="h01">
@@ -331,7 +331,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/simple-image-recognition-using-notmnist-dataset.html">2017-09-19 (Tue)</a>
                         <br>
-                        844 views
+                        845 views
                     </div>
 
                     <h2 class="h01">
@@ -383,7 +383,16 @@
     </div> <!-- end col-full -->
 </div> <!-- end blog-content -->
 
-<div class="row blog-entries-nav">
+<!-- status elements -->
+<div class="scroller-status">
+  <div class="infinite-scroll-request loader-ellips">
+    ...
+  </div>
+  <p class="infinite-scroll-last"></p>
+  <p class="infinite-scroll-error"></p>
+</div>
+
+<div class="row blog-entries-nav pagination">
     <div class="col-full">
         <a href="https://leemeng.tw/blog2.html" class="btn btn--stroke">
             <i class="im im-arrow-left"></i>
@@ -445,11 +454,24 @@
         <div id="loader"></div>
     </div>
 
-    <!-- Javascript
+        <!-- Javascript
     ================================================== -->
     <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
     <script src="https://leemeng.tw/theme/js/plugins.js"></script>
     <script src="https://leemeng.tw/theme/js/main.js"></script>
+
+
+    <!--init Infinite Scroll-->
+    <!--reference: https://infinite-scroll.com/demo/full-page/-->
+    <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
+    <script>
+        $('.blog-list').infiniteScroll({
+          path: '.pagination__next',
+          append: '.col-block',
+          status: '.scroller-status',
+          hideNav: '.pagination',
+        });
+    </script>
 
 </body>
 </html>
