@@ -6,6 +6,10 @@
 git clone -b dev https://github.com/leemengtaiwan/leemengtaiwan.github.io.git
 ```
 
+## FB Clid issue
+- https://shian.tw/article/1084#more-1084
+- https://greasyfork.org/en/forum/discussion/44083/fbclid-tracking-parameter-attached-by-facebook
+
 ## Pelican 插件 / 主題
 統一使用官方 plugins，ipynb plugin 及 theme 則使用自己開發的 repo
 ```commandline

@@ -196,6 +196,13 @@ PROJECTS = [
 
 
 BOOKS = [
+    # {
+    #     "title": "華頓商學院最受歡迎的談判課",
+    #     "image": "how-to-negotiate-to-achieve-your-goals-in-the-real-world.jpg.jpg",
+    #     "summary": "",
+    #     "link": "",
+    #     "categories": []
+    # },
     {
         "title": "真確 Factfullness",
         "image": "factfull-ness.jpg",
@@ -225,6 +232,13 @@ BOOKS = [
         "categories": []
     },
     {
+        "title": "起源",
+        "image": "origin.jpg",
+        "summary": "「不擇手段最大化目標」一直是 AI 最大的優點及缺點。本書則將其用至極致。",
+        "link": "",
+        "categories": []
+    },
+    {
         "title": "點子都是偷來的",
         "image": "steal-like-an-artist.jpg",
         "summary": "創意的一大來源在於將熟悉的點子應用在不同領域，讓所有人既驚喜又熟悉。",
@@ -242,10 +256,6 @@ BOOKS = [
 
 
 
-
-
-
-
 # local ga test
 # PLUGINS += ['ga_page_view']
 # GOOGLE_SERVICE_ACCOUNT = 'blog-usage@blog-usage.iam.gserviceaccount.com'
@@ -254,3 +264,5 @@ BOOKS = [
 # GA_END_DATE = 'today'
 # GA_METRIC = 'ga:pageviews'
 # POPULAR_POST_START = 'A month ago'
+
+
