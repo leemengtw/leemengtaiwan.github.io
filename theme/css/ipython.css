@@ -223,3 +223,13 @@ div.cta__content a:hover {
 div.page-header__content p {
   color: rgba(255,255,255,.9);
 }
+
+/*調整 KPI 字的大小*/
+/*@media only screen and (max-width: 1200px) {*/
+  /*.stats__count {*/
+    /*font-size: 4.8rem;*/
+  /*}*/
+/*}*/
+.stats__count {
+  font-size: 6.2rem;
+}
