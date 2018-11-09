@@ -11,21 +11,22 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>LeeMeng - Designing Data-Intensive Applications (1) - 序言</title>
+<title>LeeMeng - 自然語言處理 - 學習資源整理</title>
     <!--- article-specific meta data
     ================================================== -->
-        <meta name="description" content="最近在拜讀 Martin Kleppmann 的 Designing Data-Intensive Applications， 覺得受益匪淺，且我也相信透過 Feynman Technique 將學到的東西用最淺顯易懂的方式表達能幫助自己內化這些知識，遂嘗試把閱讀後的心得記錄在此。" />
-        <meta name="keywords" content="資料工程" />
-        <meta name="tags" content="資料工程" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="自然語言處理, 機器學習" />
+        <meta name="tags" content="自然語言處理" />
+        <meta name="tags" content="機器學習" />
 
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="https://leemeng.tw/theme/images/background/eugene-lim-263830-unsplash.jpg" />
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/alisa-anton-393305-unsplash.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://leemeng.tw/designing-data-intensive-applications-1-preface.html" />
-        <meta property="og:title" content="Designing Data-Intensive Applications (1) - 序言" />
-        <meta property="og:description" content="最近在拜讀 Martin Kleppmann 的 Designing Data-Intensive Applications， 覺得受益匪淺，且我也相信透過 Feynman Technique 將學到的東西用最淺顯易懂的方式表達能幫助自己內化這些知識，遂嘗試把閱讀後的心得記錄在此。" />
+        <meta property="og:url" content="https://leemeng.tw/drafts/nlp.html" />
+        <meta property="og:title" content="自然語言處理 - 學習資源整理" />
+        <meta property="og:description" content="" />
 
     <!-- mobile specific metas
     ================================================== -->
@@ -129,7 +130,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="Designing Data-Intensive Applications (1) - 序言">Designing Data-Intensive Applications (1) - 序言</a><ul><li><a class="toc-href" href="#何謂-data-intensive-applications" title="何謂 data-intensive applications">何謂 data-intensive applications</a></li><li><a class="toc-href" href="#何謂資料密集" title="何謂資料密集">何謂資料密集</a></li><li><a class="toc-href" href="#一句話總結" title="一句話總結">一句話總結</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="自然語言處理 - 學習資源整理">自然語言處理 - 學習資源整理</a><ul><li><a class="toc-href" href="#Learning-Path" title="Learning Path">Learning Path</a></li><li><a class="toc-href" href="#學習資源" title="學習資源">學習資源</a></li><li><a class="toc-href" href="#相關技術文章" title="相關技術文章">相關技術文章</a></li><li><a class="toc-href" href="#術語" title="術語">術語</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -138,24 +139,25 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/eugene-lim-263830-unsplash.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/alisa-anton-393305-unsplash.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
-                            <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                            <a href="https://leemeng.tw/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
+                            <a href="https://leemeng.tw/tag/ji-qi-xue-xi.html" rel="tag">機器學習</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="https://leemeng.tw/designing-data-intensive-applications-1-preface.html" title="">
-                            Designing Data-Intensive Applications (1) - 序言
+                        <a href="https://leemeng.tw/drafts/nlp.html" title="">
+                            自然語言處理 - 學習資源整理
                         </a>
                     </h1>
                     <ul class="page-header__meta">
-                        <li class="date">2018-03-24 (Sat)</li>
+                        <li class="date">2018-10-30 (Tue)</li>
                         <li class="page-view">
-                            58 views
+                            1 views
                         </li>
                     </ul>
 
@@ -186,26 +188,6 @@
         </a>
     </div>
 
-    <div id="social-wrap" style="cursor: pointer">
-        <a class="open-popup" title="訂閱最新文章">
-            <i class="im im-newspaper-o" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/designing-data-intensive-applications-1-preface.html" target="_blank" title="分享到 Facebook">
-            <i class="im im-facebook" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/designing-data-intensive-applications-1-preface.html&title=Designing%20Data-Intensive%20Applications%20%281%29%20-%20%E5%BA%8F%E8%A8%80&summary=%E6%9C%80%E8%BF%91%E5%9C%A8%E6%8B%9C%E8%AE%80%20Martin%20Kleppmann%20%E7%9A%84%20Designing%20Data-Intensive%20Applications%EF%BC%8C%20%E8%A6%BA%E5%BE%97%E5%8F%97%E7%9B%8A%E5%8C%AA%E6%B7%BA%EF%BC%8C%E4%B8%94%E6%88%91%E4%B9%9F%E7%9B%B8%E4%BF%A1%E9%80%8F%E9%81%8E%20Feynman%20Technique%20%E5%B0%87%E5%AD%B8%E5%88%B0%E7%9A%84%E6%9D%B1%E8%A5%BF%E7%94%A8%E6%9C%80%E6%B7%BA%E9%A1%AF%E6%98%93%E6%87%82%E7%9A%84%E6%96%B9%E5%BC%8F%E8%A1%A8%E9%81%94%E8%83%BD%E5%B9%AB%E5%8A%A9%E8%87%AA%E5%B7%B1%E5%85%A7%E5%8C%96%E9%80%99%E4%BA%9B%E7%9F%A5%E8%AD%98%EF%BC%8C%E9%81%82%E5%98%97%E8%A9%A6%E6%8A%8A%E9%96%B1%E8%AE%80%E5%BE%8C%E7%9A%84%E5%BF%83%E5%BE%97%E8%A8%98%E9%8C%84%E5%9C%A8%E6%AD%A4%E3%80%82&source=https%3A//leemeng.tw/designing-data-intensive-applications-1-preface.html" target="_blank" title="分享到 LinkedIn">
-            <i class="im im-linkedin" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://twitter.com/intent/tweet?text=Designing%20Data-Intensive%20Applications%20%281%29%20-%20%E5%BA%8F%E8%A8%80&url=https%3A//leemeng.tw/designing-data-intensive-applications-1-preface.html" target="_blank" title="分享到 Twitter">
-            <i class="im im-twitter" aria-hidden="true"></i>
-        </a>
-    </div>
 
 </div>
 
@@ -215,85 +197,37 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>最近在拜讀 <a href="http://martin.kleppmann.com/">Martin Kleppmann</a> 的 <a href="https://dataintensive.net/">Designing Data-Intensive Applications</a>，
-覺得受益匪淺，且我也相信透過 
-<a href="http://blog.xxc.idv.tw/km/%E8%B2%BB%E6%9B%BC%E7%9A%84%E5%AD%B8%E7%BF%92%E6%8A%80%E5%B7%A7-the-feynman-technique.html">Feynman Technique</a> 
-將學到的東西用最淺顯易懂的方式表達能幫助自己內化這些知識，遂嘗試把閱讀後的心得記錄在此。</p>
-<p>另外在提到書內內容時都會盡量使用英文原文，不另做名詞的翻譯，以方便對照書內內容。</p>
+<h2 id="Learning-Path">Learning Path<a class="anchor-link" href="#Learning-Path">&para;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="何謂-data-intensive-applications">何謂 data-intensive applications<a class="anchor-link" href="#何謂-data-intensive-applications">&para;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>所謂的 data-intensive applications 如同名稱所示，專注在如何有效率地處理、儲存<a href="#何謂資料密集">密集資料</a>。通常一個這樣的系統的後端要用多種方式處理資料，而不是只用一個資料庫就結束了。（雖然對 end users 來說可能看起來像這樣）</p>
-<p>舉個簡單例子，一個電子商務網頁的後端除了做為 <a href="https://zh.wikipedia.org/wiki/%E7%B7%9A%E4%B8%8A%E4%BA%A4%E6%98%93%E8%99%95%E7%90%86">OLTP</a> 的 NoSQL 資料庫 (e.g., MongoDB) 以外，可能還有：</p>
 <ul>
-<li>一個專門存放網頁快取的資料庫 (e.g. Redis) </li>
-<li>給資料科學家分析用的資料倉儲 (e.g., Redshift) </li>
-<li>處理 streaming events 的 messaging queue (e.g., Kafka)</li>
-<li>定期將 NoSQL 資料庫的資料做 <a href="https://zh.wikipedia.org/wiki/ETL">ETL</a> 存到 資料倉儲的批次處理 (e.g., Hive jobs)</li>
+<li>Know the terminologies / key concept / history</li>
+<li>Find the best references<ul>
+<li>AllenNLP - Writing Code for NLP Research Slide </li>
 </ul>
-<p>光是要把以上所列的資料庫 / 分散式系統 / 資料流 以有系統的方式組合起來就需要大量經驗，更遑論還要達到以下三個要求了：</p>
-<ul>
-<li>可靠性 (reliable): 像是 zero-down time, 很短的回應時間 etc</li>
-<li>規模性 (scalable): 即使之後資料量增加，系統也能很好地運作</li>
-<li>維護性 (maintainable): 容易改善、新增功能的系統設計</li>
+</li>
+<li>learn the best framework to enable quick prototyping <ul>
+<li>AllenNLP: Config as Model variations</li>
 </ul>
-<center>
-<img src="images/ddia/jigsaw-puzzle.png" style=""/>
-</center>
-<center>
-<a href="http://www.jigsaw-puzzle-club.co.uk/" target="_blank">Image Credit</a>
-<font color="purple">: 如何了解各個 data system 的優缺點並予以組合</font><br/>
-</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>儘管我們不可能熟悉所有資料庫以及分散式系統的細節，了解他們背後設計的核心理念、演算法以及大致上的運作方式能讓我們了解每個 data system 的特性以及優缺點，依照不同的使用案例選擇最適合的 data system 並予以組合。</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="何謂資料密集">何謂資料密集<a class="anchor-link" href="#何謂資料密集">&para;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>書中所指的「密集」資料有以下所列的特徵（一個以上）：</p>
-<ul>
-<li>大量資料</li>
-<li>資料的（格式、 schema etc）變動速度很快</li>
-<li>資料有複雜結構</li>
+</li>
+<li>Write code that can be reused and be more productive in the future</li>
+<li>Keep up with trend and try many things </li>
+<li>Follow influential researchers and those can explain things very intuitive<ul>
+<li>華裔<ul>
+<li>台大李鴻毅</li>
 </ul>
-<p>針對「資料有複雜結構」以及「資料變動很快」這點，最為人所知的 solution 就是 NoSQL 等允許彈性 schema 的資料庫的崛起；
-而針對「資料量很大」這點，則端看使用案例有各式各樣的資料庫、分散式系統。舉幾個例子：</p>
-<ul>
-<li>能有效儲存大量資料的 Google BigTable</li>
-<li>以欄 (column) 為單位儲存以壓縮大量資料的資料倉儲 Redshift</li>
-<li>Amazon 的 Single-leader Replication - DynamoDB</li>
-<li>專門處理 realtime streaming data 的 Kafka, RabbitMQ etc.</li>
+</li>
 </ul>
-<p>如同前述，以上提到的系統依照它們想要解決的問題的特性，背後都會有一些假設以及 trade-off 。了解這些背後的原理可以讓我們了解哪些工具在什麼時候最 powerful 。</p>
-<p>這本書主要分成三部分來闡述，抓到大方向會比較容易閱讀：</p>
-<ul>
-<li>針對單一機器上的資料，有哪些常用的資料儲存/處理方法</li>
-<li>類似前一部份，闡述針對分散式系統的資料儲存/處理方法</li>
-<li>資料密集型應用：如何將多個 data systems 組合起來</li>
+</li>
+<li>Solve real world problem that make people and yourself better<ul>
+<li>英文文章摘要</li>
+<li>Learn English more effective using NLP</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -301,16 +235,190 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="一句話總結">一句話總結<a class="anchor-link" href="#一句話總結">&para;</a></h2>
+<h2 id="學習資源">學習資源<a class="anchor-link" href="#學習資源">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>在資料密集的時代，我們的最終目標在於如何將各式各樣的 data systems 以有系統的方式「組合」起來，以建立一個可靠、具規模性以及維護性的系統。</p></blockquote></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>RNN<ul>
+<li>一分鐘學ＡＩ(4) &mdash; 循環神經網路 &ndash; 陳鍾誠 &ndash; Medium</li>
+</ul>
+</li>
+<li>NLP<ul>
+<li>徐阿城</li>
+<li>Google AI - Language</li>
+</ul>
+</li>
+<li>知乎討論<ul>
+<li>神經機器翻譯</li>
+<li>機器翻譯</li>
+</ul>
+</li>
+<li>Framework<ul>
+<li>OpenNMT</li>
+<li>TensorFlow - seq2seq Tutorial</li>
+<li>AllenNLP</li>
+</ul>
+</li>
+<li>Blog<ul>
+<li>Wildml.com</li>
+</ul>
+</li>
+<li>Deep Learning<ul>
+<li>台大李鴻毅
+  * </li>
+</ul>
+</li>
+</ul>
 </div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="相關技術文章">相關技術文章<a class="anchor-link" href="#相關技術文章">&para;</a></h2><ul>
+<li><a href="https://venturebeat.com/2018/11/02/google-open-sources-bert-a-state-of-the-art-training-technique-for-natural-language-processing/">Google open-sources BERT, a state-of-the-art pretraining technique for natural language processing</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="術語">術語<a class="anchor-link" href="#術語">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>NLP 研究領域<ul>
+<li>Social Applications</li>
+<li>Semantics</li>
+<li>Vision</li>
+<li>Entities &amp; Coreference<ul>
+<li>Named Entity Recognition (NER)</li>
+</ul>
+</li>
+<li>Machin Translation</li>
+<li>Multilingual Methods</li>
+<li>Question Answering<ul>
+<li>Question Classification</li>
+</ul>
+</li>
+<li>Dialogue and Discourse</li>
+<li>Generation and Summarization</li>
+<li>Text Classification, Text Mining and Information Retrieval</li>
+<li>Reading Comprehension</li>
+<li>Generation</li>
+</ul>
+</li>
+<li>Deep Learning<ul>
+<li>Network structure</li>
+</ul>
+</li>
+<li>Language Model / n-gram model 很好的回顧<ul>
+<li>NLP 笔记 - Language models and smoothing</li>
+<li>Language Model / f(e)</li>
+<li>N-gram model / Markov Assumption / Chain Rule / MLE</li>
+<li>Uniform Model / Unigram Model (依據 work fq) / N-gram Model / Full History Model</li>
+<li>Smoothing: Laplace smoothing (add-one) / Good Turing smoothing, Normalization</li>
+</ul>
+</li>
+<li>SMT<ul>
+<li>Statistical Machine Translation，統計機器翻譯<ul>
+<li>非限定領域機器翻譯中效能較佳的一種方法</li>
+<li>從早期基於詞的機器翻譯已經過渡到基於短語的翻譯，並正在融合句法資訊，以進一步提高翻譯的精確性。</li>
+</ul>
+</li>
+<li>Noise Channel <ul>
+<li>做機器翻譯 (Lexical Translation Model)<ul>
+<li>將目標語言視為 cipher text</li>
+<li>word alignment / EM algorithm  / parallel corpus（平行語料庫）/ aligned corpus </li>
+<li>利用統計方式(MLE + EM algorithm)以及平行 corpus，找出最有可能的原文與譯文的各個詞之間的對齊方式</li>
+<li>从 lexical 层面着手，先进行词对词的翻译，然后再进行词的排序</li>
+<li>最好的翻譯就等於 argmax ( language model p(e) * translation model p(f | e)</li>
+<li>Ref: <ul>
+<li>機器翻譯 -- Statistical Machine Translation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>做拼寫糾正<ul>
+<li>NLP 笔记 - Spelling, Edit Distance, and Noisy Channels</li>
+<li>給定一個錯字 Observation / Noisy Word, 我們想知道最有可能產生此結果的原始正確字 (word)推薦給使用者。最有可能的結果是 argmaxP(W)&lowast;P(O|W) 。理想上，我們要推薦給使用者自動校正的詞，該詞真的是使用者要的機率跟 (1) 該詞本身出現的機率 (2) 該正確詞被錯誤打成 noisy word 的機率成正比。(1) 用 LM, (2) 用 Channel Model / edit distance 估計</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>NMT<ul>
+<li>Phase based machine translation (PBMT)</li>
+<li>Neural network language model(NNLM)</li>
+<li>google Neural machine translation(GNMT)<ul>
+<li>Zero shot translation</li>
+</ul>
+</li>
+<li>Transformer<ul>
+<li>Layers, heads</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Self-Attention Mechanism<ul>
+<li>Ref<ul>
+<li><a href="http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/">http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/</a></li>
+<li>注意力机制（Attention Mechanism）在自然语言处理中的应用</li>
+</ul>
+</li>
+<li>模擬人眼在看圖片時能聚焦/專注（加大權重）在局部圖片，讓 NMT 的 decoder 在產生一個 output (word) 時，不只看前一個 hidden state, 而是能學習，在做翻譯的時候，應該要選擇關注過往的哪些 states。這樣能同時處理 aligement 跟 translation，並讓語順不同的語言也可以有不錯的翻譯（ex; 日文 &amp; 英文）</li>
+<li>Easier to visualize what the model is doing</li>
+<li>Visualization<ul>
+<li>Vaswani, 2017</li>
+</ul>
+</li>
+<li>Hard / soft attention</li>
+</ul>
+</li>
+<li>Reinforcement learning<ul>
+<li>Reinforcement Learning: An Introduction</li>
+<li>RL4NMT</li>
+</ul>
+</li>
+<li>Open / close domain conversation</li>
+<li>LSTM, biLSTM
+  * </li>
+<li>BERT<ul>
+<li>Bidirectional Encoder Representations from Transformer</li>
+</ul>
+</li>
+<li>SRNN, IRNN</li>
+<li>GRU, GRUStack</li>
+<li>embedding</li>
+<li>RNN, </li>
+<li>Elmo, GloVe</li>
+<li>Transformer  / transformer network</li>
+<li>Unsupervised MT: Train only with monolingual data</li>
+<li>CBOW</li>
+<li>Beam search<ul>
+<li>Beam size</li>
+</ul>
+</li>
+<li>LRL (low-resource language)</li>
+<li>Neural Language Model</li>
+<li>Encoder / Decoded Framework VS Transformer</li>
+<li>Evaluation<ul>
+<li>BLEU score</li>
+</ul>
+</li>
+<li>Monolingual / Mutltilingual data</li>
+<li>Unsupervised NMT(this year)  / Unsupervised SMT (latest)</li>
+</ul>
 </div>
 </div>
 </div>
@@ -321,10 +429,33 @@
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
-                        <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                        <a href="https://leemeng.tw/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
+                        <a href="https://leemeng.tw/tag/ji-qi-xue-xi.html" rel="tag">機器學習</a>
                     </span>
 
                 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -397,18 +528,6 @@
                 <!--Pagination-->
                 <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
-                        <div class="blog-content__prev">
-                            <a href="https://leemeng.tw/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html" rel="prev">
-                                <span>Previous Post</span>
-                                AWS Data Migration Service - 從 MongoDB 遷移到 Redshift
-                            </a>
-                        </div>
-                        <div class="blog-content__next">
-                            <a href="https://leemeng.tw/google-data-studio-basics.html" rel="next">
-                                <span>Next Post</span>
-                                Google Data Studio 基礎
-                            </a>
-                        </div>
                     </div>
 
                     <div class="blog-content__all">
@@ -437,7 +556,7 @@
 
 <script type="text/javascript">
 var disqus_shortname = 'leemengtaiwan';
-var disqus_title = 'Designing Data-Intensive Applications (1) - 序言';
+var disqus_title = '自然語言處理 - 學習資源整理';
 
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

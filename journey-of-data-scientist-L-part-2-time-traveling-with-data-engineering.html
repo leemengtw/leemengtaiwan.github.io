@@ -14,7 +14,7 @@
 <title>LeeMeng - 資料科學家 L 的奇幻旅程 Vol.2 如何用資料工程當個時間旅人</title>
     <!--- article-specific meta data
     ================================================== -->
-        <meta name="description" content="" />
+        <meta name="description" content="「資料工程」與「時間旅行」，兩個看似毫無相關的詞能擦出什麼火花？在這篇文章裡頭，我想跟你分享一個輕鬆話題：身為資料科學家的我，是如何利用資料工程在公司裡頭當個「時間旅人」的。當然，實際上每家公司的 DS 以及 DE 的工作內容都會有所不同，了解這個事實並調整期待，將幫助你找到最適合自己的工作環境。" />
         <meta name="keywords" content="日誌, 資料科學, 資料工程" />
         <meta name="tags" content="日誌" />
         <meta name="tags" content="資料科學" />
@@ -23,11 +23,11 @@
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="/theme/images/background/kevin-ku-392517-unsplash.jpg" />
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/kevin-ku-392517-unsplash.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="/drafts/journey-of-data-scientist-L-part-2-time-traveling-with-data-engineering.html" />
+        <meta property="og:url" content="https://leemeng.tw/journey-of-data-scientist-L-part-2-time-traveling-with-data-engineering.html" />
         <meta property="og:title" content="資料科學家 L 的奇幻旅程 Vol.2 如何用資料工程當個時間旅人" />
-        <meta property="og:description" content="" />
+        <meta property="og:description" content="「資料工程」與「時間旅行」，兩個看似毫無相關的詞能擦出什麼火花？在這篇文章裡頭，我想跟你分享一個輕鬆話題：身為資料科學家的我，是如何利用資料工程在公司裡頭當個「時間旅人」的。當然，實際上每家公司的 DS 以及 DE 的工作內容都會有所不同，了解這個事實並調整期待，將幫助你找到最適合自己的工作環境。" />
 
     <!-- mobile specific metas
     ================================================== -->
@@ -36,32 +36,42 @@
     <!-- CSS
     ================================================== -->
     <!--for customized css in individual page-->
-        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
 
     <!--for showing toc navigation which slide in from left-->
-        <link rel="stylesheet" type="text/css" href="/theme/css/toc-nav.css">
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
 
-    <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/ipython.css">
-    <link rel="stylesheet" type="text/css" href='/theme/css/progress-bar.css' />
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
 
 
     <!--TiqueSearch-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
-    <link rel="stylesheet" href="/theme/tipuesearch/css/normalize.css">
-    <link rel="stylesheet" href="/theme/tipuesearch/css/tipuesearch.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
 
     <!-- script
     ================================================== -->
-    <script src="/theme/js/modernizr.js"></script>
-    <script src="/theme/js/pace.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
 
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
 
 
 
@@ -75,7 +85,7 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="../index.html"><img src="/theme/images/logo.png" alt="Homepage"></a>
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
         </div>
 <!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
@@ -130,26 +140,26 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/kevin-ku-392517-unsplash.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/kevin-ku-392517-unsplash.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
-                            <a href="/tag/ri-zhi.html" rel="tag">日誌</a>
-                            <a href="/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
-                            <a href="/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                            <a href="https://leemeng.tw/tag/ri-zhi.html" rel="tag">日誌</a>
+                            <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                            <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="/drafts/journey-of-data-scientist-L-part-2-time-traveling-with-data-engineering.html" title="">
+                        <a href="https://leemeng.tw/journey-of-data-scientist-L-part-2-time-traveling-with-data-engineering.html" title="">
                             資料科學家 L 的奇幻旅程 Vol.2 如何用資料工程當個時間旅人
                         </a>
                     </h1>
                     <ul class="page-header__meta">
-                        <li class="date">2018-11-12 (Mon)</li>
+                        <li class="date">2018-11-09 (Fri)</li>
                         <li class="page-view">
-                            1 views
+                            0 views
                         </li>
                     </ul>
 
@@ -180,6 +190,26 @@
         </a>
     </div>
 
+    <div id="social-wrap" style="cursor: pointer">
+        <a class="open-popup" title="訂閱最新文章">
+            <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/journey-of-data-scientist-L-part-2-time-traveling-with-data-engineering.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/journey-of-data-scientist-L-part-2-time-traveling-with-data-engineering.html&title=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%AE%B6%20L%20%E7%9A%84%E5%A5%87%E5%B9%BB%E6%97%85%E7%A8%8B%20Vol.2%20%E5%A6%82%E4%BD%95%E7%94%A8%E8%B3%87%E6%96%99%E5%B7%A5%E7%A8%8B%E7%95%B6%E5%80%8B%E6%99%82%E9%96%93%E6%97%85%E4%BA%BA&summary=%E3%80%8C%E8%B3%87%E6%96%99%E5%B7%A5%E7%A8%8B%E3%80%8D%E8%88%87%E3%80%8C%E6%99%82%E9%96%93%E6%97%85%E8%A1%8C%E3%80%8D%EF%BC%8C%E5%85%A9%E5%80%8B%E7%9C%8B%E4%BC%BC%E6%AF%AB%E7%84%A1%E7%9B%B8%E9%97%9C%E7%9A%84%E8%A9%9E%E8%83%BD%E6%93%A6%E5%87%BA%E4%BB%80%E9%BA%BC%E7%81%AB%E8%8A%B1%EF%BC%9F%E5%9C%A8%E9%80%99%E7%AF%87%E6%96%87%E7%AB%A0%E8%A3%A1%E9%A0%AD%EF%BC%8C%E6%88%91%E6%83%B3%E8%B7%9F%E4%BD%A0%E5%88%86%E4%BA%AB%E4%B8%80%E5%80%8B%E8%BC%95%E9%AC%86%E8%A9%B1%E9%A1%8C%EF%BC%9A%E8%BA%AB%E7%82%BA%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%AE%B6%E7%9A%84%E6%88%91%EF%BC%8C%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E8%B3%87%E6%96%99%E5%B7%A5%E7%A8%8B%E5%9C%A8%E5%85%AC%E5%8F%B8%E8%A3%A1%E9%A0%AD%E7%95%B6%E5%80%8B%E3%80%8C%E6%99%82%E9%96%93%E6%97%85%E4%BA%BA%E3%80%8D%E7%9A%84%E3%80%82%E7%95%B6%E7%84%B6%EF%BC%8C%E5%AF%A6%E9%9A%9B%E4%B8%8A%E6%AF%8F%E5%AE%B6%E5%85%AC%E5%8F%B8%E7%9A%84%20DS%20%E4%BB%A5%E5%8F%8A%20DE%20%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%85%A7%E5%AE%B9%E9%83%BD%E6%9C%83%E6%9C%89%E6%89%80%E4%B8%8D%E5%90%8C%EF%BC%8C%E4%BA%86%E8%A7%A3%E9%80%99%E5%80%8B%E4%BA%8B%E5%AF%A6%E4%B8%A6%E8%AA%BF%E6%95%B4%E6%9C%9F%E5%BE%85%EF%BC%8C%E5%B0%87%E5%B9%AB%E5%8A%A9%E4%BD%A0%E6%89%BE%E5%88%B0%E6%9C%80%E9%81%A9%E5%90%88%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%92%B0%E5%A2%83%E3%80%82&source=https%3A//leemeng.tw/journey-of-data-scientist-L-part-2-time-traveling-with-data-engineering.html" target="_blank" title="分享到 LinkedIn">
+            <i class="im im-linkedin" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://twitter.com/intent/tweet?text=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%AE%B6%20L%20%E7%9A%84%E5%A5%87%E5%B9%BB%E6%97%85%E7%A8%8B%20Vol.2%20%E5%A6%82%E4%BD%95%E7%94%A8%E8%B3%87%E6%96%99%E5%B7%A5%E7%A8%8B%E7%95%B6%E5%80%8B%E6%99%82%E9%96%93%E6%97%85%E4%BA%BA&url=https%3A//leemeng.tw/journey-of-data-scientist-L-part-2-time-traveling-with-data-engineering.html" target="_blank" title="分享到 Twitter">
+            <i class="im im-twitter" aria-hidden="true"></i>
+        </a>
+    </div>
 
 </div>
 
@@ -189,7 +219,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>在<a href="/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html">奇幻旅程的第一篇</a>裡頭你已經看到，為何了解企業內部使用的 KPI 以及熟悉公司內部的「數據流動」能讓一個資料科學家在工作上更如魚得水。</p>
+<p>在<a href="https://leemeng.tw/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html">奇幻旅程的第一篇</a>裡頭你已經看到，為何了解企業內部使用的 KPI 以及熟悉公司內部的「數據流動」能讓一個資料科學家在工作上更如魚得水。</p>
 <p>那是一篇稍微正經嚴肅，但我認為對資料科學家來說（<strong>D</strong>ata <strong>S</strong>cientist，後簡稱 DS）很有幫助的一篇文章。不過今天，我想跟你分享一個輕鬆話題：身為 DS 的我，是如何利用資料工程（Data Engineering）在公司裡頭當個「時間旅人」的。</p>
 <p>「時間旅人？你在開玩笑嗎？」</p>
 <p>「資料工程跟時間旅行八竿子沒關係吧！」</p>
@@ -200,7 +230,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="/images/journal/dog-705820_1280.jpg"/>
+<img src="https://leemeng.tw/images/journal/dog-705820_1280.jpg"/>
 </center>
 <center>
                         這可能是現在困惑的你的最佳寫照
@@ -242,7 +272,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="/images/journal/wormhole-2514312_1280.jpg"/>
+<img src="https://leemeng.tw/images/journal/wormhole-2514312_1280.jpg"/>
 </center>
 <center>
                         掌握資料工程讓我們彷彿可以穿越時空
@@ -285,7 +315,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="/images/journal/crystal-kwok-487022-unsplash.jpg"/>
+<img src="https://leemeng.tw/images/journal/crystal-kwok-487022-unsplash.jpg"/>
 </center>
 <center>
                         你需要資料工程的知識來將一個 DS 做的預測模型「弄上線」
@@ -306,8 +336,8 @@
 <li>預測使用者性別（儘管她/他沒說）</li>
 </ul>
 <p>等等。</p>
-<p>在目前的公司，我主要使用 <a href="https://aws.amazon.com/tw/sagemaker/">Amazon SageMaker</a> 、 <a href="https://aws.amazon.com/tw/ecs/features/?nc1=h_ls">Amazon ECS</a> 並搭配 <a href="/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">Airflow</a> 來將這些預測模型部署到 Production 環境，以對真實世界做預測。</p>
-<p>眼尖的讀者會發現，撇除模型或演算法，上述提到的工具並不實際跟「分析」有關，而比較偏向「工程」。為了發揮這些工具的最大效用，你可能需要了解 <a href="/why-you-need-to-learn-data-engineering-as-a-data-scientist.html">ETL 的概念</a>以及<a href="/3-ways-you-can-leverage-the-power-of-docker-in-data-science-part-1-learn-the-basic.html">如何使用 Docker</a>。</p>
+<p>在目前的公司，我主要使用 <a href="https://aws.amazon.com/tw/sagemaker/">Amazon SageMaker</a> 、 <a href="https://aws.amazon.com/tw/ecs/features/?nc1=h_ls">Amazon ECS</a> 並搭配 <a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">Airflow</a> 來將這些預測模型部署到 Production 環境，以對真實世界做預測。</p>
+<p>眼尖的讀者會發現，撇除模型或演算法，上述提到的工具並不實際跟「分析」有關，而比較偏向「工程」。為了發揮這些工具的最大效用，你可能需要了解 <a href="https://leemeng.tw/why-you-need-to-learn-data-engineering-as-a-data-scientist.html">ETL 的概念</a>以及<a href="https://leemeng.tw/3-ways-you-can-leverage-the-power-of-docker-in-data-science-part-1-learn-the-basic.html">如何使用 Docker</a>。</p>
 <p>想要有效地預測真實世界，這些工具不可或缺。</p>
 <p>在下篇文章，我將說明如何應用上述工具以建立可靠的預測流程。而在本文，我想強調的是另一個你能透過資料工程培養的超能力：「回到過去」。</p>
 </div>
@@ -318,7 +348,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="回到過去，修正錯誤">回到過去，修正錯誤<a class="anchor-link" href="#回到過去，修正錯誤">&para;</a></h2><p>如果你現在正努力學習資料科學，期待未來能成為一個 DS，你可能會「想像」進了一間新公司以後，前人都已經幫你把所有專案 / 產品分析需要的關鍵績效指標（<strong>K</strong>ey <strong>P</strong>erformance <strong>I</strong>ndicators，即 KPI）定義完成。</p>
 <p>除此之外，所有需要分析的數據也都事先被計算好並存放在<a href="https://leemeng.tw/why-you-need-to-learn-data-engineering-as-a-data-scientist.html#%E8%B3%87%E6%96%99%E5%80%89%E5%84%B2">資料倉儲或是資料湖</a>裡頭供你大展身手。</p>
-<p>而你所需要做的，就是開始下 <a href="/why-you-need-to-learn-sql-as-a-data-scientist.html">SQL 查詢</a>並建立分析模型。</p>
+<p>而你所需要做的，就是開始下 <a href="https://leemeng.tw/why-you-need-to-learn-sql-as-a-data-scientist.html">SQL 查詢</a>並建立分析模型。</p>
 <p>如果你的公司規模如 Facebook、Google 或是 Netflix 那麽龐大，裡頭已經有非常專業的<a href="https://leemeng.tw/data-science-digest-volume-4-choose-your-own-character-in-data-science-role-play-game.html#Beyond-Interactive:-Notebook-Innovation-at-Netflix">資料平台團隊</a>，則或許上述為真。身為一個小小的 DS，你無須擔心什麼 KPI 的定義或是數據品質。</p>
 </div>
 </div>
@@ -327,7 +357,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="/images/data-science/sean-pollock-203658-unsplash.jpg"/>
+<img src="https://leemeng.tw/images/data-science/sean-pollock-203658-unsplash.jpg"/>
 </center>
 <center>
                         規模非常大的企業讓你看到自己的渺小，但好處是身為一個 DS，你要擔心的東西可能也比較少（數據品質、KPI 定義 etc）
@@ -351,14 +381,14 @@
 <p>不管是哪項，我們都需要做修正。</p>
 <p>具體來說，是修正該 SQL 查詢的邏輯、更新 KPI 定義，並將改變反映到 Production 環境。</p>
 <p>這樣你才能確保在新的一天，該 KPI 能以最正確的方式被計算出來（假設我們一天算一次該 KPI）。</p>
-<p>畢竟如同我們在奇幻旅程的第一篇：<a href="/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html">新人不得不問的 2 個問題</a>裡頭看到的，錯誤的 KPI 數字會讓整個數據團隊或是公司策略走錯方向，影響可說是非常深遠，得及早修正。</p>
+<p>畢竟如同我們在奇幻旅程的第一篇：<a href="https://leemeng.tw/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html">新人不得不問的 2 個問題</a>裡頭看到的，錯誤的 KPI 數字會讓整個數據團隊或是公司策略走錯方向，影響可說是非常深遠，得及早修正。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<img src="/images/airflow/tim-gouw-68319-unsplash.jpg"/>
+<img src="https://leemeng.tw/images/airflow/tim-gouw-68319-unsplash.jpg"/>
 <br/>
 </div>
 </div>
@@ -378,7 +408,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="/images/journal/carlos-muza-84523-unsplash.jpg"/>
+<img src="https://leemeng.tw/images/journal/carlos-muza-84523-unsplash.jpg"/>
 </center>
 <center>
                         修正 KPI 定義以後，你會想要確保過去的數據也都隨之更新
@@ -392,7 +422,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這時候資料分析能力幫不了你，你需要的是資料工程的知識（或是一個老實的資料工程師，<strong>D</strong>ata <strong>E</strong>ngineer，DE）。</p>
-<p>好消息是，如果你已經有在使用如 <a href="/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">Airflow</a> 等工作流程管理工具來管理你的 ETL，要「回到過去」並利用最新的計算邏輯來修正過去所有「錯誤數字」 並不是一件太難的事情。</p>
+<p>好消息是，如果你已經有在使用如 <a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">Airflow</a> 等工作流程管理工具來管理你的 ETL，要「回到過去」並利用最新的計算邏輯來修正過去所有「錯誤數字」 並不是一件太難的事情。</p>
 <p>事實上，「將過去執行過的 ETL 工作重新執行」這個任務在各個公司屢見不鮮，在資料工程領域裡頭甚至有其專業術語：Backfill。</p>
 </div>
 </div>
@@ -401,7 +431,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="/images/journal/backfilling.jpg"/>
+<img src="https://leemeng.tw/images/journal/backfilling.jpg"/>
 </center>
 <center>
                         Backfill：行家才懂的資料工程關鍵字
@@ -424,7 +454,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在這邊，「計算 KPI 」就是所謂的 ETL 工作。</p>
 <p>目前我常常使用 Airflow 以及 <a href="https://aws.amazon.com/tw/emr/">Amazon EMR</a> 來重新執行 ETL 工作，並讓實際的計算運行在 EMR 環境上以 scale。</p>
-<p>Backfill 常見到 Airbnb 甚至自己建立了一個 <a href="https://medium.com/@rchang/a-beginners-guide-to-data-engineering-the-series-finale-2cc92ff14b0">Backfill Framework</a>。而在<a href="/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">一段 Airflow 與資料工程的故事：談如何用 Python 追漫畫連載</a>裡頭，我則詳細探討了 Airflow 與資料工程的關係，以及你可以如何利用 Airflow 來「回到過去」，修正一切的錯誤。</p>
+<p>Backfill 常見到 Airbnb 甚至自己建立了一個 <a href="https://medium.com/@rchang/a-beginners-guide-to-data-engineering-the-series-finale-2cc92ff14b0">Backfill Framework</a>。而在<a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">一段 Airflow 與資料工程的故事：談如何用 Python 追漫畫連載</a>裡頭，我則詳細探討了 Airflow 與資料工程的關係，以及你可以如何利用 Airflow 來「回到過去」，修正一切的錯誤。</p>
 </div>
 </div>
 </div>
@@ -432,7 +462,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="/images/airflow/time-machine.jpg"/>
+<img src="https://leemeng.tw/images/airflow/time-machine.jpg"/>
 </center>
 <center>
                         利用 Airflow 回到過去，修正錯誤
@@ -486,7 +516,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<img src="/images/journal/wormhole.jpg"/>
+<img src="https://leemeng.tw/images/journal/wormhole.jpg"/>
 <br/>
 </div>
 </div>
@@ -496,7 +526,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>當然這只是我個人的例子。</p>
 <p>實際上，每家公司的 DS 以及 DE 的工作內容都會有所不同。了解這個事實並調整期待，將幫助你找到最適合自己的工作環境。</p>
-<p>如果你對資料工程多了點興趣，可以參考之前的文章：<a href="/why-you-need-to-learn-data-engineering-as-a-data-scientist.html">資料科學家為何需要了解資料工程</a>。</p>
+<p>如果你對資料工程多了點興趣，可以參考之前的文章：<a href="https://leemeng.tw/why-you-need-to-learn-data-engineering-as-a-data-scientist.html">資料科學家為何需要了解資料工程</a>。</p>
 <p>就這樣，我們下個蟲洞見！</p>
 </div>
 </div>
@@ -508,72 +538,12 @@
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
-                        <a href="/tag/ri-zhi.html" rel="tag">日誌</a>
-                        <a href="/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
-                        <a href="/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                        <a href="https://leemeng.tw/tag/ri-zhi.html" rel="tag">日誌</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
                     </span>
 
                 </p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -606,6 +576,12 @@
                 <!--Pagination-->
                 <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
+                        <div class="blog-content__next">
+                            <a href="https://leemeng.tw/data-science-digest-volume-7.html" rel="next">
+                                <span>Next Post</span>
+                                資料科學文摘 Vol.7 數據技能、深度學習以及 AI 的倫理道德
+                            </a>
+                        </div>
                     </div>
 
                     <div class="blog-content__all">
@@ -624,6 +600,25 @@
 
     </article>
 
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '資料科學家 L 的奇幻旅程 Vol.2 如何用資料工程當個時間旅人';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
     <!-- footer
@@ -633,7 +628,7 @@
             <div class="col-full">
 
                 <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="/theme/images/logo.png" alt="Homepage"></a>
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
                 </div>
 
                 <ul class="footer-social">
@@ -678,12 +673,12 @@
 
         <!-- Javascript
     ================================================== -->
-    <script src="/theme/js/jquery-3.2.1.min.js"></script>
-    <script src="/theme/js/plugins.js"></script>
-    <script src="/theme/js/main.js"></script>
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
 
-    <script type='text/javascript' src='/theme/js/progress-bar.js'></script>
-    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
 
     <!--show and hide left navigation by scrolling-->
     <script>
