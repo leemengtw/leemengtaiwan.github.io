@@ -23,7 +23,7 @@
             <meta property="og:image" content="https://leemeng.tw/theme/images/hero-bg4.jpg" />
     <meta property="og:type" content="website" />
 
-        <meta property="og:url" content="https://leemeng.tw/blog.html" />
+        <meta property="og:url" content="https://leemeng.tw/books.html" />
         <meta property="og:title" content="All About DataScience" />
         <meta property="og:description" content="現居東京的資料科學家 L 在數據世界裡頭的所想、所學以及所感。這個網站紀錄了所有我的個人資訊，包含工作經歷、做過的專案以及與資料科學相關的文章。透過分享自己的學習心得以及業界經驗，我希望能讓更多人接觸到資料科學的奧秘。此部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。" />
 
@@ -79,7 +79,7 @@
             <meta property="og:image" content="https://leemeng.tw/theme/images/hero-bg4.jpg" />
     <meta property="og:type" content="website" />
 
-        <meta property="og:url" content="https://leemeng.tw/blog.html" />
+        <meta property="og:url" content="https://leemeng.tw/books.html" />
         <meta property="og:title" content="All About DataScience" />
         <meta property="og:description" content="現居東京的資料科學家 L 在數據世界裡頭的所想、所學以及所感。這個網站紀錄了所有我的個人資訊，包含工作經歷、做過的專案以及與資料科學相關的文章。透過分享自己的學習心得以及業界經驗，我希望能讓更多人接觸到資料科學的奧秘。此部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。" />
 
@@ -454,24 +454,45 @@
         <div id="loader"></div>
     </div>
 
+            <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+
 		<script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
 	    <script src="https://leemeng.tw/theme/js/abstract/plugins.js"></script>
 	    <script src="https://leemeng.tw/theme/js/abstract/main.js"></script>
 		<script src="https://leemeng.tw/theme/js/plugins.js"></script>
 		<!--manually toggle top nav, reference: https://stackoverflow.com/a/18287434/2447655-->
-		<script>
-			function handler1() {
-				$(".header-nav-wrap").css({display: "block"});
-				$(this).one("click", handler2);
-			}
+		<!--<script>-->
+			<!--function handler1() {-->
+				<!--$(".header-nav-wrap").css({display: "block"});-->
+				<!--$(this).one("click", handler2);-->
+			<!--}-->
 
-			function handler2() {
-				$(".header-nav-wrap").css({display: "none"});
-				$(this).one("click", handler1);
-			}
-			$(".header-menu-toggle").one("click", handler1);
+			<!--function handler2() {-->
+				<!--$(".header-nav-wrap").css({display: "none"});-->
+				<!--$(this).one("click", handler1);-->
+			<!--}-->
+			<!--$(".header-menu-toggle").one("click", handler1);-->
 
-		</script>
+		<!--</script>-->
+        <!--reset height of brick container to properly render. ref: https://stackoverflow.com/a/20683311/2447655-->
+        <script>
+            var element = document.getElementsByClassName('masonry');
+            element[0].style.height = "auto";
+
+            var observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutationRecord) {
+                    // console.log('style changed!');
+                    $(".masonry").css({height: "auto"});
+                });
+            });
+
+            var target = document.getElementsByClassName('masonry');
+            observer.observe(target[0], { attributes : true, attributeFilter : ['style'] });
+        </script>
 
 </body>
 </html>
