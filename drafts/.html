@@ -129,6 +129,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title=""></a><ul><li><a class="toc-href" href="#Why-Deep-Structure?" title="Why Deep Structure?">Why Deep Structure?</a></li><li><a class="toc-href" href="#Optimization" title="Optimization">Optimization</a></li><li><a class="toc-href" href="#Generalization" title="Generalization">Generalization</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -179,6 +180,11 @@
         </div>
     </div>
 
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
 
 
 </div>
@@ -190,8 +196,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">400</span> <span class="n">minutes</span> <span class="n">總影片長度</span>
-<span class="n">觀看人數</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">why</span> <span class="n">empirical</span> <span class="n">important</span><span class="err">?</span> <span class="n">we</span> <span class="n">just</span> <span class="n">can</span><span class="s1">'t see all the possiblities and came up with very general theories. experiement helps to understand DL.</span>
 </pre></div>
 </div>
 </div>
@@ -200,16 +205,24 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Deep Learning Theory 10 影片</p>
 <ul>
-<li>network structure</li>
+<li>400 minutes 總影片長度</li>
 </ul>
+<p>觀看人數</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Why Deep Structure?</p>
+<h2 id="Why-Deep-Structure?">Why Deep Structure?<a class="anchor-link" href="#Why-Deep-Structure?">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>現實世界中，我們常常要的要一個可以把 x 對應的 y 的 fn 。而給定一個 network structure，不管其是 shallow 或是 deep，理論上只要架構夠大，都能讓潛在包含的 function space 包含想要 fit 的 function 。那為何 deep 好？</p>
 <ul>
 <li>（抽象化）我們在討論這章的時候，也不考慮實際上 shallow / deep 架構所構成的 function space 怎麼做 optimize / generalization 來實際找到該 target fn, 而是先假設只要包含了，最後就能找到一組參數 fit 出 target function</li>
@@ -229,11 +242,18 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Optimization
-就是從（deep structure 組成的） function space 裡頭找出 function star 的方法</p>
+<h2 id="Optimization">Optimization<a class="anchor-link" href="#Optimization">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>就是從（deep structure 組成的） function space 裡頭找出 function star 的方法</p>
 <ul>
 <li>（抽象化）optimization 不等於 learning<ul>
 <li>給定一個 loss function, optimization 專注在找到能讓 loss function 最小的一組參數（fit training data well）。而至於使用該參數預測測試資料有沒有 overfit 問題（learning）不是現在這章的關注重點</li>
+<li>反過來說，有時候找到 global minima 不是最重要的，而且反而容易 overfitting. local minimal 可能就足夠</li>
 </ul>
 </li>
 </ul>
@@ -245,18 +265,44 @@
 <li>training stuck 不一定就代表走到 critical point, 梯度為 0（有可能 loss 很低沒啥改變，但是 grad 的值還是很大）</li>
 <li>且 training 過程，遭遇到的 gradient 是上上下下，而不是跟 loss 一樣直線下降</li>
 <li>如果確定是遇到 critical point, 可以使用 Hessian Matrix 確認是 local minimum / saddle point / local maximum</li>
-<li>ReLU network 有 local minima, 要避免撞到這些盲點，選好 initial 的位置很重要</li>
+<li>ReLU network / non-linear netowrk 有 local minima, 要避免撞到這些盲點，選好 initial 的位置很重要；資料可能也有影響</li>
+<li>而 empirical 結果以及一些猜測顯示，我們訓練的 network structure 越大，越不容易遇到 local minima, 而且 local minima 在 loss 越低的時候越容易出現，local minima 的結果可能已經跟 global minima 一樣好。只是未來需要更多研究  </li>
+<li>長相非常不一樣的 networks 可以表現得非常像。因此不同 optimization strategy （adam, SGD）走到 solution 的方式的差異（最終流域、走的方向不同）可能比我們想像大，不止是速度的差別而已</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Generalization</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        就算你的 training stuck，也不代表你遇到 criticial point (要檢查 grad）；就算玉到 critical point, 也不代表是 local minima（要檢查 hessian matrix）
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Generalization">Generalization<a class="anchor-link" href="#Generalization">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>在 ML 的觀念，當兩個 model 的 training error 差不多的時候，選 capacity 小的，比較不會 overfitting</li>
+<li>DL 有非常高的 capacity, 但卻沒有我們想像中的那麼容易 overfitting，仿佛自帶 regularization, 還有很多謎在裡頭</li>
+</ul>
+<p>例子：</p>
+<ul>
+<li>MNIST training error 0，但 test error 為零的時候，在一般的 ML 你都會想要減少 model capacity，但在 DL 裡頭，你再增加 model 複雜度還反而降低 test error，學得更好 ..</li>
+</ul>
 </div>
 </div>
 </div>
