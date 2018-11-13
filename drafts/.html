@@ -129,7 +129,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title=""></a><ul><li><a class="toc-href" href="#Why-Deep-Structure?" title="Why Deep Structure?">Why Deep Structure?</a></li><li><a class="toc-href" href="#Optimization" title="Optimization">Optimization</a></li><li><a class="toc-href" href="#Generalization" title="Generalization">Generalization</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title=""></a><ul><li><a class="toc-href" href="#Why-Deep-Structure?" title="Why Deep Structure?">Why Deep Structure?</a></li><li><a class="toc-href" href="#Optimization" title="Optimization">Optimization</a></li><li><a class="toc-href" href="#Generalization" title="Generalization">Generalization</a></li><li><a class="toc-href" href="#Computational-Graph-&amp;-Backpropagation" title="Computational Graph &amp; Backpropagation">Computational Graph &amp; Backpropagation</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -196,7 +196,9 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">why</span> <span class="n">empirical</span> <span class="n">important</span><span class="err">?</span> <span class="n">we</span> <span class="n">just</span> <span class="n">can</span><span class="s1">'t see all the possiblities and came up with very general theories. experiement helps to understand DL.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">-</span> <span class="n">why</span> <span class="n">empirical</span> <span class="n">important</span><span class="err">?</span> <span class="n">we</span> <span class="n">just</span> <span class="n">can</span><span class="s1">'t see all the possiblities and came up with very general theories. experiement helps to understand DL.</span>
+<span class="o">-</span> <span class="n">遠古時代</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">dl</span> <span class="n">發展真的很快</span><span class="err">，</span><span class="n">很多</span> <span class="n">empirical</span> <span class="n">result</span> <span class="n">又過時了</span>
+<span class="o">-</span> <span class="n">大家很努力在搞清楚</span> <span class="n">DL</span> <span class="n">的</span> <span class="n">NN</span> <span class="n">到底內部在做什麼</span><span class="err">（</span><span class="n">畫</span> <span class="n">error</span> <span class="n">surface</span> <span class="n">etc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -207,7 +209,8 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Deep Learning Theory 10 影片</p>
 <ul>
-<li>400 minutes 總影片長度</li>
+<li>400 minutes 總影片長度, 換幾篇 paper?</li>
+<li>deep strucuture, optimization, generalization</li>
 </ul>
 <p>觀看人數</p>
 </div>
@@ -296,13 +299,32 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>在 ML 的觀念，當兩個 model 的 training error 差不多的時候，選 capacity 小的，比較不會 overfitting</li>
-<li>DL 有非常高的 capacity, 但卻沒有我們想像中的那麼容易 overfitting，仿佛自帶 regularization, 還有很多謎在裡頭</li>
+<li>在 ML 的觀念，當兩個 model 的 training error 差不多的時候，選 capacity 小的，比較不會 overfitting（但這不一定 apply 到 DL）</li>
+<li>DL 有非常高的 capacity, 但卻沒有我們想像中的那麼容易 overfitting，仿佛自帶 regularization, 還有很多謎在裡頭<ul>
+<li>例子：MNIST training error 0，但 test error 為零的時候，在一般的 ML 你都會想要減少 model capacity，但在 DL 裡頭，你再增加 model 複雜度還反而降低 test error，學得更好 ..</li>
 </ul>
-<p>例子：</p>
-<ul>
-<li>MNIST training error 0，但 test error 為零的時候，在一般的 ML 你都會想要減少 model capacity，但在 DL 裡頭，你再增加 model 複雜度還反而降低 test error，學得更好 ..</li>
+</li>
+<li>但同時我們也看到 NN 可以硬記所有資料，就算你給他 random label，他也能在 training 時學到 100%</li>
+<li>儘管我們能透過 validation set 來選擇兩個在 training set 都表現完美的 network, 有一些額外的 indicators 的話，可以讓我們有更多選擇一個更能 generalize 的 nn 的 guideline，並在未來訓練模型的時候就塞一些東西進去（比方說 regularization term, 然後這也成為一個研究領域），來讓 NN 的 indicators 符合我們想要的樣子<ul>
+<li>sensitivity 的 empirical result 讓我們看到 generalization gap 跟 jacob 是成正比的。這代表我們可以在沒有正確 label 的情況下，針對一筆 test data 算 sensitivity，來預測 network 能答對的機率。如果答對的希望渺茫，我們能交給人工判斷，在實務上是一個非常好的應用</li>
+<li>sharpness：直覺上找到的 local minima 附近的 error surface 越平滑，越能 generalize<ul>
+<li>training / test set 的分佈有差，但是如果是平滑的 local minima 其跟 test set 分配的差距可能比較小</li>
+<li>batch_size 小的 train 出來的 NN 的 generalization 能力比較強（雖然在 training 的時候都能表現非常好）<ul>
+<li>有假說是，比較大的 batch_size 讓我們比較容易跑到本來不容易跑到的 shape local minima</li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Computational-Graph-&amp;-Backpropagation">Computational Graph &amp; Backpropagation<a class="anchor-link" href="#Computational-Graph-&amp;-Backpropagation">&para;</a></h2>
 </div>
 </div>
 </div>
