@@ -198,6 +198,7 @@
 <span class="o">-</span> <span class="n">遠古時代</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">dl</span> <span class="n">發展真的很快</span><span class="err">，</span><span class="n">很多</span> <span class="n">empirical</span> <span class="n">result</span> <span class="n">又過時了</span>
 <span class="o">-</span> <span class="n">大家很努力在搞清楚</span> <span class="n">DL</span> <span class="n">的</span> <span class="n">NN</span> <span class="n">到底內部在做什麼</span><span class="err">（</span><span class="n">畫</span> <span class="n">error</span> <span class="n">surface</span> <span class="n">etc</span><span class="p">)</span>
 <span class="o">-</span> <span class="n">如果說完全不懂線性代數或是微積分也沒關係也沒有錯</span><span class="err">，</span><span class="n">但是內心可能覺得不踏實</span>
+<span class="o">-</span> <span class="n">把複雜的東西講得聽起來很複雜很簡單</span><span class="err">，</span><span class="n">講得簡單才是厲害</span>
 </pre></div>
 </div>
 </div>
@@ -351,7 +352,28 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Recurrent-Neural-Network">Recurrent Neural Network<a class="anchor-link" href="#Recurrent-Neural-Network">&para;</a></h2><p>ML course</p>
+<h2 id="Recurrent-Neural-Network">Recurrent Neural Network<a class="anchor-link" href="#Recurrent-Neural-Network">&para;</a></h2><p>ML course, 49 minutes</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在 slot prediction 的應用下，句子裡頭的 每個 word 就是一個 vector 包含所有的 x, 按照在句子中的順序被丟入 RNN, 而 output y vector 如果有 3 維， 就代表要預測該 word 分別是三種 slot 種類的機率 （dest, time, departure)</p>
+<p>句子中 word 順序會有影響
+同個字的 output ，依照前面的 word 所產生的 memory 會有所不同（leave / enter shop)</p>
+<p>RNN 關鍵概念：時間不同，同個 network</p>
+<p>Jordan 比 Elman 好的原因可萌是因為 Jordan 記憶是存上個時間點的輸出值 y 而不是 hidden layer ，且因為 y 是有 target 的比較好控制它的值</p>
+<p>RNN 基本概念就已經包含雙向了，同時訓練正向及逆向的 RNN</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>LSTM 的 memory cell 可以想成是一個特殊的 neurons, 有三個 gates: input, output, forget gate。一個 LSTM 的 memory cell 有四個 input: input 本身以及其他三個操控 gate 開關的「信號」，最後則產生一個 output</p>
+<p>LSTM 之所以叫做 Long Short-term Memory, 就是在說，相比於傳統 RNN，其 memory cell 裡頭的值能夠保留比較久（只要不 forget, 沒有 input)</p>
+<p>人體 LSTM</p>
 </div>
 </div>
 </div>
