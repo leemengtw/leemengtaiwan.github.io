@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/default.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemeng.tw/drafts/deep-learning-note-volume-1-deep-learning-theory-from-professor-hung-yi-lee.html" />
+        <meta property="og:title" content="深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory" />
+        <meta property="og:description" content="" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="../books.html">Books</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory">深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory</a><ul><li><a class="toc-href" href="#Why-Deep-Structure?" title="Why Deep Structure?">Why Deep Structure?</a></li><li><a class="toc-href" href="#Optimization" title="Optimization">Optimization</a></li><li><a class="toc-href" href="#Generalization" title="Generalization">Generalization</a></li><li><a class="toc-href" href="#Computational-Graph-&amp;-Backpropagation" title="Computational Graph &amp; Backpropagation">Computational Graph &amp; Backpropagation</a></li><li><a class="toc-href" href="#Recurrent-Neural-Network" title="Recurrent Neural Network">Recurrent Neural Network</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/default.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemeng.tw/drafts/deep-learning-note-volume-1-deep-learning-theory-from-professor-hung-yi-lee.html" title="">
+                            深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2018-11-09 (Fri)</li>
+                        <li class="page-view">
+                            1 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
+
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">-</span> <span class="n">why</span> <span class="n">empirical</span> <span class="n">important</span><span class="err">?</span> <span class="n">we</span> <span class="n">just</span> <span class="n">can</span><span class="s1">'t see all the possiblities and came up with very general theories. experiement helps to understand DL.</span>
+<span class="o">-</span> <span class="n">遠古時代</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">dl</span> <span class="n">發展真的很快</span><span class="err">，</span><span class="n">很多</span> <span class="n">empirical</span> <span class="n">result</span> <span class="n">又過時了</span>
+<span class="o">-</span> <span class="n">大家很努力在搞清楚</span> <span class="n">DL</span> <span class="n">的</span> <span class="n">NN</span> <span class="n">到底內部在做什麼</span><span class="err">（</span><span class="n">畫</span> <span class="n">error</span> <span class="n">surface</span> <span class="n">etc</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">如果說完全不懂線性代數或是微積分也沒關係也沒有錯</span><span class="err">，</span><span class="n">但是內心可能覺得不踏實</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Deep Learning Theory 10 影片</p>
+<ul>
+<li>400 minutes 總影片長度, 換幾篇 paper?</li>
+<li>+60 mins </li>
+<li>秒複習、怒算都是幫你抽象化不必要的細節（雖然功課可能有）</li>
+<li>deep strucuture, optimization, generalization</li>
+</ul>
+<p>觀看人數</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Why-Deep-Structure?">Why Deep Structure?<a class="anchor-link" href="#Why-Deep-Structure?">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>現實世界中，我們常常要的要一個可以把 x 對應的 y 的 fn 。而給定一個 network structure，不管其是 shallow 或是 deep，理論上只要架構夠大，都能讓潛在包含的 function space 包含想要 fit 的 function 。那為何 deep 好？</p>
+<ul>
+<li>（抽象化）我們在討論這章的時候，也不考慮實際上 shallow / deep 架構所構成的 function space 怎麼做 optimize / generalization 來實際找到該 target fn, 而是先假設只要包含了，最後就能找到一組參數 fit 出 target function</li>
+<li>可以更有效率地產生更多 piece-wise linear functions, 同樣 performance 下， shallow 需要的 neuron 數目是 deep 的指數倍</li>
+<li>有些在 deep 才能 fit 的 functions 你在 shallow 無法 fit</li>
+</ul>
+<p>例子：</p>
+<pre><code>- 獵人比喻 swallow network 的最好/最差狀態
+
+</code></pre>
+<p>結論：當你想要 fit 一個複雜的 fn, deep is exponentially better than shallow</p>
+<pre><code>- 以相同的 performance 或是相同的 neurons 數來比較
+- 就像是相加 vs 相乘能力（以 ReLU 來看)</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Optimization">Optimization<a class="anchor-link" href="#Optimization">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>就是從（deep structure 組成的） function space 裡頭找出 function star 的方法</p>
+<ul>
+<li>（抽象化）optimization 不等於 learning<ul>
+<li>給定一個 loss function, optimization 專注在找到能讓 loss function 最小的一組參數（fit training data well）。而至於使用該參數預測測試資料有沒有 overfit 問題（learning）不是現在這章的關注重點</li>
+<li>反過來說，有時候找到 global minima 不是最重要的，而且反而容易 overfitting. local minimal 可能就足夠</li>
+</ul>
+</li>
+</ul>
+<p>例子：</p>
+<pre><code>- 八門遁甲不是一個非常好的招式（deep structure 就算）
+
+</code></pre>
+<ul>
+<li>training stuck 不一定就代表走到 critical point, 梯度為 0（有可能 loss 很低沒啥改變，但是 grad 的值還是很大）</li>
+<li>且 training 過程，遭遇到的 gradient 是上上下下，而不是跟 loss 一樣直線下降</li>
+<li>如果確定是遇到 critical point, 可以使用 Hessian Matrix 確認是 local minimum / saddle point / local maximum</li>
+<li>ReLU network / non-linear netowrk 有 local minima, 要避免撞到這些盲點，選好 initial 的位置很重要；資料可能也有影響</li>
+<li>而 empirical 結果以及一些猜測顯示，我們訓練的 network structure 越大，越不容易遇到 local minima, 而且 local minima 在 loss 越低的時候越容易出現，local minima 的結果可能已經跟 global minima 一樣好。只是未來需要更多研究  </li>
+<li>長相非常不一樣的 networks 可以表現得非常像。因此不同 optimization strategy （adam, SGD）走到 solution 的方式的差異（最終流域、走的方向不同）可能比我們想像大，不止是速度的差別而已</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        就算你的 training stuck，也不代表你遇到 criticial point (要檢查 grad）；就算玉到 critical point, 也不代表是 local minima（要檢查 hessian matrix）
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Generalization">Generalization<a class="anchor-link" href="#Generalization">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>在 ML 的觀念，當兩個 model 的 training error 差不多的時候，選 capacity 小的，比較不會 overfitting（但這不一定 apply 到 DL）</li>
+<li>DL 有非常高的 capacity, 但卻沒有我們想像中的那麼容易 overfitting，仿佛自帶 regularization, 還有很多謎在裡頭<ul>
+<li>例子：MNIST training error 0，但 test error 為零的時候，在一般的 ML 你都會想要減少 model capacity，但在 DL 裡頭，你再增加 model 複雜度還反而降低 test error，學得更好 ..</li>
+</ul>
+</li>
+<li>但同時我們也看到 NN 可以硬記所有資料，就算你給他 random label，他也能在 training 時學到 100%</li>
+<li>儘管我們能透過 validation set 來選擇兩個在 training set 都表現完美的 network, 有一些額外的 indicators 的話，可以讓我們有更多選擇一個更能 generalize 的 nn 的 guideline，並在未來訓練模型的時候就塞一些東西進去（比方說 regularization term, 然後這也成為一個研究領域），來讓 NN 的 indicators 符合我們想要的樣子<ul>
+<li>sensitivity 的 empirical result 讓我們看到 generalization gap 跟 jacob 是成正比的。這代表我們可以在沒有正確 label 的情況下，針對一筆 test data 算 sensitivity，來預測 network 能答對的機率。如果答對的希望渺茫，我們能交給人工判斷，在實務上是一個非常好的應用</li>
+<li>sharpness：直覺上找到的 local minima 附近的 error surface 越平滑，越能 generalize<ul>
+<li>training / test set 的分佈有差，但是如果是平滑的 local minima 其跟 test set 分配的差距可能比較小</li>
+<li>batch_size 小的 train 出來的 NN 的 generalization 能力比較強（雖然在 training 的時候都能表現非常好）<ul>
+<li>有假說是，比較大的 batch_size 讓我們比較容易跑到本來不容易跑到的 shape local minima</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Computational-Graph-&amp;-Backpropagation">Computational Graph &amp; Backpropagation<a class="anchor-link" href="#Computational-Graph-&amp;-Backpropagation">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>computational graph 是一種描述 function 的語言，而用 graph 的好處是，可以很簡單地利用 chain rule 來怎麼算 node 之間的微分</li>
+<li>在計算梯度時，從 root 開始用 reserve mode 算是比較有效率的。因為基本上我們在 train NN 都是要計算 loss function，而 loss function 以 graph 表示就是一個 scaler, 也就是一個 root, 剛好適合用來反向傳播</li>
+<li>Jacobian Matrix 就是 vector 跟 vector 的偏微分</li>
+<li>就算是 computational graph, 事實上要算出 grad，也是要先 forward pass，然後再做一次 backward pass</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TODO: Recurrent Network 從 52:40 開始</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Recurrent-Neural-Network">Recurrent Neural Network<a class="anchor-link" href="#Recurrent-Neural-Network">&para;</a></h2><p>ML course</p>
+</div>
+</div>
+</div>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                    </span>
+
+                </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
+
+</body>
+</html>
