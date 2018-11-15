@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 我在比利時 EMNLP 之旅中學到的 3 堂課</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="" />
+        <meta name="keywords" content="隨筆, 自然語言處理, 深度學習" />
+        <meta name="tags" content="隨筆" />
+        <meta name="tags" content="自然語言處理" />
+        <meta name="tags" content="深度學習" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/bruxelles-post-cover.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemeng.tw/drafts/3-lessons-i-learnt-from-emnlp-2018-at-belgium.html" />
+        <meta property="og:title" content="我在比利時 EMNLP 之旅中學到的 3 堂課" />
+        <meta property="og:description" content="" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="../books.html">Books</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="我在比利時 EMNLP 之旅中學到的 3 堂課">我在比利時 EMNLP 之旅中學到的 3 堂課</a><ul><li><a class="toc-href" href="#計畫之外的-NLP-之旅" title="計畫之外的 NLP 之旅">計畫之外的 NLP 之旅</a></li><li><a class="toc-href" href="#幾萬呎高空上的兩本書" title="幾萬呎高空上的兩本書">幾萬呎高空上的兩本書</a></li><li><a class="toc-href" href="#從零開始的-NLP-之路" title="從零開始的 NLP 之路">從零開始的 NLP 之路</a></li><li><a class="toc-href" href="#到了驗收時刻" title="到了驗收時刻">到了驗收時刻</a></li><li><a class="toc-href" href="#劉佬佬進大觀園" title="劉佬佬進大觀園">劉佬佬進大觀園</a></li><li><a class="toc-href" href="#驗收時刻" title="驗收時刻">驗收時刻</a></li><li><a class="toc-href" href="#旅行的定義重點不在地點，而在心態" title="旅行的定義重點不在地點，而在心態">旅行的定義重點不在地點，而在心態</a></li><li><a class="toc-href" href="#實際行動" title="實際行動">實際行動</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li><li><a class="toc-href" href="#記憶大量關鍵字" title="記憶大量關鍵字">記憶大量關鍵字</a></li><li><a class="toc-href" href="#教堂巡迴之旅" title="教堂巡迴之旅">教堂巡迴之旅</a></li><li><a class="toc-href" href="#啤酒、淡菜以及鬆餅" title="啤酒、淡菜以及鬆餅">啤酒、淡菜以及鬆餅</a></li><li><a class="toc-href" href="#Social-Event-驗收成果" title="Social Event 驗收成果">Social Event 驗收成果</a></li><li><a class="toc-href" href="#全力衝刺-NLP" title="全力衝刺 NLP">全力衝刺 NLP</a></li><li><a class="toc-href" href="#Connect-the-dots" title="Connect the dots">Connect the dots</a></li><li><a class="toc-href" href="#素材" title="素材">素材</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/bruxelles-post-cover.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemeng.tw/tag/sui-bi.html" rel="tag">隨筆</a>
+                            <a href="https://leemeng.tw/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
+                            <a href="https://leemeng.tw/tag/shen-du-xue-xi.html" rel="tag">深度學習</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemeng.tw/drafts/3-lessons-i-learnt-from-emnlp-2018-at-belgium.html" title="">
+                            我在比利時 EMNLP 之旅中學到的 3 堂課
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2018-11-19 (Mon)</li>
+                        <li class="page-view">
+                            1 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
+
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>作為此部落格的第一篇隨筆，我想將最近在比利時首都，<a href="https://zh.wikipedia.org/wiki/%E5%B8%83%E9%B2%81%E5%A1%9E%E5%B0%94">布魯塞爾</a>參加 <a href="http://emnlp2018.org/">EMNLP 2018 學術會議</a>的心得簡單地記錄下來，整理這段時間的想法並與你分享。</p>
+<p>事先聲明：我並非 NLP （<strong>N</strong>atural <strong>L</strong>anguage <strong>P</strong>rocessing，即自然語言處理）研究學者，因此本篇不會列出一長串會議論文的心得摘要。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/emnlp2018/emnlp-line-up.jpg"/>
+</center>
+<center>
+                        Workshops / Tutorials 第一天報到的人龍
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>相反的，我會把數天參加 EMNLP 會議、悠遊布魯塞爾市區時所感受到的個人想法總結成我在這次旅程中學到最重要的 3 個 lessons。希望你在閱讀本文以後，一樣也能從中獲得一些啟發。</p>
+<p>最後在文末，我則會說明這些想法將如何影響今後部落格的走向。如果你是忠實讀者，或許也會有興趣了解這個故事：）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="計畫之外的-NLP-之旅">計畫之外的 NLP 之旅<a class="anchor-link" href="#計畫之外的-NLP-之旅">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>今年 10 月底，我跟公司請了一個禮拜的假參加在布魯塞爾舉辦的 <a href="http://emnlp2018.org/">EMNLP 會議</a>。</p>
+<p>EMNLP 作為世界頂尖的<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86">自然語言處理</a>會議之一，每年都有無以數計的專業人士聚集在此，與他人分享自己最新的研究成果。你可以在<a href="http://emnlp2018.org/schedule">這邊看到所有議程以及論文</a>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/emnlp2018/emnlp-entrance.jpg"/>
+</center>
+<center>
+                        EMNLP 2018 會場門口，可以看到非常多知名公司的贊助
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>不過老實說，在同事提及此會議之前，我並沒有聽過它的名號，更不用說考慮報名參加了。我本來預計是要參加跟資料工程相關的 <a href="https://www.dataengconf.com/">DataEngConf</a> 會議。（你可能已經從<a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html">我寫過的幾篇資料工程文章</a>了解我對 DE 的興趣）</p>
+<p>但我想説難得有機會深入了解現在 NLP 的研究趨勢，況且人多有個照應，稍微衡量一下就決定參加 EMNLP 了。</p>
+<p>當時的我還不曉得，這趟旅程為自己帶來的收穫，比原先預想地來得多。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="幾萬呎高空上的兩本書">幾萬呎高空上的兩本書<a class="anchor-link" href="#幾萬呎高空上的兩本書">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>從東京到比利時，飛行距離大約有 1 萬公里，直飛也需快 12 小時。在長途飛行中沒有網路，因此我這次決定帶兩本買了好一陣子都沒翻開的書，計畫去程與回程各看一本。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>中途因為沒有任何如 Facebook 通知的干擾，我在飛機快抵達布魯塞爾時消化完《你要如何衡量你的人生？》的內容。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/emnlp2018/two-books.jpg"/>
+</center>
+<center>
+                        這次跟我一起去比利時的兩本書
+                        （<a href="https://leemeng.tw/books.html" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>透過此書我學到，那些你在職場或人生中設定的策略以及計劃，在實際展開行動去執行它們之前，什麼都不是。為了達成你要的目標，你得實際分配精力、時間等資源在上面，而非只是空想或說大話。</p>
+<p>在回東京時，我則閱讀了<a href="https://gettingmore.com/">《華頓商學院最受歡迎的談判課》</a>。戴蒙教授用深入淺出的說明以及大量真實案例，再次提醒我在進行溝通或談判時，以「人」為本、設身處地的重要性。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/emnlp2018/aaron-burden-236415-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這兩本書值得推薦，但在這裏，重點其實並不在於這兩本書的內容。在閱讀完《你要如何衡量你的人生？》時飛機正好抵達比利時，我則恍然大悟：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        為何我早知道能從閱讀此書而獲得許多寶貴的思想，卻拖到現在才看？
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>沒有下定決心來花費資源以執行策略。</p>
+<p>你的書櫃上是否也放了不少買了卻沒看的書？當初買書時你期望透過書本學到什麼？沒看完的原因又是什麼呢？</p>
+<p>如果「沒時間」是你的理由，那麼正說明了你跟當時的我一樣，沒有下定決心將自己的資源（時間）花在執行策略上面（看書變聰明、豐富人生）。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/emnlp2018/chuttersnap-412981-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>資訊爆炸時代，我們的閱讀時間極度零碎，也難以長時間集中自己的注意力。很多時候跟看 Youtube 影片比起來，我們會覺得讀一本書的「投資報酬率」太低：花費時間太多，帶來的刺激太少。</p>
+<p>但其實並不是那麼一回事。好的書籍能改變你的一生，讓你終身受惠。而這次的機上閱讀帶給我的第一堂課即是：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        閱讀好書是最好的長期投資，能豐富並讓你的人生更好。隨時確保你會實際花時間與精力去閱讀自己感興趣的書籍。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>的確，你不需要像我一樣在幾萬呎高空下閱讀才能得到一樣的感想。但這的確是我在這趟旅行的一開始就重新深刻地體會到的一堂課。（多虧了長途飛行給我的無干擾時間！）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="從零開始的-NLP-之路">從零開始的 NLP 之路<a class="anchor-link" href="#從零開始的-NLP-之路">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/emnlp2018/La-place-Royale.jpg"/>
+</center>
+<center>
+                        到達布魯塞爾的當天飄著綿綿細雨
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>下了飛機，坐車來到市區，EMNLP 就要展開。讓我們回到 NLP 的話題。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>儘管我一直都對 NLP 抱持著不少興趣，卻沒有花過時間去了解近年<a href="https://zh.wikipedia.org/zh-hant/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度學習（Deep Learning）</a>在 NLP 領域的快速發展以及創新。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/emnlp2018/emnlp-conference.jpg"/>
+</center>
+<center>
+                        EMNLP 其中一個會議廳
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因此我明白以我當下的 NLP 知識水平（幾乎是 0），要在會場內理解演講者的論文發表並提問的難度是很高的。</p>
+<p>基於這樣的背景，我將此次參加會議的目標下修，設定為「掌握 NLP 基本概念以及趨勢」。</p>
+<p>為了達到這樣的目標，我有一個非常 naive 的策略，其分為三個步驟：</p>
+<ul>
+<li>選擇有興趣的 Sessions 聆聽</li>
+<li>將講者提到，但我不熟悉的關鍵字記下來</li>
+<li>當天 Session 結束後上網 Google 關鍵字（及美食）了解其含義</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/emnlp2018/food-in-belgium.jpg"/>
+</center>
+<center>
+                        來比利時當然不能錯過淡菜及啤酒
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>當然，你可以想像一開始的幾場演講，作者的一句話或是一張投影片就能讓我瘋狂打下關鍵字的樣子。</p>
+<p>不過會議每進行一天，我就記越少關鍵字。這很合理，因為畢竟大部分論文運用的基本 NLP 概念是相通的。</p>
+<p>以下節錄一些我紀錄下來的關鍵字：</p>
+<ul>
+<li>Recurrent Neural Network（RNN）<ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E9%95%B7%E7%9F%AD%E6%9C%9F%E8%A8%98%E6%86%B6">LSTM</a></li>
+<li><a href="https://datascience.stackexchange.com/a/25657">BiLSTM</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/32481747">GRU</a></li>
+<li><a href="http://www.sohu.com/a/240293276_610300">SRNN</a></li>
+<li><a href="https://bigdatafinance.tw/index.php/news/578-transformer-rnn-lstm">Transformer</a></li>
+</ul>
+</li>
+<li>Word Embedding<ul>
+<li><a href="https://allennlp.org/elmo">ELMo</a></li>
+<li><a href="https://nlp.stanford.edu/projects/glove/">GloVe</a></li>
+<li><a href="https://arxiv.org/abs/1810.04805">BERT</a></li>
+</ul>
+</li>
+<li>Evaluation<ul>
+<li><a href="https://en.wikipedia.org/wiki/BLEU">BLEU</a></li>
+<li><a href="https://rajpurkar.github.io/SQuAD-explorer/">SQuAD</a></li>
+</ul>
+</li>
+<li>NLP Tasks<ul>
+<li><a href="https://1fly2sky.wordpress.com/2016/04/02/%E5%91%BD%E5%90%8D%E5%AF%A6%E9%AB%94%E8%AD%98%E5%88%A5%E6%8A%80%E8%A1%93named-entity-recognition/">Named Entity Recognition</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Machine_translation">Machine Translation</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%95%8F%E7%AD%94%E7%B3%BB%E7%B5%B1">Question Answering</a></li>
+<li><a href="https://machinelearningmastery.com/gentle-introduction-text-summarization/">Text Generation and Summarization</a></li>
+<li><a href="https://arxiv.org/abs/1711.06861">Style Transfer</a></li>
+<li><a href="https://towardsdatascience.com/nlp-building-a-question-answering-model-ed0529a68c54">Reading Comprehension</a></li>
+<li><a href="http://www.wildml.com/2016/04/deep-learning-for-chatbots-part-1-introduction/">Open / Closed Domain Conversation</a></li>
+</ul>
+</li>
+<li><a href="https://skymind.ai/wiki/attention-mechanism-memory-network">Attention Mechanism</a></li>
+<li>...</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>原汁原味的英文。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/emnlp2018/nlp-word-cloud.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>別擔心，我沒有打算也沒有時間在這裡一一介紹這些 NLP 術語，不過附上當初我在比利時 Google 這些詞彙時參考的連結，你可以之後查閱。</p>
+<p>EMNLP 當然不只談了上述東西，但它們肯定是現在 NLP 研究/應用領域裡頭常用的關鍵字。了解這些詞彙的意義，能讓你快速掌握大部分現在 NLP 領域最新的知識並與專家交流。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/emnlp2018/pan-xiaozhen-423533-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這個「高頻關鍵字策略」很間單，就跟我們從小學外語的方式如出一轍。在初學語言時，比較有效率的學習方法通常是先拿起「英文高頻 5000 單字」或是「常用日本會話 1000 句」來看，而不是去背「<a href="https://www.ettoday.net/news/20121228/146060.htm">火山矽肺症</a>」的英文。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="到了驗收時刻">到了驗收時刻<a class="anchor-link" href="#到了驗收時刻">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>效率</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>但人類利用深度學習，在 NLP 領域披荊斬棘，進展非常快速。説說我最感興趣的機器翻譯（<strong>M</strong>achine <strong>T</strong>ranslation, MT）吧！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>最近我甚至已經可以用以<a href="https://scitechvista.nat.gov.tw/c/sgtQ.html">神經機器翻譯（<strong>N</strong>eural <strong>M</strong>achine <strong>T</strong>ranslation, NMT）</a>為基礎的 <a href="https://translate.google.com/?hl=zh-TW">Google 翻譯</a>來跟烏克蘭以及法國的朋友開心聊天，儘管我對俄文以及法文一無所知。</p>
+<p>在幾年前，主流是透過<a href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E8%AE%A1%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91">統計機器翻譯（<strong>S</strong>tatistical <strong>M</strong>achine <strong>T</strong>ranslation, SMT）</a>，對大量的平行語料進行統計分析，構建出語言模型以後進行翻譯。</p>
+<p>因此趁著這次的旅行，我打算盡可能地了解這個領域裡頭有哪些關鍵字、參加會議後我該怎麼開始有效率地學習 NLP，並在會議空閑的時候逛逛布魯塞爾。</p>
+<p>就結果而言，我的成果還算是差強人意。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="劉佬佬進大觀園">劉佬佬進大觀園<a class="anchor-link" href="#劉佬佬進大觀園">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">emnlp</span><span class="o">-</span><span class="n">conference</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="驗收時刻">驗收時刻<a class="anchor-link" href="#驗收時刻">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">social</span> <span class="n">event</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">無時無刻用最有效率的方式學習新知</span><span class="err">，</span><span class="n">我們最大的潛力在於能多快</span> <span class="n">pick</span> <span class="n">up</span> <span class="n">新事物</span><span class="err">，</span><span class="n">而非現有知識</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="旅行的定義重點不在地點，而在心態">旅行的定義重點不在地點，而在心態<a class="anchor-link" href="#旅行的定義重點不在地點，而在心態">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="實際行動">實際行動<a class="anchor-link" href="#實際行動">&para;</a></h2><h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">*</span> <span class="n">Pick</span> <span class="n">up</span> <span class="n">一個知識不應該需要數年</span><span class="err">，</span><span class="n">也不該是這樣</span>
+    <span class="o">*</span> <span class="n">學了半年</span><span class="err">，</span><span class="n">跟的教授好的啟示</span>
+    <span class="o">*</span> <span class="n">李鴻毅教授說的</span>
+    <span class="o">*</span> <span class="n">幼稚園進到大學的感受</span>
+<span class="o">*</span> <span class="n">旅行的定義重點不在地點</span><span class="err">，</span><span class="n">而在心態</span>
+    <span class="o">*</span> <span class="n">身在東京久了</span><span class="err">，</span><span class="n">忘了旅行的意義</span>
+    <span class="o">*</span> <span class="n">只待在布魯塞爾</span><span class="err">，</span><span class="n">沒有去所謂的旅遊勝地是個浪費</span><span class="err">？</span>
+<span class="o">*</span> <span class="n">我們真最大的潛力在於能多快</span> <span class="n">pick</span> <span class="n">up</span> <span class="n">新事物</span><span class="err">，</span><span class="n">而非現有知識</span>
+    <span class="o">*</span> <span class="n">你需要</span> <span class="n">focus</span> <span class="n">減少</span> <span class="n">distraction</span> 
+
+<span class="n">這趟旅程改變人生在於我相信這是一個轉捩點</span>
+<span class="n">開啟全新的機會</span>
+
+<span class="n">我的行動</span>
+
+
+<span class="n">結論</span><span class="err">：</span><span class="n">成為一般人到深度學習專家的橋樑</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="記憶大量關鍵字">記憶大量關鍵字<a class="anchor-link" href="#記憶大量關鍵字">&para;</a></h2><h2 id="教堂巡迴之旅">教堂巡迴之旅<a class="anchor-link" href="#教堂巡迴之旅">&para;</a></h2><h2 id="啤酒、淡菜以及鬆餅">啤酒、淡菜以及鬆餅<a class="anchor-link" href="#啤酒、淡菜以及鬆餅">&para;</a></h2><h2 id="Social-Event-驗收成果">Social Event 驗收成果<a class="anchor-link" href="#Social-Event-驗收成果">&para;</a></h2><p>結果：在 social event 被誇說 NLP 不錯👍</p>
+<h2 id="全力衝刺-NLP">全力衝刺 NLP<a class="anchor-link" href="#全力衝刺-NLP">&para;</a></h2><p>any recommendation?</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>image
+<span class="o">-</span> <span class="n">emnlp2018</span><span class="o">/</span><span class="n">emnlp</span><span class="o">-</span><span class="n">entrance</span><span class="o">.</span><span class="n">jpg</span>
+
+<span class="n">但首先我得先承認</span><span class="err">，</span><span class="n">跟與會人士擁有的</span> <span class="n">NLP</span> <span class="n">知識比起來</span><span class="err">，</span><span class="n">我對</span> <span class="n">NLP</span> <span class="n">的理解彷彿無知地令人讚嘆</span><span class="err">。</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">趁這個機會</span><span class="err">，</span><span class="n">把</span> <span class="n">NLP</span> <span class="n">最近的資源處理出來</span><span class="err">，</span><span class="n">方便自己上路</span><span class="err">，</span><span class="n">也幫助別人</span><span class="err">。</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Connect-the-dots">Connect the dots<a class="anchor-link" href="#Connect-the-dots">&para;</a></h2><ul>
+<li>IR </li>
+<li>Coursera 課程(andrew, machine learning)</li>
+<li></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="素材">素材<a class="anchor-link" href="#素材">&para;</a></h2><ul>
+<li>自己的 EMNLP 筆記、關鍵字蒐集</li>
+<li>其他人的見聞<ul>
+<li><a href="https://www.leiphone.com/news/201811/6xESoGatFLejrh7x.html?type=preview&amp;viewType=weixin">Patrick Lewis(UCL 的自然语言处理博士生，同时他也参与 Facebook 人工智能研究院的研究)</a></li>
+<li><a href="https://www.jiqizhixin.com/articles/2018-09-21-12">EMNLP 2018 | 最佳论文出炉：谷歌、Facebook、CMU上榜</a><ul>
+<li>亮點是 Facebook 的無監督試 NMT</li>
+</ul>
+</li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650741621&amp;idx=4&amp;sn=210c9b3694f56508267e95235fb99f3c&amp;chksm=871adf0bb06d561dc99a89a5f56cf835bc92aa25401294216262128402490918d2787fe7fd09&amp;scene=21#wechat_redirect">學界| FAIR新一代無監督機器翻譯：模型更簡潔，性能更優</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">人生都會有轉捩點</span><span class="err">，</span><span class="n">我相信這是其中一個</span><span class="err">。</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>旅行本身沒有意義，但它能激發你思考人生的意義</li>
+<li><p>出社會前我為了別人（的期望）而學；現在我為自己而學</p>
+</li>
+<li><p>我想說的是，你最近從零開始學會的東西是什麼？更重要的，一直想學但是沒有碰的東西是什麼？為什麼沒有進展？在這個變化快速的世界，我們最需要的是快速學習任何東西的方法（如果你是要學 NLP 接下來可以跟著我）</p>
+</li>
+<li>你不需要花 years 學深度學習（也不實際），但你要做到，你要用最有效率的方式、最好的資源</li>
+</ul>
+<p>Todo</p>
+<ul>
+<li>Emnlp Twitter tag</li>
+<li>中文新聞報導</li>
+</ul>
+<p>Strategy： 學會關鍵字</p>
+<ul>
+<li>想做 MT 是想要讓台灣人還有自己更聰明：collective intelligence 。我不認為歐美人比較聰明，只是因為他們有比較多（英文）資源</li>
+<li>成為一般人學習深度學習的橋樑、Hub</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemeng.tw/tag/sui-bi.html" rel="tag">隨筆</a>
+                        <a href="https://leemeng.tw/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
+                        <a href="https://leemeng.tw/tag/shen-du-xue-xi.html" rel="tag">深度學習</a>
+                    </span>
+
+                </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '我在比利時 EMNLP 之旅中學到的 3 堂課';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
+
+</body>
+</html>
