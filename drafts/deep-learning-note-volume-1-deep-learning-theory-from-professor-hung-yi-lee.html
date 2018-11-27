@@ -129,7 +129,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory">深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory</a><ul><li><a class="toc-href" href="#Why-Deep-Structure?" title="Why Deep Structure?">Why Deep Structure?</a></li><li><a class="toc-href" href="#Optimization" title="Optimization">Optimization</a></li><li><a class="toc-href" href="#Generalization" title="Generalization">Generalization</a></li><li><a class="toc-href" href="#Computational-Graph-&amp;-Backpropagation" title="Computational Graph &amp; Backpropagation">Computational Graph &amp; Backpropagation</a></li><li><a class="toc-href" href="#Recurrent-Neural-Network" title="Recurrent Neural Network">Recurrent Neural Network</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory">深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory</a><ul><li><a class="toc-href" href="#Why-Deep-Structure?" title="Why Deep Structure?">Why Deep Structure?</a></li><li><a class="toc-href" href="#Optimization" title="Optimization">Optimization</a></li><li><a class="toc-href" href="#Generalization" title="Generalization">Generalization</a></li><li><a class="toc-href" href="#Computational-Graph-&amp;-Backpropagation" title="Computational Graph &amp; Backpropagation">Computational Graph &amp; Backpropagation</a></li><li><a class="toc-href" href="#Recurrent-Neural-Network" title="Recurrent Neural Network">Recurrent Neural Network</a><ul><li><a class="toc-href" href="#ML-course-21-1,-49-minutes" title="ML course 21-1, 49 minutes">ML course 21-1, 49 minutes</a></li><li><a class="toc-href" href="#ML-course-21-2,-1-hr-30-minutes" title="ML course 21-2, 1 hr 30 minutes">ML course 21-2, 1 hr 30 minutes</a></li></ul></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -346,14 +346,23 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>TODO: Recurrent Network 從 52:40 開始</p>
+<p>（看了 ML 21-1 &amp; 21-2 再從 52:40 繼續看）</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Recurrent-Neural-Network">Recurrent Neural Network<a class="anchor-link" href="#Recurrent-Neural-Network">&para;</a></h2><p>ML course, 49 minutes</p>
+<p>在 computation graph 裏頭，何謂一個 function 是自己定義的</p>
+<p>RNN 考慮的是整個 sequence 的 cost, 所以在每個時間點算出的 Ci 要全部加起來</p>
+<p>RNN 雖然是在不同時間點共用參數，但要計算出特定一個參數對 cost function 的影響，要將不同時間點下的 wh 對 C 的偏微分全部加起來，才是 wh 對 C 的總影響。而因為每一個時間點的 hidden ht (memory) 會收到前一個 memory ht-1 的值的影響，ht/ht-1 的偏微分讓 RNN 不會 train, 所以會考慮使用 LSTM. (LSTM 的其中一個初衷是解決 gradient vanishing 的問題）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Recurrent-Neural-Network">Recurrent Neural Network<a class="anchor-link" href="#Recurrent-Neural-Network">&para;</a></h2><h3 id="ML-course-21-1,-49-minutes">ML course 21-1, 49 minutes<a class="anchor-link" href="#ML-course-21-1,-49-minutes">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -379,7 +388,144 @@
 <p>基本上 LSTM 就是 standard, 別人說他用 RNN，有很大的機率就是在說他用 LSTM。而最簡單的 RNN 則通常叫做 SimpleRNN</p>
 <p>LSTM 基本上 X 會跟四組 weights 做 4 次 linear transformation 產生跟一層 LSTM neuron 數目相同的 Z, Zi, Zo, Zf vectors, 然後將各個 vectors 利用一連串的矩陣運算組合起來（可以運用平行運算， GPU 優勢）再最後產生 Y vectors. 而且每個時間點不只是餵進 X, 還會將上一次的 Y 作為 hidden layer output 以及 memory cell 裡頭的 C vectors 拿過來，跟 X 組合起來一起跟 4 組 weights 做結合</p>
 <p>而當然 LSTM 也可以 deep / multi-layer, 疊 5、 6 層的 LSTM cells</p>
-<p>GRU 是 LSTM 的一個簡化版本，只有兩個 gates, 少了 1/3 參數但聽說 performance 差不多，可以避免 overfitting</p>
+<p>GRU（Gated Recurrent Unit） 是 LSTM 的一個簡化版本，只有兩個 gates, 少了 1/3 參數但聽說 performance 差不多，可以比較容易避免 overfitting （training 時比較 robust）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="ML-course-21-2,-1-hr-30-minutes">ML course 21-2, 1 hr 30 minutes<a class="anchor-link" href="#ML-course-21-2,-1-hr-30-minutes">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>做 slot fitting 時，在做 training 時也要按裝 utterence (sequence) 當初的順序把字丟進去，要不 LSTM cells 就無法得到正確的 memory 值。</p>
+<p>RNN 也跟 feed-forward network 一樣用 gradient descent 及 back-progagation 來訓練，但因為 RNN 要考慮時間序列，因此是使用 Back progagtion throught time (BPTT), 先想成進階版的 back progagation 即可。</p>
+<p>RNN 不好 train，訓練過程中可能 loss 變動很大，而這可能不是程式 bug，而是因為 RNN 的 loss function 的 error surface 不是很陡峭就是很平滑，導致這種現象。而一個解決方法是 clipping: 限制 gradient 最大的值。</p>
+<p>而其原因不是因為 activate function 是 sigmoid 這麼簡單，而是因為 RNN 在處理 time sequce 時，將 memory 的值轉換到 cell 時用到的 weights 是相同的。每個時間點用相同的 weight 疊加的結果，就是變成要嘛完全沒變化；要嘛天崩地裂。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為什麼要用 LSTM 取代傳統 RNN？ 因為可以解決 gradient vanishing 問題。（不過 Hinton 也有推出一篇用傳統 RNN + identity matrix initialization 證明能用簡單 RNN 贏過複雜的 LSTM）</p>
+<p>GRU 精神：「舊的不去，新的不來」。讓 input gate 跟 forget gate 連動：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>RNN applications</p>
+<ul>
+<li>Input element 跟 output element 一樣多<ul>
+<li>input and output are both sequences with the same length</li>
+<li>slot fitting (每個 input word 一定會對應到一個屬於 30 ~ 40 個 slots 的其中一個)</li>
+</ul>
+</li>
+<li>Many-to-one<ul>
+<li>input 是 vector sequence, output 只是一個 vector</li>
+<li>中文的話一個字就是一個 char -&gt; input 是一個 char sequence</li>
+<li>英文的話每個 word 就通過 embedding layer 變成一個 vector -&gt; vector sequence</li>
+<li>setiment analysis (maybe 5 class-classification)<ul>
+<li>在最後一個時間點把 hidden layer 結果拿出來，經過幾次 transformation 得到分類結果</li>
+</ul>
+</li>
+<li>key term extraction</li>
+</ul>
+</li>
+<li>Many-to-Many (output is shorter)<ul>
+<li>speech recoginition <ul>
+<li>很棒的例子：好棒 vs 好棒棒</li>
+<li>因為通常 0.01 秒就取做一個 vector，而通常很多個 input vectors 才實際對應到一個中文 charactor(output is shorter)</li>
+<li>with CTC = 允許 output NULL, not trimming, google 現在貌似就是用這個</li>
+<li>不需要教 machine 一個詞彙長什麼樣子</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Many-to-Many (No Limitation)<ul>
+<li>事先不知道 input / output 誰長：Sequence-to-Sequence learning</li>
+<li>machine translation<ul>
+<li>用 RNN 把所有 input vectors 讀入，再看最後一個時間點，已經包含整個 sequence information 的 memory，用它來產生第一個 output character. 接著把該 charactor 再跟 memory 結合，產生下一個 output character</li>
+<li>有趣的例子： ptt 推文接龍</li>
+<li>RNN 不只 output 一般中文字，也會 output 「斷」</li>
+</ul>
+</li>
+<li>google 嘗試將法語聲音訊號直接轉成英文文字<ul>
+<li>代表我們不需要做「語音辨識」：直接跳過把法文聲音訊號轉成法文文字這件事情</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Beyond Sequence<ul>
+<li>Syntactic Parsing <ul>
+<li>把語法樹表達成 sequence 的 format 以後，我們也能讓 RNN 訓練成看過一個句子，就能分析出語法樹</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Sequence-to-sequence Auto-encoder - Text<ul>
+<li>一般 BOW 方式沒考慮到語順，可能導致結果天差地遠</li>
+<li>在有考慮 word sequence order 的情況下，利用 encoder 將一個 document encode 成一個 vector，再將該 vector 丟給 decoder 讓 decoder 還原。如果最後能訓練成功，就代表該 embedding vector 包含了原句子中重要的概念。</li>
+<li>這個好處是不用 label data. 你只需要大量的句子</li>
+<li>也可以用 hieratcial 的方式</li>
+</ul>
+</li>
+<li>Sequence-to-sequence Auto-encoder - Speech<ul>
+<li>Audio 的 word2vector</li>
+<li>可以用來做語音搜尋</li>
+<li>chat bot</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>感想：</p>
+<ul>
+<li>sequence-to-sequence learning 基本上都是要有 RNN encoder / decoder 同時訓練（jointly trained）。而 decoder 拿 encoder 在最後一個時間點（sequence 最後一個 input 輸入後的 memory 結果代表著整個 sequence 資訊）的 embedding vector (memory vector) 來想辦法產生想要產生的 output。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Attention-base Model: 也有使用到 memory，RNN 的一個進階的版本</p>
+<p>Attention-based Model 的應用</p>
+<ul>
+<li>reading comprehension<ul>
+<li>先利用 semantic analysis 將每個句子表示成一個 vector，接著將 query 透過 DNN/RNN（中央處理器） 在眾多 vectors 裡頭找出 answer。實際上 RNN 是學會一個讀寫頭（Reading Head Controller）來決定要讀哪個 vector（從哪邊的「記憶」裡頭獲得資訊）。當然可以讀取多次、多個 vectors</li>
+<li>因此我們可以透過觀察 reading head 的位置 =( attention 的位置) 來看出針對一個 input，machine 給出特定 output 的思路過程。</li>
+</ul>
+</li>
+<li>Visual Question Answering<ul>
+<li>跟 Reading comprehension 類似，只是 vectors 事先利用 CNN 將圖片的各個部分萃取成 vector</li>
+</ul>
+</li>
+<li>Speech Question Answering<ul>
+<li>托福的例子：(1) 將故事的錄音黨做語音辨識，取得文字黨以後做 semantic analysis, (2) 將問題也做 semantic analysis，然後對兩者做 attention，得到最終答案：就像是在畫重點</li>
+<li>除了語音辨識的部分以外，其他整個都是一個 NN</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Deep &amp; Structured</p>
+<p>Deep Learning 因為非線性，要得到 state-of-the-art 結果，還是比較推薦。但其實可以整合 DL &amp; Structured learning
+未來的趨勢，就跟 Ian Fellow 的 Deep Learning 書的 Part 2, 3</p>
 </div>
 </div>
 </div>
