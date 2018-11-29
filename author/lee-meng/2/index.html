@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+LeeMeng - Articles by Lee Meng
+    <!--- article-specific meta data
+    ================================================== -->
+    <meta name="description" content="現居東京的資料科學家 L 在數據世界裡頭的所想、所學以及所感。這個網站紀錄了所有我的個人資訊，包含工作經歷、做過的專案以及與資料科學相關的文章。透過分享自己的學習心得以及業界經驗，我希望能讓更多人接觸到資料科學的奧秘。此部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。" />
+    <meta name="keywords" content="部落格, 資料科學, 數據科學, Python, R, 機器學習, 資料分析, 深度學習, 資料視覺化, 軟體工程, 資料工程, 雲端運算, 台灣, blog, data science, machine learning, deep learning, data analysis, data visualization, data engineering, taiwan" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemeng.tw/theme/images/hero-bg4.jpg" />
+    <meta property="og:type" content="website" />
+
+    <meta property="og:url" content="https://leemeng.tw" />
+    <meta property="og:title" content="All About DataScience" />
+    <meta property="og:description" content="現居東京的資料科學家 L 在數據世界裡頭的所想、所學以及所感。這個網站紀錄了所有我的個人資訊，包含工作經歷、做過的專案以及與資料科學相關的文章。透過分享自己的學習心得以及業界經驗，我希望能讓更多人接觸到資料科學的奧秘。此部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+
+    <!--for showing toc navigation which slide in from left-->
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li class="current">
+            <a class="smoothscroll" href="#home">Home</a>
+        </li>
+        <li>
+            <a class="smoothscroll" href="#about">About</a>
+        </li>
+        <li>
+            <a class="smoothscroll" href="#projects">Projects</a>
+        </li>
+        <li>
+            <a class="smoothscroll" href="#blog">Blog</a>
+        </li>
+        <li>
+            <a href="../books.html">Books</a>
+        </li>
+        <li>
+            <a class="smoothscroll" href="#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+
+<!-- home
+================================================== -->
+<section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="https://leemeng.tw/theme/images/hero-bg4.jpg" data-natural-width=1100 data-natural-height=1100 data-position-y=center>
+    <div class="overlay"></div>
+    <div class="shadow-overlay"></div>
+
+    <div class="home-content">
+
+        <div class="row home-content__main">
+
+            <h3>Hello There</h3>
+
+            <h1>
+                I am Meng Lee, <br>
+                a data scientist / engineer <br>
+                based in Tokyo.
+            </h1>
+
+            <div class="home-content__buttons">
+                <a href="#blog" class="smoothscroll btn btn--stroke">
+                    Blog
+                </a>
+                <a href="#projects" class="smoothscroll btn btn--stroke">
+                    Projects
+                </a>
+            </div>
+
+            <div class="home-content__scroll">
+                <a href="#about" class="scroll-link smoothscroll">
+                    <span>Scroll Down</span>
+                </a>
+            </div>
+
+        </div>
+
+    </div> <!-- end home-content -->
+
+    <ul class="home-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>    </ul>
+    <!-- end home-social -->
+
+</section> <!-- end s-home -->
+
+
+<!-- about
+================================================== -->
+<section id="about" class="s-about target-section" style="padding-bottom: 1rem">
+
+    <div class="row narrow section-intro has-bottom-sep">
+        <div class="col-full text-center">
+            <h3>About</h3>
+            <h1>More About Me</h1>
+            <p class="lead">
+                現居東京的資料科學家。致力於將數據科學與資料工程做完美結合 <i class="im im-flask" aria-hidden="true"></i><br/>
+                假日在東京市區騎著腳踏車冒險、尋找美食。懶得動時就待在咖啡廳寫寫程式 <i class="im im-coffee" aria-hidden="true"></i><br/>
+            </p>
+        </div>
+    </div>
+
+    <div class="row about-content">
+
+        <div class="col-six tab-full left">
+            <h3>All of us are unique.</h3>
+            <p>
+                依照不同業界、不同的環境需求，甚至是所處的企業的發展階段，一個資料科學家（Data Scientist）所累積的經驗、點的技能都會有所不同。
+                更遑論是一個像我一樣，從軟體工程做到資料工程，又轉到資料科學家的人了。
+            </p>
+            <p>
+                資料科學是透過理解資料，從資料中萃取有意義的價值與洞見。而為了達到這目的，
+                有很多領域需要了解：大數據、BI、程式設計、資料分析、統計概念、資料視覺化、機器學習、雲端運算 ... 族繁不及備載。
+            </p>
+            <p>
+                要客觀且定量地衡量一個資料科學家在以上各領域的專業程度不容易。我試著以最熟悉的資料工程為基準，
+                設置熟悉度為 100 %，則在與其他領域比較之後，可以得到對應的相對分數。最後就成了右邊（或者下面）這個超級主觀的衡量表，博君一笑。
+            </p>
+            <p>
+                歡迎跟我說說你在各領域的熟悉程度
+                <a href="#contact" class="smoothscroll">
+                    <i class="im im-paperplane" aria-hidden="true"></i>
+                </a>
+            </p>
+        </div>
+
+        <div class="col-six tab-full right">
+            <h3>I'm familiar with..</h3>
+
+            <ul class="skill-bars">
+                <li>
+                <div class="progress percent50"><span>50%</span></div>
+                <strong>商業智慧</strong>
+                </li>
+                <li>
+                <div class="progress percent65"><span>65%</span></div>
+                <strong>資料視覺化</strong>
+                </li>
+                <li>
+                <div class="progress percent100"><span>100%</span></div>
+                <strong>資料工程</strong>
+                </li>
+                <li>
+                <div class="progress percent75"><span>75%</span></div>
+                <strong>程式設計</strong>
+                </li>
+                <li>
+                <div class="progress percent55"><span>55%</span></div>
+                <strong>資料分析</strong>
+                </li>
+                <li>
+                <div class="progress percent70"><span>70%</span></div>
+                <strong>機器學習</strong>
+                </li>
+            </ul>
+        </div>
+
+    </div> <!-- end about-content -->
+
+    <!--start about-content buttons-->
+    <!--<div class="row about-content about-content&#45;&#45;buttons">-->
+
+        <!--<div class="col-six tab-full left">-->
+            <!--<a href="#0" class="btn btn&#45;&#45;primary full-width">Download My CV</a>-->
+        <!--</div>-->
+        <!--<div class="col-six tab-full right">-->
+            <!--<a href="#0" class="btn full-width">Hire Me Now</a>-->
+        <!--</div>-->
+
+    <!--</div> -->
+    <!-- end about-content buttons -->
+
+    <!--start about-content timeline-->
+    <div class="row about-content about-content--timeline">
+
+        <div class="col-full text-center">
+            <h3>My Work Experience.</h3>
+        </div>
+
+        <div class="col-six tab-full left">
+            <div class="timeline">
+                <div class="timeline__block">
+                    <div class="timeline__bullet"></div>
+                    <div class="timeline__header">
+                        <p class="timeline__timeframe">2018/06 - 現在</p>
+                        <h3>SmartNews</h3>
+                        <h5>Data Scientist</h5>
+                    </div>
+                    <div class="timeline__desc">
+                        <p>「成為完美結合資料工程與資料科學的資料科學家」。<br/>
+                        分析部分專注在建立預測顧客價值（Life Time Value）、每日活躍使用者人數等重要 KPI 的預測模型。
+                            資料工程則包含改善並維護資料管理平台，以建立一個更有效率且可簡單共享分析結果的資料科學環境。
+                        </p>
+                    </div>
+                </div> <!-- end timeline__block -->
+
+                <div class="timeline__block">
+                    <div class="timeline__bullet"></div>
+                    <div class="timeline__header">
+                        <p class="timeline__timeframe">2017/01 - 2018/06</p>
+                        <h3>MarketEnterprise Co</h3>
+                        <h5>Data Scientist</h5>
+                    </div>
+                    <div class="timeline__desc">
+                        <p>分析銷售資料以及實作資料工程。依不同專案進行 ad hoc 分析並直接提供洞見與建議給決策管理者，以增加營收或改善員工生產力；
+                            實作企業用儀表板（Dashboard）背後所需的資料匯總、套用商業邏輯以及資料處理排程；建立非技術人員也能使用的 SQL 分析平台；
+                            設計並實作預測模型以評估顧客成交率等 KPI。</p>
+                    </div>
+                </div> <!-- end timeline__block -->
+
+            </div> <!-- end timeline -->
+        </div> <!-- end left -->
+
+        <div class="col-six tab-full right">
+            <div class="timeline">
+
+                <div class="timeline__block">
+                    <div class="timeline__bullet"></div>
+                    <div class="timeline__header">
+                        <p class="timeline__timeframe">2016/06 - 2017/01</p>
+                        <h3>MarketEnterprise Co</h3>
+                        <h5>Software Engineer</h5>
+                    </div>
+                    <div class="timeline__desc">
+                        <p>主要專注在利用 Python 以及 <a href="https://aws.amazon.com/tw/">AWS</a> 來設計資訊系統以及開發企業內部系統所需的 API 。 如使用 <a href="https://aws.amazon.com/tw/lambda/">AWS Lambda</a>
+                            進行資料流的處理（ETL）、開發並改善電子商務網站的搜尋引擎（主要使用 <a href="https://www.mongodb.com/cloud/atlas/lp/general">MongoDB</a>、<a href="https://www.elastic.co/products/elasticsearch">ElasticSearch</a> ）。</p>
+                    </div>
+                </div> <!-- end timeline__block -->
+
+                <div class="timeline__block">
+                    <div class="timeline__bullet"></div>
+                    <div class="timeline__header">
+                        <p class="timeline__timeframe">2013/09 - 2015/06</p>
+                        <h3>National Taiwan University</h3>
+                        <h5>Master of Information Management</h5>
+                    </div>
+                    <div class="timeline__desc">
+                        <p>研究領域包含資料探勘以及推薦系統。
+                            論文 <a href="http://aisel.aisnet.org/cgi/viewcontent.cgi?article=1014&context=pacis2015">An Effective Friend Recommendation Method Using Learning to Rank and Social Influence</a> 的共同作者，
+                            該論文被登錄在 <a href="http://aisel.aisnet.org/pacis2015/index.3.html">Pacific Asia Conference on Information Systems (PACIS)</a>。另擔任演算法、資料結構以及資料探勘等課程之助教。</p>
+                    </div>
+                </div> <!-- end timeline__block -->
+
+            </div> <!-- end timeline -->
+        </div> <!-- end right -->
+
+    </div> <!-- end about-content timeline -->
+
+</section> <!-- end about -->
+
+
+<!-- works
+================================================== -->
+<section id="projects" class="s-works target-section" style="text-align: initialb.">
+
+    <div class="row narrow section-intro has-bottom-sep">
+        <div class="col-full">
+            <h3>Portfolio</h3>
+            <h1>See My Latest Projects.</h1>
+
+            <p class="lead">一些閒暇時間做的小玩意兒，你或許會有興趣了解：）</p>
+        </div>
+    </div>
+
+    <div class="row masonry-wrap">
+        <div class="masonry">
+
+            <div class="masonry__brick">
+                <div class="item-folio">
+
+                    <div class="item-folio__thumb">
+                        <div href="theme/images/portfolio/gallery/g-cat-recognizer.jpg" class="thumb-link" title="貓咪辨識 App" data-size="1050x700">
+                            <img src="theme/images/portfolio/cat-recognizer.jpg"
+                                 srcset="theme/images/portfolio/cat-recognizer.jpg 1x, theme/images/portfolio/cat-recognizer@2x.jpg 2x" alt="">
+                            <span class="shadow-overlay" style="cursor: pointer"></span>
+                        </div>
+                    </div>
+
+                    <div class="item-folio__text">
+                        <h3 class="item-folio__title">
+                            貓咪辨識 App
+                        </h3>
+                        <p class="item-folio__cat">
+                            TensorFlow, Flask, Docker, Heroku
+                        </p>
+                    </div>
+
+                    <a href="https://github.com/leemengtaiwan/cat-recognition-app" target="_blank" class="item-folio__project-link" title="Github Repo 連結">
+                        <i class="im im-link"></i>
+                    </a>
+
+                    <div class="item-folio__caption">
+                        <p>這是一個利用 TensorFlow 以及 Flask 來分辨貓咪以及狗狗的圖片辨識應用，使用 Docker 封裝並部署在 Heroku 上。你可以前往 <a href="https://github.com/leemengtaiwan/cat-recognition-app" target="_blank">Github</a> 查看細節。</p>
+                    </div>
+
+                </div> <!-- end item-folio -->
+            </div> <!-- end masonry__brick -->
+            <div class="masonry__brick">
+                <div class="item-folio">
+
+                    <div class="item-folio__thumb">
+                        <div href="theme/images/portfolio/gallery/g-gist-evernote.jpg" class="thumb-link" title="Gist x Evernote 同步工具" data-size="1050x700">
+                            <img src="theme/images/portfolio/gist-evernote.jpg"
+                                 srcset="theme/images/portfolio/gist-evernote.jpg 1x, theme/images/portfolio/gist-evernote@2x.jpg 2x" alt="">
+                            <span class="shadow-overlay" style="cursor: pointer"></span>
+                        </div>
+                    </div>
+
+                    <div class="item-folio__text">
+                        <h3 class="item-folio__title">
+                            Gist x Evernote 同步工具
+                        </h3>
+                        <p class="item-folio__cat">
+                            Selenium, Github GraphQL, Evernote Python SDK
+                        </p>
+                    </div>
+
+                    <a href="https://github.com/leemengtaiwan/gist-evernote" target="_blank" class="item-folio__project-link" title="Github Repo 連結">
+                        <i class="im im-link"></i>
+                    </a>
+
+                    <div class="item-folio__caption">
+                        <p>這是一個利用 Selenium 將 Github Gists 同步到 Evernote 的生產工具。你可以在 <a href="https://github.com/leemengtaiwan/gist-evernote" target="_blank">Github</a> 查看細節。</p>
+                    </div>
+
+                </div> <!-- end item-folio -->
+            </div> <!-- end masonry__brick -->
+            <div class="masonry__brick">
+                <div class="item-folio">
+
+                    <div class="item-folio__thumb">
+                        <div href="theme/images/portfolio/gallery/g-gapminder.jpg" class="thumb-link" title="GapMinder 中文版" data-size="1050x700">
+                            <img src="theme/images/portfolio/gapminder.jpg"
+                                 srcset="theme/images/portfolio/gapminder.jpg 1x, theme/images/portfolio/gapminder@2x.jpg 2x" alt="">
+                            <span class="shadow-overlay" style="cursor: pointer"></span>
+                        </div>
+                    </div>
+
+                    <div class="item-folio__text">
+                        <h3 class="item-folio__title">
+                            GapMinder 中文版
+                        </h3>
+                        <p class="item-folio__cat">
+                            資料視覺化, 台灣, GapMinder
+                        </p>
+                    </div>
+
+                    <a href="https://leemeng.tw/gapminder.html" target="_blank" class="item-folio__project-link" title="專案介紹連結">
+                        <i class="im im-link"></i>
+                    </a>
+
+                    <div class="item-folio__caption">
+                        <p>這是一個利用各國公開數據來探索世界以及台灣的資料視覺化工具。你可以在我的部落格文章<a href="https://leemeng.tw/gapminder.html">如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀</a>實際使用此工具並了解細節</p>
+                    </div>
+
+                </div> <!-- end item-folio -->
+            </div> <!-- end masonry__brick -->
+            <div class="masonry__brick">
+                <div class="item-folio">
+
+                    <div class="item-folio__thumb">
+                        <div href="theme/images/portfolio/gallery/g-airflow-comic.jpg" class="thumb-link" title="漫畫連載通知 App" data-size="1050x700">
+                            <img src="theme/images/portfolio/airflow-comic.jpg"
+                                 srcset="theme/images/portfolio/airflow-comic.jpg 1x, theme/images/portfolio/airflow-comic@2x.jpg 2x" alt="">
+                            <span class="shadow-overlay" style="cursor: pointer"></span>
+                        </div>
+                    </div>
+
+                    <div class="item-folio__text">
+                        <h3 class="item-folio__title">
+                            漫畫連載通知 App
+                        </h3>
+                        <p class="item-folio__cat">
+                            Airflow, Selenium, Slack
+                        </p>
+                    </div>
+
+                    <a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html" target="_blank" class="item-folio__project-link" title="專案介紹連結">
+                        <i class="im im-link"></i>
+                    </a>
+
+                    <div class="item-folio__caption">
+                        <p>這是一個透過 Airflow 以及 Slack 來通知最新漫畫連載的 App。你可以在我的部落格文章<a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">一段 Airflow 與資料工程的故事：談如何用 Python 追漫畫連載</a>了解細節，或者直接去 <a href="https://github.com/leemengtaiwan/airflow-tutorials" target="_blank">Github</a> 查看程式碼。</p>
+                    </div>
+
+                </div> <!-- end item-folio -->
+            </div> <!-- end masonry__brick -->
+            <div class="masonry__brick">
+                <div class="item-folio">
+
+                    <div class="item-folio__thumb">
+                        <div href="theme/images/portfolio/gallery/g-lighthouse.jpg" class="thumb-link" title="" data-size="1050x700">
+                            <img src="theme/images/portfolio/lighthouse.jpg"
+                                 srcset="theme/images/portfolio/lighthouse.jpg 1x, theme/images/portfolio/lighthouse@2x.jpg 2x" alt="">
+                            <span class="shadow-overlay" style="cursor: pointer"></span>
+                        </div>
+                    </div>
+
+                    <div class="item-folio__text">
+                        <h3 class="item-folio__title">
+                            Coming Soon
+                        </h3>
+                        <p class="item-folio__cat">
+                            
+                        </p>
+                    </div>
+
+                    <a href="" target="_blank" class="item-folio__project-link" title="Github Repo 連結">
+                        <i class="im im-link"></i>
+                    </a>
+
+                    <div class="item-folio__caption">
+                        <p></p>
+                    </div>
+
+                </div> <!-- end item-folio -->
+            </div> <!-- end masonry__brick -->
+            <div class="masonry__brick">
+                <div class="item-folio">
+
+                    <div class="item-folio__thumb">
+                        <div href="theme/images/portfolio/gallery/g-woodcraft.jpg" class="thumb-link" title="" data-size="1050x700">
+                            <img src="theme/images/portfolio/woodcraft.jpg"
+                                 srcset="theme/images/portfolio/woodcraft.jpg 1x, theme/images/portfolio/woodcraft@2x.jpg 2x" alt="">
+                            <span class="shadow-overlay" style="cursor: pointer"></span>
+                        </div>
+                    </div>
+
+                    <div class="item-folio__text">
+                        <h3 class="item-folio__title">
+                            Coming Soon
+                        </h3>
+                        <p class="item-folio__cat">
+                            
+                        </p>
+                    </div>
+
+                    <a href="" target="_blank" class="item-folio__project-link" title="Github Repo 連結">
+                        <i class="im im-link"></i>
+                    </a>
+
+                    <div class="item-folio__caption">
+                        <p></p>
+                    </div>
+
+                </div> <!-- end item-folio -->
+            </div> <!-- end masonry__brick -->
+            <div class="masonry__brick">
+                <div class="item-folio">
+
+                    <div class="item-folio__thumb">
+                        <div href="theme/images/portfolio/gallery/g-shutterbug.jpg" class="thumb-link" title="" data-size="1050x700">
+                            <img src="theme/images/portfolio/shutterbug.jpg"
+                                 srcset="theme/images/portfolio/shutterbug.jpg 1x, theme/images/portfolio/shutterbug@2x.jpg 2x" alt="">
+                            <span class="shadow-overlay" style="cursor: pointer"></span>
+                        </div>
+                    </div>
+
+                    <div class="item-folio__text">
+                        <h3 class="item-folio__title">
+                            Coming Soon
+                        </h3>
+                        <p class="item-folio__cat">
+                            
+                        </p>
+                    </div>
+
+                    <a href="" target="_blank" class="item-folio__project-link" title="Github Repo 連結">
+                        <i class="im im-link"></i>
+                    </a>
+
+                    <div class="item-folio__caption">
+                        <p></p>
+                    </div>
+
+                </div> <!-- end item-folio -->
+            </div> <!-- end masonry__brick -->
+            <div class="masonry__brick">
+                <div class="item-folio">
+
+                    <div class="item-folio__thumb">
+                        <div href="theme/images/portfolio/gallery/g-minimalismo.jpg" class="thumb-link" title="" data-size="1050x700">
+                            <img src="theme/images/portfolio/minimalismo.jpg"
+                                 srcset="theme/images/portfolio/minimalismo.jpg 1x, theme/images/portfolio/minimalismo@2x.jpg 2x" alt="">
+                            <span class="shadow-overlay" style="cursor: pointer"></span>
+                        </div>
+                    </div>
+
+                    <div class="item-folio__text">
+                        <h3 class="item-folio__title">
+                            Coming Soon
+                        </h3>
+                        <p class="item-folio__cat">
+                            
+                        </p>
+                    </div>
+
+                    <a href="" target="_blank" class="item-folio__project-link" title="Github Repo 連結">
+                        <i class="im im-link"></i>
+                    </a>
+
+                    <div class="item-folio__caption">
+                        <p></p>
+                    </div>
+
+                </div> <!-- end item-folio -->
+            </div> <!-- end masonry__brick -->
+        </div>
+    </div> <!-- end masonry -->
+
+</section> <!-- end works -->
+
+
+
+<!-- testimonials
+================================================== -->
+<!--<div class="s-testimonials">-->
+
+    <!--<div class="overlay"></div>-->
+
+    <!--<div class="row testimonials-header">-->
+        <!--<div class="col-full">-->
+            <!--<h1 class="h02">What People Say.</h1>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="row testimonials">-->
+
+        <!--<div class="col-full testimonials__slider">-->
+
+            <!--<div class="testimonials__slide">-->
+                <!--<img src="theme/images/avatars/user-01.jpg" alt="Author image" class="testimonials__avatar">-->
+                <!--<p>Qui ipsam temporibus quisquam velMaiores eos cumque distinctio nam accusantium ipsum.-->
+                <!--Laudantium quia consequatur molestias delectus culpa facere hic dolores aperiam. Accusantium quos qui praesentium corpori.</p>-->
+                <!--<div class="testimonials__author h06">-->
+                    <!--Tim Cook-->
+                    <!--<span>CEO, Apple</span>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="testimonials__slide">-->
+                <!--<img src="theme/images/avatars/user-05.jpg" alt="Author image" class="testimonials__avatar">-->
+                <!--<p>Excepturi nam cupiditate culpa doloremque deleniti repellat. Veniam quos repellat voluptas animi adipisci.-->
+                <!--Nisi eaque consequatur. Quasi voluptas eius distinctio. Atque eos maxime. Qui ipsam temporibus quisquam vel.</p>-->
+                <!--<div class="testimonials__author h06">-->
+                    <!--Sundar Pichai-->
+                    <!--<span>CEO, Google</span>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="testimonials__slide">-->
+                <!--<img src="theme/images/avatars/user-02.jpg" alt="Author image" class="testimonials__avatar">-->
+                <!--<p>Repellat dignissimos libero. Qui sed at corrupti expedita voluptas odit. Nihil ea quia nesciunt. Ducimus aut sed ipsam.-->
+                <!--Autem eaque officia cum exercitationem sunt voluptatum accusamus. Quasi voluptas eius distinctio.</p>-->
+                <!--<div class="testimonials__author h06">-->
+                    <!--Satya Nadella-->
+                    <!--<span>CEO, Microsoft</span>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div> &lt;!&ndash; end testimonials__slider &ndash;&gt;-->
+
+    <!--</div> &lt;!&ndash; end testimonials &ndash;&gt;-->
+
+<!--</div> &lt;!&ndash; end s-testimonials &ndash;&gt;-->
+
+
+<!-- blog
+================================================== -->
+<section id="blog" class="s-blog target-section" style="padding-top:14rem">
+
+    <div class="row narrow section-intro has-bottom-sep">
+        <div class="col-full">
+            <h3>Journal</h3>
+            <h1><a href="blog.html" title="前往部落格專屬頁面">Latest From The Blog.</a></h1>
+            <p class="lead">
+                不只是資料科學家，處在資訊時代的各行各業都需要能活用資料科學的人才。</br>
+                透過分享自己的學習心得以及業界經驗，我希望讓更多人接觸到資料科學的奧秘。</br>
+                <a href="../blog.html" title="前往部落格專屬頁面">部落格</a>主要會提及<a href="../tag/zi-liao-ke-xue.html" title="查看所有標籤為「資料科學」的文章">資料科學</a>、<a href="../tag/zi-liao-gong-cheng.html" title="查看所有標籤為「資料工程」的文章">資料工程</a>、<a href="../tag/ji-qi-xue-xi.html" title="查看所有標籤為「機器學習」的文章">機器學習</a>及<a href="../tag/zi-liao-shi-jue-hua.html" title="查看所有標籤為「資料視覺化」的文章">資料視覺化</a>技巧  <i class="im im-heart" aria-hidden="true"></i><br/>
+            </p>
+        </div>
+    </div>
+
+<div class="row blog-content">
+    <div class="col-full">
+
+        <div class="blog-list block-1-2 block-tab-full">
+
+                <article class="col-block">
+
+                    <div class="blog-date">
+                        <a href="https://leemeng.tw/data-science-digest-volume-2.html">2018-08-03 (Fri)</a>
+                        <br>
+                        807 views
+                    </div>
+
+                    <h2 class="h01">
+                        <a href="https://leemeng.tw/data-science-digest-volume-2.html" rel="bookmark" title="Permalink to 資料科學文摘 Vol.2 產品理解以及 DS / DE 之路">資料科學文摘 Vol.2 產品理解以及 DS / DE 之路</a>
+                    </h2>
+                    <div>
+                        <a href="https://leemeng.tw/data-science-digest-volume-2.html" rel="bookmark" title="Permalink to 資料科學文摘 Vol.2 產品理解以及 DS / DE 之路">
+                            <img src="https://leemeng.tw/theme/images/background/green-chameleon-21532-unsplash.jpg">
+                        </a>
+                    </div>
+                    <p><p>這週一樣會透過導讀一些優質文章，讓讀者了解 3 個問題：為何一個專業的資料科學家需要具備「產品理解」？ 何謂「顧客流失分析」？ 我們該如何使用 Python（XGBoost）來建立簡單的預測模型以改善產品？ 此外，我們也將簡單介紹在資料科學領域中逐漸崛起的「資料工程師」，其職責以及專業跟「資料科學家」有何不同。最後也會分享一些與資料科學家/資料工程師相關的文章。</p></p>
+                    <div class="blog-cat">
+                        <a href="https://leemeng.tw/tag/wen-zhai.html" rel="tag">文摘</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                        <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
+                    </div>
+
+                </article>
+                <article class="col-block">
+
+                    <div class="blog-date">
+                        <a href="https://leemeng.tw/data-science-digest-volume-1.html">2018-07-29 (Sun)</a>
+                        <br>
+                        1,352 views
+                    </div>
+
+                    <h2 class="h01">
+                        <a href="https://leemeng.tw/data-science-digest-volume-1.html" rel="bookmark" title="Permalink to 資料科學文摘 Vol.1 AutoML、Airflow 及 DAU">資料科學文摘 Vol.1 AutoML、Airflow 及 DAU</a>
+                    </h2>
+                    <div>
+                        <a href="https://leemeng.tw/data-science-digest-volume-1.html" rel="bookmark" title="Permalink to 資料科學文摘 Vol.1 AutoML、Airflow 及 DAU">
+                            <img src="https://leemeng.tw/theme/images/background/rawpixel-191131-unsplash.jpg">
+                        </a>
+                    </div>
+                    <p><p>這週介紹幾篇機器學習、資料工程及 App 分析的優質文章以及重點摘要，關鍵字包含：AutoML、Airflow 以及 DAU / MAU。希望讓更多人能更快地掌握資料科學領域的知識，找出自己有興趣的領域專研，並激盪出更多的討論。透過閱讀大量的相關文章並從它們學習及模仿，我們可以更快地，且有效率地成為一個稱職的資料科學家。</p></p>
+                    <div class="blog-cat">
+                        <a href="https://leemeng.tw/tag/wen-zhai.html" rel="tag">文摘</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-gong-cheng.html" rel="tag">資料工程</a>
+                        <a href="https://leemeng.tw/tag/ji-qi-xue-xi.html" rel="tag">機器學習</a>
+                    </div>
+
+                </article>
+                <article class="col-block">
+
+                    <div class="blog-date">
+                        <a href="https://leemeng.tw/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html">2018-07-07 (Sat)</a>
+                        <br>
+                        2,170 views
+                    </div>
+
+                    <h2 class="h01">
+                        <a href="https://leemeng.tw/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html" rel="bookmark" title="Permalink to 資料科學家 L 的奇幻旅程 Vol.1 新人不得不問的 2 個問題">資料科學家 L 的奇幻旅程 Vol.1 新人不得不問的 2 個問題</a>
+                    </h2>
+                    <div>
+                        <a href="https://leemeng.tw/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html" rel="bookmark" title="Permalink to 資料科學家 L 的奇幻旅程 Vol.1 新人不得不問的 2 個問題">
+                            <img src="https://leemeng.tw/theme/images/background/anastasia-petrova-193818-unsplash.jpg">
+                        </a>
+                    </div>
+                    <p><p>為了讓有志成為資料科學家，或是單純想要了解的讀者們能理解資料科學是如何實際被企業應用，以及讓自己多一點反思的機會，趁著最近開始在 SmartNews 的新工作，我打算開始紀錄自己平常的工作內容以及一些經驗分享。作為系列文的第一篇文章，我們將探討一個資料科學家在進入新公司熟悉環境的時候，除了問該裝什麼工具以外，可以問的兩個重要問題。</p></p>
+                    <div class="blog-cat">
+                        <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        <a href="https://leemeng.tw/tag/data-science.html" rel="tag">data-science</a>
+                        <a href="https://leemeng.tw/tag/ri-zhi.html" rel="tag">日誌</a>
+                    </div>
+
+                </article>
+                <article class="col-block">
+
+                    <div class="blog-date">
+                        <a href="https://leemeng.tw/some-thought-on-learning-from-machine-learning.html">2018-06-16 (Sat)</a>
+                        <br>
+                        823 views
+                    </div>
+
+                    <h2 class="h01">
+                        <a href="https://leemeng.tw/some-thought-on-learning-from-machine-learning.html" rel="bookmark" title="Permalink to 從彼此學習 - 淺談機器學習以及人類學習">從彼此學習 - 淺談機器學習以及人類學習</a>
+                    </h2>
+                    <div>
+                        <a href="https://leemeng.tw/some-thought-on-learning-from-machine-learning.html" rel="bookmark" title="Permalink to 從彼此學習 - 淺談機器學習以及人類學習">
+                            <img src="https://leemeng.tw/theme/images/background/andy-kelly-402111-unsplash.jpg">
+                        </a>
+                    </div>
+                    <p><p>說到近年最熱門的機器學習或者人工智慧，因為知識背景以及觀點的不同，幾乎每個人都有不一樣的見解。雖然我們有千百種定義、無數的專業術語，這篇文章希望用直觀的方式以及具體的例子，讓讀者能夠在跳入一大堆 ML 的教學文章以及線上課程之前，能以一個更高層次且人性化的角度理解機器學習，並進而思考要如何開啟自己的機器學習旅程。</p></p>
+                    <div class="blog-cat">
+                        <a href="https://leemeng.tw/tag/ji-qi-xue-xi.html" rel="tag">機器學習</a>
+                        <a href="https://leemeng.tw/tag/machine-learning.html" rel="tag">machine learning</a>
+                    </div>
+
+                </article>
+
+        </div> <!-- end blog-list -->
+
+    </div> <!-- end col-full -->
+</div> <!-- end blog-content -->
+
+<!-- Infinite scroll status elements -->
+<div class="scroller-status">
+  <div class="infinite-scroll-request loader-ellips">
+    ...
+  </div>
+  <p class="infinite-scroll-last"></p>
+  <p class="infinite-scroll-error"></p>
+</div>
+
+
+
+</section> <!-- end s-blog -->
+
+
+<!-- s-cta
+================================================== -->
+<section class="s-cta">
+    <h6 id="subscribe" style="margin: 0;"></h6>
+    <div class="row narrow cta">
+        <div class="col-full cta__content">
+        <h2 class="h01"><a class="open-popup" style="font-family: 'librebaskerville-bold',serif">Get Latest Arrivals</a></h2>
+
+        <p class="lead">
+            跟資料科學相關的最新文章直接送到家。<br>
+            只要加入訂閱名單，當新文章出爐時，</br>
+            你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </p>
+        <div class="cta__action">
+            <a class="open-popup btn btn--primary btn--large" style="color: #FFFFFF">Subscribe</a>
+        </div>
+    </div> <!-- end cta -->
+
+</div></section>
+
+
+<!-- s-stats
+================================================== -->
+<section id="stats" class="s-stats">
+    <div class="row block-1-4 block-tab-1-2 block-mob-full stats">
+
+        <div class="col-block stats__col">
+            <div class="stats__count">
+                34
+            </div>
+            <h4>Articles</h4>
+        </div>
+        <div class="col-block stats__col">
+            <div class="stats__count">
+                32224
+            </div>
+            <h4>Curious Visitors</h4>
+        </div>
+        <div class="col-block stats__col stats__col--highlight">
+            <div class="stats__upsign">
+                <a href="#subscribe"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+            </div>
+            <div class="stats__count">
+                208
+            </div>
+            <h4>Passion Subscribers</h4>
+        </div>
+        <div class="col-block stats__col ">
+            <div class="stats__count">
+                72305
+            </div>
+            <h4>Page Views</h4>
+        </div>
+    </div>
+</section> <!-- end s-stats -->
+
+<!-- s-stats
+<!--================================================== -->
+
+<!--<section id="contact" class="s-contact target-section" style='background-image: url("https://leemeng.tw/theme/images/hero-bg4-darken.jpg");'>-->
+<section id="contact" class="s-contact target-section" style='background-image: none;'>
+
+    <div class="overlay"></div>
+
+    <div class="row narrow section-intro">
+        <div class="col-full">
+            <h3>Contact</h3>
+            <h1>Say Hello.</h1>
+
+            <p class="lead">
+                歡迎各種回饋以及建議  <i class="im im-light-bulb" aria-hidden="true"></i> 關於資料科學，可以說說你有興趣了解的議題，或者提醒一些文章需要補足的地方，我會加以改進並考慮寫相關文章。
+                另外如果你有任何有趣的資料科學專案、資源或者任何想要分享的東西，都歡迎透過以下表單聯絡我 <i class="im im-mail" aria-hidden="true"></i><br/>
+            </p>
+        </div>
+    </div>
+
+    <div class="row contact__main">
+        <div class="col-eight tab-full contact__form">
+            <form name="contactForm" id="contactForm" method="post" action="https://formspree.io/b98705001@gmail.com">
+                <fieldset style="border: None">
+
+                <div class="form-field">
+                    <input name="Name" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="" aria-required="true" class="full-width">
+                </div>
+                <div class="form-field">
+                    <input name="Email" type="email" id="contactEmail" placeholder="Email" value="" required="" aria-required="true" class="full-width">
+                </div>
+                <div class="form-field">
+                    <input name="Subject" type="text" id="contactSubject" placeholder="Subject" value="" class="full-width">
+                </div>
+                <div class="form-field">
+                    <textarea name="Message" id="contactMessage" placeholder="Message" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>
+                </div>
+                <div class="form-field">
+                    <button class="full-width btn--primary" type="submit">Submit</button>
+                    <div class="submit-loader">
+                        <div class="text-loader">Sending...</div>
+                        <div class="s-loader">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                </fieldset>
+            </form>
+
+            <!-- contact-warning -->
+            <div class="message-warning">
+                Something went wrong. Please try again.
+            </div>
+
+            <!-- contact-success -->
+            <div class="message-success">
+                Your message was sent, thank you!<br>
+            </div>
+
+        </div>
+        <div class="col-four tab-full contact__infos">
+            <!--<h4 class="h06">Phone</h4>-->
+            <!--Mobile: (+81)<br>-->
+            <!--</p>-->
+
+            <h4 class="h06">Email</h4>
+            <p>b98705001 AT gmail.com<br>
+            meng.lee AT smartnews.com
+            </p>
+
+            <h4 class="h06">Address</h4>
+            <p>
+            東京都目黑區<br>
+                日本
+            </p>
+        </div>
+
+    </div>
+
+</section> <!-- end s-contact -->
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+<!-- photoswipe background
+================================================== -->
+<div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title=
+                "Share"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title=
+                "Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title=
+            "Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div><!-- end photoSwipe background -->
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+    <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#home').css('background-position', '80% center');
+    });
+</script>
+
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+
+</body>
+</html>
