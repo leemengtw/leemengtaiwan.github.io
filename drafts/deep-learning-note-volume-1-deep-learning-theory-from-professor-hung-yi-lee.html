@@ -129,7 +129,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory">深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory</a><ul><li><a class="toc-href" href="#Why-Deep-Structure?" title="Why Deep Structure?">Why Deep Structure?</a></li><li><a class="toc-href" href="#Optimization" title="Optimization">Optimization</a></li><li><a class="toc-href" href="#Generalization" title="Generalization">Generalization</a></li><li><a class="toc-href" href="#Computational-Graph-&amp;-Backpropagation" title="Computational Graph &amp; Backpropagation">Computational Graph &amp; Backpropagation</a></li><li><a class="toc-href" href="#Sequence-to-sequence-Learning" title="Sequence-to-sequence Learning">Sequence-to-sequence Learning</a></li><li><a class="toc-href" href="#Recurrent-Neural-Network" title="Recurrent Neural Network">Recurrent Neural Network</a><ul><li><a class="toc-href" href="#ML-course-21-1,-49-minutes" title="ML course 21-1, 49 minutes">ML course 21-1, 49 minutes</a></li><li><a class="toc-href" href="#ML-course-21-2,-1-hr-30-minutes" title="ML course 21-2, 1 hr 30 minutes">ML course 21-2, 1 hr 30 minutes</a></li></ul></li><li><a class="toc-href" href="#ML-Lecture-8-1:-&ldquo;Hello-world&rdquo;-of-deep-learning_1" title="ML Lecture 8-1: &ldquo;Hello world&rdquo; of deep learning">ML Lecture 8-1: &ldquo;Hello world&rdquo; of deep learning</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory">深度學習筆記 Vol.1 - 李宏毅教授的 Deep Learning Theory</a><ul><li><a class="toc-href" href="#Why-Deep-Structure?" title="Why Deep Structure?">Why Deep Structure?</a></li><li><a class="toc-href" href="#Optimization" title="Optimization">Optimization</a></li><li><a class="toc-href" href="#Generalization" title="Generalization">Generalization</a></li><li><a class="toc-href" href="#Computational-Graph-&amp;-Backpropagation" title="Computational Graph &amp; Backpropagation">Computational Graph &amp; Backpropagation</a></li><li><a class="toc-href" href="#Sequence-to-sequence-Learning" title="Sequence-to-sequence Learning">Sequence-to-sequence Learning</a></li><li><a class="toc-href" href="#Attention-based-Model" title="Attention-based Model">Attention-based Model</a></li><li><a class="toc-href" href="#Recurrent-Neural-Network" title="Recurrent Neural Network">Recurrent Neural Network</a><ul><li><a class="toc-href" href="#ML-course-21-1,-49-minutes" title="ML course 21-1, 49 minutes">ML course 21-1, 49 minutes</a></li><li><a class="toc-href" href="#ML-course-21-2,-1-hr-30-minutes" title="ML course 21-2, 1 hr 30 minutes">ML course 21-2, 1 hr 30 minutes</a></li></ul></li><li><a class="toc-href" href="#ML-Lecture-8-1:-&ldquo;Hello-world&rdquo;-of-deep-learning_1" title="ML Lecture 8-1: &ldquo;Hello world&rdquo; of deep learning">ML Lecture 8-1: &ldquo;Hello world&rdquo; of deep learning</a></li><li><a class="toc-href" href="#NMT" title="NMT">NMT</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -372,7 +372,34 @@
 <p>RNN 強在不管 input sequence 有多長，只要定義好一個 function，就能以不變應萬變，只用該 function 處理整個 sequence。</p>
 <p>RNN 橫向代表的是同個 function 在不同時間的變化，而 Deep RNN 就是在縱向多定義幾個 function，吃前一個 function 的 output。</p>
 <p>Bi-directional RNN 看 5:40</p>
-<p>TODO</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sequence generation  大致上就等於 sequence to sequence learning.</p>
+<p>而 sequence generation 的核心想法就是在每個時間點丟進上次個時間點 model 產生的 character/ word/sequence (以 vector 表示），讓它以此產生下一個詞的 distribution,而理想上 ground true 出現的 character/word/sequence 的機率當然要比較高，才比較容易被 sample 到。</p>
+<p>Sequence generation 可以拿來做很多應用，只要你能把要輸出、輸入的東西都轉成 vector. (圖片、詩、翻譯後的句子、chatbot)，丟進去給 decoder 訓練。 vector 怎麼來？通常是另外一個 RNN / CNN 來吃輸入，將整個 sequence 讀入後，再拿最後一個時間點的 h / c / y vector 當作 decoder input. 這樣做是因為我們相信 encoder可以把 info 濃縮在最後一個時間點的 h 。而這當然也要 train, 所以 encoder and decoder jointly train, 又變成為 encoder and decoder model</p>
+<p>這邊又有一個重點是，像是為圖片下標題、chat bot 、翻譯等應用都是需要機器「看到」
+該輸入才能產生對應的 sequence, 這我們稱為 conditional sequence generation. 因為我們希望是有目的的產生，而非隨機。</p>
+<p>Encoder 就是吃一個 sequence, 把它轉成一個 vector, 然後丟入 decoder, decoder 第一個時間點拿到該 vector, 開始產生 sequence, 而接下來每一步的 input vector 就是前一個時間點自己產生的分佈抽樣後結果的 vector (+ 初始 encoder vector 如果我們怕 decoder 產生產生就忘了當初的 input 的話）</p>
+<p>Dynamic conditional generation 
+也是著名的 attention based model,
+Decoder 在每個時間點拿到的 conditional representation 都是不一樣的</p>
+<p>Sequence to sequence model 需要比較多   Memory, 因為要把 所有 ht 儲存下來讓 decoder 搜尋</p>
+<p>在 testing 的時候，看你的應用，決定是要從 decoder 的 output distribution  sampling 還是 argmax</p>
+<p>BLEU Score 就是看產生的句子跟原句子的有多少相同字</p>
+<p>為了讓 model 穩定容易 train + 讓 training 跟 test distribution 越接近，會使用 schedule sampling: 一開始看比較多 reference, 後面多相信 model 自己產生的結果</p>
+<p>通常在每個時間點 decoder 產生 distribution 後我們要得到最後結果時會用 argmax. 但這是 Greedy algor. 我們在 Test 的時候可以用 beam search, 同時紀錄多個 （bean size =2 就是兩條） argmax 後機率最高的 sequence / paths, 最後再選擇連乘機率後 argmax 最高的當作結果。</p>
+<p>如果遇到無法微分的 objective function, 就當作 RL 的 reward 做下去就對了</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Attention-based-Model">Attention-based Model<a class="anchor-link" href="#Attention-based-Model">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -551,6 +578,49 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="ML-Lecture-8-1:-&ldquo;Hello-world&rdquo;-of-deep-learning_1">ML Lecture 8-1: &ldquo;Hello world&rdquo; of deep learning<a class="anchor-link" href="#ML-Lecture-8-1:-&ldquo;Hello-world&rdquo;-of-deep-learning">&para;</a></h2><ul>
 <li><a href="https://www.youtube.com/watch?v=Lx3l4lOrquw">https://www.youtube.com/watch?v=Lx3l4lOrquw</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="NMT">NMT<a class="anchor-link" href="#NMT">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>dataset<ul>
+<li><a href="http://www.manythings.org/anki/">http://www.manythings.org/anki/</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>準備資料需要的步驟</p>
+<ul>
+<li>Add a <strong>start</strong> and <strong>end</strong> token to each sentence.</li>
+<li>Clean the sentences by removing <strong>special</strong> characters.</li>
+<li>Create a word index and reverse word index (dictionaries mapping from word &rarr; id and id &rarr; word).</li>
+<li>Pad each sentence to a <strong>maximum</strong> length.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Terminology</p>
+<ul>
+<li>context vector</li>
+<li>Teacher forcing</li>
 </ul>
 </div>
 </div>
