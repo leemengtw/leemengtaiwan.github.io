@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+import pandas as pd
 
 AUTHOR = 'Lee Meng'
 SITENAME = "LeeMeng"
@@ -13,7 +14,7 @@ SITE_DESCRIPTION_LIST = [
 ]
 SITE_DESCRIPTION = "".join(SITE_DESCRIPTION_LIST)
 
-SITE_KEYWORDS = "部落格, 資料科學, Python, R, 機器學習, 資料分析, 資料視覺化, 軟體工程, 資料工程, 雲端運算, 台灣, blog, data science, machine learning, data analysis, data visualization, data engineering, taiwan"
+SITE_KEYWORDS = "部落格, 資料科學, 數據科學, Python, R, 機器學習, 資料分析, 深度學習, 資料視覺化, 軟體工程, 資料工程, 雲端運算, 台灣, blog, data science, machine learning, deep learning, data analysis, data visualization, data engineering, taiwan"
 PATH = 'content'
 
 # Set path for stat files like favicon and robot.txt
@@ -45,8 +46,8 @@ TIMEZONE = 'Asia/Tokyo'
 DEFAULT_LANG = 'zh-hant-tw'
 DATE_FORMATS = {
     'zh-hant-tw': '%Y-%m-%d (%a)',
-    'en': ('en_US','%a, %d %b %Y'),
-    'jp': ('ja_JP','%Y-%m-%d(%a)'),
+    'en': ('en_US', '%a, %d %b %Y'),
+    'jp': ('ja_JP', '%Y-%m-%d(%a)'),
 }
 
 # Url settings
@@ -69,11 +70,6 @@ DATE_FORMATS = {
 
 # Google custom sea
 SEARCH_BOX = True
-
-
-# Blogroll
-# LINKS = (('Github', 'https://github.com/leemengtaiwan'),
-#          ('You can modify those links in your config file', '#'),)
 
 # Social contact/link
 GITHUB = 'https://github.com/leemengtaiwan'
@@ -115,10 +111,13 @@ JINJA_ENVIRONMENT = {
 DEFAULT_PAGINATION = 11
 NUM_TOP_TAGS = 5
 NUM_ARTICLES_HOMEPAGE = 4
-# PAGINATION_PATTERNS = (
-#     (1, '{base_name}/', '{base_name}/index.html'),
-#     (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),
-# )
+
+# Pagination Patterns
+# http://docs.getpelican.com/en/stable/settings.html?highlight=PAGINATION_PATTERNS#using-pagination-patterns
+PAGINATION_PATTERNS = (
+    (1, '{url}', '{save_as}'),
+    (2, '{base_name}/{number}/', '{base_name}/{number}/index.html'),
+)
 
 # Tell pelican-ipynb plugin to use the native meta data specified inside of notebook
 # instead of .ipynb-meta files
@@ -145,7 +144,6 @@ IPYNB_NB_SAVE_AS = 'notebooks/{slug}.ipynb'
 
 # Email receiving setting
 EMAIL_FORM_ACTION = "https://formspree.io/b98705001@gmail.com"
-
 
 # Portfolio setting, order matters
 PROJECTS = [
@@ -194,67 +192,13 @@ PROJECTS = [
 
 ]
 
+# get book information for books.html
+BOOKS = pd.read_csv(PATH + '/additional_content/books/books.csv').fillna('').to_dict('records')
+print('Done: Processed {} books.'.format(len(BOOKS)))
 
-BOOKS = [
-    # {
-    #     "title": "華頓商學院最受歡迎的談判課",
-    #     "image": "how-to-negotiate-to-achieve-your-goals-in-the-real-world.jpg.jpg",
-    #     "summary": "",
-    #     "link": "",
-    #     "categories": []
-    # },
-    {
-        "title": "真確 Factfullness",
-        "image": "factfull-ness.jpg",
-        "summary": "利用數據培養一個積極且正向的世界觀，並看到數據背後的故事。",
-        "link": "https://leemeng.tw/gapminder.html",
-        "categories": []
-    },
-    {
-        "title": "21 世紀的 21 堂課",
-        "image": "21-lessons-for-the-21st-century.jpg",
-        "summary": "人類面臨的新三大挑戰：核戰、氣候變遷以及科技顛覆需要全球關注。",
-        "link": "",
-        "categories": []
-    },
-    {
-        "title": "你要如何衡量你的人生？",
-        "image": "how-will-you-measure-your-life.jpg",
-        "summary": "了解動機、規劃策略、實際行動。利用商業理論衡量並打造自己的理想人生。",
-        "link": "",
-        "categories": []
-    },
-    {
-        "title": "人類大歷史",
-        "image": "a-brief-history-of-humankind.jpg",
-        "summary": "金錢、帝國、宗教。三大勢力讓人類社會趨向統一，且我們都活在虛擬現實之中。",
-        "link": "",
-        "categories": []
-    },
-    {
-        "title": "起源",
-        "image": "origin.jpg",
-        "summary": "「不擇手段最大化目標」一直是 AI 最大的優點及缺點。本書則將其用至極致。",
-        "link": "",
-        "categories": []
-    },
-    {
-        "title": "點子都是偷來的",
-        "image": "steal-like-an-artist.jpg",
-        "summary": "創意的一大來源在於將熟悉的點子應用在不同領域，讓所有人既驚喜又熟悉。",
-        "link": "",
-        "categories": []
-    },
-    {
-        "title": "人類大命運：從智人到神人",
-        "image": "a-brief-history-of-tomorrow.jpg",
-        "summary": "當智能與意識脫鉤、生物科技以及 AI 神速發展，新人類的到來勢不可擋。",
-        "link": "",
-        "categories": []
-    }
-]
-
-
+# get news feed
+# NEWS_FEEDS = pd.read_csv(PATH + '/additional_content/news-feed/news-feed.csv').fillna('').to_dict('records')
+# print('Done: Processed {} news feeds.'.format(len(NEWS_FEEDS)))
 
 # local ga test
 # PLUGINS += ['ga_page_view']
@@ -264,5 +208,6 @@ BOOKS = [
 # GA_END_DATE = 'today'
 # GA_METRIC = 'ga:pageviews'
 # POPULAR_POST_START = 'A month ago'
+
 
 
