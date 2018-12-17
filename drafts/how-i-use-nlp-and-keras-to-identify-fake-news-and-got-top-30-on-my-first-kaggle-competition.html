@@ -15,9 +15,10 @@
     <!--- article-specific meta data
     ================================================== -->
         <meta name="description" content="" />
-        <meta name="keywords" content="自然語言處理, Keras, 深度學習" />
+        <meta name="keywords" content="自然語言處理, Keras, Python, 深度學習" />
         <meta name="tags" content="自然語言處理" />
         <meta name="tags" content="Keras" />
+        <meta name="tags" content="Python" />
         <meta name="tags" content="深度學習" />
 
 
@@ -132,7 +133,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="我如何利用自然語言處理以及 Keras 在第一次 Kaggle 競賽達到前 30 %">我如何利用自然語言處理以及 Keras 在第一次 Kaggle 競賽達到前 30 %</a><ul><li><a class="toc-href" href="#本文章節" title="本文章節">本文章節</a></li><li><a class="toc-href" href="#30-秒懶人包" title="30 秒懶人包">30 秒懶人包</a></li><li><a class="toc-href" href="#意料之外的-Kaggle" title="意料之外的 Kaggle">意料之外的 Kaggle</a></li><li><a class="toc-href" href="#假新聞分類問題" title="假新聞分類問題">假新聞分類問題</a></li><li><a class="toc-href" href="#用直覺找出第一條底線" title="用直覺找出第一條底線">用直覺找出第一條底線</a></li><li><a class="toc-href" href="#資料前處理：讓機器理解文字" title="資料前處理：讓機器理解文字">資料前處理：讓機器理解文字</a><ul><li><a class="toc-href" href="#文本分詞" title="文本分詞">文本分詞</a></li><li><a class="toc-href" href="#建立字典並將文本轉成數字序列" title="建立字典並將文本轉成數字序列">建立字典並將文本轉成數字序列</a></li><li><a class="toc-href" href="#序列的-Zero-Padding" title="序列的 Zero Padding">序列的 Zero Padding</a></li><li><a class="toc-href" href="#將正解做-One-hot-Encoding" title="將正解做 One-hot Encoding">將正解做 One-hot Encoding</a></li><li><a class="toc-href" href="#切割訓練集-&amp;-驗證集" title="切割訓練集 &amp; 驗證集">切割訓練集 &amp; 驗證集</a></li></ul></li><li><a class="toc-href" href="#深度學習在-NLP-的發展回顧_1" title="深度學習在 NLP 的發展回顧">深度學習在 NLP 的發展回顧</a></li><li><a class="toc-href" href="#初試水溫：建立-baseline" title="初試水溫：建立 baseline">初試水溫：建立 baseline</a></li><li><a class="toc-href" href="#站在巨人的肩膀" title="站在巨人的肩膀">站在巨人的肩膀</a></li><li><a class="toc-href" href="#Ai-學到什麼" title="Ai 學到什麼">Ai 學到什麼</a></li><li><a class="toc-href" href="#換你上場：3-門推薦課程" title="換你上場：3 門推薦課程">換你上場：3 門推薦課程</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="我如何利用自然語言處理以及 Keras 在第一次 Kaggle 競賽達到前 30 %">我如何利用自然語言處理以及 Keras 在第一次 Kaggle 競賽達到前 30 %</a><ul><li><a class="toc-href" href="#本文章節" title="本文章節">本文章節</a></li><li><a class="toc-href" href="#30-秒懶人包" title="30 秒懶人包">30 秒懶人包</a></li><li><a class="toc-href" href="#意料之外的-Kaggle" title="意料之外的 Kaggle">意料之外的 Kaggle</a></li><li><a class="toc-href" href="#假新聞分類問題" title="假新聞分類問題">假新聞分類問題</a></li><li><a class="toc-href" href="#用直覺找出第一條底線" title="用直覺找出第一條底線">用直覺找出第一條底線</a></li><li><a class="toc-href" href="#資料前處理：讓機器理解文字" title="資料前處理：讓機器理解文字">資料前處理：讓機器理解文字</a><ul><li><a class="toc-href" href="#文本分詞" title="文本分詞">文本分詞</a></li><li><a class="toc-href" href="#建立字典並將文本轉成數字序列" title="建立字典並將文本轉成數字序列">建立字典並將文本轉成數字序列</a></li><li><a class="toc-href" href="#序列的-Zero-Padding" title="序列的 Zero Padding">序列的 Zero Padding</a></li><li><a class="toc-href" href="#將正解做-One-hot-Encoding" title="將正解做 One-hot Encoding">將正解做 One-hot Encoding</a></li><li><a class="toc-href" href="#切割訓練集-&amp;-驗證集" title="切割訓練集 &amp; 驗證集">切割訓練集 &amp; 驗證集</a></li></ul></li><li><a class="toc-href" href="#我的-NLP-學習-Timeline_1" title="我的 NLP 學習 Timeline">我的 NLP 學習 Timeline</a></li><li><a class="toc-href" href="#初試水溫：建立-baseline" title="初試水溫：建立 baseline">初試水溫：建立 baseline</a></li><li><a class="toc-href" href="#站在巨人的肩膀" title="站在巨人的肩膀">站在巨人的肩膀</a></li><li><a class="toc-href" href="#Ai-學到什麼" title="Ai 學到什麼">Ai 學到什麼</a></li><li><a class="toc-href" href="#換你上場：3-門推薦課程" title="換你上場：3 門推薦課程">換你上場：3 門推薦課程</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -149,6 +150,7 @@
                         <div class="page-header__cat">
                             <a href="https://leemeng.tw/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
                             <a href="https://leemeng.tw/tag/keras.html" rel="tag">Keras</a>
+                            <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
                             <a href="https://leemeng.tw/tag/shen-du-xue-xi.html" rel="tag">深度學習</a>
                         </div>
                     </div>
@@ -200,15 +202,35 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>自從<a href="https://leemeng.tw/3-lessons-i-learnt-from-emnlp-2018-at-belgium.html"> 11 月從比利時 EMNLP</a> 回來後，最近工作之餘都在學習<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86">自然語言處理</a>（Natural Language Processing, 後簡稱為 NLP）。在這篇文章裡頭，我將與你分享許多 NLP 的學習資源，並描述自己第一次參加 Kaggle 競賽的心路歷程。</p>
-<p>我也會說明如何利用（目前）最新的 NLP 知識以及深度學習框架 <a href="https://keras.io/">Keras</a> 來快速做出能自動辨別假新聞的<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神經網路（Neural Network）</a>並達到不錯的效果。最後我們還會嘗試理解這些模型到底學到了些什麼。</p>
+<p>自從<a href="https://leemeng.tw/3-lessons-i-learnt-from-emnlp-2018-at-belgium.html"> 11 月從比利時 EMNLP</a> 回來後，最近工作之餘都在學習<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86">自然語言處理</a>（Natural Language Processing, 後簡稱為 NLP）。依據維基百科的定義：</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<img src="https://leemeng.tw/images/emnlp2018/nlp-word-cloud.jpg"/>
+<blockquote>
+<p>
+                        自然語言處理（NLP）是計算機科學以及人工智慧的子領域，專注在如何讓計算機處理並分析大量（人類的）自然語言數據。NLP 常見的挑戰有語音辨識、自然語言理解、機器翻譯以及自然語言的生成。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在這篇「短篇小說」裡頭，我將描述自己怎麼陰錯陽差地參加一個辨別假新聞的 Kaggle 競賽，並如何利用最近學到的 NLP 知識以及深度學習框架 <a href="https://keras.io/">Keras</a> 來教會<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神經網路（Neural Network）</a>自動辨別手中的假新聞。</p>
+<p>後面你會看到，這些模型表現得還不錯！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/robot-read.jpg"/>
 <br/>
 </div>
 </div>
@@ -216,8 +238,8 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>本文會盡量用易懂的方式解釋相關的深度學習及 NLP 概念，同時也會附上有用的資源以及文章供你進一步學習。本文希望能讓對 AI、深度學習或是 NLP 有興趣但還不知道怎麼在這篇汪洋大海航行的你，在閱讀文章後有些明確的方向，展開自己的 NLP 之旅。</p>
-<p>值得事先聲明的是，閱讀完這篇文章並不會讓你瞬間變成 NLP 或是 Keras 大師（有這樣的文章的話拜託讓我知道），但我相信能讓你之後的深度學習 / NLP 學習之路變得更為順遂、更有效率。</p>
+<p>在這篇文章裡頭，我會盡量用簡單的詞彙來解釋故事中出現的深度學習及 NLP 概念，同時也會在<a href="#換你上場：3-門推薦課程">文末附上不少實用的學習資源以及文章</a>供你進一步探索。</p>
+<p>本文希望能讓對 AI、深度學習或是 NLP 有興趣，但還不知道怎麼在這篇汪洋大海航行的你，在閱讀本故事以後找出一些明確的方向，展開自己的 NLP 之旅。</p>
 </div>
 </div>
 </div>
@@ -230,13 +252,17 @@
 <li><a href="#假新聞分類問題">假新聞分類問題</a></li>
 <li><a href="#用直覺找出第一條底線">用直覺找出第一條底線</a></li>
 <li><a href="#資料前處理：讓機器理解文字">資料前處理：讓機器理解文字</a></li>
-<li><a href="#深度學習在-NLP-的發展回顧_1">深度學習在 NLP 的發展回顧</a></li>
-<li>初試水溫：建立 baseline</li>
-<li>最簡短的 NLP 近年史</li>
-<li>站在巨人的肩膀</li>
-<li>Ai 學到什麼</li>
-<li><a href="#換你上場：3-門推薦課程">換你上場：3 門推薦課程</a></li>
+<li><a href="#">遞歸神經網絡以及 LSTM</a></li>
+<li><a href="#">暹羅貓拯救世界</a></li>
+<li><a href="#">深度學習 3 步驟</a></li>
+<li><a href="#">第一個模型結果</a></li>
+<li><a href="#">站在巨人的肩膀上</a></li>
+<li><a href="#">輪到 Colab 登場</a></li>
+<li><a href="#">持續改進結果</a></li>
+<li><a href="#">所以 AI 學到什麼</a></li>
 <li><a href="#結語">結語</a></li>
+<li><a href="#換你上場：3-門推薦課程">換你上場：3 門推薦課程</a></li>
+<li><a href="#">更多優質參考資料</a></li>
 </ul>
 </div>
 </div>
@@ -244,13 +270,15 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="30-秒懶人包">30 秒懶人包<a class="anchor-link" href="#30-秒懶人包">&para;</a></h2><ul>
-<li>深度學習的確發展很快，但你總是要從某個地方開始學習基礎</li>
-<li>站在巨人的肩膀之上</li>
-<li>選自己有興趣的領域，才能持久</li>
-<li>NLP 模型簡史</li>
-<li>NLP 的 imagenet 時代已經來臨，一般人也能弄出厲害的語言處理模型</li>
+<h2 id="30-秒懶人包">30 秒懶人包<a class="anchor-link" href="#30-秒懶人包">&para;</a></h2><p>針對那些時間寶貴的你，我在這邊直接列出透過此故事想傳達的重要結論：</p>
+<ul>
+<li>NLP 接下來的發展只會更快速，就連一般人也能弄出<a href="https://github.com/google-research/bert">厲害的語言處理模型</a></li>
+<li>找出最讓你感興趣的問題，接著你的熱情就會帶領你找出解決該問題的方法</li>
+<li>站在巨人的肩膀之上，活用前人的成果與經驗能讓你前進更快，更有效率</li>
+<li>深度學習以及 NLP 領域發展神速，但你總是要<a href="#換你上場：3-門推薦課程">從某個地方開始好好地學習基礎</a>，而現在還不遲</li>
 </ul>
+<p>好啦，這些陳述看似陳腔濫調，但我希望你會好奇怎樣的故事讓我導出這些結論，並實際閱讀本文找出這些答案。</p>
+<p>我們下節見！</p>
 </div>
 </div>
 </div>
@@ -530,7 +558,7 @@
 <p>轉換成人腦不易理解，但很「機器友善」的數字序列：</p>
 <div class="highlight"><pre><span></span>[217, 1268, 32, 1178, 25, 489, 116, 4]
 </pre></div>
-<p>如果你對此步驟已經非常熟悉，可以假設我們已經做完資料前處理，並直接跳到下一章節的<a href="#深度學習在-NLP-的發展回顧_1">深度學習在 NLP 的發展回顧</a>。</p>
+<p>如果你對此步驟已經非常熟悉，可以假設我們已經做完資料前處理，並直接跳到下一章節的<a href="#我的-NLP-學習-Timeline_1">我的 NLP 學習 Timeline</a>。</p>
 <p>這章節的數據轉換步驟包含：</p>
 <ul>
 <li><a href="#文本分詞">文本分詞（Text Segmentation）</a></li>
@@ -1869,7 +1897,22 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="深度學習在-NLP-的發展回顧_1">深度學習在 NLP 的發展回顧<a class="anchor-link" href="#深度學習在-NLP-的發展回顧">&para;</a></h2><ul>
+<h2 id="我的-NLP-學習-Timeline_1">我的 NLP 學習 Timeline<a class="anchor-link" href="#我的-NLP-學習-Timeline">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/my-nlp-timeline.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
 <li>Encoder-decoder : sequence generation</li>
 <li>Attention: 讓 Decoder 決定要看 encoder 哪部分來做翻譯</li>
 <li>Transfomer<ul>
@@ -2042,6 +2085,7 @@ Test Set
                     <span class="blog-content__tag-list">
                         <a href="https://leemeng.tw/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
                         <a href="https://leemeng.tw/tag/keras.html" rel="tag">Keras</a>
+                        <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
                         <a href="https://leemeng.tw/tag/shen-du-xue-xi.html" rel="tag">深度學習</a>
                     </span>
 
