@@ -1891,7 +1891,7 @@ Name: label, dtype: object</pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>儘管你沒有直接讓模型看到驗證資料集（Validation Set）內的任何數據，你還是不可避免地洩漏了該資料集的重要資訊：你讓模型知道怎樣的參數設定會讓它在該資料集表現比較好，亦或表現較差。</p>
+<p>儘管你沒有直接讓模型看到驗證資料集（Validation Set）內的任何數據，你還是間接地洩漏了該資料集的重要資訊：你讓模型知道怎樣的參數設定會讓它在該資料集表現比較好，亦或表現較差。</p>
 <p>因此有一個完全跟模型訓練過程獨立的測試資料集（Test Set）就顯得重要許多了。（這也是為何我到現在都還沒有碰它的原因）</p>
 <p>回歸正題，要切訓練資料集 / 驗證資料集，<a href="https://scikit-learn.org/stable/documentation.html">scikit-learn</a> 中的 <code>train_test_split</code> 函式是一個不錯的選擇：</p>
 </div>
@@ -1924,7 +1924,7 @@ Name: label, dtype: object</pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在這邊，我們分別將新聞標題 A <code>x1_train</code>、新聞標題 <code>x2_train</code> 以及標籤 <code>y_train</code> 都分成兩個部分：訓練部分 &amp; 驗證部分。</p>
-<p>以假新聞 A 的標題 <code>x1_train</code> 為例，本來完整 32 萬筆的 <code>x1_train</code> 會被分為較小的訓練資料集 <code>x1_train</code> 以及驗證資料集 <code>x1_val</code>。</p>
+<p>以假新聞 A 的標題 <code>x1_train</code> 為例，本來完整 32 萬筆的 <code>x1_train</code> 會被分為包含 90 % 數據的訓練資料集 <code>x1_train</code> 以及 10 % 的驗證資料集 <code>x1_val</code>。</p>
 </div>
 </div>
 </div>
@@ -1972,7 +1972,7 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>我們可以看到切割後的訓練資料集有 288,488 筆資料，每一筆資料裡頭，新聞標題 A &amp; B 的長度皆為 20 個 Tokens，分類結果則有 3 個；驗證資料集的內容則一模一樣，僅差在資料筆數較少（32,055 筆）。</p>
+<p>我們可以看到，切割後的訓練資料集有 288,488 筆資料。每一筆資料裡頭，成對新聞標題 A &amp; B 的長度皆為 20 個 Tokens，分類結果則有 3 個；驗證資料集的內容一模一樣，僅差在資料筆數較少（32,055 筆）。</p>
 <p>到此為此，資料前處理大功告成！</p>
 <p>既然我們已經為機器準備好它們容易理解的數字序列資料，接著就讓我們來看看要使用怎麼樣的 NLP 模型來處理這些數據。</p>
 </div>
@@ -2008,7 +2008,7 @@ Test Set
 <p>要了解這個迴圈在 RNN 裏頭怎麼運作，現在讓我們想像有一個輸入序列 X（Input Sequence）其長相如下：</p>
 <div class="highlight"><pre><span></span>X = [ x0, x1, x2, ... xt ]
 </pre></div>
-<p>不同於 FFNN，RNN 在第一個時間點 <code>t0</code> 並不會直接把整個序列 X 讀入。反之，在第一個時間點 <code>t0</code>，它只將該序列中的第一個元素 <code>x0</code> 讀入中間的細胞 A。細胞 A 則會針對 <code>x0</code> 做些處理以後，更新自己的「狀態」並輸出結果 <code>h0</code>。</p>
+<p>不同於 FFNN，RNN 在第一個時間點 <code>t0</code> 並不會直接把整個序列 X 讀入。反之，在第一個時間點 <code>t0</code>，它只將該序列中的第一個元素 <code>x0</code> 讀入中間的細胞 A。細胞 A 則會針對 <code>x0</code> 做些處理以後，更新自己的「狀態」並輸出第一個結果 <code>h0</code>。</p>
 </div>
 </div>
 </div>
@@ -2030,7 +2030,7 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>剩下的 <code>xt</code> 也會被以同樣的方式處理。但不管輸入的序列 X 有多長，RNN 的本體從頭到尾都是等號左邊的樣子：迴圈代表細胞 A 利用「上」一個時間點（比方說 <code>t1</code>）儲存的狀態，來處理當下的輸入（比方說 <code>x2</code> ）。</p>
+<p>剩下的 <code>xt</code> 都會被以同樣的方式處理。但不管輸入的序列 X 有多長，RNN 的本體從頭到尾都是等號左邊的樣子：迴圈代表細胞 A 利用「上」一個時間點（比方說 <code>t1</code>）儲存的狀態，來處理當下的輸入（比方說 <code>x2</code> ）。</p>
 </div>
 </div>
 </div>
@@ -2081,7 +2081,13 @@ Test Set
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>現在你可以想像為何 RNN 非常適合拿來處理像是自然語言這種序列數據了。</p>
-<p>就像你現在閱讀這段話一樣，你是由左到右逐字處理我現在寫的文字，同時不斷地更新你腦中的記憶 / 狀態。人腦當然更為複雜，但 RNN 抓到這個處理精髓，利用內在迴圈以及細胞內的「記憶」來處理序列資料。</p>
+<p>就像你現在閱讀這段話一樣，你是由左到右逐字在大腦裡處理我現在寫的文字，同時不斷地更新你腦中的記憶狀態。每個新看到的詞彙都跟</p>
+<ul>
+<li>前面所有已讀的詞彙</li>
+<li>目前腦中的記憶狀態</li>
+</ul>
+<p>這兩者相關。</p>
+<p>當然，人腦實際的機制更為複雜，但 RNN 抓到這個處理精髓，利用內在迴圈以及細胞內的「記憶」來處理序列資料。</p>
 </div>
 </div>
 </div>
@@ -2092,7 +2098,7 @@ Test Set
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/thought-catalog-196661-unsplash.jpg"/>
 </center>
 <center>
-                        RNN 一次一段文字的處理機制跟我們的閱讀方式有些相似
+                        RNN 一次一段、按照順序處理詞彙的機制跟我們理解自然語言的方式有些相似
                         <br/>
 <br/>
 </center>
