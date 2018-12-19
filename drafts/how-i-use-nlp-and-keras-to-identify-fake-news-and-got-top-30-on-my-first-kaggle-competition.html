@@ -11,7 +11,7 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>LeeMeng - 寫給你的自然語言處理入門指南：聊聊我如何用 Keras 在 Kaggle 競賽達到前 30 %</title>
+<title>LeeMeng - 你的自然語言處理入門指南：聊聊我如何用 Keras 在 Kaggle 競賽達到前 30 %</title>
     <!--- article-specific meta data
     ================================================== -->
         <meta name="description" content="" />
@@ -27,7 +27,7 @@
         <meta property="og:image" content="https://leemeng.tw/theme/images/background/emma-frances-logan-142162-unsplash.jpg" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://leemeng.tw/drafts/how-i-use-nlp-and-keras-to-identify-fake-news-and-got-top-30-on-my-first-kaggle-competition.html" />
-        <meta property="og:title" content="寫給你的自然語言處理入門指南：聊聊我如何用 Keras 在 Kaggle 競賽達到前 30 %" />
+        <meta property="og:title" content="你的自然語言處理入門指南：聊聊我如何用 Keras 在 Kaggle 競賽達到前 30 %" />
         <meta property="og:description" content="" />
 
     <!-- mobile specific metas
@@ -133,7 +133,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="寫給你的自然語言處理入門指南：聊聊我如何用 Keras 在 Kaggle 競賽達到前 30 %">寫給你的自然語言處理入門指南：聊聊我如何用 Keras 在 Kaggle 競賽達到前 30 %</a><ul><li><a class="toc-href" href="#本文章節" title="本文章節">本文章節</a></li><li><a class="toc-href" href="#30-秒懶人包" title="30 秒懶人包">30 秒懶人包</a></li><li><a class="toc-href" href="#意料之外的-Kaggle-競賽" title="意料之外的 Kaggle 競賽">意料之外的 Kaggle 競賽</a></li><li><a class="toc-href" href="#假新聞分類任務" title="假新聞分類任務">假新聞分類任務</a></li><li><a class="toc-href" href="#用直覺找出第一條底線" title="用直覺找出第一條底線">用直覺找出第一條底線</a></li><li><a class="toc-href" href="#資料前處理：讓機器能夠處理文字" title="資料前處理：讓機器能夠處理文字">資料前處理：讓機器能夠處理文字</a><ul><li><a class="toc-href" href="#文本分詞" title="文本分詞">文本分詞</a></li><li><a class="toc-href" href="#建立字典並將文本轉成數字序列" title="建立字典並將文本轉成數字序列">建立字典並將文本轉成數字序列</a></li><li><a class="toc-href" href="#序列的-Zero-Padding" title="序列的 Zero Padding">序列的 Zero Padding</a></li><li><a class="toc-href" href="#將正解做-One-hot-Encoding" title="將正解做 One-hot Encoding">將正解做 One-hot Encoding</a></li><li><a class="toc-href" href="#切割訓練資料集-&amp;-驗證資料集" title="切割訓練資料集 &amp; 驗證資料集">切割訓練資料集 &amp; 驗證資料集</a></li></ul></li><li><a class="toc-href" href="#有記憶的循環神經網路_1" title="有記憶的循環神經網路">有記憶的循環神經網路</a></li><li><a class="toc-href" href="#記憶力好的-LSTM-細胞" title="記憶力好的 LSTM 細胞">記憶力好的 LSTM 細胞</a></li><li><a class="toc-href" href="#換你上場：3-門推薦課程" title="換你上場：3 門推薦課程">換你上場：3 門推薦課程</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="你的自然語言處理入門指南：聊聊我如何用 Keras 在 Kaggle 競賽達到前 30 %">你的自然語言處理入門指南：聊聊我如何用 Keras 在 Kaggle 競賽達到前 30 %</a><ul><li><a class="toc-href" href="#本文章節" title="本文章節">本文章節</a></li><li><a class="toc-href" href="#30-秒懶人包" title="30 秒懶人包">30 秒懶人包</a></li><li><a class="toc-href" href="#意料之外的-Kaggle-競賽" title="意料之外的 Kaggle 競賽">意料之外的 Kaggle 競賽</a></li><li><a class="toc-href" href="#假新聞分類任務" title="假新聞分類任務">假新聞分類任務</a></li><li><a class="toc-href" href="#用直覺找出第一條底線" title="用直覺找出第一條底線">用直覺找出第一條底線</a></li><li><a class="toc-href" href="#資料前處理：讓機器能夠處理文字" title="資料前處理：讓機器能夠處理文字">資料前處理：讓機器能夠處理文字</a><ul><li><a class="toc-href" href="#文本分詞" title="文本分詞">文本分詞</a></li><li><a class="toc-href" href="#建立字典並將文本轉成數字序列" title="建立字典並將文本轉成數字序列">建立字典並將文本轉成數字序列</a></li><li><a class="toc-href" href="#序列的-Zero-Padding" title="序列的 Zero Padding">序列的 Zero Padding</a></li><li><a class="toc-href" href="#將正解做-One-hot-Encoding" title="將正解做 One-hot Encoding">將正解做 One-hot Encoding</a></li><li><a class="toc-href" href="#切割訓練資料集-&amp;-驗證資料集" title="切割訓練資料集 &amp; 驗證資料集">切割訓練資料集 &amp; 驗證資料集</a></li></ul></li><li><a class="toc-href" href="#有記憶的循環神經網路_1" title="有記憶的循環神經網路">有記憶的循環神經網路</a></li><li><a class="toc-href" href="#記憶力好的-LSTM-細胞" title="記憶力好的 LSTM 細胞">記憶力好的 LSTM 細胞</a></li><li><a class="toc-href" href="#換你上場：3-門推薦課程" title="換你上場：3 門推薦課程">換你上場：3 門推薦課程</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -156,7 +156,7 @@
                     </div>
                     <h1 class="page-header__title">
                         <a href="https://leemeng.tw/drafts/how-i-use-nlp-and-keras-to-identify-fake-news-and-got-top-30-on-my-first-kaggle-competition.html" title="">
-                            寫給你的自然語言處理入門指南：聊聊我如何用 Keras 在 Kaggle 競賽達到前 30 %
+                            你的自然語言處理入門指南：聊聊我如何用 Keras 在 Kaggle 競賽達到前 30 %
                         </a>
                     </h1>
                     <ul class="page-header__meta">
@@ -202,8 +202,39 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>自從<a href="https://leemeng.tw/3-lessons-i-learnt-from-emnlp-2018-at-belgium.html"> 11 月從比利時 EMNLP</a> 回來後，最近工作之餘都在學習<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86">自然語言處理</a>（Natural Language Processing, 後簡稱為 NLP）。我希望能透過這次短短一週的 Kaggle 經歷，說明 NLP 領域中一些重要概念，幫助更多對人工智慧、深度學習或是 NLP 有興趣的你，在閱讀本故事之後能得到一些啟發與方向，展開自己的 NLP 之旅。</p>
-<p>我假設你至少有些程式經驗，因為我們後面會實際用 Python 實作 NLP 模型。</p>
+<p>這是一個寫給你的，我的故事。</p>
+<p>自從<a href="https://leemeng.tw/3-lessons-i-learnt-from-emnlp-2018-at-belgium.html"> 11 月從比利時 EMNLP</a> 回來後，最近工作之餘都在學習<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86">自然語言處理</a>（Natural Language Processing, 後簡稱為 NLP）。</p>
+<p>上週陰錯陽差地參加了一個 <a href="https://www.kaggle.com/">Kaggle</a> 競賽，在該比賽中，我實際將前陣子所學的所有 NLP 知識應用在該問題裏頭，獲得不少心得。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/emnlp2018/nlp-word-cloud.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因此我想利用這個機會，在文中詳述自己在這次比賽所運用以及學到的 NLP 概念，希望能幫助更多對人工智慧、深度學習或是 NLP 有興趣的你，在閱讀本故事之後能得到一些啟發與方向，展開自己的深度學習之旅。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/chris-ried-512801-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>雖然不是必備，但有點程式經驗會讓你比較好理解本文的內容，因為在文中有不少 <a href="https://www.python.org/">Python</a> 程式碼；另外，如果你熟悉<a href="https://zh.wikipedia.org/zh-hant/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度學習（Deep Learning）</a>以及<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神經網路（Neural Network）</a>，那你可以用此篇來重新複習學過的東西。</p>
 <p>依據維基百科，NLP 的定義為：</p>
 </div>
 </div>
@@ -224,7 +255,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>在這篇文章裡頭，我將描述自己怎麼陰錯陽差地成為一個辨別假新聞的 Kaggle 競賽者，並且如何利用最近學到的 NLP 知識以及深度學習框架 <a href="https://keras.io/">Keras</a> 來教會<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神經網路（Neural Network）</a>自動辨別手中的假新聞。</p>
+<p>在這篇文章裡頭，我將描述如何利用最近學到的 NLP 知識以及深度學習框架 <a href="https://keras.io/">Keras</a> 來教會神經網路如何自動辨別眼前的假新聞。</p>
 </div>
 </div>
 </div>
@@ -264,7 +295,7 @@
 <li><a href="#">所以 AI 學到了什麼</a></li>
 <li><a href="#結語">結語</a></li>
 <li><a href="#換你上場：3-門推薦課程">換你上場：3 門推薦課程</a></li>
-<li><a href="#">更多優質參考資料</a></li>
+<li><a href="#更多優質參考資料">更多優質參考資料</a></li>
 </ul>
 </div>
 </div>
@@ -277,7 +308,7 @@
 <ol>
 <li>NLP 接下來的發展只會更加快速，就連一般人也能弄出厲害的語言處理模型</li>
 <li>站在巨人的肩膀之上，活用前人成果與經驗能讓你前進地更快，更有效率</li>
-<li>深度學習發展神速，令人望之生卻。但你總是要<a href="#換你上場：3-門推薦課程">從某個地方好好地從頭學習基礎</a></li>
+<li>深度學習發展神速，令人不知從何開始學習。但你總是要<a href="#換你上場：3-門推薦課程">從某個地方開始好好地學習基礎</a></li>
 </ol>
 <p>這些陳述看似陳腔濫調，但希望好奇心能讓你實際閱讀本文，找出構成這些結論的蛛絲馬跡。</p>
 <p>讓我們開始吧！</p>
@@ -1577,8 +1608,8 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>而為了方便 NLP 模型處理，一般我們會設定一個 <code>MAX_SEQUENCE_LENGTH</code>，讓所有序列的長度一致。</p>
-<p>長度超過此數字的序列尾巴會被刪掉；而針對原來長度不足的序列，我們則會在詞彙前面補零。Keras 一樣有個方便函式 <code>pad_sequences</code> 幫助我們完成這件工作：</p>
+<p>而為了方便我之後的 NLP 模型處理（見<a href="#有記憶的循環神經網路">循環神經網路</a>一章），一般會設定一個 <code>MAX_SEQUENCE_LENGTH</code> 來讓所有序列的長度一致。</p>
+<p>長度超過此數字的序列尾巴會被刪掉；而針對原來長度不足的序列，我們則會在詞彙前面補零。Keras 一樣有個方便函式 <code>pad_sequences</code> 來幫助我們完成這件工作：</p>
 </div>
 </div>
 </div>
@@ -1701,8 +1732,8 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>可以看到每個新聞標題都已經被轉換成長度為 20 的數字序列，每個數字則代表著對應的 Token，整整齊齊。</p>
-<p>呼！資料前處理的步驟還真不少！但到此為止，我們已經能將原本以文字呈現的新聞標題以機器容易理解的數字序列表示了。</p>
+<p>在這邊，可以看到前 5 個新聞標題都已經各自被轉換為長度為 20 的數字序列，而序列裡頭的每個數字則代表著對應的 Token，整整齊齊。</p>
+<p>呼！資料前處理的步驟還真不少！但到此為止，我們已經能將原本以自然語言呈現的新聞標題轉換成機器容易理解的數字序列了。很神奇，不是嗎？</p>
 <p>喔不過，別忘了還有 <code>label</code> 這個文字欄位等著我們的處理。</p>
 </div>
 </div>
@@ -1894,6 +1925,25 @@ Name: label, dtype: object</pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>儘管你沒有直接讓模型看到驗證資料集（Validation Set）內的任何數據，你還是間接地洩漏了該資料集的重要資訊：你讓模型知道怎樣的參數設定會讓它在該資料集表現比較好，亦或表現較差。</p>
 <p>因此有一個完全跟模型訓練過程獨立的測試資料集（Test Set）就顯得重要許多了。（這也是為何我到現在都還沒有碰它的原因）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        機器學習模型努力從夏令營（訓練及驗證資料集）學習技能，並在真實世界（測試資料集）展示其學習結果。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>回歸正題，要切訓練資料集 / 驗證資料集，<a href="https://scikit-learn.org/stable/documentation.html">scikit-learn</a> 中的 <code>train_test_split</code> 函式是一個不錯的選擇：</p>
 </div>
 </div>
@@ -2005,7 +2055,7 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>如同上圖等號左邊所示，RNN 跟一般深度學習中常見的<a href="https://en.wikipedia.org/wiki/Feedforward_neural_network">前饋神經網路（Feedforward Neural Network, 後簡稱 FFNN）</a>最不一樣的地方在於它有一個迴圈（Loop）。</p>
+<p>如同上圖等號左側所示，RNN 跟一般深度學習中常見的<a href="https://en.wikipedia.org/wiki/Feedforward_neural_network">前饋神經網路（Feedforward Neural Network, 後簡稱 FFNN）</a>最不一樣的地方在於它有一個迴圈（Loop）。</p>
 <p>要了解這個迴圈在 RNN 裏頭怎麼運作，現在讓我們想像有一個輸入序列 X（Input Sequence）其長相如下：</p>
 <div class="highlight"><pre><span></span>X = [ x0, x1, x2, ... xt ]
 </pre></div>
@@ -2057,8 +2107,8 @@ Test Set
 <p>為了確保你 100 % 理解 RNN，讓我們假設剛剛的序列 X 實際上是一個內容如下的英文問句：</p>
 <div class="highlight"><pre><span></span>X = [ What, time, is, it, ? ]
 </pre></div>
-<p>而且 RNN 已經處理完前兩個元素 <code>What</code> 和 <code>time</code>。</p>
-<p>接下來，RNN 會這樣處理剩下的句子：</p>
+<p>而且 RNN 已經處理完前兩個元素 <code>What</code> 和 <code>time</code> 了。</p>
+<p>則接下來 RNN 會這樣處理剩下的句子：</p>
 </div>
 </div>
 </div>
@@ -2082,13 +2132,13 @@ Test Set
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>現在你可以想像為何 RNN 非常適合拿來處理像是自然語言這種序列數據了。</p>
-<p>就像你現在閱讀這段話一樣，你是由左到右逐字在大腦裡處理我現在寫的文字，同時不斷地更新你腦中的記憶狀態。每個新看到的詞彙都跟</p>
+<p>就像你現在閱讀這段話一樣，你是由左到右逐字在大腦裡處理我現在寫的文字，同時不斷地更新你腦中的記憶狀態。</p>
+<p>每當下個詞彙映入眼中，你腦中的處理都會跟以下兩者相關：</p>
 <ul>
 <li>前面所有已讀的詞彙</li>
 <li>目前腦中的記憶狀態</li>
 </ul>
-<p>這兩者相關。</p>
-<p>當然，人腦實際的機制更為複雜，但 RNN 抓到這個處理精髓，利用內在迴圈以及細胞內的「記憶」來處理序列資料。</p>
+<p>當然，實際人腦的閱讀機制更為複雜，但 RNN 抓到這個處理精髓，利用內在迴圈以及細胞內的「記憶狀態」來處理序列資料。</p>
 </div>
 </div>
 </div>
@@ -2099,7 +2149,7 @@ Test Set
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/thought-catalog-196661-unsplash.jpg"/>
 </center>
 <center>
-                        RNN 一次一段、按照順序處理詞彙的機制跟我們理解自然語言的方式有些相似
+                        RNN 按照順序，處理一連串詞彙的機制跟我們理解自然語言的方式有許多相似之處
                         <br/>
 <br/>
 </center>
@@ -2116,7 +2166,7 @@ Test Set
     <span class="n">output_t</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">input_t</span><span class="p">,</span> <span class="n">state_t</span><span class="p">)</span>
     <span class="n">state_t</span> <span class="o">=</span> <span class="n">output_t</span>
 </pre></div>
-<p>在 RNN 還沒有讀入任何資訊時，細胞 A 中的狀態 / 記憶 <code>state_t</code> 會被初始化為 0。</p>
+<p>在 RNN 每次讀入任何新的序列數據前，細胞 A 中的記憶狀態 <code>state_t</code> 都會被初始化為 0。</p>
 <p>接著在每個時間點 <code>t</code>，RNN 會重複以下步驟：</p>
 <ul>
 <li>讀入 <code>input_sequence</code> 序列中的一個新元素 <code>input_t</code></li>
@@ -2127,10 +2177,32 @@ Test Set
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">layers</span>
 <span class="n">rnn</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="n">NUM_UNITS</span><span class="p">)</span>
 </pre></div>
-<p>使用深度學習框架可以幫我們省下非常多的寶貴時間。</p>
+<p>使用深度學習框架可以幫我們省下非常多的寶貴時間並避免可能的程式錯誤。</p>
 <p>我們後面還會看到，一個完整的神經網路通常會分成好幾層（layer）：每一層取得前一層的結果作為輸入，進行特定的資料轉換後再輸出給下一層。</p>
-<p>參數 <code>NUM_UNITS</code> 則代表此 RNN 會有多少個輸出（如上圖的 <code>O1</code>、<code>O2</code> 等）。此值基本上跟我們序列的最長長度相同。</p>
-<p>好啦，現在你應該已經掌握基本 RNN 的精髓了，讓我們看看一個 RNN 的知名變形：LSTM。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/nn-layers.jpg"/>
+</center>
+<center>
+                        常見的神經網路形式。中間紅框內有迴圈的就是 RNN 層
+                        （<a href="https://www.slideshare.net/microlife/from-neural-networks-to-deep-learning" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>參數 <code>NUM_UNITS</code> 則代表此 RNN 會有多少個輸出（如前面「 What time is it ? 」中的 <code>O1</code>、<code>O2</code> 等）。此值基本上跟我們序列的最長長度相同。</p>
+<p>好啦，相信你現在已經掌握基本 RNN 了。事實上，除了 <code>SimpleRNN</code> 以外，RNN 還有其他更常被使用的 Layer。現在讓我們看看一個知名例子：長短期記憶。</p>
 </div>
 </div>
 </div>
@@ -2138,6 +2210,128 @@ Test Set
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="記憶力好的-LSTM-細胞">記憶力好的 LSTM 細胞<a class="anchor-link" href="#記憶力好的-LSTM-細胞">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>讓我們再看一下前面提到的 RNN 簡易實作：</p>
+<div class="highlight"><pre><span></span><span class="n">state_t</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># 細胞 A 會重複執行以下處理</span>
+<span class="k">for</span> <span class="n">input_t</span> <span class="ow">in</span> <span class="n">input_sequence</span><span class="p">:</span>
+    <span class="n">output_t</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">input_t</span><span class="p">,</span> <span class="n">state_t</span><span class="p">)</span>
+    <span class="n">state_t</span> <span class="o">=</span> <span class="n">output_t</span>
+</pre></div>
+<p>在了解 RNN 的基本運作方式以後，你會發現 RNN 真正的魔法，事實上藏在細胞 A 的 <code>f</code> 函式裏頭。</p>
+<p>怎麼將細胞 A 當下的記憶 <code>state_t</code> 與輸入 <code>input_t</code> 結合，才能產生最有意義的輸出 <code>output_t</code> 呢？</p>
+<p>在 <code>SimpleRNN</code> 的細胞 A 裡頭，這個 <code>f</code> 的實作很簡單，導致其記憶狀態 <code>state_t</code> 沒辦法很好地「記住」前面處理過的序列元素，造成 RNN 在處理後來的元素時，就已經把前面重要的資訊給忘記了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/forget-what-had-said-before.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這就好像一個人在講了好長一段話以後，忘了前面到底講過些什麼的情境。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E9%95%B7%E7%9F%AD%E6%9C%9F%E8%A8%98%E6%86%B6">長短期記憶（Long Short-Term Memory, 後簡稱 LSTM）</a>就是被設計來解決 RNN 的這個問題。</p>
+<p>如下圖所示，你可以把 LSTM 想成是 RNN 中實現細胞 A 處理邏輯的一個特定方法：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/lstm-cell.png"/>
+</center>
+<center>
+                        以抽象的層次來看，LSTM 就是實現 RNN 中細胞 A 邏輯的一個方式（然而非常強大）
+                        （<a href="https://hackernoon.com/understanding-architecture-of-lstm-cell-from-scratch-with-code-8da40f0b71f4" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>基本上一個 LSTM 細胞裡頭會有 3 個閘門（Gates）來控制細胞在不同時間點的記憶狀態：</p>
+<ul>
+<li>Forget Gate：決定細胞是否要遺忘目前的記憶狀態</li>
+<li>Input Gate：決定目前輸入有沒有重要到值得處理</li>
+<li>Output Gate：決定更新後的記憶狀態有多少要輸出</li>
+</ul>
+<p>透過這些閘門控管機制，LSTM 可以將很久以前的記憶狀態儲存下來，在需要的時候再次拿出來使用。</p>
+<p>下圖顯示各個閘門所在的位置：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/lstm-cell-detailed.png"/>
+</center>
+<center>
+                        LSTM 細胞頂端那條 cell state 正代表著細胞記憶的轉換過程
+                        （<a href="https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>想像 LSTM 細胞裡頭的記憶狀態是一個包裹，上面那條直線就代表著一個輸送帶。</p>
+<p>LSTM 可以把任意時間點的記憶狀態（包裹）放上該輸送帶，然後在未來的某個時間點將其原封不動地取下來使用。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/accumulation-conveyor-101.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因為這樣的機制，讓 LSTM 即使面對很長的序列數據也能有效處理，不遺忘以前的記憶。</p>
+<p>因為效果卓越，LSTM 非常廣泛地被使用。事實上，當有人跟你說他用 RNN 做了什麼 NLP 專案時，有 9 成機率他是使用 LSTM 或是 <a href="https://en.wikipedia.org/wiki/Gated_recurrent_unit">GRU（LSTM 的改良版，只使用 2 個閘門）</a> 來實作，而不是使用最簡單的 <code>SimpleRNN</code>。</p>
+<p>因此，在這次 Kaggle 競賽中，我的第一個模型也將使用 LSTM。而在 Keras 裡頭要使用 LSTM 也是輕鬆寫意：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras</span> <span class="k">import</span> <span class="n">layers</span>
+<span class="n">lstm</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">NUM_UNITS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你想更深入地了解 LSTM，別擔心！我會在<a href="#更多優質參考資料">文末列上所有我推薦值得閱讀的相關連結</a>，你可以之後進一步閱讀。</p>
 </div>
 </div>
 </div>
@@ -2304,6 +2498,7 @@ Test Set
 </ul>
 </li>
 </ul>
+<p>My story, For you.</p>
 </div>
 </div>
 </div>
@@ -2447,7 +2642,7 @@ Test Set
 
 <script type="text/javascript">
 var disqus_shortname = 'leemengtaiwan';
-var disqus_title = '寫給你的自然語言處理入門指南：聊聊我如何用 Keras 在 Kaggle 競賽達到前 30 %';
+var disqus_title = '你的自然語言處理入門指南：聊聊我如何用 Keras 在 Kaggle 競賽達到前 30 %';
 
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
