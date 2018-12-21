@@ -630,7 +630,7 @@
 <div class="highlight"><pre><span></span>用大蒜鉴别地沟油的方法,怎么鉴别地沟油
 </pre></div>
 <p>轉換成人腦不易理解，但很「機器友善」的數字序列：</p>
-<div class="highlight"><pre><span></span>[217, 1268, 32, 1178, 25, 489, 116, 4]
+<div class="highlight"><pre><span></span>[217, 1268, 32, 1178, 25, 489, 116]
 </pre></div>
 <p>如果你對此步驟已經非常熟悉，可以假設我們已經做完資料前處理，並直接跳到下一章的<a href="#有記憶的循環神經網路_1">有記憶的循環神經網路</a>。</p>
 <p>這章節的數據轉換步驟包含：</p>
@@ -2338,7 +2338,7 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>現在，既然我們已經有了在<a href="#資料前處理">資料前處理步驟</a>被轉換完成的序列數據，也決定好要使用 LSTM 作為我們的 NLP 模型來處理資料，讓我們試著將這些數據讀入 LSTM 吧！</p>
+<p>現在，既然我們已經有了在<a href="#資料前處理">資料前處理步驟</a>被轉換完成的序列數據，也決定好要使用 LSTM 作為我們的 NLP 模型，就讓我們試著將這些數據讀入 LSTM 吧！</p>
 </div>
 </div>
 </div>
@@ -2491,7 +2491,7 @@ Test Set
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/rnn-process-vectors.gif"/>
 </center>
 <center>
-                        注意：在每個時間點被塞入 RNN 的「詞彙」不再是 1 個數字，而是一個 3 維向量
+                        注意：在每個時間點被塞入 RNN 的「詞彙」不再是 1 個數字，而是一個 N 維向量（圖中 N 為 3）
                         （<a href="https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21" target="_blank">圖片來源</a>）
                         
                         <br/>
@@ -2546,7 +2546,7 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這些代表詞彙的向量被稱之為詞向量，但是你可以想像這樣的方法很沒意義。</p>
+<p>這些代表詞彙的向量被稱之為詞向量，但是你可以想像這樣的隨機轉換很沒意義。</p>
 <p>比方說上圖，我們就無法理解：</p>
 <ul>
 <li>為何「狗」是跟「老虎」而不是跟同為犬科的「野狼」比較接近？</li>
@@ -2594,8 +2594,8 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>當我們能把語料庫（Corpus）裏頭的每個詞彙表示成一個像是這樣有意義的詞向量，神經網路就能幫我們找到潛藏在大量詞彙中的語義關係，並進一步提升它的自然語言理解且改善 NLP 任務的精準度。</p>
-<p>好消息是，大部分的情況我們並不需要自己設定每個詞彙的詞向量。我們可以隨機初始化所有詞向量（如上上張的隨機轉換），並利用跟平常訓練神經網路一樣的<a href="https://zh.wikipedia.org/wiki/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95">反向傳播算法（Backpropagation）</a>，讓神經網路自動修正詞向量到上張圖的理想狀態。</p>
+<p>當我們能把語料庫（Corpus）裏頭的每個詞彙表示成一個像是這樣有意義的詞向量，神經網路就能幫我們找到潛藏在大量詞彙中的語義關係，並進一步改善 NLP 任務的精準度。</p>
+<p>好消息是，大部分的情況我們並不需要自己手動設定每個詞彙的詞向量。我們可以隨機初始化所有詞向量（如前述的隨機轉換），並利用平常訓練神經網路的<a href="https://zh.wikipedia.org/wiki/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95">反向傳播算法（Backpropagation）</a>，讓神經網路自動學到一組適合當前 NLP 任務的詞向量（如上張圖的理想狀態）。</p>
 </div>
 </div>
 </div>
@@ -2639,7 +2639,7 @@ Test Set
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>MAX_NUM_WORDS</code> 是我們的字典大小（10,000 個詞彙）、<code>NUM_EMBEDDING_DIM</code> 則是詞向量的維度。</p>
-<p><code>Embedding</code> 層一次輸入 k 個長度任意的數字序列，並輸出 k 個長度相同的序列。只是輸出的序列中，每個元素不再是數字，而是一個 <code>NUM_EMBEDDING_DIM</code> 維的詞向量。</p>
+<p><code>Embedding</code> 層一次接收 k 個長度任意的數字序列，並輸出 k 個長度相同的序列。輸出的序列中，每個元素不再是數字，而是一個 <code>NUM_EMBEDDING_DIM</code> 維的詞向量。</p>
 </div>
 </div>
 </div>
@@ -2651,25 +2651,34 @@ Test Set
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">x1_train</span><span class="p">[:</span><span class="mi">1</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"新聞標題: "</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>新聞標題: 
-[   0    0    0  185  300   72 4029   37    1  121  250   95   30  511
-   92 2358   33 2565   19   55]
+<pre>新聞標題:
+[
+	0,
+	0,
+	0,
+	185,
+	300,
+	72,
+	4029,
+	37,
+	1,
+	121,
+	250,
+	95,
+	30,
+	511,
+	92,
+	2358,
+	33,
+	2565,
+	19,
+	55,
 
+]
 </pre>
 </div>
 </div>
@@ -2720,7 +2729,7 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>序列裡頭的每個數字（即詞彙）都被轉換成一個 <code>NUM_EMBEDDING_DIM</code> 維的詞向量，而相同數字則當然會對應到一樣的詞向量（如前 3 個 <code>0</code> 所對應到的詞向量）。</p>
+<p>序列裡頭的每個數字（即詞彙）都被轉換成一個 3 維的詞向量，而相同數字則當然會對應到一樣的詞向量（如前 3 個 <code>0</code> 所對應到的詞向量）。</p>
 </div>
 </div>
 </div>
@@ -2743,7 +2752,8 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>有了詞向量，讓我們建立一個最簡單的神經網路吧！</p>
+<p>有了這樣的轉換，我們就能將轉換後的詞向量丟入 RNN / LSTM 裏頭，讓模型逐步修正隨機初始化的詞向量，並使得分類任務的精準度逐漸上升。</p>
+<p>接著就讓我們開始建立神經網路吧！</p>
 </div>
 </div>
 </div>
@@ -2754,17 +2764,47 @@ Test Set
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>一般來說，常見的神經網路架構只期待一個輸入來源：</p>
+<ul>
+<li>輸入一張圖片，判斷是狗還是貓</li>
+<li>輸入一個音訊，將其轉成文字</li>
+<li>輸入一篇新聞，判斷是娛樂還是運動新聞</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/one-data-source.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>但在這個 Kaggle 競賽裡頭，我們想要神經網路一次讀入成對的新聞標題，並判斷兩者之前的關係（2 個資料來源）</p>
+<p>（圖）</p>
+<p>所以要怎麼同時把兩個新聞標題 A 和 B 塞入一個神經網路呢？</p>
+<p>注意，兩個新聞標題內容雖然不同，但他們本質是一樣的：都是一個代表</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">-</span> <span class="p">[</span><span class="n">一個神經網路</span><span class="err">，</span><span class="n">兩個新聞標題</span><span class="p">](</span><span class="c1">#)</span>
-<span class="o">-</span> <span class="p">[</span><span class="n">深度學習</span> <span class="mi">3</span> <span class="n">步驟</span><span class="p">](</span><span class="c1">#)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">-</span> <span class="p">[</span><span class="n">深度學習</span> <span class="mi">3</span> <span class="n">步驟</span><span class="p">](</span><span class="c1">#)</span>
     <span class="n">三個步驟</span><span class="err">：</span><span class="n">決定</span> <span class="n">hypothesis</span> <span class="n">space</span> <span class="o">-&gt;</span> <span class="n">optimize</span> <span class="n">的方式</span> <span class="o">-&gt;</span> <span class="n">train</span>
 <span class="o">-</span> <span class="p">[</span><span class="n">第一個模型結果</span><span class="p">](</span><span class="c1">#)</span>
+<span class="o">-</span> <span class="p">[</span><span class="n">持續改進結果</span><span class="p">](</span><span class="c1">#)</span>
 <span class="o">-</span> <span class="p">[</span><span class="n">站在巨人的肩膀上</span><span class="p">](</span><span class="c1">#)</span>
 <span class="o">-</span> <span class="p">[</span><span class="n">輪到</span> <span class="n">Colab</span> <span class="n">登場</span><span class="p">](</span><span class="c1">#)</span>
-<span class="o">-</span> <span class="p">[</span><span class="n">持續改進結果</span><span class="p">](</span><span class="c1">#)</span>
+
 <span class="o">-</span> <span class="p">[</span><span class="n">所以</span> <span class="n">AI</span> <span class="n">學到了什麼</span><span class="p">](</span><span class="c1">#)</span>
 </pre></div>
 </div>
@@ -2919,6 +2959,10 @@ Test Set
 </ul>
 <p>ML 橋樑</p>
 <p>My story, For you.</p>
+<p>橋樑圖
+現在世界彷彿分成兩種人：董機器學習跟不懂的，兩者擔心的還不一樣&rsquo;
+這篇文章是一個橋樑</p>
+<p>我希望你看完這篇不是只會分假新聞，而是能運用所學套用到不同地方。深度學習就 3 步驟，但是只有在你的基礎很強時才能快速且有效率地完成它</p>
 </div>
 </div>
 </div>
