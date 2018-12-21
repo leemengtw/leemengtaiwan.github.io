@@ -11,7 +11,7 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>LeeMeng - 自然語言處理入門指南：聊聊如何用 NLP 及 Keras 進行 Kaggle 競賽</title>
+<title>LeeMeng - 給所有人的自然語言處理入門指南：聊聊如何用 NLP 及 Keras 進行 Kaggle 競賽</title>
     <!--- article-specific meta data
     ================================================== -->
         <meta name="description" content="" />
@@ -24,10 +24,10 @@
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="https://leemeng.tw/theme/images/background/emma-frances-logan-142162-unsplash.jpg" />
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/amogh-manjunath-773461-unsplash.jpg" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://leemeng.tw/drafts/how-i-use-nlp-and-keras-to-identify-fake-news-and-got-top-30-on-my-first-kaggle-competition.html" />
-        <meta property="og:title" content="自然語言處理入門指南：聊聊如何用 NLP 及 Keras 進行 Kaggle 競賽" />
+        <meta property="og:title" content="給所有人的自然語言處理入門指南：聊聊如何用 NLP 及 Keras 進行 Kaggle 競賽" />
         <meta property="og:description" content="" />
 
     <!-- mobile specific metas
@@ -133,7 +133,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="自然語言處理入門指南：聊聊如何用 NLP 及 Keras 進行 Kaggle 競賽">自然語言處理入門指南：聊聊如何用 NLP 及 Keras 進行 Kaggle 競賽</a><ul><li><a class="toc-href" href="#本文章節" title="本文章節">本文章節</a></li><li><a class="toc-href" href="#30-秒懶人包" title="30 秒懶人包">30 秒懶人包</a></li><li><a class="toc-href" href="#意料之外的-Kaggle-競賽" title="意料之外的 Kaggle 競賽">意料之外的 Kaggle 競賽</a></li><li><a class="toc-href" href="#假新聞分類任務" title="假新聞分類任務">假新聞分類任務</a></li><li><a class="toc-href" href="#用直覺找出第一條底線" title="用直覺找出第一條底線">用直覺找出第一條底線</a></li><li><a class="toc-href" href="#資料前處理：讓機器能夠處理文字" title="資料前處理：讓機器能夠處理文字">資料前處理：讓機器能夠處理文字</a><ul><li><a class="toc-href" href="#文本分詞" title="文本分詞">文本分詞</a></li><li><a class="toc-href" href="#建立字典並將文本轉成數字序列" title="建立字典並將文本轉成數字序列">建立字典並將文本轉成數字序列</a></li><li><a class="toc-href" href="#序列的-Zero-Padding" title="序列的 Zero Padding">序列的 Zero Padding</a></li><li><a class="toc-href" href="#將正解做-One-hot-Encoding" title="將正解做 One-hot Encoding">將正解做 One-hot Encoding</a></li><li><a class="toc-href" href="#切割訓練資料集-&amp;-驗證資料集" title="切割訓練資料集 &amp; 驗證資料集">切割訓練資料集 &amp; 驗證資料集</a></li></ul></li><li><a class="toc-href" href="#有記憶的循環神經網路_1" title="有記憶的循環神經網路">有記憶的循環神經網路</a></li><li><a class="toc-href" href="#記憶力好的-LSTM-細胞" title="記憶力好的 LSTM 細胞">記憶力好的 LSTM 細胞</a></li><li><a class="toc-href" href="#詞向量：將詞彙表達成有意義的向量" title="詞向量：將詞彙表達成有意義的向量">詞向量：將詞彙表達成有意義的向量</a></li><li><a class="toc-href" href="#一個神經網路，兩個新聞標題" title="一個神經網路，兩個新聞標題">一個神經網路，兩個新聞標題</a></li><li><a class="toc-href" href="#換你上場：3-門推薦課程" title="換你上場：3 門推薦課程">換你上場：3 門推薦課程</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="給所有人的自然語言處理入門指南：聊聊如何用 NLP 及 Keras 進行 Kaggle 競賽">給所有人的自然語言處理入門指南：聊聊如何用 NLP 及 Keras 進行 Kaggle 競賽</a><ul><li><a class="toc-href" href="#本文章節" title="本文章節">本文章節</a></li><li><a class="toc-href" href="#30-秒懶人包" title="30 秒懶人包">30 秒懶人包</a></li><li><a class="toc-href" href="#意料之外的-Kaggle-競賽" title="意料之外的 Kaggle 競賽">意料之外的 Kaggle 競賽</a></li><li><a class="toc-href" href="#假新聞分類任務" title="假新聞分類任務">假新聞分類任務</a></li><li><a class="toc-href" href="#用直覺找出第一條底線" title="用直覺找出第一條底線">用直覺找出第一條底線</a></li><li><a class="toc-href" href="#資料前處理：讓機器能夠處理文字" title="資料前處理：讓機器能夠處理文字">資料前處理：讓機器能夠處理文字</a><ul><li><a class="toc-href" href="#文本分詞" title="文本分詞">文本分詞</a></li><li><a class="toc-href" href="#建立字典並將文本轉成數字序列" title="建立字典並將文本轉成數字序列">建立字典並將文本轉成數字序列</a></li><li><a class="toc-href" href="#序列的-Zero-Padding" title="序列的 Zero Padding">序列的 Zero Padding</a></li><li><a class="toc-href" href="#將正解做-One-hot-Encoding" title="將正解做 One-hot Encoding">將正解做 One-hot Encoding</a></li><li><a class="toc-href" href="#切割訓練資料集-&amp;-驗證資料集" title="切割訓練資料集 &amp; 驗證資料集">切割訓練資料集 &amp; 驗證資料集</a></li></ul></li><li><a class="toc-href" href="#有記憶的循環神經網路_1" title="有記憶的循環神經網路">有記憶的循環神經網路</a></li><li><a class="toc-href" href="#記憶力好的-LSTM-細胞" title="記憶力好的 LSTM 細胞">記憶力好的 LSTM 細胞</a></li><li><a class="toc-href" href="#詞向量：將詞彙表達成有意義的向量" title="詞向量：將詞彙表達成有意義的向量">詞向量：將詞彙表達成有意義的向量</a></li><li><a class="toc-href" href="#一個神經網路，兩個新聞標題" title="一個神經網路，兩個新聞標題">一個神經網路，兩個新聞標題</a></li><li><a class="toc-href" href="#深度學習-3-步驟" title="深度學習 3 步驟">深度學習 3 步驟</a><ul><li><a class="toc-href" href="#定義神經網路的架構" title="定義神經網路的架構">定義神經網路的架構</a></li><li><a class="toc-href" href="#決定如何衡量模型的表現" title="決定如何衡量模型的表現">決定如何衡量模型的表現</a></li><li><a class="toc-href" href="#訓練模型並挑選最好的結果" title="訓練模型並挑選最好的結果">訓練模型並挑選最好的結果</a></li></ul></li><li><a class="toc-href" href="#換你上場：3-門推薦課程_1" title="換你上場：3 門推薦課程">換你上場：3 門推薦課程</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -142,7 +142,7 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/emma-frances-logan-142162-unsplash.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/amogh-manjunath-773461-unsplash.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
@@ -156,7 +156,7 @@
                     </div>
                     <h1 class="page-header__title">
                         <a href="https://leemeng.tw/drafts/how-i-use-nlp-and-keras-to-identify-fake-news-and-got-top-30-on-my-first-kaggle-competition.html" title="">
-                            自然語言處理入門指南：聊聊如何用 NLP 及 Keras 進行 Kaggle 競賽
+                            給所有人的自然語言處理入門指南：聊聊如何用 NLP 及 Keras 進行 Kaggle 競賽
                         </a>
                     </h1>
                     <ul class="page-header__meta">
@@ -202,9 +202,21 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這是一個寫給你的，我的故事。</p>
+<blockquote>
+<p>
+                        希望這篇文章能成為你通往自然語言處理世界的最佳橋樑。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>自從<a href="https://leemeng.tw/3-lessons-i-learnt-from-emnlp-2018-at-belgium.html"> 11 月從比利時 EMNLP</a> 回來後，最近工作之餘都在學習<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86">自然語言處理</a>（Natural Language Processing, 後簡稱為 NLP）。</p>
-<p>上週陰錯陽差地參加了一個 <a href="https://www.kaggle.com/">Kaggle</a> 競賽，在該比賽中，我實際將前陣子所學的所有 NLP 知識應用在該問題裏頭，獲得不少心得。</p>
+<p>上上週陰錯陽差地參加了一個 <a href="https://www.kaggle.com/">Kaggle</a> 競賽。在該比賽中，我實際將前陣子所學的 NLP 知識應用在解決該問題上並獲得不少心得。</p>
 </div>
 </div>
 </div>
@@ -219,7 +231,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>因此我想利用這個機會，在文中詳述自己在這次比賽所運用以及學到的 NLP 概念。希望能幫助更多對人工智慧、深度學習或是 NLP 有興趣但卻不知如何開始的你，在閱讀本故事之後能得到一些啟發與方向，展開自己的深度學習之旅。</p>
+<p>因此我想利用這個機會，在文中詳述自己在這次比賽運用以及學到的 NLP 概念，希望能幫助更多對人工智慧、深度學習或是 NLP 有興趣但卻不知如何開始的你，在閱讀本故事之後能得到一些啟發與方向，並展開自己的 NLP 之旅。</p>
 </div>
 </div>
 </div>
@@ -270,8 +282,8 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>NLP 領域博大精深，但我會盡量用簡單的詞彙來說明文中出現的深度學習及 NLP 概念，同時也會在文末附上<a href="#換你上場：3-門推薦課程">不少實用的學習資源以及文章</a>供你進一步探索。</p>
-<p>如果你已經準備好跟我一起展開一趟 NLP 的冒險旅程的話，就繼續往下閱讀吧！</p>
+<p>儘管此文的 NLP 任務是假新聞分類，你將可以把從此文學到的基礎知識運用到如機器翻譯、教機器寫詩、語音辨識等大部分的 NLP 任務上面。我也會在文末附上<a href="#換你上場：3-門推薦課程">不少實用的學習資源以及文章</a>供你進一步探索。</p>
+<p>如果你已經準備好展開一趟即將改變人生的 NLP 冒險旅程的話，就繼續往下閱讀吧！</p>
 </div>
 </div>
 </div>
@@ -288,7 +300,7 @@
 <li><a href="#記憶力好的-LSTM-細胞">記憶力好的 LSTM 細胞</a></li>
 <li><a href="#詞向量：將詞彙表達成有意義的向量">詞向量：將詞彙表達成有意義的向量</a></li>
 <li><a href="#一個神經網路，兩個新聞標題">一個神經網路，兩個新聞標題</a></li>
-<li><a href="#">深度學習 3 步驟</a></li>
+<li><a href="#深度學習-3-步驟">深度學習 3 步驟</a></li>
 <li><a href="#">第一個模型結果</a></li>
 <li><a href="#">站在巨人的肩膀上</a></li>
 <li><a href="#">輪到 Colab 登場</a></li>
@@ -2753,7 +2765,7 @@ Test Set
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了這樣的轉換，我們就能將轉換後的詞向量丟入 RNN / LSTM 裏頭，讓模型逐步修正隨機初始化的詞向量，並使得分類任務的精準度逐漸上升。</p>
-<p>接著就讓我們開始建立神經網路吧！</p>
+<p>有了兩個新聞標題的詞向量，接著讓我們瞧瞧能夠處理這些數據的神經網路架構吧！</p>
 </div>
 </div>
 </div>
@@ -2767,7 +2779,7 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>一般來說，常見的神經網路架構只期待一個輸入來源：</p>
+<p>一般來說，多數你見過的神經網路只能接受一個資料來源：</p>
 <ul>
 <li>輸入一張圖片，判斷是狗還是貓</li>
 <li>輸入一個音訊，將其轉成文字</li>
@@ -2779,7 +2791,7 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<img src="https://leemeng.tw/images/nlp-kaggle-intro/one-data-source.jpg"/>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/one-data-source-nn.jpg"/>
 <br/>
 </div>
 </div>
@@ -2787,10 +2799,168 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>但在這個 Kaggle 競賽裡頭，我們想要神經網路一次讀入成對的新聞標題，並判斷兩者之前的關係（2 個資料來源）</p>
-<p>（圖）</p>
-<p>所以要怎麼同時把兩個新聞標題 A 和 B 塞入一個神經網路呢？</p>
-<p>注意，兩個新聞標題內容雖然不同，但他們本質是一樣的：都是一個代表</p>
+<p>單一輸入的神經網路架構可以解決大部分的深度學習問題。但在這個 Kaggle 競賽裡頭，我們想要的是一個能夠讀入成對新聞標題，並判斷兩者之間關係的神經網路架構：</p>
+<ul>
+<li>不相關（unrelated）</li>
+<li>新聞 B 同意 A（agreed）</li>
+<li>新聞 B 不同意 A（disagreed）</li>
+</ul>
+<p>要怎麼做到這件事情呢？</p>
+<p>我們可以使用<a href="https://www.coursera.org/lecture/convolutional-neural-networks/siamese-network-bjhmj">孿生神經網路（Siamese Network）</a>架構：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/siamese-model-animation.gif"/>
+</center>
+<center>
+                        使用孿生神經網路架構來處理同類型的 2 個新聞標題
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這張圖是本文最重要的一張圖，但現在你只需感受一下數據在神經網路裡頭的流動以及關注紅框的部分即可。剩餘細節我會在後面的<a href="#定義神經網路的架構">定義神經網路的架構</a>小節詳述。</p>
+<p>重複看幾次上面的動畫，我相信你就會知道何謂孿生神經網路架構：一部份的神經網路（紅框部分）被重複用來處理多個不同的資料來源（在本篇中為 2 篇不同的新聞標題）。</p>
+<p>而會想這樣做，是因為不管標題內容是新聞 A 還是新聞 B，其標題本身的語法 &amp; 語義結構大同小異。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        神經網路說到底，就跟其他機器學習方法相同，都是對輸入進行一連串的數據轉換步驟。神經網路將輸入的數據轉換成更適合解決當前任務的數據格式，並利用轉換後的數據進行預測。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>以這樣的觀點來看的話，我們並不需要兩個不同的 LSTM 來分別將新聞 A 以及新聞 B 的詞向量做有意義的轉換，而是只需要讓標題 A 與標題 B 共享一個 LSTM 即可。畢竟，標題 A 跟標題 B 的數據結構很像。</p>
+<p>如果我們只寫一個 Python 函式就能處理 2 個相同格式的輸入的話，為何要寫 2 個函式呢？</p>
+<p>孿生神經網路也是相同的概念。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/siamese-cats.jpg"/>
+</center>
+<center>
+                        Siamese 事實上代表暹羅貓。就像是這邊的暹羅貓雙胞胎一樣，你可以想像孿生神經網路架構裡頭也有 2 個一模一樣的神經網路雙胞胎
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>好了，在了解如何設計能夠同時讀入 2 個資料來源的孿生神經網路後，就讓我們實際用 Keras 動手將此模型建出來。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="深度學習-3-步驟">深度學習 3 步驟<a class="anchor-link" href="#深度學習-3-步驟">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>深度學習以及 NLP 領域的學問博大精深，但一般來說，當你想要實際動手寫出一個神經網路的話，最基本的步驟有 3 個：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/deep-learning-three-steps-with-keras.jpg"/>
+</center>
+<center>
+                        用深度學習框架 Keras 來實作深度學習的基本 3 步驟
+                        （<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2017_2/Lecture/keras.pdf" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>定義神經網路的架構</li>
+<li>決定如何衡量模型的表現</li>
+<li>訓練模型並挑選最好的結果</li>
+</ol>
+<p>接下來你會看到，大約 80 % 的程式碼會花在實作第一個步驟。剩餘 2 個步驟在使用 Keras 的情況下非常容易就能實現。</p>
+<p>首先，先讓我們進入第一步驟。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="定義神經網路的架構">定義神經網路的架構<a class="anchor-link" href="#定義神經網路的架構">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在實作之前，先讓我們回顧一下前面段落看到的模型架構：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/siamese-network.jpg"/>
+</center>
+<center>
+                        本文用來實現假新聞分類的神經網路架構
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>從左到右掃過一遍，你可以很清楚地發現我們需要以下 5 個元素來完成這個模型：</p>
+<ul>
+<li>兩個新聞標題（兩個長度為 20 的數字序列）</li>
+<li>一個詞內嵌層：將數字序列轉換為詞向量序列</li>
+<li>一個 LSTM 層：讀入前層的詞向量並萃取標題語義</li>
+<li>一個串接層：將兩個新聞標題經過前層的輸出串接成一個向量</li>
+<li>一個全連接層：將前層的向量轉換為 3 個分類的預測機率</li>
+</ul>
+<p>有些層我們已經在前面章節看過 Keras 的實現，比方說<a href="#詞向量：將詞彙表達成有意義的向量">詞內嵌層</a>以及 <a href="#記憶力好的-LSTM-細胞">LSTM 層</a>。剩下的串接層以及全連結層在 Keras 也都有現成的模組可供使用。</p>
+<p>另外值得一提的是，圖上的每個層（Layer）以及向量右下的灰字都對應了 Python 程式碼裡頭實際的變數名稱，方便你在閱讀程式碼時了解每個變數代表的意義。</p>
+<p>我會在下面附上模型的 Keras 實現。強烈建立你先試著邊閱讀程式碼，邊對照上圖的變數名稱，測試自己有多了解這些程式碼的邏輯：</p>
 </div>
 </div>
 </div>
@@ -2798,9 +2968,142 @@ Test Set
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">-</span> <span class="p">[</span><span class="n">深度學習</span> <span class="mi">3</span> <span class="n">步驟</span><span class="p">](</span><span class="c1">#)</span>
-    <span class="n">三個步驟</span><span class="err">：</span><span class="n">決定</span> <span class="n">hypothesis</span> <span class="n">space</span> <span class="o">-&gt;</span> <span class="n">optimize</span> <span class="n">的方式</span> <span class="o">-&gt;</span> <span class="n">train</span>
-<span class="o">-</span> <span class="p">[</span><span class="n">第一個模型結果</span><span class="p">](</span><span class="c1">#)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 基本參數設置</span>
+<span class="c1"># 有幾個分類</span>
+<span class="n">NUM_CLASSES</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># 在語料庫裡有多少詞彙</span>
+<span class="n">MAX_NUM_WORDS</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="c1"># 一個標題最長有多少詞彙</span>
+<span class="n">MAX_SEQUENCE_LENGTH</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="c1"># 一個詞向量的維度</span>
+<span class="n">NUM_EMBEDDING_DIM</span> <span class="o">=</span> <span class="mi">256</span>
+
+<span class="c1"># LSTM </span>
+<span class="n">NUM_LSTM_UNITS</span> <span class="o">=</span> <span class="mi">128</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras</span> <span class="k">import</span> <span class="n">Input</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="k">import</span> <span class="n">Embedding</span><span class="p">,</span> \
+    <span class="n">LSTM</span><span class="p">,</span> <span class="n">concatenate</span><span class="p">,</span> <span class="n">Dense</span>
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="k">import</span> <span class="n">Model</span>
+
+<span class="n">top_input</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span>
+    <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">MAX_SEQUENCE_LENGTH</span><span class="p">,</span> <span class="p">),</span> 
+    <span class="n">dtype</span><span class="o">=</span><span class="s1">'int32'</span><span class="p">)</span>
+<span class="n">bm_input</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span>
+    <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">MAX_SEQUENCE_LENGTH</span><span class="p">,</span> <span class="p">),</span> 
+    <span class="n">dtype</span><span class="o">=</span><span class="s1">'int32'</span><span class="p">)</span>
+
+<span class="n">embedding_layer</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span>
+    <span class="n">MAX_NUM_WORDS</span><span class="p">,</span> <span class="n">NUM_EMBEDDING_DIM</span><span class="p">)</span>
+
+<span class="n">top_embedded</span> <span class="o">=</span> <span class="n">embedding_layer</span><span class="p">(</span><span class="n">top_input</span><span class="p">)</span>
+<span class="n">bm_embedded</span> <span class="o">=</span> <span class="n">embedding_layer</span><span class="p">(</span><span class="n">bm_input</span><span class="p">)</span>
+
+<span class="n">shared_lstm</span> <span class="o">=</span> <span class="n">LSTM</span><span class="p">(</span><span class="n">NUM_LSTM_UNITS</span><span class="p">)</span>
+
+<span class="n">top_output</span> <span class="o">=</span> <span class="n">shared_lstm</span><span class="p">(</span><span class="n">top_embedded</span><span class="p">)</span>
+<span class="n">bm_output</span> <span class="o">=</span> <span class="n">shared_lstm</span><span class="p">(</span><span class="n">bm_embedded</span><span class="p">)</span>
+
+<span class="n">merged</span> <span class="o">=</span> <span class="n">concatenate</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">top_output</span><span class="p">,</span> <span class="n">bm_output</span><span class="p">],</span> 
+    <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dense</span> <span class="o">=</span>  <span class="n">Dense</span><span class="p">(</span>
+    <span class="n">units</span><span class="o">=</span><span class="n">NUM_CLASSES</span><span class="p">,</span> 
+    <span class="n">activation</span><span class="o">=</span><span class="s1">'softmax'</span><span class="p">)</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">dense</span><span class="p">(</span><span class="n">merged</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">top_input</span><span class="p">,</span> <span class="n">bm_input</span><span class="p">],</span> 
+    <span class="n">outputs</span><span class="o">=</span><span class="n">predictions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_3 (InputLayer)            (None, 20)           0                                            
+__________________________________________________________________________________________________
+input_4 (InputLayer)            (None, 20)           0                                            
+__________________________________________________________________________________________________
+embedding_1 (Embedding)         (None, 20, 256)      2560000     input_3[0][0]                    
+                                                                 input_4[0][0]                    
+__________________________________________________________________________________________________
+lstm_1 (LSTM)                   (None, 128)          197120      embedding_1[0][0]                
+                                                                 embedding_1[1][0]                
+__________________________________________________________________________________________________
+concatenate_1 (Concatenate)     (None, 256)          0           lstm_1[0][0]                     
+                                                                 lstm_1[1][0]                     
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 3)            771         concatenate_1[0][0]              
+==================================================================================================
+Total params: 2,757,891
+Trainable params: 2,757,891
+Non-trainable params: 0
+__________________________________________________________________________________________________
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="err">（</span><span class="n">灰字對應到定義模型時使用到的所有</span> <span class="n">Python</span> <span class="n">變數</span><span class="err">）</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/playing-with-keras.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="決定如何衡量模型的表現">決定如何衡量模型的表現<a class="anchor-link" href="#決定如何衡量模型的表現">&para;</a></h3><h3 id="訓練模型並挑選最好的結果">訓練模型並挑選最好的結果<a class="anchor-link" href="#訓練模型並挑選最好的結果">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">-</span> <span class="p">[</span><span class="n">第一個模型結果</span><span class="p">](</span><span class="c1">#)</span>
 <span class="o">-</span> <span class="p">[</span><span class="n">持續改進結果</span><span class="p">](</span><span class="c1">#)</span>
 <span class="o">-</span> <span class="p">[</span><span class="n">站在巨人的肩膀上</span><span class="p">](</span><span class="c1">#)</span>
 <span class="o">-</span> <span class="p">[</span><span class="n">輪到</span> <span class="n">Colab</span> <span class="n">登場</span><span class="p">](</span><span class="c1">#)</span>
@@ -2814,7 +3117,7 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="換你上場：3-門推薦課程">換你上場：3 門推薦課程<a class="anchor-link" href="#換你上場：3-門推薦課程">&para;</a></h2><p>為了奠定 NLP 的基礎，這一個月我邊複習邊看了不少新的教學文章以及線上課程。</p>
+<h2 id="換你上場：3-門推薦課程_1">換你上場：3 門推薦課程<a class="anchor-link" href="#換你上場：3-門推薦課程">&para;</a></h2><p>為了奠定 NLP 的基礎，這一個月我邊複習邊看了不少新的教學文章以及線上課程。</p>
 <p>截至目前，我認為有 3 個 CP 值十分高的課程值得推薦給你：</p>
 <ol>
 <li>台大電機系李宏毅教授的<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS18.html">深度學習以及機器學習課程</a><ul>
@@ -3106,7 +3409,7 @@ Test Set
 
 <script type="text/javascript">
 var disqus_shortname = 'leemengtaiwan';
-var disqus_title = '自然語言處理入門指南：聊聊如何用 NLP 及 Keras 進行 Kaggle 競賽';
+var disqus_title = '給所有人的自然語言處理入門指南：聊聊如何用 NLP 及 Keras 進行 Kaggle 競賽';
 
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
