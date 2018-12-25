@@ -162,7 +162,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-12-24 (Mon)</li>
                         <li class="page-view">
-                            1,625 views
+                            1,757 views
                         </li>
                     </ul>
 
@@ -3187,8 +3187,62 @@ Test Set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這段程式碼不短，但有將近一半是我寫給你的註解。而且這段程式碼的邏輯跟上面的架構圖一模一樣，只差一個是從左到右、一個是從上到下而已。</p>
-<p>你應該也已經發現，只要擁有前面幾章學到的 NLP 知識以及基礎 Python 程式能力，要建立一個像這樣看似複雜的孿生 LSTM（Siamese LSTM）神經網路也並沒有那麼困難。</p>
+<p>這段程式碼的確不短，但有將近一半是我寫給你的註解。而且這段程式碼的邏輯跟上面的架構圖一模一樣，只差架構圖是從左到右、程式碼是從上到下而已。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為了確保用 Keras 定義出的模型架構跟預期相同，我們也可以將其畫出來：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.utils</span> <span class="k">import</span> <span class="n">plot_model</span>
+<span class="n">plot_model</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span> 
+    <span class="n">to_file</span><span class="o">=</span><span class="s1">'model.png'</span><span class="p">,</span> 
+    <span class="n">show_shapes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="n">show_layer_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+    <span class="n">rankdir</span><span class="o">=</span><span class="s1">'LR'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/model.png"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>除了模型架構以外，我們還可以看到所有層的輸入 / 輸出張量（Tensor）的維度。在 Keras 裏頭，張量的第 1 個維度通常為樣本數（比方說 5 則新聞標題），而 <code>None</code> 則代表可以指定任意值。</p>
+<p>最重要的是，這個用 Keras 定義出來的模型，跟我們之前想像中的孿生神經網路可以說是一模一樣：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/siamese-network.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我沒有騙你，對吧？</p>
+<p>現在你應該發現，只要擁有前面幾章學到的 NLP 知識以及基礎 Python 程式能力，要建立一個像這樣看似複雜的孿生 LSTM（Siamese LSTM）神經網路其實也並沒有那麼困難。</p>
 </div>
 </div>
 </div>
