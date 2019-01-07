@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 由淺入深的深度學習資源整理</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="這裡紀錄了我在學習深度學習時蒐集的一些線上資源。內容由淺入深，而且會一直被更新，希望能幫助你順利地開始學習：）" />
+        <meta name="keywords" content="深度學習, Python, Keras, TensorFlow" />
+        <meta name="tags" content="深度學習" />
+        <meta name="tags" content="Python" />
+        <meta name="tags" content="Keras" />
+        <meta name="tags" content="TensorFlow" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/joshua-newton-214848-unsplash.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemeng.tw/deep-learning-resources.html" />
+        <meta property="og:title" content="由淺入深的深度學習資源整理" />
+        <meta property="og:description" content="這裡紀錄了我在學習深度學習時蒐集的一些線上資源。內容由淺入深，而且會一直被更新，希望能幫助你順利地開始學習：）" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="../books.html">Books</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="由淺入深的深度學習資源整理">由淺入深的深度學習資源整理</a><ul><li><a class="toc-href" href="#you qian ru shen de shen du xue xi zi yuan" title="由淺入深的深度學習資源">由淺入深的深度學習資源</a><ul><li><a class="toc-href" href="#ben wen zhang jie" title="本文章節">本文章節</a></li><li><a class="toc-href" href="#you wan kong jian" title="遊玩空間">遊玩空間</a><ul><li><a class="toc-href" href="#deep playground" title="Deep Playground">Deep Playground</a></li><li><a class="toc-href" href="#convnetjs" title="ConvNetJS">ConvNetJS</a></li><li><a class="toc-href" href="#magenta" title="Magenta">Magenta</a></li><li><a class="toc-href" href="#google ai experiments" title="Google AI Experiments">Google AI Experiments</a></li><li><a class="toc-href" href="#quick draw" title="Quick Draw">Quick Draw</a></li><li><a class="toc-href" href="#teachable machine" title="Teachable Machine">Teachable Machine</a></li><li><a class="toc-href" href="#fast neural style" title="Fast Neural Style">Fast Neural Style</a></li><li><a class="toc-href" href="#tensorflow.js" title="TensorFlow.js">TensorFlow.js</a></li></ul></li><li><a class="toc-href" href="#xian shang ke cheng_1" title="線上課程">線上課程</a><ul><li><a class="toc-href" href="#li hong yi jiao shou de ji qi xue xi  / shen du xue xi ke cheng" title="李宏毅教授的機器學習 / 深度學習課程">李宏毅教授的機器學習 / 深度學習課程</a></li><li><a class="toc-href" href="#deep learning specialization @ coursera" title="Deep Learning Specialization @ Coursera">Deep Learning Specialization @ Coursera</a></li><li><a class="toc-href" href="#practical deep learning for coders @ fast.ai" title="Practical Deep Learning For Coders @ fast.ai">Practical Deep Learning For Coders @ fast.ai</a></li><li><a class="toc-href" href="#deep learning @ kaggle learn" title="Deep Learning @ Kaggle Learn">Deep Learning @ Kaggle Learn</a></li></ul></li><li><a class="toc-href" href="#shi yong gong ju_1" title="實用工具">實用工具</a><ul><li><a class="toc-href" href="#colaboratory" title="Colaboratory">Colaboratory</a></li><li><a class="toc-href" href="#tensorboard" title="TensorBoard">TensorBoard</a></li><li><a class="toc-href" href="#embedding projector" title="Embedding Projector">Embedding Projector</a></li><li><a class="toc-href" href="#lucid" title="Lucid">Lucid</a></li></ul></li><li><a class="toc-href" href="#qi ta jiao cai_1" title="其他教材">其他教材</a><ul><li><a class="toc-href" href="#seedbank" title="Seedbank">Seedbank</a></li><li><a class="toc-href" href="#deep learning with python" title="Deep Learning with Python">Deep Learning with Python</a></li><li><a class="toc-href" href="#stanford cs230 cheatsheets" title="Stanford CS230 Cheatsheets">Stanford CS230 Cheatsheets</a></li><li><a class="toc-href" href="#practicalai" title="practicalAI">practicalAI</a></li></ul></li><li><a class="toc-href" href="#you zhi wen zhang_1" title="優質文章">優質文章</a></li><li><a class="toc-href" href="#jing dian lun wen" title="經典論文">經典論文</a></li><li><a class="toc-href" href="#dai ban shi xiang" title="待辦事項">待辦事項</a></li></ul></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/joshua-newton-214848-unsplash.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemeng.tw/tag/shen-du-xue-xi.html" rel="tag">深度學習</a>
+                            <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
+                            <a href="https://leemeng.tw/tag/keras.html" rel="tag">Keras</a>
+                            <a href="https://leemeng.tw/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemeng.tw/deep-learning-resources.html" title="">
+                            由淺入深的深度學習資源整理
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2019-01-08 (Tue)</li>
+                        <li class="page-view">
+                            0 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
+
+    <div id="social-wrap" style="cursor: pointer">
+        <a class="open-popup" title="訂閱最新文章">
+            <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/deep-learning-resources.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/deep-learning-resources.html&title=%E7%94%B1%E6%B7%BA%E5%85%A5%E6%B7%B1%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E8%B3%87%E6%BA%90%E6%95%B4%E7%90%86&summary=%E9%80%99%E8%A3%A1%E7%B4%80%E9%8C%84%E4%BA%86%E6%88%91%E5%9C%A8%E5%AD%B8%E7%BF%92%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%99%82%E8%92%90%E9%9B%86%E7%9A%84%E4%B8%80%E4%BA%9B%E7%B7%9A%E4%B8%8A%E8%B3%87%E6%BA%90%E3%80%82%E5%85%A7%E5%AE%B9%E7%94%B1%E6%B7%BA%E5%85%A5%E6%B7%B1%EF%BC%8C%E8%80%8C%E4%B8%94%E6%9C%83%E4%B8%80%E7%9B%B4%E8%A2%AB%E6%9B%B4%E6%96%B0%EF%BC%8C%E5%B8%8C%E6%9C%9B%E8%83%BD%E5%B9%AB%E5%8A%A9%E4%BD%A0%E9%A0%86%E5%88%A9%E5%9C%B0%E9%96%8B%E5%A7%8B%E5%AD%B8%E7%BF%92%EF%BC%9A%EF%BC%89&source=https%3A//leemeng.tw/deep-learning-resources.html" target="_blank" title="分享到 LinkedIn">
+            <i class="im im-linkedin" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://twitter.com/intent/tweet?text=%E7%94%B1%E6%B7%BA%E5%85%A5%E6%B7%B1%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E8%B3%87%E6%BA%90%E6%95%B4%E7%90%86&url=https%3A//leemeng.tw/deep-learning-resources.html" target="_blank" title="分享到 Twitter">
+            <i class="im im-twitter" aria-hidden="true"></i>
+        </a>
+    </div>
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3">
+<blockquote>
+<p>
+                            不聞不若聞之，聞之不若見之，見之不若知之，知之不若行之，學至於行之而止矣。
+                            <br/>
+<span style="float:right">── 《荀子．儒效》<span>
+</span></span></p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" style="margin-top: 8rem">
+<p>
+        這段話翻成白話文就是「沒聽過比不上聽過；聽過比不上實際看過；看過則比不上實際了解；而了解又不如動手實踐。唯有身體力行才能真正地學到東西。」
+    </p>
+<p>
+        這句古老的諺語向我們傳達了「實踐」的重要以及學習的幾個過程。
+    </p>
+<p>
+        做為一門學問，<a href="https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0" target="_blank">深度學習</a>也是同樣道理。
+        僅說自己對深度學習有興趣或是有關注（聞、見），但卻沒有實際花時間去深入了解或實際應用（知、行）是無法真正學會深度學習的。
+    </p>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="/images/patrick-tomasso-71909-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+<p>
+        雖說如此，不了解深度學習能拿來做什麼的人或許還不少。
+    </p>
+<p>
+        我嘗試將自己在學習過程中蒐集到的重要資源由淺入深地做些整理。
+        希望透過此文，能讓在各個學習階段的你都能從這裡獲得些什麼，並實際動手學習、探索發展快速的深度學習世界。
+    </p>
+<p>
+        本文內容會持續被更新，你可以定期回來看看或是關注這個 
+        <a href="https://github.com/leemengtaiwan/deep-learning-resources" target="_blank">Github Repo</a>。
+    </p>
+</div>
+<h1 id="you qian ru shen de shen du xue xi zi yuan">由淺入深的深度學習資源</h1>
+<p>這裡紀錄了我在學習<a href="https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度學習</a>時蒐集的一些線上資源。內容由淺入深，而且會不斷更新，希望能幫助你順利地開始學習：）</p>
+<h2 id="ben wen zhang jie">本文章節</h2>
+<ul>
+<li><a href="#playground">遊玩空間</a></li>
+<li><a href="#courses">線上課程</a></li>
+<li><a href="#tools">實用工具</a></li>
+<li><a href="#tutorials">其他教材</a></li>
+<li><a href="#blogs">優質文章</a></li>
+<li><a href="#papers">經典論文</a></li>
+</ul>
+<h2 id="you wan kong jian"><div id="playground">遊玩空間</div></h2>
+<p>這節列舉了一些透過瀏覽器就能馬上開始遊玩 / 體驗深度學習的應用。作為這些應用的使用者，你可以先高層次、直觀地了解深度學習能做些什麼。之後有興趣再進一步了解背後原理。</p>
+<p>這小節最適合：</p>
+<ul>
+<li>想要快速體會深度學習如何被應用在真實世界的好奇寶寶</li>
+<li>想要直觀理解<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">類神經網路（Artifical Neural Network）</a>運作方式的人</li>
+<li>想從別人的深度學習應用取得一些靈感的開發者</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://playground.tensorflow.org/">Deep Playground</a></th>
+<th align="center"><a href="https://cs.stanford.edu/people/karpathy/convnetjs/index.html">ConvNetJS</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="https://playground.tensorflow.org/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/deep-playground.jpg"/></a></td>
+<td align="center"><a href="https://cs.stanford.edu/people/karpathy/convnetjs/index.html"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/convnetjs.jpg"/></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="deep playground"><a href="https://playground.tensorflow.org/">Deep Playground</a></h3>
+<ul>
+<li>由 <a href="https://github.com/tensorflow/playground">Tensorflow 團隊</a>推出，模擬訓練一個類神經網路的過程並了解其運作原理</li>
+<li>可以搭配這篇 <a href="https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/playground-exercises">Introduction to Neural Networks: Playground Exercises</a> 學習</li>
+</ul>
+<h3 id="convnetjs"><a href="https://cs.stanford.edu/people/karpathy/convnetjs/">ConvNetJS</a></h3>
+<ul>
+<li>訓練類神經網路來解決經典的 <a href="https://cs.stanford.edu/people/karpathy/convnetjs/demo/mnist.html">MNIST 手寫數字辨識問題</a>、<a href="https://cs.stanford.edu/people/karpathy/convnetjs/demo/image_regression.html">圖片生成</a>以及<a href="https://cs.stanford.edu/people/karpathy/convnetjs/demo/rldemo.html">增強式學習</a></li>
+<li>由 Tesla 的 AI 負責人 <a href="https://cs.stanford.edu/people/karpathy/">Andrej Karpathy</a> 建立</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://magenta.tensorflow.org/">Magenta</a></th>
+<th align="center"><a href="https://experiments.withgoogle.com/collection/ai">Google AI Experiments</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="https://magenta.tensorflow.org/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/magenta.jpg"/></a></td>
+<td align="center"><a href="https://experiments.withgoogle.com/collection/ai"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/google-ai-experiment.jpg"/></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="magenta"><a href="https://magenta.tensorflow.org/">Magenta</a></h3>
+<ul>
+<li>一個利用<a href="https://zh.wikipedia.org/zh-hant/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">機器學習</a>來協助人們進行音樂以及藝術創作的開源專案</li>
+<li>可以在網站上的 <a href="https://magenta.tensorflow.org/demos">Demo 頁面</a>嘗試各種由深度學習驅動的音樂 / 繪畫應用（如彈奏鋼琴、擊鼓）</li>
+</ul>
+<h3 id="google ai experiments"><a href="https://experiments.withgoogle.com/collection/ai">Google AI Experiments</a></h3>
+<ul>
+<li>這邊展示了接近 40 個利用圖片、語言以及音樂來與使用者產生互動的機器學習 Apps，值得慢慢探索</li>
+<li>知名例子有 <a href="https://quickdraw.withgoogle.com/">Quick Draw</a> 以及 <a href="https://teachablemachine.withgoogle.com/">Teachable Machine</a>，將在下方介紹</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://quickdraw.withgoogle.com/">Quick Draw</a></th>
+<th align="center"><a href="https://teachablemachine.withgoogle.com/">Teachable Machine</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="https://quickdraw.withgoogle.com/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/quickdraw.jpg"/></a></td>
+<td align="center"><a href="https://teachablemachine.withgoogle.com/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/teachable-machine.jpg"/></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="quick draw"><a href="https://quickdraw.withgoogle.com/">Quick Draw</a></h3>
+<ul>
+<li>由 Google 推出的知名手寫塗鴉辨識，使用的神經網路架構有常見的<a href="https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">卷積神經網路 CNN </a>以及<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E6%9C%89%E8%A8%98%E6%86%B6%E7%9A%84%E5%BE%AA%E7%92%B0%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF_1">循環神經網路 RNN</a></li>
+<li>該深度學習模型會不斷將最新的筆觸當作輸入來預測使用者想畫的物件。你會驚嘆於她精準且即時的判斷</li>
+</ul>
+<h3 id="teachable machine"><a href="https://teachablemachine.withgoogle.com/">Teachable Machine</a></h3>
+<ul>
+<li>利用電腦 / 手機上的相機來訓練能將影像對應到其他圖片、音訊的神經網路，饒富趣味</li>
+<li>透過這例子，你將暸解機器學習的神奇之處以及其侷限所在</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://tenso.rs/demos/fast-neural-style/">Fast Neural Style</a></th>
+<th align="center"><a href="https://js.tensorflow.org/">TensorFlow.js</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="https://tenso.rs/demos/fast-neural-style/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/fast-neural-style.jpg"/></a></td>
+<td align="center"><a href="https://js.tensorflow.org/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/human-pose-estimation.jpg"/></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="fast neural style"><a href="https://tenso.rs/demos/fast-neural-style/">Fast Neural Style</a></h3>
+<ul>
+<li>展示如何使用 WebGL 在瀏覽器快速地進行<a href="https://medium.com/tensorflow/neural-style-transfer-creating-art-with-deep-learning-using-tf-keras-and-eager-execution-7d541ac31398">神經風格轉換 Neural Style Transfer</a></li>
+<li>你可以選擇任何一張圖片，並在此網站上將其畫風轉變成指定的藝術照</li>
+<li><a href="https://deepart.io/">Deepart.io</a> 也提供類似服務</li>
+</ul>
+<h3 id="tensorflow.js"><a href="https://js.tensorflow.org/">TensorFlow.js</a></h3>
+<ul>
+<li>TensorFlow.js 頁面有多個利用 JavaScript 實現的深度學習應用，如上圖中的<a href="https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5">人類姿勢估計 Human Pose Estimation</a>。</li>
+<li>你可以在該應用裡頭打開自己的攝影機，看該應用能不能偵測到你與朋友的姿勢。</li>
+</ul>
+<h2 id="xian shang ke cheng_1"><div id="courses">線上課程</div></h2>
+<p>看完<a href="#playground">遊玩空間</a>的大量實際應用，相信你已經迫不及待地想要開始學習強大的深度學習技術了。</p>
+<p>這節列舉了一些有用的線上課程以及學習教材，幫助你掌握深度學習的基本知識（沒有特別註明的話皆為免費存取）。</p>
+<p>另外值得一提的是，大部分課程都要求一定程度的 <a href="https://www.python.org/">Python</a> 程式能力。</p>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS18.html">李宏毅教授的機器學習 / 深度學習課程</a></th>
+<th align="center"><a href="https://www.coursera.org/specializations/deep-learning">Deep Learning Specialization @ Coursera</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS18.html"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/Hung-Yi-Lee-ml-courses.jpg"/></a></td>
+<td align="center"><a href="https://www.coursera.org/specializations/deep-learning"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/deep-learning-specification-coursera.jpg"/></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="li hong yi jiao shou de ji qi xue xi  / shen du xue xi ke cheng"><a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS18.html">李宏毅教授的機器學習 / 深度學習課程</a></h3>
+<ul>
+<li>大概是全世界最好、最完整的 Deep Learning <b>中文</b>學習資源。</li>
+<li>影片內容涵蓋基本理論（約 10 小時觀看時間）一直到進階的<a href="https://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C">生成對抗網路 GAN</a> 以及<a href="https://zh.wikipedia.org/wiki/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0">強化學習 RL</a></li>
+<li>你也可以從<a href="https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ/playlists">這邊</a>看到教授的 Youtube 課程清單</li>
+</ul>
+<h3 id="deep learning specialization @ coursera"><a href="https://www.coursera.org/specializations/deep-learning">Deep Learning Specialization @ Coursera</a></h3>
+<ul>
+<li>原 Google Brain 的<a href="https://zh.wikipedia.org/wiki/%E5%90%B4%E6%81%A9%E8%BE%BE">吳恩達</a>教授開授的整個深度學習專項課程共分五堂課，從<a href="https://www.coursera.org/learn/neural-networks-deep-learning?specialization=deep-learning">神經網路的基礎</a>到能夠進行機器翻譯、語音辨識的<a href="https://www.coursera.org/learn/nlp-sequence-models">序列模型</a>，每堂課預計 1 個月完成，收費採訂閱制</li>
+<li>程式作業會交互使用 <a href="http://www.numpy.org/">Numpy</a>、<a href="https://keras.io/">Keras</a> 以及 <a href="https://www.tensorflow.org/">TensorFlow</a> 來實作深度學習模型</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://course.fast.ai/index.html">Practical Deep Learning For Coders @ fast.ai</a></th>
+<th align="center"><a href="https://www.kaggle.com/learn/deep-learning">Deep Learning @ Kaggle Learn</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="https://course.fast.ai/index.html"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/fast-ai.jpg"/></a></td>
+<td align="center"><a href="https://www.kaggle.com/learn/deep-learning"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/kaggle-learn-dl.jpg"/></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="practical deep learning for coders @ fast.ai"><a href="https://course.fast.ai/index.html">Practical Deep Learning For Coders @ fast.ai</a></h3>
+<ul>
+<li>7 週課程，一週約需安排 10 小時上課。該課程由<a href="https://www.kaggle.com/jhoward">傑里米&middot;霍華德</a>來講解深度學習，其在知名數據建模和數據分析競賽平台 <a href="https://www.kaggle.com/">Kaggle</a> 維持兩年的世界第一</li>
+</ul>
+<h3 id="deep learning @ kaggle learn"><a href="https://www.kaggle.com/learn/deep-learning">Deep Learning @ Kaggle Learn</a></h3>
+<ul>
+<li>14 堂課程，主要使用 TensorFlow 實作深度學習模型</li>
+<li>內容主要專注在<a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89">電腦視覺（Computer Vision）</a>以及如何應用<a href="https://en.wikipedia.org/wiki/Transfer_learning">遷移學習（Transfer Learning）</a></li>
+</ul>
+<h2 id="shi yong gong ju_1"><div id="tools">實用工具</div></h2>
+<p>這節列出一些在你的深度學習路上可以幫得上些忙的工具。</p>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://colab.research.google.com/notebooks/welcome.ipynb">Colaboratory</a></th>
+<th align="center"><a href="https://www.tensorflow.org/guide/summaries_and_tensorboard">TensorBoard</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="https://colab.research.google.com/notebooks/welcome.ipynb"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tools/colab.jpg"/></a></td>
+<td align="center"><a href="https://www.tensorflow.org/guide/summaries_and_tensorboard"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tools/tensorboard.jpg"/></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="colaboratory"><a href="https://colab.research.google.com/notebooks/welcome.ipynb">Colaboratory</a></h3>
+<ul>
+<li>由 Google 提供的雲端 <a href="https://jupyter.org/">Jupyter</a> 筆記本環境，讓你只要用瀏覽器就能馬上開始訓練深度學習模型。你甚至還可以使用一個免費的 <a href="https://www.nvidia.com/en-gb/data-center/tesla-k80/">Tesla K80</a> GPU 或 <a href="https://colab.research.google.com/notebooks/tpu.ipynb">TPU</a> 來加速訓練自己的模型</li>
+<li>該計算環境也能與自己的 <a href="https://colab.research.google.com/notebooks/io.ipynb">Google Drive</a> 做連結，讓運算雲端化的同時將筆記本 / 模型結果都同步到自己的筆電上</li>
+</ul>
+<h3 id="tensorboard"><a href="https://www.tensorflow.org/guide/summaries_and_tensorboard">TensorBoard</a></h3>
+<ul>
+<li>TensorBoard 是一個視覺化工具，方便我們了解、除錯並最佳化自己訓練的深度學習模型</li>
+<li>除了 TensorFlow 以外，其他基於 Python 的機器學習框架大多也可以透過 <a href="https://github.com/lanpa/tensorboardX">tensorboardX</a> 來使用 TensorBoard</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://projector.tensorflow.org/">Embedding Projector</a></th>
+<th align="center"><a href="https://github.com/tensorflow/lucid">Lucid</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="https://projector.tensorflow.org/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tools/embedding-projector.jpg"/></a></td>
+<td align="center"><a href="https://github.com/tensorflow/lucid"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tools/lucid.jpg"/></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="embedding projector"><a href="https://projector.tensorflow.org/">Embedding Projector</a></h3>
+<ul>
+<li>我們時常需要將圖片、文字轉成<a href="https://en.wikipedia.org/wiki/Tensor">高維數字向量 Embedding</a> 以供神經網路處理，而 Projector 能將此高維向量投影到 2、3 維空間上方便我們理解這些數據</li>
+<li>Projector 網站讓你在線上探索幾個常見的資料集，但事實上你也可以<a href="https://www.tensorflow.org/guide/embedding">利用 Tensorboard 來視覺化自己的數據</a>。</li>
+</ul>
+<h3 id="lucid"><a href="https://github.com/tensorflow/lucid">Lucid</a></h3>
+<ul>
+<li>Lucid 是一個嘗試讓神經網路變得更容易解釋的開源專案，裡頭包含了很多視覺化神經網路的筆記本</li>
+<li>你可以直接在 Colab 上執行這些筆記本並了解如何視覺化神經網路</li>
+</ul>
+<h2 id="qi ta jiao cai_1"><div id="tutorials">其他教材</div></h2>
+<p>除了<a href="#courses">線上課程</a>以外，網路上還有無數的學習資源。</p>
+<p>這邊列出一些推薦的深度學習教材，大多數皆以數據科學家常用的 <a href="https://jupyter.org/">Jupyter</a> 筆記本的方式呈現。</p>
+<p>你可以將感興趣的筆記本導入<a href="#tools">實用工具</a>裡提到的 <a href="https://colab.research.google.com/notebooks/welcome.ipynb">Colaboratory（Colab）</a>，馬上開始學習。</p>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://research.google.com/seedbank/">Seedbank</a></th>
+<th align="center"><a href="https://github.com/fchollet/deep-learning-with-python-notebooks">Deep Learning with Python</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="https://research.google.com/seedbank/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tutorials/seedbank.jpg"/></a></td>
+<td align="center"><a href="https://github.com/fchollet/deep-learning-with-python-notebooks"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tutorials/fchollet-deep-learning-with-python.jpg"/></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="seedbank"><a href="https://research.google.com/seedbank/">Seedbank</a></h3>
+<ul>
+<li>讓你可以一覽 Colab 上超過 100 個跟機器學習相關的筆記本，並以此為基礎建立各種深度學習應用</li>
+<li>熱門筆記本包含<a href="https://research.google.com/seedbank/seed/5695159920492544">神經機器翻譯</a>、<a href="https://research.google.com/seedbank/seed/5681034041491456">音樂生成</a>以及 <a href="https://research.google.com/seedbank/seed/5631986051842048">DeepDream</a></li>
+<li>因為是 Google 服務，筆記本大多使用 TensorFlow 與 Keras 來實現模型</li>
+</ul>
+<h3 id="deep learning with python"><a href="https://github.com/fchollet/deep-learning-with-python-notebooks">Deep Learning with Python</a></h3>
+<ul>
+<li><a href="https://keras.io/">Keras</a> 作者 <a href="https://ai.google/research/people/105096">Fran&ccedil;ois Chollet</a> 在 <a href="https://www.amazon.com/Deep-Learning-Python-Francois-Chollet/dp/1617294438">Deep Learning with Python</a> 一書中用到的所有筆記本。每個筆記本裡頭都清楚地介紹該如何使用 Keras 來實現各種深度學習模型，十分適合第一次使用 Python 實現深度學習的讀者 </li>
+<li><a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#top">進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南</a>一文的 Keras 程式碼大多基於此</li>
+<li>附註：Keras 在 TensorFlow 2.0 中<a href="https://medium.com/tensorflow/standardizing-on-keras-guidance-on-high-level-apis-in-tensorflow-2-0-bad2b04c819a">將成為其最重要的高層次 API</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks">Stanford CS230 Cheatsheets</a></th>
+<th align="center"><a href="https://github.com/GokuMohandas/practicalAI">practicalAI</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tutorials/cs230-deep-learning-cheatsheet.jpg"/></a></td>
+<td align="center"><a href="https://github.com/GokuMohandas/practicalAI"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tutorials/practical-ai-pytorch.jpg"/></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="stanford cs230 cheatsheets"><a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks">Stanford CS230 Cheatsheets</a></h3>
+<ul>
+<li>史丹佛大學的<a href="http://cs230.stanford.edu/">深度學習課程 CS230</a> 釋出的深度學習小抄總結了目前最新的<a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks">卷積神經網路</a>及<a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-recurrent-neural-networks">循環神經網路</a>知識，還包含了<a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-deep-learning-tips-and-tricks">訓練深度學習時需要使用到的技巧</a>，十分強大</li>
+<li>此小抄最適合已經熟悉基礎知識的同學隨時複習運用。你也可以從他們的 <a href="https://github.com/afshinea/stanford-cs-230-deep-learning">Github Repo</a> 下載包含上述所有內容的<a href="https://github.com/afshinea/stanford-cs-230-deep-learning/blob/master/en/super-cheatsheet-deep-learning.pdf">超級 VIP 小抄</a></li>
+</ul>
+<h3 id="practicalai"><a href="https://github.com/GokuMohandas/practicalAI">practicalAI</a></h3>
+<ul>
+<li>在 Github 上超過 1 萬星的 Repo。除了深度學習，也有介紹 <a href="https://colab.research.google.com/github/GokuMohandas/practicalAI/blob/master/notebooks/01_Python.ipynb">Python 基礎</a>及 <a href="https://colab.research.google.com/github/GokuMohandas/practicalAI/blob/master/notebooks/03_Pandas.ipynb">Pandas</a> 的使用方式</li>
+<li>使用 <a href="https://pytorch.org/">Pytorch</a> 框架來實現深度學習模型，且所有內容都是 Jupyter 筆記本，可以讓你在 Colab 或本地端執行</li>
+</ul>
+<h2 id="you zhi wen zhang_1"><div id="blogs">優質文章</div></h2>
+<p>這邊列舉了一些幫助我釐清重要概念的部落格以及網站，希望能加速你探索這個深度學習世界。</p>
+<p>只要 Google 一下就能發現這些部落格裡頭很多文章都有中文翻譯。但為了尊重原作者，在這邊都列出原文連結。</p>
+<ul>
+<li><a href="https://distill.pub/about/">Distill</a><ul>
+<li>用非常高水準且互動的方式來說明複雜的深度學習概念。<a href="http://www.iro.umontreal.ca/~bengioy/yoshua_en/index.html">Yoshua Bengio</a>、<a href="http://www.iangoodfellow.com/">Ian Goodfellow</a> 及 <a href="http://cs.stanford.edu/people/karpathy/">Andrej Karpathy</a> 等知名人士皆參與其中</li>
+</ul>
+</li>
+<li><a href="http://www.r2d3.us/%E5%9C%96%E8%A7%A3%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E7%AC%AC%E4%B8%80%E7%AB%A0/">R2D3: 圖解機器學習</a><ul>
+<li>利用非常直覺易懂的視覺化來說明機器學習，連結為中文版</li>
+</ul>
+</li>
+<li><a href="http://colah.github.io/">Christopher Olah's blog</a><ul>
+<li>詳細解釋不少深度學習概念。作者在<a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">這篇</a>就詳細地解釋了<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E8%A8%98%E6%86%B6%E5%8A%9B%E5%A5%BD%E7%9A%84-LSTM-%E7%B4%B0%E8%83%9E">長短期記憶 LSTM</a>的概念與變形；在<a href="http://colah.github.io/posts/2014-07-Understanding-Convolutions/">這篇</a>則解釋何為 CNN 的卷積運算</li>
+</ul>
+</li>
+<li><a href="https://jalammar.github.io/">Jay Alammar's blog</a><ul>
+<li>以清楚易懂的視覺化解釋深度學習概念。<a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">這篇</a>用大量易懂的動畫說明<a href="https://en.wikipedia.org/wiki/Neural_machine_translation">神經機器翻譯</a>，而在<a href="https://jalammar.github.io/illustrated-bert/">這篇</a>則介紹如何利用如 <a href="https://allennlp.org/elmo">ELMo</a>、<a href="https://github.com/google-research/bert">BERT</a> 等預先訓練過的強大模型在自然語言處理進行<a href="https://en.wikipedia.org/wiki/Transfer_learning">遷移學習</a></li>
+</ul>
+</li>
+<li><a href="http://karpathy.github.io/">Andrej Karpathy's blog</a><ul>
+<li>現為 Tesla AI 負責人的 Andrej Karpathy 在<a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">這篇</a>明確說明何謂循環神經網路 RNN。文中提供不少應用實例及視覺化來幫助我們理解 RNN 模型究竟學到了什麼，是學習 RNN 的朋友幾乎一定會碰到的一篇文章</li>
+</ul>
+</li>
+</ul>
+<h2 id="jing dian lun wen"><div id="papers">經典論文</div></h2>
+<p>因為目前作者比較專注在自然語言處理以及機器翻譯，這邊比較多 NLP 相關的論文。</p>
+<p>整理完其他資源後會為每篇論文加些關鍵字與總結。</p>
+<ul>
+<li><a href="http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf">2003/02 A Neural Probabilistic Language Model</a></li>
+<li><a href="https://arxiv.org/abs/1308.0850">2013/08 Generating Sequences With Recurrent Neural Networks</a></li>
+<li><a href="https://arxiv.org/abs/1409.0473">2014/09 Neural Machine Translation by Jointly Learning to Align and Translate</a></li>
+<li><a href="https://arxiv.org/abs/1508.04025">2015/08 Effective Approaches to Attention-based Neural Machine Translation</a></li>
+<li><a href="https://arxiv.org/abs/1511.01432">2015/12 Semi-supervised Sequence Learning</a></li>
+<li><a href="https://arxiv.org/abs/1706.03762">2017/06 Attention Is All You Need</a></li>
+<li><a href="https://arxiv.org/abs/1706.05137">2017/06 One Model To Learn Them All</a></li>
+<li><a href="https://arxiv.org/abs/1801.06146">2018/01 Universal Language Model Fine-tuning for Text Classification</a></li>
+<li><a href="https://arxiv.org/abs/1802.05365">2018/02 Deep contextualized word representations</a></li>
+<li><a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf">2018/06 Improving Language Understanding by Generative Pre-Training</a></li>
+<li><a href="https://arxiv.org/abs/1810.04805">2018/10 BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a></li>
+</ul>
+<h2 id="dai ban shi xiang">待辦事項</h2>
+<p>還有不少內容沒有整理完成，以下是作者正在整理並已經打算追加的項目：</p>
+<ul>
+<li>深度學習術語對照表</li>
+<li>值得追蹤的業界 / 學界影響人物清單</li>
+<li>無圖的資源列表版本</li>
+<li>（你的推薦與建議）</li>
+</ul>
+<p>也歡迎你推薦更多優質的學習資源以及其他寶貴意見來幫助更多人學習：）<div class="cell border-box-sizing text_cell rendered" style="margin-top: 2rem">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="/images/general/maxwell-ridgeway-685077-unsplash.jpg">
+<br/>
+</img></div>
+</div>
+<p>
+        最後，如果你覺得本文實用，還請幫我分享此文並給 <a href="https://github.com/leemengtaiwan/deep-learning-resources" target="_blank">Github Repo</a> 一個小星星。
+        這樣可以讓更多人注意到這些寶貴資源的存在並開始有方向的學習，謝謝！
+    </p>
+<p>
+        有再多資源，沒有親自動手做都是無法真正地學到東西的。因此，最後的最後讓我再次強調主動學習的重要：
+    </p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3">
+<blockquote>
+<p>
+                            告訴我資訊，我只會忘記；教導我知識，我會記得；讓我實際參與，我將能真正地學到東西。
+                            <br/>
+<span style="float:right">── 班傑明&middot;富蘭克林<span>
+</span></span></p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" style="margin-top: 8rem">
+<p>
+        所以，現在就開始學習吧！
+    </p>
+</div></p>
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemeng.tw/tag/shen-du-xue-xi.html" rel="tag">深度學習</a>
+                        <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
+                        <a href="https://leemeng.tw/tag/keras.html" rel="tag">Keras</a>
+                        <a href="https://leemeng.tw/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                    </span>
+
+                </p>
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__next">
+                            <a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html" rel="next">
+                                <span>Next Post</span>
+                                進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '由淺入深的深度學習資源整理';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
+
+</body>
+</html>
