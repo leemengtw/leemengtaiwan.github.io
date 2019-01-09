@@ -314,6 +314,7 @@
 &lt;ul&gt;
 &lt;li&gt;史丹佛大學的&lt;a href="http://cs230.stanford.edu/"&gt;深度學習課程 CS230&lt;/a&gt; 釋出的深度學習小抄總結了目前最新的&lt;a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks"&gt;卷積神經網路&lt;/a&gt;及&lt;a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-recurrent-neural-networks"&gt;循環神經網路&lt;/a&gt;知識，還包含了&lt;a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-deep-learning-tips-and-tricks"&gt;訓練深度學習時需要使用到的技巧&lt;/a&gt;，十分強大&lt;/li&gt;
 &lt;li&gt;此小抄最適合已經熟悉基礎知識的同學隨時複習運用。你也可以從他們的 &lt;a href="https://github.com/afshinea/stanford-cs-230-deep-learning"&gt;Github Repo&lt;/a&gt; 下載包含上述所有內容的&lt;a href="https://github.com/afshinea/stanford-cs-230-deep-learning/blob/master/en/super-cheatsheet-deep-learning.pdf"&gt;超級 VIP 小抄&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;除了深度學習以外，你也可以查看 &lt;a href="https://stanford.edu/~shervine/teaching/cs-229.html"&gt;CS229 機器學習課程的小抄&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="practicalai"&gt;&lt;a href="https://github.com/GokuMohandas/practicalAI"&gt;practicalAI&lt;/a&gt;&lt;/h3&gt;
 &lt;ul&gt;
@@ -350,16 +351,32 @@
 &lt;p&gt;整理完其他資源後會為每篇論文加些關鍵字與總結。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf"&gt;2003/02 A Neural Probabilistic Language Model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1301.3781"&gt;2013/01 Efficient Estimation of Word Representations in Vector Space&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://arxiv.org/abs/1308.0850"&gt;2013/08 Generating Sequences With Recurrent Neural Networks&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://arxiv.org/abs/1409.0473"&gt;2014/09 Neural Machine Translation by Jointly Learning to Align and Translate&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://arxiv.org/abs/1508.04025"&gt;2015/08 Effective Approaches to Attention-based Neural Machine Translation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://arxiv.org/abs/1511.01432"&gt;2015/12 Semi-supervised Sequence Learning&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://arxiv.org/abs/1706.03762"&gt;2017/06 Attention Is All You Need&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1511.01432"&gt;2015/12 Semi-supervised Sequence Learning&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;推出一套無監督式的預訓練方法。使用無標籤數據訓練後的 RNN 模型在之後的監督式任務表現更好&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1706.03762"&gt;2017/06 Attention Is All You Need&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Google 推出新的神經網路架構 &lt;a href="https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html"&gt;Transformer&lt;/a&gt;。這個基於自注意力機制的架構特別適合語言理解任務&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://arxiv.org/abs/1706.05137"&gt;2017/06 One Model To Learn Them All&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://arxiv.org/abs/1801.06146"&gt;2018/01 Universal Language Model Fine-tuning for Text Classification&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://arxiv.org/abs/1802.05365"&gt;2018/02 Deep contextualized word representations&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf"&gt;2018/06 Improving Language Understanding by Generative Pre-Training&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://arxiv.org/abs/1810.04805"&gt;2018/10 BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1802.05365"&gt;2018/02 Deep contextualized word representations&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://allennlp.org/elmo"&gt;ELMo 詞向量&lt;/a&gt;，利用兩獨立訓練的 LSTM 獲取雙向訊息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf"&gt;2018/06 Improving Language Understanding by Generative Pre-Training&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.openai.com/language-unsupervised/"&gt;OpenAI&lt;/a&gt; 利用無監督式預訓練以及 Transformer 架構訓練出來的模型表現在多個 NLP 任務表現良好。約使用 8 億詞彙量的資料集&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1810.04805"&gt;2018/10 BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Google 暴力美學。利用深層 Transformer 架構、2 個精心設計的預訓練任務以及約 33 億詞彙量的資料集訓練後，得到表現卓越的語言代表模型，打破 11 項 NLP 任務紀錄&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="dai ban shi xiang"&gt;待辦事項&lt;/h2&gt;
 &lt;p&gt;還有不少內容沒有整理完成，以下是作者正在整理並已經打算追加的項目：&lt;/p&gt;
@@ -5988,10 +6005,10 @@ Test Set
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="510ba7d5-c0b5-441b-a35e-a3d1ff3f06fb"&gt;&lt;/div&gt;
+&lt;div id="ab0ddab8-0c9f-4269-b658-1fda28cc0f65"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#510ba7d5-c0b5-441b-a35e-a3d1ff3f06fb');
+var element = $('#ab0ddab8-0c9f-4269-b658-1fda28cc0f65');
 (function(root) {
   function embed_document(root) {
     

@@ -162,7 +162,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-01-08 (Tue)</li>
                         <li class="page-view">
-                            951 views
+                            1,729 views
                         </li>
                     </ul>
 
@@ -533,6 +533,7 @@
 <ul>
 <li>史丹佛大學的<a href="http://cs230.stanford.edu/">深度學習課程 CS230</a> 釋出的深度學習小抄總結了目前最新的<a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks">卷積神經網路</a>及<a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-recurrent-neural-networks">循環神經網路</a>知識，還包含了<a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-deep-learning-tips-and-tricks">訓練深度學習時需要使用到的技巧</a>，十分強大</li>
 <li>此小抄最適合已經熟悉基礎知識的同學隨時複習運用。你也可以從他們的 <a href="https://github.com/afshinea/stanford-cs-230-deep-learning">Github Repo</a> 下載包含上述所有內容的<a href="https://github.com/afshinea/stanford-cs-230-deep-learning/blob/master/en/super-cheatsheet-deep-learning.pdf">超級 VIP 小抄</a></li>
+<li>除了深度學習以外，你也可以查看 <a href="https://stanford.edu/~shervine/teaching/cs-229.html">CS229 機器學習課程的小抄</a></li>
 </ul>
 <h3 id="practicalai"><a href="https://github.com/GokuMohandas/practicalAI">practicalAI</a></h3>
 <ul>
@@ -569,16 +570,32 @@
 <p>整理完其他資源後會為每篇論文加些關鍵字與總結。</p>
 <ul>
 <li><a href="http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf">2003/02 A Neural Probabilistic Language Model</a></li>
+<li><a href="https://arxiv.org/abs/1301.3781">2013/01 Efficient Estimation of Word Representations in Vector Space</a></li>
 <li><a href="https://arxiv.org/abs/1308.0850">2013/08 Generating Sequences With Recurrent Neural Networks</a></li>
 <li><a href="https://arxiv.org/abs/1409.0473">2014/09 Neural Machine Translation by Jointly Learning to Align and Translate</a></li>
 <li><a href="https://arxiv.org/abs/1508.04025">2015/08 Effective Approaches to Attention-based Neural Machine Translation</a></li>
-<li><a href="https://arxiv.org/abs/1511.01432">2015/12 Semi-supervised Sequence Learning</a></li>
-<li><a href="https://arxiv.org/abs/1706.03762">2017/06 Attention Is All You Need</a></li>
+<li><a href="https://arxiv.org/abs/1511.01432">2015/12 Semi-supervised Sequence Learning</a><ul>
+<li>推出一套無監督式的預訓練方法。使用無標籤數據訓練後的 RNN 模型在之後的監督式任務表現更好</li>
+</ul>
+</li>
+<li><a href="https://arxiv.org/abs/1706.03762">2017/06 Attention Is All You Need</a><ul>
+<li>Google 推出新的神經網路架構 <a href="https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html">Transformer</a>。這個基於自注意力機制的架構特別適合語言理解任務</li>
+</ul>
+</li>
 <li><a href="https://arxiv.org/abs/1706.05137">2017/06 One Model To Learn Them All</a></li>
 <li><a href="https://arxiv.org/abs/1801.06146">2018/01 Universal Language Model Fine-tuning for Text Classification</a></li>
-<li><a href="https://arxiv.org/abs/1802.05365">2018/02 Deep contextualized word representations</a></li>
-<li><a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf">2018/06 Improving Language Understanding by Generative Pre-Training</a></li>
-<li><a href="https://arxiv.org/abs/1810.04805">2018/10 BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a></li>
+<li><a href="https://arxiv.org/abs/1802.05365">2018/02 Deep contextualized word representations</a><ul>
+<li><a href="https://allennlp.org/elmo">ELMo 詞向量</a>，利用兩獨立訓練的 LSTM 獲取雙向訊息</li>
+</ul>
+</li>
+<li><a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf">2018/06 Improving Language Understanding by Generative Pre-Training</a><ul>
+<li><a href="https://blog.openai.com/language-unsupervised/">OpenAI</a> 利用無監督式預訓練以及 Transformer 架構訓練出來的模型表現在多個 NLP 任務表現良好。約使用 8 億詞彙量的資料集</li>
+</ul>
+</li>
+<li><a href="https://arxiv.org/abs/1810.04805">2018/10 BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a><ul>
+<li>Google 暴力美學。利用深層 Transformer 架構、2 個精心設計的預訓練任務以及約 33 億詞彙量的資料集訓練後，得到表現卓越的語言代表模型，打破 11 項 NLP 任務紀錄</li>
+</ul>
+</li>
 </ul>
 <h2 id="dai ban shi xiang">待辦事項</h2>
 <p>還有不少內容沒有整理完成，以下是作者正在整理並已經打算追加的項目：</p>
