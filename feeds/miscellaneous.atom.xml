@@ -385,8 +385,10 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="jing dian lun wen"&gt;&lt;div id="papers"&gt;經典論文&lt;/div&gt;&lt;/h2&gt;
-&lt;p&gt;因為目前作者比較專注在自然語言處理以及機器翻譯，這邊比較多 NLP 相關的論文。&lt;/p&gt;
-&lt;p&gt;整理完其他資源後會為每篇論文加些關鍵字與總結。&lt;/p&gt;
+&lt;p&gt;這邊依發表時間列出深度學習領域的經典 / 重要論文。&lt;/p&gt;
+&lt;p&gt;為了幫助你快速掌握論文內容以及歷年的研究趨勢，每篇論文下會有非常簡短的介紹（WIP）。&lt;/p&gt;
+&lt;p&gt;但我們推薦有興趣的人自行閱讀論文以深入了解。&lt;/p&gt;
+&lt;h3 id="zi ran yu yan chu li  natural language processing (nlp)"&gt;自然語言處理 Natural Language Processing (NLP)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf"&gt;2003/02 A Neural Probabilistic Language Model&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://arxiv.org/abs/1301.3781"&gt;2013/01 Efficient Estimation of Word Representations in Vector Space&lt;/a&gt;&lt;/li&gt;
@@ -416,7 +418,34 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="dai ban shi xiang"&gt;待辦事項&lt;/h2&gt;
+&lt;h3 id="dian nao shi jue  computer vision (cv) (in progress and to be tidied up)"&gt;電腦視覺 Computer Vision (CV) (In progress and to be tidied up)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf"&gt;1998/01 Gradient-Based Learning Applied to Document Recognition (LeNet-5)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.image-net.org/papers/imagenet_cvpr09.pdf"&gt;2009/06 ImageNet: A Large-Scale Hierarchical Image Database (ImageNet)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf"&gt;2012/12 ImageNet Classification with Deep Convolutional Neural Networks (AlexNet)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1311.2524"&gt;2013/11 Rich feature hierarchies for accurate object detection and semantic segmentation (R-CNN)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1312.6229"&gt;2013/12 OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks (OverFeat)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1406.2661"&gt;2014/06 Generative Adversarial Networks (GAN)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.cs.toronto.edu/~ranzato/publications/taigman_cvpr14.pdf"&gt;2014/06 DeepFace: Closing the Gap to Human-Level Performance in Face Verification (DeepFace)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1409.1556"&gt;2014/09 Very Deep Convolutional Networks for Large-Scale Image Recognition (VGG)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1409.4842"&gt;2014/09 Goint deeper with convolutions (GoogLeNet)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1411.4038"&gt;2014/11 Fully Convolutional Networks for Semantic Segmentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1504.08083"&gt;2015/04 Fast R-CNN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1505.04597"&gt;2015/05 U-Net: Convolutional Networks for Biomedical Image Segmentation (U-Net)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1506.01497"&gt;2015/06 Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks (Faster R-CNN)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1506.02640"&gt;2015/06 You Only Look Once: Unified, Real-Time Object Detection (YOLO)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1511.06434"&gt;2015/13 Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks (DCGAN)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1512.02325"&gt;2015/12 SSD: Single Shot MultiBox Detector (SSD)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1512.03385"&gt;2015/12 Deep Residual Learning for Image Recognition (ResNet)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1612.08242"&gt;2016/12 YOLO9000: Better, Faster, Stronger (YOLOv2)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1701.07875"&gt;2017/01 Wasserstein GAN (WGAN)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1703.06870"&gt;2017/03 Mask R-CNN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1703.10593"&gt;2017/03 Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (CycleGAN)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1704.04861"&gt;2017/04 MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications (MobileNets)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1707.01083"&gt;2017/07 ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices (ShuffleNet)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1804.02767"&gt;2018/04 YOLOv3: An Incremental Improvement (YOLOv3)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="dai ban shi xiang_1"&gt;待辦事項&lt;/h2&gt;
 &lt;p&gt;還有不少內容沒有整理完成，以下是作者正在整理並已經打算追加的項目：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;深度學習術語對照表&lt;/li&gt;
@@ -424,7 +453,8 @@
 &lt;li&gt;無圖的資源列表版本&lt;/li&gt;
 &lt;li&gt;（你的推薦與建議）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;也歡迎你推薦更多優質的學習資源以及其他寶貴意見來幫助更多人學習：）&lt;div class="cell border-box-sizing text_cell rendered" style="margin-top: 2rem"&gt;
+&lt;p&gt;也歡迎你推薦更多優質的學習資源以及其他寶貴意見來幫助更多人學習：）
+&lt;div class="cell border-box-sizing text_cell rendered" style="margin-top: 2rem"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;img src="/images/general/maxwell-ridgeway-685077-unsplash.jpg"&gt;
@@ -6043,10 +6073,10 @@ Test Set
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="5eefa927-292d-43ec-987a-7de3e02bf548"&gt;&lt;/div&gt;
+&lt;div id="e7f03fd4-e6b0-4397-b3a2-222b10b80ae5"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#5eefa927-292d-43ec-987a-7de3e02bf548');
+var element = $('#e7f03fd4-e6b0-4397-b3a2-222b10b80ae5');
 (function(root) {
   function embed_document(root) {
     
