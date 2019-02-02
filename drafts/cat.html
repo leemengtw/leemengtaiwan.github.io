@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - AI 如何找出你的喵 - 直觀理解卷積神經網路</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="展示一些能夠幫助你更深刻了解神經網路運作過程的視覺化以及說明。" />
+        <meta name="keywords" content="" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/alireza-attari-1082025-unsplash.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemeng.tw/drafts/cat.html" />
+        <meta property="og:title" content="AI 如何找出你的喵 - 直觀理解卷積神經網路" />
+        <meta property="og:description" content="展示一些能夠幫助你更深刻了解神經網路運作過程的視覺化以及說明。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="../books.html">Books</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="AI 如何找出你的喵 - 直觀理解卷積神經網路">AI 如何找出你的喵 - 直觀理解卷積神經網路</a><ul><li><a class="toc-href" href="#本文章節" title="本文章節">本文章節</a></li><li><a class="toc-href" href="#神經網路：一個映射函數" title="神經網路：一個映射函數">神經網路：一個映射函數</a></li><li><a class="toc-href" href="#卷積運算：擷取局部特徵" title="卷積運算：擷取局部特徵">卷積運算：擷取局部特徵</a></li><li><a class="toc-href" href="#池化運算：降低取樣" title="池化運算：降低取樣">池化運算：降低取樣</a></li><li><a class="toc-href" href="#站在巨人肩膀：遷移學習" title="站在巨人肩膀：遷移學習">站在巨人肩膀：遷移學習</a></li><li><a class="toc-href" href="#結語：培養對深度學習的更深理解" title="結語：培養對深度學習的更深理解">結語：培養對深度學習的更深理解</a></li><li><a class="toc-href" href="#繼續探索：推薦資源" title="繼續探索：推薦資源">繼續探索：推薦資源</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/alireza-attari-1082025-unsplash.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemeng.tw/drafts/cat.html" title="">
+                            AI 如何找出你的喵 - 直觀理解卷積神經網路
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2019-01-24 (Thu)</li>
+                        <li class="page-view">
+                            1 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
+
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>喵！讓我猜猜，你是不是看到有貓咪就點了進來呢？</p>
+<p>在繼續閱讀前，點擊下面一張你最中意的貓咪或是狗狗圖片（月月：選我選我！），看看本篇以<a href="https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度學習</a>技術實作的貓狗辨識 App 能否正確地識別出它們。</p>
+<p>當然，你也可以選擇出賣你家的愛貓愛狗，上傳它們的照片。不過別忘了將結果截圖分享給我：）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/gallery.png"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>怎麼樣？ App 有正確分類出你選擇的貓咪 / 狗狗嗎？還是你上傳了奇怪圖片，現在正對著螢幕顯示的預測結果癡癡傻笑呢？</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/mikhail-vasilyev-253977-unsplash.jpg"/>
+</center>
+<center>
+                        出賣愛貓的好時機
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如同你所看到的，這個頁面展示了一個以<a href="https://www.youtube.com/watch?v=FrKWiRv254g">卷積神經網路（<strong>C</strong>onvoluational <strong>N</strong>eural <strong>N</strong>etwork, 後簡稱為 CNN）</a>實作的貓狗圖片辨識應用。你除了可以不斷出賣愛貓愛狗以外，也可以跟著本文，非常直觀地理解以下內容：</p>
+<ul>
+<li>何謂卷積神經網路 CNN</li>
+<li>卷積神經網路的運作方式</li>
+<li>何謂遷移學習</li>
+</ul>
+<p>值得事先說明的是，本文雖然有些許 <a href="https://www.python.org/">Python</a> 程式碼，但實際上並不會一步步教你寫出一個 CNN（因為網路上已經太多這樣的文章了）。如果這是你的目的，我推薦查看 <a href="https://course.fast.ai/videos/?lesson=1">fast.ai 的圖像分類課程</a>。</p>
+<p>本文的目的是讓你在閱讀後對深度學習以及卷積神經網路有個更直觀的理解，並讓你之後的學習之旅更加順遂。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<a href="https://github.com/leemengtaiwan/deep-learning-resources" target="_blank"><img src="https://leemeng.tw/images/cat_dog_classifier/deep-learning-resource.png"/></a>
+</center>
+<center>
+    匯總大量深度學習資源的 <a href="https://github.com/leemengtaiwan/deep-learning-resources" target="_blank">deep-learning-resources</a> 也是你的好朋友，值得查看
+    <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在閱讀本文並對卷積神經網路有個基礎理解之後，你能在<a href="#繼續探索：推薦資源">文末</a>查看所有我推薦的其他資源，進一步嘗試實作自己的神經網路或是深入學習。</p>
+<p>廢話不多說，讓我們開始吧！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="本文章節">本文章節<a class="anchor-link" href="#本文章節">&para;</a></h2><ul>
+<li><a href="#神經網路：一個映射函數">神經網路：一個映射函數</a></li>
+<li><a href="#卷積運算：擷取局部特徵">卷積運算：擷取局部特徵</a></li>
+<li><a href="#池化運算：降低取樣">池化運算：降低取樣</a></li>
+<li><a href="#站在巨人肩膀：遷移學習">站在巨人肩膀：遷移學習</a></li>
+<li><a href="#結語：培養對深度學習的更深理解">結語：培養對深度學習的更深理解</a></li>
+<li><a href="#繼續探索：推薦資源">繼續探索：推薦資源</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="神經網路：一個映射函數">神經網路：一個映射函數<a class="anchor-link" href="#神經網路：一個映射函數">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://www.youtube.com/watch?v=FrKWiRv254g">卷積神經網路（<strong>C</strong>onvoluational <strong>N</strong>eural <strong>N</strong>etwork, 後簡稱為 CNN）</a>是一種神經網路架構，近年在人臉辨識、圖像分類、自動駕駛等領域大放異彩。本篇供你互動的貓狗辨識應用便是基於此所建立的。</p>
+<p>雖然 CNN 也能處理文字以及影片輸入，在這篇文章裡頭，我們將特別針對輸入為圖片的例子做說明。一個典型的 CNN 會用以下的方式處理輸入進來的圖片：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/cnn-architecture.png"/>
+</center>
+<center>
+                        將輸入圖片轉換成理想輸出的典型 CNN 架構
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>鳥瞰整個流程，就算你現在還不知道何謂<a href="#卷積運算：擷取局部特徵">卷積</a>或者<a href="#池化運算：降低取樣">池化運算</a>，應該也可以看到輸入的貓咪圖片是如何從左到右經過一連串的數據處理步驟，最後被轉換成我們想要的輸出結果的（貓和狗的機率）。</p>
+<p>如同我在<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html">寫給所有人的自然語言處理與深度學習入門指南</a>中提到的，不管是該篇介紹的<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E6%9C%89%E8%A8%98%E6%86%B6%E7%9A%84%E5%BE%AA%E7%92%B0%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF">循環神經網路 RNN</a> 還是本篇的卷積神經網路也好，拉到最抽象的層次，其實它們做的事情都是一樣的：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        任何類型的神經網路本質上都是一個映射函數。它們會在內部進行一連串特定的數據轉換步驟，想辦法將給定的輸入數據轉換成指定的輸出形式。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>以本篇的貓狗辨識來說，我們希望針對任意一張貓咪或狗狗的圖片輸入，神經網路都能夠對其像素（pixels）做特定且有意義的轉換，最後回傳給我們正確的貓咪 / 狗狗機率。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/velizar-ivanov-540528-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>既然每個神經網路都是做數據轉換，</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        「理解不同神經網路所做的數據轉換具有什麼實質意義」這件事情就顯得非常重要了。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>畢竟，沒意義的數據轉換如：</p>
+<ul>
+<li>將圖片裡每兩個相鄰的像素值對調</li>
+<li>將圖中每個像素值乘以 2 倍</li>
+</ul>
+<p>等方式不太可能能像開頭的 App 一樣，幫我們將一張 1024 x 768 像素的貓咪圖片轉換成正確的貓咪機率。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/federica-diliberto-57819-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因此，接著就讓我們看看為何當輸入數據為圖片時，卷積神經網路 CNN 中的「卷積運算」是有意義且有效率的轉換。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="卷積運算：擷取局部特徵">卷積運算：擷取局部特徵<a class="anchor-link" href="#卷積運算：擷取局部特徵">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>卷積運算裡頭最不可或缺的就是濾波器（filter）的存在了。常見的濾波器大小為 3 x 3 像素，下文皆以此為例。有了濾波器以後，我們會將其用來對圖片中每個對應的 3 x 3 範圍做卷積運算：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/convolution-layer-a.png" style="width:75%"/>
+</center>
+<center>
+    利用 3 x 3 濾波器將左下圖片的每個對應 3 x 3 像素範圍做卷積後得到右側輸出（<a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#style-transfer">圖片來源</a>）
+    <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>值得注意的是，圖中每次濾波器往右以及往下的距離（stride）為 1，而這是可以調整的。</p>
+<p>事實上，卷積就是將濾波器裡頭的每個數字拿去跟圖片對應位置的像素值相乘，再把所有相乘結果加起來：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/3D_Convolution_Animation.gif" style="width:40%"/>
+</center>
+<center>
+    輸出結果的每一格數字都是由濾波器裡頭 9 個數值跟對應位置的 9 個輸入值相乘後再全部加起來的結果（<a href="https://commons.wikimedia.org/wiki/File:3D_Convolution_Animation.gif">圖片來源</a>）
+    <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>多花一點時間理解上面的動畫，你會發現卷積本身並沒有想像中那麼地困難。但這時你腦中應該會很自然地浮現 1 個問題：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        這樣的運算有什麼實質意義呢？
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/catherine-heath-1309997-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>與其聽我解釋，不如先讓你自己實際試試幾個濾波器感受一下。</p>
+<p>底下這些濾波器可以用來對你在文章開頭點擊的圖片做卷積運算。現在，透過下拉選單來觀察不同濾波器對該圖的卷積結果吧！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/filters.png"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>怎麼樣？我想你現在應該能比較直觀地感受濾波器與卷積運算在做些什麼了。</p>
+<p>除了視覺上的娛樂效果以外，每個濾波器對輸入圖片做的卷積運算事實上是一種<a href="https://zh.wikipedia.org/wiki/%E7%89%B9%E5%BE%B5%E6%8F%90%E5%8F%96">特徵提取（feature extraction）</a>步驟。</p>
+<p>不同的濾波器會對圖中所有相同範圍（3 x 3）的像素做不同的轉換，進而從這些像素裡頭提取出：</p>
+<ul>
+<li>物件輪廓</li>
+<li>左上突出</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B">邊緣線條</a></li>
+</ul>
+<p>等等實用且具代表性的圖片特徵。</p>
+<p>你可能會問：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        為何要用小小的濾波器擷取圖片特徵，而不是使用尺寸跟圖片大小一樣的濾波器呢？
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>答案也十分直覺，因為：</p>
+<ul>
+<li>每張圖片大小不一，就像我無法預測你上傳的圖的大小一樣</li>
+<li>很多圖片特徵並不跟原圖大小相同，而是更小的 pattern</li>
+<li>同樣 pattern 可能重複出現在不同圖中的不同位置</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/little-filter.png"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>透過使用小的濾波器，我們可以更有效率地擷取重複出現的圖片特徵。</p>
+<p>畢竟，我們想要的是一個不管「貓耳」在哪張圖片的哪個位置都能有反應的濾波器，而不是一個只會對「特定位置」的貓耳有反應的濾波器。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>另外有趣的是，我們可以將第一組濾波器的輸出結果當成新的輸入「圖片」，接著使用另外一組新的濾波器，再次對這些新的輸入做卷積。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/input-to-output-feature-maps.png"/>
+</center>
+<center>
+                        透過不同濾波器的卷積運算，我們能從左側的圖片得到右側的圖片特徵（feature maps）
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>新的運算結果讓我們提取出新的特徵，並再次成為下一組濾波器的輸入。透過重複幾次這樣的轉換，我們相信最終得到的圖片特徵能夠包含原始圖片中的重要資訊。</p>
+<p>我們可以利用這些特徵（features）來做很多事情，比方說丟給輸出為一個神經元的<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E5%85%A8%E9%80%A3%E6%8E%A5%E5%B1%A4">全連接層</a>做二元分類（binary classification），進而產生圖片裡有貓咪或狗狗的機率。事實上，這就是本文的卷積神經網路 CNN 在做的事情：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/cnn-architecture-n.png"/>
+</center>
+<center>
+                        一般而言，CNN 會重複多次卷積、池化運算以提取圖片特徵，接著將萃取出來的圖片特徵交給全連接層做分類
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>看到這邊，你可能會問另外一個問題：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        CNN 裡頭這些濾波器的值從哪來的？前面的濾波器因為我們已經知道它們的值，所以當然可以直接拿來做卷積，但是在 CNN 裡頭，我們不可能手動一個個設定濾波器裡頭的值吧？
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>非常好的問題。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/backpropagation-example.gif"/>
+</center>
+<center>
+                        反向傳播讓神經網路（如：CNN）可以在訓練過程中修正參數（例：濾波器的值），持續減少預測錯誤
+                        （<a href="https://www.youtube.com/watch?v=Ilg3gGewQ5U" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如同<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E4%B8%80%E5%80%8B%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%EF%BC%8C%E5%85%A9%E5%80%8B%E6%96%B0%E8%81%9E%E6%A8%99%E9%A1%8C">我在以前文章說過的</a>，我們可以隨機初始化所有濾波器的數值，並利用平常訓練神經網路的反向傳播算法（Backpropagation），讓 CNN 自己學出一組有用的濾波器數值來將輸入圖片（一大堆像素）轉換成我們想要的值（一個貓咪機率）。</p>
+<p>透過這些轉換，CNN 能幫我們萃取出有用的圖片特徵。而這也是深度學習最厲害一個的地方：自動化<a href="https://en.wikipedia.org/wiki/Feature_engineering">特徵工程（feature engineering）</a>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>好啦，到此為止，相信你已經充分了解 CNN 裡頭最核心的數據轉換步驟：卷積的運作方式了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/no_padding_no_strides.gif" style="width:25%"/>
+</center>
+<center>
+    最簡單形式的卷積運算（<a href="http://deeplearning.net/software/theano/tutorial/conv_arithmetic.html">圖片來源</a>）
+    <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>雖然本文不會細談，但如果你熟悉 Python 以及<a href="https://keras.io/">深度學習 API Keras</a>，要建立一層的卷積運算也十分容易：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">keras</span>
+
+<span class="c1"># 64 為濾波器（filter）數目</span>
+<span class="c1"># (3, 3) 為濾波器大小</span>
+<span class="c1"># activation='relu' </span>
+<span class="c1"># 則是為卷積增加非線性轉換</span>
+<span class="c1"># 以提升模型複雜度</span>
+<span class="n">conv</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span>
+    <span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> 
+    <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> 
+    <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>了解 CNN 裡頭最重要的卷積以後，接著讓我們看看出現在卷積後面的池化運算（pooling）吧！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="池化運算：降低取樣">池化運算：降低取樣<a class="anchor-link" href="#池化運算：降低取樣">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在了解卷積以後，池化（pooling）的運作方式就很容易理解了。進行池化時，我們一樣會有一個濾波器（filter）掃過整張圖片，但這個濾波器跟卷積時的濾波器不同的地方有幾點：</p>
+<ul>
+<li>一般來說池化的濾波器大小為 2 x 2（卷積濾波器的大小通常為 1, 3, 5）</li>
+<li>濾波器每次往右、往下移動距離（stride）為 2（卷積通常為 1）</li>
+<li>濾波器裡頭本身沒有數值，而是將 2 x 2 範圍裡頭的最大值取出來（卷積則是透過自己的數值跟輸入做相乘計算）</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/max-pooling-steps.png"/>
+</center>
+<center>
+                        利用 2 x 2 池化濾波器將左側輸入轉換成右側輸出的過程
+                        （<a href="https://www.youtube.com/watch?v=FrKWiRv254g" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>上圖 2 x 2 的紅框即為池化時用的濾波器，將每個範圍內最大數值取出的 max pooling 是最常見的做法，但你也可以選擇取 4 個數字平均的 average pooling。</p>
+<p>以動畫表示池化運算的話就如下方所示：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/max-pooling-a.png" style="width:75%"/>
+</center>
+<center>
+    注意圖中 max pooling 濾波器是如何將每個 2 x 2 區塊的最大值（最深的顏色）取出來的（<a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#style-transfer">圖片來源</a>）
+    <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>跟解釋卷積運作原理時一樣，池化運算本身不難，事實上這就是對圖片降低取樣（downsampling）：取每個子區塊的最大值並降低整體圖片像素數量。</p>
+<p>但你可能會問：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        這樣的運算有什麼效果呢？
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/downsampling.png"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>直觀來說，一個 2 x 2 的池化運算能讓我們在不影響物體的情況下，將原圖大小縮減到原來的 25 %。</p>
+<p>對你而言，左邊和右邊的圖片都代表著同一隻貓咪。透過池化，我們將圖片特徵數量縮減到 25 % 並保留原先資訊。這樣做最明顯的好處是能減少神經網路所需處理的像素與計算量，加快模型的訓練速度。</p>
+<p>在 Keras 裡頭，要實作池化運算也十分容易：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">keras</span>
+
+<span class="c1"># 跟卷積不同，我們只需要一個濾波器，</span>
+<span class="c1"># 因此不用設定濾波器數量。</span>
+<span class="c1"># 另外在底下實作時我們會使用</span>
+<span class="c1"># max pooling 取 2 x 2 範圍內最大的值</span>
+<span class="n">conv</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span>
+    <span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>好啦，到此為止你已經掌握了 CNN 裡頭最重要的卷積以及池化運算概念了。</p>
+<p>讓我幫你把目前為止提到的重要概念做個懶人包：</p>
+<ul>
+<li>CNN 是一個利用卷積與池化對輸入圖片做特徵擷取的神經網路架構</li>
+<li>對圖片做卷積是有意義的數據轉換是因為：<ul>
+<li>很多圖形 pattern 尺寸比原圖小很多</li>
+<li>同樣 pattern 會重複出現在很多地方</li>
+</ul>
+</li>
+<li>對圖片做池化是有意義的數據轉換是因為：<ul>
+<li>對像素降低取樣並不會改變圖中物件</li>
+<li>減少神經網路所需處理的數據量</li>
+</ul>
+</li>
+<li>卷積後常跟著池化運算，而你可以重複做（卷積 -&gt; 池化）步驟多次來萃取圖片特徵</li>
+<li>最後得到的圖片特徵可以交給 CNN 裡的全連接層，由它為我們做（貓狗）分類</li>
+<li>CNN 裡的卷積、池化扮演著萃取特徵的角色，而全連接層則扮演著分類器的角色</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/nathan-riley-289990-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>有了這些知識以後，我想可以向你說明本頁面展示的 App 使用的神經網路架構了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="站在巨人肩膀：遷移學習">站在巨人肩膀：遷移學習<a class="anchor-link" href="#站在巨人肩膀：遷移學習">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>依照我們前面對 CNN 的說明，要實作貓狗分類，可以使用類似下面的架構：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/cnn-vertical-architecture.png"/>
+</center>
+<center>
+                        一般將輸入圖片轉換成分類機率的 CNN 架構
+                        （<a href="https://www.youtube.com/watch?v=FrKWiRv254g" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你可以把這個 CNN 拆成左右兩個區塊理解：</p>
+<ul>
+<li>右側的卷積、池化從原始圖片擷取圖片特徵</li>
+<li>左側的全連接前饋網路將該特徵拿去做分類</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這個架構當作圖像分類的 Hello World 練習沒有問題，但這模型的準確度可能不高。主要有兩點原因：</p>
+<ol>
+<li>你手邊的貓狗圖片通常不多（幾千張），而當你把這些圖片拿去給這個 CNN 訓練時，它右側的特徵擷取部分（尤其是卷積中的濾波器）可能還沒辦法學到非常有用的數值。</li>
+<li>這個模型事實上很「小」，做的數據轉換步驟可能不夠，無法很好地萃取貓狗特徵</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/cnntsne.jpeg"/>
+</center>
+<center>
+                        ImageNet 上的大量圖片
+                        （<a href="http://karpathy.github.io/2014/09/02/what-i-learned-from-competing-against-a-convnet-on-imagenet/" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為了進行更有效的圖片特徵擷取，實務上會使用其他人在大型資料集（比方說有一千多萬張圖的 <a href="http://www.image-net.org/">ImageNet</a>）訓練得到的模型結果。我們可以利用已訓練的 CNN 裡頭的濾波器來擷取自己圖片的特徵，再交給原來的分類器做分類：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/cnn-with-pretrained-model.png"/>
+</center>
+<center>
+                        將其他人預先訓練得到的 CNN 分類模型結果拿來做圖片的特徵擷取。右側列出的是 Keras 目前支援的預訓練模型
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>將已經訓練好的模型拿來應用在其他學習任務，就是深度學習中常常在說的遷移學習（Transfer Learning），也是學習深度學習時必備的一個技能。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/transfer-learning.png"/>
+</center>
+<center>
+                        使用遷移學習讓我們可以利用已經訓練好的模型來更好地萃取圖片特徵並應用到新的深度學習任務
+                        （<a href="https://ww2.mathworks.cn/videos/training-deep-learning-models-with-transfer-learning-1486670648501.html" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我們不會深入探討細節，但本文的 App 使用 <a href="https://keras.io/applications/#mobilenetv2">MobileNetV2</a> 來為貓狗圖片做特徵擷取。從 MobileNetV2 得到的圖片特徵再交給一般的全連接神經網路做分類預測。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>讓我們回顧一下你在本文開頭選擇的圖片：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/input.png"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>現在，我們可以將此圖片在 CNN 內部被卷積 / 池化過後的結果顯示出來，看看 CNN 是怎麼為這張圖片做特徵擷取的：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/activation1.png"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/activation2.png"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/activation3.png"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在這邊，我們只顯示 CNN 裡頭前幾層的運算結果，由淺到深。</p>
+<p>除了可以發現 CNN 不但自己學到一些有用的濾波器以外，你還可以觀察到深度學習模型一個非常重要的特性：當深度越深，萃取出來的特徵越抽象。而這也是本文最想跟你分享的概念。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>實際上，這呼應到文章開頭所說的：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        任何類型的神經網路本質上都是一個映射函數。它們會在內部進行一連串特定的數據轉換步驟，想辦法將給定的輸入數據轉換成指定的輸出形式。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你沒辦法簡單寫一個 Python 函式 <code>f(x)</code> 在一個步驟裡頭將輸入圖片轉換成貓咪機率，但你可以將一個已訓練好的 CNN 當作 <code>f(x)</code>，並透過它將輸入圖片的像素 <code>x</code> 經過一連串的數據轉換（卷積、池化、全連接層）<strong>逐漸</strong>轉換成一個貓咪機率 <code>y</code>。</p>
+<p>每過一層轉換，萃取出來的資訊就越來越不像原始像素，而越來越靠近分類結果（貓或狗）。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        深度學習就是一個「資訊提煉」的管道。透過不斷的數據轉換步驟，將原始數據中不重要的資訊篩去，將對眼前任務重要的資訊留下來。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這個「資訊提煉」的過程有點類似人類觀察周遭世界的方式。當你看了一隻貓幾秒鐘以後，就算叫你馬上把那隻貓畫出來，你大概也只能記得那隻貓「抽象」的樣子，而不能記住全部細節：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cat_dog_classifier/quick-draw-cats.png"/>
+</center>
+<center>
+                        左側是人們在 Quick draw 上畫的抽象貓咪；右側則是實際上貓咪的長相細節
+                        （<a href="https://quickdraw.withgoogle.com/data/cat" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結語：培養對深度學習的更深理解">結語：培養對深度學習的更深理解<a class="anchor-link" href="#結語：培養對深度學習的更深理解">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你耐心地閱讀到這邊，恭喜你！現在的你應該已經對被廣泛應用在人臉辨識、自動駕駛以及圖像分類的卷積神經網路有個基礎且直觀的理解了：）</p>
+<p>你也應該已經可以體會卷積神經網路裡頭並沒有魔法，而是一個複雜的資料處理架構，蘊含了各式各樣人類觀察世界後得出的巧思。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/cat-happy.png"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>深度學習近年獲得非常大量的關注，以卷積神經網路 CNN 為基礎的新架構也是層出不窮，令人目不暇給。希望透過這篇文章，能讓更多人直觀地了解 CNN 最核心的概念，並以此為基礎，繼續探索深度學習領域。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        我們每個人都應該要對正在改變世界的深度學習有更「深」的理解。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>本文最後會列出一些相關連結，供有興趣的你繼續探索深度學習。你也可以回到頁面最上面，點擊其他貓狗圖片，並將結果跟我分享。</p>
+<p>如果你覺得這篇文章有幫助到你或者能幫助到其他人學習的話，也請幫我分享給更多人閱讀。這裡沒有廣告，而你的分享就是對我最大的支持，謝謝！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="繼續探索：推薦資源">繼續探索：推薦資源<a class="anchor-link" href="#繼續探索：推薦資源">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你現在對深度學習萌生興趣但不曉得該怎麼開始的話，我會推薦你先查看<a href="https://github.com/leemengtaiwan/deep-learning-resources">由淺入深的深度學習資源</a>。裡頭包含了各種利用深度學習的線上 demo、教學課程以及實用工具，適合所有人在裡頭尋寶。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<a href="https://github.com/leemengtaiwan/deep-learning-resources" target="_blank"><img src="https://leemeng.tw/images/cat_dog_classifier/deep-learning-resource.png"/></a>
+</center>
+<center>
+    匯總大量深度學習資源的 <a href="https://github.com/leemengtaiwan/deep-learning-resources" target="_blank">deep-learning-resources</a> 是你的好朋友
+    <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果比起圖像辨識，你對自然語言處理比較有興趣的話，可以查看<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html">進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南</a>。</p>
+<p>以下則列出在撰寫此文時我引用或是從中獲得啟發的連結：</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=FrKWiRv254g">ML Lecture 10: Convolutional Neural Network</a><ul>
+<li>台大李鴻毅教授的卷積神經網路教學影片</li>
+</ul>
+</li>
+<li><a href="https://github.com/fchollet/deep-learning-with-python-notebooks/blob/master/5.3-using-a-pretrained-convnet.ipynb">5.3-using-a-pretrained-convnet.ipynb</a><ul>
+<li>Keras 作者 Fran&ccedil;ois Chollet 教學如何用 Keras 做遷移學習</li>
+</ul>
+</li>
+<li><a href="https://blog.keras.io/how-convolutional-neural-networks-see-the-world.html">How convolutional neural networks see the world</a><ul>
+<li>Keras 官方文章，解釋並視覺化 CNN 學到什麼</li>
+</ul>
+</li>
+<li><a href="http://cs231n.github.io/understanding-cnn/">Visualizing what ConvNets learn</a><ul>
+<li>CS231 課程視覺化 CNN 學到什麼</li>
+</ul>
+</li>
+<li><a href="http://setosa.io/ev/image-kernels/">Image Kernels</a><ul>
+<li>可以讓你上傳圖片並動態嘗試各種濾波器對圖片的轉換</li>
+</ul>
+</li>
+<li><a href="https://github.com/leemengtaiwan/deep-learning-resources#stanford-cs230-cheatsheets">Stanford CS230 Cheatsheets</a><ul>
+<li>史丹佛大學的深度學習課程 CS230 總結了目前最新的 CNN / RNN 知識</li>
+</ul>
+</li>
+<li><a href="https://www.youtube.com/watch?v=T7o3xvJLuHk">Depthwise Separable Convolution</a><ul>
+<li>講解本文使用的 MobileNetV2 使用到的卷積技術的 Youtube 影片</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>好啦大概是這樣，再列下去就跟論文引用一樣了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/cat_dog_classifier/jonas-vincent-2717-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你有任何回饋，都歡迎留言讓我知道，也別忘了幫我分享此文，謝謝！</p>
+</div>
+</div>
+</div>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                    </span>
+
+                </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = 'AI 如何找出你的喵 - 直觀理解卷積神經網路';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
+
+</body>
+</html>
