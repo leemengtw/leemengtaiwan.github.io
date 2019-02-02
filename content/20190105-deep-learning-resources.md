@@ -69,6 +69,7 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 - [其他教材](#tutorials)
 - [優質文章](#blogs)
 - [經典論文](#papers)
+- [其他整理](#collections)
 
 ## <div id='playground'>遊玩空間</div>
 這節列舉了一些透過瀏覽器就能馬上開始遊玩 / 體驗深度學習的應用。作為這些應用的使用者，你可以先高層次、直觀地了解深度學習能做些什麼。之後有興趣再進一步了解背後原理。
@@ -170,14 +171,19 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 - 14 堂課程，主要使用 TensorFlow 實作深度學習模型
 - 內容主要專注在[電腦視覺（Computer Vision）](https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89)以及如何應用[遷移學習（Transfer Learning）](https://en.wikipedia.org/wiki/Transfer_learning)
 
-|[Elements of Artificial Intelligence](https://www.elementsofai.com/)| To Be Updated
+|[Elements of Artificial Intelligence](https://www.elementsofai.com/)| [MIT Deep Learning](https://deeplearning.mit.edu/)
 |:---:|:---:|
-|<a href="https://www.elementsofai.com/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/elementsofai.jpg"></a>|<a href=""><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/general/to-be-updated.jpg"></a>
+|<a href="https://www.elementsofai.com/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/elementsofai.jpg"></a>|<a href="https://selfdrivingcars.mit.edu/deeptraffic"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/mlt-deep-learning.jpg"></a>
 
 ### [Elements of Artificial Intelligence](https://www.elementsofai.com/)
 
 - 芬蘭最高學府[赫爾辛基大學](https://zh.wikipedia.org/wiki/%E8%B5%AB%E5%B0%94%E8%BE%9B%E5%9F%BA%E5%A4%A7%E5%AD%A6)推出的 AI 課程。此課程目的在於讓所有人都能了解 AI，不需要任何程式經驗。這堂課非常適合完全沒有接觸過深度學習或是相關領域的人
 - 課程分 6 個部分，包含「何謂 AI ？」、「真實世界的 AI」、「機器學習」以及「神經網路」等章節
+
+### [MIT Deep Learning](https://deeplearning.mit.edu/)
+
+- 麻省理工學院推出的深度學習課程，內容包含深度學習基礎、深度強化學習以及自動駕駛相關知識。[Github Repo](https://github.com/lexfridman/mit-deep-learning) 包含了多個教學筆記本，值得參考
+- 上圖是 [DeepTraffic](https://selfdrivingcars.mit.edu/deeptraffic/)，由 MIT 的研究科學家 [Lex Fridman](https://lexfridman.com/) 推出的一個深度強化學習競賽。此競賽目標是建立一個可以在高速公路上駕駛汽車的神經網路。你可以在[這裡](https://selfdrivingcars.mit.edu/deeptraffic/)看到線上 Demo 以及詳細說明
 
 ## <div id="tools">實用工具</div>
 這節列出一些在你的深度學習路上可以幫得上些忙的工具。
@@ -299,42 +305,65 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 - [2018/10 BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
     - Google 暴力美學。利用深層 Transformer 架構、2 個精心設計的預訓練任務以及約 33 億詞彙量的資料集訓練後，得到表現卓越的語言代表模型，打破 11 項 NLP 任務紀錄
 
-### 電腦視覺 Computer Vision (CV) (In progress and to be tidied up)
+### 電腦視覺 Computer Vision (CV)
+#### 類神經網路架構 Neural Network Architecture
 - [1998/01 Gradient-Based Learning Applied to Document Recognition (LeNet-5)](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf)
-- [2009/06 ImageNet: A Large-Scale Hierarchical Image Database (ImageNet)](http://www.image-net.org/papers/imagenet_cvpr09.pdf)
 - [2012/12 ImageNet Classification with Deep Convolutional Neural Networks (AlexNet)](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)
-- [2013/11 Rich feature hierarchies for accurate object detection and semantic segmentation (R-CNN)](https://arxiv.org/abs/1311.2524)
-- [2013/12 OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks (OverFeat)](https://arxiv.org/abs/1312.6229)
-- [2014/06 Generative Adversarial Networks (GAN)](https://arxiv.org/abs/1406.2661)
 - [2014/06 DeepFace: Closing the Gap to Human-Level Performance in Face Verification (DeepFace)](https://www.cs.toronto.edu/~ranzato/publications/taigman_cvpr14.pdf)
 - [2014/09 Very Deep Convolutional Networks for Large-Scale Image Recognition (VGG)](https://arxiv.org/abs/1409.1556)
 - [2014/09 Goint deeper with convolutions (GoogLeNet)](https://arxiv.org/abs/1409.4842)
 - [2014/11 Fully Convolutional Networks for Semantic Segmentation](https://arxiv.org/abs/1411.4038)
-- [2015/04 Fast R-CNN](https://arxiv.org/abs/1504.08083)
 - [2015/05 U-Net: Convolutional Networks for Biomedical Image Segmentation (U-Net)](https://arxiv.org/abs/1505.04597)
-- [2015/06 Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks (Faster R-CNN)](https://arxiv.org/abs/1506.01497)
-- [2015/06 You Only Look Once: Unified, Real-Time Object Detection (YOLO)](https://arxiv.org/abs/1506.02640)
-- [2015/13 Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks (DCGAN)](https://arxiv.org/abs/1511.06434)
-- [2015/12 SSD: Single Shot MultiBox Detector (SSD)](https://arxiv.org/abs/1512.02325)
 - [2015/12 Deep Residual Learning for Image Recognition (ResNet)](https://arxiv.org/abs/1512.03385)
-- [2016/12 YOLO9000: Better, Faster, Stronger (YOLOv2)](https://arxiv.org/abs/1612.08242)
-- [2017/01 Wasserstein GAN (WGAN)](https://arxiv.org/abs/1701.07875)
-- [2017/03 Mask R-CNN](https://arxiv.org/abs/1703.06870)
-- [2017/03 Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (CycleGAN)](https://arxiv.org/abs/1703.10593)
 - [2017/04 MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications (MobileNets)](https://arxiv.org/abs/1704.04861)
 - [2017/07 ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices (ShuffleNet)](https://arxiv.org/abs/1707.01083)
+#### 資料集 Dataset
+- [2009/06 ImageNet: A Large-Scale Hierarchical Image Database (ImageNet)](http://www.image-net.org/papers/imagenet_cvpr09.pdf)
+#### 物體偵測與切割 Object Detection and Segmentation
+- [2013/11 Rich feature hierarchies for accurate object detection and semantic segmentation (R-CNN)](https://arxiv.org/abs/1311.2524)
+- [2013/12 OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks (OverFeat)](https://arxiv.org/abs/1312.6229)
+- [2015/04 Fast R-CNN](https://arxiv.org/abs/1504.08083)
+- [2015/06 Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks (Faster R-CNN)](https://arxiv.org/abs/1506.01497)
+- [2015/06 You Only Look Once: Unified, Real-Time Object Detection (YOLO)](https://arxiv.org/abs/1506.02640)
+- [2015/12 SSD: Single Shot MultiBox Detector (SSD)](https://arxiv.org/abs/1512.02325)
+- [2016/12 YOLO9000: Better, Faster, Stronger (YOLOv2)](https://arxiv.org/abs/1612.08242)
+- [2017/03 Mask R-CNN](https://arxiv.org/abs/1703.06870)
 - [2018/04 YOLOv3: An Incremental Improvement (YOLOv3)](https://arxiv.org/abs/1804.02767)
+#### 生成模型 Generative Models
+- [2014/06 Generative Adversarial Networks (GAN)](https://arxiv.org/abs/1406.2661)
+- [2015/13 Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks (DCGAN)](https://arxiv.org/abs/1511.06434)
+- [2017/01 Wasserstein GAN (WGAN)](https://arxiv.org/abs/1701.07875)
+- [2017/03 Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (CycleGAN)](https://arxiv.org/abs/1703.10593)
+
+## <div id="collections">其他整理</div>
+這邊列出其他優質的資源整理網站 / Github Repo，供你繼續探索深度學習。
+
+### [deep-learning-ocean](https://github.com/osforscience/deep-learning-ocean)
+- 整理了不少深度學習資源，但最值得參考的是數據集以及論文的分類整理。
+
 
 ## 待辦事項
-還有不少內容沒有整理完成，以下是作者正在整理並已經打算追加的項目：
+還有不少內容正在整理，以下是目前我們打算增加的一些項目：
 
-- 深度學習術語對照表
+- 深度學習中英術語對照表
 - 值得追蹤的業界 / 學界影響人物清單
 - 無圖的資源列表版本
-- （你的推薦與建議）
+- 一些 Jupyter Notebook 範例
 
-也歡迎你推薦更多優質的學習資源以及其他寶貴意見來幫助更多人學習：）
-<div class="cell border-box-sizing text_cell rendered" style="margin-top: 2rem">
+而我們也會持續將新資源加入如[實用工具](#tools)、[優質文章](#blogs)等列表裡頭。
+
+## 如何貢獻
+非常歡迎你一起加入改善這個 Repo，讓更多人有方向地學習 Deep Learning：）
+
+如果你有
+
+- 其他值得推薦的深度學習資源
+- 針對此 Repo 內容的改善建議
+- 其他任何你想得到的東西
+
+都歡迎你[提出新的 Issue](https://github.com/leemengtaiwan/deep-learning-resources/issues/new) 來讓我們知道。
+
+如果是想增加新資源的話，只附上連結也是沒有問題的，謝謝！<div class="cell border-box-sizing text_cell rendered" style="margin-top: 2rem">
     <div class="inner_cell">
         <div class="text_cell_render border-box-sizing rendered_html">
             <img src="/images/general/maxwell-ridgeway-685077-unsplash.jpg"/>

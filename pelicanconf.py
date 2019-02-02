@@ -3,6 +3,8 @@
 from __future__ import unicode_literals
 import pandas as pd
 
+# Pelican setting start below
+# --------------------------
 AUTHOR = 'Lee Meng'
 SITENAME = "LeeMeng"
 SITETITLE = 'All About DataScience'
@@ -148,37 +150,42 @@ EMAIL_FORM_ACTION = "https://formspree.io/b98705001@gmail.com"
 # Portfolio setting, order matters
 PROJECTS = [
     {
+        "name": "GapMinder 中文版",
+        "thumb": "gapminder",
+        "categories": "利用公開數據來探索全世界以及台灣的動態資料視覺化工具",
+        "link": "https://leemeng.tw/gapminder.html",
+        "link_title": "專案介紹連結",
+        "description": '這是一個利用各國公開數據來探索世界以及台灣的資料視覺化工具。你可以在<a href="https://leemeng.tw/gapminder.html">如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀</a>實際使用此工具並了解細節'
+    },
+    {
+        "name": "由淺入深的 AI 與深度學習資源",
+        "thumb": "deep-learning-resources",
+        "categories": "大量優質的 AI 與深度學習的線上資源，適合各個學習階段的你進一步探索",
+        "link": "https://leemeng.tw/deep-learning-resources.html",
+        "link_title": "專案介紹連結",
+        "description": '我將線上的深度學習資源做些整理並逐一介紹。你可以在<a href="https://leemeng.tw/deep-learning-resources.html">由淺入深的深度學習資源整理</a>了解細節，或者直接去專屬的 <a href="https://github.com/leemengtaiwan/deep-learning-resources" target="_blank">Github Repo</a> 關注並查看所有資源。'
+    },
+    {
         "name": "貓咪辨識 App",
         "thumb": "cat-recognizer",
-        "categories": "TensorFlow, Flask, Docker, Heroku",
+        "categories": "利用 TensorFlow 及 Flask 來做出能分辨貓狗的線上圖片辨識應用",
         "link": "https://github.com/leemengtaiwan/cat-recognition-app",
         "description": '這是一個利用 TensorFlow 以及 Flask 來分辨貓咪以及狗狗的圖片辨識應用，使用 Docker 封裝並部署在 Heroku 上。你可以前往 <a href="https://github.com/leemengtaiwan/cat-recognition-app" target="_blank">Github</a> 查看細節。'
     },
     {
-        "name": "Gist x Evernote 同步工具",
-        "thumb": "gist-evernote",
-        "categories": "Selenium, Github GraphQL, Evernote Python SDK",
-        "link": "https://github.com/leemengtaiwan/gist-evernote",
-        "description": '這是一個利用 Selenium 將 Github Gists 同步到 Evernote 的生產工具。你可以在 <a href="https://github.com/leemengtaiwan/gist-evernote" target="_blank">Github</a> 查看細節。'
-    },
-    {
-        "name": "GapMinder 中文版",
-        "thumb": "gapminder",
-        "categories": "資料視覺化, 台灣, GapMinder",
-        "link": "https://leemeng.tw/gapminder.html",
-        "link_title": "專案介紹連結",
-        "description": '這是一個利用各國公開數據來探索世界以及台灣的資料視覺化工具。你可以在我的部落格文章<a href="https://leemeng.tw/gapminder.html">如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀</a>實際使用此工具並了解細節'
-    },
-    {
         "name": "漫畫連載通知 App",
         "thumb": "airflow-comic",
-        "categories": "Airflow, Selenium, Slack",
+        "categories": "透過 Airflow 以及 Slack 來通知最新漫畫連載的應用",
         "link": "https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html",
         "link_title": "專案介紹連結",
-        "description": '這是一個透過 Airflow 以及 Slack 來通知最新漫畫連載的 App。你可以在我的部落格文章<a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">一段 Airflow 與資料工程的故事：談如何用 Python 追漫畫連載</a>了解細節，或者直接去 <a href="https://github.com/leemengtaiwan/airflow-tutorials" target="_blank">Github</a> 查看程式碼。'
+        "description": '這是一個透過 Airflow 以及 Slack 來通知最新漫畫連載的 App。你可以在<a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">一段 Airflow 與資料工程的故事：談如何用 Python 追漫畫連載</a>了解細節，或者直接去 <a href="https://github.com/leemengtaiwan/airflow-tutorials" target="_blank">Github</a> 查看程式碼。'
     },
     {
-        "thumb": "lighthouse"
+        "name": "Gist x Evernote 同步工具",
+        "thumb": "gist-evernote",
+        "categories": "利用 Selenium 將 Github Gists 同步到 Evernote 的生產工具",
+        "link": "https://github.com/leemengtaiwan/gist-evernote",
+        "description": '這是一個利用 Selenium 將 Github Gists 同步到 Evernote 的生產工具。你可以在 <a href="https://github.com/leemengtaiwan/gist-evernote" target="_blank">Github</a> 查看細節。'
     },
     {
         "thumb": "woodcraft"
@@ -208,6 +215,7 @@ print('Done: Processed {} books.'.format(len(BOOKS)))
 # GA_END_DATE = 'today'
 # GA_METRIC = 'ga:pageviews'
 # POPULAR_POST_START = 'A month ago'
+
 
 
 
