@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 我從 AI For Everyone 學到的 10 個重要 AI 概念</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="AI For Everyone 是由吳恩達教授開授的一堂線上課程，這篇文章則記錄了我個人在修習完這堂線上課程後整理出的 10 個最重要 AI 概念。除了將這些概念條列出來以外，本文也將逐一介紹每個概念所代表的涵意，幫助讀者快速掌握該課程裡頭的重要 AI 概念，並開始自己的 AI 之旅。" />
+        <meta name="keywords" content="人工智慧, 資料科學, 機器學習" />
+        <meta name="tags" content="人工智慧" />
+        <meta name="tags" content="資料科學" />
+        <meta name="tags" content="機器學習" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/joseph-barrientos-93565-unsplash.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemeng.tw/10-key-takeaways-from-ai-for-everyone-course.html" />
+        <meta property="og:title" content="我從 AI For Everyone 學到的 10 個重要 AI 概念" />
+        <meta property="og:description" content="AI For Everyone 是由吳恩達教授開授的一堂線上課程，這篇文章則記錄了我個人在修習完這堂線上課程後整理出的 10 個最重要 AI 概念。除了將這些概念條列出來以外，本文也將逐一介紹每個概念所代表的涵意，幫助讀者快速掌握該課程裡頭的重要 AI 概念，並開始自己的 AI 之旅。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="https://demo.leemeng.tw">Demo</a>
+        </li>
+        <li>
+            <a href="../books.html">Books</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="我從 AI For Everyone 學到的 10 個重要 AI 概念">我從 AI For Everyone 學到的 10 個重要 AI 概念</a><ul><li><a class="toc-href" href="#30-秒-AI-大局觀" title="30 秒 AI 大局觀">30 秒 AI 大局觀</a></li><li><a class="toc-href" href="#講到-AI，我們通常是指狹義的-AI-而非終結者" title="講到 AI，我們通常是指狹義的 AI 而非終結者">講到 AI，我們通常是指狹義的 AI 而非終結者</a></li><li><a class="toc-href" href="#多數-AI-應用是讓機器學會一個對應關係" title="多數 AI 應用是讓機器學會一個對應關係">多數 AI 應用是讓機器學會一個對應關係</a></li><li><a class="toc-href" href="#大數據、神經網路及運算能力是-AI-成功關鍵" title="大數據、神經網路及運算能力是 AI 成功關鍵">大數據、神經網路及運算能力是 AI 成功關鍵</a></li><li><a class="toc-href" href="#只需花費你-1-秒的任務，（未來）大都可由-AI-自動化" title="只需花費你 1 秒的任務，（未來）大都可由 AI 自動化">只需花費你 1 秒的任務，（未來）大都可由 AI 自動化</a></li><li><a class="toc-href" href="#對-AI-的態度不應過度樂觀，但也不必太悲觀" title="對 AI 的態度不應過度樂觀，但也不必太悲觀">對 AI 的態度不應過度樂觀，但也不必太悲觀</a></li><li><a class="toc-href" href="#AI-偏見難解，但或許比消除人類偏見簡單" title="AI 偏見難解，但或許比消除人類偏見簡單">AI 偏見難解，但或許比消除人類偏見簡單</a></li><li><a class="toc-href" href="#擁抱-AI-的最好方法是將其與領域專業結合" title="擁抱 AI 的最好方法是將其與領域專業結合">擁抱 AI 的最好方法是將其與領域專業結合</a></li><li><a class="toc-href" href="#機器學習和資料科學的產出分別是系統和洞見" title="機器學習和資料科學的產出分別是系統和洞見">機器學習和資料科學的產出分別是系統和洞見</a></li><li><a class="toc-href" href="#AI-時代，你得思考未來自己想要扮演的角色" title="AI 時代，你得思考未來自己想要扮演的角色">AI 時代，你得思考未來自己想要扮演的角色</a></li><li><a class="toc-href" href="#終身學習在這個年代前所未有地重要" title="終身學習在這個年代前所未有地重要">終身學習在這個年代前所未有地重要</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/joseph-barrientos-93565-unsplash.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemeng.tw/tag/ren-gong-zhi-hui.html" rel="tag">人工智慧</a>
+                            <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                            <a href="https://leemeng.tw/tag/ji-qi-xue-xi.html" rel="tag">機器學習</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemeng.tw/10-key-takeaways-from-ai-for-everyone-course.html" title="">
+                            我從 AI For Everyone 學到的 10 個重要 AI 概念
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2019-03-05 (Tue)</li>
+                        <li class="page-view">
+                            0 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
+
+    <div id="social-wrap" style="cursor: pointer">
+        <a class="open-popup" title="訂閱最新文章">
+            <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/10-key-takeaways-from-ai-for-everyone-course.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/10-key-takeaways-from-ai-for-everyone-course.html&title=%E6%88%91%E5%BE%9E%20AI%20For%20Everyone%20%E5%AD%B8%E5%88%B0%E7%9A%84%2010%20%E5%80%8B%E9%87%8D%E8%A6%81%20AI%20%E6%A6%82%E5%BF%B5&summary=AI%20For%20Everyone%20%E6%98%AF%E7%94%B1%E5%90%B3%E6%81%A9%E9%81%94%E6%95%99%E6%8E%88%E9%96%8B%E6%8E%88%E7%9A%84%E4%B8%80%E5%A0%82%E7%B7%9A%E4%B8%8A%E8%AA%B2%E7%A8%8B%EF%BC%8C%E9%80%99%E7%AF%87%E6%96%87%E7%AB%A0%E5%89%87%E8%A8%98%E9%8C%84%E4%BA%86%E6%88%91%E5%80%8B%E4%BA%BA%E5%9C%A8%E4%BF%AE%E7%BF%92%E5%AE%8C%E9%80%99%E5%A0%82%E7%B7%9A%E4%B8%8A%E8%AA%B2%E7%A8%8B%E5%BE%8C%E6%95%B4%E7%90%86%E5%87%BA%E7%9A%84%2010%20%E5%80%8B%E6%9C%80%E9%87%8D%E8%A6%81%20AI%20%E6%A6%82%E5%BF%B5%E3%80%82%E9%99%A4%E4%BA%86%E5%B0%87%E9%80%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E6%A2%9D%E5%88%97%E5%87%BA%E4%BE%86%E4%BB%A5%E5%A4%96%EF%BC%8C%E6%9C%AC%E6%96%87%E4%B9%9F%E5%B0%87%E9%80%90%E4%B8%80%E4%BB%8B%E7%B4%B9%E6%AF%8F%E5%80%8B%E6%A6%82%E5%BF%B5%E6%89%80%E4%BB%A3%E8%A1%A8%E7%9A%84%E6%B6%B5%E6%84%8F%EF%BC%8C%E5%B9%AB%E5%8A%A9%E8%AE%80%E8%80%85%E5%BF%AB%E9%80%9F%E6%8E%8C%E6%8F%A1%E8%A9%B2%E8%AA%B2%E7%A8%8B%E8%A3%A1%E9%A0%AD%E7%9A%84%E9%87%8D%E8%A6%81%20AI%20%E6%A6%82%E5%BF%B5%EF%BC%8C%E4%B8%A6%E9%96%8B%E5%A7%8B%E8%87%AA%E5%B7%B1%E7%9A%84%20AI%20%E4%B9%8B%E6%97%85%E3%80%82&source=https%3A//leemeng.tw/10-key-takeaways-from-ai-for-everyone-course.html" target="_blank" title="分享到 LinkedIn">
+            <i class="im im-linkedin" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://twitter.com/intent/tweet?text=%E6%88%91%E5%BE%9E%20AI%20For%20Everyone%20%E5%AD%B8%E5%88%B0%E7%9A%84%2010%20%E5%80%8B%E9%87%8D%E8%A6%81%20AI%20%E6%A6%82%E5%BF%B5&url=https%3A//leemeng.tw/10-key-takeaways-from-ai-for-everyone-course.html" target="_blank" title="分享到 Twitter">
+            <i class="im im-twitter" aria-hidden="true"></i>
+        </a>
+    </div>
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        在這個人機共存的年代，每個人都應該去嘗試瞭解並運用人工智慧這個超能力。思考自己未來在這個變化快速的世界的定位。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>曾經領導 Google Brain 的<a href="https://zh.wikipedia.org/wiki/%E5%90%B4%E6%81%A9%E8%BE%BE">吳恩達</a>教授這幾天公開了新的 <a href="https://www.coursera.org/">Coursera</a> 課程：<a href="https://www.coursera.org/learn/ai-for-everyone">AI For Everyone</a>。這堂課不談技術術語，專注在與非技術人士以及企業經理人說明：</p>
+<ul>
+<li>何謂 AI</li>
+<li>如何建立 AI 專案</li>
+<li>如何在企業內部建立 AI 基礎</li>
+<li>AI 與社會的關係</li>
+</ul>
+<p>課程內容精要，總結了不少他多年在 Google Brain、百度裡領導 AI 團隊所累積的寶貴經驗。這堂課也提到了不少 <a href="https://landing.ai/ai-transformation-playbook/">AI Transformation Playbook</a> 裡頭的內容。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/ai-for-everyone/course.png"/>
+</center>
+<center>
+                        Coursera 上的 AI For Everyone
+                        （<a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>雖然課程中很多時候是以 CEO 或是企業管理者的角度說明 AI 概念，但我認為每個人都可以用<strong>個人</strong>角度，從本課學到不少有用的建議以及思考框架。有了這些概念，可以幫助我們在這個變化快速的 AI 潮流中掌握好自己手上的船舵並順利航行。</p>
+<p>本文將列舉出我認為本課中最值得記住的 10 個 AI 概念，希望能讓你馬上學到些東西。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/ai-for-everyone/kaleidico-754605-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>值得一提的是，這篇不少概念是我自己的心得總結，而你在上完課後肯定會有其他重要見解。事實上，我會推薦你在閱讀本文後就找時間實際去上這堂課，或是透過<a href="https://leemeng.tw/deep-learning-resources.html">其他方式</a>進一步了解 AI。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="30-秒-AI-大局觀">30 秒 AI 大局觀<a class="anchor-link" href="#30-秒-AI-大局觀">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>以下就是 10 個我認為 AI For Everyone 這堂課傳達的重要概念懶人包。如果你一秒鐘幾十萬上下，可以只看這節就好：</p>
+<ol>
+<li>講到 AI，我們通常是指狹義的 AI 而非終結者</li>
+<li>多數 AI 應用是讓機器學會一個對應關係</li>
+<li>大數據、神經網路及運算能力是 AI 成功關鍵</li>
+<li>只需花費你 1 秒的任務，大都可由 AI 自動化</li>
+<li>對 AI 的態度不應過度樂觀，但也不必太悲觀</li>
+<li>AI 偏見難解，但或許比消除人類偏見簡單</li>
+<li>擁抱 AI 的最好方法是將其與領域專業結合</li>
+<li>機器學習和資料科學的產出分別是系統和洞見</li>
+<li>AI 時代，你得思考未來自己想要扮演的角色</li>
+<li>終身學習在這個年代前所未有地重要</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/ai-for-everyone/ben-white-131241-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>是的，既然是 AI For Everyone，自然沒有什麼艱深內容。但就像吳恩達教授在課程裡頭所說的，我相信這些基本的核心思想可以引導我們在這個 AI 時代更有方向且順利地前進。</p>
+<p>本文接著會搭配課程投影片，針對上面提到的一些概念做點簡單的補充說明，供你參考。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="講到-AI，我們通常是指狹義的-AI-而非終結者">講到 AI，我們通常是指狹義的 AI 而非終結者<a class="anchor-link" href="#講到-AI，我們通常是指狹義的-AI-而非終結者">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>現在媒體整天報導的人工智慧（<strong>A</strong>rtifical <strong>I</strong>ntelligence, AI）應用如：</p>
+<ul>
+<li>智慧音響</li>
+<li>自動駕駛</li>
+<li>人臉辨識</li>
+<li>圖像分類</li>
+<li>推薦系統</li>
+<li>機器翻譯</li>
+</ul>
+<p>背後皆是狹義的 AI（<strong>A</strong>rtificial <strong>N</strong>arrow <strong>I</strong>ntelligence, ANI）。</p>
+<p>儘管很多 AI 應用的表現甚至已經比人類還優秀，這些 AI 基本上都專注在完成「特定」的任務；這跟科幻電影如魔鬼終結者裡頭，能跟人類以一樣的方式思考並做「任何」事情的通用 AI（<strong>A</strong>rtificial <strong>G</strong>eneral <strong>I</strong>ntelligence, AGI）是有很大差異的。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/ai-for-everyone/ani-vs-agi.jpg"/>
+</center>
+<center>
+                        ANI 與 AGI 的差異
+                        （<a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>儘管開發出 AGI 是很多研究者的終極夢想，但事實上現行的科技離實現 AGI 還有好一段距離。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="多數-AI-應用是讓機器學會一個對應關係">多數 AI 應用是讓機器學會一個對應關係<a class="anchor-link" href="#多數-AI-應用是讓機器學會一個對應關係">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如同我們在以前的文章裡頭看過的：</p>
+<ul>
+<li><a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html">進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南</a></li>
+<li><a href="https://demo.leemeng.tw/">AI 如何找出你的喵：直觀理解卷積神經網路</a></li>
+<li><a href="https://leemeng.tw/some-thought-on-learning-from-machine-learning.html">從彼此學習 - 淺談機器學習以及人類學習</a></li>
+</ul>
+<p>大部分的機器學習以及 AI 應用本質上都是讓電腦學會一個映射函數（Mapping Function），幫我們將輸入的數據 A 對應到理想的輸出 B：</p>
+<ul>
+<li>郵件分類：電子郵件 -&gt; 是否為垃圾郵件</li>
+<li>語音辨識：音訊檔案 -&gt; 文本</li>
+<li>機器翻譯：英文文本 -&gt; 中文文本</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/ai-for-everyone/learning-a-to-b.jpg"/>
+</center>
+<center>
+                        抽離技術細節，許多 AI 應用事實上就是一個個幫我們將輸入 A 轉換成輸出 B 的映射函數
+                        （<a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>要實現這種 AI 應用，最常被使用的方法是<a href="https://zh.wikipedia.org/wiki/%E7%9B%A3%E7%9D%A3%E5%BC%8F%E5%AD%B8%E7%BF%92">監督式學習（Supervised Learning）</a>：給予機器大量的成對數據，告訴它什麼樣的 A 要對應到什麼樣的 B，並讓機器最後自己學會如何將任意的 A 轉換成理想的 B，達到自動化的目的。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/one-data-source-nn.jpg"/>
+</center>
+<center>
+                        現在多數的 AI 應用是透過人工神經網路，讓機器學會如何將輸入 A 轉成輸出 B
+                        （<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="大數據、神經網路及運算能力是-AI-成功關鍵">大數據、神經網路及運算能力是 AI 成功關鍵<a class="anchor-link" href="#大數據、神經網路及運算能力是-AI-成功關鍵">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>要實現能幫助人類做複雜判斷的 AI 技術有很多種，但近年真正讓 AI 大紅大紫的是<a href="https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度學習（Deep Learning）</a>以及<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">人工神經網路（Artifical Neural Network）</a>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/ai-for-everyone/neural-network-plyaground.jpg"/>
+</center>
+<center>
+                        Google 的 TensorFlow 團隊讓你可以在瀏覽器裡頭體驗深度學習以及神經網路
+                        （<a href="https://playground.tensorflow.org" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>值得一提的是，你或許常聽到「神經網路跟人腦運作方式相同」的這種說法，但事實上如果你問相關人士對這種意見的看法的話，得到的答案常常是「兩者天差地遠」。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>儘管神經網路的運作方式跟我們神奇的大腦不完全一致，搭配大量數據以及前面提到的監督式學習，越大的神經網路通常可以在特定任務有越好的表現。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/ai-for-everyone/big-data-and-deep-neural-network.jpg"/>
+</center>
+<center>
+                        先不論所需的計算資源，「越大量的數據以及越大型的神經網路能帶來更好的表現」這件事情對許多大企業來說，是件美好到不行的事情
+                        （<a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>雖然這樣的現象令人振奮，但別忘記</p>
+<ul>
+<li>大型神經網路的運作</li>
+<li>大量數據的處理</li>
+</ul>
+<p>這兩件事情都意味著需要更大量的電腦運算能力。而很多時候一般人是沒有這樣的運算資源的。</p>
+<p>值得慶幸的是，很多以深度學習為基礎的 AI 常常有個很好的特性：透過<a href="https://en.wikipedia.org/wiki/Transfer_learning">遷移學習（Transfer Learning）</a>，我們能將事先已經用大量計算資源做訓練，並在任務 A 表現優異的 AI 做些簡單修改，就能讓修改過後的 AI' 能在相似的任務 B 也表現不錯。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/ai-for-everyone/cnn-with-pretrained-model.jpg"/>
+</center>
+<center>
+                        一個利用遷移學習，把在圖像辨識中表現優異的 AI 拿來辨識貓咪的例子
+                        （<a href="https://demo.leemeng.tw/" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這時候就算你只有少量數據以及不多的計算資源，也能利用 AI 完成以往難以想像的任務。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="只需花費你-1-秒的任務，（未來）大都可由-AI-自動化">只需花費你 1 秒的任務，（未來）大都可由 AI 自動化<a class="anchor-link" href="#只需花費你-1-秒的任務，（未來）大都可由-AI-自動化">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這項概念是吳恩達教授在課程裡所提到的「一秒原則」，可以讓你用來判斷一個任務是否能用 AI 做自動化的準則。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/ai-for-everyone/one-second-rule.jpg"/>
+</center>
+<center>
+                        一秒原則
+                        （<a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>透過監督式學習以及大量成對 A &amp; B 數據，我們可以讓很多以往被認為非常複雜，但人腦僅需 1 秒鐘就能解決的任務透過 AI 來自動化，讓我們的生活更加輕鬆。</p>
+<p>當然，這個簡化的原則並不是放諸四海皆準，但可以做為一個不錯的參考基準。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="對-AI-的態度不應過度樂觀，但也不必太悲觀">對 AI 的態度不應過度樂觀，但也不必太悲觀<a class="anchor-link" href="#對-AI-的態度不應過度樂觀，但也不必太悲觀">&para;</a></h2><p>儘管我們已經清楚現代 AI 的威力，仍需注意 AI 並不是萬能藥，無法（完美地）解決或自動化所有人類的課題。</p>
+<p>比方說<a href="https://demo.allennlp.org/atis-parser/NjMwMzQw/">有研究嘗試把自然語言轉成 SQL</a>，但短期內一個資料科學家自己寫 SQL 查詢數據可能還是比較有效率。儘管 AI 不能（完美地）做到任何事情，我們也不該對 AI 失望，斷定下一個 AI 冬天必定會到來。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/ai-for-everyone/goldilocks-rule-for-ai.jpg"/>
+</center>
+<center>
+                        AI 的金髮女孩原理：對 AI 的態度不要過熱（樂觀），也不要過冷（悲觀），而是要剛剛好
+                        （<a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>現在可以肯定的是 AI 已經，而且也會繼續改變我們未來以及下一代的生活型態。</p>
+<p>最重要的是理性地理解 AI 能做到什麼，在能活用的時候善加利用它，同時不抱著「 AI 能解決所有問題」的不切實際幻想。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/ai-for-everyone/goldilocks.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>小知識：著名格林童話故事「金髮女孩與三隻熊」，講述金髮小女孩走進了三隻熊的房子，她發現當中有三碗粥，一碗太熱，一碗太冷，最後她揀選了不冷不熱的第三碗。之後她又試了三張椅子及睡床，最後她揀選了最合適的小椅子及睡床坐下及睡覺。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="AI-偏見難解，但或許比消除人類偏見簡單">AI 偏見難解，但或許比消除人類偏見簡單<a class="anchor-link" href="#AI-偏見難解，但或許比消除人類偏見簡單">&para;</a></h2><p>在利用監督式學習的方式訓練 AI 的時候，我們常常會使用現實世界的資料讓機器學習。</p>
+<p>好消息是因為現在數位化以及網際網路的發達，我們有非常多數據可以交給 AI 學習；壞消息是這些數據時常反映了人類數十年甚至幾個世紀的偏見。</p>
+<p>用這些數據訓練出來的 AI 系統就像是面照妖鏡，也會不可避免地學會這些偏見（Bias）。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/ai-for-everyone/human-bias-to-technology.jpg">
+<source src="https://leemeng.tw/images/ai-for-everyone/human-bias-to-technology.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        在我們將具有人類偏見的數據交給 AI 學習時，不可避免地會創造出具有偏見的系統
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>知名的例子有：</p>
+<ul>
+<li>以白人照片訓練出來的人臉辨識系統在辨識深色膚色的人種時表現很差</li>
+<li>自動化雇用的 AI 系統對女性存有偏見</li>
+<li>銀行的自動信用評比 AI 系統對某些族群產生偏見</li>
+</ul>
+<p>以下則是另一個課堂中提出的例子：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/ai-for-everyone/ai-bias-word-embedding.jpg"/>
+</center>
+<center>
+                        讓 AI 從維基百科學習英文詞彙之間的統計關係後，發現 AI 認為「男人之於電腦工程師」的關係等於「女人之於家庭主婦」
+                        （<a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>上例或許稱不上歧視，但很明顯是偏見，一種長久存在於人類社會的性別偏見。</p>
+<p>因為很多時候這些 AI 系統是學習一種統計關係，因此在此例中，AI 只是忠誠地呈現我們社會的用字習慣罷了。</p>
+<p>要消除 AI 的這些偏見並不容易，但仔細想想，這可能比消除人們腦中數十年的偏見要來的簡單，而且振奮人心。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/ai-for-everyone/remove-human-bias-from-technology.jpg">
+<source src="https://leemeng.tw/images/ai-for-everyone/remove-human-bias-from-technology.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        在享有強大 AI 科技的同時，我們希望最終也能將人類的偏見從這些 AI 系統中摒除
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這件事情當然不簡單，但卻非常值得一試。</p>
+<p>當然，你可以選擇不思考這些 AI 倫理、偏見問題，相信建立 AI 系統的這些工程師們立意良善以及夠細心，能幫我們將 AI 系統裡的偏見移除，並讓其做出最合適的判斷。</p>
+<p>儘管如此，意識到再厲害的 AI 系統內部也可能存在如同人類的偏見，進而導致各種不公平的社會問題這件事情也是很有幫助的。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="擁抱-AI-的最好方法是將其與領域專業結合">擁抱 AI 的最好方法是將其與領域專業結合<a class="anchor-link" href="#擁抱-AI-的最好方法是將其與領域專業結合">&para;</a></h2><p>想要學習 AI，不需要打掉重練。</p>
+<p>雖然現在 AI 相關領域十分熱門，究其根本也就只是一種工具/技術。而且 AI 技術接下來會越來越平民化，上手的門檻會越來越低。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/ai-for-everyone/rawpixel-633846-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因此比起現在轉行當 AI 工程師，你要先做的應該是想辦法利用自己工作累積的領域知識（Domain Knowledge）以及洞見（Insight），找出能應用 AI 改善的地方，進而創造出專屬於你或企業的競爭優勢。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="機器學習和資料科學的產出分別是系統和洞見">機器學習和資料科學的產出分別是系統和洞見<a class="anchor-link" href="#機器學習和資料科學的產出分別是系統和洞見">&para;</a></h2><p>機器學習（<strong>M</strong>achine <strong>L</strong>earning, ML）以及資料科學（<strong>D</strong>ata <strong>S</strong>cience, DS）這兩個詞彙常常結伴出現，且依照不同企業其定義都有所不同。因此，不在這塊領域裡的人常常不知道兩者的差異。</p>
+<p>一般來說，在企業內的 ML 專案大都分為 3 個階段：</p>
+<ul>
+<li>收集數據</li>
+<li>訓練模型</li>
+<li>部署模型</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/ai-for-everyone/ml-project-key-steps.jpg"/>
+</center>
+<center>
+                        一般的 ML 專案的最終產物為機器學習模型，或是能夠持續運作的 AI 系統
+                        （<a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>而 DS 專案的步驟則為：</p>
+<ul>
+<li>收集數據</li>
+<li>分析數據</li>
+<li>建議行動/假說</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/ai-for-everyone/ds-project-key-steps.jpg"/>
+</center>
+<center>
+                        一般的 DS 專案的最終產物為有用的假說或是洞見
+                        （<a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>兩者皆需原始數據做為輸入，且皆有機會使用 AI / ML 技術來解決、分析問題，但最終的產出形式時常不同。</p>
+<p>總結來說，ML 專案較注重在軟體工程方面，且最終希望產出一個以 AI 為基礎的線上系統；DS 專案的結果則可能是一份幫助經營者做重大投資決策的投影片報告。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/ai-for-everyone/ml-vs-ds.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="AI-時代，你得思考未來自己想要扮演的角色">AI 時代，你得思考未來自己想要扮演的角色<a class="anchor-link" href="#AI-時代，你得思考未來自己想要扮演的角色">&para;</a></h2><p>AI 目前正是顯學，不少人決定進入這塊領域，而現在跟 AI 相關的職業就有好多種，比方說：</p>
+<ul>
+<li>資料科學家</li>
+<li>機器學習工程師</li>
+<li>機器學習研究者</li>
+<li>軟體工程師</li>
+<li>資料工程師</li>
+<li>AI 專案管理人</li>
+</ul>
+<p>等等。而且隨著 AI 的影響力持續擴大，未來可能還會出現新的相關職業。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/digests/diablo-3-characters.jpg"/>
+</center>
+<center>
+                        AI 時代裡有各式各樣的相關職業，找尋最適合你的職業很重要
+                        （<a href="https://leemeng.tw/data-science-digest-volume-4-choose-your-own-character-in-data-science-role-play-game.html" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我們在這邊不會一一列出每個職業的工作內容，但忠實讀者會發現，事實上我們在<a href="https://leemeng.tw/data-science-digest-volume-4-choose-your-own-character-in-data-science-role-play-game.html">數據科學 MMORPG 上線！你，選好自己的角色了嗎？</a>一文中就已經討論過類似的話題了。</p>
+<p>要踏入 AI 這塊領域，除了資料科學家以外，你還有很多選擇。思考你的強處以及興趣所在，選擇最適合的職業發揮所長是最理想的。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="終身學習在這個年代前所未有地重要">終身學習在這個年代前所未有地重要<a class="anchor-link" href="#終身學習在這個年代前所未有地重要">&para;</a></h2><p>如同課程中吳恩達教授所說的，你並不需要取得一個 AI master 才能開始進行 AI 專案。很多時候利用<a href="https://leemeng.tw/deep-learning-resources.html#xian%20shang%20ke%20cheng_1">線上課程</a>或是<a href="https://leemeng.tw/deep-learning-resources.html">網路上的深度學習資源</a>就可以開始你的第一個 AI 專案了。</p>
+<p>事實上，學習 <a href="https://www.coursera.org/learn/ai-for-everyone">AI For Everyone</a> 這堂課就是一個不錯的開始。網路上也有很多優質的部落格或教學文章等待你的探索。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/ai-for-everyone/le-tan-674393-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>AI 領域近年發展神速，要學習 AI，用上一代「讀幾年書，出來用一輩子」的概念是行不通的。台大電機系的<a href="http://speech.ee.ntu.edu.tw/~tlkagk/">李宏毅教授</a>就曾說過：「在深度學習的領域，超過五年就是遠古時代了」。</p>
+<p>因此如果你決定踏上學習 AI 的這條路，就做好跟我一起終身學習的心理準備吧！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>看到這裡，相信你已經了解 AI For Everyone 裡頭 10 個最重要的概念了，恭喜！</p>
+<p>這些概念大多是我將課程裡頭擷取出的核心概念，佐以自己從事資料科學家以來的心得感想。希望閱讀完此文的你有學到點東西，或是獲得些啟發。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/ai-for-everyone/fabrizio-magoni-219347-unsplash.jpg"/>
+</center>
+<center>
+                        課堂內容是主菜，我的個人心得是調味料，希望你喜歡這道菜，並分享給朋友知道
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為了幫助你回憶，現在讓我再次將本文提到的概念一一列出：</p>
+<ol>
+<li>講到 AI，我們通常是指狹義的 AI 而非終結者</li>
+<li>多數 AI 應用是讓機器學會一個對應關係</li>
+<li>大數據、神經網路及運算能力是 AI 成功關鍵</li>
+<li>只需花費你 1 秒的任務，大都可由 AI 自動化</li>
+<li>對 AI 的態度不應過度樂觀，但也不必太悲觀</li>
+<li>AI 偏見難解，但或許比消除人類偏見簡單</li>
+<li>擁抱 AI 的最好方法是將其與領域專業結合</li>
+<li>機器學習和資料科學的產出分別是系統和洞見</li>
+<li>AI 時代，你得思考未來自己想要扮演的角色</li>
+<li>終身學習在這個年代前所未有地重要</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>AI 當然有其侷限性，但只要你能找出應用它的任務，就能將其轉換成你的超能力，可能性無窮大。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>跟隨完我的思路歷程，現在輪到你動腦回答下面問題了：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        你有什麼個人或是企業的課題，是可以透過 AI 改善或是提升價值的呢？
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemeng.tw/tag/ren-gong-zhi-hui.html" rel="tag">人工智慧</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        <a href="https://leemeng.tw/tag/ji-qi-xue-xi.html" rel="tag">機器學習</a>
+                    </span>
+
+                </p>
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__next">
+                            <a href="https://leemeng.tw/deep-learning-resources.html" rel="next">
+                                <span>Next Post</span>
+                                由淺入深的深度學習資源整理
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '我從 AI For Everyone 學到的 10 個重要 AI 概念';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--https://instant.page/-->
+    <script src="//instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
+
+
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
+
+</body>
+</html>
