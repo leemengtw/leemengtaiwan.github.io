@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+  <!--<link rel="stylesheet" href="tfjs-examples.c3b5157d.css">-->
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+    <title>LeeMeng - 進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="在此文中，我們以一個假新聞分類的 Kaggle 競賽做為引子，不用深奧的數學計算式，而是直觀且高層次地理解目前常見的 NLP 手法以及基本的深度學習、機器學習概念。透過建立一個能夠分類假新聞的神經網路，你將會學到如文本數據前處理、循環神經網路以及深度學習 3 步驟等基礎知識，並在未來利用此基礎進一步探索 NLP 世界。" />
+        <meta name="keywords" content="自然語言處理, Keras, Python, 深度學習" />
+        <meta name="tags" content="自然語言處理" />
+        <meta name="tags" content="Keras" />
+        <meta name="tags" content="Python" />
+        <meta name="tags" content="深度學習" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/amogh-manjunath-773461-unsplash.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html" />
+        <meta property="og:title" content="進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南" />
+        <meta property="og:description" content="在此文中，我們以一個假新聞分類的 Kaggle 競賽做為引子，不用深奧的數學計算式，而是直觀且高層次地理解目前常見的 NLP 手法以及基本的深度學習、機器學習概念。透過建立一個能夠分類假新聞的神經網路，你將會學到如文本數據前處理、循環神經網路以及深度學習 3 步驟等基礎知識，並在未來利用此基礎進一步探索 NLP 世界。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)};
+      gtag('js', new Date());
+
+      gtag('config', 'UA-106559980-1');
+    </script>
+
+
+
+</head>
+
+
+<style>.monospace {
+    font-family: monospace;
+  }
+
+  .input-title {
+    display: inline-block;
+    width: 12em;
+  }
+
+  select {
+    font-size: 14pt;
+  }
+
+  button {
+    margin: 3px;
+  }
+
+  input:disabled {
+    background: #eeeeee;
+  }
+
+  textarea {
+    width: 98%;
+  }</style>
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="https://demo.leemeng.tw">Demo</a>
+        </li>
+        <li>
+            <a href="../books.html">Books</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南">進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南</a><ul><li><a class="toc-href" href="#本文章節" title="本文章節">本文章節</a></li><li><a class="toc-href" href="#30-秒重要訊息" title="30 秒重要訊息">30 秒重要訊息</a></li><li><a class="toc-href" href="#意料之外的-Kaggle-競賽" title="意料之外的 Kaggle 競賽">意料之外的 Kaggle 競賽</a></li><li><a class="toc-href" href="#假新聞分類任務" title="假新聞分類任務">假新聞分類任務</a></li><li><a class="toc-href" href="#用直覺找出第一條底線" title="用直覺找出第一條底線">用直覺找出第一條底線</a></li><li><a class="toc-href" href="#資料前處理：讓機器能夠處理文字" title="資料前處理：讓機器能夠處理文字">資料前處理：讓機器能夠處理文字</a><ul><li><a class="toc-href" href="#文本分詞" title="文本分詞">文本分詞</a></li><li><a class="toc-href" href="#建立字典並將文本轉成數字序列" title="建立字典並將文本轉成數字序列">建立字典並將文本轉成數字序列</a></li><li><a class="toc-href" href="#序列的-Zero-Padding" title="序列的 Zero Padding">序列的 Zero Padding</a></li><li><a class="toc-href" href="#將正解做-One-hot-Encoding" title="將正解做 One-hot Encoding">將正解做 One-hot Encoding</a></li><li><a class="toc-href" href="#切割訓練資料集-&amp;-驗證資料集" title="切割訓練資料集 &amp; 驗證資料集">切割訓練資料集 &amp; 驗證資料集</a></li></ul></li><li><a class="toc-href" href="#有記憶的循環神經網路_1" title="有記憶的循環神經網路">有記憶的循環神經網路</a></li><li><a class="toc-href" href="#記憶力好的-LSTM-細胞" title="記憶力好的 LSTM 細胞">記憶力好的 LSTM 細胞</a></li><li><a class="toc-href" href="#詞向量：將詞彙表達成有意義的向量" title="詞向量：將詞彙表達成有意義的向量">詞向量：將詞彙表達成有意義的向量</a></li><li><a class="toc-href" href="#一個神經網路，兩個新聞標題" title="一個神經網路，兩個新聞標題">一個神經網路，兩個新聞標題</a></li><li><a class="toc-href" href="#深度學習-3-步驟" title="深度學習 3 步驟">深度學習 3 步驟</a><ul><li><a class="toc-href" href="#定義神經網路的架構" title="定義神經網路的架構">定義神經網路的架構</a></li><li><a class="toc-href" href="#全連接層" title="全連接層">全連接層</a></li><li><a class="toc-href" href="#Softmax-函式" title="Softmax 函式">Softmax 函式</a></li><li><a class="toc-href" href="#決定如何衡量模型的表現" title="決定如何衡量模型的表現">決定如何衡量模型的表現</a></li><li><a class="toc-href" href="#訓練模型並挑選最好的結果" title="訓練模型並挑選最好的結果">訓練模型並挑選最好的結果</a></li></ul></li><li><a class="toc-href" href="#進行預測並提交結果_1" title="進行預測並提交結果">進行預測並提交結果</a></li><li><a class="toc-href" href="#我們是怎麼走到這裡的" title="我們是怎麼走到這裡的">我們是怎麼走到這裡的</a></li><li><a class="toc-href" href="#3-門推薦的線上課程" title="3 門推薦的線上課程">3 門推薦的線上課程</a></li><li><a class="toc-href" href="#結語：從掌握基礎到運用巨人之力" title="結語：從掌握基礎到運用巨人之力">結語：從掌握基礎到運用巨人之力</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/amogh-manjunath-773461-unsplash.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemeng.tw/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
+                            <a href="https://leemeng.tw/tag/keras.html" rel="tag">Keras</a>
+                            <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
+                            <a href="https://leemeng.tw/tag/shen-du-xue-xi.html" rel="tag">深度學習</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html" title="">
+                            進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2018-12-24 (Mon)</li>
+                        <li class="page-view">
+                            6,589 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
+
+    <div id="social-wrap" style="cursor: pointer">
+        <a class="open-popup" title="訂閱最新文章">
+            <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html&title=%E9%80%B2%E5%85%A5%20NLP%20%E4%B8%96%E7%95%8C%E7%9A%84%E6%9C%80%E4%BD%B3%E6%A9%8B%E6%A8%91%EF%BC%9A%E5%AF%AB%E7%B5%A6%E6%89%80%E6%9C%89%E4%BA%BA%E7%9A%84%E8%87%AA%E7%84%B6%E8%AA%9E%E8%A8%80%E8%99%95%E7%90%86%E8%88%87%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E5%85%A5%E9%96%80%E6%8C%87%E5%8D%97&summary=%E5%9C%A8%E6%AD%A4%E6%96%87%E4%B8%AD%EF%BC%8C%E6%88%91%E5%80%91%E4%BB%A5%E4%B8%80%E5%80%8B%E5%81%87%E6%96%B0%E8%81%9E%E5%88%86%E9%A1%9E%E7%9A%84%20Kaggle%20%E7%AB%B6%E8%B3%BD%E5%81%9A%E7%82%BA%E5%BC%95%E5%AD%90%EF%BC%8C%E4%B8%8D%E7%94%A8%E6%B7%B1%E5%A5%A7%E7%9A%84%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97%E5%BC%8F%EF%BC%8C%E8%80%8C%E6%98%AF%E7%9B%B4%E8%A7%80%E4%B8%94%E9%AB%98%E5%B1%A4%E6%AC%A1%E5%9C%B0%E7%90%86%E8%A7%A3%E7%9B%AE%E5%89%8D%E5%B8%B8%E8%A6%8B%E7%9A%84%20NLP%20%E6%89%8B%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E3%80%81%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E6%A6%82%E5%BF%B5%E3%80%82%E9%80%8F%E9%81%8E%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E8%83%BD%E5%A4%A0%E5%88%86%E9%A1%9E%E5%81%87%E6%96%B0%E8%81%9E%E7%9A%84%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%EF%BC%8C%E4%BD%A0%E5%B0%87%E6%9C%83%E5%AD%B8%E5%88%B0%E5%A6%82%E6%96%87%E6%9C%AC%E6%95%B8%E6%93%9A%E5%89%8D%E8%99%95%E7%90%86%E3%80%81%E5%BE%AA%E7%92%B0%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%E4%BB%A5%E5%8F%8A%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%203%20%E6%AD%A5%E9%A9%9F%E7%AD%89%E5%9F%BA%E7%A4%8E%E7%9F%A5%E8%AD%98%EF%BC%8C%E4%B8%A6%E5%9C%A8%E6%9C%AA%E4%BE%86%E5%88%A9%E7%94%A8%E6%AD%A4%E5%9F%BA%E7%A4%8E%E9%80%B2%E4%B8%80%E6%AD%A5%E6%8E%A2%E7%B4%A2%20NLP%20%E4%B8%96%E7%95%8C%E3%80%82&source=https%3A//leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html" target="_blank" title="分享到 LinkedIn">
+            <i class="im im-linkedin" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://twitter.com/intent/tweet?text=%E9%80%B2%E5%85%A5%20NLP%20%E4%B8%96%E7%95%8C%E7%9A%84%E6%9C%80%E4%BD%B3%E6%A9%8B%E6%A8%91%EF%BC%9A%E5%AF%AB%E7%B5%A6%E6%89%80%E6%9C%89%E4%BA%BA%E7%9A%84%E8%87%AA%E7%84%B6%E8%AA%9E%E8%A8%80%E8%99%95%E7%90%86%E8%88%87%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E5%85%A5%E9%96%80%E6%8C%87%E5%8D%97&url=https%3A//leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html" target="_blank" title="分享到 Twitter">
+            <i class="im im-twitter" aria-hidden="true"></i>
+        </a>
+    </div>
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+
+
+
+
+
+
+              <section class="title-area">
+    <h1>TensorFlow.js Text Generation:</h1>
+    <p class="subtitle">Train a LSTM (Long Short Term Memory) model to generate text</p>
+  </section>
+
+  <section>
+    <p class="section-head">Description</p>
+    <p>
+      This example allows you to train a model to generate text in the style of some existing source text.
+      The model is designed to predict the <em>next character</em> in a text given some preceding string of characters.
+      Doing this repetedly builds up a text, charachter by character.
+    </p>
+  </section>
+
+  <section>
+    <p class="section-head">Status</p>
+    <div id="app-status">
+      Please select a text data source or enter your custom text in the text box below and click <em>"Load source data"</em>.
+    </div>
+  </section>
+
+  <section>
+    <p class="section-head">Model Loading/Creation</p>
+    <div>
+      <p>
+        <em>
+          Model saved in IndexedDB:
+          <span id="model-available">Load text data first.</span>
+        </em>
+      </p>
+
+      <div>
+        <span class="input-title">LSTM layer size(s) (e.g., 128 or 100,50):</span>
+        <input id="lstm-layer-sizes" value="128">
+
+        <button id="create-or-load-model">Create or load model</button>
+        <button id="delete-model" disabled="true">Delete existing model</button>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <p class="section-head">Text Generation Parameters</p>
+    <p>
+      To generate text the model needs to have some number of preceding characters from which it continues,
+      we call these characters the <em>seed text</em>. You can type one in, or we will extract a random substring from
+      the input text to be the seed text. Note that the seed text must be at least 40 charachters long.
+    </p>
+    <div>
+      <span class="input-title">Length of generated text:</span>
+      <input id="generate-length" value="300">
+    </div>
+
+    <div>
+      <span class="input-title">Generation temperature:</span>
+      <input id="temperature" value="0.8">
+    </div>
+
+    <div>
+      <button id="generate-text" disabled="true">Generate text</button>
+      <span id="text-generation-status"></span>
+    </div>
+
+    <div>
+      <span class="input-title">Seed text:</span>
+      <textarea class="monospace" id="seed-text" value="" rows="4">段譽心下一驚</textarea>
+    </div>
+
+    <p class="section-head">Model Output</p>
+
+    <div>
+      <span class="input-title">Generated text:</span>
+      <textarea class="monospace" id="generated-text" readonly="true" value="" rows="10"></textarea>
+    </div>
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemeng.tw/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
+                        <a href="https://leemeng.tw/tag/keras.html" rel="tag">Keras</a>
+                        <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
+                        <a href="https://leemeng.tw/tag/shen-du-xue-xi.html" rel="tag">深度學習</a>
+                    </span>
+
+                </p>
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a href="https://leemeng.tw/deep-learning-resources.html" rel="prev">
+                                <span>Previous Post</span>
+                                由淺入深的深度學習資源整理
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <a href="https://leemeng.tw/chartify-a-simple-yet-powerful-python-data-visualization-tool-which-boost-your-productivity-as-a-data-scientist.html" rel="next">
+                                <span>Next Post</span>
+                                Chartify：讓數據科學家效率加倍的 Python 資料視覺化工具
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+                <ul class="footer-social">
+                    <li><a href="https://github.com/leemengtaiwan" target="_blank">
+                        <i class="im im-github" aria-hidden="true"></i>
+                        <span>Github</span>
+                    </a></li>
+                    <li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+                        <i class="im im-facebook" aria-hidden="true"></i>
+                        <span>Facebook</span>
+                    </a></li>
+                    <li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+                        <i class="im im-instagram" aria-hidden="true"></i>
+                        <span>Instagram</span>
+                    </a></li>
+                    <li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+                        <i class="im im-linkedin" aria-hidden="true"></i>
+                        <span>LinkedIn</span>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--https://instant.page/-->
+    <script src="//instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
+
+
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+    <!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+    <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+    </script>
+
+    <script type="text/javascript">
+      function showMailingPopUp() {
+        require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+        document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+        document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+      };
+
+      $(function() {
+        $(".open-popup").on('click', function() {
+          showMailingPopUp();
+        });
+      });
+    </script>
+    <!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+    <script>
+    function openTocNav() {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+
+    function closeTocNav() {
+        document.getElementById("tocNav").style.width = "0%";
+    }
+
+    function toggleTovNav() {
+        var current_width = document.getElementById("tocNav").style.width;
+        if (current_width == "100%") {
+            document.getElementById("tocNav").style.width = "0%";
+        } else {
+            document.getElementById("tocNav").style.width = "100%";
+        }
+    }
+    </script>
+
+</body>
+
+<script src="temp.1934b3cf.js"></script>
+</html>
