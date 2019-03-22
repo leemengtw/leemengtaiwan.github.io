@@ -136,6 +136,15 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 - TensorFlow.js 頁面有多個利用 JavaScript 實現的深度學習應用，如上圖中的[人類姿勢估計 Human Pose Estimation](https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5)。
 - 你可以在該應用裡頭打開自己的攝影機，看該應用能不能偵測到你與朋友的姿勢。
 
+|[GAN Lab](https://poloclub.github.io/ganlab/)| To Be Updated
+|:---:|:---:|
+|<a href="https://poloclub.github.io/ganlab/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/gan-lab.jpg"></a>|<a href=""><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/general/to-be-updated.jpg"></a>
+
+### [GAN Lab](https://poloclub.github.io/ganlab/)
+
+- [對抗生成網路（**G**enerative **A**dversarial **N**etwork，簡稱GAN）](https://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C)是非監督式學習的一種方法，通過讓兩個神經網路相互博弈的方式進行學習。此網站以 [TensorFlow.js](https://js.tensorflow.org/) 實作 GAN 中兩個神經網路的學習過程，幫助有興趣的你更直觀地理解神奇的 GAN 的運作方式
+
+
 ## <div id='courses'>線上課程</div>
 看完[遊玩空間](#playground)的大量實際應用，相信你已經迫不及待地想要開始學習強大的深度學習技術了。
 
@@ -143,11 +152,11 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 
 另外值得一提的是，大部分課程都要求一定程度的 [Python](https://www.python.org/) 程式能力。
 
-|[李宏毅教授的機器學習 / 深度學習課程](http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS18.html)| [Deep Learning Specialization @ Coursera](https://www.coursera.org/specializations/deep-learning)
+|[李宏毅教授的機器學習 / 深度學習課程](http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML19.html)| [Deep Learning Specialization @ Coursera](https://www.coursera.org/specializations/deep-learning)
 |:---:|:---:|
 |<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS18.html"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/Hung-Yi-Lee-ml-courses.jpg"></a>|<a href="https://www.coursera.org/specializations/deep-learning"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/deep-learning-specification-coursera.jpg"></a>
 
-### [李宏毅教授的機器學習 / 深度學習課程](http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS18.html)
+### [李宏毅教授的機器學習 / 深度學習課程](http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML19.html)
 
 - 大概是全世界最好、最完整的 Deep Learning <b>中文</b>學習資源。
 - 影片內容涵蓋基本理論（約 10 小時觀看時間）一直到進階的[生成對抗網路 GAN](https://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C) 以及[強化學習 RL](https://zh.wikipedia.org/wiki/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0)
@@ -185,6 +194,20 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 - 麻省理工學院推出的深度學習課程，內容包含深度學習基礎、深度強化學習以及自動駕駛相關知識。[Github Repo](https://github.com/lexfridman/mit-deep-learning) 包含了多個教學筆記本，值得參考
 - 上圖是 [DeepTraffic](https://selfdrivingcars.mit.edu/deeptraffic/)，由 MIT 的研究科學家 [Lex Fridman](https://lexfridman.com/) 推出的一個深度強化學習競賽。此競賽目標是建立一個可以在高速公路上駕駛汽車的神經網路。你可以在[這裡](https://selfdrivingcars.mit.edu/deeptraffic/)看到線上 Demo 以及詳細說明
 
+|[6.S191: Introduction to Deep Learning](http://introtodeeplearning.com)|[AI For Everyone](https://www.coursera.org/learn/ai-for-everyone)
+|:---:|:---:|
+|<a href="http://introtodeeplearning.com"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/intro-to-deeplearning-mit.jpg"></a>|<a href="https://www.coursera.org/learn/ai-for-everyone"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/ai-for-everyone.jpg"></a>
+
+### [6.S191: Introduction to Deep Learning](http://introtodeeplearning.com)
+
+- 麻省理工學院推出的另一堂基礎深度學習課程，介紹深度學習以及其應用。內容涵蓋機器翻譯、圖像辨識以及更多其他應用。此課程使用 Python 以及 TensorFlow 來實作作業，並預期學生具備基礎的微積分（梯度 & Chain Rule）以及線性代數（矩陣相乘）
+- 你可以在 [introtodeeplearning_labs](https://github.com/aamini/introtodeeplearning_labs) 找到上課的作業筆記本以及對應的解答
+
+### [AI For Everyone](https://www.coursera.org/learn/ai-for-everyone)
+
+- Coursera 課程。[吳恩達](https://zh.wikipedia.org/wiki/%E5%90%B4%E6%81%A9%E8%BE%BE)教授在這堂簡短的課程裡頭，針對非技術人士以及企業經理人說明何謂 AI、如何建立 AI 專案以及闡述 AI 與社會的關係。此課程十分適合沒有技術背景的讀者。[從 AI For Everyone 學到的 10 個重要 AI 概念](https://leemeng.tw/10-key-takeaways-from-ai-for-everyone-course.html)則是我個人上完課後整理的心得分享。
+
+
 ## <div id="tools">實用工具</div>
 這節列出一些在你的深度學習路上可以幫得上些忙的工具。
 
@@ -216,6 +239,15 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 
 - Lucid 是一個嘗試讓神經網路變得更容易解釋的開源專案，裡頭包含了很多視覺化神經網路的筆記本
 - 你可以直接在 Colab 上執行這些筆記本並了解如何視覺化神經網路
+
+|[Papers with Code](https://paperswithcode.com/)| To Be Updated
+|:---:|:---:|
+|<a href="https://paperswithcode.com/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tools/papers-with-code.jpg"></a>|<a href=""><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/general/to-be-updated.jpg"></a>
+
+### [Papers with Code](https://paperswithcode.com/)
+
+- 將機器學習的學術論文、程式碼實作以及 SOTA 的評價排行榜全部整理匯總在一起的網站，非常適合想要持續追蹤學術及業界最新研究趨勢的人
+- 在這邊可以瀏覽包含電腦視覺、自然語言處理等各大領域在不同任務上表現最好的論文、實作以及資料集
 
 ## <div id="tutorials">其他教材</div>
 除了[線上課程](#courses)以外，網路上還有無數的學習資源。
