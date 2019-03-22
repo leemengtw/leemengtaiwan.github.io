@@ -1,0 +1,35 @@
+.input-title {
+    display: inline-block;
+    width: 12em;
+}
+select {
+    font-size: 14pt;
+}
+button {
+    /*margin: 3px;*/
+    border: 0px;
+    /*padding: 8px 12px 8px 12px;*/
+    background-color: #f16528;
+    color: var(--mdc-theme-on-primary, #fff);
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 6em;
+    height: 3em;
+}
+input:disabled {
+    background: #eeeeee;
+}
+textarea {
+    width: 90%;
+}
+
+button:disabled,
+button[disabled]{
+    /*border: 1px solid #999999;*/
+    background-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.37);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+    cursor: default;
+}
