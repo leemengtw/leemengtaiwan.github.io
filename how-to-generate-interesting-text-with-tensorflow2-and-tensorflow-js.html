@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="TODO" />
+        <meta name="keywords" content="TensorFlow, TensorFlow.js, 自然語言處理" />
+        <meta name="tags" content="TensorFlow" />
+        <meta name="tags" content="TensorFlow.js" />
+        <meta name="tags" content="自然語言處理" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="/theme/images/background/text-generation-cover.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" />
+        <meta property="og:title" content="讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部" />
+        <meta property="og:description" content="TODO" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="/theme/css/toc-nav.css">
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="/theme/js/modernizr.js"></script>
+    <script src="/theme/js/pace.min.js"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="https://demo.leemeng.tw">Demo</a>
+        </li>
+        <li>
+            <a href="../books.html">Books</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部">讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</a><ul><li><a class="toc-href" href="#Demo：生成全新的天龍八部橋段" title="Demo：生成全新的天龍八部橋段">Demo：生成全新的天龍八部橋段</a></li><li><a class="toc-href" href="#所以這模型是怎麼訓練出來的" title="所以這模型是怎麼訓練出來的">所以這模型是怎麼訓練出來的</a></li><li><a class="toc-href" href="#章節內容" title="章節內容">章節內容</a></li><li><a class="toc-href" href="#使用-TensorFlow-2.0-訓練模型" title="使用 TensorFlow 2.0 訓練模型">使用 TensorFlow 2.0 訓練模型</a></li><li><a class="toc-href" href="#使用-Tensorflow.js-部署模型" title="使用 Tensorflow.js 部署模型">使用 Tensorflow.js 部署模型</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/text-generation-cover.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                            <a href="/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
+                            <a href="/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" title="">
+                            讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2019-03-25 (Mon)</li>
+                        <li class="page-view">
+                            1 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
+
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<link href="/tfjs-apps/lstm-text-generation/index.css" rel="stylesheet"/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        木婉清轉頭向他，背脊向著南海鱷神，低聲道：「你是世上第一個見到我容貌的男子！」緩緩拉開了面幕。段譽登時全身一震，眼前所見，如新月清暉，如花樹堆雪，一張臉秀麗絕俗。
+                        <br/>
+<span style="float:right">─ 第四回：崖高人遠</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br/></p>
+<p><a href="https://bit.ly/2TUycBQ">《天龍八部》</a>一直是我最喜歡的<a href="https://zh.wikipedia.org/wiki/%E9%87%91%E5%BA%B8%E4%BD%9C%E5%93%81">金庸著作</a>之一，最近重新翻閱，有很多新的感受。</p>
+<p>閱讀到一半我突發奇想，決定用<a href="https://leemeng.tw/deep-learning-resources.html">深度學習</a>來訓練一個能夠生成《天龍八部》的<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E6%9C%89%E8%A8%98%E6%86%B6%E7%9A%84%E5%BE%AA%E7%92%B0%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF">循環神經網路</a>。訓練結果還不完美，但我認為已經很有娛樂性質，且有時已經能夠產生令人驚嘆或是捧腹大笑的文章了。</p>
+<p>因此我決定將模型上線，讓你也能看看這個 AI 實際上嗑了什麼藥。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="/images/lstm-text-generation/dali-old-castle.jpg"/>
+</center>
+<center>
+                        大理古城一隅，段譽出身之地
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在 demo 之後，我將簡單地說明你可以如何使用 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0 Alpha</a> 以及 <a href="https://www.tensorflow.org/js">Tensorflow.js</a> 來實作這樣的 AI 應用。</p>
+<p>希望你能從中得到些啟發，並在閱讀本文後實際動手做點自己的東西。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Demo：生成全新的天龍八部橋段">Demo：生成全新的天龍八部橋段<a class="anchor-link" href="#Demo：生成全新的天龍八部橋段">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>本篇使用一個十分簡單的<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E8%A8%98%E6%86%B6%E5%8A%9B%E5%A5%BD%E7%9A%84-LSTM-%E7%B4%B0%E8%83%9E">長短期記憶 RNN</a> 來生成文章。在多次「閱讀」天龍八部之後，這個模型可以在給定一段新文本的情況下，逐字產生類似風格的文章。</p>
+<p>比方說給定書中的一個橋段：</p>
+<div class="highlight"><pre><span></span>蕭峯吃了一驚，心想：「哥哥大喜之餘，說話有些忘形了，眼下亂成
+</pre></div>
+<p>模型順著上面的話，接著產生：</p>
+<div class="highlight"><pre><span></span>一團，一大半也是個抵敵不住。
+
+那女童見眾親兵到了幫外，只聽得遠處人影，都是迅速如飛，氣息直流。
+</pre></div>
+<p>這跟金庸的原作完全沒有關係，但感覺有模有樣。（至少我自己寫不出這樣的內容）</p>
+<p>現在讓我們產生一些新的橋段吧！首先將已經訓練好的模型載入你的瀏覽器。依據不同網路速度，載入時間可能有所差異。</p>
+<p>不過載入後只要不重新整理此頁面，你將可以不斷地使用此模型產生新的文章：</p>
+<section style="margin-bottom: 3rem">
+<button id="load-model" style="display:inline-block">載入模型</button>
+<div id="app-status" style="display:inline-block"></div>
+</section>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>另外你會發現有 2 個可供你調整的參數：</p>
+<section style="margin-bottom: 3rem">
+<div>
+<span class="input-title">生成長度（字單位）</span>
+<input id="generate-length" value="150"/>
+</div>
+<div>
+<span class="input-title">生成溫度（隨機度）</span>
+<input id="temperature" value="0.6"/>
+</div>
+</section><p>第一次可以直接使用預設值。現在點擊「生成文章」來產生全新的天龍八部橋段：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<section style="margin-bottom: 3rem">
+<div>
+<button disabled="true" id="generate-text">生成文章</button>
+<button disabled="true" id="initialize-seed">重置輸入</button>
+</div>
+</section>
+<section style="margin-bottom: 3rem">
+<div>
+<span class="input-title">起始句子：</span>
+<span id="text-generation-status" style="display: none"></span>
+<textarea id="seed-text" rows="1" style="min-height: 6em" value="">蕭峯吃了一驚，心想：「哥哥大喜之餘，說話有些忘形了，眼下亂成</textarea>
+</div>
+</section>
+<section style="margin-bottom: 3rem">
+<div>
+<span class="input-title">生成結果：</span>
+<textarea id="generated-text" readonly="true" rows="10" value=""></textarea>
+</div>
+</section>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如何？希望模型產生的結果有令你會心一笑。它可快把我逗死了。</p>
+<p>現在你可以做幾件事情來「玩弄」模型：</p>
+<ul>
+<li>再次點擊「生成文章」來讓模型依據同樣輸入來產生新橋段</li>
+<li>點擊「重置輸入」來隨機取得一個新的起始句子（或自己輸入）</li>
+<li>增加模型生成的文章長度（耐心是美德）</li>
+<li>調整「生成溫度」來改變文章的變化性</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="/images/lstm-text-generation/chris-rhoads-254898-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>生成溫度是一個介於 0 到 1 的值，而當溫度越高，模型產生出來的結果越隨機、越不可預測（也就越 ㄎㄧㄤ ）；而當你將溫度調低後，產生的結果會越像天龍八部原文。真實，但重複性也會提升。</p>
+<p>找到一個最佳的溫度是個重要的事情。</p>
+<p>如果你沒有打算深入探討技術細節，只需要記得在這篇文章裡頭的模型是一個以「字」為單位的語言模型（Character-based Language Model）即可：給定一連串已經出現過的字詞，模型會想辦法去預測出下一個可能出現的字。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="/images/lstm-text-generation/raychan-1229841-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>值得注意的是，我們並不單純是拿出現機率最高的字出來當結果。每次預測我們都會得到一個所有字的出現機率分布，而在生成文本時，我們會對該機率分佈裡做隨機抽樣（Sample），讓模型每次都能生成既隨機又有點意思的字。</p>
+<p>因此，每次產生的結果都是獨一無二的。如果你在生成的過程中得到什麼很有趣的虛擬橋段，都歡迎跟我分享！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="所以這模型是怎麼訓練出來的">所以這模型是怎麼訓練出來的<a class="anchor-link" href="#所以這模型是怎麼訓練出來的">&para;</a></h2><p>這模型嗑了什麼，也給我來一點</p>
+<p>；生成溫度（Temperature）我們在後面還會有進一步解釋，但現在你只要知道它</p>
+<p>在訓練過程中，模型會「閱讀」從《天龍八部》中擷取出來的大量句子，並試著從這些句子中預測出下一個可能出現的字。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="章節內容">章節內容<a class="anchor-link" href="#章節內容">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="使用-TensorFlow-2.0-訓練模型">使用 TensorFlow 2.0 訓練模型<a class="anchor-link" href="#使用-TensorFlow-2.0-訓練模型">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="使用-Tensorflow.js-部署模型">使用 Tensorflow.js 部署模型<a class="anchor-link" href="#使用-Tensorflow.js-部署模型">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<script src="/tfjs-apps/lstm-text-generation/dist/lstm-text-generation.aa139b1e.js"></script>
+</div>
+</div>
+</div>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                        <a href="/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
+                        <a href="/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
+                    </span>
+
+                </p>
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__next">
+                            <a href="/10-key-takeaways-from-ai-for-everyone-course.html" rel="next">
+                                <span>Next Post</span>
+                                我從 AI For Everyone 學到的 10 個重要 AI 概念
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="/theme/js/plugins.js"></script>
+    <script src="/theme/js/main.js"></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
+
+    <!--https://instant.page/-->
+    <script src="//instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
+
+
+    <script type='text/javascript' src='/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
+
+</body>
+</html>
