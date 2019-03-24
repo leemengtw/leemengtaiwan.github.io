@@ -712,6 +712,8 @@
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
@@ -730,15 +732,19 @@
 <span class="n">text_as_int</span> <span class="o">=</span> <span class="n">tokenizer</span>\
     <span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">([</span><span class="n">text</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="n">partial_indices</span> <span class="o">=</span> <span class="n">text_as_int</span><span class="p">[</span><span class="mi">9505</span><span class="p">:</span><span class="mi">9525</span><span class="p">]</span>
+<span class="n">partial_indices</span> <span class="o">=</span> <span class="n">text_as_int</span><span class="p">[</span><span class="mi">21004</span><span class="p">:</span><span class="mi">21020</span><span class="p">]</span>
 <span class="n">partial_texts</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">tokenizer</span><span class="o">.</span><span class="n">index_word</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> \
     <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">partial_indices</span>
 <span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"原本的中文字序列："</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">partial_texts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"轉換後的索引序列："</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">partial_indices</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -749,10 +755,14 @@
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>原本的中文字序列：
-['咱', '們', '見', '敵', '方', '人', '多', '，', '不', '得', '師', '父', '號', '令', '，', '沒', '敢', '隨', '便', '動']
+
+['司', '空', '玄', '雙', '掌', '飛', '舞', '，', '逼', '得', '牠', '無', '法', '近', '前', '。']
+
 --------------------
+
 轉換後的索引序列：
-[250, 80, 41, 311, 196, 13, 106, 1, 4, 25, 75, 163, 691, 462, 1, 117, 291, 358, 37, 181]
+
+[557, 371, 215, 214, 135, 418, 1209, 1, 837, 25, 1751, 49, 147, 537, 111, 2]
 </pre>
 </div>
 </div>
@@ -787,26 +797,22 @@
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>中文字       索引        
 --------------------
-咱           250
-們            80
-見            41
-敵           311
-方           196
-人            13
-多           106
+司           557
+空           371
+玄           215
+雙           214
+掌           135
+飛           418
+舞          1209
 ，             1
-不             4
+逼           837
 得            25
-師            75
-父           163
-號           691
-令           462
-，             1
-沒           117
-敢           291
-隨           358
-便            37
-動           181
+牠          1751
+無            49
+法           147
+近           537
+前           111
+。             2
 </pre>
 </div>
 </div>
@@ -816,14 +822,184 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>你會發現同個字如「，」對應到一樣的索引數字。</p>
+<h3 id="3.-建立能丟入模型的資料集">3. 建立能丟入模型的資料集<a class="anchor-link" href="#3.-建立能丟入模型的資料集">&para;</a></h3><p>做完基本的數據前處理以後，我們需要將 <code>text_as_int</code> ˋ這個巨大數字序列轉換成神經網路容易消化的大小以及格式。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text_as_int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text_as_int</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1235431
+[1639, 148, 3, 3, 280, 5, 192, 819, 374, 800]
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.-建立能丟入模型的資料集">3. 建立能丟入模型的資料集<a class="anchor-link" href="#3.-建立能丟入模型的資料集">&para;</a></h3><p>做完基本的前處理以後，我們可以將此</p>
+<blockquote>
+<p>
+                        在建立資料集時，先想像出你最終要交給神經網路的數據能幫助你做適當的轉換。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>依照不同的機器學習任務，你會需要不同格式的資料形式，而 <code>tf.data</code> API 在這邊能幫上不少忙。</p>
+<p>在本文的語言模型任務裡頭，理想的模型要能依據前文來判斷出下一個中文字，因此我們要丟給模型的輸入為一串代表某些中文字的數字序列：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"實際丟給模型的數字序列："</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">partial_indices</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"方便我們理解的文本序列："</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">partial_texts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>實際丟給模型的數字序列：
+[557, 371, 215, 214, 135, 418, 1209, 1, 837, 25, 1751, 49, 147, 537, 111, 2]
+
+方便我們理解的文本序列：
+['司', '空', '玄', '雙', '掌', '飛', '舞', '，', '逼', '得', '牠', '無', '法', '近', '前', '。']
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>而模型要給我們的理想輸出應該是向左位移一個字的結果：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"實際丟給模型的數字序列："</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">partial_indices</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"方便我們理解的文本序列："</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">partial_texts</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>實際丟給模型的數字序列：
+[557, 371, 215, 214, 135, 418, 1209, 1, 837, 25, 1751, 49, 147, 537, 111, 2]
+
+方便我們理解的文本序列：
+['空', '玄', '雙', '掌', '飛', '舞', '，', '逼', '得', '牠', '無', '法', '近', '前', '。']
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為什麼是這樣的配對？</p>
+<p>想一想，一個模型如果可以給我們這樣的輸出，代表它：</p>
+<ul>
+<li>在看到第一個輸入字 <code>司</code> 時可以正確輸出 <code>空</code></li>
+<li>在之前看過 <code>司</code>，且新輸入為 <code>空</code> 的情況下，可以輸出 <code>玄</code> </li>
+<li>在之前看過 <code>司空</code>，且新輸入為 <code>玄</code> 的情況下，可以輸出 <code>雙</code></li>
+</ul>
+<p>當一個語言模型可以做到這樣的事情，就代表它已經掌握了<strong>訓練文本</strong>（此文中則為天龍八部）裡頭用字的統計結構，因此我們可以拿來它來產生新的有趣文章。</p>
+<p>你現在應該也可以很清楚地了解，這個語言模型是專門針對天龍八部的文本所誕生的。畢竟日常生活中，給你 <code>司</code> 這個字，你接 <code>空</code> 的機率有多少呢？</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/niketh-vellanki-202943-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為了讓你加深印象，讓我以直式的方式再次列出模型的輸入以及輸出關係：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>時間點  輸入字    輸入索引   輸出字    輸出索引   
+----------------------------------------
+    1    咱       250      們        80
+    2    們       80       見        41
+    3    見       41       敵        311
+    4    敵       311      方        196
+    5    方       196      人        13
+    6    人       13       多        106
+    7    多       106      ，        1
+    8    ，       1        不        4
+    9    不       4        得        25
+   10    得       25       師        75
+   11    師       75       父        163
+   12    父       163      號        691
+   13    號       691      令        462
+   14    令       462      ，        1
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>每一列（row）是一個時間點（Timestep），而</p>
+<ul>
+<li><strong>輸入索引</strong>代表著模型在當下時間吃進去的輸入</li>
+<li>對應的 <strong>輸出索引</strong>則代表我們期望模型輸出的結果</li>
+</ul>
+<p>了解輸入與輸出</p>
+<p>這邊還有的重點是，我們期待一個語言模型的「記憶」並不會在每個時間點開始就被重置，而是會不斷地記住之前看過了什麼字。</p>
+<p>（<strong>輸入字</strong>則只是列出方便你理解），</p>
 </div>
 </div>
 </div>
@@ -853,6 +1029,13 @@
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>有了 eager execution</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="inner_cell">
@@ -874,7 +1057,8 @@
 <ul>
 <li>（在深度學習的情境下）給定一連串的文字序列，任何一個可以模擬下一個文字出現機率的神經網路都可以被稱之為語言模型。一個語言模型能夠捕捉到特定語言的統計結構。</li>
 </ul>
-<h3 id="5.-定義評量函式好壞的指標">5. 定義評量函式好壞的指標<a class="anchor-link" href="#5.-定義評量函式好壞的指標">&para;</a></h3><h3 id="6.-訓練並選擇出最好的函式">6. 訓練並選擇出最好的函式<a class="anchor-link" href="#6.-訓練並選擇出最好的函式">&para;</a></h3><h3 id="7.-將函式-/-模型拿來做預測">7. 將函式 / 模型拿來做預測<a class="anchor-link" href="#7.-將函式-/-模型拿來做預測">&para;</a></h3>
+<h3 id="5.-定義評量函式好壞的指標">5. 定義評量函式好壞的指標<a class="anchor-link" href="#5.-定義評量函式好壞的指標">&para;</a></h3><p>值得一提的是，透過定義這樣的輸入輸出關係，我們將一個沒有正確解答的任務轉換成監督式學習的任務了。</p>
+<h3 id="6.-訓練並選擇出最好的函式">6. 訓練並選擇出最好的函式<a class="anchor-link" href="#6.-訓練並選擇出最好的函式">&para;</a></h3><h3 id="7.-將函式-/-模型拿來做預測">7. 將函式 / 模型拿來做預測<a class="anchor-link" href="#7.-將函式-/-模型拿來做預測">&para;</a></h3>
 </div>
 </div>
 </div>
