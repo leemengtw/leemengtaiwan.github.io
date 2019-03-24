@@ -971,22 +971,22 @@
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>時間點  輸入字    輸入索引   輸出字  輸出索引  
-----------------------------------------
-    1    司       557      空      371
-    2    空       371      玄      215
-    3    玄       215      雙      214
-    4    雙       214      掌      135
-    5    掌       135      飛      418
-    6    飛       418      舞      1209
-    7    舞       1209     ，      1
-    8    ，       1        逼      837
-    9    逼       837      得      25
-   10    得       25       牠      1751
-   11    牠       1751     無      49
-   12    無       49       法      147
-   13    法       147      近      537
-   14    近       537      前      111
+<pre>時間點 輸入字  輸入索引   輸出字  輸出索引  
+-------------------------------------
+   1    司     557      空      371
+   2    空     371      玄      215
+   3    玄     215      雙      214
+   4    雙     214      掌      135
+   5    掌     135      飛      418
+   6    飛     418      舞      1209
+   7    舞     1209     ，      1
+   8    ，     1        逼      837
+   9    逼     837      得      25
+  10    得     25       牠      1751
+  11    牠     1751     無      49
+  12    無     49       法      147
+  13    法     147      近      537
+  14    近     537      前      111
 </pre>
 </div>
 </div>
@@ -1017,7 +1017,8 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>現在我們了解一筆輸入・輸出該有的數據格式了。兩者皆是一個固定長度的數字序列，而後者是前者往左位移一個數字的結果。</p>
-<p>但這只是一筆數據（以下說的一筆數據，都隱含了輸入序列以及對應的輸出序列的 2 個數字序列）。在有 GPU 的情況下，我們常常會一次丟一批（batch）數據，讓 GPU 可以平行運算，加快訓練速度。</p>
+<p>但這只是一筆數據（以下說的一筆數據，都隱含了輸入序列以及對應的輸出序列的 2 個數字序列）。</p>
+<p>在有 GPU 的情況下，我們常常會一次丟一批（batch）數據，讓 GPU 可以平行運算，加快訓練速度。</p>
 </div>
 </div>
 </div>
@@ -1042,7 +1043,7 @@
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 方便說明，你可以設成更大的數字</span>
 <span class="c1"># 讓模型從更長的序列預測結果</span>
-<span class="n">SEQ_LENGTH</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># 數字序列長度</span>
+<span class="n">SEQ_LENGTH</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># 數字序列長度</span>
 <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">128</span> <span class="c1"># 幾筆成對輸入/輸出</span>
 
 <span class="c1"># text_as_int 是一個 python list</span>
@@ -1055,7 +1056,7 @@
         <span class="n">text_as_int</span><span class="p">)</span>
 
 <span class="c1"># 將被以數字序列表示的天龍八部文本</span>
-<span class="c1"># 拆成多個長度為 SEQ_LENGTH (10) 的序列，</span>
+<span class="c1"># 拆成多個長度為 SEQ_LENGTH (10) 的序列</span>
 <span class="c1"># 並將最後長度不滿 SEQ_LENGTH 的序列捨去</span>
 <span class="n">sequences</span> <span class="o">=</span> <span class="n">characters</span>\
     <span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">SEQ_LENGTH</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> 
@@ -1072,10 +1073,11 @@
     <span class="n">target_text</span> <span class="o">=</span> <span class="n">chunk</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
     <span class="k">return</span> <span class="n">input_text</span><span class="p">,</span> <span class="n">target_text</span>
 
-<span class="c1"># 將每個片段序列分別取頭取尾，建立輸入輸出序列，</span>
-<span class="c1"># 再將得到的所有數據隨機打亂順序，</span>
+<span class="c1"># 將每個片段序列分別取頭取尾，</span>
+<span class="c1"># 建立輸入 / 輸出序列，</span>
+<span class="c1"># 再將得到的所有數據隨機打亂順序</span>
 <span class="c1"># 最後再一次拿出 BATCH_SIZE 筆數據作為</span>
-<span class="c1"># 模型一次訓練步驟的訓練資料</span>
+<span class="c1"># 模型一次訓練步驟的所使用的資料</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">sequences</span>\
     <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">build_seq_pairs</span><span class="p">)</span>\
     <span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">steps_per_epoch</span><span class="p">)</span>\
@@ -1090,38 +1092,36 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這段程式碼不短，且初次接觸 <code>tf.data</code> 的讀者可能會覺得很陌生。</p>
-<p>但在熟悉以後，你可以用非常類似的方式呼叫 <a href="https://www.tensorflow.org/guide/datasets">TensorFlow Data API</a> 來處理<strong>任何</strong>文本數據，不需要每次遇到新的文本都得重頭開始寫類似的功能（<code>batch</code>、<code>shuffle</code> etc）。</p>
+<p>但內容不難，且在熟悉以後你可以用非常類似的方式呼叫 <a href="https://www.tensorflow.org/guide/datasets">TensorFlow Data API</a> 來處理<strong>任何</strong>文本數據，不需要每次遇到新的文本都得重頭開始寫類似的功能（<code>batch</code>、<code>shuffle</code> etc）。</p>
 <p>上面已經有非常多的註解幫助你理解發生了什麼事，但如果你想自己動手，可以參考<a href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/r2/tutorials/sequences/text_generation.ipynb">官方用 TensorFlow 2.0 訓練 LSTM 的 Colab 筆記本</a>。</p>
-<p>雖然我不是酷拉皮卡，但如果要把一個文本序列拆成輸入・輸出序列的步驟（即上面的<code>build_seq_pairs</code> 函式）具現化的話，大概就像是下面這樣：</p>
+<p>雖然我不是酷拉皮卡，但如果要把上面用 <code>build_seq_pairs</code> 函式將一個文本序列拆成輸入・輸出序列的處理具現化的話，大概就像是下面這樣（假設序列長度為 6）：</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span>從文本擷取的片段序列          輸入/輸出序列
------------------------------------------
-                     -&gt; 烏老大拱手還禮，道：
-                     |
-烏老大拱手還禮，道：「 --
-                     |
-                     -&gt; 老大拱手還禮，道：「
+<div class="highlight"><pre><span></span>文本擷取的片段序列     輸入/輸出序列
+----------------------------------
+                 -&gt; 烏老大拱手還
+                 |
+烏老大拱手還禮 -----
+                 |
+                 -&gt; 老大拱手還禮
 
 
-
-                     -&gt; 星宿派人數遠較少林僧
-                     |
-星宿派人數遠較少林僧為 --
-                     |
-                     -&gt; 宿派人數遠較少林僧為
-
+                 -&gt; 星宿派人數遠
+                 |
+星宿派人數遠較 -----
+                 |
+                 -&gt; 宿派人數遠較
 
 
-                     -&gt; 過不多時，賈老者換了
-                     |
-過不多時，賈老者換了件 --
-                     |
-                     -&gt; 不多時，賈老者換了件
+                 -&gt; 過不多時，賈
+                 |
+過不多時，賈老 -----
+                 |
+                 -&gt; 不多時，賈老
 </pre></div>
 </div>
 </div>
@@ -1138,7 +1138,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># print 只是用來幫你理解 tf.data.Dataset</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># print 是用來幫你理解 tf.data.Dataset</span>
 <span class="c1"># 的內容，實際上存取資料集非常簡單</span>
 <span class="c1"># 現在先關注下面的 print 結果</span>
 <span class="k">for</span> <span class="n">b_inp</span><span class="p">,</span> <span class="n">b_tar</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
@@ -1158,7 +1158,8 @@
     <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
     
     <span class="nb">print</span><span class="p">(</span><span class="s2">"第一個起始句子的文本序列："</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">([</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">first_i</span><span class="p">],</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">([</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">first_i</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"第一個目標句子的文本序列："</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">([</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">first_t</span><span class="p">])</span>
 </pre></div>
@@ -1213,7 +1214,7 @@ tf.Tensor(
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>為了讓你理解資料集回傳的內容，上面用了不少 <code>print</code>。但事實上資料集 <code>ds</code> 負責的就是每次吐出 128 筆數據的 Tensor，而每筆數據裡頭包含了長度為 10 的輸入・輸出的數字序列。</p>
+<p>為了讓你理解資料集回傳的內容，上面用了不少 <code>print</code>。但事實上資料集 <code>ds</code> 負責的就是每次吐出 128 筆數據的 Tensor，而每筆數據裡頭包含了長度為 10 的輸入・輸出的數字序列（因此維度為 <code>(128, 10)</code>）。</p>
 <p>去除 <code>print</code>，你要從資料集 <code>ds</code> 取得一個 batch 非常地簡單：</p>
 </div>
 </div>
@@ -1248,8 +1249,8 @@ tf.Tensor(
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>回想資料集內容，你現在應該已經很清楚我們想要模型解決的問題是什麼了：丟入一個數字序列，要能產生包含下個時間點的數字序列，越相似越好。</p>
-<p>如同我們在<a href="https://demo.leemeng.tw/">AI 如何找出你的喵</a>裡頭說過的：</p>
+<p>回想資料集內容，你現在應該已經很清楚我們想要模型解決的問題是什麼了：丟入一個數字序列，模型要能產生包含下個時間點的數字序列，越相似越好。</p>
+<p>如同我們在 <a href="https://demo.leemeng.tw/">AI 如何找出你的喵</a>裡頭說過的：</p>
 </div>
 </div>
 </div>
@@ -1269,8 +1270,8 @@ tf.Tensor(
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>我們現在要做的就是定義一個神經網路架構，讓這個神經網路（或稱函式）幫我們把輸入數據轉換成輸出數據。</p>
-<p>我們期待這個模型具有「記憶」，能考慮以前看過的所有歷史資訊，進而產生最有可能的結果。</p>
+<p>我們現在要做的就是定義一個神經網路架構，讓這個神經網路（或稱函式）幫我們把輸入的數字序列轉換成對應的輸出序列。</p>
+<p>我們期待這個模型具有「記憶」，能考慮以前看過的所有歷史資訊，進而產生最有可能的下個中文字。</p>
 </div>
 </div>
 </div>
@@ -1292,7 +1293,7 @@ tf.Tensor(
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>而在<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html">自然語言處理與深度學習入門指南</a>我們就已經談過，循環神經網路中的 LSTM 模型非常適合拿來做這件事情。</p>
-<p>因此雖然理論上你可以用任意架構的神經網路來解決這個問題，使用 LSTM 是一個相對較好的選擇。在 TensorFlow 裡頭，使用 Keras API 建立一個神經網路就像在疊疊樂，是件輕鬆的事情：</p>
+<p>因此雖然理論上你可以用任意架構的神經網路如基本的前饋神經網路來解決這個問題，使用 LSTM 是一個相對較適合的選擇。在 TensorFlow 裡頭，使用 <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/keras">Keras API</a> 建立一個神經網路就像在疊疊樂，是一件很輕鬆的事情：</p>
 </div>
 </div>
 </div>
@@ -1306,8 +1307,10 @@ tf.Tensor(
 <span class="n">EMBEDDING_DIM</span> <span class="o">=</span> <span class="mi">512</span>
 <span class="n">RNN_UNITS</span> <span class="o">=</span> <span class="mi">1024</span>
 
-<span class="c1"># 使用 keras 建立一個序列模型</span>
+<span class="c1"># 使用 keras 建立一個非常簡單的 LSTM 模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+
+<span class="c1"># 詞嵌入層</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span>
         <span class="n">input_dim</span><span class="o">=</span><span class="n">num_words</span><span class="p">,</span> 
@@ -1315,6 +1318,8 @@ tf.Tensor(
         <span class="n">batch_input_shape</span><span class="o">=</span><span class="p">[</span>
             <span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
 <span class="p">))</span>
+
+<span class="c1"># LSTM 層</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span>
     <span class="n">units</span><span class="o">=</span><span class="n">RNN_UNITS</span><span class="p">,</span> 
@@ -1322,6 +1327,8 @@ tf.Tensor(
     <span class="n">stateful</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
     <span class="n">recurrent_initializer</span><span class="o">=</span><span class="s1">'glorot_uniform'</span>
 <span class="p">))</span>
+
+<span class="c1"># 全連接層</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
         <span class="n">num_words</span><span class="p">))</span>
@@ -1331,26 +1338,12 @@ tf.Tensor(
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-embedding_2 (Embedding)      (128, None, 512)          2216960   
-_________________________________________________________________
-lstm_2 (LSTM)                (128, None, 1024)         6295552   
-_________________________________________________________________
-dense_2 (Dense)              (128, None, 4330)         4438250   
-=================================================================
-Total params: 12,950,762
-Trainable params: 12,950,762
-Non-trainable params: 0
-_________________________________________________________________
-</pre>
 </div>
-</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/model_summary.jpg"/>
+<br/>
 </div>
 </div>
 </div>
@@ -1358,7 +1351,7 @@ _________________________________________________________________
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這邊我們建立了一個由詞嵌入層、LSTM 層以及全連接層組成的簡單 LSTM 模型。此模型一次吃 128 筆輸入數據，並產出 128 筆 4330 維度的 Tensor。</p>
-<p>如果你還記得，4330 是天龍八部裡頭所有出現過的中文字數目。模型輸出的每個維度值，都可以被視為是跟某個詞出現機率成正比的值。</p>
+<p>如果你還記得，4330 是天龍八部裡頭所有出現過的中文字的數目。模型輸出的每個維度值，都可以被視為是跟某個詞出現機率成正比的值。</p>
 </div>
 </div>
 </div>
@@ -1373,9 +1366,30 @@ _________________________________________________________________
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>值得注意的是，儘管這個神經網路（或稱函數）看起來非常有希望能解決我們的問題，我們並不僅是建立了 1 個函數而已。事實上，我們用 <code>tf.keras</code> 定義了一個有接近 1,300 萬個參數的函式<strong>集合</strong>。</p>
-<p>就好像當你在用 <code>a * x + b = y</code> 形式的函數集合來 fit 手上的資料時，仍然需要讓模型看輸入數據 <code>x</code> 與輸出 <code>y</code> 的關係一樣。你會訓練模型來產生最好的參數 <code>a</code> 和 <code>b</code>，使得 <code>a * x + b</code> 能產生最接近正確解答 <code>y</code> 的 <code>y_pred</code>。</p>
-<p>這邊的神經網路也是同樣道理。</p>
+<p>值得一提的是，儘管這個神經網路（或稱映射函數）看起來非常有希望能解決我們的序列生成問題，我們並不僅是建立了 1 個幫我們將輸入序列對應到目標序列的映射函數而已。事實上，我們用 <code>tf.keras</code> 定義了一個有接近 1,300 萬參數的函式<strong>集合</strong>（Function set）。</p>
+<p>這跟你看到一個資料集裡頭的特徵 <code>x</code> 跟目標值 <code>y</code> 成直線，然後想用 <code>a * x + b = y</code> 形式去 fit <code>y</code> 的道理是一樣的：你相信 <code>a * x + b = y</code> 形式的映射函數能幫你把輸入 <code>x</code> 有效地對應到目標 <code>y</code>，你只是不知道最佳的參數組合 <code>(a, b)</code> 是多少罷了；同理，很多研究結果顯示文中定義的 RNN 與 LSTM 能幫我們很好的 model 序列數據，我們只是還不知道最適合天龍八部的參數組合是什麼而已。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/backpropagation-example.gif"/>
+</center>
+<center>
+                        深度學習中我們常使用梯度下降與反向傳播來從函數集合中找出最好的函數（某個特定參數組合的神經網路架構）
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>參數 <code>a</code> 以及 <code>b</code> 有無限多種組合，而每一組 <code>a</code> 與 <code>b</code> 的組合都對應到一個實際的「函數」，也都能幫你把 <code>x</code> 乘上 <code>a</code> 倍再加上 <code>b</code> 後想辦法去接近目標值 <code>y</code>，只是每個函數的表現不一而已。而把這些所有可能的函數放在一起，就是所謂的函數集合。</p>
+<p>只不過針對 <code>a * x + b = y</code> 這個簡單例子，我們可以直接用線性代數從整個函式集合裡頭瞬間找出最佳的函數 <code>f</code>（即某個參數的組合）；而我們需要透過<a href="https://zh.wikipedia.org/zh-tw/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95">梯度下降（Gradient Descent）</a>與<a href="https://zh.wikipedia.org/wiki/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95">反向傳播算法（Backpropagation）</a>來幫我們在茫茫無垠的函式集合（某種神經網路架構如本文定義的 <code>model</code> ）裡頭找出一個好的神經網路（某個 1,300 萬個參數的組合）。</p>
 </div>
 </div>
 </div>
@@ -1383,7 +1397,20 @@ _________________________________________________________________
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="5.-定義評量函式好壞的指標">5. 定義評量函式好壞的指標<a class="anchor-link" href="#5.-定義評量函式好壞的指標">&para;</a></h3><p>值得一提的是，透過定義這樣的輸入輸出關係，我們將一個沒有正確解答的任務轉換成監督式學習的任務了。</p>
-<h3 id="6.-訓練並選擇出最好的函式">6. 訓練並選擇出最好的函式<a class="anchor-link" href="#6.-訓練並選擇出最好的函式">&para;</a></h3><h3 id="7.-將函式-/-模型拿來做預測">7. 將函式 / 模型拿來做預測<a class="anchor-link" href="#7.-將函式-/-模型拿來做預測">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="6.-訓練並選擇出最好的函式">6. 訓練並選擇出最好的函式<a class="anchor-link" href="#6.-訓練並選擇出最好的函式">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="7.-將函式-/-模型拿來做預測">7. 將函式 / 模型拿來做預測<a class="anchor-link" href="#7.-將函式-/-模型拿來做預測">&para;</a></h3>
 </div>
 </div>
 </div>
