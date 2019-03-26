@@ -14,7 +14,7 @@
 <title>LeeMeng - 讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</title>
     <!--- article-specific meta data
     ================================================== -->
-        <meta name="description" content="TODO" />
+        <meta name="description" content="這篇文章展示一個由 TensorFlow 2.0 以及 TensorFlow.js 實現的文本生成應用。本文也會透過深度學習專案常見的 7 個步驟，帶領讀者一步步了解如何實現一個這樣的應用。閱讀完本文，你將對開發 AI 應用的流程有些基礎的了解。" />
         <meta name="keywords" content="TensorFlow, TensorFlow.js, 自然語言處理" />
         <meta name="tags" content="TensorFlow" />
         <meta name="tags" content="TensorFlow.js" />
@@ -23,11 +23,11 @@
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="/theme/images/background/text-generation-cover.jpg" />
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/text-generation-cover.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" />
+        <meta property="og:url" content="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" />
         <meta property="og:title" content="讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部" />
-        <meta property="og:description" content="TODO" />
+        <meta property="og:description" content="這篇文章展示一個由 TensorFlow 2.0 以及 TensorFlow.js 實現的文本生成應用。本文也會透過深度學習專案常見的 7 個步驟，帶領讀者一步步了解如何實現一個這樣的應用。閱讀完本文，你將對開發 AI 應用的流程有些基礎的了解。" />
 
     <!-- mobile specific metas
     ================================================== -->
@@ -36,33 +36,43 @@
     <!-- CSS
     ================================================== -->
     <!--for customized css in individual page-->
-        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
 
     <!--for showing toc navigation which slide in from left-->
-        <link rel="stylesheet" type="text/css" href="/theme/css/toc-nav.css">
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
 
-    <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/ipython.css">
-    <link rel="stylesheet" type="text/css" href='/theme/css/progress-bar.css' />
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
 
 
     <!--TiqueSearch-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
-    <link rel="stylesheet" href="/theme/tipuesearch/css/normalize.css">
-    <link rel="stylesheet" href="/theme/tipuesearch/css/tipuesearch.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
 
     <!-- script
     ================================================== -->
-    <script src="/theme/js/modernizr.js"></script>
-    <script src="/theme/js/pace.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
 
 
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
 
 
 
@@ -76,7 +86,7 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="../index.html"><img src="/theme/images/logo.png" alt="Homepage"></a>
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
         </div>
 <!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
@@ -125,7 +135,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部">讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</a><ul><li><a class="toc-href" href="#Demo：生成全新的天龍八部橋段" title="Demo：生成全新的天龍八部橋段">Demo：生成全新的天龍八部橋段</a></li><li><a class="toc-href" href="#所以這模型是怎麼訓練出來的" title="所以這模型是怎麼訓練出來的">所以這模型是怎麼訓練出來的</a></li><li><a class="toc-href" href="#章節內容" title="章節內容">章節內容</a></li><li><a class="toc-href" href="#使用-TensorFlow-2.0-訓練模型" title="使用 TensorFlow 2.0 訓練模型">使用 TensorFlow 2.0 訓練模型</a></li><li><a class="toc-href" href="#使用-Tensorflow.js-部署模型" title="使用 Tensorflow.js 部署模型">使用 Tensorflow.js 部署模型</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部">讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</a><ul><li><a class="toc-href" href="#生成新的天龍八部橋段" title="生成新的天龍八部橋段">生成新的天龍八部橋段</a></li><li><a class="toc-href" href="#模型是怎麼被訓練的" title="模型是怎麼被訓練的">模型是怎麼被訓練的</a></li><li><a class="toc-href" href="#TensorFlow-2.0-開發" title="TensorFlow 2.0 開發">TensorFlow 2.0 開發</a></li><li><a class="toc-href" href="#深度學習專案步驟" title="深度學習專案步驟">深度學習專案步驟</a><ul><li><a class="toc-href" href="#1.-定義問題及要解決的任務" title="1. 定義問題及要解決的任務">1. 定義問題及要解決的任務</a></li><li><a class="toc-href" href="#2.-準備原始數據、資料清理" title="2. 準備原始數據、資料清理">2. 準備原始數據、資料清理</a></li><li><a class="toc-href" href="#3.-建立能丟入模型的資料集" title="3. 建立能丟入模型的資料集">3. 建立能丟入模型的資料集</a></li><li><a class="toc-href" href="#4.-定義能解決問題的函式集" title="4. 定義能解決問題的函式集">4. 定義能解決問題的函式集</a></li><li><a class="toc-href" href="#5.-定義評量函式好壞的指標" title="5. 定義評量函式好壞的指標">5. 定義評量函式好壞的指標</a></li><li><a class="toc-href" href="#6.-訓練並選擇出最好的函式" title="6. 訓練並選擇出最好的函式">6. 訓練並選擇出最好的函式</a></li><li><a class="toc-href" href="#7.-將函式-/-模型拿來做預測" title="7. 將函式 / 模型拿來做預測">7. 將函式 / 模型拿來做預測</a></li></ul></li><li><a class="toc-href" href="#如何使用-TensorFlow.js-跑模型並生成文章_1" title="如何使用 TensorFlow.js 跑模型並生成文章">如何使用 TensorFlow.js 跑模型並生成文章</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li><li><a class="toc-href" href="#致敬" title="致敬">致敬</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -134,26 +144,26 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/text-generation-cover.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/text-generation-cover.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
-                            <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
-                            <a href="/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
-                            <a href="/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
+                            <a href="https://leemeng.tw/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                            <a href="https://leemeng.tw/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
+                            <a href="https://leemeng.tw/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" title="">
+                        <a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" title="">
                             讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部
                         </a>
                     </h1>
                     <ul class="page-header__meta">
-                        <li class="date">2019-03-25 (Mon)</li>
+                        <li class="date">2019-03-27 (Wed)</li>
                         <li class="page-view">
-                            1 views
+                            0 views
                         </li>
                     </ul>
 
@@ -184,6 +194,26 @@
         </a>
     </div>
 
+    <div id="social-wrap" style="cursor: pointer">
+        <a class="open-popup" title="訂閱最新文章">
+            <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html&title=%E8%AE%93%20AI%20%E5%AF%AB%E9%BB%9E%E9%87%91%E5%BA%B8%EF%BC%9A%E5%A6%82%E4%BD%95%E7%94%A8%20TensorFlow%202.0%20%E5%8F%8A%20TensorFlow.js%20%E5%AF%AB%E5%A4%A9%E9%BE%8D%E5%85%AB%E9%83%A8&summary=%E9%80%99%E7%AF%87%E6%96%87%E7%AB%A0%E5%B1%95%E7%A4%BA%E4%B8%80%E5%80%8B%E7%94%B1%20TensorFlow%202.0%20%E4%BB%A5%E5%8F%8A%20TensorFlow.js%20%E5%AF%A6%E7%8F%BE%E7%9A%84%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90%E6%87%89%E7%94%A8%E3%80%82%E6%9C%AC%E6%96%87%E4%B9%9F%E6%9C%83%E9%80%8F%E9%81%8E%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E5%B0%88%E6%A1%88%E5%B8%B8%E8%A6%8B%E7%9A%84%207%20%E5%80%8B%E6%AD%A5%E9%A9%9F%EF%BC%8C%E5%B8%B6%E9%A0%98%E8%AE%80%E8%80%85%E4%B8%80%E6%AD%A5%E6%AD%A5%E4%BA%86%E8%A7%A3%E5%A6%82%E4%BD%95%E5%AF%A6%E7%8F%BE%E4%B8%80%E5%80%8B%E9%80%99%E6%A8%A3%E7%9A%84%E6%87%89%E7%94%A8%E3%80%82%E9%96%B1%E8%AE%80%E5%AE%8C%E6%9C%AC%E6%96%87%EF%BC%8C%E4%BD%A0%E5%B0%87%E5%B0%8D%E9%96%8B%E7%99%BC%20AI%20%E6%87%89%E7%94%A8%E7%9A%84%E6%B5%81%E7%A8%8B%E6%9C%89%E4%BA%9B%E5%9F%BA%E7%A4%8E%E7%9A%84%E4%BA%86%E8%A7%A3%E3%80%82&source=https%3A//leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" target="_blank" title="分享到 LinkedIn">
+            <i class="im im-linkedin" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://twitter.com/intent/tweet?text=%E8%AE%93%20AI%20%E5%AF%AB%E9%BB%9E%E9%87%91%E5%BA%B8%EF%BC%9A%E5%A6%82%E4%BD%95%E7%94%A8%20TensorFlow%202.0%20%E5%8F%8A%20TensorFlow.js%20%E5%AF%AB%E5%A4%A9%E9%BE%8D%E5%85%AB%E9%83%A8&url=https%3A//leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" target="_blank" title="分享到 Twitter">
+            <i class="im im-twitter" aria-hidden="true"></i>
+        </a>
+    </div>
 
 </div>
 
@@ -193,18 +223,18 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<link href="/tfjs-apps/lstm-text-generation/index.css" rel="stylesheet"/>
+<link href="https://leemeng.tw/tfjs-apps/lstm-text-generation/index.css" rel="stylesheet"/>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote>
+<blockquote style="margin-bottom: 1rem">
 <p>
-                        木婉清轉頭向他，背脊向著南海鱷神，低聲道：「你是世上第一個見到我容貌的男子！」緩緩拉開了面幕。段譽登時全身一震，眼前所見，如新月清暉，如花樹堆雪，一張臉秀麗絕俗。
-                        <br/>
-<span style="float:right">─ 第四回：崖高人遠</span>
+        木婉清轉頭向他，背脊向著南海鱷神，低聲道：「你是世上第一個見到我容貌的男子！」緩緩拉開了面幕。段譽登時全身一震，眼前所見，如新月清暉，如花樹堆雪，一張臉秀麗絕俗。
+        <br/>
+<span style="float:right;margin-right: 1.5rem">第四回：崖高人遠</span>
 <br/>
 </p>
 </blockquote>
@@ -216,8 +246,8 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br/></p>
 <p><a href="https://bit.ly/2TUycBQ">《天龍八部》</a>一直是我最喜歡的<a href="https://zh.wikipedia.org/wiki/%E9%87%91%E5%BA%B8%E4%BD%9C%E5%93%81">金庸著作</a>之一，最近重新翻閱，有很多新的感受。</p>
-<p>閱讀到一半我突發奇想，決定用<a href="https://leemeng.tw/deep-learning-resources.html">深度學習</a>來訓練一個能夠生成《天龍八部》的<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E6%9C%89%E8%A8%98%E6%86%B6%E7%9A%84%E5%BE%AA%E7%92%B0%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF">循環神經網路</a>。訓練結果還不完美，但我認為已經很有娛樂性質，且有時已經能夠產生令人驚嘆或是捧腹大笑的文章了。</p>
-<p>因此我決定將模型上線，讓你也能看看這個 AI 實際上嗑了什麼藥。</p>
+<p>閱讀到一半我突發奇想，決定嘗試用<a href="https://leemeng.tw/deep-learning-resources.html">深度學習</a>以及 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0</a> 來訓練一個能夠生成《天龍八部》的<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E6%9C%89%E8%A8%98%E6%86%B6%E7%9A%84%E5%BE%AA%E7%92%B0%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF">循環神經網路</a>。生成結果仍不完美，但我認為已經很有娛樂性質，且有時能夠產生令人驚嘆或是捧腹大笑的文章了。</p>
+<p>因此我決定使用 <a href="https://www.tensorflow.org/js">Tensorflow.js</a> 將訓練出來的模型弄上線，讓你也能實際看看這個 AI 嗑了什麼藥。</p>
 </div>
 </div>
 </div>
@@ -225,7 +255,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="/images/lstm-text-generation/dali-old-castle.jpg"/>
+<img src="https://leemeng.tw/images/lstm-text-generation/dali-old-castle.jpg"/>
 </center>
 <center>
                         大理古城一隅，段譽出身之地
@@ -238,33 +268,66 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>在 demo 之後，我將簡單地說明你可以如何使用 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0 Alpha</a> 以及 <a href="https://www.tensorflow.org/js">Tensorflow.js</a> 來實作這樣的 AI 應用。</p>
-<p>希望你能從中得到些啟發，並在閱讀本文後實際動手做點自己的東西。</p>
+<p>在 demo 之後，我將以此文的 AI 應用為例，用 TensorFlow 2.0 帶你走過深度學習專案中常見的 7 個步驟：</p>
+<ol>
+<li><a href="#1.-定義問題及要解決的任務">定義問題及要解決的任務</a></li>
+<li><a href="#2.-準備原始數據、資料清理">準備原始數據、資料清理</a></li>
+<li><a href="#3.-建立能丟入模型的資料集">建立能丟入模型的資料集</a></li>
+<li><a href="#4.-定義能解決問題的函式集">定義能解決問題的函式集</a></li>
+<li><a href="#5.-定義評量函式好壞的指標">定義評量函式好壞的指標</a></li>
+<li><a href="#6.-訓練並選擇出最好的函式">訓練並選擇出最好的函式</a></li>
+<li><a href="#7.-將函式-/-模型拿來做預測">將函式 / 模型拿來做預測</a></li>
+</ol>
+<p>希望閱讀本文後能讓你學到點東西，從中獲得些啟發，並運用自己的想像力創造點新的東西。</p>
+<p>前言夠長了，讓我們馬上進入 demo 吧！</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Demo：生成全新的天龍八部橋段">Demo：生成全新的天龍八部橋段<a class="anchor-link" href="#Demo：生成全新的天龍八部橋段">&para;</a></h2>
+<h2 id="生成新的天龍八部橋段">生成新的天龍八部橋段<a class="anchor-link" href="#生成新的天龍八部橋段">&para;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>本篇使用一個十分簡單的<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E8%A8%98%E6%86%B6%E5%8A%9B%E5%A5%BD%E7%9A%84-LSTM-%E7%B4%B0%E8%83%9E">長短期記憶 RNN</a> 來生成文章。在多次「閱讀」天龍八部之後，這個模型可以在給定一段新文本的情況下，逐字產生類似風格的文章。</p>
+<p>本篇使用一個十分簡單的<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E8%A8%98%E6%86%B6%E5%8A%9B%E5%A5%BD%E7%9A%84-LSTM-%E7%B4%B0%E8%83%9E">長短期記憶 RNN</a> 來生成文章。在多次「閱讀」天龍八部之後，這個模型可以在給定一段文本的情況下，逐字產生類似天龍八部小說的文章。</p>
 <p>比方說給定書中的一個橋段：</p>
-<div class="highlight"><pre><span></span>蕭峯吃了一驚，心想：「哥哥大喜之餘，說話有些忘形了，眼下亂成
+<div class="highlight"><pre><span></span>烏老大偏生要考一考慕容復，說道：「慕容公子，你瞧這不是大大的
 </pre></div>
-<p>模型順著上面的話，接著產生：</p>
-<div class="highlight"><pre><span></span>一團，一大半也是個抵敵不住。
+<p>你會怎麼接下去？</p>
+<p>本文的模型順著上面的話生成的其中一次結果：</p>
+<div class="highlight"><pre><span></span>不算？」馬夫人道：「不錯，咱們非要尋死不可。」
 
-那女童見眾親兵到了幫外，只聽得遠處人影，都是迅速如飛，氣息直流。
+段譽大喜，說道：「小姑娘，你待我這麼好，鬼鬼祟祟，一切又不聽你的話，你管甚麼老兄弟不相干，我去幫過彥之。」
+
+王夫人哼了一聲，說道：「這裏是甚麼話？」段譽道：「不行！你別過來。用真蠻子，我便將這件事了，一大惡人擠在地下，立時便會斃命，那便如何是好？」
 </pre></div>
-<p>這跟金庸的原作完全沒有關係，但感覺有模有樣。（至少我自己寫不出這樣的內容）</p>
-<p>現在讓我們產生一些新的橋段吧！首先將已經訓練好的模型載入你的瀏覽器。依據不同網路速度，載入時間可能有所差異。</p>
-<p>不過載入後只要不重新整理此頁面，你將可以不斷地使用此模型產生新的文章：</p>
+<p>文章內容很ㄎ一ㄤ，惹人發笑，但用詞本身很天龍八部。（至少我自己寫不出這樣的內容）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/lstm-text-generation/antony-xia-522590-unsplash.jpg"/>
+</center>
+<center>
+                        姑蘇慕容家所在的蘇州
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>現在馬上就讓我們產生一些新的橋段吧！首先將已經訓練好的模型載入你的瀏覽器。依據你的網路速度，載入時間會有所差異。</p>
+<p>成功載入後，你將可以不斷地產生新的橋段：</p>
 <section style="margin-bottom: 3rem">
 <button id="load-model" style="display:inline-block">載入模型</button>
 <div id="app-status" style="display:inline-block"></div>
@@ -285,7 +348,7 @@
 <span class="input-title">生成溫度（隨機度）</span>
 <input id="temperature" value="0.6"/>
 </div>
-</section><p>第一次可以直接使用預設值。現在點擊「生成文章」來產生全新的天龍八部橋段：</p>
+</section><p>第一次可以直接使用預設值。現在點擊<strong>生成文章</strong>來產生全新的天龍八部橋段：</p>
 </div>
 </div>
 </div>
@@ -317,13 +380,13 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>如何？希望模型產生的結果有令你會心一笑。它可快把我逗死了。</p>
-<p>現在你可以做幾件事情來「玩弄」模型：</p>
+<p>如何？希望模型產生的結果有令你會心一笑。它當初可快把我逗死了。</p>
+<p>現在你可以嘗試幾件事情：</p>
 <ul>
-<li>再次點擊「生成文章」來讓模型依據同樣輸入來產生新橋段</li>
-<li>點擊「重置輸入」來隨機取得一個新的起始句子（或自己輸入）</li>
-<li>增加模型生成的文章長度（耐心是美德）</li>
-<li>調整「生成溫度」來改變文章的變化性</li>
+<li>點<strong>生成文章</strong>來讓模型依據同輸入產生新橋段</li>
+<li>點<strong>重置輸入</strong>來隨機取得一個新的起始句子</li>
+<li>增加模型生成的<strong>文章長度</strong></li>
+<li>調整<strong>生成溫度</strong>來改變文章的變化性</li>
 </ul>
 </div>
 </div>
@@ -331,7 +394,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<img src="/images/lstm-text-generation/chris-rhoads-254898-unsplash.jpg"/>
+<img src="https://leemeng.tw/images/lstm-text-generation/chris-rhoads-254898-unsplash.jpg"/>
 <br/>
 </div>
 </div>
@@ -339,16 +402,34 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>生成溫度是一個介於 0 到 1 的值，而當溫度越高，模型產生出來的結果越隨機、越不可預測（也就越 ㄎㄧㄤ ）；而當你將溫度調低後，產生的結果會越像天龍八部原文。真實，但重複性也會提升。</p>
-<p>找到一個最佳的溫度是個重要的事情。</p>
-<p>如果你沒有打算深入探討技術細節，只需要記得在這篇文章裡頭的模型是一個以「字」為單位的語言模型（Character-based Language Model）即可：給定一連串已經出現過的字詞，模型會想辦法去預測出下一個可能出現的字。</p>
+<p>生成溫度是一個實數值，而當溫度越高，模型產生出來的結果越隨機、越不可預測（也就越ㄎㄧㄤ）；而溫度越低，產生的結果就會越像天龍八部原文。優點是真實，但同時字詞的重複性也會提升。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<img src="/images/lstm-text-generation/raychan-1229841-unsplash.jpg"/>
+<blockquote>
+<p>
+                        機器並沒有情感，只有人類可以賦予事物意義。我們無法讓機器自動找出最佳的生成溫度，因為人的感覺十分主觀：找出你自己覺得最適合的溫度來生成文章。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你沒有打算深入探討技術細節，那只需要記得在這篇文章裡頭的模型是一個以「字」為單位的語言模型（Character-based Language Model）即可：給定一連串已經出現過的字詞，模型會想辦法去預測出下一個可能出現的字。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/raychan-1229841-unsplash.jpg"/>
 <br/>
 </div>
 </div>
@@ -356,38 +437,1766 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>值得注意的是，我們並不單純是拿出現機率最高的字出來當結果。每次預測我們都會得到一個所有字的出現機率分布，而在生成文本時，我們會對該機率分佈裡做隨機抽樣（Sample），讓模型每次都能生成既隨機又有點意思的字。</p>
-<p>因此，每次產生的結果都是獨一無二的。如果你在生成的過程中得到什麼很有趣的虛擬橋段，都歡迎跟我分享！</p>
+<p>值得注意的是，我們並不單純是拿出現機率最高的字出來當生成結果，這樣太無趣了。</p>
+<p>每次機器做預測前都會拿著一個包含大量中文字的機率分布 p，在決定要吐出哪個字時，會對該機率分佈 p 做抽樣，從中隨機選出一個字。</p>
+<p>因此就跟你在上面 demo 看到的一樣，就算輸入的句子相同，每次模型仍然會生成完全不同的文章。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="所以這模型是怎麼訓練出來的">所以這模型是怎麼訓練出來的<a class="anchor-link" href="#所以這模型是怎麼訓練出來的">&para;</a></h2><p>這模型嗑了什麼，也給我來一點</p>
-<p>；生成溫度（Temperature）我們在後面還會有進一步解釋，但現在你只要知道它</p>
-<p>在訓練過程中，模型會「閱讀」從《天龍八部》中擷取出來的大量句子，並試著從這些句子中預測出下一個可能出現的字。</p>
+<center>
+<img src="https://leemeng.tw/images/lstm-text-generation/max-felner-448887-unsplash.jpg"/>
+</center>
+<center>
+                        抽樣的過程類似擲骰子，儘管有些結果較易出現，你還是有機會骰到豹子
+                        <br/>
+<br/>
+</center>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="章節內容">章節內容<a class="anchor-link" href="#章節內容">&para;</a></h2>
+<p>因為隨機抽樣的關係，每次模型產生的結果基本上都是獨一無二的。</p>
+<p>如果你在生成文章的過程中得到什麼有趣的虛擬橋段，都歡迎留言或是透過 SNS 與我分享：）</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="使用-TensorFlow-2.0-訓練模型">使用 TensorFlow 2.0 訓練模型<a class="anchor-link" href="#使用-TensorFlow-2.0-訓練模型">&para;</a></h2>
+<img src="https://leemeng.tw/images/lstm-text-generation/chris-ried-512801-unsplash.jpg"/>
+<br/>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="使用-Tensorflow.js-部署模型">使用 Tensorflow.js 部署模型<a class="anchor-link" href="#使用-Tensorflow.js-部署模型">&para;</a></h2>
+<p>本文接著將詳細解說此應用是怎麼被開發出來的。如果你現在沒有打算閱讀，可以直接跳到<a href="#結語">結語</a>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="模型是怎麼被訓練的">模型是怎麼被訓練的<a class="anchor-link" href="#模型是怎麼被訓練的">&para;</a></h2><p>在看完 demo 以後，你可能會好奇這個模型是怎麼被訓練出來的。</p>
+<p>實際的開發流程大致可以分為兩個部分：</p>
+<ul>
+<li><a href="https://www.tensorflow.org/alpha/tutorials/sequences/text_generation">用 TensorFlow 2.0 訓練一個 LSTM 模型</a></li>
+<li><a href="https://github.com/tensorflow/tfjs-examples/tree/master/lstm-text-generation">使用 TensorFlow.js 部屬該模型</a></li>
+</ul>
+<p>這些在 TensorFlow 以及 TensorFlow.js 的官網都有詳細的教學以及程式碼供你參考。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/lstm-text-generation/tf-demo.png"/>
+</center>
+<center>
+                        這篇文章參考了不少 TensorFlow 官網（左）及 TensorFlow.js 線上 demo（右）的程式碼
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你也想開發一個類似的應用，閱讀官方教學中你所熟悉的語言版本（Python / JavaScript）是最直接的作法：</p>
+<ul>
+<li><a href="https://www.tensorflow.org/alpha/tutorials/sequences/text_generation">TensorFlow 2.0 Alpha - Text generation with an RNN</a></li>
+<li><a href="https://github.com/tensorflow/tfjs-examples/tree/master/lstm-text-generation">TensorFlow.js Example: Train LSTM to Generate Text</a></li>
+</ul>
+<p>因為官方已經有提供能在 <a href="https://colab.research.google.com/">Google Colab</a> 上使用 GPU <a href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/r2/tutorials/sequences/text_generation.ipynb">訓練 LSTM 的教學筆記本</a>，本文便不再另行提供。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/simon-abrams-286276-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>另外，具備以下背景可以讓你更輕鬆地閱讀接下來的內容：</p>
+<ul>
+<li>熟悉 <a href="https://www.python.org/">Python</a></li>
+<li>碰過 <a href="https://keras.io/">Keras</a> 或是 <a href="https://www.tensorflow.org/">TensorFlow</a></li>
+<li>具備<a href="https://leemeng.tw/deep-learning-resources.html#courses">機器學習 &amp; 深度學習基礎</a></li>
+<li>了解何謂<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E6%9C%89%E8%A8%98%E6%86%B6%E7%9A%84%E5%BE%AA%E7%92%B0%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF">循環神經網路</a>以及<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E8%A8%98%E6%86%B6%E5%8A%9B%E5%A5%BD%E7%9A%84-LSTM-%E7%B4%B0%E8%83%9E">長短期記憶</a></li>
+</ul>
+<p>如果你是喜歡先把基礎打好的人，可以先查閱我上面附的這些資源連結。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="TensorFlow-2.0-開發">TensorFlow 2.0 開發<a class="anchor-link" href="#TensorFlow-2.0-開發">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>平常有在接觸深度學習的讀者或許都已經知道，最近 TensorFlow 隆重推出 <a href="https://www.tensorflow.org/alpha">2.0 Alpha 預覽版</a>，希望透過全新的 API 讓更多人可以輕鬆地開發機器學習以及深度學習應用。</p>
+<p>當初撰寫本文的其中一個目的，也是想趁著這次大改版來讓自己熟悉一下 TensorFlow 2.0 的開發方式。</p>
+<div class="resp-container">
+<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="resp-iframe" frameborder="0" src="https://www.youtube.com/embed/TTQQiJ-mHYA"></iframe>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TensorFlow 2.0 值得關注的<a href="https://youtu.be/YzLnnGiLNRE?list=PLQY2H8rRoyvzoUYI26kHmKSJBedn3SQuB">更新</a>不少，但以下幾點跟一般的 ML 開發者最為相關：</p>
+<ul>
+<li><a href="https://www.tensorflow.org/alpha/guide/keras/overview">tf.keras</a> 被視為官方高級 API，強調其地位</li>
+<li>方便除錯的 <a href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/guide/eager.ipynb">Eager Execution</a> 成為預設值</li>
+<li>負責讀取、處理大量數據的 <a href="https://www.tensorflow.org/alpha/guide/data_performance">tf.data</a> API</li>
+<li>自動幫你建構計算圖的 <a href="https://youtu.be/Up9CvRLIIIw?list=PLQY2H8rRoyvzoUYI26kHmKSJBedn3SQuB">tf.function</a></li>
+</ul>
+<p>在這篇文章裡頭會看到前 3 者。下節列出的程式碼皆在 <a href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/r2/tutorials/sequences/text_generation.ipynb">Google Colab</a> 上用最新版本的 TensorFlow 2.0 Nightly 執行。</p>
+<div class="highlight"><pre><span></span>pip install tf-nightly-gpu-2.0-preview
+</pre></div>
+<p>如果有 GPU 則強烈建議安裝 GPU 版本的 TF Nightly，訓練速度跟 CPU 版本可以差到 10 倍以上。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="深度學習專案步驟">深度學習專案步驟<a class="anchor-link" href="#深度學習專案步驟">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>好戲終於登場。</p>
+<p>如同多數的深度學習專案，要訓練一個以 LSTM 為基礎的語言模型，你大致需要走過以下幾個步驟：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/lstm-text-generation/deep-learning-pj-steps-menglee.jpg"/>
+</center>
+<center>
+                        開發一個 DL 專案時我常用的流程架構
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這個流程是一個大方向，依據不同情境你可能需要做些調整來符合自己的需求，且很多步驟需要重複進行。</p>
+<p>這篇文章會用 TensorFlow 2.0 簡單地帶你走過所有步驟。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.-定義問題及要解決的任務">1. 定義問題及要解決的任務<a class="anchor-link" href="#1.-定義問題及要解決的任務">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>很明顯地，在訓練模型前首先得確認我們的問題（Problem）以及想要交給機器解決的任務（Task）是什麼。</p>
+<p>前面已經提過，我們的目標就是要找出一個天龍八部的語言模型（Language Model），讓該模型在被餵進一段文字以後，能吐出類似天龍八部的文章。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><div class="resp-container">
+<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="resp-iframe" frameborder="0" src="https://www.youtube.com/embed/f1KUUz7v8g4?list=PLJV_el3uVTsPMxPbjeX7PicgWbY7F8wW9"></iframe>
+</div></p>
+<center>
+    十分推薦李宏毅教授講解序列生成的影片
+    <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這實際上是一個<a href="https://youtu.be/f1KUUz7v8g4?list=PLJV_el3uVTsPMxPbjeX7PicgWbY7F8wW9">序列生成（Sequence Generation）</a>問題，而機器所要解決的任務也變得明確：給定一段文字單位的序列，它要能吐出下一個合理的文字單位。</p>
+<p>這邊說的文字單位（Token）可以是</p>
+<ul>
+<li>字（Character，如劍、寺、雲）</li>
+<li>詞（Word，如吐蕃、師弟、阿修羅）</li>
+</ul>
+<p>本文則使用「字」作為一個文字單位。現在假設有一個天龍八部的句子：</p>
+<div class="highlight"><pre><span></span>『六脈神劍經』乃本寺鎮寺之寶，大理段氏武學的至高法要。
+</pre></div>
+<p>這時候句子裡的每個字（含標點符號）都是一個文字單位，而整個句子就構成一個文字序列。我們可以擷取一部份句子：</p>
+<div class="highlight"><pre><span></span>『六脈神劍經』乃本寺鎮寺之寶，大理段氏武
+</pre></div>
+<p>接著在訓練模型時要求它讀入這段文字，並預測出原文裡頭出現的下一個字：<code>學</code>。</p>
+<p>一旦訓練完成，就能得到你開頭看到的那個語言模型了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.-準備原始數據、資料清理">2. 準備原始數據、資料清理<a class="anchor-link" href="#2.-準備原始數據、資料清理">&para;</a></h3><p>巧婦難為無米之炊，沒有數據一切免談。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/caroline-attwood-243834-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我在網路上蒐集天龍八部原文，做些簡單的數據清理後發現整本小說總共約含 120 萬個中文字，實在是一部曠世巨作。儘管因為版權問題不宜提供下載連結，你可以 Google 自己有興趣的文本。</p>
+<p>現在假設我們把原文全部存在一個 Python 字串 <code>text</code> 裡頭，則部分內容可能如下：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 隨意取出第 9505 到 9702 的中文字</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">9505</span><span class="p">:</span><span class="mi">9702</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>咱們見敵方人多，不得師父號令，沒敢隨便動手。」左子穆道：「嗯，來了多少人？」干光豪道：「大約七八十人。」左子穆嘿嘿冷笑，道：「七八十人，便想誅滅無量劍了？只怕也沒這麼容易。」
+
+龔光傑道：「他們用箭射過來一封信，封皮上寫得好生無禮。」說著將信呈上。
+
+左子穆見信封上寫著：「字諭左子穆」五個大字，便不接信，說道：「你拆來瞧瞧。」龔光傑道：「是！」拆開信封，抽出信箋。
+
+那少女在段譽耳邊低聲道：
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我們也可以看看整本小說裡頭包含多少中文字：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"天龍八部小說共有 </span><span class="si">{n}</span><span class="s2"> 中文字"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"包含了 </span><span class="si">{w}</span><span class="s2"> 個獨一無二的字"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>天龍八部小說共有 1235431 中文字
+包含了 4330 個獨一無二的字
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>相較於英文只有 26 個簡單字母，博大精深的中文裡頭有非常多漢字。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/raychan-1061280-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如同<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html">寫給所有人的自然語言處理與深度學習入門指南</a>裡頭說過的，要將文本數據丟入只懂數字的神經網路，我們得先做些前處理。</p>
+<p>具體來說，得將這些中文字對應到一個個的索引數字（Index）或是向量才行。</p>
+<p>我們可以使用 <code>tf.keras</code> 裡頭的 <code>Tokenizer</code> 幫我們把整篇小說建立字典，並將同樣的中文字對應到同樣的索引數字：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+<span class="c1"># 初始化一個以字為單位的 Tokenizer</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span>\
+    <span class="o">.</span><span class="n">preprocessing</span>\
+    <span class="o">.</span><span class="n">text</span>\
+    <span class="o">.</span><span class="n">Tokenizer</span><span class="p">(</span>
+        <span class="n">num_words</span><span class="o">=</span><span class="n">num_words</span><span class="p">,</span>
+        <span class="n">char_level</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">filters</span><span class="o">=</span><span class="s1">''</span>
+<span class="p">)</span>
+
+<span class="c1"># 讓 tokenizer 讀過天龍八部全文，</span>
+<span class="c1"># 將每個新出現的字加入字典並將中文字轉</span>
+<span class="c1"># 成對應的數字索引</span>
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">fit_on_texts</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">text_as_int</span> <span class="o">=</span> <span class="n">tokenizer</span>\
+    <span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">([</span><span class="n">text</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># 隨機選取一個片段文本方便之後做說明</span>
+<span class="n">s_idx</span> <span class="o">=</span> <span class="mi">21004</span>
+<span class="n">e_idx</span> <span class="o">=</span> <span class="mi">21020</span>
+<span class="n">partial_indices</span> <span class="o">=</span> \
+    <span class="n">text_as_int</span><span class="p">[</span><span class="n">s_idx</span><span class="p">:</span><span class="n">e_idx</span><span class="p">]</span>
+<span class="n">partial_texts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">tokenizer</span><span class="o">.</span><span class="n">index_word</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> \
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">partial_indices</span>
+<span class="p">]</span>
+
+<span class="c1"># 渲染結果，可忽略</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"原本的中文字序列："</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">partial_texts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"轉換後的索引序列："</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">partial_indices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>原本的中文字序列：
+
+['司', '空', '玄', '雙', '掌', '飛', '舞', '，', '逼', '得', '牠', '無', '法', '近', '前', '。']
+
+--------------------
+
+轉換後的索引序列：
+
+[557, 371, 215, 214, 135, 418, 1209, 1, 837, 25, 1751, 49, 147, 537, 111, 2]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>很明顯地，現在整部天龍八部都已經被轉成一個巨大的數字序列，每一個數字代表著一個獨立的中文字。</p>
+<p>我們可以換個方向再看一次：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>人類看的中文字   機器看的輸入索引  
+------------------------------
+司                557
+空                371
+玄                215
+雙                214
+掌                135
+飛                418
+舞               1209
+，                  1
+逼                837
+得                 25
+牠               1751
+無                 49
+法                147
+近                537
+前                111
+。                  2
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.-建立能丟入模型的資料集">3. 建立能丟入模型的資料集<a class="anchor-link" href="#3.-建立能丟入模型的資料集">&para;</a></h3><p>做完基本的數據前處理以後，我們需要將 <code>text_as_int</code> 這個巨大的數字序列轉換成神經網路容易消化的格式與大小。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">text_as_int</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>[1639, 148, 3, 3, 280, 5, 192, 819, 374, 800]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">text_as_int</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text_as_int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"text_as_int 是一個 </span><span class="si">{_type}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"小說的序列長度： </span><span class="si">{n}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"前 5 索引："</span><span class="p">,</span> <span class="n">text_as_int</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>text_as_int 是一個 &lt;class 'list'&gt;
+
+小說的序列長度： 1235431
+
+前 5 索引： [1639, 148, 3, 3, 280]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        在建立資料集時，你要先能想像最終交給模型的數據長什麼樣子。這樣能幫助你對數據做適當的轉換。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>依照當前機器學習任務的性質，你會需要把不同格式的數據餵給模型。</p>
+<p>在本文的序列生成任務裡頭，理想的模型要能依據前文來判斷出下一個中文字。因此我們要丟給模型的是一串代表某些中文字的數字序列：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"實際丟給模型的數字序列："</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">partial_indices</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"方便我們理解的文本序列："</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">partial_texts</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>實際丟給模型的數字序列：
+[557, 371, 215, 214, 135, 418, 1209, 1, 837, 25, 1751, 49, 147, 537, 111]
+
+方便我們理解的文本序列：
+['司', '空', '玄', '雙', '掌', '飛', '舞', '，', '逼', '得', '牠', '無', '法', '近', '前']
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>而模型要給我們的理想輸出應該是向左位移一個字的結果：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"實際丟給模型的數字序列："</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">partial_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"方便我們理解的文本序列："</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">partial_texts</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>實際丟給模型的數字序列：
+[371, 215, 214, 135, 418, 1209, 1, 837, 25, 1751, 49, 147, 537, 111, 2]
+
+方便我們理解的文本序列：
+['空', '玄', '雙', '掌', '飛', '舞', '，', '逼', '得', '牠', '無', '法', '近', '前', '。']
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為什麼是這樣的配對？</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/bruce-mars-559223-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>讓我們將輸入序列及輸出序列拿來對照看看：</p>
+<div class="highlight"><pre><span></span>司 空 玄 雙 掌 飛 舞 ， 逼 得 牠 無 法 近 前
+
+空 玄 雙 掌 飛 舞 ， 逼 得 牠 無 法 近 前 。
+</pre></div>
+<p>從左看到右你會發現，一個模型如果可以給我們這樣的輸出，代表它：</p>
+<ul>
+<li>看到第一個輸入字 <code>司</code> 時可以正確輸出 <code>空</code></li>
+<li>在之前看過 <code>司</code>，且新輸入字為 <code>空</code> 的情況下，可以輸出 <code>玄</code> </li>
+<li>在之前看過 <code>司空</code>，且新輸入字為 <code>玄</code> 的情況下，可以輸出 <code>雙</code></li>
+<li>在之前看過 <code>司空玄雙掌飛</code>，且新輸入字為 <code>舞</code> 的情況下，可以輸出 <code>，</code></li>
+</ul>
+<p>當一個語言模型可以做到這樣的事情，就代表它已經掌握了<strong>訓練文本</strong>（此文中為天龍八部）裡頭用字的統計結構，因此我們可以用它來產生新的天龍八部文章。</p>
+<p>你現在應該也可以了解，這個語言模型是專為天龍八部的文本所誕生的。畢竟日常生活中，給你 <code>舞</code> 這個字，你接 <code>，</code> 的機率有多少呢？</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/niketh-vellanki-202943-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為了讓你加深印象，讓我把序列擺直，再次列出模型的輸入以及輸出關係：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>時間點 輸入字  輸入索引   輸出字  輸出索引  
+-------------------------------------
+   1    司     557      空      371
+   2    空     371      玄      215
+   3    玄     215      雙      214
+   4    雙     214      掌      135
+   5    掌     135      飛      418
+   6    飛     418      舞      1209
+   7    舞     1209     ，      1
+   8    ，     1        逼      837
+   9    逼     837      得      25
+  10    得     25       牠      1751
+  11    牠     1751     無      49
+  12    無     49       法      147
+  13    法     147      近      537
+  14    近     537      前      111
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>每一列（row）是一個時間點，而</p>
+<ul>
+<li><strong>輸入索引</strong>代表模型在當下時間吃進去的輸入</li>
+<li><strong>輸出索引</strong>則代表我們要模型輸出的結果</li>
+</ul>
+<p>輸入字・輸出字則只是方便我們理解對照，實際上模型只吃數字。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/pop-zebra-754186-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>現在我們了解一筆輸入・輸出該有的數據格式了。兩者皆是一個固定長度的數字序列，而後者是前者往左位移一個數字的結果。</p>
+<p>但這只是一筆數據（以下說的一筆數據，都隱含了輸入序列以及對應的輸出序列的 2 個數字序列）。</p>
+<p>在有 GPU 的情況下，我們常常會一次丟一批（batch）數據，讓 GPU 可以平行運算，加快訓練速度。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/gpu.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>現在假設我們想要一個資料集，而此資料集可以一次給我們 128 筆長度為 10 的輸入・輸出序列，則我們可以用 <code>tf.data</code> 這樣做：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 方便說明，實際上我們會用更大的值來</span>
+<span class="c1"># 讓模型從更長的序列預測下個中文字</span>
+<span class="n">SEQ_LENGTH</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># 數字序列長度</span>
+<span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">128</span> <span class="c1"># 幾筆成對輸入/輸出</span>
+
+<span class="c1"># text_as_int 是一個 python list</span>
+<span class="c1"># 我們利用 from_tensor_slices 將其</span>
+<span class="c1"># 轉變成 TensorFlow 最愛的 Tensor &lt;3</span>
+<span class="n">characters</span> <span class="o">=</span> <span class="n">tf</span>\
+    <span class="o">.</span><span class="n">data</span>\
+    <span class="o">.</span><span class="n">Dataset</span>\
+    <span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">(</span>
+        <span class="n">text_as_int</span><span class="p">)</span>
+
+<span class="c1"># 將被以數字序列表示的天龍八部文本</span>
+<span class="c1"># 拆成多個長度為 SEQ_LENGTH (10) 的序列</span>
+<span class="c1"># 並將最後長度不滿 SEQ_LENGTH 的序列捨去</span>
+<span class="n">sequences</span> <span class="o">=</span> <span class="n">characters</span>\
+    <span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">SEQ_LENGTH</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> 
+           <span class="n">drop_remainder</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 天龍八部全文所包含的成對輸入/輸出的數量</span>
+<span class="n">steps_per_epoch</span> <span class="o">=</span> \
+    <span class="nb">len</span><span class="p">(</span><span class="n">text_as_int</span><span class="p">)</span> <span class="o">//</span> <span class="n">SEQ_LENGTH</span>
+
+<span class="c1"># 這個函式專門負責把一個序列</span>
+<span class="c1"># 拆成兩個序列，分別代表輸入與輸出</span>
+<span class="c1"># （下段有 vis 解釋這在做什麼）</span>
+<span class="k">def</span> <span class="nf">build_seq_pairs</span><span class="p">(</span><span class="n">chunk</span><span class="p">):</span>
+    <span class="n">input_text</span> <span class="o">=</span> <span class="n">chunk</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">target_text</span> <span class="o">=</span> <span class="n">chunk</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="n">input_text</span><span class="p">,</span> <span class="n">target_text</span>
+
+<span class="c1"># 將每個從文本擷取出來的序列套用上面</span>
+<span class="c1"># 定義的函式，拆成兩個數字序列</span>
+<span class="c1"># 作為輸入／輸出序列</span>
+<span class="c1"># 再將得到的所有數據隨機打亂順序</span>
+<span class="c1"># 最後再一次拿出 BATCH_SIZE（128）筆數據</span>
+<span class="c1"># 作為模型一次訓練步驟的所使用的資料</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">sequences</span>\
+    <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">build_seq_pairs</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">steps_per_epoch</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">,</span> 
+           <span class="n">drop_remainder</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這段建構 <code>tf.data.Dataset</code> 的程式碼雖然不短，但有超過一半是我寫給你的註解。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>事實上用 <code>tf.data</code> 架構一個資料集並不難，且學會以後你每次都可用類似的方式呼叫 <a href="https://www.tensorflow.org/guide/datasets">TensorFlow Data API</a> 來處理<strong>任何</strong>文本數據，而不需要每次遇到新文本都從頭開始寫類似的功能（<code>batch</code>、<code>shuffle</code> etc）。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/avi-richards-183715-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>再次提醒，如果你想自己動手可以參考<a href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/r2/tutorials/sequences/text_generation.ipynb">官方用 TensorFlow 2.0 訓練 LSTM 的 Colab 筆記本</a>。</p>
+<p>雖然我不是酷拉皮卡，但如果要把上面 <code>build_seq_pairs</code> 的處理具現化的話，大概就像是下面這樣（假設序列長度為 6）：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>擷取的片段序列       輸入/輸出序列
+-------------------------------
+                 -&gt; 烏老大拱手還
+                 |
+烏老大拱手還禮 -----
+                 |
+                 -&gt; 老大拱手還禮
+
+
+                 -&gt; 星宿派人數遠
+                 |
+星宿派人數遠較 -----
+                 |
+                 -&gt; 宿派人數遠較
+
+
+                 -&gt; 過不多時，賈
+                 |
+過不多時，賈老 -----
+                 |
+                 -&gt; 不多時，賈老
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你會發現針對序列長度 <code>SEQ_LENGTH</code> 為 6 的情況，我會刻意將天龍八部文本切成長度為 <code>SEQ_LENGTH + 1</code>：7 的句子，再從這些句子建立出輸入及輸出序列。</p>
+<p>到此為止，我們已經用 <code>tf.data</code> 建立出一個可以拿來訓練語言模型的資料集了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/mika-baumeister-703680-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TensorFlow 2.0 預設就是 <a href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/guide/eager.ipynb">Eager Execution</a>，因此你不再需要使用老朋友 <code>tf.Session()</code> 或是 <code>tf.placeholder</code> 就能非常直覺地存取數據：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># print 是用來幫你理解 tf.data.Dataset</span>
+<span class="c1"># 的內容，實際上存取資料集非常簡單</span>
+<span class="c1"># 現在先關注下面的 print 結果</span>
+<span class="k">for</span> <span class="n">b_inp</span><span class="p">,</span> <span class="n">b_tar</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"起始句子的 batch："</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">b_inp</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"目標句子的 batch："</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">b_tar</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"第一個起始句子的索引序列："</span><span class="p">)</span>
+    <span class="n">first_i</span> <span class="o">=</span> <span class="n">b_inp</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">first_i</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"第一個目標句子的索引序列："</span><span class="p">)</span>
+    <span class="n">first_t</span> <span class="o">=</span> <span class="n">b_tar</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">first_t</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    
+    <span class="n">d</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">index_word</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"第一個起始句子的文本序列："</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">([</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">first_i</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"第一個目標句子的文本序列："</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">([</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">first_t</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>起始句子的 batch：
+tf.Tensor(
+[[1440   10   12 ... 1882   15  175]
+ [ 157   16  212 ...   11  206   92]
+ [  36   14   36 ...  368  384   63]
+ ...
+ [  61    8    3 ...   11    5  219]
+ [ 123  189  587 ...   65  120   51]
+ [   1    5  620 ...    2    8 1272]], shape=(128, 10), dtype=int32) 
+
+目標句子的 batch：
+tf.Tensor(
+[[  10   12    7 ...   15  175   99]
+ [  16  212   67 ...  206   92    1]
+ [  14   36   36 ...  384   63    2]
+ ...
+ [   8    3    3 ...    5  219    1]
+ [ 189  587  884 ...  120   51  196]
+ [   5  620  597 ...    8 1272 1275]], shape=(128, 10), dtype=int32) 
+
+-------------------- 
+
+第一個起始句子的索引序列：
+[1440   10   12    7   63   19   17 1882   15  175] 
+
+第一個目標句子的索引序列：
+[  10   12    7   63   19   17 1882   15  175   99] 
+
+-------------------- 
+
+第一個起始句子的文本序列：
+['陵', '道', '：', '「', '想', '來', '他', '嫌', '你', '本']
+
+第一個目標句子的文本序列：
+['道', '：', '「', '想', '來', '他', '嫌', '你', '本', '事']
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為了讓你理解資料集回傳的內容，上面用了不少 <code>print</code>。但事實上這個資料集 <code>ds</code> 負責的就是每次吐出 2 個 128 筆數據的 Tensor，分別代表輸入與輸出的批次數據（Batch）。</p>
+<p>而每筆數據則包含了一個長度為 10 的數字序列，代表著天龍八部裡頭的一段文本。</p>
+<p>減少一些 <code>print</code>，你要從資料集 <code>ds</code> 取得一個 batch 的輸入／輸出非常地簡單：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">b_inp</span><span class="p">,</span> <span class="n">b_tar</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># 蒙多想去哪就去哪</span>
+    <span class="c1"># 想怎麼存取 b_iup, b_tar 都可以</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"b_inp 是個 Tensor：</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">b_inp</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">b_tar 也是個 Tensor，"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"只是每個數字序列都是"</span>
+          <span class="s2">"對應的輸入序列往左位"</span>
+          <span class="s2">"移一格的結果</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">b_tar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>b_inp 是個 Tensor：
+
+tf.Tensor(
+[[   2  953 1214 ...    1   52  219]
+ [   6    2   15 ...   36  189    5]
+ [2456 1167 3142 ...  110 1186   56]
+ ...
+ [ 422  244   19 ...    2    8   46]
+ [ 254   51  237 ...  123   64   27]
+ [1561   25   55 ...   66    2    3]], shape=(128, 10), dtype=int32)
+
+b_tar 也是個 Tensor，
+只是每個數字序列都是對應的輸入序列往左位移一格的結果
+
+tf.Tensor(
+[[ 953 1214   41 ...   52  219   52]
+ [   2   15  189 ...  189    5  189]
+ [1167 3142 1294 ... 1186   56    5]
+ ...
+ [ 244   19  145 ...    8   46   41]
+ [  51  237  202 ...   64   27  569]
+ [  25   55    9 ...    2    3    3]], shape=(128, 10), dtype=int32)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.-定義能解決問題的函式集">4. 定義能解決問題的函式集<a class="anchor-link" href="#4.-定義能解決問題的函式集">&para;</a></h3><p>呼！我們花了不少時間在建構資料集，是時候捲起袖子將這些資料丟入模型了！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/How_to_Roll_Up_Sleeves_01.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>回想資料集內容，你現在應該已經很清楚我們想要模型解決的問題是什麼了：丟入一個數字序列，模型要能產生包含下個時間點的數字序列，最好是跟當初的<strong>輸出</strong>序列一模一樣！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如同我們在 <a href="https://demo.leemeng.tw/">AI 如何找出你的喵</a>裡頭說過的：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        任何類型的神經網路本質上都是一個映射函數。它們會在內部進行一連串特定的數據轉換步驟，想辦法將給定的輸入數據轉換成指定的輸出形式。 
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我們現在要做的就是定義一個神經網路架構，讓這個神經網路（或稱函式）幫我們把輸入的數字序列轉換成對應的輸出序列。</p>
+<p>我們期待這個模型具有「記憶」，能考慮以前看過的所有歷史資訊，進而產生最有可能的下個中文字。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/rnn-animate.gif"/>
+</center>
+<center>
+                        循環神經網路非常適合處理具有順序關係的數據
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>而在<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html">自然語言處理與深度學習入門指南</a>我們也已經看到，循環神經網路中的 LSTM 模型非常適合拿來做這件事情。</p>
+<p>因此雖然理論上你可以用任意架構的神經網路（如基本的前饋神經網路）來解決這個問題，使用 LSTM（或 GRU，甚至是 1D CNN）是一個相對安全的起手式。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/playing-with-keras.jpg"/>
+</center>
+<center>
+                        使用 Keras 開發深度學習模型
+                        （<a href="https://youtu.be/Lx3l4lOrquw?t=277" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在 TensorFlow 裡頭，使用 <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/keras">Keras API</a> 建立一個神經網路就像是在疊疊樂，一層一層蓋上去：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數</span>
+<span class="n">EMBEDDING_DIM</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">RNN_UNITS</span> <span class="o">=</span> <span class="mi">1024</span>
+
+<span class="c1"># 使用 keras 建立一個非常簡單的 LSTM 模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+
+<span class="c1"># 詞嵌入層</span>
+<span class="c1"># 將每個索引數字對應到一個高維空間的向量</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span>
+        <span class="n">input_dim</span><span class="o">=</span><span class="n">num_words</span><span class="p">,</span> 
+        <span class="n">output_dim</span><span class="o">=</span><span class="n">EMBEDDING_DIM</span><span class="p">,</span>
+        <span class="n">batch_input_shape</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+<span class="p">))</span>
+
+<span class="c1"># LSTM 層</span>
+<span class="c1"># 負責將序列數據依序讀入並做處理</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span>
+    <span class="n">units</span><span class="o">=</span><span class="n">RNN_UNITS</span><span class="p">,</span> 
+    <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="n">stateful</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="n">recurrent_initializer</span><span class="o">=</span><span class="s1">'glorot_uniform'</span>
+<span class="p">))</span>
+
+<span class="c1"># 全連接層</span>
+<span class="c1"># 負責 model 每個中文字出現的可能性</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+        <span class="n">num_words</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/model_summary.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這邊我們建立了一個由<a href="https://www.tensorflow.org/alpha/tutorials/sequences/word_embeddings">詞嵌入層</a>、LSTM 層以及全連接層組成的簡單 LSTM 模型。此模型一次吃 128 筆長度任意的數字序列，在內部做些轉換，再吐出 128 筆同樣長度，4330 維的 Tensor。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/yifeng-lu-1230629-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你還記得，4330 實際上是天龍八部裡頭所有出現過的中文字數目。</p>
+<p><div id="supervised" style="display: inline">因此</div>事實上我們已經把本來看似沒有正解的生成問題轉變成一個<a href="https://zh.wikipedia.org/wiki/%E7%9B%A3%E7%9D%A3%E5%BC%8F%E5%AD%B8%E7%BF%92">監督式</a>且有 4330 個<a href="https://en.wikipedia.org/wiki/Statistical_classification">分類的問題</a>了。我們希望訓練模型，使得其每次預測出來的字都跟正確解答（即輸出序列裡的字）一樣。</p>
+<p>值得一提的是，儘管這個神經網路（或稱映射函數）看起來非常有希望能解決我們的序列生成問題，我們並不僅僅是建立了 1 個映射函數而已。事實上，我們用 <code>tf.keras</code> 定義了一個有接近 1,300 萬參數的函式<strong>集合</strong>（Function set）。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/antoine-dautry-428776-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這跟你懷疑一個資料集的特徵 <code>x</code> 跟目標值 <code>y</code> 成線性關係，然後想用 <code>a * x + b = y</code> 的直線去 fit <code>y</code> 的道理是一樣的。</p>
+<p>你相信 <code>a * x + b = y</code> 形式的映射函數能幫你把輸入 <code>x</code> 有效地對應到目標 <code>y</code>，你只是還不知道最佳的參數組合 <code>(a, b)</code> 該設多少罷了。</p>
+<p>同理，很多研究結果顯示 LSTM 模型能很好地處理序列數據，我們只是還不知道最適合生成天龍八部文章的參數組合是什麼而已。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/backpropagation-example.gif"/>
+</center>
+<center>
+                        深度學習中我們常使用梯度下降與反向傳播來從函數集合中找出最好的函數（某個特定參數組合的神經網路架構）
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>參數 <code>a</code> 以及 <code>b</code> 有無限多種組合，而每一組 <code>a</code> 與 <code>b</code> 的組合都對應到一個實際的<strong>函數</strong>。每個函數都能幫你把 <code>x</code> 乘上 <code>a</code> 倍再加上 <code>b</code> 去 fit 目標值 <code>y</code>，只是每個函數的表現不一而已。而把所有可能的函數放在一起，就是所謂的函數集合。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/lstm-text-generation/jeremy-thomas-99326-unsplash.jpg"/>
+</center>
+<center>
+                        本文的 LSTM 模型架構因為參數組合無窮無盡，本身就像是一個巨大的函數空間。而我們得從裡頭找出能解決問題的特定函數（參數組合）
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>針對 <code>a * x + b = y</code> 這個簡單例子，我們可以直接用線性代數從整個函式集合裡頭瞬間找出最佳的函數 <code>f</code>（即最佳的 <code>(a, b)</code>）。</p>
+<p>而在深度學習領域裡頭，我們會透過<a href="https://zh.wikipedia.org/zh-tw/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95">梯度下降（Gradient Descent）</a>以及<a href="https://www.youtube.com/watch?v=ibJpTrp5mcE">反向傳播算法（Backpropagation）</a>來幫我們在浩瀚無垠的函式集合（如本文中的 LSTM 網路架構）裡頭找出一個好的神經網路（某個 1,300 萬個參數的組合）。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/lstm-text-generation/deep-learning-framework.png"/>
+</center>
+<center>
+                        深度學習框架
+                        （<a href="https://agi.io/2018/02/09/survey-machine-learning-frameworks/" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>幸好我們後面會看到，像是 <a href="https://www.tensorflow.org/">TensorFlow</a>、<a href="https://pytorch.org/">Pytorch</a> 等深度學習框架幫我們把這件事情變得簡單多了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5.-定義評量函式好壞的指標">5. 定義評量函式好壞的指標<a class="anchor-link" href="#5.-定義評量函式好壞的指標">&para;</a></h3><p>有了<a href="#建立能丟入模型的資料集">資料集</a>以及 <a href="#定義能解決問題的函式集">LSTM 模型架構</a>以後，我們得定義一個<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E6%B1%BA%E5%AE%9A%E5%A6%82%E4%BD%95%E8%A1%A1%E9%87%8F%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A1%A8%E7%8F%BE">損失函數（Loss Function）</a>。</p>
+<p>在監督式學習裡頭，一個損失函數評估某個模型產生出來的預測結果 <code>y_pred</code> 跟正確解答 <code>y</code> 之間的差距。一個好的函式／模型，要能最小化損失函數。</p>
+<p>有了損失函數以後，我們就能讓模型計算當前預測結果與正解之間的差異（Loss），據此調整模型內的參數以降低這個差異。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/lstm-text-generation/robot_thinking.jpg"/>
+</center>
+<center>
+                        機器學習模型或 AI 不會幫我們定義損失函數，因為只有我們能決定什麼是對的，什麼是錯的（至少在 2019 年是這樣）
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>依照不同情境、不同機器學習任務你會需要定義不同的損失函數。</p>
+<p>如同<a href="#supervised">前述</a>，其實我們要 LSTM 模型做的是一個分類問題（Classification Problem）：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        給定之前看過的文字序列以及當下時間點的新輸入字，從 4330 個字裡頭預測下一個出現的字。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因此本文的問題可以被視為一個有 4330 個分類（字）的問題。而要定義分類問題的損失相對簡單，使用 <a href="https://keras.io/zh/losses/#sparse_categorical_crossentropy">sparse_categorical_crossentropy</a> 是個不錯的選擇：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數，決定模型一次要更新的步伐有多大</span>
+<span class="n">LEARNING_RATE</span> <span class="o">=</span> <span class="mf">0.001</span>
+
+<span class="c1"># 定義模型預測結果跟正確解答之間的差異</span>
+<span class="c1"># 因為全連接層沒使用 activation func</span>
+<span class="c1"># from_logits= True </span>
+<span class="k">def</span> <span class="nf">loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span>\
+    <span class="o">.</span><span class="n">sparse_categorical_crossentropy</span><span class="p">(</span>
+        <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">from_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 編譯模型，使用 Adam Optimizer 來最小化</span>
+<span class="c1"># 剛剛定義的損失函數</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span>\
+        <span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="n">LEARNING_RATE</span><span class="p">),</span> 
+    <span class="n">loss</span><span class="o">=</span><span class="n">loss</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>model.compile</code> 讓我們告訴模型在訓練的時候該使用什麼<a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/optimizers">優化器（optimizers）</a>來最小化剛剛定義的<a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/losses">損失函數</a>。</p>
+<p>完成這個步驟以後，我們就能開始訓練模型了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="6.-訓練並選擇出最好的函式">6. 訓練並選擇出最好的函式<a class="anchor-link" href="#6.-訓練並選擇出最好的函式">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在完成前 5 個步驟以後，訓練一個 Keras 模型本身是一件非常簡單的事情，只需要呼叫 <code>model.fit</code>：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># 決定看幾篇天龍八部文本</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">ds</span><span class="p">,</span> <span class="c1"># 前面使用 tf.data 建構的資料集</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="n">EPOCHS</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/lstm-text-generation/fit-logging.jpg"/>
+</center>
+<center>
+                        Keras 模型在訓練時就會不斷吐出結果供你參考
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>但很多時候你需要跑很多次 <code>fit</code>。</p>
+<p>一般來說，你事先並不知道要訓練多少個 epochs 模型才會收斂，當然也不知道怎麼樣的超參數會表現最好。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/diz-play-31367-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>大多時候，你會想要不斷地驗證腦中的點子、調整超參數、訓練新模型，並再次依照實驗結果嘗試新點子。</p>
+<p>這時候 TensorFlow 的視覺化工具 <a href="https://www.tensorflow.org/tensorboard">TensorBoard</a> 就是你最好的朋友之一：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/lstm-text-generation/tensorboard.jpg"/>
+</center>
+<center>
+                        利用 TensorBoard 記錄下實驗結果，方便記錄自己做了什麼實驗，什麼 work 什麼不 work
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TensorFlow 2.0 新增了 <a href="https://github.com/tensorflow/tensorboard/blob/master/docs/r2/tensorboard_in_notebooks.ipynb">JupyterNotebook 的 Extension</a>，讓你可以直接在筆記本或是 <a href="https://colab.research.google.com/github/tensorflow/tensorboard/blob/master/docs/r2/tensorboard_in_notebooks.ipynb">Google Colab</a> 上邊訓練模型邊查看結果。</p>
+<p>跟以往使用 TensorBoard 一樣，你需要為 Keras 模型增加一個 <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/keras/callbacks/TensorBoard">TensorBoard Callback</a>：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span>\
+        <span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="s2">"logs"</span><span class="p">),</span>
+    <span class="c1"># 你可以加入其他 callbacks 如</span>
+    <span class="c1"># ModelCheckpoint,</span>
+    <span class="c1"># EarlyStopping</span>
+<span class="p">]</span>
+
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">ds</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="n">EPOCHS</span><span class="p">,</span> 
+    <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>接著在訓練開始之後（之前也行）載入 Extension 並執行 TensorBoard 即可：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> tensorboard.notebook
+<span class="o">%</span><span class="k">tensorboard</span> --logdir logs
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/tensorboard-demo2.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>除了確保模型有一直努力在降低損失函數以外，我們也可以觀察模型在訓練過程中生成的文章內容。比方說給定一個句子：</p>
+<div class="highlight"><pre><span></span>喬峯指著深谷，
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>模型在完全沒有訓練的情況下生成的結果為：</p>
+<div class="highlight"><pre><span></span>喬峯指著深谷，鑠淆孤癸抑私磚簧麥笠簸殯膽稼匿聲罪殖省膻臆啟殖
+》斥酒燥弄咪薔鬃衝矚理蝗驗吞柢舌滴漂撿毛等櫈磁槃鞭爛辣諱輝母犢楊拜攜戛婉額虐延久鋒幟懸質迸飭南軌忸瑩娘檔麵獎逍菌包怖續敗倨凍赭彈暖顴衽劑街榻裝貨啕畿驛吳
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/airflow/black-man-question.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這模型並沒有中邪。只不過模型中 1,300 萬個參數的值完全隨機，你可不能期待模型能做什麼有意義的數據處理。</p>
+<p>而在模型看了 20 遍天龍八部以後產生的結果：</p>
+<div class="highlight"><pre><span></span>喬峯指著深谷，說道：「我不知道，不是你的好人，你就是你的好。」木婉清道：「他&hellip;&hellip;你&hellip;&hellip;我&hellip;&hellip;我&hellip;&hellip;師父是誰？」
+
+段正淳道：「王姑娘，你還是不是？」段譽道：「你說過的話，他&hellip;&hellip;我&hellip;&hellip;你&hellip;&hellip;你&hellip;&hellip;」
+
+那女郎道：「嗯
+</pre></div>
+<p>結果差強人意，「你我他」後面只會加一大堆點點點。</p>
+<p>但如果你仔細觀察，其實也已經有不少值得注意的地方：</p>
+<ul>
+<li>模型已經知道怎麼產生正確的人名</li>
+<li>知道 <code>道</code> 後面要接冒號以及上括號</li>
+<li>知道有上括號時後面應該要有下括號</li>
+<li>知道要適時加入換行</li>
+</ul>
+<p>這其實已經是不小的成就了！</p>
+<p>而在看過 100 遍天龍八部以後產生的結果：</p>
+<div class="highlight"><pre><span></span>喬峯指著深谷，往前走去。
+
+段譽見到這等慘狀，心下大驚，當即伸手去撫摸她的頭髮，心想：「我想叫你滾出去！」一面說，一面擤了些鼻涕拋下。
+
+那大漢掙扎著要站起身來，只見一條大漢身披獸皮，眼前青光閃閃，雙手亂舞
+</pre></div>
+<p><code>擤了些鼻涕拋下</code> 很不段譽，但我還是笑了。</p>
+<p>文章本身順暢很多，而且內容也豐富不少。另外用字也挺天龍八部的。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/theodor-lundqvist-438530-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你應該也已經注意到，句子之間沒有太大的故事關聯性。而這邊帶出一個很重要的概念：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        這個語言模型只能學會天龍八部裡頭字與字之間的統計關係，而無法理解金庸的世界觀。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因此不要期待模型每次都能產生什麼深具含義的結果。</p>
+<p>儘管還不完美，到此為止我們手上已經有訓練過的模型了。讓我們拿它來產生新的文本了吧！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="7.-將函式-/-模型拿來做預測">7. 將函式 / 模型拿來做預測<a class="anchor-link" href="#7.-將函式-/-模型拿來做預測">&para;</a></h3><p>大部分你在深度學習專案裡頭訓練出來的模型可以直接拿來做預測。</p>
+<p>不過因為循環神經網路傳遞狀態的方式，一旦建好模型，<code>BATCH_SIZE</code> 就不能做變動了。但在實際生成文章時，我們需要讓 <code>BATCH_SIZE</code> 等於 1。</p>
+<p>因此在這邊我們會重新建立一個一模一樣的 LSTM 模型架構，將其 <code>BATCH_SIZE</code> 設為 1 後讀取之前訓練時儲存的參數權重：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 跟訓練時一樣的超參數，</span>
+<span class="c1"># 只差在 BATCH_SIZE 為 1</span>
+<span class="n">EMBEDDING_DIM</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">RNN_UNITS</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># 專門用來做生成的模型</span>
+<span class="n">infer_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+
+<span class="c1"># 詞嵌入層</span>
+<span class="n">infer_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span>
+        <span class="n">input_dim</span><span class="o">=</span><span class="n">num_words</span><span class="p">,</span> 
+        <span class="n">output_dim</span><span class="o">=</span><span class="n">EMBEDDING_DIM</span><span class="p">,</span>
+        <span class="n">batch_input_shape</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+<span class="p">))</span>
+
+<span class="c1"># LSTM 層</span>
+<span class="n">infer_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span>
+    <span class="n">units</span><span class="o">=</span><span class="n">RNN_UNITS</span><span class="p">,</span> 
+    <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="n">stateful</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">))</span>
+
+<span class="c1"># 全連接層</span>
+<span class="n">infer_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+        <span class="n">num_words</span><span class="p">))</span>
+
+<span class="c1"># 讀入之前訓練時儲存下來的權重</span>
+<span class="n">infer_model</span><span class="o">.</span><span class="n">load_weights</span><span class="p">(</span><span class="n">ckpt_path</span><span class="p">)</span>
+<span class="n">infer_model</span><span class="o">.</span><span class="n">build</span><span class="p">(</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>除了<a href="https://www.tensorflow.org/alpha/tutorials/sequences/text_generation#restore_the_latest_checkpoint">讀取權重</a>，這段程式碼對你來說應該已經十分眼熟。有了 <code>infer_model</code> 以後，接著我們要做的就是：</p>
+<ul>
+<li>將起始文本丟入模型</li>
+<li>抽樣得到新的中文字</li>
+<li>將新得到的字再丟入模型</li>
+<li>重複上述步驟</li>
+</ul>
+<p>而實際預測的流程大概就長這個樣子：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/lstm-text-generation/sampling.png"/>
+</center>
+<center>
+                        重複抽樣取得新的中文字
+                        （<a href="https://www.tensorflow.org/alpha/tutorials/sequences/text_generation#the_prediction_loop" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如同我們在<a href="#生成新的天龍八部橋段">生成新的天龍八部橋段</a>所看到的，依照你設定的<strong>生成長度</strong>，我們需要重複上述步驟數次。</p>
+<p>而要執行一次的抽樣也並沒有非常困難：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 代表「喬」的索引</span>
+<span class="n">seed_indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">234</span><span class="p">]</span> 
+
+<span class="c1"># 增加 batch 維度丟入模型取得預測結果後</span>
+<span class="c1"># 再度降維，拿掉 batch 維度</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span>
+    <span class="n">seed_indices</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">infer_model</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span>
+    <span class="n">predictions</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 利用生成溫度影響抽樣結果</span>
+<span class="n">predictions</span> <span class="o">/=</span> <span class="n">temperature</span>
+
+<span class="c1"># 從 4330 個分類值中做抽樣</span>
+<span class="c1"># 取得這個時間點模型生成的中文字</span>
+<span class="n">sampled_indices</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span>\
+    <span class="o">.</span><span class="n">categorical</span><span class="p">(</span>
+        <span class="n">predictions</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>抽樣的程式碼為了方便解說有稍作刪減，如果你要實際動手跑看看，請參考官方的 <a href="https://www.tensorflow.org/alpha/tutorials/sequences/text_generation">Text generation with an RNN</a>。</p>
+<p>這邊我想要你看到的重點是如何利用<strong>生成溫度</strong> <code>temperature</code> 的概念來影響最後的抽樣結果。</p>
+<p>如同 demo 時說明的：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        生成溫度是一個實數值，而當溫度越高，模型產生出來的結果越隨機、越不可預測
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>模型的輸出為一個 4330 維度的 Tensor，而其中的每一維都對應到一個中文字。維度值越大即代表該字被選到的機會越大。</p>
+<p>而當我們把整個分佈 <code>predictions</code>除以一個固定值 <code>temperature</code> 時，越大的值被縮減的程度越大，進而讓各維度之間的絕對差異變小，使得原來容易被選到的字被抽到的機會變小，少出現的字被選到的機會稍微提升。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/lstm-text-generation/temperature_dist.jpg"/>
+</center>
+<center>
+                        溫度越高，分佈會變得越平滑，罕見字被選到的機會上升，生成結果越隨機
+                        （<a href="https://www.manning.com/books/deep-learning-with-python" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這就是為何我們會想手動調整生成溫度的原因。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="如何使用-TensorFlow.js-跑模型並生成文章_1">如何使用 TensorFlow.js 跑模型並生成文章<a class="anchor-link" href="#如何使用-TensorFlow.js-跑模型並生成文章">&para;</a></h2><p>雖然我們一直以天龍八部為例，事實上你應該已經了解如何使用 TensorFlow 2.0 來架構出一個能產生任意文本的 LSTM 模型了。</p>
+<p>一般來說，只要你把剛剛生成文本的 Keras 模型儲存下來，接著就可以在任何機器或雲端平台（如 GCP、AWS）上進行生成：</p>
+<div class="highlight"><pre><span></span><span class="n">infer_model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"model.h5"</span><span class="p">)</span>
+</pre></div>
+<p>最近適逢 <a href="https://js.tensorflow.org/">TensorFlow.js</a> 推出 <a href="https://github.com/tensorflow/tfjs/releases/tag/v1.0.0">1.0.0 版本</a>，我決定嘗試使用 <a href="https://github.com/tensorflow/tfjs-converter">tfjs-converter</a> 將 Keras 模型轉換成 TensorFlow.js 能夠運行的格式：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>tensorflowjs_converter <span class="se">\</span>
+    --input_format<span class="o">=</span>keras <span class="se">\</span>
+    model.h5 <span class="se">\</span>
+    tfjs_model_folder
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>轉換完成後會得到 tfjs 的模型，接著只要把它放到伺服器或是 Github 上就能在任何靜態網頁上載入模型：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="nx">model</span> <span class="o">=</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">loadLayersModel</span><span class="p">(</span><span class="s2">"url"</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">output</span> <span class="o">=</span> <span class="nx">model</span><span class="p">.</span><span class="nx">predict</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我們在<a href="https://leemeng.tw/deep-learning-resources.html#tensorflow.js">由淺入深的深度學習資源整理</a>就曾介紹過 <a href="https://js.tensorflow.org/">TensorFlow.js</a>，他們有很多有趣的 <a href="https://www.tensorflow.org/js/demos/">Demos</a>，想要在瀏覽器上實作 AI 應用的你可以去了解一下。</p>
+<p>使用 TensorFlow.js 好處在於：</p>
+<ul>
+<li>隱私有保障。使用者上傳、輸入的內容不會被上傳到伺服器</li>
+<li>開發者不需租借伺服器或是建置 API 端點，無部署成本</li>
+</ul>
+<p>當你能把模型讀入瀏覽器以後，只要將我們剛剛在前面介紹過的 Python 邏輯利用 <a href="https://js.tensorflow.org/api/latest/">TensorFlow.js API</a> 實現即可。</p>
+<p>熟悉 JavaScript 的你甚至還可以<a href="https://github.com/tensorflow/tfjs-examples/tree/master/lstm-text-generation">直接在瀏覽器上訓練類似本文的 LSTM 模型並生成文章</a>。</p>
 </div>
 </div>
 </div>
@@ -398,12 +2207,122 @@
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>首先感謝你花費那麼多時間閱讀本文！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/matt-jones-42954-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>回顧一下，我們在文中談了非常多的東西：</p>
+<ul>
+<li>如何利用深度學習 7 步驟開發 AI 應用<ol>
+<li>定義問題及要解決的任務</li>
+<li>準備原始數據、資料清理</li>
+<li>建立能丟入模型的資料集</li>
+<li>定義能解決問題的函式集</li>
+<li>定義評量函式好壞的指標</li>
+<li>訓練並選擇出最好的函式</li>
+<li>將函式 / 模型拿來做預測</li>
+</ol>
+</li>
+<li>了解如何利用深度學習解決序列生成任務</li>
+<li>熟悉 TensorFlow 2.0 的重要功能<ul>
+<li>tf.keras</li>
+<li>tf.data</li>
+<li>TensorBoard</li>
+</ul>
+</li>
+</ul>
+<p>我們也看到你可以如何運用 <a href="https://github.com/tensorflow/tfjs-converter">tfjs-converter</a> 將 Python 與 JavaScript 這兩個世界結合起來，建立可以給任何人在任何裝置上執行的 AI 應用。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/lstm-text-generation/robin-worrall-749755-unsplash.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>除了被用來解決「被動」的分類、迴歸問題，近年深度學習在「主動」的<a href="https://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成任務</a>上也展現了卓越的成果。廣為人知的應用有 Google 的 <a href="https://en.wikipedia.org/wiki/DeepDream">DeepDream</a>、神經風格轉換以及最近 <a href="https://blogs.nvidia.com/blog/2019/03/18/gaugan-photorealistic-landscapes-nvidia-research/">NVIDIA 將塗鴉轉成風景照</a>的例子。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/lstm-text-generation/nvidia_gaugan_gif.gif"/>
+</center>
+<center>
+                        將塗鴉轉成風景照的 GauGAN 能讓沒有美術背景的人繪出美麗圖片，也能幫助藝術家更快將點子實現出來
+                        （<a href="https://blogs.nvidia.com/blog/2019/03/18/gaugan-photorealistic-landscapes-nvidia-research/" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>就像是本文的天龍八部生成，讓機器自動生成全新、沒人看過的事物一直是人類追求的夢想之一。</p>
+<p>但跟很多人想像地不同，這些人工智慧（<strong>A</strong>rtifical <strong>I</strong>ntelligence）的研究並不是一味地追求如何<strong>取代</strong>人類智慧；反之，AI 更像是<strong>增強</strong>我們的智慧（<strong>A</strong>ugmented <strong>I</strong>ntelligence）：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        AI 是為了讓我們的生活充滿更多智慧，而非取代我們的智慧。AI 能擴充我們對世界的想像，讓我們看到更多不同的可能性。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>本文已經很長，我就不再佔用你的時間了。</p>
+<p>能一路聽我碎碎唸到這裡，代表你對 AI 以及深度學習的應用是抱持著很大的興趣的。希望在此之後你能運用本文學到的知識與技術，實踐你的瘋狂點子並分享給我以及更多人知道。</p>
+<p>現在我得回去看還沒看完的天龍八部了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="致敬">致敬<a class="anchor-link" href="#致敬">&para;</a></h2><p>僅用這篇微不足道的文章向<a href="https://zh.wikipedia.org/wiki/%E9%87%91%E5%BA%B8">金庸</a>致敬，感謝他帶給我們那麼多膾炙人口的故事。</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<script src="/tfjs-apps/lstm-text-generation/dist/lstm-text-generation.aa139b1e.js"></script>
+<script src="https://leemeng.tw/tfjs-apps/lstm-text-generation/dist/lstm-text-generation.03657dc5.js"></script>
 </div>
 </div>
 </div>
@@ -414,9 +2333,9 @@
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
-                        <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
-                        <a href="/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
-                        <a href="/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
+                        <a href="https://leemeng.tw/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                        <a href="https://leemeng.tw/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
+                        <a href="https://leemeng.tw/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
                     </span>
 
                 </p>
@@ -453,7 +2372,7 @@
                 <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
                         <div class="blog-content__next">
-                            <a href="/10-key-takeaways-from-ai-for-everyone-course.html" rel="next">
+                            <a href="https://leemeng.tw/10-key-takeaways-from-ai-for-everyone-course.html" rel="next">
                                 <span>Next Post</span>
                                 我從 AI For Everyone 學到的 10 個重要 AI 概念
                             </a>
@@ -476,6 +2395,25 @@
 
     </article>
 
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
     <!-- footer
@@ -485,7 +2423,7 @@
             <div class="col-full">
 
                 <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="/theme/images/logo.png" alt="Homepage"></a>
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
                 </div>
 
                 <ul class="footer-social">
@@ -530,17 +2468,17 @@
 
         <!-- Javascript
     ================================================== -->
-    <script src="/theme/js/jquery-3.2.1.min.js"></script>
-    <script src="/theme/js/plugins.js"></script>
-    <script src="/theme/js/main.js"></script>
-    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
 
     <!--https://instant.page/-->
     <script src="//instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
 
 
-    <script type='text/javascript' src='/theme/js/progress-bar.js'></script>
-    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
 
     <!--show and hide left navigation by scrolling-->
     <script>
