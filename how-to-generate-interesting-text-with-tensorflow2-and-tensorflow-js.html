@@ -163,7 +163,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-03-27 (Wed)</li>
                         <li class="page-view">
-                            0 views
+                            3 views
                         </li>
                     </ul>
 
@@ -326,8 +326,9 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>現在馬上就讓我們產生一些新的橋段吧！首先將已經訓練好的模型載入你的瀏覽器。依據你的網路速度，載入時間會有所差異。</p>
-<p>成功載入後，你將可以不斷地產生新的橋段：</p>
+<p>現在馬上就讓我們產生一些新的橋段吧！首先將已經訓練好的模型載入你的瀏覽器。</p>
+<p>（建議在網速快的地方載入模型以減少等待時間，或者點擊載入後先閱讀<a href="#模型是怎麼被訓練的">模型是怎麼被訓練的</a>，等等再回來查看）</p>
+<p>成功載入模型後，你將可以用它不斷地產生新的橋段：</p>
 <section style="margin-bottom: 3rem">
 <button id="load-model" style="display:inline-block">載入模型</button>
 <div id="app-status" style="display:inline-block"></div>
@@ -380,7 +381,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>如何？希望模型產生的結果有令你會心一笑。它當初可快把我逗死了。</p>
+<p>如何？希望模型產生的結果有令嘴角上揚。它當初可快把我逗死了。</p>
 <p>現在你可以嘗試幾件事情：</p>
 <ul>
 <li>點<strong>生成文章</strong>來讓模型依據同輸入產生新橋段</li>
@@ -461,7 +462,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因為隨機抽樣的關係，每次模型產生的結果基本上都是獨一無二的。</p>
-<p>如果你在生成文章的過程中得到什麼有趣的虛擬橋段，都歡迎留言或是透過 SNS 與我分享：）</p>
+<p>如果你在生成文章的過程中得到什麼有趣的虛擬橋段，都歡迎與我分享：）</p>
 </div>
 </div>
 </div>
@@ -1031,9 +1032,9 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>讓我們將輸入序列及輸出序列拿來對照看看：</p>
-<div class="highlight"><pre><span></span>司 空 玄 雙 掌 飛 舞 ， 逼 得 牠 無 法 近 前
+<div class="highlight"><pre><span></span>司 空 玄 雙 掌 飛 舞 ， 逼 得 牠 無 法 近
 
-空 玄 雙 掌 飛 舞 ， 逼 得 牠 無 法 近 前 。
+空 玄 雙 掌 飛 舞 ， 逼 得 牠 無 法 近 前
 </pre></div>
 <p>從左看到右你會發現，一個模型如果可以給我們這樣的輸出，代表它：</p>
 <ul>
@@ -2151,8 +2152,8 @@ tf.Tensor(
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="如何使用-TensorFlow.js-跑模型並生成文章_1">如何使用 TensorFlow.js 跑模型並生成文章<a class="anchor-link" href="#如何使用-TensorFlow.js-跑模型並生成文章">&para;</a></h2><p>雖然我們一直以天龍八部為例，事實上你應該已經了解如何使用 TensorFlow 2.0 來架構出一個能產生任意文本的 LSTM 模型了。</p>
-<p>一般來說，只要你把剛剛生成文本的 Keras 模型儲存下來，接著就可以在任何機器或雲端平台（如 GCP、AWS）上進行生成：</p>
+<h2 id="如何使用-TensorFlow.js-跑模型並生成文章_1">如何使用 TensorFlow.js 跑模型並生成文章<a class="anchor-link" href="#如何使用-TensorFlow.js-跑模型並生成文章">&para;</a></h2><p>雖然本文以天龍八部為例，事實上你已經了解如何使用 TensorFlow 2.0 來架構出一個能產生任意文本的 LSTM 模型了。</p>
+<p>一般而言，只要你把剛剛生成文本的 Keras 模型儲存下來，接著就可以在任何機器或雲端平台（如 GCP、AWS）上進行生成：</p>
 <div class="highlight"><pre><span></span><span class="n">infer_model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"model.h5"</span><span class="p">)</span>
 </pre></div>
 <p>最近適逢 <a href="https://js.tensorflow.org/">TensorFlow.js</a> 推出 <a href="https://github.com/tensorflow/tfjs/releases/tag/v1.0.0">1.0.0 版本</a>，我決定嘗試使用 <a href="https://github.com/tensorflow/tfjs-converter">tfjs-converter</a> 將 Keras 模型轉換成 TensorFlow.js 能夠運行的格式：</p>
@@ -2210,7 +2211,7 @@ tf.Tensor(
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>首先感謝你花費那麼多時間閱讀本文！</p>
+<p>感謝你花費那麼多時間閱讀本文！</p>
 </div>
 </div>
 </div>
@@ -2260,7 +2261,8 @@ tf.Tensor(
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>除了被用來解決「被動」的分類、迴歸問題，近年深度學習在「主動」的<a href="https://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成任務</a>上也展現了卓越的成果。廣為人知的應用有 Google 的 <a href="https://en.wikipedia.org/wiki/DeepDream">DeepDream</a>、神經風格轉換以及最近 <a href="https://blogs.nvidia.com/blog/2019/03/18/gaugan-photorealistic-landscapes-nvidia-research/">NVIDIA 將塗鴉轉成風景照</a>的例子。</p>
+<p>除了可以被用來解決「被動」的分類、迴歸問題，近年深度學習在「主動」的<a href="https://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B">生成任務</a>上也展現了卓越的成果。</p>
+<p>廣為人知的應用有 Google 的 <a href="https://en.wikipedia.org/wiki/DeepDream">DeepDream</a>、神經風格轉換以及最近 <a href="https://blogs.nvidia.com/blog/2019/03/18/gaugan-photorealistic-landscapes-nvidia-research/">NVIDIA 將塗鴉轉成風景照</a>的例子。</p>
 </div>
 </div>
 </div>
@@ -2283,8 +2285,8 @@ tf.Tensor(
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>就像是本文的天龍八部生成，讓機器自動生成全新、沒人看過的事物一直是人類追求的夢想之一。</p>
-<p>但跟很多人想像地不同，這些人工智慧（<strong>A</strong>rtifical <strong>I</strong>ntelligence）的研究並不是一味地追求如何<strong>取代</strong>人類智慧；反之，AI 更像是<strong>增強</strong>我們的智慧（<strong>A</strong>ugmented <strong>I</strong>ntelligence）：</p>
+<p>就像本文的天龍八部生成，儘管還未臻完美，讓機器自動生成全新、沒人看過的事物一直是人類追求的夢想之一。</p>
+<p>但這些人工智慧（<strong>A</strong>rtifical <strong>I</strong>ntelligence）的研究並不是一味地追求如何<strong>取代</strong>人類智慧；反之，AI 更像是<strong>增強</strong>我們的智慧（<strong>A</strong>ugmented <strong>I</strong>ntelligence）：</p>
 </div>
 </div>
 </div>
@@ -2293,7 +2295,7 @@ tf.Tensor(
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
-                        AI 是為了讓我們的生活充滿更多智慧，而非取代我們的智慧。AI 能擴充我們對世界的想像，讓我們看到更多不同的可能性。
+                        最好的 AI 是為了讓我們的生活充滿更多智慧，而非取代我們的智慧。AI 能擴充我們對世界的想像，讓我們看到更多不同的可能性。
                         <br/>
 <br/>
 </p>

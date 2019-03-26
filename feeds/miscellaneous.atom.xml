@@ -106,8 +106,9 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;現在馬上就讓我們產生一些新的橋段吧！首先將已經訓練好的模型載入你的瀏覽器。依據你的網路速度，載入時間會有所差異。&lt;/p&gt;
-&lt;p&gt;成功載入後，你將可以不斷地產生新的橋段：&lt;/p&gt;
+&lt;p&gt;現在馬上就讓我們產生一些新的橋段吧！首先將已經訓練好的模型載入你的瀏覽器。&lt;/p&gt;
+&lt;p&gt;（建議在網速快的地方載入模型以減少等待時間，或者點擊載入後先閱讀&lt;a href="#模型是怎麼被訓練的"&gt;模型是怎麼被訓練的&lt;/a&gt;，等等再回來查看）&lt;/p&gt;
+&lt;p&gt;成功載入模型後，你將可以用它不斷地產生新的橋段：&lt;/p&gt;
 &lt;section style="margin-bottom: 3rem"&gt;
 &lt;button id="load-model" style="display:inline-block"&gt;載入模型&lt;/button&gt;
 &lt;div id="app-status" style="display:inline-block"&gt;&lt;/div&gt;
@@ -160,7 +161,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;如何？希望模型產生的結果有令你會心一笑。它當初可快把我逗死了。&lt;/p&gt;
+&lt;p&gt;如何？希望模型產生的結果有令嘴角上揚。它當初可快把我逗死了。&lt;/p&gt;
 &lt;p&gt;現在你可以嘗試幾件事情：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;點&lt;strong&gt;生成文章&lt;/strong&gt;來讓模型依據同輸入產生新橋段&lt;/li&gt;
@@ -241,7 +242,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;因為隨機抽樣的關係，每次模型產生的結果基本上都是獨一無二的。&lt;/p&gt;
-&lt;p&gt;如果你在生成文章的過程中得到什麼有趣的虛擬橋段，都歡迎留言或是透過 SNS 與我分享：）&lt;/p&gt;
+&lt;p&gt;如果你在生成文章的過程中得到什麼有趣的虛擬橋段，都歡迎與我分享：）&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -811,9 +812,9 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;讓我們將輸入序列及輸出序列拿來對照看看：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;司 空 玄 雙 掌 飛 舞 ， 逼 得 牠 無 法 近 前
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;司 空 玄 雙 掌 飛 舞 ， 逼 得 牠 無 法 近
 
-空 玄 雙 掌 飛 舞 ， 逼 得 牠 無 法 近 前 。
+空 玄 雙 掌 飛 舞 ， 逼 得 牠 無 法 近 前
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;從左看到右你會發現，一個模型如果可以給我們這樣的輸出，代表它：&lt;/p&gt;
 &lt;ul&gt;
@@ -1931,8 +1932,8 @@ tf.Tensor(
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="如何使用-TensorFlow.js-跑模型並生成文章_1"&gt;如何使用 TensorFlow.js 跑模型並生成文章&lt;a class="anchor-link" href="#如何使用-TensorFlow.js-跑模型並生成文章"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;雖然我們一直以天龍八部為例，事實上你應該已經了解如何使用 TensorFlow 2.0 來架構出一個能產生任意文本的 LSTM 模型了。&lt;/p&gt;
-&lt;p&gt;一般來說，只要你把剛剛生成文本的 Keras 模型儲存下來，接著就可以在任何機器或雲端平台（如 GCP、AWS）上進行生成：&lt;/p&gt;
+&lt;h2 id="如何使用-TensorFlow.js-跑模型並生成文章_1"&gt;如何使用 TensorFlow.js 跑模型並生成文章&lt;a class="anchor-link" href="#如何使用-TensorFlow.js-跑模型並生成文章"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;雖然本文以天龍八部為例，事實上你已經了解如何使用 TensorFlow 2.0 來架構出一個能產生任意文本的 LSTM 模型了。&lt;/p&gt;
+&lt;p&gt;一般而言，只要你把剛剛生成文本的 Keras 模型儲存下來，接著就可以在任何機器或雲端平台（如 GCP、AWS）上進行生成：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;infer_model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"model.h5"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;最近適逢 &lt;a href="https://js.tensorflow.org/"&gt;TensorFlow.js&lt;/a&gt; 推出 &lt;a href="https://github.com/tensorflow/tfjs/releases/tag/v1.0.0"&gt;1.0.0 版本&lt;/a&gt;，我決定嘗試使用 &lt;a href="https://github.com/tensorflow/tfjs-converter"&gt;tfjs-converter&lt;/a&gt; 將 Keras 模型轉換成 TensorFlow.js 能夠運行的格式：&lt;/p&gt;
@@ -1990,7 +1991,7 @@ tf.Tensor(
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;首先感謝你花費那麼多時間閱讀本文！&lt;/p&gt;
+&lt;p&gt;感謝你花費那麼多時間閱讀本文！&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2040,7 +2041,8 @@ tf.Tensor(
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;除了被用來解決「被動」的分類、迴歸問題，近年深度學習在「主動」的&lt;a href="https://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B"&gt;生成任務&lt;/a&gt;上也展現了卓越的成果。廣為人知的應用有 Google 的 &lt;a href="https://en.wikipedia.org/wiki/DeepDream"&gt;DeepDream&lt;/a&gt;、神經風格轉換以及最近 &lt;a href="https://blogs.nvidia.com/blog/2019/03/18/gaugan-photorealistic-landscapes-nvidia-research/"&gt;NVIDIA 將塗鴉轉成風景照&lt;/a&gt;的例子。&lt;/p&gt;
+&lt;p&gt;除了可以被用來解決「被動」的分類、迴歸問題，近年深度學習在「主動」的&lt;a href="https://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B"&gt;生成任務&lt;/a&gt;上也展現了卓越的成果。&lt;/p&gt;
+&lt;p&gt;廣為人知的應用有 Google 的 &lt;a href="https://en.wikipedia.org/wiki/DeepDream"&gt;DeepDream&lt;/a&gt;、神經風格轉換以及最近 &lt;a href="https://blogs.nvidia.com/blog/2019/03/18/gaugan-photorealistic-landscapes-nvidia-research/"&gt;NVIDIA 將塗鴉轉成風景照&lt;/a&gt;的例子。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2063,8 +2065,8 @@ tf.Tensor(
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;就像是本文的天龍八部生成，讓機器自動生成全新、沒人看過的事物一直是人類追求的夢想之一。&lt;/p&gt;
-&lt;p&gt;但跟很多人想像地不同，這些人工智慧（&lt;strong&gt;A&lt;/strong&gt;rtifical &lt;strong&gt;I&lt;/strong&gt;ntelligence）的研究並不是一味地追求如何&lt;strong&gt;取代&lt;/strong&gt;人類智慧；反之，AI 更像是&lt;strong&gt;增強&lt;/strong&gt;我們的智慧（&lt;strong&gt;A&lt;/strong&gt;ugmented &lt;strong&gt;I&lt;/strong&gt;ntelligence）：&lt;/p&gt;
+&lt;p&gt;就像本文的天龍八部生成，儘管還未臻完美，讓機器自動生成全新、沒人看過的事物一直是人類追求的夢想之一。&lt;/p&gt;
+&lt;p&gt;但這些人工智慧（&lt;strong&gt;A&lt;/strong&gt;rtifical &lt;strong&gt;I&lt;/strong&gt;ntelligence）的研究並不是一味地追求如何&lt;strong&gt;取代&lt;/strong&gt;人類智慧；反之，AI 更像是&lt;strong&gt;增強&lt;/strong&gt;我們的智慧（&lt;strong&gt;A&lt;/strong&gt;ugmented &lt;strong&gt;I&lt;/strong&gt;ntelligence）：&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2073,7 +2075,7 @@ tf.Tensor(
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;blockquote&gt;
 &lt;p&gt;
-                        AI 是為了讓我們的生活充滿更多智慧，而非取代我們的智慧。AI 能擴充我們對世界的想像，讓我們看到更多不同的可能性。
+                        最好的 AI 是為了讓我們的生活充滿更多智慧，而非取代我們的智慧。AI 能擴充我們對世界的想像，讓我們看到更多不同的可能性。
                         &lt;br/&gt;
 &lt;br/&gt;
 &lt;/p&gt;
@@ -8992,10 +8994,10 @@ Test Set
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="54af1017-a7ed-4de9-8841-7981f598ef09"&gt;&lt;/div&gt;
+&lt;div id="d4cad9cc-6c1a-4fc9-ac6f-7b1b85ffc125"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#54af1017-a7ed-4de9-8841-7981f598ef09');
+var element = $('#d4cad9cc-6c1a-4fc9-ac6f-7b1b85ffc125');
 (function(root) {
   function embed_document(root) {
     
