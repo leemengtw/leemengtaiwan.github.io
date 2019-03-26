@@ -188,10 +188,15 @@ PROJECTS = [
         "description": '這是一個利用 Selenium 將 Github Gists 同步到 Evernote 的生產工具。你可以在 <a href="https://github.com/leemengtaiwan/gist-evernote" target="_blank">Github</a> 查看細節。'
     },
     {
-        "thumb": "woodcraft"
+        "thumb": "woodcraft",
     },
     {
-        "thumb": "shutterbug"
+        "name": "天龍八部小說生成器",
+        "thumb": "text-generation",
+        "categories": "利用 TensorFlow 2.0 及 TensorFlow.js 進行文本生成",
+        "link": "https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html",
+        "link_title": "文章連結",
+        "description": '展示一個由 TensorFlow 2.0 以及 TensorFlow.js 實現的線上文本生成應用。你可以前往<a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" target="_blank">讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</a>了解詳情。'
     },
     {
         "thumb": "minimalismo"
@@ -202,6 +207,14 @@ PROJECTS = [
 # get book information for books.html
 BOOKS = pd.read_csv(PATH + '/additional_content/books/books.csv').fillna('').to_dict('records')
 print('Done: Processed {} books.'.format(len(BOOKS)))
+
+# ignore node modules from tfjs applications
+IGNORE_FILES = [
+    'node_modules',
+    'yarn.lock',
+    '.ipynb_checkpoints'
+]
+
 
 # get news feed
 # NEWS_FEEDS = pd.read_csv(PATH + '/additional_content/news-feed/news-feed.csv').fillna('').to_dict('records')
