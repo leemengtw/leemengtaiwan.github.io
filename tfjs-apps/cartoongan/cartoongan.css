@@ -1,0 +1,58 @@
+/*restrict max size of input/output image*/
+img.cartoongan_image {
+    max-width:284px;
+    max-height:284px;
+    width:auto;
+    height:auto;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*reference: https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp*/
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+
+.column50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+  max-width: 50%;
+  padding: 0 4px;
+  text-align: center;
+}
+
+.column100 {
+  -ms-flex: 100%; /* IE10 */
+  flex: 100%;
+  max-width: 100%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 2px;
+  vertical-align: middle;
+}
+
+/* Responsive layout - makes a two column-layout into one column (stacked) for mobile view */
+@media screen and (max-width: 800px) {
+  .column50 {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
