@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng">
+    <title>LeeMeng - 讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="TODO"> <!-- 在此文中，我們以一個假新聞分類的 Kaggle 競賽做為引子 -->
+        <meta name="keywords" content="TensorFlow, TensorFlow.js, 自然語言處理">
+        <meta name="tags" content="TensorFlow">
+        <meta name="tags" content="TensorFlow.js">
+        <meta name="tags" content="自然語言處理">
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="">  <!-- https://leemeng.tw/theme/images/background/amogh-manjunath-773461-unsplash.jpg -->
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html">
+        <meta property="og:title" content="讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部">
+        <meta property="og:description" content="TODO"> <!-- 在此文中，我們以一個假新聞分類的 Kaggle 競賽做為引子 -->
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/progress-bar.css">
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="https://leemeng.tw/theme/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://leemeng.tw/theme/images/favicon.ico" type="image/x-icon">
+
+    <!-- TODO : add back when deploy-->
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>-->
+    <!--<script>-->
+      <!--window.dataLayer = window.dataLayer || [];-->
+      <!--function gtag(){dataLayer.push(arguments)};-->
+      <!--gtag('js', new Date());-->
+
+      <!--gtag('config', 'UA-106559980-1');-->
+    <!--</script>-->
+
+    <!--<link rel="stylesheet" href="../shared/tfjs-examples.css" />-->
+    <link rel="stylesheet" href="/lstm-text-generation.9ad09f98.css">
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="https://leemeng.tw/html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+        <!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+        <nav class="header-nav-wrap">
+            <ul class="header-nav">
+                <li>
+                    <a href="https://leemeng.tw/html#home">Home</a>
+                </li>
+                <li>
+                    <a href="https://leemeng.tw/html#about">About</a>
+                </li>
+                <li>
+                    <a href="https://leemeng.tw/html#projects">Projects</a>
+                </li>
+                <li class="current">
+                    <a href="https://leemeng.tw/blog.html">Blog</a>
+                </li>
+                <li>
+                    <a href="https://demo.leemeng.tw">Demo</a>
+                </li>
+                <li>
+                    <a href="https://leemeng.tw/books.html">Books</a>
+                </li>
+                <li>
+                    <a href="https://leemeng.tw/index.html#contact">Contact</a>
+                </li>
+            </ul>
+
+        </nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <!-- TODO: add from rendered HTML -->
+    <!--<div id="tocNav" class="overlay" onclick="closeTocNav()">-->
+      <!--<div class="overlay-content">-->
+        <!--<div id="toc"><ul><li><a class="toc-href" href="#" title="進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南">進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南</a><ul><li><a class="toc-href" href="#本文章節" title="本文章節">本文章節</a></li><li><a class="toc-href" href="#30-秒重要訊息" title="30 秒重要訊息">30 秒重要訊息</a></li><li><a class="toc-href" href="#意料之外的-Kaggle-競賽" title="意料之外的 Kaggle 競賽">意料之外的 Kaggle 競賽</a></li><li><a class="toc-href" href="#假新聞分類任務" title="假新聞分類任務">假新聞分類任務</a></li><li><a class="toc-href" href="#用直覺找出第一條底線" title="用直覺找出第一條底線">用直覺找出第一條底線</a></li><li><a class="toc-href" href="#資料前處理：讓機器能夠處理文字" title="資料前處理：讓機器能夠處理文字">資料前處理：讓機器能夠處理文字</a><ul><li><a class="toc-href" href="#文本分詞" title="文本分詞">文本分詞</a></li><li><a class="toc-href" href="#建立字典並將文本轉成數字序列" title="建立字典並將文本轉成數字序列">建立字典並將文本轉成數字序列</a></li><li><a class="toc-href" href="#序列的-Zero-Padding" title="序列的 Zero Padding">序列的 Zero Padding</a></li><li><a class="toc-href" href="#將正解做-One-hot-Encoding" title="將正解做 One-hot Encoding">將正解做 One-hot Encoding</a></li><li><a class="toc-href" href="#切割訓練資料集-&amp;-驗證資料集" title="切割訓練資料集 &amp; 驗證資料集">切割訓練資料集 &amp; 驗證資料集</a></li></ul></li><li><a class="toc-href" href="#有記憶的循環神經網路_1" title="有記憶的循環神經網路">有記憶的循環神經網路</a></li><li><a class="toc-href" href="#記憶力好的-LSTM-細胞" title="記憶力好的 LSTM 細胞">記憶力好的 LSTM 細胞</a></li><li><a class="toc-href" href="#詞向量：將詞彙表達成有意義的向量" title="詞向量：將詞彙表達成有意義的向量">詞向量：將詞彙表達成有意義的向量</a></li><li><a class="toc-href" href="#一個神經網路，兩個新聞標題" title="一個神經網路，兩個新聞標題">一個神經網路，兩個新聞標題</a></li><li><a class="toc-href" href="#深度學習-3-步驟" title="深度學習 3 步驟">深度學習 3 步驟</a><ul><li><a class="toc-href" href="#定義神經網路的架構" title="定義神經網路的架構">定義神經網路的架構</a></li><li><a class="toc-href" href="#全連接層" title="全連接層">全連接層</a></li><li><a class="toc-href" href="#Softmax-函式" title="Softmax 函式">Softmax 函式</a></li><li><a class="toc-href" href="#決定衡量模型的表現" title="決定衡量模型的表現">決定衡量模型的表現金庸</a></li><li><a cl金庸ass="toc-hr金庸ef" href="#訓練模型並挑選最好的結果" title="訓練模型並挑選最好的結果">訓練模型並挑選最好的結果</a></li></ul></li><li><a class="toc-href" href="#進行預測並提交結果_1" title="進行預測並提交結果">進行預測並提交結果</a></li><li><a class="toc-href" href="#我們是怎麼走到這裡的" title="我們是怎麼走到這裡的">我們是怎麼走到這裡的</a></li><li><a class="toc-href" href="#3-門推薦的線上課程" title="3 門推薦的線上課程">3 門推薦的線上課程</a></li><li><a class="toc-href" href="#結語：從掌握基礎到運用巨人之力" title="結語：從掌握基礎到運用巨人之力">結語：從掌握基礎到運用巨人之力</a></li></ul></li></ul></div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+        <div class="page-header page-header--single page-hero" style="background-image:url(text-generation-cover.edd5c604.jpg)">
+        <!--<div class="page-header page-header&#45;&#45;single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/text-generation-cover.jpg)">-->
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemeng.tw/search.html?q=tensorflow" rel="tag">TensorFlow</a>
+                            <a href="https://leemeng.tw/search.html?q=tensorflow.js" rel="tag">TensorFlow.js</a>
+                            <a href="https://leemeng.tw/search.html?q=%E8%87%AA%E7%84%B6%E8%AA%9E%E8%A8%80%E8%99%95%E7%90%86" rel="tag">自然語言處理</a>
+
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" title="">
+                            讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2019-03-25 (Mon)</li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+            <div id="left-navigation">
+
+                <div id="search-wrap">
+                    <i class="im im-magnifier" aria-hidden="true"></i>
+                    <div id="search">
+                        <form action="https://leemeng.tw/search.html">
+                        <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required=""></div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="toc-wrap">
+                    <a title="顯示/隱藏 文章章節">
+                        <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+                    </a>
+                </div>
+
+                <div id="social-wrap" style="cursor: pointer">
+                    <a class="open-popup" title="訂閱最新文章">
+                        <i class="im im-newspaper-o" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <!-- TODO ：部署前最後測試連結，並確認跟最新標題、slug 一致-->
+                <div id="social-wrap">
+                    <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" target="_blank" title="分享到 Facebook">
+                        <i class="im im-facebook" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div id="social-wrap">
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html&title=%E8%AE%93%20AI%20%E5%AF%AB%E7%AF%87%E5%A4%A9%E9%BE%8D%E5%85%AB%E9%83%A8%EF%BC%9A%E5%A6%82%E4%BD%95%E7%94%A8%20TensorFlow%202.0%20%E4%BB%A5%E5%8F%8A%20TensorFlow.js%20%E7%94%9F%E6%88%90%E6%96%87%E7%AB%A0&source=https%3A//leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" target="_blank" title="分享到 LinkedIn">
+                        <i class="im im-linkedin" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div id="social-wrap">
+                    <a href="https://twitter.com/intent/tweet?text=%E8%AE%93%20AI%20%E5%AF%AB%E7%AF%87%E5%A4%A9%E9%BE%8D%E5%85%AB%E9%83%A8%EF%BC%9A%E5%A6%82%E4%BD%95%E7%94%A8%20TensorFlow%202.0%20%E4%BB%A5%E5%8F%8A%20TensorFlow.js%20%E7%94%9F%E6%88%90%E6%96%87%E7%AB%A0&url=https%3A//leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" target="_blank" title="分享到 Twitter">
+                        <i class="im im-twitter" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="col-full blog-content__main">
+
+                <!--TODO: tfjs app content here-->
+                <section>
+                    <div>
+                        <span class="input-title">生成長度（字單位）</span>
+                        <input id="generate-length" value="200">
+                    </div>
+                    <div>
+                        <span class="input-title">生成溫度（隨機度）</span>
+                        <input id="temperature" value="0.6">
+                    </div>
+                    <div>
+                        <button id="load-model">加載模型</button>
+                        <button id="generate-text" disabled="true">生成文章</button>
+                        <button id="initialize-seed" disabled="true">重置輸入</button>
+                    </div>
+                    <div id="app-status">
+                        點擊「加載模型」來生成新文章
+                    </div>
+                    <div>
+                        <span class="input-title">輸入句子：</span>
+                        <span id="text-generation-status" style="display: none"></span>
+                        <textarea id="seed-text" value="" rows="1" style="min-height: 10em">蕭峯吃了一驚，心想：「哥哥大喜之餘，說話有些忘形了，眼下亂成</textarea>
+                    </div>
+                    <div>
+                        <span class="input-title">生成結果：</span>
+                        <textarea id="generated-text" readonly="true" value="" rows="10"></textarea>
+                    </div>
+                </section>
+                <!--end of tfjs app content-->
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemeng.tw/search.html?q=tensorflow" rel="tag">TensorFlow</a>
+                        <a href="https://leemeng.tw/search.html?q=TensorFlow.js" rel="tag">TensorFlow.js</a>
+                        <a href="https://leemeng.tw/search.html?q=%E8%87%AA%E7%84%B6%E8%AA%9E%E8%A8%80%E8%99%95%E7%90%86" rel="tag">自然語言處理</a>
+                    </span>
+                </p>
+
+                <!-- end Tags -->
+
+                <!--TODO: button not working-->
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。<br>
+                                只要加入訂閱名單，當新文章出爐時，<br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a href="https://leemeng.tw/10-key-takeaways-from-ai-for-everyone-course.html" rel="prev">
+                                <span>Previous Post</span>
+                                我從 AI For Everyone 學到的 10 個重要 AI 概念
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html" rel="next">
+                                <span>Next Post</span>
+                                進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="https://leemeng.tw/blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+         <!-- end blog-content -->
+
+    </article>
+
+    <div class="comments-wrap">
+        <div id="comments" class="row">
+            <div class="col-full">
+                <div id="disqus_thread"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>var disqus_shortname = 'leemengtaiwan';
+var disqus_title = 'TODO'; // 進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南
+
+(function () {
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+                <ul class="footer-social">
+                    <li><a href="https://github.com/leemengtaiwan" target="_blank">
+                        <i class="im im-github" aria-hidden="true"></i>
+                        <span>Github</span>
+                    </a></li>
+                    <li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+                        <i class="im im-facebook" aria-hidden="true"></i>
+                        <span>Facebook</span>
+                    </a></li>
+                    <li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+                        <i class="im im-instagram" aria-hidden="true"></i>
+                        <span>Instagram</span>
+                    </a></li>
+                    <li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+                        <i class="im im-linkedin" aria-hidden="true"></i>
+                        <span>LinkedIn</span>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script type="text/javascript" src="https://leemeng.tw/theme/js/scroll-detect.js"></script>
+
+    <!--https://instant.page/-->
+    <!--TODO: fix it-->
+    <!--<script src="//instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>-->
+
+
+    <script type="text/javascript" src="https://leemeng.tw/theme/js/progress-bar.js"></script>
+    <script type="text/javascript" src="https://leemeng.tw/theme/js/scroll-detect.js"></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>$(document).scroll(function () {
+  var y = $(this).scrollTop();
+
+  if ($(window).width() > 980) {
+    if (y > 600) {
+      $('#left-navigation').fadeIn(300);
+    } else {
+      $('#left-navigation').fadeOut(300);
+    }
+  }
+});</script>
+
+    <!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+    <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+    </script>
+
+    <script>function showMailingPopUp() {
+  require(["mojo/signup-forms/Loader"], function (L) {
+    L.start({
+      "baseUrl": "mc.us18.list-manage.com",
+      "uuid": "151cb59f2de814c499c76b77a",
+      "lid": "dd1d78cc5e"
+    });
+  });
+
+  document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+}
+
+;
+$(function () {
+  $(".open-popup").on('click', function () {
+    showMailingPopUp();
+  });
+});</script>
+    <!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+    <script>function openTocNav() {
+  document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+  document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+  var current_width = document.getElementById("tocNav").style.width;
+
+  if (current_width == "100%") {
+    document.getElementById("tocNav").style.width = "0%";
+  } else {
+    document.getElementById("tocNav").style.width = "100%";
+  }
+}</script>
+
+    <!--tfjs app specific script-->
+    <script src="/lstm-text-generation.e31bb0bc.js"></script>
+
+</body>
+</html>
