@@ -102,7 +102,5 @@ filesElement.addEventListener('change', evt => {
 // ref: http://jsfiddle.net/kyw2E/
 document.getElementById("styles").onchange = function(e) {
     let style = this[this.selectedIndex].value;
-
-
     predict(style, inputImgElement);
 };
