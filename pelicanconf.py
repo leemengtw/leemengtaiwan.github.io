@@ -166,11 +166,11 @@ PROJECTS = [
         "description": '我將線上的深度學習資源做些整理並逐一介紹。你可以在<a href="https://leemeng.tw/deep-learning-resources.html">由淺入深的深度學習資源整理</a>了解細節，或者直接去專屬的 <a href="https://github.com/leemengtaiwan/deep-learning-resources" target="_blank">Github Repo</a> 關注並查看所有資源。'
     },
     {
-        "name": "貓咪辨識 App",
+        "name": "AI 如何找出你的喵",
         "thumb": "cat-recognizer",
-        "categories": "利用 TensorFlow 及 Flask 來做出能分辨貓狗的線上圖片辨識應用",
-        "link": "https://github.com/leemengtaiwan/cat-recognition-app",
-        "description": '這是一個利用 TensorFlow 以及 Flask 來分辨貓咪以及狗狗的圖片辨識應用，使用 Docker 封裝並部署在 Heroku 上。你可以前往 <a href="https://github.com/leemengtaiwan/cat-recognition-app" target="_blank">Github</a> 查看細節。'
+        "categories": "一個利用 TensorFlow 以及 Flask 實做的貓狗辨識應用",
+        "link": "https://demo.leemeng.tw/",
+        "description": '這是一個利用 TensorFlow 以及 Flask 來分辨貓咪以及狗狗的圖片辨識應用，使用 Docker 封裝並部署在 Heroku 上。你可以閱讀 <a href="https://demo.leemeng.tw/" target="_blank">AI 如何找出你的喵：直觀理解卷積神經網路</a> 來了解細解並實際使用該神經網路。'
     },
     {
         "name": "漫畫連載通知 App",
@@ -193,7 +193,7 @@ PROJECTS = [
     {
         "name": "天龍八部小說生成器",
         "thumb": "text-generation",
-        "categories": "利用 TensorFlow 2.0 及 TensorFlow.js 進行文本生成",
+        "categories": "利用 TensorFlow 2.0 及 TensorFlow.js 進行即時的文本生成",
         "link": "https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html",
         "link_title": "文章連結",
         "description": '展示一個由 TensorFlow 2.0 以及 TensorFlow.js 實現的線上文本生成應用。你可以前往<a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" target="_blank">讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</a>了解詳情。'
