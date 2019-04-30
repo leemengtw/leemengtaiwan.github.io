@@ -135,7 +135,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="用 CartoonGAN 及 TensorFlow 2 畫動漫">用 CartoonGAN 及 TensorFlow 2 畫動漫</a><ul><li><a class="toc-href" href="#動手玩-CartoonGAN" title="動手玩 CartoonGAN">動手玩 CartoonGAN</a></li><li><a class="toc-href" href="#使用-TensorFlow-2-來畫卡通" title="使用 TensorFlow 2 來畫卡通">使用 TensorFlow 2 來畫卡通</a></li><li><a class="toc-href" href="#一些轉換後的動漫成果" title="一些轉換後的動漫成果">一些轉換後的動漫成果</a></li><li><a class="toc-href" href="#推薦的-GAN-學習資源" title="推薦的 GAN 學習資源">推薦的 GAN 學習資源</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="用 CartoonGAN 及 TensorFlow 2 畫動漫">用 CartoonGAN 及 TensorFlow 2 畫動漫</a><ul><li><a class="toc-href" href="#動手玩-CartoonGAN" title="動手玩 CartoonGAN">動手玩 CartoonGAN</a></li><li><a class="toc-href" href="#TensorFlow-2-畫動漫" title="TensorFlow 2 畫動漫">TensorFlow 2 畫動漫</a></li><li><a class="toc-href" href="#一些轉換後的動漫成果" title="一些轉換後的動漫成果">一些轉換後的動漫成果</a></li><li><a class="toc-href" href="#推薦的-GAN-學習資源" title="推薦的 GAN 學習資源">推薦的 GAN 學習資源</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -202,6 +202,8 @@
                 
 <div class="cell border-box-sizing code_cell rendered">
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -228,7 +230,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這篇文章展示了一個用 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 實作的 <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">CartoonGAN</a>，讓你可以直接在瀏覽器裡頭產生動漫風格圖片。</p>
-<p>CartoonGAN 於 2018 <a href="http://cvpr2019.thecvf.com/">CVPR</a> 推出，是一個嘗試將真實世界圖片轉換成動漫的<a href="https://youtu.be/yFBFl1cLYx8?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;t=1879">對抗生成網路（Generative Adversarial Network, GAN）</a>：</p>
+<p>CartoonGAN 於 2018 <a href="http://cvpr2019.thecvf.com/">CVPR</a> 推出，是一個嘗試將真實世界圖片轉換成動漫的<a href="https://youtu.be/yFBFl1cLYx8?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;t=1879">對抗生成網路（Generative Adversarial Network, GAN）</a>。</p>
 </div>
 </div>
 </div>
@@ -250,7 +252,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>當初看到這篇<a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">論文</a>覺得很有趣，且裡頭剛好展示了兩位我很喜愛的日本動畫作家：<a href="https://zh.wikipedia.org/wiki/%E6%96%B0%E6%B5%B7%E8%AA%A0">新海誠</a>以及<a href="https://zh.wikipedia.org/zh-tw/%E5%AE%AB%E5%B4%8E%E9%AA%8F">宮崎駿</a>的風格轉換結果，因此我決定寫個 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 應用，讓更多人可以輕鬆地體驗這個有趣的 CartoonGAN。</p>
+<p>當初看到這篇<a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">論文</a>覺得很有趣，且裡頭正好展示了我喜愛的兩位日本動畫作家：<a href="https://zh.wikipedia.org/wiki/%E6%96%B0%E6%B5%B7%E8%AA%A0">新海誠</a>及<a href="https://zh.wikipedia.org/zh-tw/%E5%AE%AB%E5%B4%8E%E9%AA%8F">宮崎駿</a>的風格轉換結果，因此決定寫個 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 應用，讓更多人可以輕鬆地體驗這個有趣的 CartoonGAN。</p>
 <p>使用方法很直覺，選擇風格並上傳照片，完成！</p>
 </div>
 </div>
@@ -269,6 +271,13 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>你馬上就可在下一節試試這個 CartoonGAN。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="動手玩-CartoonGAN">動手玩 CartoonGAN<a class="anchor-link" href="#動手玩-CartoonGAN">&para;</a></h2>
 </div>
 </div>
@@ -276,12 +285,12 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>你可以在這節試試以 TensorFlow.js 實作的 CartoonGAN。</p>
 <p>因為 TensorFlow.js 在瀏覽器裡運行，符合以下條件能讓你獲得較好的體驗：</p>
 <ul>
-<li>使用桌電 / 筆電等計算能力較強的機器</li>
-<li>在網速快的環境測試（減少載入模型時間）</li>
+<li>使用桌電 / 筆電等<strong>計算能力</strong>較強的設備</li>
+<li>在網速快的環境測試（減少<strong>載入模型</strong>時間）</li>
 </ul>
+<p>以下就是實際的應用：</p>
 </div>
 </div>
 </div>
@@ -328,22 +337,22 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>如果你的設備（如手機）在上傳圖片後一直停在 <code>Loading Model</code>，別走開！下一節提供更強大的方法讓你轉換自己的圖片。</p>
+<p>如果你的設備（如手機）在上傳圖片後一直停在 <code>Cartoonizing images</code>，可能代表著運算資源的不足。不過別走開！下一節提供更強大的方法讓你轉換任意圖片。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="使用-TensorFlow-2-來畫卡通">使用 TensorFlow 2 來畫卡通<a class="anchor-link" href="#使用-TensorFlow-2-來畫卡通">&para;</a></h2>
+<h2 id="TensorFlow-2-畫動漫">TensorFlow 2 畫動漫<a class="anchor-link" href="#TensorFlow-2-畫動漫">&para;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>適逢 <a href="https://tensorflow.devpost.com/">PoweredByTF 2.0 挑戰</a>，除了 TensorFlow.js 以外我也用了 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0 Alpha</a> 來實作 CartoonGAN。</p>
-<p>如果你想要轉換更大尺寸的圖片或是動圖，可以參考 <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">CartoonGan-tensorflow</a> 或是馬上點擊<a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX">這個 Colab 筆記本</a>來轉換圖片：</p>
+<p>適逢 <a href="https://tensorflow.devpost.com/">PoweredByTF 2.0 挑戰</a>，我與夥伴 <a href="https://github.com/mnicnc404">mnicnc404</a> 也用 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0 Alpha</a> 實作了 CartoonGAN。</p>
+<p>如果你想要轉換更大尺寸的圖片或是動圖，可以參考我們的 <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">CartoonGan-tensorflow</a> 或是馬上點擊<a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX">這個 Colab 筆記本</a>來轉換圖片：</p>
 </div>
 </div>
 </div>
@@ -365,12 +374,12 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://colab.research.google.com/">Google Colaboratory</a> 是 Google 推出的一個雲端 <a href="https://jupyter.org/">Jupyter 筆記本</a> 環境，並提供 GPU 及 TPU 供任何人開發深度學習相關的專案。</p>
-<p>在<a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX">這個 Colab 筆記本</a>裡頭，以下步驟的程式碼都幫你寫好了：</p>
+<p><a href="https://colab.research.google.com/">Google Colaboratory</a> 是一個雲端 <a href="https://jupyter.org/">Jupyter 筆記本</a>環境，提供 GPU 讓任何人都可以立即開始一個深度學習專案。</p>
+<p>在<a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX">這個筆記本</a>裡頭，以下步驟都幫你寫好了：</p>
 <ul>
 <li>建置 TensorFlow 2.0 環境</li>
 <li>下載 Github Repo 及預訓練模型 </li>
-<li>下載網路圖片 / gif</li>
+<li>下載任意網路圖片 / gif</li>
 <li>使用 CartoonGAN 轉換圖片</li>
 </ul>
 <p>你只需打開筆記本並依照指示一步步執行，即可為你的圖片添加動漫風格。</p>
@@ -387,14 +396,21 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>獨樂樂不如眾樂樂。這一節讓我跟你分享了一些自己使用 CartoonGAN 產生的結果。</p>
+<p>獨樂樂不如眾樂樂。這一節讓我和你分享一些使用 CartoonGAN 產生的結果。</p>
+<p>以下的結果從左到右、由上而下分別為：</p>
+<ul>
+<li>原始圖片</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%96%B0%E6%B5%B7%E8%AA%A0">新海誠</a>風格</li>
+<li><a href="https://zh.wikipedia.org/zh-tw/%E5%AE%AB%E5%B4%8E%E9%AA%8F">宮崎駿</a>風格</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%B4%B0%E7%94%B0%E5%AE%88">細田守</a>風格</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>CartoonGAN 的動漫生成當然還有不少改善空間，但已經有不少有趣的結果了。</p>
+<p>CartoonGAN 的動漫生成當然還有不少改善空間，但已經有些不錯的成果了。</p>
 </div>
 </div>
 </div>
@@ -408,7 +424,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>近年以深度學習為基礎的生成模型（Generative Models）領域蓬勃發展，其中最亮眼的發展之一當屬<a href="https://youtu.be/yFBFl1cLYx8?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;t=1879">對抗生成網路（Generative Adversarial Network, GAN）</a>了。而本文的 CartoonGAN 也是<a href="https://github.com/hindupuravinash/the-gan-zoo">眾多 GANs</a> 裡頭的其中一個小夥子。</p>
+<p>近年以深度學習為基礎的生成模型（Generative Models）領域蓬勃發展，其中最亮眼的發展之一當屬對抗生成網路了。而本文的 CartoonGAN 也是<a href="https://github.com/hindupuravinash/the-gan-zoo">眾多 GANs</a> 裡頭的其中一個小夥子。</p>
 </div>
 </div>
 </div>
@@ -419,7 +435,7 @@
 <img src="https://leemeng.tw/images/cartoongan/tf-dcgan.png"/>
 </center>
 <center>
-                        對抗生成網路實際上由兩個獨立的神經網路相互「對抗」
+                        對抗生成網路 GAN 實際上由兩個獨立的神經網路相互「對抗」
                         （<a href="https://www.tensorflow.org/alpha/tutorials/generative/dcgan" target="_blank">圖片來源</a>）
                         
                         <br/>
@@ -431,7 +447,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>本文希望專注在 CartoonGAN 的實際應用。對訓練模型、推論的實作細節有興趣的讀者請參考以 <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf">TensorFlow 2.0 API</a> 實作的 <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">CartoonGan-tensorflow</a>。</p>
+<p>本文希望專注在 CartoonGAN 的實際應用。對訓練模型、推論的實作細節有興趣的讀者請參考我們以 <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf">TensorFlow 2.0 API</a> 實作的 <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">CartoonGan-tensorflow</a>。</p>
 <p>對 GAN 的理論 &amp; 基礎知識有興趣的讀者，我則推薦以下的學習資源：</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=DQNNMiAP5lw&amp;list=PLJV_el3uVTsMq6JEFPW35BCiOQTsoqwNw">李宏毅教授在 Youtube 上的 GAN 教學影片</a></li>
@@ -441,6 +457,28 @@
 <li><a href="https://www.tensorflow.org/alpha/tutorials/generative/dcgan">TensorFlow 官方教學帶你生成 MNIST</a></li>
 <li><a href="https://www.jiqizhixin.com/articles/CVPR2018-CartoonGAN">機器之心講解 CartoonGAN 運作原理</a></li>
 </ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/cartoongan/mit-gan.png"/>
+</center>
+<center>
+                        MIT 6.S191 的 Deep Generative Models 適合入門
+                        （<a href="https://www.youtube.com/watch?v=yFBFl1cLYx8&amp;index=1&amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>更多學習資源則請參閱<a href="https://leemeng.tw/deep-learning-resources.html">由淺入深的深度學習資源整理</a>。另外如果你有其他推薦的學習資源，還請不吝留言與我及其他讀者分享，謝謝！</p>
 </div>
 </div>
@@ -455,8 +493,8 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>CartoonGAN 是我第一次嘗試用 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0</a> 以及 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 實作的生成對抗網路，從過程中學到了很多。感謝合作夥伴 <a href="https://github.com/mnicnc404">mnicnc404</a> 強大的實作支援以及許多寶貴見解，獲益良多。</p>
-<p>希望透過這篇文章能讓更多人對強大的 GAN 以及生成模型產生興趣，並進一步探索相關的 AI 知識，嘗試更多的可能性，做出更多有趣的應用：）</p>
+<p>CartoonGAN 是我第一次嘗試用 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0</a> 以及 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 實作的生成對抗網路，從過程中學到了很多。感謝大神 <a href="https://github.com/mnicnc404">mnicnc404</a> 強大的實作支援以及許多寶貴見解，獲益良多。</p>
+<p>希望透過這篇文章能讓更多人對強大的 GAN 以及生成模型產生興趣，並進一步探索相關知識，嘗試更多可能性，做出更多有趣的應用：）</p>
 </div>
 </div>
 </div>
