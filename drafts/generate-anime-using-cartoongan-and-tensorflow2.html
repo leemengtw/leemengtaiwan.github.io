@@ -276,7 +276,7 @@
 <li>下載模型</li>
 <li>轉換圖片</li>
 </ul>
-<p>TensorFlow.js 完全在瀏覽器裡運行，此頁面背後並沒有任何伺服器。因此確保以下條件能讓你獲得較好的體驗：</p>
+<p>TensorFlow.js 完全在 device 上的瀏覽器裡運行，因限於目前手機的運算能力限制，強烈建議：</p>
 <ul>
 <li>使用桌電 / 筆電等<strong>計算能力</strong>較強的設備</li>
 <li>在網速快的環境測試（減少<strong>載入模型</strong>時間）</li>
@@ -342,10 +342,10 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如何？結果出來了嗎？</p>
-<p>如果你的設備（如手機）在上傳圖片後一直停在：</p>
+<p>如果上傳圖片後一直停在：</p>
 <ul>
-<li><code>Loading Models</code>（網路速度不夠快，下載耗時）</li>
-<li><code>Cartoonizing images</code>（設備運算資源的不足）</li>
+<li><code>Loading Models</code>：代表網路速度不夠快，下載耗時</li>
+<li><code>Cartoonizing images</code>：代表設備（如手機）運算資源的不足</li>
 </ul>
 <p>可以嘗試使用下一節介紹的方法來做轉換。保證有效。</p>
 </div>
@@ -414,7 +414,7 @@
 <li><a href="https://zh.wikipedia.org/zh-tw/%E5%AE%AB%E5%B4%8E%E9%AA%8F">宮崎駿</a>風格</li>
 <li><a href="https://zh.wikipedia.org/wiki/%E7%B4%B0%E7%94%B0%E5%AE%88">細田守</a>風格</li>
 </ul>
-<p>你可以點擊下圖左右兩側的小箭頭來切換不同圖片：</p>
+<p>點擊下圖左右兩側的小箭頭可以切換不同圖片：</p>
 </div>
 </div>
 </div>
@@ -592,7 +592,7 @@ function showDivs(n) {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br/>
 <br/></p>
-<p>從漫威電影到可愛貓咪，從自然風景到人氣偶像，任何你想得到的圖片都可以進行轉換。</p>
+<p>從漫威電影到可愛貓咪，從自然風景到人氣偶像，任何你想得到的圖片都可以拿來進行轉換。</p>
 <p>一旦訓練完成，我們就能使用 CartoonGAN 在彈指之間將各式各樣的圖片跟動漫做連結。當然，未來類似的應用的效果會更好，且能幫助一般人創造自己的動漫，也能讓動漫作家更快速地畫出草稿、測試自己的新點子。</p>
 </div>
 </div>
@@ -629,8 +629,8 @@ function showDivs(n) {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>此文篇幅有限。專注在 CartoonGAN 的實際應用，而非演算法細節是因為：</p>
 <ul>
-<li>網路上已有不少 GAN 理論及演算法的介紹，但能馬上拿來用的例子還不多</li>
 <li>比起自己花時間訓練出可以用的 GAN，許多人應該只是想自己產生有趣結果</li>
+<li>網路上已有不少 GAN 理論及演算法的介紹，但能馬上拿來用的例子還不多</li>
 </ul>
 <p>因此，對訓練模型、推論的實作細節有興趣的讀者還請自行參考 <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">CartoonGan-tensorflow</a>。</p>
 <p>不過基本上只要依照指示裝好開發環境以及準備好圖片，你甚至可以一鍵訓練 CartoonGAN：</p>
@@ -767,6 +767,7 @@ function showDivs(n) {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>CartoonGAN 是我第一次嘗試用 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0</a> 以及 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 實作的生成對抗網路，從過程中學到了不少東西。感謝大神 <a href="https://github.com/mnicnc404">mnicnc404</a> 強大的實作支援以及許多寶貴見解，獲益良多。</p>
 <p>希望透過這篇文章以及專案能讓更多人對強大的 GAN 以及生成模型產生興趣，並進一步探索相關知識，嘗試更多可能性，做出更多有趣的 AI 應用：）</p>
+<p>也別忘了跟我分享你生成了什麼動漫！</p>
 </div>
 </div>
 </div>
