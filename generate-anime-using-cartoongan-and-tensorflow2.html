@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 用 CartoonGAN 及 TensorFlow 2 生成新海誠與宮崎駿動畫</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="介紹 3 種讀者可以馬上用 CartoonGAN 來生成新海誠、宮崎駿等人風格動畫的方法。其中包含了一個事先為讀者準備的 Colab 筆記本、文內的 TensorFlow.js 應用以及一個完整的 Github 專案。在 Github 專案裡頭，有興趣的同學還可了解如何利用最新的 TensorFlow 2.0 來訓練自己的專屬 CartoonGAN。" />
+        <meta name="keywords" content="GAN, TensorFlow, TensorFlow.js" />
+        <meta name="tags" content="GAN" />
+        <meta name="tags" content="TensorFlow" />
+        <meta name="tags" content="TensorFlow.js" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="/theme/images/background/finan-akbar-429027-unsplash-transformed.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="/generate-anime-using-cartoongan-and-tensorflow2.html" />
+        <meta property="og:title" content="用 CartoonGAN 及 TensorFlow 2 生成新海誠與宮崎駿動畫" />
+        <meta property="og:description" content="介紹 3 種讀者可以馬上用 CartoonGAN 來生成新海誠、宮崎駿等人風格動畫的方法。其中包含了一個事先為讀者準備的 Colab 筆記本、文內的 TensorFlow.js 應用以及一個完整的 Github 專案。在 Github 專案裡頭，有興趣的同學還可了解如何利用最新的 TensorFlow 2.0 來訓練自己的專屬 CartoonGAN。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="/theme/css/toc-nav.css">
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="/theme/js/modernizr.js"></script>
+    <script src="/theme/js/pace.min.js"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="https://demo.leemeng.tw">Demo</a>
+        </li>
+        <li>
+            <a href="../books.html">Books</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="用 CartoonGAN 及 TensorFlow 2 生成新海誠與宮崎駿動畫">用 CartoonGAN 及 TensorFlow 2 生成新海誠與宮崎駿動畫</a><ul><li><a class="toc-href" href="#動手玩-CartoonGAN" title="動手玩 CartoonGAN">動手玩 CartoonGAN</a></li><li><a class="toc-href" href="#TensorFlow-2-畫動漫" title="TensorFlow 2 畫動漫">TensorFlow 2 畫動漫</a></li><li><a class="toc-href" href="#一些轉換後的動漫結果" title="一些轉換後的動漫結果">一些轉換後的動漫結果</a></li><li><a class="toc-href" href="#訓練你自己的-CartoonGAN" title="訓練你自己的 CartoonGAN">訓練你自己的 CartoonGAN</a></li><li><a class="toc-href" href="#推薦的-GAN-學習資源" title="推薦的 GAN 學習資源">推薦的 GAN 學習資源</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/finan-akbar-429027-unsplash-transformed.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="/tag/gan.html" rel="tag">GAN</a>
+                            <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                            <a href="/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="/generate-anime-using-cartoongan-and-tensorflow2.html" title="">
+                            用 CartoonGAN 及 TensorFlow 2 生成新海誠與宮崎駿動畫
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2019-05-06 (Mon)</li>
+                        <li class="page-view">
+                            1 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+        </a>
+    </div>
+
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<link href="/tfjs-apps/cartoongan/cartoongan.css" rel="stylesheet"/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        如果能讓 AI 幫我們將圖片自動轉換成新海誠或是宮崎駿等人的動漫風格，豈不是很有意思？
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這篇文章介紹我與夥伴 <a href="https://github.com/mnicnc404">mnicnc404</a> 最近以 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0 Alpha</a> 實作的 <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">CartoonGAN-TensorFlow2</a> 專案。我們同時也展示一個 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 應用，讓你可以直接在瀏覽器上產生動漫。</p>
+<p><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">CartoonGAN</a> 於 2018 <a href="http://cvpr2019.thecvf.com/">CVPR</a> 推出，是一個嘗試將真實世界圖片轉換成動漫的<a href="https://youtu.be/yFBFl1cLYx8?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;t=1879">對抗生成網路（Generative Adversarial Network, GAN）</a>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/images/cartoongan/cat_cover.jpg">
+<source src="/images/cartoongan/cat_cover.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        左上為原圖，其餘三圖則為我們使用 CartoonGAN 將不同動漫風格套用到原圖上的結果
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>當初看到這篇<a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">論文</a>覺得很有趣，且裡頭正好展示了我喜愛的兩位日本動畫作家：<a href="https://zh.wikipedia.org/wiki/%E6%96%B0%E6%B5%B7%E8%AA%A0">新海誠</a>及<a href="https://zh.wikipedia.org/zh-tw/%E5%AE%AB%E5%B4%8E%E9%AA%8F">宮崎駿</a>的風格轉換結果，因此決定寫個 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 應用，讓更多人可以輕鬆地體驗這個有趣的 CartoonGAN。</p>
+<p>使用方法很直覺，選擇風格並上傳照片，完成！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/generate-anime-using-cartoongan-and-tensorflow2.html">
+<source src="/images/cartoongan/tfjs-demo.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>背後處理主要分為兩個步驟：</p>
+<ul>
+<li>下載模型</li>
+<li>轉換圖片</li>
+</ul>
+<p>TensorFlow.js 完全在 device 上的瀏覽器裡運行，因限於目前手機的運算能力限制，強烈建議：</p>
+<ul>
+<li>使用桌電 / 筆電等<strong>計算能力</strong>較強的設備</li>
+<li>在網速快的環境測試（減少<strong>載入模型</strong>時間）</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="動手玩-CartoonGAN">動手玩 CartoonGAN<a class="anchor-link" href="#動手玩-CartoonGAN">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>以下就是實際的應用：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="row" id="container">
+<div class="column50">
+<div>
+<img class="cartoongan_image" id="input" src="/tfjs-apps/cartoongan/cat.png"/>
+</div>
+</div>
+<div class="column50">
+<div>
+<img class="cartoongan_image" id="pregenerated_output" src="/tfjs-apps/cartoongan/cat_shinkai.jpg"/>
+<canvas id="output" style="display:none"></canvas>
+</div>
+<div id="app-status" style="display:none;padding:70px 0"></div>
+</div>
+</div>
+<div class="row" style="margin-bottom:6rem;">
+<div class="column50">
+<label class="btn" style="margin-top: 2rem;height: 3rem;line-height:2.8rem;color:white;padding: 0 1rem">
+            選擇圖片
+            <input id="files" multiple="" name="files[]" style="display:none" type="file"/>
+</label>
+</div>
+<div class="column50">
+<select id="styles" name="styles" style="margin: auto;display: block;margin-top: 0.8rem">
+<option selected="selected" value="shinkai"><b>新海誠</b>風格</option>
+<option value="hayao"><b>宮崎駿</b>風格</option>
+<option value="hosoda"><b>細田守</b>風格</option>
+<option value="paprika"><b>盜夢偵探</b>風格</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如何？結果出來了嗎？</p>
+<p>如果上傳圖片後一直停在：</p>
+<ul>
+<li><code>Loading Models</code>：代表網路速度不夠快，下載耗時</li>
+<li><code>Cartoonizing images</code>：代表設備（如手機）運算資源的不足</li>
+</ul>
+<p>可以嘗試使用下一節介紹的方法來做轉換。保證有效。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="TensorFlow-2-畫動漫">TensorFlow 2 畫動漫<a class="anchor-link" href="#TensorFlow-2-畫動漫">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>適逢 <a href="https://tensorflow.devpost.com/">PoweredByTF 2.0 挑戰</a>，我們也用 TensorFlow 2.0 Alpha 實作了 CartoonGAN。</p>
+<p>如果你想要轉換大圖或是動圖，可以執行<a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX">這個 Colab 筆記本</a>：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/images/cartoongan/colab-demo.jpg">
+<source src="/images/cartoongan/colab-demo.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        執行我們準備的 Colab 筆記本可以讓你用 CartoonGAN 轉換任何圖片
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://colab.research.google.com/">Google Colaboratory</a> 是一個雲端 <a href="https://jupyter.org/">Jupyter 筆記本</a>環境，提供 GPU 讓任何人都可以立即開始一個深度學習專案。</p>
+<p>在<a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX">這個筆記本</a>裡頭，以下步驟都幫你寫好了：</p>
+<ul>
+<li>建置 TensorFlow 2.0 環境</li>
+<li>下載 Github Repo 及預訓練模型 </li>
+<li>下載任意網路圖片 / gif</li>
+<li>使用 CartoonGAN 轉換圖片</li>
+</ul>
+<p>你只需打開筆記本並依照指示一步步執行，即可為你的圖片添加動漫風格。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="一些轉換後的動漫結果">一些轉換後的動漫結果<a class="anchor-link" href="#一些轉換後的動漫結果">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>獨樂樂不如眾樂樂。這一節讓我和你分享一些我們用 CartoonGAN 得到的結果。</p>
+<p>以下每張圖片都分為四個區塊，從左到右、由上而下分別為：</p>
+<ul>
+<li>原始圖片</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%96%B0%E6%B5%B7%E8%AA%A0">新海誠</a>風格</li>
+<li><a href="https://zh.wikipedia.org/zh-tw/%E5%AE%AB%E5%B4%8E%E9%AA%8F">宮崎駿</a>風格</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%B4%B0%E7%94%B0%E5%AE%88">細田守</a>風格</li>
+</ul>
+<p>點擊下圖左右兩側的小箭頭可以切換不同圖片：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<style>
+<!-- https://www.w3schools.com/w3css/w3css_slideshow.asp -->
+.w3-content,
+.w3-auto {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.w3-content {
+    max-width: 980px
+}
+
+.w3-display-container:hover .w3-display-hover {
+    display: block
+}
+
+.w3-display-container:hover span.w3-display-hover {
+    display: inline-block
+}
+
+.w3-display-container {
+    position: relative
+}
+
+.w3-button:hover {
+    color: #000!important;
+    background-color: inherit;
+}
+
+.w3-button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap
+}
+
+.w3-button {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.w3-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.3
+}
+
+.w3-display-left {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+    -ms-transform: translate(-0%, -50%)
+}
+
+.w3-display-right {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%)
+}
+
+.mySlides {display:none;}
+</style><div class="w3-content w3-display-container">
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/dance.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<!--marvel-->
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/iron-man-face.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/iron-man.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<img class="mySlides" src="/images/cartoongan/gallery/static-woman-face.jpg" style="width:100%"/>
+<img class="mySlides" src="/images/cartoongan/gallery/static-temple.jpg" style="width:100%"/>
+<!--cat-->
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/cat-shake-meme.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/cat-being-poked.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/cat-computer.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<!--scenary-->
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/big-ben.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/city-street.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/church.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<!--idol-->
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/demo.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/arakaki.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/harry-potter.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<!--virtual character-->
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/pikachu.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/kumamon.mp4" type="video/mp4"/>
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  </video>
+<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">❮</button>
+<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">❯</button>
+</div><script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br/>
+<br/></p>
+<p>從漫威電影到可愛貓咪，從自然風景到人氣偶像，任何你想得到的圖片都可以拿來進行轉換。</p>
+<p>一旦訓練完成，我們就能使用 CartoonGAN 在彈指之間將各式各樣的圖片跟動漫做連結。當然，未來類似的應用的效果會更好，且能幫助一般人創造自己的動漫，也能讓動漫作家更快速地畫出草稿、測試自己的新點子。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        如 CartoonGAN 這樣的生成模型能讓我們看到未來更多的可能性。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>類似的道理我們在<a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html">讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</a>也已經聊過。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="訓練你自己的-CartoonGAN">訓練你自己的 CartoonGAN<a class="anchor-link" href="#訓練你自己的-CartoonGAN">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>此文篇幅有限。專注在 CartoonGAN 的實際應用，而非演算法細節是因為：</p>
+<ul>
+<li>比起自己花時間訓練出可以用的 GAN，許多人應該只是想自己產生有趣結果</li>
+<li>網路上已有不少 GAN 理論及演算法的介紹，但能馬上拿來用的例子還不多</li>
+</ul>
+<p>因此，對訓練模型、推論的實作細節有興趣的讀者還請自行參考 <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">CartoonGan-tensorflow</a>。</p>
+<p>不過基本上只要依照指示裝好開發環境以及準備好圖片，你甚至可以一鍵訓練 CartoonGAN：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="/images/cartoongan/train-demo.gif"/>
+</center>
+<center>
+                        我們的 python script 在訓練過程中提供了詳盡的訊息，方便你理解訓練過程究竟發生什麼事情
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因為所有邏輯皆以 TF2 實作，該 Repo 非常適合想要跟上最新 TensorFlow 發展的讀者：</p>
+<ul>
+<li>使用 <a href="https://www.tensorflow.org/alpha/guide/keras/overview">tf.keras</a> 實作自定義的 Layers 以及 GAN</li>
+<li>使用 <a href="https://www.tensorflow.org/alpha/guide/data_performance">tf.data</a> 讀取大量圖片並進行前處理</li>
+<li>自定義訓練步驟並使用 <a href="https://youtu.be/Up9CvRLIIIw?list=PLQY2H8rRoyvzoUYI26kHmKSJBedn3SQuB">tf.function</a> 加快處理速度</li>
+<li>完整整合 <a href="https://www.tensorflow.org/tensorboard/r2/get_started#using_tensorboard_with_other_methods">TensorBoard</a> 以顯示生成圖片與 metrics</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="/images/cartoongan/tensorboard-demo.jpg"/>
+</center>
+<center>
+                        直接在 TensorBoard 上監控 metrics 及生成圖片在訓練 GAN 時非常有效率（圖為我們實際的訓練結果）
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>跟訓練一個<a href="https://www.tensorflow.org/tutorials/keras/basic_classification">簡單分類器</a>比起來，訓練一個 GAN 的難度可說是完全不同級別。但我們盡量讓<a href="https://github.com/mnicnc404/CartoonGan-tensorflow">專案</a>裡頭的程式碼邏輯簡單易懂，希望能讓更多人入門 TensorFlow 2.0 以及 GAN 的訓練。</p>
+<p>你可以前往 <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">CartoonGan-tensorflow</a> 查看所有細節。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="推薦的-GAN-學習資源">推薦的 GAN 學習資源<a class="anchor-link" href="#推薦的-GAN-學習資源">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>近年以深度學習為基礎的生成模型（Generative Models）領域蓬勃發展，其中最亮眼的發展之一當屬對抗生成網路了。而本文的 CartoonGAN 也是<a href="https://github.com/hindupuravinash/the-gan-zoo">眾多 GANs</a> 裡頭的其中一個小夥子。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="/images/cartoongan/tf-dcgan.png"/>
+</center>
+<center>
+                        對抗生成網路 GAN 實際上由兩個獨立的神經網路相互「對抗」
+                        （<a href="https://www.tensorflow.org/alpha/tutorials/generative/dcgan" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>對 GAN 的理論 &amp; 基礎知識有興趣的讀者，我推薦以下的學習資源：</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=DQNNMiAP5lw&amp;list=PLJV_el3uVTsMq6JEFPW35BCiOQTsoqwNw">李宏毅教授在 Youtube 上的 GAN 教學影片</a></li>
+<li><a href="https://www.youtube.com/watch?v=yFBFl1cLYx8&amp;index=1&amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI">MIT 6.S191 的 Deep Generative Models</a></li>
+<li><a href="https://poloclub.github.io/ganlab/">GAN Lab 讓你在瀏覽器上訓練並學習 GAN</a></li>
+<li><a href="https://cs.stanford.edu/people/karpathy/gan/">Andrej Karpathy 的簡單 GAN Demo</a></li>
+<li><a href="https://www.tensorflow.org/alpha/tutorials/generative/dcgan">TensorFlow 官方教學帶你生成 MNIST</a></li>
+<li><a href="https://www.jiqizhixin.com/articles/CVPR2018-CartoonGAN">機器之心講解 CartoonGAN 運作原理</a></li>
+<li><a href="https://medium.com/syncedreview/reproducing-japanese-anime-styles-with-cartoongan-ai-cf30d583736e">Synced: Reproducing Japanese Anime Styles With CartoonGAN AI</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="/images/cartoongan/mit-gan.png"/>
+</center>
+<center>
+                        MIT 6.S191 的 Deep Generative Models 適合入門
+                        （<a href="https://www.youtube.com/watch?v=yFBFl1cLYx8&amp;index=1&amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>更多學習資源則請參閱<a href="https://leemeng.tw/deep-learning-resources.html">由淺入深的深度學習資源整理</a>。另外如果你有其他推薦的學習資源，還請不吝留言與我及其他讀者分享，謝謝！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>CartoonGAN 是我第一次嘗試用 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0</a> 以及 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 實作的生成對抗網路，從過程中學到了不少東西。感謝大神 <a href="https://github.com/mnicnc404">mnicnc404</a> 強大的實作支援以及許多寶貴見解，獲益良多。</p>
+<p>希望透過這篇文章以及專案能讓更多人對強大的 GAN 以及生成模型產生興趣，並進一步探索相關知識，嘗試更多可能性，做出更多有趣的 AI 應用：）</p>
+<p>也別忘了跟我分享你生成了什麼動漫！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<script src="/tfjs-apps/cartoongan/dist/tf.js"></script>
+<script src="/tfjs-apps/cartoongan/cartoongan.js"></script>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="/tag/gan.html" rel="tag">GAN</a>
+                        <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                        <a href="/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
+                    </span>
+
+                </p>
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__next">
+                            <a href="/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" rel="next">
+                                <span>Next Post</span>
+                                讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="/theme/js/plugins.js"></script>
+    <script src="/theme/js/main.js"></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
+
+    <!--https://instant.page/-->
+    <script src="//instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
+
+
+    <script type='text/javascript' src='/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTovNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+</script>
+
+
+</body>
+</html>
