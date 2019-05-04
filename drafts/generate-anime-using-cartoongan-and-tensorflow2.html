@@ -14,7 +14,7 @@
 <title>LeeMeng - 用 CartoonGAN 及 TensorFlow 2 生成新海誠與宮崎駿動畫</title>
     <!--- article-specific meta data
     ================================================== -->
-        <meta name="description" content="本文將介紹 3 種讀者可以馬上用 CartoonGAN 來生成新海誠、宮崎駿等人風格動畫的方法。其中包含了一個事先為讀者準備的 Colab 筆記本、文內的 TensorFlow.js 應用以及一個完整的 Github 專案。在 Github 專案裡頭，有興趣的同學還可了解如何利用最新的 TensorFlow 2.0 來訓練自己的專屬 CartoonGAN。" />
+        <meta name="description" content="本文將介紹可以讓讀者「實際」應用 CartoonGAN 來生成新海誠與宮崎駿動漫的 3 個方式。其中包含了一個事先為讀者準備的 Colab 筆記本、文內的 TensorFlow.js 應用以及一個完整的 Github 專案。有興趣的同學還可了解如何利用 TensorFlow 2.0 來訓練自己的專屬 CartoonGAN。" />
         <meta name="keywords" content="GAN, TensorFlow, TensorFlow.js" />
         <meta name="tags" content="GAN" />
         <meta name="tags" content="TensorFlow" />
@@ -23,11 +23,11 @@
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="https://leemeng.tw/theme/images/background/finan-akbar-429027-unsplash-transformed.jpg" />
+        <meta property="og:image" content="/theme/images/background/finan-akbar-429027-unsplash-transformed.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://leemeng.tw/drafts/generate-anime-using-cartoongan-and-tensorflow2.html" />
+        <meta property="og:url" content="/drafts/generate-anime-using-cartoongan-and-tensorflow2.html" />
         <meta property="og:title" content="用 CartoonGAN 及 TensorFlow 2 生成新海誠與宮崎駿動畫" />
-        <meta property="og:description" content="本文將介紹 3 種讀者可以馬上用 CartoonGAN 來生成新海誠、宮崎駿等人風格動畫的方法。其中包含了一個事先為讀者準備的 Colab 筆記本、文內的 TensorFlow.js 應用以及一個完整的 Github 專案。在 Github 專案裡頭，有興趣的同學還可了解如何利用最新的 TensorFlow 2.0 來訓練自己的專屬 CartoonGAN。" />
+        <meta property="og:description" content="本文將介紹可以讓讀者「實際」應用 CartoonGAN 來生成新海誠與宮崎駿動漫的 3 個方式。其中包含了一個事先為讀者準備的 Colab 筆記本、文內的 TensorFlow.js 應用以及一個完整的 Github 專案。有興趣的同學還可了解如何利用 TensorFlow 2.0 來訓練自己的專屬 CartoonGAN。" />
 
     <!-- mobile specific metas
     ================================================== -->
@@ -36,43 +36,33 @@
     <!-- CSS
     ================================================== -->
     <!--for customized css in individual page-->
-        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.min.css">
 
     <!--for showing toc navigation which slide in from left-->
-        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/toc-nav.css">
 
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
-    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+    <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='/theme/css/progress-bar.css' />
 
 
     <!--TiqueSearch-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
-    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
-    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/tipuesearch.css">
 
     <!-- script
     ================================================== -->
-    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
-    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+    <script src="/theme/js/modernizr.js"></script>
+    <script src="/theme/js/pace.min.js"></script>
 
 
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
-
-<!-- Global Site Tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)};
-  gtag('js', new Date());
-
-  gtag('config', 'UA-106559980-1');
-</script>
 
 
 
@@ -86,7 +76,7 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+            <a class="site-logo" href="../index.html"><img src="/theme/images/logo.png" alt="Homepage"></a>
         </div>
 <!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
@@ -144,24 +134,24 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/finan-akbar-429027-unsplash-transformed.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/finan-akbar-429027-unsplash-transformed.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
-                            <a href="https://leemeng.tw/tag/gan.html" rel="tag">GAN</a>
-                            <a href="https://leemeng.tw/tag/tensorflow.html" rel="tag">TensorFlow</a>
-                            <a href="https://leemeng.tw/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
+                            <a href="/tag/gan.html" rel="tag">GAN</a>
+                            <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                            <a href="/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="https://leemeng.tw/drafts/generate-anime-using-cartoongan-and-tensorflow2.html" title="">
+                        <a href="/drafts/generate-anime-using-cartoongan-and-tensorflow2.html" title="">
                             用 CartoonGAN 及 TensorFlow 2 生成新海誠與宮崎駿動畫
                         </a>
                     </h1>
                     <ul class="page-header__meta">
-                        <li class="date">2019-05-06 (Mon)</li>
+                        <li class="date">2019-05-05 (Sun)</li>
                         <li class="page-view">
                             1 views
                         </li>
@@ -207,7 +197,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<link href="https://leemeng.tw/tfjs-apps/cartoongan/cartoongan.css" rel="stylesheet"/>
+<link href="/tfjs-apps/cartoongan/cartoongan.css" rel="stylesheet"/>
 </div>
 </div>
 </div>
@@ -229,16 +219,16 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這篇文章介紹最近我與夥伴 <a href="https://github.com/mnicnc404">mnicnc404</a> 以 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0 Alpha</a> 實作的 <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">Github 專案</a>。我們同時也會展示一個 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 應用，讓你可以直接在瀏覽器上產生動漫。</p>
-<p><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">CartoonGAN</a> 於 2018 <a href="http://cvpr2019.thecvf.com/">CVPR</a> 推出，是一個嘗試將真實世界圖片轉換成動漫的<a href="https://youtu.be/yFBFl1cLYx8?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;t=1879">對抗生成網路（Generative Adversarial Network，以下簡稱 GAN）</a>。</p>
+<p>這篇文章將簡單介紹最近我與夥伴 <a href="https://github.com/mnicnc404">mnicnc404</a> 以 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0 Alpha</a> 實作的 <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">CartoonGAN（Github）</a>。我們同時也會展示一個 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 應用，讓你可以直接在瀏覽器上產生動漫。</p>
+<p><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">CartoonGAN（原論文）</a> 於 2018 <a href="http://cvpr2019.thecvf.com/">CVPR</a> 推出，是一個嘗試將真實世界圖片轉換成動漫的<a href="https://youtu.be/yFBFl1cLYx8?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;t=1879">對抗生成網路（Generative Adversarial Network，以下簡稱 GAN）</a>。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/cartoongan/cat_cover.jpg">
-<source src="https://leemeng.tw/images/cartoongan/cat_cover.mp4" type="video/mp4"/>
+<video autoplay="" loop="" muted="" playsinline="" poster="/images/cartoongan/cat_cover.jpg">
+<source src="/images/cartoongan/cat_cover.mp4" type="video/mp4"/>
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <center>
@@ -260,8 +250,8 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/drafts/generate-anime-using-cartoongan-and-tensorflow2.html">
-<source src="https://leemeng.tw/images/cartoongan/tfjs-demo.mp4" type="video/mp4"/>
+<video autoplay="" loop="" muted="" playsinline="" poster="/drafts/generate-anime-using-cartoongan-and-tensorflow2.html">
+<source src="/images/cartoongan/tfjs-demo.mp4" type="video/mp4"/>
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <br/>
@@ -306,12 +296,12 @@
 <div class="row" id="container">
 <div class="column50">
 <div>
-<img class="cartoongan_image" id="input" src="https://leemeng.tw/tfjs-apps/cartoongan/cat.png"/>
+<img class="cartoongan_image" id="input" src="/tfjs-apps/cartoongan/cat.png"/>
 </div>
 </div>
 <div class="column50">
 <div>
-<img class="cartoongan_image" id="pregenerated_output" src="https://leemeng.tw/tfjs-apps/cartoongan/cat_shinkai.jpg"/>
+<img class="cartoongan_image" id="pregenerated_output" src="/tfjs-apps/cartoongan/cat_shinkai.jpg"/>
 <canvas id="output" style="display:none"></canvas>
 </div>
 <div id="app-status" style="display:none;padding:70px 0"></div>
@@ -367,8 +357,8 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/cartoongan/colab-demo.jpg">
-<source src="https://leemeng.tw/images/cartoongan/colab-demo.mp4" type="video/mp4"/>
+<video autoplay="" loop="" muted="" playsinline="" poster="/images/cartoongan/colab-demo.jpg">
+<source src="/images/cartoongan/colab-demo.mp4" type="video/mp4"/>
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <center>
@@ -497,66 +487,66 @@
 .mySlides {display:none;}
 </style><div class="w3-content w3-display-container">
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/dance.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/dance.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
 <!--marvel-->
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/iron-man-face.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/iron-man-face.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/iron-man.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/iron-man.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
-<img class="mySlides" src="https://leemeng.tw/images/cartoongan/gallery/static-woman-face.jpg" style="width:100%"/>
-<img class="mySlides" src="https://leemeng.tw/images/cartoongan/gallery/static-temple.jpg" style="width:100%"/>
+<img class="mySlides" src="/images/cartoongan/gallery/static-woman-face.jpg" style="width:100%"/>
+<img class="mySlides" src="/images/cartoongan/gallery/static-temple.jpg" style="width:100%"/>
 <!--cat-->
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/cat-shake-meme.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/cat-shake-meme.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/cat-being-poked.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/cat-being-poked.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/cat-computer.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/cat-computer.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
 <!--scenary-->
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/big-ben.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/big-ben.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/city-street.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/city-street.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/church.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/church.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
 <!--idol-->
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/demo.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/demo.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/arakaki.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/arakaki.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/harry-potter.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/harry-potter.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
 <!--virtual character-->
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/pikachu.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/pikachu.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
 <video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
-<source src="https://leemeng.tw/images/cartoongan/gallery/kumamon.mp4" type="video/mp4"/>
+<source src="/images/cartoongan/gallery/kumamon.mp4" type="video/mp4"/>
         您的瀏覽器不支援影片標籤，請留言通知我：S
   </video>
 <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">❮</button>
@@ -647,7 +637,7 @@ function showDivs(n) {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/cartoongan/train-demo.gif"/>
+<img src="/images/cartoongan/train-demo.gif"/>
 </center>
 <center>
                         我們的 Python 腳本提供了詳盡訊息，方便你理解訓練過程究竟發生了什麼事情
@@ -681,7 +671,7 @@ function showDivs(n) {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/cartoongan/tensorboard-metrics.jpg"/>
+<img src="/images/cartoongan/tensorboard-metrics.jpg"/>
 </center>
 <center>
                         我們訓練 CartoonGAN 的其中一次實際結果
@@ -702,7 +692,7 @@ function showDivs(n) {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/cartoongan/tensorboard-image-demo.jpg"/>
+<img src="/images/cartoongan/tensorboard-image-demo.jpg"/>
 </center>
 <center>
                         在腳本執行的過程中可以直接在 TensorBoard 上觀察 CartoonGAN 當下生成的圖片
@@ -724,8 +714,8 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/cartoongan/training_progress.jpg">
-<source src="https://leemeng.tw/images/cartoongan/training_progress.mp4" type="video/mp4"/>
+<video autoplay="" loop="" muted="" playsinline="" poster="/images/cartoongan/training_progress.jpg">
+<source src="/images/cartoongan/training_progress.mp4" type="video/mp4"/>
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <center>
@@ -763,7 +753,7 @@ function showDivs(n) {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/cartoongan/tf-dcgan.png"/>
+<img src="/images/cartoongan/tf-dcgan.png"/>
 </center>
 <center>
                         對抗生成網路 GAN 實際上由兩個獨立的神經網路相互「對抗」
@@ -795,7 +785,7 @@ function showDivs(n) {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/cartoongan/mit-gan.png"/>
+<img src="/images/cartoongan/mit-gan.png"/>
 </center>
 <center>
                         MIT 6.S191 的 Deep Generative Models 適合入門
@@ -856,8 +846,8 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<script src="https://leemeng.tw/tfjs-apps/cartoongan/dist/tf.js"></script>
-<script src="https://leemeng.tw/tfjs-apps/cartoongan/cartoongan.js"></script>
+<script src="/tfjs-apps/cartoongan/dist/tf.js"></script>
+<script src="/tfjs-apps/cartoongan/cartoongan.js"></script>
 </div>
 </div>
 </div>
@@ -870,12 +860,14 @@ function showDivs(n) {
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
-                        <a href="https://leemeng.tw/tag/gan.html" rel="tag">GAN</a>
-                        <a href="https://leemeng.tw/tag/tensorflow.html" rel="tag">TensorFlow</a>
-                        <a href="https://leemeng.tw/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
+                        <a href="/tag/gan.html" rel="tag">GAN</a>
+                        <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                        <a href="/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
                     </span>
 
                 </p>
+
+
 
 
 
@@ -1000,25 +992,6 @@ function showDivs(n) {
 
     </article>
 
-<div class="comments-wrap">
-    <div id="comments" class="row">
-        <div class="col-full">
-            <div id="disqus_thread"></div>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-var disqus_shortname = 'leemengtaiwan';
-var disqus_title = '用 CartoonGAN 及 TensorFlow 2 生成新海誠與宮崎駿動畫';
-
-(function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
     <!-- footer
@@ -1028,7 +1001,7 @@ var disqus_title = '用 CartoonGAN 及 TensorFlow 2 生成新海誠與宮崎駿�
             <div class="col-full">
 
                 <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                    <a class="footer-site-logo" href="#0"><img src="/theme/images/logo.png" alt="Homepage"></a>
                 </div>
 
                 <ul class="footer-social">
@@ -1073,17 +1046,17 @@ var disqus_title = '用 CartoonGAN 及 TensorFlow 2 生成新海誠與宮崎駿�
 
         <!-- Javascript
     ================================================== -->
-    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
-    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
-    <script src="https://leemeng.tw/theme/js/main.js"></script>
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+    <script src="/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="/theme/js/plugins.js"></script>
+    <script src="/theme/js/main.js"></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
 
     <!--https://instant.page/-->
     <script src="//instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
 
 
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+    <script type='text/javascript' src='/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
 
     <!--show and hide left navigation by scrolling-->
     <script>

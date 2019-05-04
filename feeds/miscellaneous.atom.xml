@@ -1,5 +1,670 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng - Miscellaneous</title><link href="https://leemeng.tw/" rel="alternate"></link><link href="https://leemeng.tw/feeds/miscellaneous.atom.xml" rel="self"></link><id>https://leemeng.tw/</id><updated>2019-03-27T09:00:00+09:00</updated><entry><title>讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</title><link href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" rel="alternate"></link><published>2019-03-27T09:00:00+09:00</published><updated>2019-03-27T09:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2019-03-27:/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html</id><summary type="html">&lt;p&gt;這篇文章展示一個由 TensorFlow 2.0 以及 TensorFlow.js 實現的文本生成應用。本文也會透過深度學習專案常見的 7 個步驟，帶領讀者一步步了解如何實現一個這樣的應用。閱讀完本文，你將對開發 AI 應用的流程有些基礎的了解。&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng - Miscellaneous</title><link href="https://leemeng.tw/" rel="alternate"></link><link href="https://leemeng.tw/feeds/miscellaneous.atom.xml" rel="self"></link><id>https://leemeng.tw/</id><updated>2019-05-05T02:20:00+09:00</updated><entry><title>用 CartoonGAN 及 TensorFlow 2 生成新海誠與宮崎駿動畫</title><link href="https://leemeng.tw/generate-anime-using-cartoongan-and-tensorflow2.html" rel="alternate"></link><published>2019-05-05T02:20:00+09:00</published><updated>2019-05-05T02:20:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2019-05-05:/generate-anime-using-cartoongan-and-tensorflow2.html</id><summary type="html">&lt;p&gt;本文將介紹可以讓讀者「實際」應用 CartoonGAN 來生成新海誠與宮崎駿動漫的 3 個方式。其中包含了一個事先為讀者準備的 Colab 筆記本、文內的 TensorFlow.js 應用以及一個完整的 Github 專案。有興趣的同學還可了解如何利用 TensorFlow 2.0 來訓練自己的專屬 CartoonGAN。&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;link href="https://leemeng.tw/tfjs-apps/cartoongan/cartoongan.css" rel="stylesheet"/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+                        如果你能用 AI 為圖片添加新海誠或是宮崎駿等人的動漫風格，你會選擇什麼圖片？
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這篇文章將簡單介紹最近我與夥伴 &lt;a href="https://github.com/mnicnc404"&gt;mnicnc404&lt;/a&gt; 以 &lt;a href="https://www.tensorflow.org/alpha"&gt;TensorFlow 2.0 Alpha&lt;/a&gt; 實作的 &lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow"&gt;CartoonGAN（Github）&lt;/a&gt;。我們同時也會展示一個 &lt;a href="https://www.tensorflow.org/js"&gt;TensorFlow.js&lt;/a&gt; 應用，讓你可以直接在瀏覽器上產生動漫。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf"&gt;CartoonGAN（原論文）&lt;/a&gt; 於 2018 &lt;a href="http://cvpr2019.thecvf.com/"&gt;CVPR&lt;/a&gt; 推出，是一個嘗試將真實世界圖片轉換成動漫的&lt;a href="https://youtu.be/yFBFl1cLYx8?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;amp;t=1879"&gt;對抗生成網路（Generative Adversarial Network，以下簡稱 GAN）&lt;/a&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/cartoongan/cat_cover.jpg"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/cat_cover.mp4" type="video/mp4"/&gt;
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                &lt;/video&gt;
+&lt;center&gt;
+                        左上為原圖，其餘三圖則為我們使用 CartoonGAN 將不同動漫風格套用到原圖上的結果
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;當初看到這篇&lt;a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf"&gt;論文&lt;/a&gt;覺得很有趣，且裡頭正好展示了我喜愛的兩位日本動畫作家：&lt;a href="https://zh.wikipedia.org/wiki/%E6%96%B0%E6%B5%B7%E8%AA%A0"&gt;新海誠&lt;/a&gt;及&lt;a href="https://zh.wikipedia.org/zh-tw/%E5%AE%AB%E5%B4%8E%E9%AA%8F"&gt;宮崎駿&lt;/a&gt;的風格轉換結果，因此決定寫個 &lt;a href="https://www.tensorflow.org/js"&gt;TensorFlow.js&lt;/a&gt; 應用，讓更多人可以實際體驗這個有趣的 CartoonGAN。&lt;/p&gt;
+&lt;p&gt;使用方法很直覺，選擇風格並上傳照片，完成！&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/generate-anime-using-cartoongan-and-tensorflow2.html"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/tfjs-demo.mp4" type="video/mp4"/&gt;
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                &lt;/video&gt;
+&lt;br/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;TensorFlow.js 在瀏覽器裡運行，其背後處理主要分為兩個步驟：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;下載模型&lt;/li&gt;
+&lt;li&gt;轉換圖片&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因手機的運算能力有限，強烈建議：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用桌筆電等&lt;strong&gt;計算能力&lt;/strong&gt;強的設備開啟本頁面&lt;/li&gt;
+&lt;li&gt;並在網速快的環境測試（減少&lt;strong&gt;載入模型&lt;/strong&gt;時間）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="動手玩-CartoonGAN"&gt;動手玩 CartoonGAN&lt;a class="anchor-link" href="#動手玩-CartoonGAN"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;以下就是實際的應用：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div class="row" id="container"&gt;
+&lt;div class="column50"&gt;
+&lt;div&gt;
+&lt;img class="cartoongan_image" id="input" src="https://leemeng.tw/tfjs-apps/cartoongan/cat.png"/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="column50"&gt;
+&lt;div&gt;
+&lt;img class="cartoongan_image" id="pregenerated_output" src="https://leemeng.tw/tfjs-apps/cartoongan/cat_shinkai.jpg"/&gt;
+&lt;canvas id="output" style="display:none"&gt;&lt;/canvas&gt;
+&lt;/div&gt;
+&lt;div id="app-status" style="display:none;padding:70px 0"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row" style="margin-bottom:6rem;"&gt;
+&lt;div class="column50"&gt;
+&lt;label class="btn" style="margin-top: 2rem;height: 3rem;line-height:2.8rem;color:white;padding: 0 1rem"&gt;
+            選擇圖片
+            &lt;input id="files" multiple="" name="files[]" style="display:none" type="file"/&gt;
+&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="column50"&gt;
+&lt;select id="styles" name="styles" style="margin: auto;display: block;margin-top: 0.8rem"&gt;
+&lt;option selected="selected" value="shinkai"&gt;&lt;b&gt;新海誠&lt;/b&gt;風格&lt;/option&gt;
+&lt;option value="hayao"&gt;&lt;b&gt;宮崎駿&lt;/b&gt;風格&lt;/option&gt;
+&lt;option value="hosoda"&gt;&lt;b&gt;細田守&lt;/b&gt;風格&lt;/option&gt;
+&lt;option value="paprika"&gt;&lt;b&gt;盜夢偵探&lt;/b&gt;風格&lt;/option&gt;
+&lt;/select&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;結果出來了嗎？如果上傳圖片後一直停在：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Loading Models&lt;/code&gt;：代表仍在下載模型&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Cartoonizing images&lt;/code&gt;：代表設備運算資源的不足&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也先別走開！你可以使用下一節介紹的方法來生成動漫，保證有效。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="TensorFlow-2-畫動漫"&gt;TensorFlow 2 畫動漫&lt;a class="anchor-link" href="#TensorFlow-2-畫動漫"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;適逢 &lt;a href="https://tensorflow.devpost.com/"&gt;PoweredByTF 2.0 挑戰&lt;/a&gt;，我們也用 TensorFlow 2.0 Alpha 完整地實作了 CartoonGAN 的訓練以及推論邏輯。如果你想要轉換大張圖片或是動圖，可以執行&lt;a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX"&gt;這個 Colab 筆記本&lt;/a&gt;：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/cartoongan/colab-demo.jpg"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/colab-demo.mp4" type="video/mp4"/&gt;
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                &lt;/video&gt;
+&lt;center&gt;
+                        執行我們準備的 Colab 筆記本可以讓你用 CartoonGAN 轉換任何圖片（上圖顯示該筆記本的部分內容）
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;a href="https://colab.research.google.com/"&gt;Google Colaboratory&lt;/a&gt; 是一個雲端 &lt;a href="https://jupyter.org/"&gt;Jupyter 筆記本&lt;/a&gt;環境，提供 GPU 讓任何人都可以立即開始一個深度學習專案。&lt;/p&gt;
+&lt;p&gt;在&lt;a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX"&gt;這個筆記本&lt;/a&gt;裡頭，以下步驟都幫你寫好了：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;建置 TensorFlow 2.0 環境&lt;/li&gt;
+&lt;li&gt;下載&lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow"&gt;我們的 Github 專案及預訓練模型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下載任意網路圖片 / gif&lt;/li&gt;
+&lt;li&gt;使用 CartoonGAN 轉換圖片&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;你只需打開筆記本並依照指示一步步執行，即可為你的圖片添加動漫風格。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="一些轉換後的動漫結果"&gt;一些轉換後的動漫結果&lt;a class="anchor-link" href="#一些轉換後的動漫結果"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;獨樂樂不如眾樂樂。這一節和你分享一些我們用 CartoonGAN 得到的結果。&lt;/p&gt;
+&lt;p&gt;以下每張圖片都分為四個區塊，從左到右、由上而下分別為：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;原始圖片&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://zh.wikipedia.org/wiki/%E6%96%B0%E6%B5%B7%E8%AA%A0"&gt;新海誠&lt;/a&gt;風格&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://zh.wikipedia.org/zh-tw/%E5%AE%AB%E5%B4%8E%E9%AA%8F"&gt;宮崎駿&lt;/a&gt;風格&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://zh.wikipedia.org/wiki/%E7%B4%B0%E7%94%B0%E5%AE%88"&gt;細田守&lt;/a&gt;風格&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;點擊下圖左右兩側的小箭頭可以切換不同圖片：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;style&gt;
+&lt;!-- https://www.w3schools.com/w3css/w3css_slideshow.asp --&gt;
+.w3-content,
+.w3-auto {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.w3-content {
+    max-width: 980px
+}
+
+.w3-display-container:hover .w3-display-hover {
+    display: block
+}
+
+.w3-display-container:hover span.w3-display-hover {
+    display: inline-block
+}
+
+.w3-display-container {
+    position: relative
+}
+
+.w3-button:hover {
+    color: #000!important;
+    background-color: inherit;
+}
+
+.w3-button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap
+}
+
+.w3-button {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.w3-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.3
+}
+
+.w3-display-left {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+    -ms-transform: translate(-0%, -50%)
+}
+
+.w3-display-right {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%)
+}
+
+.mySlides {display:none;}
+&lt;/style&gt;&lt;div class="w3-content w3-display-container"&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/dance.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;!--marvel--&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/iron-man-face.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/iron-man.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;img class="mySlides" src="https://leemeng.tw/images/cartoongan/gallery/static-woman-face.jpg" style="width:100%"/&gt;
+&lt;img class="mySlides" src="https://leemeng.tw/images/cartoongan/gallery/static-temple.jpg" style="width:100%"/&gt;
+&lt;!--cat--&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/cat-shake-meme.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/cat-being-poked.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/cat-computer.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;!--scenary--&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/big-ben.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/city-street.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/church.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;!--idol--&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/demo.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/arakaki.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/harry-potter.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;!--virtual character--&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/pikachu.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/gallery/kumamon.mp4" type="video/mp4"/&gt;
+        您的瀏覽器不支援影片標籤，請留言通知我：S
+  &lt;/video&gt;
+&lt;button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)"&gt;❮&lt;/button&gt;
+&lt;button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)"&gt;❯&lt;/button&gt;
+&lt;/div&gt;&lt;script&gt;
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n &gt; x.length) {slideIndex = 1}
+  if (n &lt; 1) {slideIndex = x.length}
+  for (i = 0; i &lt; x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+&lt;/script&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;從漫威電影到可愛貓咪，從自然風景到人氣偶像，任何你想得到的圖片都可以拿來進行轉換。一旦訓練完成，我們就能使用 CartoonGAN 在彈指之間將各式各樣的圖片跟動漫做連結。&lt;/p&gt;
+&lt;p&gt;在&lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow"&gt;我們的 Github 專案&lt;/a&gt;裡頭，你甚至只需要執行一個指令就能取得上面展示的結果：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python cartoonize.py &lt;span class="se"&gt;\&lt;/span&gt;
+    --styles shinkai hayao hosoda
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;當然，接下來數年類似應用的效果會更加卓越。未來誰都能用這些 apps 來創造自己的動漫，而動漫作家可以據此更快速地畫出草稿、測試新點子。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+                        如 CartoonGAN 這樣的生成模型能讓我們看到未來更多的可能性。
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;順帶一提，我們在&lt;a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html"&gt;讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部&lt;/a&gt;也已經看過類似的概念。只是在該篇裡頭，我們是讓機器生成武俠小說而非動漫圖片。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="訓練你自己的-CartoonGAN"&gt;訓練你自己的 CartoonGAN&lt;a class="anchor-link" href="#訓練你自己的-CartoonGAN"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;你可能發現本文非常注重在 CartoonGAN 的實際應用而非演算法細節。這是因為：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;比起&lt;a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf"&gt;論文細節&lt;/a&gt;，多數人應該都對如何生成有趣的動漫比較感興趣&lt;/li&gt;
+&lt;li&gt;網上已有不少 &lt;a href="#推薦的-GAN-學習資源"&gt;CartoonGAN 的介紹文章以及 GAN 的學習資源&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;對 CartoonGAN 的實作細節有興趣的讀者可以參考&lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow"&gt;我們的 Github 專案&lt;/a&gt;。基本上只要依照指示裝好開發環境以及準備好資料集，你甚至可以一鍵訓練 CartoonGAN：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/cartoongan/train-demo.gif"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        我們的 Python 腳本提供了詳盡訊息，方便你理解訓練過程究竟發生了什麼事情
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;因為所有邏輯皆以 &lt;a href="https://www.tensorflow.org/alpha"&gt;TensorFlow 2.0 Alpha&lt;/a&gt; 實作，非常適合想要跟上最新 TensorFlow 發展的讀者學習：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 &lt;a href="https://www.tensorflow.org/alpha/guide/keras/overview"&gt;tf.keras&lt;/a&gt; 實作 Layers 以及 GAN&lt;/li&gt;
+&lt;li&gt;使用 &lt;a href="https://www.tensorflow.org/alpha/guide/data_performance"&gt;tf.data&lt;/a&gt; 讀取大量圖片並進行前處理&lt;/li&gt;
+&lt;li&gt;寫訓練邏輯並使用 &lt;a href="https://youtu.be/Up9CvRLIIIw?list=PLQY2H8rRoyvzoUYI26kHmKSJBedn3SQuB"&gt;tf.function&lt;/a&gt; 加快處理速度&lt;/li&gt;
+&lt;li&gt;使用 &lt;a href="https://www.tensorflow.org/tensorboard/r2/get_started#using_tensorboard_with_other_methods"&gt;TensorBoard&lt;/a&gt; 來即時觀測模型表現&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;訓練 GAN 本身並不是一件非常容易的事情。你會需要時時觀察模型的表現以評估如何調整超參數。因此我們的&lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow/blob/master/train.py"&gt;訓練腳本&lt;/a&gt;也整合了 &lt;a href="https://www.tensorflow.org/tensorboard/r2/get_started#using_tensorboard_with_other_methods"&gt;TensorBoard&lt;/a&gt;，讓你可以在執行後即時地監控模型表現：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/cartoongan/tensorboard-metrics.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        我們訓練 CartoonGAN 的其中一次實際結果
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;除了指標與損失函數以外，在訓練 GAN 的過程中觀察模型生成的圖片也是一件非常重要的事情。因此我們也將 CartoonGAN 生成的圖片寫入 TensorBoard 以方便你觀測比較：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/cartoongan/tensorboard-image-demo.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        在腳本執行的過程中可以直接在 TensorBoard 上觀察 CartoonGAN 當下生成的圖片
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;雖然我們只紀錄專屬於 CartoonGAN 的指標以及生成圖片，你完全可以運用類似的方法來監測任何想要訓練的模型。&lt;/p&gt;
+&lt;p&gt;最後，為了方便了解 CartoonGAN 在訓練過程的表現，我們可以事先存一組真實世界的圖片當作驗證集（Validation Set），並固定讓模型在訓練一段時間後都試著將其轉換成動漫。&lt;/p&gt;
+&lt;p&gt;我們可以用驗證集的轉換結果來評估模型在當下的表現。將這些圖片依時間排序後可以得到這樣的結果：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/cartoongan/training_progress.jpg"&gt;
+&lt;source src="https://leemeng.tw/images/cartoongan/training_progress.mp4" type="video/mp4"/&gt;
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                &lt;/video&gt;
+&lt;center&gt;
+                        CartoonGAN 學習將真實世界圖片轉換為動漫的過程
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;你可以看到模型逐漸學會如何將原始圖片轉換成簡單的動漫：線條變得清晰、顏色變得平滑。&lt;/p&gt;
+&lt;p&gt;跟訓練一個&lt;a href="https://www.tensorflow.org/tutorials/keras/basic_classification"&gt;簡單分類器&lt;/a&gt;比起來，訓練一個 GAN 的難度可說是完全不同級別。但我們盡量讓&lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow"&gt; Github 專案&lt;/a&gt;裡頭的程式碼邏輯簡單易懂，希望能讓更多人入門 TensorFlow 2.0 以及 GAN 的實作。&lt;/p&gt;
+&lt;p&gt;當然，具備理論基礎能讓你更容易理解 TensorFlow 2 的程式碼。下節將列出推薦的學習資源供你參考。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="推薦的-GAN-學習資源"&gt;推薦的 GAN 學習資源&lt;a class="anchor-link" href="#推薦的-GAN-學習資源"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;近年以深度學習為基礎的生成模型（Generative Models）領域蓬勃發展，其中最亮眼的發展之一當屬對抗生成網路了。而本文的 CartoonGAN 也是&lt;a href="https://github.com/hindupuravinash/the-gan-zoo"&gt;眾多 GANs&lt;/a&gt; 裡頭的其中一個小夥子。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/cartoongan/tf-dcgan.png"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        對抗生成網路 GAN 實際上由兩個獨立的神經網路相互「對抗」
+                        （&lt;a href="https://www.tensorflow.org/alpha/tutorials/generative/dcgan" target="_blank"&gt;圖片來源&lt;/a&gt;）
+                        
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;對 GAN 的理論 &amp;amp; 基礎知識有興趣的讀者，我推薦以下的學習資源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=DQNNMiAP5lw&amp;amp;list=PLJV_el3uVTsMq6JEFPW35BCiOQTsoqwNw"&gt;李宏毅教授在 Youtube 上的 GAN 教學影片&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=yFBFl1cLYx8&amp;amp;index=1&amp;amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI"&gt;MIT 6.S191 的 Deep Generative Models&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://poloclub.github.io/ganlab/"&gt;GAN Lab 讓你在瀏覽器上訓練並學習 GAN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cs.stanford.edu/people/karpathy/gan/"&gt;Andrej Karpathy 的簡單 GAN Demo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.tensorflow.org/alpha/tutorials/generative/dcgan"&gt;TensorFlow 官方教學帶你生成 MNIST&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.jiqizhixin.com/articles/CVPR2018-CartoonGAN"&gt;機器之心講解 CartoonGAN 運作原理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://medium.com/syncedreview/reproducing-japanese-anime-styles-with-cartoongan-ai-cf30d583736e"&gt;Synced: Reproducing Japanese Anime Styles With CartoonGAN AI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://distill.pub/2019/gan-open-problems/"&gt;Open Questions about Generative Adversarial Networks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/cartoongan/mit-gan.png"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        MIT 6.S191 的 Deep Generative Models 適合入門
+                        （&lt;a href="https://www.youtube.com/watch?v=yFBFl1cLYx8&amp;amp;index=1&amp;amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI" target="_blank"&gt;圖片來源&lt;/a&gt;）
+                        
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;生成模型及 GAN 的研究領域博大精深，但我相信仔細學習過以上資源後，你將具備實作一個 GAN 所需的基礎知識。&lt;/p&gt;
+&lt;p&gt;更多學習資源則請參閱&lt;a href="https://leemeng.tw/deep-learning-resources.html"&gt;由淺入深的深度學習資源整理&lt;/a&gt;。另外如果你有其他推薦的學習資源，還請不吝留言與我及其他讀者分享，謝謝！&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="結語"&gt;結語&lt;a class="anchor-link" href="#結語"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+                        要讓深度學習、人工智慧等研究與應用的發展加快，我們應該想辦法讓更多人實際體驗、理解並參與其中。
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;以 CartoonGAN 為例，本文先專注在&lt;strong&gt;如何讓每個人都能實際體驗並應用此技術&lt;/strong&gt;，接著才簡單介紹讀者可以如何使用&lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow"&gt;我們的 Github 專案&lt;/a&gt;來訓練自己的模型。我也附上了一些實用的學習資源供你參考。&lt;/p&gt;
+&lt;p&gt;這是我第一次用 &lt;a href="https://www.tensorflow.org/alpha"&gt;TensorFlow 2.0&lt;/a&gt; 以及 &lt;a href="https://www.tensorflow.org/js"&gt;TensorFlow.js&lt;/a&gt; 實作 GAN，感謝 CartoonGAN 原作者的研究、 TensorFlow 團隊的努力以及夥伴 &lt;a href="https://github.com/mnicnc404"&gt;mnicnc404&lt;/a&gt; 強大的實作支援以及許多寶貴見解，獲益良多。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;希望透過此文能讓更多人進一步探索 GAN 以及生成模型的相關知識，嘗試更多新的可能性，做出更多有趣的 AI 應用。&lt;/p&gt;
+&lt;p&gt;也別忘了跟我分享你生成的動漫！你可以在 &lt;a href="https://twitter.com/leemengtw"&gt;Twitter&lt;/a&gt; 或是 &lt;a href="https://www.facebook.com/LeeMengTaiwan"&gt;Facebook&lt;/a&gt; 上標註我：）&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;script src="https://leemeng.tw/tfjs-apps/cartoongan/dist/tf.js"&gt;&lt;/script&gt;
+&lt;script src="https://leemeng.tw/tfjs-apps/cartoongan/cartoongan.js"&gt;&lt;/script&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+</content><category term="GAN"></category><category term="TensorFlow"></category><category term="TensorFlow.js"></category></entry><entry><title>讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</title><link href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" rel="alternate"></link><published>2019-03-27T09:00:00+09:00</published><updated>2019-03-27T09:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2019-03-27:/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html</id><summary type="html">&lt;p&gt;這篇文章展示一個由 TensorFlow 2.0 以及 TensorFlow.js 實現的文本生成應用。本文也會透過深度學習專案常見的 7 個步驟，帶領讀者一步步了解如何實現一個這樣的應用。閱讀完本文，你將對開發 AI 應用的流程有些基礎的了解。&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -8994,10 +9659,10 @@ Test Set
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="890d4f23-8071-457e-b4f7-d2029defce2d"&gt;&lt;/div&gt;
+&lt;div id="fa89acee-47f1-4e5f-b6a3-d55c77e7fc6a"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#890d4f23-8071-457e-b4f7-d2029defce2d');
+var element = $('#fa89acee-47f1-4e5f-b6a3-d55c77e7fc6a');
 (function(root) {
   function embed_document(root) {
     

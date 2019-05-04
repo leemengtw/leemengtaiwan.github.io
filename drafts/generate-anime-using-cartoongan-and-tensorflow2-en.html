@@ -14,7 +14,7 @@
 <title>LeeMeng - Generate Anime using CartoonGAN and TensorFlow 2.0</title>
     <!--- article-specific meta data
     ================================================== -->
-        <meta name="description" content="" />
+        <meta name="description" content="This post will demonstrate how you can actually apply CartoonGAN to cartoonize real world images into animes. We will also introduce our github project which enable anyone to train their own CartoonGAN using TensorFlow 2.0." />
         <meta name="keywords" content="GAN, TensorFlow, TensorFlow.js" />
         <meta name="tags" content="GAN" />
         <meta name="tags" content="TensorFlow" />
@@ -23,11 +23,11 @@
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="https://leemeng.tw/theme/images/background/finan-akbar-429027-unsplash-transformed.jpg" />
+        <meta property="og:image" content="/theme/images/background/finan-akbar-429027-unsplash-transformed.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://leemeng.tw/drafts/generate-anime-using-cartoongan-and-tensorflow2-en.html" />
+        <meta property="og:url" content="/drafts/generate-anime-using-cartoongan-and-tensorflow2-en.html" />
         <meta property="og:title" content="Generate Anime using CartoonGAN and TensorFlow 2.0" />
-        <meta property="og:description" content="" />
+        <meta property="og:description" content="This post will demonstrate how you can actually apply CartoonGAN to cartoonize real world images into animes. We will also introduce our github project which enable anyone to train their own CartoonGAN using TensorFlow 2.0." />
 
     <!-- mobile specific metas
     ================================================== -->
@@ -36,43 +36,33 @@
     <!-- CSS
     ================================================== -->
     <!--for customized css in individual page-->
-        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.min.css">
 
     <!--for showing toc navigation which slide in from left-->
-        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/toc-nav.css">
 
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
-    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+    <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='/theme/css/progress-bar.css' />
 
 
     <!--TiqueSearch-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
-    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
-    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/tipuesearch.css">
 
     <!-- script
     ================================================== -->
-    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
-    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+    <script src="/theme/js/modernizr.js"></script>
+    <script src="/theme/js/pace.min.js"></script>
 
 
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
-
-<!-- Global Site Tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)};
-  gtag('js', new Date());
-
-  gtag('config', 'UA-106559980-1');
-</script>
 
 
 
@@ -86,7 +76,7 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+            <a class="site-logo" href="../index.html"><img src="/theme/images/logo.png" alt="Homepage"></a>
         </div>
 <!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
@@ -135,7 +125,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="Generate Anime using CartoonGAN and TensorFlow 2.0">Generate Anime using CartoonGAN and TensorFlow 2.0</a><ul><li><a class="toc-href" href="#Some-Generated-Result" title="Some Generated Result">Some Generated Result</a></li><li><a class="toc-href" href="#Why-We-Made-This" title="Why We Made This">Why We Made This</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="Generate Anime using CartoonGAN and TensorFlow 2.0">Generate Anime using CartoonGAN and TensorFlow 2.0</a><ul><li><a class="toc-href" href="#Try-CartoonGAN-yourself" title="Try CartoonGAN yourself">Try CartoonGAN yourself</a></li><li><a class="toc-href" href="#Generate-anime-using-TensorFlow-2" title="Generate anime using TensorFlow 2">Generate anime using TensorFlow 2</a></li><li><a class="toc-href" href="#Gallery:-some-anime-we-generated" title="Gallery: some anime we generated">Gallery: some anime we generated</a></li><li><a class="toc-href" href="#Train-your-own-CartoonGAN" title="Train your own CartoonGAN">Train your own CartoonGAN</a></li><li><a class="toc-href" href="#Recommended-learning-resources" title="Recommended learning resources">Recommended learning resources</a></li><li><a class="toc-href" href="#Final-words" title="Final words">Final words</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -144,24 +134,24 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/finan-akbar-429027-unsplash-transformed.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/finan-akbar-429027-unsplash-transformed.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
-                            <a href="https://leemeng.tw/tag/gan.html" rel="tag">GAN</a>
-                            <a href="https://leemeng.tw/tag/tensorflow.html" rel="tag">TensorFlow</a>
-                            <a href="https://leemeng.tw/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
+                            <a href="/tag/gan.html" rel="tag">GAN</a>
+                            <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                            <a href="/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="https://leemeng.tw/drafts/generate-anime-using-cartoongan-and-tensorflow2-en.html" title="">
+                        <a href="/drafts/generate-anime-using-cartoongan-and-tensorflow2-en.html" title="">
                             Generate Anime using CartoonGAN and TensorFlow 2.0
                         </a>
                     </h1>
                     <ul class="page-header__meta">
-                        <li class="date">Mon, 06 May 2019</li>
+                        <li class="date">Sun, 05 May 2019</li>
                         <li class="page-view">
                             1 views
                         </li>
@@ -205,7 +195,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<link href="https://leemeng.tw/tfjs-apps/cartoongan/cartoongan.css" rel="stylesheet"/>
+<link href="/tfjs-apps/cartoongan/cartoongan.css" rel="stylesheet"/>
 </div>
 </div>
 </div>
@@ -214,15 +204,54 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I'm a big fan of Japanese animators <a href="https://en.wikipedia.org/wiki/Makoto_Shinkai">Shinkai Makoto</a> and <a href="https://en.wikipedia.org/wiki/Hayao_Miyazaki">Miyazaki Hayao</a>. After reading this paper, I decided to build a <a href="https://www.tensorflow.org/js">TensorFlow.js</a> application to make it available to everyone.</p>
+<blockquote>
+<p>
+                        Which image will you choose to transform if you can turn any image into anime using AI?
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/drafts/generate-anime-using-cartoongan-and-tensorflow2-en.html">
-<source src="{filename}images/cartoongan/giphy_1554480048.mp4" type="video/mp4"/>
+<p>In this post, I will briefly introduce a <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">CartoonGAN implemented in TensorFlow 2.0 Alpha</a> by my friend <a href="https://github.com/mnicnc404">mnicnc404</a> and me.</p>
+<p>We will also demo a <a href="https://www.tensorflow.org/js">TensorFlow.js</a> app which allow you to generate anime on the browser directly.</p>
+<p><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">CartoonGAN (original paper)</a> was published in 2018 <a href="http://cvpr2019.thecvf.com/">CVPR</a> and is a <a href="https://youtu.be/yFBFl1cLYx8?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;t=1879">Generative Adversarial Network (GAN)</a> which attempt to transform real world images into cartoon-style images.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/images/cartoongan/cat_cover.jpg">
+<source src="/images/cartoongan/cat_cover.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        Left-top is real world image, while all other 3 images are generated by CartoonGAN using different anime styles
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The ideas demonstrated in the <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">paper</a> are very interesting and the authors also show good results using two of my favorite Japanese animators' styles: <a href="https://en.wikipedia.org/wiki/Makoto_Shinkai">Shinkai Makoto</a> and <a href="https://en.wikipedia.org/wiki/Hayao_Miyazaki">Miyazaki Hayao</a>.</p>
+<p>Therefore, I decided to build a <a href="https://www.tensorflow.org/js">TensorFlow.js</a> app which allow everyone to try CartoonGAN with ease.</p>
+<p>Choose your favorite anime style and upload one image, just that simple.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/drafts/generate-anime-using-cartoongan-and-tensorflow2-en.html">
+<source src="/images/cartoongan/tfjs-demo.mp4" type="video/mp4"/>
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <br/>
@@ -232,62 +261,15 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This page demonstrated <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">CartoonGAN</a>, a <a href="https://youtu.be/yFBFl1cLYx8?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;t=1879">Generative Adversarial Network(GAN)</a> proposed by <a href="http://cg.cs.tsinghua.edu.cn/people/~Yongjin/Yongjin.htm">Chen et al.,</a> to transform real world pictures into anime.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>
-<img src="https://leemeng.tw/images/cartoongan/paper-demo.jpg"/>
-</center>
-<center>
-    CartoonGAN result using different artistic styles
-    （<a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf" target="_blank">Image Source</a>）
-    <br/>
-<br/>
-</center>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>CartoonGAN is not the latest GAN proposed, but it is definitly one of the most interesting one for me.</p>
-<p>And this is how the tfjs app work:</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<img src="{filename}images/cartoongan/tfjs-demo.gif"/>
-<br/>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/drafts/generate-anime-using-cartoongan-and-tensorflow2-en.html">
-<source src="https://leemeng.tw/images/cartoongan/tfjs-demo.mp4" type="video/mp4"/>
-                    您的瀏覽器不支援影片標籤，請留言通知我：S
-                </video>
-<br/>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>That's it. Under the hood, TensorFlow.js load the pretrained models converted from <a href="https://github.com/Yijunmaverick/CartoonGAN-Test-Pytorch-Torch">here</a> and use them to transform uploaded images.</p>
-<p>Currently, you can cartoonize images with following artistic styles:</p>
+<p>Under the hood, TensorFlow.js run in your browser and it will:</p>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Makoto_Shinkai">Shinkai Makoto</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Hayao_Miyazaki">Miyazaki Hayao</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Mamoru_Hosoda">Hosoda Mamoru</a></li>
-<li><a href="https://bit.ly/2ZGZM55">Paprika</a></li>
+<li>download the pretrained models</li>
+<li>cartoonize uploaded images</li>
+</ul>
+<p>To get the best experience, it is highly recommended that you:</p>
+<ul>
+<li>try the app with desktops/laptops rather than mobile phones</li>
+<li>try the app when network speed is fast（to minimalize loading time）</li>
 </ul>
 </div>
 </div>
@@ -295,8 +277,14 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Without further ado, try it yourself:</p>
-<p>(It may take sometime to load the models if your network speed is slow)</p>
+<h2 id="Try-CartoonGAN-yourself">Try CartoonGAN yourself<a class="anchor-link" href="#Try-CartoonGAN-yourself">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Without further ado, here is the tfjs app:</p>
 </div>
 </div>
 </div>
@@ -308,12 +296,12 @@
 <div class="row" id="container">
 <div class="column50">
 <div>
-<img class="cartoongan_image" id="input" src="https://leemeng.tw/tfjs-apps/cartoongan/cat.png"/>
+<img class="cartoongan_image" id="input" src="/tfjs-apps/cartoongan/cat.png"/>
 </div>
 </div>
 <div class="column50">
 <div>
-<img class="cartoongan_image" id="pregenerated_output" src="https://leemeng.tw/tfjs-apps/cartoongan/cat_shinkai.jpg"/>
+<img class="cartoongan_image" id="pregenerated_output" src="/tfjs-apps/cartoongan/cat_shinkai.jpg"/>
 <canvas id="output" style="display:none"></canvas>
 </div>
 <div id="app-status" style="display:none;padding:70px 0"></div>
@@ -343,14 +331,79 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Some-Generated-Result">Some Generated Result<a class="anchor-link" href="#Some-Generated-Result">&para;</a></h2>
+<p>How does your <a href="https://en.wikipedia.org/wiki/Anime">anime</a> look like?</p>
+<p>If the app seems to be stuck:</p>
+<ul>
+<li><code>Loading Models</code>: simply mean it's still downloading the model</li>
+<li><code>Cartoonizing images</code>: it might mean insufficient computation resources on your device</li>
+</ul>
+<p>But please don't go away! You can still generate anime with the method introduced in the next section and it will definitely work.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-We-Made-This">Why We Made This<a class="anchor-link" href="#Why-We-Made-This">&para;</a></h2>
+<h2 id="Generate-anime-using-TensorFlow-2">Generate anime using TensorFlow 2<a class="anchor-link" href="#Generate-anime-using-TensorFlow-2">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In addition to TensorFlow.js, we also implemented CartoonGAN using <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0 Alpha</a>. If you want to transform larger images and/or gifs, you can run <a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX">this Colab notebook</a>:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/images/cartoongan/colab-demo.jpg">
+<source src="/images/cartoongan/colab-demo.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        You can use CartoonGAN to transform any images with our colab notebook 
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://colab.research.google.com/">Google Colaboratory</a> is a cloud <a href="https://jupyter.org/">Jupyter notebook</a> environment allowing anyone to start their deep learning projects with free GPU enabled.</p>
+<p>In <a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX">this notebook</a>, everything you need to make anime is set up for you:</p>
+<ol>
+<li>Build TensorFlow 2.0 environment</li>
+<li>Clone <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">our github repo and download pretrained models</a></li>
+<li>Code to download any images on the web</li>
+<li>Transform your images using CartoonGAN</li>
+</ol>
+<p>You got the idea. All you have to do is open <a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX">the notebook</a> and generate your anime in a breeze.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Gallery:-some-anime-we-generated">Gallery: some anime we generated<a class="anchor-link" href="#Gallery:-some-anime-we-generated">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Is better to share one's happiness than to enjoy it alone. In this section, we simply share some anime generated with CartoonGAN.</p>
+<p>Every image below is divided into 4 parts, where:</p>
+<ul>
+<li>top-left: original real world image</li>
+<li>top-right: <a href="https://en.wikipedia.org/wiki/Makoto_Shinkai">Shinkai Makoto</a> style</li>
+<li>bottom-left: <a href="https://en.wikipedia.org/wiki/Hayao_Miyazaki">Miyazaki Hayao</a> style</li>
+<li>bottom-right: <a href="https://en.wikipedia.org/wiki/Mamoru_Hosoda">Hosoda Mamoru</a> style</li>
+</ul>
+<p>Click the arrows on the left/right to view different results:</p>
 </div>
 </div>
 </div>
@@ -359,8 +412,429 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<script src="https://leemeng.tw/tfjs-apps/cartoongan/dist/tf.js"></script>
-<script src="https://leemeng.tw/tfjs-apps/cartoongan/cartoongan.js"></script>
+<style>
+<!-- https://www.w3schools.com/w3css/w3css_slideshow.asp -->
+.w3-content,
+.w3-auto {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.w3-content {
+    max-width: 980px
+}
+
+.w3-display-container:hover .w3-display-hover {
+    display: block
+}
+
+.w3-display-container:hover span.w3-display-hover {
+    display: inline-block
+}
+
+.w3-display-container {
+    position: relative
+}
+
+.w3-button:hover {
+    color: #000!important;
+    background-color: inherit;
+}
+
+.w3-button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap
+}
+
+.w3-button {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.w3-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.3
+}
+
+.w3-display-left {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+    -ms-transform: translate(-0%, -50%)
+}
+
+.w3-display-right {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%)
+}
+
+.mySlides {display:none;}
+</style><div class="w3-content w3-display-container">
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/dance.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<!--marvel-->
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/iron-man-face.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/iron-man.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<img class="mySlides" src="/images/cartoongan/gallery/static-woman-face.jpg" style="width:100%"/>
+<img class="mySlides" src="/images/cartoongan/gallery/static-temple.jpg" style="width:100%"/>
+<!--cat-->
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/cat-shake-meme.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/cat-being-poked.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/cat-computer.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<!--scenary-->
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/big-ben.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/city-street.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/church.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<!--idol-->
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/demo.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/arakaki.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/harry-potter.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<!--virtual character-->
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/pikachu.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<video autoplay="" class="mySlides" loop="" muted="" playsinline="" style="width:100%">
+<source src="/images/cartoongan/gallery/kumamon.mp4" type="video/mp4"/>
+        Your browser doesn't support video tag.
+  </video>
+<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">❮</button>
+<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">❯</button>
+</div><script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br/></p>
+<p>Marvel movies, cute cats, scenery and popular idols, the sky is the limit. When trained, we can use CartoonGAN to combine everything with anime.</p>
+<p>Using python script in <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">our github repo</a>, you can generate these results with one command:</p>
+<div class="highlight"><pre><span></span>python cartoonize.py <span class="se">\</span>
+    --styles shinkai hayao hosoda
+</pre></div>
+<p>You can imagine apps with similar features will become much more powerful in the near future. Everyone will be able to generate their own anime, while animators can test their new ideas and draw drafts much more faster than now.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        Generative Models like CartoonGAN shown here can broaden our horizons and show us much more possibilities.
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Train-your-own-CartoonGAN">Train your own CartoonGAN<a class="anchor-link" href="#Train-your-own-CartoonGAN">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Yes, you may noticed that we put a lot of focus on the <strong>actual application</strong> rather than the <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">algorithm details</a> for CartoonGAN. And it&rsquo;s just because:</p>
+<ul>
+<li>I believe most of the readers only interested in how to <strong>use</strong> CartoonGAN rather than <strong>train</strong> a Model themselves</li>
+<li>There are already lots of <a href="#recommended-learning-resources">learning resources</a> on the web</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For those who are interested in implementation details of our CartoonGAN, we suggest you taking a look at the <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">github repo</a>. If you have your own datasets, you can even train your own CartoonGAN simply in one command:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="/images/cartoongan/train-demo.gif"/>
+</center>
+<center>
+                        Our Python script provide detailed messages which allow you to understand what is happening
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The repo can also be used to learn latest version of TensorFlow since everything is implemented in <a href="https://www.tensorflow.org/alpha">Tensorflow 2.0 alpha</a>:</p>
+<ul>
+<li>Use <a href="https://www.tensorflow.org/alpha/guide/keras/overview">tf.keras</a> to implement custom layers and GAN model</li>
+<li>Use <a href="https://www.tensorflow.org/alpha/guide/data_performance">tf.data</a> to load and process large amount of images</li>
+<li>Write custom train steps and make computation faster using <a href="https://youtu.be/Up9CvRLIIIw?list=PLQY2H8rRoyvzoUYI26kHmKSJBedn3SQuB">tf.function</a></li>
+<li>Use <a href="https://www.tensorflow.org/tensorboard/r2/get_started#using_tensorboard_with_other_methods">TensorBoard</a> to monitor model performance in real-time manner</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As some of you already knew, it is not trivial to train a GAN properly. You will need to keep monitoring model performance to decide how to adjust your hyperparameters.</p>
+<p>In our <a href="https://github.com/mnicnc404/CartoonGan-tensorflow/blob/master/train.py">training script</a>, TensorBoard is integrated so you can monitor model performance in real-time manner:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="/images/cartoongan/tensorboard-metrics.jpg"/>
+</center>
+<center>
+                        Result of one of our experiments on TensorBoard
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In addition to metrics and loss functions, it is a good practice to keep an eye on the images that the GAN is generating.</p>
+<p>Using our script, you can check generated images on TensorBoard as well:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="/images/cartoongan/tensorboard-image-demo.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Although we only record cartoonGAN-specific metrics and images here, you can apply same technique to monitor any other models.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, in order to get a sense of how CartoonGAN is doing during training phase, we can save some images and use them as validation set.</p>
+<p>The idea here is to "test" CartoonGAN periodically so that we can see how the model perform over time:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/images/cartoongan/training_progress.jpg">
+<source src="/images/cartoongan/training_progress.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        CartoonGAN become better and better transforming validation set into anime
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can see that CartoonGAN learn to transform real world images into cartoon-like images with clear edges and smooth color shading.</p>
+<p>Training a GAN is far more harder than training a <a href="https://www.tensorflow.org/tutorials/keras/basic_classification">simple classifier</a>. But in <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">our github repo</a>, we make an effort to make our code clear and easy to understand, hoping it will help more people to get started.</p>
+<p>Indeed, you can get a better understanding of our code if you know some basics. In the next section, I will list up some good learning resources for reference.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Recommended-learning-resources">Recommended learning resources<a class="anchor-link" href="#Recommended-learning-resources">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recently, deep learning-based generative models are very popular and GAN is one of the most exciting research areas. The CartoonGAN we saw in this post is just a simple application in the big <a href="https://github.com/hindupuravinash/the-gan-zoo">GAN zoo</a>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="/images/cartoongan/tf-dcgan.png"/>
+</center>
+<center>
+                        In a typical GAN setting, there are two independent neural networks, called generator and discriminator, competing with each other
+                        （<a href="https://www.tensorflow.org/alpha/tutorials/generative/dcgan" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For those who want to learn more about GAN, I recommend following resources:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=yFBFl1cLYx8&amp;index=1&amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI">MIT 6.S191 Deep Generative Models</a></li>
+<li><a href="https://poloclub.github.io/ganlab/">GAN Lab let you train GANs on browser</a></li>
+<li><a href="https://cs.stanford.edu/people/karpathy/gan/">Andrej Karpathy's online GAN demo</a></li>
+<li><a href="https://www.tensorflow.org/alpha/tutorials/generative/dcgan">TensorFlow offical tutorial teach you how to generate MNIST using DCGAN</a></li>
+<li><a href="https://medium.com/syncedreview/reproducing-japanese-anime-styles-with-cartoongan-ai-cf30d583736e">Synced: Reproducing Japanese Anime Styles With CartoonGAN AI</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="/images/cartoongan/mit-gan.png"/>
+</center>
+<center>
+                        MIT 6.S191 Deep Generative Models is a good place to start learning GAN concepts
+                        （<a href="https://www.youtube.com/watch?v=yFBFl1cLYx8&amp;index=1&amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The researchs on generative models and GAN are evolving rapidly, but I believe you will be able to implement your own GAN after studying these learning resources.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Final-words">Final words<a class="anchor-link" href="#Final-words">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        AI technology and applications like CartoonGAN should be more accessable for everyone, not only researchers or machine learning practitioners. 
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is my first GAN-related project using <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0</a> and <a href="https://www.tensorflow.org/js">TensorFlow.js</a> and I learnt a lot from it. Many thanks to the authors of CartoonGAN, TensorFlow team and my friend <a href="https://github.com/mnicnc404">mnicnc404</a>.</p>
+<p>Hope this project and blog post can encourge people to explore more about GAN and generative models, create more interesting AI applications in the future.</p>
+<p>Oh! Also don't forget to share what anime you generate with me! You can tag me on <a href="https://twitter.com/leemengtw">Twitter</a> or <a href="https://www.facebook.com/LeeMengTaiwan">Facebook</a>.</p>
+<p>Happy cartoonizing! :D</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<script src="/tfjs-apps/cartoongan/dist/tf.js"></script>
+<script src="/tfjs-apps/cartoongan/cartoongan.js"></script>
 </div>
 </div>
 </div>
@@ -373,9 +847,9 @@
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
-                        <a href="https://leemeng.tw/tag/gan.html" rel="tag">GAN</a>
-                        <a href="https://leemeng.tw/tag/tensorflow.html" rel="tag">TensorFlow</a>
-                        <a href="https://leemeng.tw/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
+                        <a href="/tag/gan.html" rel="tag">GAN</a>
+                        <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
+                        <a href="/tag/tensorflowjs.html" rel="tag">TensorFlow.js</a>
                     </span>
 
                 </p>
@@ -503,25 +977,6 @@
 
     </article>
 
-<div class="comments-wrap">
-    <div id="comments" class="row">
-        <div class="col-full">
-            <div id="disqus_thread"></div>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-var disqus_shortname = 'leemengtaiwan';
-var disqus_title = 'Generate Anime using CartoonGAN and TensorFlow 2.0';
-
-(function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
     <!-- footer
@@ -531,7 +986,7 @@ var disqus_title = 'Generate Anime using CartoonGAN and TensorFlow 2.0';
             <div class="col-full">
 
                 <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                    <a class="footer-site-logo" href="#0"><img src="/theme/images/logo.png" alt="Homepage"></a>
                 </div>
 
                 <ul class="footer-social">
@@ -576,17 +1031,17 @@ var disqus_title = 'Generate Anime using CartoonGAN and TensorFlow 2.0';
 
         <!-- Javascript
     ================================================== -->
-    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
-    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
-    <script src="https://leemeng.tw/theme/js/main.js"></script>
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+    <script src="/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="/theme/js/plugins.js"></script>
+    <script src="/theme/js/main.js"></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
 
     <!--https://instant.page/-->
     <script src="//instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
 
 
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+    <script type='text/javascript' src='/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
 
     <!--show and hide left navigation by scrolling-->
     <script>
