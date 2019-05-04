@@ -344,9 +344,9 @@
 <p>結果出來了嗎？如果上傳圖片後一直停在：</p>
 <ul>
 <li><code>Loading Models</code>：代表仍在下載模型</li>
-<li><code>Cartoonizing images</code>：代表設備（如手機）運算資源的不足</li>
+<li><code>Cartoonizing images</code>：代表設備運算資源的不足</li>
 </ul>
-<p>先別走開！你可以使用下一節介紹的方法來生成動漫，保證有效。</p>
+<p>也先別走開！你可以使用下一節介紹的方法來生成動漫，保證有效。</p>
 </div>
 </div>
 </div>
@@ -590,10 +590,11 @@ function showDivs(n) {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br/></p>
 <p>從漫威電影到可愛貓咪，從自然風景到人氣偶像，任何你想得到的圖片都可以拿來進行轉換。一旦訓練完成，我們就能使用 CartoonGAN 在彈指之間將各式各樣的圖片跟動漫做連結。</p>
-<p>在<a href="https://github.com/mnicnc404/CartoonGan-tensorflow">我們的 Github 專案</a>裡頭，你甚至只需要執行一行代碼就能取得上面展示的結果：</p>
-<div class="highlight"><pre><span></span>python cartoonize.py --styles shinkai hayao hosoda
+<p>在<a href="https://github.com/mnicnc404/CartoonGan-tensorflow">我們的 Github 專案</a>裡頭，你甚至只需要執行一個指令就能取得上面展示的結果：</p>
+<div class="highlight"><pre><span></span>python cartoonize.py <span class="se">\</span>
+    --styles shinkai hayao hosoda
 </pre></div>
-<p>當然，未來類似應用的效果會更加卓越。誰都能用這些 apps 來創造自己的動漫，而動漫作家可以據此更快速地畫出草稿、測試新點子。</p>
+<p>當然，接下來數年類似應用的效果會更加卓越。未來誰都能用這些 apps 來創造自己的動漫，而動漫作家可以據此更快速地畫出草稿、測試新點子。</p>
 </div>
 </div>
 </div>
@@ -629,7 +630,7 @@ function showDivs(n) {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你可能發現本文非常注重在 CartoonGAN 的實際應用而非演算法細節。這是因為：</p>
 <ul>
-<li>比起技術細節，大多數人應該對如何生成有趣的動漫比較感興趣</li>
+<li>比起<a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">論文細節</a>，多數人應該都對如何生成有趣的動漫比較感興趣</li>
 <li>網上已有不少 <a href="#推薦的-GAN-學習資源">CartoonGAN 的介紹文章以及 GAN 的學習資源</a></li>
 </ul>
 </div>
@@ -661,10 +662,10 @@ function showDivs(n) {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因為所有邏輯皆以 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0 Alpha</a> 實作，非常適合想要跟上最新 TensorFlow 發展的讀者學習：</p>
 <ul>
-<li>使用 <a href="https://www.tensorflow.org/alpha/guide/keras/overview">tf.keras</a> 實作自定義的 Layers 以及 GAN</li>
+<li>使用 <a href="https://www.tensorflow.org/alpha/guide/keras/overview">tf.keras</a> 實作 Layers 以及 GAN</li>
 <li>使用 <a href="https://www.tensorflow.org/alpha/guide/data_performance">tf.data</a> 讀取大量圖片並進行前處理</li>
-<li>自定義訓練步驟並使用 <a href="https://youtu.be/Up9CvRLIIIw?list=PLQY2H8rRoyvzoUYI26kHmKSJBedn3SQuB">tf.function</a> 加快處理速度</li>
-<li>使用 <a href="https://www.tensorflow.org/tensorboard/r2/get_started#using_tensorboard_with_other_methods">TensorBoard</a> 來觀測模型表現</li>
+<li>寫訓練邏輯並使用 <a href="https://youtu.be/Up9CvRLIIIw?list=PLQY2H8rRoyvzoUYI26kHmKSJBedn3SQuB">tf.function</a> 加快處理速度</li>
+<li>使用 <a href="https://www.tensorflow.org/tensorboard/r2/get_started#using_tensorboard_with_other_methods">TensorBoard</a> 來即時觀測模型表現</li>
 </ul>
 </div>
 </div>
@@ -672,7 +673,7 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>訓練 GAN 本身並不是一件非常容易的事情。你會需要時時觀察模型的表現以評估如何調整超參數。因此我們也整合了 <a href="https://www.tensorflow.org/tensorboard/r2/get_started#using_tensorboard_with_other_methods">TensorBoard</a>，讓你可以在執行<a href="https://github.com/mnicnc404/CartoonGan-tensorflow/blob/master/train.py">訓練腳本</a>後即時地監控模型表現：</p>
+<p>訓練 GAN 本身並不是一件非常容易的事情。你會需要時時觀察模型的表現以評估如何調整超參數。因此我們的<a href="https://github.com/mnicnc404/CartoonGan-tensorflow/blob/master/train.py">訓練腳本</a>也整合了 <a href="https://www.tensorflow.org/tensorboard/r2/get_started#using_tensorboard_with_other_methods">TensorBoard</a>，讓你可以在執行後即時地監控模型表現：</p>
 </div>
 </div>
 </div>
@@ -693,7 +694,7 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>除了指標與損失函數以外，在訓練 GAN 的過程中觀察模型生成的圖片也是一件非常重要的事情。因此我們也將訓練過程中 CartoonGAN 生成的圖片寫入 TensorBoard 裡方便你觀測比較：</p>
+<p>除了指標與損失函數以外，在訓練 GAN 的過程中觀察模型生成的圖片也是一件非常重要的事情。因此我們也將 CartoonGAN 生成的圖片寫入 TensorBoard 以方便你觀測比較：</p>
 </div>
 </div>
 </div>
@@ -714,9 +715,9 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>雖然我們的腳本紀錄專屬於 CartoonGAN 的指標以及生成圖片，你完全可以運用類似的方法來監測任何想要訓練的模型。</p>
-<p>最後，為了方便了解 CartoonGAN 在訓練過程的表現，我們可以事先存一組真實世界的圖片，並固定讓模型在訓練一段時間後都試著將其轉換成動漫。</p>
-<p>生成的圖片可以用來評估模型在當下的表現。將這些圖片依時間排序後可以得到這樣的結果：</p>
+<p>雖然我們只紀錄專屬於 CartoonGAN 的指標以及生成圖片，你完全可以運用類似的方法來監測任何想要訓練的模型。</p>
+<p>最後，為了方便了解 CartoonGAN 在訓練過程的表現，我們可以事先存一組真實世界的圖片當作驗證集（Validation Set），並固定讓模型在訓練一段時間後都試著將其轉換成動漫。</p>
+<p>我們可以用驗證集的轉換結果來評估模型在當下的表現。將這些圖片依時間排序後可以得到這樣的結果：</p>
 </div>
 </div>
 </div>
@@ -728,7 +729,7 @@ function showDivs(n) {
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <center>
-                        視覺化 CartoonGAN 如何學習將真實世界圖片轉換為動漫
+                        CartoonGAN 學習將真實世界圖片轉換為動漫的過程
                         <br/>
 <br/>
 </center>
@@ -738,7 +739,7 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>你可以看到模型逐漸學會如何將原始圖片轉換成簡單的動漫（線條清晰、顏色平滑）。</p>
+<p>你可以看到模型逐漸學會如何將原始圖片轉換成簡單的動漫：線條變得清晰、顏色變得平滑。</p>
 <p>跟訓練一個<a href="https://www.tensorflow.org/tutorials/keras/basic_classification">簡單分類器</a>比起來，訓練一個 GAN 的難度可說是完全不同級別。但我們盡量讓<a href="https://github.com/mnicnc404/CartoonGan-tensorflow"> Github 專案</a>裡頭的程式碼邏輯簡單易懂，希望能讓更多人入門 TensorFlow 2.0 以及 GAN 的實作。</p>
 <p>當然，具備理論基礎能讓你更容易理解 TensorFlow 2 的程式碼。下節將列出推薦的學習資源供你參考。</p>
 </div>
@@ -809,7 +810,7 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>生成模型及 GAN 的研究領域博大精深，但我相信仔細學習過以上資源後，你將具備開發一個 GAN 所需的基礎知識。</p>
+<p>生成模型及 GAN 的研究領域博大精深，但我相信仔細學習過以上資源後，你將具備實作一個 GAN 所需的基礎知識。</p>
 <p>更多學習資源則請參閱<a href="https://leemeng.tw/deep-learning-resources.html">由淺入深的深度學習資源整理</a>。另外如果你有其他推薦的學習資源，還請不吝留言與我及其他讀者分享，謝謝！</p>
 </div>
 </div>
@@ -837,9 +838,16 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>以 CartoonGAN 為例，本文先專注在<strong>如何讓每個人都能實際體驗並應用此技術</strong>，接著才簡單介紹讀者可以如何使用<a href="https://github.com/mnicnc404/CartoonGan-tensorflow">我們的 Github 專案</a>來訓練自己的模型，並附上一些有用的學習資源供讀者參考。</p>
-<p>第一次用 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0</a> 以及 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 實作 GAN，感謝 CartoonGAN 原作者的研究以及夥伴 <a href="https://github.com/mnicnc404">mnicnc404</a> 強大的實作支援以及許多寶貴見解，獲益良多。</p>
-<p>希望透過此文能讓更多人進一步探索 GAN 以及生成模型的相關知識，嘗試更多新的可能性，做出更多有趣的 AI 應用。也別忘了跟我分享你生成的動漫！你可以在 <a href="https://twitter.com/leemengtw">Twitter</a> 或是 <a href="https://www.facebook.com/LeeMengTaiwan">Facebook</a> 上標註我：）</p>
+<p>以 CartoonGAN 為例，本文先專注在<strong>如何讓每個人都能實際體驗並應用此技術</strong>，接著才簡單介紹讀者可以如何使用<a href="https://github.com/mnicnc404/CartoonGan-tensorflow">我們的 Github 專案</a>來訓練自己的模型。我也附上了一些實用的學習資源供你參考。</p>
+<p>這是我第一次用 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0</a> 以及 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 實作 GAN，感謝 CartoonGAN 原作者的研究、 TensorFlow 團隊的努力以及夥伴 <a href="https://github.com/mnicnc404">mnicnc404</a> 強大的實作支援以及許多寶貴見解，獲益良多。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>希望透過此文能讓更多人進一步探索 GAN 以及生成模型的相關知識，嘗試更多新的可能性，做出更多有趣的 AI 應用。</p>
+<p>也別忘了跟我分享你生成的動漫！你可以在 <a href="https://twitter.com/leemengtw">Twitter</a> 或是 <a href="https://www.facebook.com/LeeMengTaiwan">Facebook</a> 上標註我：）</p>
 </div>
 </div>
 </div>
