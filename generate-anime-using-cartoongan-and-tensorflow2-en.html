@@ -135,7 +135,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="Generate Anime using CartoonGAN and TensorFlow 2.0">Generate Anime using CartoonGAN and TensorFlow 2.0</a><ul><li><a class="toc-href" href="#Try-CartoonGAN-yourself" title="Try CartoonGAN yourself">Try CartoonGAN yourself</a></li><li><a class="toc-href" href="#Generate-anime-using-TensorFlow-2" title="Generate anime using TensorFlow 2">Generate anime using TensorFlow 2</a></li><li><a class="toc-href" href="#Gallery:-some-anime-we-generated" title="Gallery: some anime we generated">Gallery: some anime we generated</a></li><li><a class="toc-href" href="#Train-your-own-CartoonGAN" title="Train your own CartoonGAN">Train your own CartoonGAN</a></li><li><a class="toc-href" href="#Recommended-learning-resources" title="Recommended learning resources">Recommended learning resources</a></li><li><a class="toc-href" href="#Final-words" title="Final words">Final words</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="Generate Anime using CartoonGAN and TensorFlow 2.0">Generate Anime using CartoonGAN and TensorFlow 2.0</a><ul><li><a class="toc-href" href="#Try-CartoonGAN-yourself" title="Try CartoonGAN yourself">Try CartoonGAN yourself</a></li><li><a class="toc-href" href="#Generate-anime-using-TensorFlow-2" title="Generate anime using TensorFlow 2">Generate anime using TensorFlow 2</a></li><li><a class="toc-href" href="#Gallery:-some-anime-we-generated" title="Gallery: some anime we generated">Gallery: some anime we generated</a></li><li><a class="toc-href" href="#Train-your-own-CartoonGAN" title="Train your own CartoonGAN">Train your own CartoonGAN</a></li><li><a class="toc-href" href="#Recommended-learning-resources" title="Recommended learning resources">Recommended learning resources</a></li><li><a class="toc-href" href="#To-sum-up" title="To sum up">To sum up</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -236,7 +236,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
-                        Which image will you choose to transform if you can turn any images into anime using AI?
+                        What images will you choose to transform if you can turn any of them into anime using AI?
                         <br/>
 <br/>
 </p>
@@ -296,7 +296,7 @@
 <li>download the pretrained models</li>
 <li>cartoonize uploaded images</li>
 </ul>
-<p>To get the best experience, it is highly recommended that you:</p>
+<p>To get the best performance, it is highly recommended that you:</p>
 <ul>
 <li>try the app with desktops/laptops rather than mobile phones (to speed up transformation)</li>
 <li>try the app when network speed is fast（to minimalize loading time）</li>
@@ -403,7 +403,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://colab.research.google.com/">Google Colaboratory</a> is a cloud <a href="https://jupyter.org/">Jupyter notebook</a> environment allowing anyone to start their machine learning projects with free GPU enabled.</p>
+<p><a href="https://colab.research.google.com/">Google Colaboratory</a> is a cloud <a href="https://jupyter.org/">Jupyter notebook</a> environment allowing anyone to start their machine learning projects with free GPU available.</p>
 <p>In <a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX">this notebook</a>, everything you need is set up for you:</p>
 <ol>
 <li>Build TensorFlow 2.0 environment</li>
@@ -425,8 +425,8 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Is better to share one's happiness than to enjoy it alone. In this section, we simply share some anime generated with CartoonGAN.</p>
-<p>Every image below is divided into 4 parts, where:</p>
+<p>Is better to share one's happiness than to enjoy it alone. In this section, we simply share some anime generated with CartoonGAN by ourselves.</p>
+<p>For easy comparison, every image below is divided into 4 parts where:</p>
 <ul>
 <li>top-left: original real world image</li>
 <li>top-right: <a href="https://en.wikipedia.org/wiki/Makoto_Shinkai">Shinkai Makoto</a> style</li>
@@ -644,7 +644,7 @@ function showDivs(n) {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You may noticed that we've put a lot of focus on <strong>actual application</strong> rather than the <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">algorithmic details</a> for CartoonGAN. And it&rsquo;s just because:</p>
 <ul>
-<li>I believe most of the readers only interested in how to <strong>use</strong> CartoonGAN rather than how to <strong>train</strong> a model themselves</li>
+<li>I believe most of the readers only interested in how to <strong>use</strong> CartoonGAN as a service rather than how to <strong>train</strong> a model themselves</li>
 <li>There are already lots of <a href="#Recommended-learning-resources">great learning resources</a> on the web</li>
 </ul>
 </div>
@@ -687,7 +687,7 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As some of you already knew, it is not trivial to train a GAN. You must keep monitoring your model's performance to decide how to adjust your hyper-parameters accordingly.</p>
+<p>As some of you already knew, it is not trivial to train a GAN. You must keep monitoring your model's performance to decide how to adjust your hyper-parameters or even model architecture accordingly.</p>
 <p>In our <a href="https://github.com/mnicnc404/CartoonGan-tensorflow/blob/master/train.py">training script</a>, TensorBoard is integrated perfectly so you can monitor model's performance easily:</p>
 </div>
 </div>
@@ -709,8 +709,8 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In addition to metrics and loss functions, it is good practice to keep an eye on the images generated by GAN as well.</p>
-<p>Using our script, checking generated images on TensorBoard is a no-brainer:</p>
+<p>In addition to metrics and loss functions, it is good practice to keep an eye on the images generated by GAN during training as well.</p>
+<p>Using our script, monitoring generated images on TensorBoard is a no-brainer:</p>
 </div>
 </div>
 </div>
@@ -721,7 +721,7 @@ function showDivs(n) {
 <img src="https://leemeng.tw/images/cartoongan/tensorboard-image-demo.jpg"/>
 </center>
 <center>
-                        the sooner you get feedback, the sooner you can improve your models
+                        the sooner you get feedback, the sooner you can get new ideas and improve your models
                         <br/>
 <br/>
 </center>
@@ -738,8 +738,8 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Finally, in order to get a sense of how CartoonGAN is doing during training phase, we can save some images and use them as validation set.</p>
-<p>The idea here is to "test" CartoonGAN using same images periodically so that we can easily see how it improve over time:</p>
+<p>Finally, in order to get a sense of how CartoonGAN is doing during training phase, we can save some images and use them as a validation set.</p>
+<p>The idea here is to "test" CartoonGAN using same images periodically so that we can observe how it improve over time:</p>
 </div>
 </div>
 </div>
@@ -761,7 +761,7 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You can see that CartoonGAN learn to transform real world images into cartoon-like images with clear edges and smooth color shading.</p>
+<p>Although the training is not yet finished, you can still tell that CartoonGAN somehow learn to transform real world images into cartoon-like images with clear edges and smooth color shading.</p>
 <p>Training a GAN like CartoonGAN is far more harder than training a <a href="https://www.tensorflow.org/tutorials/keras/basic_classification">simple classifier</a>. But in <a href="https://github.com/mnicnc404/CartoonGan-tensorflow">our github repo</a>, we try our best to make the TensorFlow code clear and easy to understand, hoping it will help more people to get started.</p>
 <p>Needless to say, you can get a better understanding of our code if you know some basics. In the next section, I will list up some good learning resources for your reference.</p>
 </div>
@@ -777,7 +777,7 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Recently, deep learning-based generative models are very popular and GAN is one of the most exciting research areas. The CartoonGAN we saw in this post is just a simple application in the big <a href="https://github.com/hindupuravinash/the-gan-zoo">GAN zoo</a>.</p>
+<p>Recently, deep learning-based generative models are very popular and GAN is one of the most exciting research areas. The CartoonGAN we saw in this post is just a simple application in the ever-growing <a href="https://github.com/hindupuravinash/the-gan-zoo">GAN zoo</a>.</p>
 </div>
 </div>
 </div>
@@ -789,8 +789,6 @@ function showDivs(n) {
 </center>
 <center>
                         In a typical GAN setting, there are two independent neural networks, called generator and discriminator, competing with each other
-                        （<a href="https://www.tensorflow.org/alpha/tutorials/generative/dcgan" target="_blank">圖片來源</a>）
-                        
                         <br/>
 <br/>
 </center>
@@ -829,14 +827,14 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The researchs on generative models and GAN are evolving rapidly, but I believe you will be able to implement your own GANs after studying these learning resources.</p>
+<p>The researchs on generative models and GAN are evolving rapidly, but I believe you will be able to implement some simple GANs and understand code written by others after studying these learning resources.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Final-words">Final words<a class="anchor-link" href="#Final-words">&para;</a></h2>
+<h2 id="To-sum-up">To sum up<a class="anchor-link" href="#To-sum-up">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -845,7 +843,7 @@ function showDivs(n) {
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
-                        AI technology and applications like CartoonGAN should be more accessable for everyone, not only researchers or machine learning practitioners. 
+                        AI technology and applications like CartoonGAN should be more accessable to everyone, not only researchers or machine learning practitioners. 
                         <br/>
 <br/>
 </p>
@@ -856,10 +854,9 @@ function showDivs(n) {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>With this in mind, I built this project using <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0</a> and hope it can encourge some of you to explore more about GAN and generative models, create more interesting AI applications in the future.</p>
+<p>With this in mind, I built the project to let you create your own anime in no time and hope it can encourge some of you to explore more about GAN and generative models, create more interesting AI applications in the future.</p>
 <p>Many thanks to the authors of CartoonGAN, TensorFlow/TensorFlow.js teams and my friend <a href="https://github.com/mnicnc404">mnicnc404</a>.</p>
-<p>Oh! Also don't forget to share what anime you generate! Tag me on <a href="https://twitter.com/leemengtw">Twitter</a> or <a href="https://www.facebook.com/LeeMengTaiwan">Facebook</a>.</p>
-<p>Let the world be filled with anime! :D</p>
+<p>Oh! Also don't forget to share what anime you generate! You can find me on <a href="https://twitter.com/leemengtw">Twitter</a> or <a href="https://www.facebook.com/LeeMengTaiwan">Facebook</a>. Let the world be filled with anime! :D</p>
 </div>
 </div>
 </div>

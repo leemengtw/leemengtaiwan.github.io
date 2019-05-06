@@ -15,7 +15,7 @@
     <!--- article-specific meta data
     ================================================== -->
     <meta name="description" content="現居東京的資料科學家 L 在數據世界裡頭的所想、所學以及所感。這個網站紀錄了所有我的個人資訊，包含工作經歷、做過的專案以及與資料科學相關的文章。透過分享自己的學習心得以及業界經驗，我希望能讓更多人接觸到資料科學的奧秘。此部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。" />
-    <meta name="keywords" content="部落格, 資料科學, 數據科學, Python, R, 機器學習, 資料分析, 深度學習, 資料視覺化, 軟體工程, 資料工程, 雲端運算, 台灣, blog, data science, machine learning, deep learning, data analysis, data visualization, data engineering, taiwan" />
+    <meta name="keywords" content="部落格, 資料科學, 數據科學, Python, R, 機器學習, 資料分析, 深度學習, 資料視覺化, 軟體工程, 資料工程, 雲端運算, 台灣, blog, data science, machine learning, deep learning, data analysis, data visualization, data engineering, taiwan, tensorflow, tensorflow.js, keras" />
 
 
     <!--- Open Graph Object metas
@@ -457,7 +457,37 @@
                     </a>
 
                     <div class="item-folio__caption">
-                        <p>這是一個利用 TensorFlow 以及 Flask 來分辨貓咪以及狗狗的圖片辨識應用，使用 Docker 封裝並部署在 Heroku 上。你可以閱讀 <a href="https://demo.leemeng.tw/" target="_blank">AI 如何找出你的喵：直觀理解卷積神經網路</a> 來了解細解並實際使用該神經網路。</p>
+                        <p>這是一個利用 TensorFlow 以及 Flask 來分辨貓咪以及狗狗的圖片辨識應用，使用 Docker 封裝並部署在 Heroku 上。你可以閱讀 <a href="https://demo.leemeng.tw/" target="_blank">AI 如何找出你的喵：直觀理解卷積神經網路</a> 來了解細節並實際使用該神經網路。</p>
+                    </div>
+
+                </div> <!-- end item-folio -->
+            </div> <!-- end masonry__brick -->
+            <div class="masonry__brick">
+                <div class="item-folio">
+
+                    <div class="item-folio__thumb">
+                        <div href="theme/images/portfolio/gallery/g-cartoongan.jpg" class="thumb-link" title="用 CartoonGAN 畫日本動漫" data-size="1050x700">
+                            <img src="theme/images/portfolio/cartoongan.jpg"
+                                 srcset="theme/images/portfolio/cartoongan.jpg 1x, theme/images/portfolio/cartoongan@2x.jpg 2x" alt="">
+                            <span class="shadow-overlay" style="cursor: pointer"></span>
+                        </div>
+                    </div>
+
+                    <div class="item-folio__text">
+                        <h3 class="item-folio__title">
+                            用 CartoonGAN 畫日本動漫
+                        </h3>
+                        <p class="item-folio__cat">
+                            讓任何人都可以使用對抗生成網路 GAN 來生成動漫的一個 TensorFlow 2 專案
+                        </p>
+                    </div>
+
+                    <a href="https://leemeng.tw/generate-anime-using-cartoongan-and-tensorflow2.html" target="_blank" class="item-folio__project-link" title="專案介紹連結">
+                        <i class="im im-link"></i>
+                    </a>
+
+                    <div class="item-folio__caption">
+                        <p>閱讀<a href="https://leemeng.tw/generate-anime-using-cartoongan-and-tensorflow2.html">用 CartoonGAN 及 TensorFlow 2 生成新海誠與宮崎駿動畫</a>或前往 <a href="https://github.com/mnicnc404/CartoonGan-tensorflow" target="_blank">Github</a> 了解細節。</p>
                     </div>
 
                 </div> <!-- end item-folio -->
@@ -526,36 +556,6 @@
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <div href="theme/images/portfolio/gallery/g-woodcraft.jpg" class="thumb-link" title="" data-size="1050x700">
-                            <img src="theme/images/portfolio/woodcraft.jpg"
-                                 srcset="theme/images/portfolio/woodcraft.jpg 1x, theme/images/portfolio/woodcraft@2x.jpg 2x" alt="">
-                            <span class="shadow-overlay" style="cursor: pointer"></span>
-                        </div>
-                    </div>
-
-                    <div class="item-folio__text">
-                        <h3 class="item-folio__title">
-                            Coming Soon
-                        </h3>
-                        <p class="item-folio__cat">
-                            
-                        </p>
-                    </div>
-
-                    <a href="" target="_blank" class="item-folio__project-link" title="Github Repo 連結">
-                        <i class="im im-link"></i>
-                    </a>
-
-                    <div class="item-folio__caption">
-                        <p></p>
-                    </div>
-
-                </div> <!-- end item-folio -->
-            </div> <!-- end masonry__brick -->
-            <div class="masonry__brick">
-                <div class="item-folio">
-
-                    <div class="item-folio__thumb">
                         <div href="theme/images/portfolio/gallery/g-text-generation.jpg" class="thumb-link" title="天龍八部小說生成器" data-size="1050x700">
                             <img src="theme/images/portfolio/text-generation.jpg"
                                  srcset="theme/images/portfolio/text-generation.jpg 1x, theme/images/portfolio/text-generation@2x.jpg 2x" alt="">
@@ -568,7 +568,7 @@
                             天龍八部小說生成器
                         </h3>
                         <p class="item-folio__cat">
-                            利用 TensorFlow 2.0 及 TensorFlow.js 進行即時的文本生成
+                            利用 TensorFlow 2.0 及 TensorFlow.js 生成似真似假的武俠小說
                         </p>
                     </div>
 
@@ -698,7 +698,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/simple-image-recognition-using-notmnist-dataset.html">2017-09-19 (Tue)</a>
                         <br>
-                        1,196 views
+                        1,198 views
                     </div>
 
                     <h2 class="h01">
@@ -773,7 +773,7 @@
         </div>
         <div class="col-block stats__col">
             <div class="stats__count">
-                53135
+                53258
             </div>
             <h4>Curious Visitors</h4>
         </div>
@@ -782,13 +782,13 @@
                 <a href="#subscribe"><i class="im im-arrow-up" aria-hidden="true"></i></a>
             </div>
             <div class="stats__count">
-                322
+                325
             </div>
             <h4>Passion Subscribers</h4>
         </div>
         <div class="col-block stats__col ">
             <div class="stats__count">
-                121765
+                122106
             </div>
             <h4>Page Views</h4>
         </div>
