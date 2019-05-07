@@ -16,7 +16,7 @@
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;blockquote&gt;
 &lt;p&gt;
-                        What images will you choose to transform if you can turn any of them into anime using AI?
+                        What images would you choose to transform if you could turn any of them into anime using AI?
                         &lt;br/&gt;
 &lt;br/&gt;
 &lt;/p&gt;
@@ -28,8 +28,8 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;In this post, I will briefly introduce a &lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow"&gt;CartoonGAN implemented in TensorFlow 2.0 Alpha&lt;/a&gt; by my friend &lt;a href="https://github.com/mnicnc404"&gt;mnicnc404&lt;/a&gt; and me.&lt;/p&gt;
-&lt;p&gt;We will also demo a &lt;a href="https://www.tensorflow.org/js"&gt;TensorFlow.js&lt;/a&gt; app which allow you to generate anime on the browser directly.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf"&gt;CartoonGAN (original paper)&lt;/a&gt; was published in 2018 &lt;a href="http://cvpr2019.thecvf.com/"&gt;CVPR&lt;/a&gt; and is a &lt;a href="https://youtu.be/yFBFl1cLYx8?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;amp;t=1879"&gt;Generative Adversarial Network (GAN)&lt;/a&gt; which attempt to transform real world images into cartoon-style images.&lt;/p&gt;
+&lt;p&gt;I will also demo a &lt;a href="https://www.tensorflow.org/js"&gt;TensorFlow.js&lt;/a&gt; app which allows you to generate anime on your browser directly.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf"&gt;CartoonGAN (original paper)&lt;/a&gt; was published in 2018 &lt;a href="http://cvpr2019.thecvf.com/"&gt;CVPR&lt;/a&gt; and is a &lt;a href="https://youtu.be/yFBFl1cLYx8?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;amp;t=1879"&gt;Generative Adversarial Network (GAN)&lt;/a&gt; which attempts to transform real world images into cartoon-style images.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -51,9 +51,9 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The ideas demonstrated in the &lt;a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf"&gt;paper&lt;/a&gt; are very interesting and the authors also show good results using two of my favorite Japanese animators' styles: &lt;a href="https://en.wikipedia.org/wiki/Makoto_Shinkai"&gt;Shinkai Makoto&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/Hayao_Miyazaki"&gt;Miyazaki Hayao&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Therefore, I decided to build a &lt;a href="https://www.tensorflow.org/js"&gt;TensorFlow.js&lt;/a&gt; app which allow everyone to try CartoonGAN with ease.&lt;/p&gt;
-&lt;p&gt;Choose your favorite anime style and upload one image, just that simple.&lt;/p&gt;
+&lt;p&gt;The ideas demonstrated in the &lt;a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf"&gt;paper&lt;/a&gt; are very interesting and the authors also show good results using two of my favorite Japanese animator styles: &lt;a href="https://en.wikipedia.org/wiki/Makoto_Shinkai"&gt;Shinkai Makoto&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/Hayao_Miyazaki"&gt;Miyazaki Hayao&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Therefore, I decided to build a &lt;a href="https://www.tensorflow.org/js"&gt;TensorFlow.js&lt;/a&gt; app to allow anyone to try CartoonGAN with ease.&lt;/p&gt;
+&lt;p&gt;Choose your favorite anime style and upload one image, it's just that simple.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -71,14 +71,14 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Under the hood, TensorFlow.js run in your browser and it will:&lt;/p&gt;
+&lt;p&gt;Under the hood, TensorFlow.js runs in your browser whilst:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;download the pretrained models&lt;/li&gt;
-&lt;li&gt;cartoonize uploaded images&lt;/li&gt;
+&lt;li&gt;downloading the pretrained models&lt;/li&gt;
+&lt;li&gt;cartoonizing uploaded images&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;To get the best performance, it is highly recommended that you:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;try the app with desktops/laptops rather than mobile phones (to speed up transformation)&lt;/li&gt;
+&lt;li&gt;try the app on a desktop/laptop rather than mobile devices (to speed up transformation)&lt;/li&gt;
 &lt;li&gt;try the app when network speed is fast（to minimalize loading time）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -141,10 +141,10 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;How does your &lt;a href="https://en.wikipedia.org/wiki/Anime"&gt;anime&lt;/a&gt; look like?&lt;/p&gt;
+&lt;p&gt;How does your &lt;a href="https://en.wikipedia.org/wiki/Anime"&gt;anime&lt;/a&gt; look?&lt;/p&gt;
 &lt;p&gt;If the app seems to be stuck:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Loading Models&lt;/code&gt;: simply mean it's still downloading the model&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Loading Models&lt;/code&gt;: simply means it's still downloading the model&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Cartoonizing images&lt;/code&gt;: it might indicate there is no sufficient computation power on your device&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;You can still generate anime in the next section using &lt;a href="https://www.tensorflow.org/"&gt;TensorFlow&lt;/a&gt; if tfjs doesn't work for you.&lt;/p&gt;
@@ -191,7 +191,7 @@
 &lt;li&gt;Download arbitrary images on the web&lt;/li&gt;
 &lt;li&gt;Transform the images using CartoonGAN&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;You got the idea. All you have to do is open &lt;a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX"&gt;the notebook&lt;/a&gt; and generate your anime in a breeze.&lt;/p&gt;
+&lt;p&gt;You get the idea. All you have to do is open &lt;a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX"&gt;the notebook&lt;/a&gt; and generate your anime. It's that simple.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -390,12 +390,12 @@ function showDivs(n) {
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;Marvel movies, cute cats, scenery and popular idols, the sky is the limit. When trained, we can use CartoonGAN to combine everything with anime.&lt;/p&gt;
+&lt;p&gt;Marvel movies, cute cats, scenery or pop idols, the sky is the limit. When trained, we can use CartoonGAN to combine everything with anime.&lt;/p&gt;
 &lt;p&gt;Using Python script in our &lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow"&gt;github repo&lt;/a&gt;, you can generate these results with just one command:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python cartoonize.py &lt;span class="se"&gt;\&lt;/span&gt;
     --styles shinkai hayao hosoda
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;You can imagine apps with similar features will become much more powerful in the near future. Everyone will be able to generate their own anime using various styles, while animators can test their new ideas and draw drafts way more faster than ever before.&lt;/p&gt;
+&lt;p&gt;You can imagine apps with similar features will become much more powerful in the near future. Everyone will be able to generate their own anime using various styles, while animators will be able to test their new ideas and draw drafts much more faster than ever before.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -422,10 +422,10 @@ function showDivs(n) {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;You may noticed that we've put a lot of focus on &lt;strong&gt;actual application&lt;/strong&gt; rather than the &lt;a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf"&gt;algorithmic details&lt;/a&gt; for CartoonGAN. And it&amp;rsquo;s just because:&lt;/p&gt;
+&lt;p&gt;You may noticed that we've put a lot of focus on &lt;strong&gt;actual application&lt;/strong&gt; rather than the &lt;a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf"&gt;algorithmic details&lt;/a&gt; for CartoonGAN. That's because:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;I believe most of the readers only interested in how to &lt;strong&gt;use&lt;/strong&gt; CartoonGAN as a service rather than how to &lt;strong&gt;train&lt;/strong&gt; a model themselves&lt;/li&gt;
-&lt;li&gt;There are already lots of &lt;a href="#Recommended-learning-resources"&gt;great learning resources&lt;/a&gt; on the web&lt;/li&gt;
+&lt;li&gt;I suspect most readers will be more interested in how to &lt;strong&gt;use&lt;/strong&gt; CartoonGAN as a service rather than how to &lt;strong&gt;train&lt;/strong&gt; a model themselves&lt;/li&gt;
+&lt;li&gt;There are already lots of &lt;a href="#Recommended-learning-resources"&gt;great learning resources&lt;/a&gt; on how to train your GANs on the web&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -433,7 +433,7 @@ function showDivs(n) {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;For those who are interested in implementation details of CartoonGAN, we suggest you taking a look at &lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow"&gt;our github repo&lt;/a&gt;. If you have your own datasets, you can even train your own CartoonGAN simply in one command:&lt;/p&gt;
+&lt;p&gt;For those who are interested in implementation details of CartoonGAN, we suggest you take a look at &lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow"&gt;our github repo&lt;/a&gt;. If you have your own datasets, you can even train your own CartoonGAN simply in one command:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -444,7 +444,7 @@ function showDivs(n) {
 &lt;img src="https://leemeng.tw/images/cartoongan/train-demo.gif"/&gt;
 &lt;/center&gt;
 &lt;center&gt;
-                        Our Python script provide detailed messages which allow you to understand what is happening behind the scenes
+                        Our Python script provides detailed messages which allow you to understand what is happening behind the scenes
                         &lt;br/&gt;
 &lt;br/&gt;
 &lt;/center&gt;
@@ -454,12 +454,12 @@ function showDivs(n) {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Our project can also be used to learn latest version of TensorFlow since everything is implemented in &lt;a href="https://www.tensorflow.org/alpha"&gt;Tensorflow 2.0 alpha&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Our project can also be used to learn the latest version of TensorFlow since everything is implemented in &lt;a href="https://www.tensorflow.org/alpha"&gt;Tensorflow 2.0 alpha&lt;/a&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Use &lt;a href="https://www.tensorflow.org/alpha/guide/keras/overview"&gt;tf.keras&lt;/a&gt; to implement custom layers and GAN&lt;/li&gt;
 &lt;li&gt;Use &lt;a href="https://www.tensorflow.org/alpha/guide/data_performance"&gt;tf.data&lt;/a&gt; to properly load and process large amount of images&lt;/li&gt;
 &lt;li&gt;Write custom train logic and make computation faster using &lt;a href="https://youtu.be/Up9CvRLIIIw?list=PLQY2H8rRoyvzoUYI26kHmKSJBedn3SQuB"&gt;tf.function&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Use &lt;a href="https://www.tensorflow.org/tensorboard/r2/get_started#using_tensorboard_with_other_methods"&gt;TensorBoard&lt;/a&gt; to monitor model performance in real-time manner&lt;/li&gt;
+&lt;li&gt;Use &lt;a href="https://www.tensorflow.org/tensorboard/r2/get_started#using_tensorboard_with_other_methods"&gt;TensorBoard&lt;/a&gt; to monitor model performance in real-time&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -467,8 +467,8 @@ function showDivs(n) {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;As some of you already knew, it is not trivial to train a GAN. You must keep monitoring your model's performance to decide how to adjust your hyper-parameters or even model architecture accordingly.&lt;/p&gt;
-&lt;p&gt;In our &lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow/blob/master/train.py"&gt;training script&lt;/a&gt;, TensorBoard is integrated perfectly so you can monitor model's performance easily:&lt;/p&gt;
+&lt;p&gt;As some of you already knew, it is not easy to train a GAN. You must keep monitoring your model's performance to decide how to adjust your hyper-parameters or even model architecture accordingly.&lt;/p&gt;
+&lt;p&gt;In our &lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow/blob/master/train.py"&gt;training script&lt;/a&gt;, TensorBoard is integrated perfectly so you can monitor your model's performance easily:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -518,8 +518,8 @@ function showDivs(n) {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Finally, in order to get a sense of how CartoonGAN is doing during training phase, we can save some images and use them as a validation set.&lt;/p&gt;
-&lt;p&gt;The idea here is to "test" CartoonGAN using same images periodically so that we can observe how it improve over time:&lt;/p&gt;
+&lt;p&gt;Finally, in order to get a sense of how CartoonGAN is doing during the training phase, we can save some images and use them as a validation set.&lt;/p&gt;
+&lt;p&gt;The idea here is to "test" CartoonGAN using same images periodically so that we can observe how it improves over time:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -531,7 +531,7 @@ function showDivs(n) {
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 &lt;/video&gt;
 &lt;center&gt;
-                        CartoonGAN become better and better transforming validation set into anime
+                        CartoonGAN becomed better and better transforming validation set into anime
                         &lt;br/&gt;
 &lt;br/&gt;
 &lt;/center&gt;
@@ -541,9 +541,9 @@ function showDivs(n) {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Although the training is not yet finished, you can still tell that CartoonGAN somehow learn to transform real world images into cartoon-like images with clear edges and smooth color shading.&lt;/p&gt;
-&lt;p&gt;Training a GAN like CartoonGAN is far more harder than training a &lt;a href="https://www.tensorflow.org/tutorials/keras/basic_classification"&gt;simple classifier&lt;/a&gt;. But in &lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow"&gt;our github repo&lt;/a&gt;, we try our best to make the TensorFlow code clear and easy to understand, hoping it will help more people to get started.&lt;/p&gt;
-&lt;p&gt;Needless to say, you can get a better understanding of our code if you know some basics. In the next section, I will list up some good learning resources for your reference.&lt;/p&gt;
+&lt;p&gt;Even before the training is finished, you can tell that CartoonGAN somehow learns to transform real world images into cartoon-like images with clear edges and smooth color shading.&lt;/p&gt;
+&lt;p&gt;Training a GAN like CartoonGAN is far more difficult than training a &lt;a href="https://www.tensorflow.org/tutorials/keras/basic_classification"&gt;simple classifier&lt;/a&gt;. But in &lt;a href="https://github.com/mnicnc404/CartoonGan-tensorflow"&gt;our github repo&lt;/a&gt;, we have tried our best to make the TensorFlow code clear and easy to understand, hoping it will help more people to get started.&lt;/p&gt;
+&lt;p&gt;Needless to say, you will be able to get a better understanding of our code if you already know some basics. In the next section, I will list some good learning resources for your reference.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -578,7 +578,7 @@ function showDivs(n) {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;For those who want to learn more about GAN, I recommend following resources:&lt;/p&gt;
+&lt;p&gt;For those who want to learn more about GAN, I recommend the following resources:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=yFBFl1cLYx8&amp;amp;index=1&amp;amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI"&gt;MIT 6.S191 Deep Generative Models&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://poloclub.github.io/ganlab/"&gt;GAN Lab let you train GANs on browser&lt;/a&gt;&lt;/li&gt;
@@ -607,7 +607,7 @@ function showDivs(n) {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The researchs on generative models and GAN are evolving rapidly, but I believe you will be able to implement some simple GANs and understand code written by others after studying these learning resources.&lt;/p&gt;
+&lt;p&gt;Research on generative models and GAN are evolving rapidly, but I believe you will be able to implement some simple GANs and understand code written by others after studying these learning resources.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -634,7 +634,7 @@ function showDivs(n) {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;With this in mind, I built the project to let you create your own anime in no time and hope it can encourge some of you to explore more about GAN and generative models, create more interesting AI applications in the future.&lt;/p&gt;
+&lt;p&gt;With this in mind, I built the project to let you create your own anime in no time and hope it can encourge some of you to explore more about GAN and generative models, and create more interesting AI applications in the future.&lt;/p&gt;
 &lt;p&gt;Many thanks to the authors of CartoonGAN, TensorFlow/TensorFlow.js teams and my friend &lt;a href="https://github.com/mnicnc404"&gt;mnicnc404&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Oh! Also don't forget to share what anime you generate! You can find me on &lt;a href="https://twitter.com/leemengtw"&gt;Twitter&lt;/a&gt; or &lt;a href="https://www.facebook.com/LeeMengTaiwan"&gt;Facebook&lt;/a&gt;. Let the world be filled with anime! :D&lt;/p&gt;
 &lt;/div&gt;
