@@ -3612,73 +3612,52 @@ tf.Tensor(
 &lt;li&gt;這邊展示了接近 40 個利用圖片、語言以及音樂來與使用者產生互動的機器學習 Apps，值得慢慢探索&lt;/li&gt;
 &lt;li&gt;知名例子有 &lt;a href="https://quickdraw.withgoogle.com/"&gt;Quick Draw&lt;/a&gt; 以及 &lt;a href="https://teachablemachine.withgoogle.com/"&gt;Teachable Machine&lt;/a&gt;，將在下方介紹&lt;/li&gt;
 &lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align="center"&gt;&lt;a href="https://quickdraw.withgoogle.com/"&gt;Quick Draw&lt;/a&gt;&lt;/th&gt;
-&lt;th align="center"&gt;&lt;a href="https://teachablemachine.withgoogle.com/"&gt;Teachable Machine&lt;/a&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;&lt;a href="https://quickdraw.withgoogle.com/"&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/quickdraw.jpg"/&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;td align="center"&gt;&lt;a href="https://teachablemachine.withgoogle.com/"&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/teachable-machine.jpg"/&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id="quick draw"&gt;&lt;a href="https://quickdraw.withgoogle.com/"&gt;Quick Draw&lt;/a&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;由 Google 推出的知名手寫塗鴉辨識，使用的神經網路架構有常見的&lt;a href="https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"&gt;卷積神經網路 CNN &lt;/a&gt;以及&lt;a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E6%9C%89%E8%A8%98%E6%86%B6%E7%9A%84%E5%BE%AA%E7%92%B0%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF_1"&gt;循環神經網路 RNN&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;該深度學習模型會不斷將最新的筆觸當作輸入來預測使用者想畫的物件。你會驚嘆於她精準且即時的判斷&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="teachable machine"&gt;&lt;a href="https://teachablemachine.withgoogle.com/"&gt;Teachable Machine&lt;/a&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;利用電腦 / 手機上的相機來訓練能將影像對應到其他圖片、音訊的神經網路，饒富趣味&lt;/li&gt;
-&lt;li&gt;透過這例子，你將暸解機器學習的神奇之處以及其侷限所在&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align="center"&gt;&lt;a href="https://tenso.rs/demos/fast-neural-style/"&gt;Fast Neural Style&lt;/a&gt;&lt;/th&gt;
-&lt;th align="center"&gt;&lt;a href="https://js.tensorflow.org/"&gt;TensorFlow.js&lt;/a&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;&lt;a href="https://tenso.rs/demos/fast-neural-style/"&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/fast-neural-style.jpg"/&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;td align="center"&gt;&lt;a href="https://js.tensorflow.org/"&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/human-pose-estimation.jpg"/&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id="fast neural style"&gt;&lt;a href="https://tenso.rs/demos/fast-neural-style/"&gt;Fast Neural Style&lt;/a&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;展示如何使用 WebGL 在瀏覽器快速地進行&lt;a href="https://medium.com/tensorflow/neural-style-transfer-creating-art-with-deep-learning-using-tf-keras-and-eager-execution-7d541ac31398"&gt;神經風格轉換 Neural Style Transfer&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;你可以選擇任何一張圖片，並在此網站上將其畫風轉變成指定的藝術照&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://deepart.io/"&gt;Deepart.io&lt;/a&gt; 也提供類似服務&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="tensorflow.js"&gt;&lt;a href="https://js.tensorflow.org/"&gt;TensorFlow.js&lt;/a&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;TensorFlow.js 頁面有多個利用 JavaScript 實現的深度學習應用，如上圖中的&lt;a href="https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5"&gt;人類姿勢估計 Human Pose Estimation&lt;/a&gt;。&lt;/li&gt;
-&lt;li&gt;你可以在該應用裡頭打開自己的攝影機，看該應用能不能偵測到你與朋友的姿勢。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align="center"&gt;&lt;a href="https://poloclub.github.io/ganlab/"&gt;GAN Lab&lt;/a&gt;&lt;/th&gt;
-&lt;th align="center"&gt;To Be Updated&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;&lt;a href="https://poloclub.github.io/ganlab/"&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/gan-lab.jpg"/&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;td align="center"&gt;&lt;a href=""&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/general/to-be-updated.jpg"/&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id="gan lab"&gt;&lt;a href="https://poloclub.github.io/ganlab/"&gt;GAN Lab&lt;/a&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C"&gt;對抗生成網路（&lt;strong&gt;G&lt;/strong&gt;enerative &lt;strong&gt;A&lt;/strong&gt;dversarial &lt;strong&gt;N&lt;/strong&gt;etwork，簡稱GAN）&lt;/a&gt;是非監督式學習的一種方法，通過讓兩個神經網路相互博弈的方式進行學習。此網站以 &lt;a href="https://js.tensorflow.org/"&gt;TensorFlow.js&lt;/a&gt; 實作 GAN 中兩個神經網路的學習過程，幫助有興趣的你更直觀地理解神奇的 GAN 的運作方式&lt;/li&gt;
-&lt;/ul&gt;
+&lt;details&gt;
+&lt;summary&gt;&lt;b&gt;點擊查看更多&lt;/b&gt;&lt;/summary&gt;
+
+|[Quick Draw](https://quickdraw.withgoogle.com/)|[Teachable Machine](https://teachablemachine.withgoogle.com/)|
+|:---:|:---:|
+|&lt;a href="https://quickdraw.withgoogle.com/"&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/quickdraw.jpg"/&gt;&lt;/a&gt;|&lt;a href="https://teachablemachine.withgoogle.com/"&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/teachable-machine.jpg"/&gt;&lt;/a&gt;
+
+### [Quick Draw](https://quickdraw.withgoogle.com/)
+
+- 由 Google 推出的知名手寫塗鴉辨識，使用的神經網路架構有常見的[卷積神經網路 CNN ](https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C)以及[循環神經網路 RNN](https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E6%9C%89%E8%A8%98%E6%86%B6%E7%9A%84%E5%BE%AA%E7%92%B0%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF_1)
+- 該深度學習模型會不斷將最新的筆觸當作輸入來預測使用者想畫的物件。你會驚嘆於她精準且即時的判斷
+
+### [Teachable Machine](https://teachablemachine.withgoogle.com/)
+- 利用電腦 / 手機上的相機來訓練能將影像對應到其他圖片、音訊的神經網路，饒富趣味
+- 透過這例子，你將暸解機器學習的神奇之處以及其侷限所在
+
+|[Fast Neural Style](https://tenso.rs/demos/fast-neural-style/)| [TensorFlow.js](https://js.tensorflow.org/)
+|:---:|:---:|
+|&lt;a href="https://tenso.rs/demos/fast-neural-style/"&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/fast-neural-style.jpg"/&gt;&lt;/a&gt;|&lt;a href="https://js.tensorflow.org/"&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/human-pose-estimation.jpg"/&gt;&lt;/a&gt;
+
+### [Fast Neural Style](https://tenso.rs/demos/fast-neural-style/)
+
+- 展示如何使用 WebGL 在瀏覽器快速地進行[神經風格轉換 Neural Style Transfer](https://medium.com/tensorflow/neural-style-transfer-creating-art-with-deep-learning-using-tf-keras-and-eager-execution-7d541ac31398)
+- 你可以選擇任何一張圖片，並在此網站上將其畫風轉變成指定的藝術照
+- [Deepart.io](https://deepart.io/) 也提供類似服務
+
+### [TensorFlow.js](https://js.tensorflow.org/)
+
+- TensorFlow.js 頁面有多個利用 JavaScript 實現的深度學習應用，如上圖中的[人類姿勢估計 Human Pose Estimation](https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5)。
+- 你可以在該應用裡頭打開自己的攝影機，看該應用能不能偵測到你與朋友的姿勢。
+
+|[GAN Lab](https://poloclub.github.io/ganlab/)| [Talk to Transformer](https://talktotransformer.com/)
+|:---:|:---:|
+|&lt;a href="https://poloclub.github.io/ganlab/"&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/gan-lab.jpg"/&gt;&lt;/a&gt;|&lt;a href="https://talktotransformer.com/"&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/talk_to_transformer.jpg"/&gt;&lt;/a&gt;
+
+### [GAN Lab](https://poloclub.github.io/ganlab/)
+
+- [對抗生成網路（**G**enerative **A**dversarial **N**etwork，簡稱GAN）](https://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C)是非監督式學習的一種方法，通過讓兩個神經網路相互博弈的方式進行學習。此網站以 [TensorFlow.js](https://js.tensorflow.org/) 實作 GAN 中兩個神經網路的學習過程，幫助有興趣的你更直觀地理解神奇的 GAN 的運作方式
+
+### [Talk to Transformer](https://talktotransformer.com/)
+
+- 展示了一個由 OpenAI 推出，名為 [GPT-2 的無監督式語言模型](https://openai.com/blog/better-language-models/)。該模型以 Google 發表的神經網路架構 [Transformer](https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html) 為基底，在給定一段魔戒或是復仇者聯盟的文字內容，該模型可以自己生成唯妙唯俏的延伸劇情。
+- 想要進一步瞭解何謂 Transformer，推薦閱讀 [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)。
+- 你也可以參考[讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部](https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html)來看如何使用 LSTM 達到類似的文本生成效果
+
+&lt;/details&gt;
 &lt;h2 id="xian shang ke cheng_1"&gt;&lt;div id="courses"&gt;線上課程&lt;/div&gt;&lt;/h2&gt;
 &lt;p&gt;看完&lt;a href="#playground"&gt;遊玩空間&lt;/a&gt;的大量實際應用，相信你已經迫不及待地想要開始學習強大的深度學習技術了。&lt;/p&gt;
 &lt;p&gt;這節列舉了一些有用的線上課程以及學習教材，幫助你掌握深度學習的基本知識（沒有特別註明的話皆為免費存取）。&lt;/p&gt;
@@ -3772,7 +3751,6 @@ tf.Tensor(
 &lt;h3 id="6.s191: introduction to deep learning"&gt;&lt;a href="http://introtodeeplearning.com"&gt;6.S191: Introduction to Deep Learning&lt;/a&gt;&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;麻省理工學院推出的另一堂基礎深度學習課程，介紹深度學習以及其應用。內容涵蓋機器翻譯、圖像辨識以及更多其他應用。此課程使用 Python 以及 TensorFlow 來實作作業，並預期學生具備基礎的微積分（梯度 &amp;amp; Chain Rule）以及線性代數（矩陣相乘）&lt;/li&gt;
-&lt;li&gt;你可以在 &lt;a href="https://github.com/aamini/introtodeeplearning_labs"&gt;introtodeeplearning_labs&lt;/a&gt; 找到上課的作業筆記本以及對應的解答&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="ai for everyone"&gt;&lt;a href="https://www.coursera.org/learn/ai-for-everyone"&gt;AI For Everyone&lt;/a&gt;&lt;/h3&gt;
 &lt;ul&gt;
@@ -3832,13 +3810,13 @@ tf.Tensor(
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th align="center"&gt;&lt;a href="https://paperswithcode.com/"&gt;Papers with Code&lt;/a&gt;&lt;/th&gt;
-&lt;th align="center"&gt;To Be Updated&lt;/th&gt;
+&lt;th align="center"&gt;&lt;a href="https://pair-code.github.io/what-if-tool/"&gt;What-If Tool&lt;/a&gt;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td align="center"&gt;&lt;a href="https://paperswithcode.com/"&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tools/papers-with-code.jpg"/&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;td align="center"&gt;&lt;a href=""&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/general/to-be-updated.jpg"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;&lt;a href="https://pair-code.github.io/what-if-tool/"&gt;&lt;img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tools/what-if-tool.jpg"/&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -3846,6 +3824,12 @@ tf.Tensor(
 &lt;ul&gt;
 &lt;li&gt;將機器學習的學術論文、程式碼實作以及 SOTA 的評價排行榜全部整理匯總在一起的網站，非常適合想要持續追蹤學術及業界最新研究趨勢的人&lt;/li&gt;
 &lt;li&gt;在這邊可以瀏覽包含電腦視覺、自然語言處理等各大領域在不同任務上表現最好的論文、實作以及資料集&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="what-if tool"&gt;&lt;a href="https://pair-code.github.io/what-if-tool/"&gt;What-If Tool&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;一個與 &lt;a href="#tensorboard"&gt;TensorBoard&lt;/a&gt; 以及 Jupyter Notebook 整合的探索工具，讓使用者不需寫程式碼就能輕鬆觀察機器學習模型的內部運作以及嘗試各種 What-if 問題（如果 ~ 會怎麼樣？）&lt;/li&gt;
+&lt;li&gt;基本上就是用來觀察&lt;strong&gt;已訓練&lt;/strong&gt;的模型在測試資料集上的表現。利用此工具，使用者可以了解（不僅限於）以下的問題：模型在各類別數據上的表現有無差距？模型是否存在偏見？應該如何調整 Native / Positive False 的比例？&lt;/li&gt;
+&lt;li&gt;此工具的一大亮點在於讓非專業領域人士也能探索、理解 ML 模型表現。且只要給定模型與資料集, 就不需要每次為了 What-if 問題就寫用過即丟的程式碼&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="qi ta jiao cai_1"&gt;&lt;div id="tutorials"&gt;其他教材&lt;/div&gt;&lt;/h2&gt;
 &lt;p&gt;除了&lt;a href="#courses"&gt;線上課程&lt;/a&gt;以外，網路上還有無數的學習資源。&lt;/p&gt;
@@ -9659,10 +9643,10 @@ Test Set
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="3feb25c3-4d9b-44cb-b676-7856c8ccad5c"&gt;&lt;/div&gt;
+&lt;div id="75ff9808-43a5-41c2-9def-89b717358a9b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3feb25c3-4d9b-44cb-b676-7856c8ccad5c');
+var element = $('#75ff9808-43a5-41c2-9def-89b717358a9b');
 (function(root) {
   function embed_document(root) {
     
