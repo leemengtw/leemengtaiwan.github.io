@@ -14,16 +14,16 @@ img.cartoongan_image {
 }
 
 /*reference: https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp*/
-* {
-  box-sizing: border-box;
-}
+/** {*/
+  /*box-sizing: border-box;*/
+/*}*/
 
 .row {
   display: -ms-flexbox; /* IE10 */
   display: flex;
   -ms-flex-wrap: wrap; /* IE10 */
   flex-wrap: wrap;
-  padding: 0 4px;
+  /*padding: 0 4px;*/
 }
 
 /* Create four equal columns that sits next to each other */
@@ -50,9 +50,16 @@ img.cartoongan_image {
 
 /* Responsive layout - makes a two column-layout into one column (stacked) for mobile view */
 @media screen and (max-width: 800px) {
-  .column50 {
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
+  /*.column50 {*/
+    /*-ms-flex: 100%;*/
+    /*flex: 100%;*/
+    /*max-width: 100%;*/
+  /*}*/
+
+  img.cartoongan_image {
+    max-width:64px;
+    max-height:64px;
+    width:auto;
+    height:auto;
   }
 }
