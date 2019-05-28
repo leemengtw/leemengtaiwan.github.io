@@ -138,6 +138,8 @@
       </div>
     </div>
 
+    <!--custom images with icon shown on left nav-->
+    <!--the details are set in `pelicanconf.py` as `LEFT_NAV_IMAGES`-->
 
     <article class="blog-single">
 
@@ -161,7 +163,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-09-08 (Sat)</li>
                         <li class="page-view">
-                            2,636 views
+                            2,683 views
                         </li>
                     </ul>
 
@@ -188,7 +190,7 @@
 
     <div id="toc-wrap">
         <a title="顯示/隱藏 文章章節">
-            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTocNav()"></i>
         </a>
     </div>
 
@@ -212,6 +214,9 @@
             <i class="im im-twitter" aria-hidden="true"></i>
         </a>
     </div>
+
+
+    <!--custom images with icon shown on left nav-->
 
 </div>
 
@@ -882,8 +887,6 @@ COPY . /app
 
 
 
-
-
                 <!-- end Tags -->
 
 
@@ -1069,7 +1072,7 @@ function closeTocNav() {
     document.getElementById("tocNav").style.width = "0%";
 }
 
-function toggleTovNav() {
+function toggleTocNav() {
     var current_width = document.getElementById("tocNav").style.width;
     if (current_width == "100%") {
         document.getElementById("tocNav").style.width = "0%";
@@ -1077,6 +1080,20 @@ function toggleTovNav() {
         document.getElementById("tocNav").style.width = "100%";
     }
 }
+
+function closeLeftNavImage(elementId) {
+    document.getElementById(elementId).style.width = "0%";
+}
+
+function toggleLeftNavImage(elementId) {
+    var current_width = document.getElementById(elementId).style.width;
+    if (current_width == "100%") {
+        document.getElementById(elementId).style.width = "0%";
+    } else {
+        document.getElementById(elementId).style.width = "100%";
+    }
+}
+
 </script>
 
 

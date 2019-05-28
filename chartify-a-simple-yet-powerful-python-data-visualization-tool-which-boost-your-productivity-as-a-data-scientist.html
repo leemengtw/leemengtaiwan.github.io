@@ -22,9 +22,9 @@
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="https://leemeng.tw/theme/images/background/chartify-post-cover.jpg" />
+        <meta property="og:image" content="/theme/images/background/chartify-post-cover.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://leemeng.tw/chartify-a-simple-yet-powerful-python-data-visualization-tool-which-boost-your-productivity-as-a-data-scientist.html" />
+        <meta property="og:url" content="/chartify-a-simple-yet-powerful-python-data-visualization-tool-which-boost-your-productivity-as-a-data-scientist.html" />
         <meta property="og:title" content="Chartify：讓數據科學家效率加倍的 Python 資料視覺化工具" />
         <meta property="og:description" content="此文會展示如何利用 Chartify，一個直觀且貼心的 Python 繪圖函式庫，來對如 2018 臺北市候選人得票數、歷年各大洲來台人數等公開數據做資料視覺化。如果你想要學習利用 Python 實現資料視覺化，但還不知道怎麼開始；或是覺得目前使用的工具不太直覺，想要提升自己工作效率的話，這篇就是為你而寫的。" />
 
@@ -35,43 +35,33 @@
     <!-- CSS
     ================================================== -->
     <!--for customized css in individual page-->
-        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.min.css">
 
     <!--for showing toc navigation which slide in from left-->
-        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/toc-nav.css">
 
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
-    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
-    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+    <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='/theme/css/progress-bar.css' />
 
 
     <!--TiqueSearch-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
-    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
-    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/tipuesearch.css">
 
     <!-- script
     ================================================== -->
-    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
-    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+    <script src="/theme/js/modernizr.js"></script>
+    <script src="/theme/js/pace.min.js"></script>
 
 
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
-
-<!-- Global Site Tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)};
-  gtag('js', new Date());
-
-  gtag('config', 'UA-106559980-1');
-</script>
 
 
 
@@ -85,7 +75,7 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+            <a class="site-logo" href="../index.html"><img src="/theme/images/logo.png" alt="Homepage"></a>
         </div>
 <!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
 
@@ -138,30 +128,32 @@
       </div>
     </div>
 
+    <!--custom images with icon shown on left nav-->
+    <!--the details are set in `pelicanconf.py` as `LEFT_NAV_IMAGES`-->
 
     <article class="blog-single">
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/chartify-post-cover.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/chartify-post-cover.jpg)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
-                            <a href="https://leemeng.tw/tag/zi-liao-shi-jue-hua.html" rel="tag">資料視覺化</a>
-                            <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
+                            <a href="/tag/zi-liao-shi-jue-hua.html" rel="tag">資料視覺化</a>
+                            <a href="/tag/python.html" rel="tag">Python</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
-                        <a href="https://leemeng.tw/chartify-a-simple-yet-powerful-python-data-visualization-tool-which-boost-your-productivity-as-a-data-scientist.html" title="">
+                        <a href="/chartify-a-simple-yet-powerful-python-data-visualization-tool-which-boost-your-productivity-as-a-data-scientist.html" title="">
                             Chartify：讓數據科學家效率加倍的 Python 資料視覺化工具
                         </a>
                     </h1>
                     <ul class="page-header__meta">
                         <li class="date">2018-11-26 (Mon)</li>
                         <li class="page-view">
-                            3,036 views
+                            1 views
                         </li>
                     </ul>
 
@@ -188,30 +180,13 @@
 
     <div id="toc-wrap">
         <a title="顯示/隱藏 文章章節">
-            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTocNav()"></i>
         </a>
     </div>
 
-    <div id="social-wrap" style="cursor: pointer">
-        <a class="open-popup" title="訂閱最新文章">
-            <i class="im im-newspaper-o" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/chartify-a-simple-yet-powerful-python-data-visualization-tool-which-boost-your-productivity-as-a-data-scientist.html" target="_blank" title="分享到 Facebook">
-            <i class="im im-facebook" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/chartify-a-simple-yet-powerful-python-data-visualization-tool-which-boost-your-productivity-as-a-data-scientist.html&title=Chartify%EF%BC%9A%E8%AE%93%E6%95%B8%E6%93%9A%E7%A7%91%E5%AD%B8%E5%AE%B6%E6%95%88%E7%8E%87%E5%8A%A0%E5%80%8D%E7%9A%84%20Python%20%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96%E5%B7%A5%E5%85%B7&summary=%E6%AD%A4%E6%96%87%E6%9C%83%E5%B1%95%E7%A4%BA%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%20Chartify%EF%BC%8C%E4%B8%80%E5%80%8B%E7%9B%B4%E8%A7%80%E4%B8%94%E8%B2%BC%E5%BF%83%E7%9A%84%20Python%20%E7%B9%AA%E5%9C%96%E5%87%BD%E5%BC%8F%E5%BA%AB%EF%BC%8C%E4%BE%86%E5%B0%8D%E5%A6%82%202018%20%E8%87%BA%E5%8C%97%E5%B8%82%E5%80%99%E9%81%B8%E4%BA%BA%E5%BE%97%E7%A5%A8%E6%95%B8%E3%80%81%E6%AD%B7%E5%B9%B4%E5%90%84%E5%A4%A7%E6%B4%B2%E4%BE%86%E5%8F%B0%E4%BA%BA%E6%95%B8%E7%AD%89%E5%85%AC%E9%96%8B%E6%95%B8%E6%93%9A%E5%81%9A%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96%E3%80%82%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%83%B3%E8%A6%81%E5%AD%B8%E7%BF%92%E5%88%A9%E7%94%A8%20Python%20%E5%AF%A6%E7%8F%BE%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96%EF%BC%8C%E4%BD%86%E9%82%84%E4%B8%8D%E7%9F%A5%E9%81%93%E6%80%8E%E9%BA%BC%E9%96%8B%E5%A7%8B%EF%BC%9B%E6%88%96%E6%98%AF%E8%A6%BA%E5%BE%97%E7%9B%AE%E5%89%8D%E4%BD%BF%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E4%B8%8D%E5%A4%AA%E7%9B%B4%E8%A6%BA%EF%BC%8C%E6%83%B3%E8%A6%81%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87%E7%9A%84%E8%A9%B1%EF%BC%8C%E9%80%99%E7%AF%87%E5%B0%B1%E6%98%AF%E7%82%BA%E4%BD%A0%E8%80%8C%E5%AF%AB%E7%9A%84%E3%80%82&source=https%3A//leemeng.tw/chartify-a-simple-yet-powerful-python-data-visualization-tool-which-boost-your-productivity-as-a-data-scientist.html" target="_blank" title="分享到 LinkedIn">
-            <i class="im im-linkedin" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div id="social-wrap">
-        <a href="https://twitter.com/intent/tweet?text=Chartify%EF%BC%9A%E8%AE%93%E6%95%B8%E6%93%9A%E7%A7%91%E5%AD%B8%E5%AE%B6%E6%95%88%E7%8E%87%E5%8A%A0%E5%80%8D%E7%9A%84%20Python%20%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96%E5%B7%A5%E5%85%B7&url=https%3A//leemeng.tw/chartify-a-simple-yet-powerful-python-data-visualization-tool-which-boost-your-productivity-as-a-data-scientist.html&hashtags=zi-liao-shi-jue-hua,python" target="_blank" title="分享到 Twitter">
-            <i class="im im-twitter" aria-hidden="true"></i>
-        </a>
-    </div>
+
+
+    <!--custom images with icon shown on left nav-->
 
 </div>
 
@@ -244,7 +219,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/chartify/chartify-gallery.jpg"/>
+<img src="/images/chartify/chartify-gallery.jpg"/>
 </center>
 <center>
                         Chartify 圖表
@@ -291,7 +266,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<img src="https://leemeng.tw/images/chartify/alex-kotliarskyi-361099-unsplash.jpg"/>
+<img src="/images/chartify/alex-kotliarskyi-361099-unsplash.jpg"/>
 <br/>
 </div>
 </div>
@@ -632,7 +607,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<img src="https://leemeng.tw/images/chartify/tidy-vs-non-tidy.jpg"/>
+<img src="/images/chartify/tidy-vs-non-tidy.jpg"/>
 <br/>
 </div>
 </div>
@@ -798,7 +773,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<img src="https://leemeng.tw/images/chartify/photo-1508248467877-aec1b08de376.jpg"/>
+<img src="/images/chartify/photo-1508248467877-aec1b08de376.jpg"/>
 <br/>
 </div>
 </div>
@@ -1029,7 +1004,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<img src="https://leemeng.tw/images/chartify/andrew-haimerl-526180-unsplash.jpg"/>
+<img src="/images/chartify/andrew-haimerl-526180-unsplash.jpg"/>
 <br/>
 </div>
 </div>
@@ -1306,7 +1281,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/chartify/Taipei_Districts.jpg" style="width: 50%"/>
+<img src="/images/chartify/Taipei_Districts.jpg" style="width: 50%"/>
 </center>
 <center>
     臺北市行政區劃
@@ -1651,7 +1626,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<img src="https://leemeng.tw/images/chartify/work-731198_1280.jpg"/>
+<img src="/images/chartify/work-731198_1280.jpg"/>
 <br/>
 </div>
 </div>
@@ -1748,10 +1723,10 @@
 </div>
 </div>
 <div class="output_area">
-<div id="6e982a45-3c9b-449b-a9b6-51c49a3ec596"></div>
+<div id="4904729a-8581-4932-aeb3-ff1c07a613b2"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#6e982a45-3c9b-449b-a9b6-51c49a3ec596');
+var element = $('#4904729a-8581-4932-aeb3-ff1c07a613b2');
 (function(root) {
   function embed_document(root) {
     
@@ -1790,8 +1765,8 @@ var element = $('#6e982a45-3c9b-449b-a9b6-51c49a3ec596');
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
-                        <a href="https://leemeng.tw/tag/zi-liao-shi-jue-hua.html" rel="tag">資料視覺化</a>
-                        <a href="https://leemeng.tw/tag/python.html" rel="tag">Python</a>
+                        <a href="/tag/zi-liao-shi-jue-hua.html" rel="tag">資料視覺化</a>
+                        <a href="/tag/python.html" rel="tag">Python</a>
                     </span>
 
                 </p>
@@ -1838,13 +1813,13 @@ var element = $('#6e982a45-3c9b-449b-a9b6-51c49a3ec596');
                 <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
                         <div class="blog-content__prev">
-                            <a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html" rel="prev">
+                            <a href="/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html" rel="prev">
                                 <span>Previous Post</span>
                                 進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南
                             </a>
                         </div>
                         <div class="blog-content__next">
-                            <a href="https://leemeng.tw/3-lessons-i-learnt-from-emnlp-2018-at-belgium.html" rel="next">
+                            <a href="/3-lessons-i-learnt-from-emnlp-2018-at-belgium.html" rel="next">
                                 <span>Next Post</span>
                                 我在比利時 EMNLP 之旅中學到的 3 堂課
                             </a>
@@ -1867,25 +1842,6 @@ var element = $('#6e982a45-3c9b-449b-a9b6-51c49a3ec596');
 
     </article>
 
-<div class="comments-wrap">
-    <div id="comments" class="row">
-        <div class="col-full">
-            <div id="disqus_thread"></div>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-var disqus_shortname = 'leemengtaiwan';
-var disqus_title = 'Chartify：讓數據科學家效率加倍的 Python 資料視覺化工具';
-
-(function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
     <!-- footer
@@ -1895,7 +1851,7 @@ var disqus_title = 'Chartify：讓數據科學家效率加倍的 Python 資料�
             <div class="col-full">
 
                 <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                    <a class="footer-site-logo" href="#0"><img src="/theme/images/logo.png" alt="Homepage"></a>
                 </div>
 
                 <ul class="footer-social">
@@ -1940,17 +1896,17 @@ var disqus_title = 'Chartify：讓數據科學家效率加倍的 Python 資料�
 
         <!-- Javascript
     ================================================== -->
-    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
-    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
-    <script src="https://leemeng.tw/theme/js/main.js"></script>
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+    <script src="/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="/theme/js/plugins.js"></script>
+    <script src="/theme/js/main.js"></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
 
     <!--https://instant.page/-->
     <script src="//instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
 
 
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
-    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+    <script type='text/javascript' src='/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
 
     <!--show and hide left navigation by scrolling-->
     <script>
@@ -1993,7 +1949,7 @@ function closeTocNav() {
     document.getElementById("tocNav").style.width = "0%";
 }
 
-function toggleTovNav() {
+function toggleTocNav() {
     var current_width = document.getElementById("tocNav").style.width;
     if (current_width == "100%") {
         document.getElementById("tocNav").style.width = "0%";
@@ -2001,6 +1957,20 @@ function toggleTovNav() {
         document.getElementById("tocNav").style.width = "100%";
     }
 }
+
+function closeLeftNavImage(elementId) {
+    document.getElementById(elementId).style.width = "0%";
+}
+
+function toggleLeftNavImage(elementId) {
+    var current_width = document.getElementById(elementId).style.width;
+    if (current_width == "100%") {
+        document.getElementById(elementId).style.width = "0%";
+    } else {
+        document.getElementById(elementId).style.width = "100%";
+    }
+}
+
 </script>
 
 

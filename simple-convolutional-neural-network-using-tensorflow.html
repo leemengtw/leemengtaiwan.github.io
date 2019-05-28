@@ -144,6 +144,8 @@
       </div>
     </div>
 
+    <!--custom images with icon shown on left nav-->
+    <!--the details are set in `pelicanconf.py` as `LEFT_NAV_IMAGES`-->
 
     <article class="blog-single">
 
@@ -170,7 +172,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2017-09-26 (Tue)</li>
                         <li class="page-view">
-                            102 views
+                            103 views
                         </li>
                     </ul>
 
@@ -197,7 +199,7 @@
 
     <div id="toc-wrap">
         <a title="顯示/隱藏 文章章節">
-            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTocNav()"></i>
         </a>
     </div>
 
@@ -221,6 +223,9 @@
             <i class="im im-twitter" aria-hidden="true"></i>
         </a>
     </div>
+
+
+    <!--custom images with icon shown on left nav-->
 
 </div>
 
@@ -600,10 +605,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="0f534df7-ffda-4dc5-9b20-a55ed0126f21"></div>
+<div id="d6b17518-e72d-48f1-b22f-4da781f5cbdb"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#0f534df7-ffda-4dc5-9b20-a55ed0126f21');
+var element = $('#d6b17518-e72d-48f1-b22f-4da781f5cbdb');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -1367,10 +1372,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="a05eaf0b-d8f9-4045-b0d8-aced9e39b815"></div>
+<div id="ae630520-b223-49bf-90bf-a4397a219d0f"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a05eaf0b-d8f9-4045-b0d8-aced9e39b815');
+var element = $('#ae630520-b223-49bf-90bf-a4397a219d0f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -1560,10 +1565,10 @@ Test accuracy: 89.4%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="5a1a1ba3-0cec-4fd7-ad6b-0e3c004fa6ce"></div>
+<div id="eb5b1a16-cf5d-4b6c-96e2-994f008b84d7"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#5a1a1ba3-0cec-4fd7-ad6b-0e3c004fa6ce');
+var element = $('#eb5b1a16-cf5d-4b6c-96e2-994f008b84d7');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -2327,10 +2332,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="6d342fd2-0194-485d-866f-e0a8b61fe31e"></div>
+<div id="2a65a18c-eed2-4828-bfd2-3979b3d218df"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6d342fd2-0194-485d-866f-e0a8b61fe31e');
+var element = $('#2a65a18c-eed2-4828-bfd2-3979b3d218df');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -2531,10 +2536,10 @@ Test accuracy: 90.7%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="55294a51-f06e-4b82-a3c4-8135c26c6f4c"></div>
+<div id="d38107d8-ecdb-4eff-b088-4225cf19df24"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#55294a51-f06e-4b82-a3c4-8135c26c6f4c');
+var element = $('#d38107d8-ecdb-4eff-b088-4225cf19df24');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -3298,10 +3303,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="d72d4197-e975-4636-a7aa-9b34e1e79633"></div>
+<div id="d373945e-d08b-4d6b-87d0-43c211399a95"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#d72d4197-e975-4636-a7aa-9b34e1e79633');
+var element = $('#d373945e-d08b-4d6b-87d0-43c211399a95');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -3354,8 +3359,6 @@ Test accuracy: 94.6%
                     </span>
 
                 </p>
-
-
 
 
 
@@ -3610,7 +3613,7 @@ function closeTocNav() {
     document.getElementById("tocNav").style.width = "0%";
 }
 
-function toggleTovNav() {
+function toggleTocNav() {
     var current_width = document.getElementById("tocNav").style.width;
     if (current_width == "100%") {
         document.getElementById("tocNav").style.width = "0%";
@@ -3618,6 +3621,20 @@ function toggleTovNav() {
         document.getElementById("tocNav").style.width = "100%";
     }
 }
+
+function closeLeftNavImage(elementId) {
+    document.getElementById(elementId).style.width = "0%";
+}
+
+function toggleLeftNavImage(elementId) {
+    var current_width = document.getElementById(elementId).style.width;
+    if (current_width == "100%") {
+        document.getElementById(elementId).style.width = "0%";
+    } else {
+        document.getElementById(elementId).style.width = "100%";
+    }
+}
+
 </script>
 
 

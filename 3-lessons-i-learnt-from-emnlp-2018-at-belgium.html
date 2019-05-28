@@ -139,6 +139,8 @@
       </div>
     </div>
 
+    <!--custom images with icon shown on left nav-->
+    <!--the details are set in `pelicanconf.py` as `LEFT_NAV_IMAGES`-->
 
     <article class="blog-single">
 
@@ -163,7 +165,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-11-19 (Mon)</li>
                         <li class="page-view">
-                            912 views
+                            914 views
                         </li>
                     </ul>
 
@@ -190,7 +192,7 @@
 
     <div id="toc-wrap">
         <a title="顯示/隱藏 文章章節">
-            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTocNav()"></i>
         </a>
     </div>
 
@@ -214,6 +216,9 @@
             <i class="im im-twitter" aria-hidden="true"></i>
         </a>
     </div>
+
+
+    <!--custom images with icon shown on left nav-->
 
 </div>
 
@@ -877,8 +882,6 @@
 
 
 
-
-
                 <!-- end Tags -->
 
 
@@ -909,9 +912,9 @@
                 <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
                     <div class="blog-content__nav">
                         <div class="blog-content__prev">
-                            <a href="https://leemeng.tw/chartify-a-simple-yet-powerful-python-data-visualization-tool-which-boost-your-productivity-as-a-data-scientist.html" rel="prev">
+                            <a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html" rel="prev">
                                 <span>Previous Post</span>
-                                Chartify：讓數據科學家效率加倍的 Python 資料視覺化工具
+                                進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南
                             </a>
                         </div>
                         <div class="blog-content__next">
@@ -1064,7 +1067,7 @@ function closeTocNav() {
     document.getElementById("tocNav").style.width = "0%";
 }
 
-function toggleTovNav() {
+function toggleTocNav() {
     var current_width = document.getElementById("tocNav").style.width;
     if (current_width == "100%") {
         document.getElementById("tocNav").style.width = "0%";
@@ -1072,6 +1075,20 @@ function toggleTovNav() {
         document.getElementById("tocNav").style.width = "100%";
     }
 }
+
+function closeLeftNavImage(elementId) {
+    document.getElementById(elementId).style.width = "0%";
+}
+
+function toggleLeftNavImage(elementId) {
+    var current_width = document.getElementById(elementId).style.width;
+    if (current_width == "100%") {
+        document.getElementById(elementId).style.width = "0%";
+    } else {
+        document.getElementById(elementId).style.width = "100%";
+    }
+}
+
 </script>
 
 

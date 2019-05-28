@@ -149,6 +149,8 @@
       </div>
     </div>
 
+    <!--custom images with icon shown on left nav-->
+    <!--the details are set in `pelicanconf.py` as `LEFT_NAV_IMAGES`-->
 
     <article class="blog-single">
 
@@ -175,7 +177,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2017-09-21 (Thu)</li>
                         <li class="page-view">
-                            2,146 views
+                            2,162 views
                         </li>
                     </ul>
 
@@ -202,7 +204,7 @@
 
     <div id="toc-wrap">
         <a title="顯示/隱藏 文章章節">
-            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTocNav()"></i>
         </a>
     </div>
 
@@ -226,6 +228,9 @@
             <i class="im im-twitter" aria-hidden="true"></i>
         </a>
     </div>
+
+
+    <!--custom images with icon shown on left nav-->
 
 </div>
 
@@ -571,10 +576,10 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 </div>
 <div class="output_area">
-<div id="282016ae-9623-42d5-8f42-c6580d8d5387"></div>
+<div id="14f3f0c9-4b2d-4486-b11c-c39acc099169"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#282016ae-9623-42d5-8f42-c6580d8d5387');
+var element = $('#14f3f0c9-4b2d-4486-b11c-c39acc099169');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -723,10 +728,10 @@ Test acc: 82.8%
 </div>
 </div>
 <div class="output_area">
-<div id="1be46628-e74e-44f9-8d42-f286f6d9b71b"></div>
+<div id="9416b6ba-a605-4776-8746-67f8dffca538"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#1be46628-e74e-44f9-8d42-f286f6d9b71b');
+var element = $('#9416b6ba-a605-4776-8746-67f8dffca538');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -884,10 +889,10 @@ Test acc: 86.9%
 </div>
 </div>
 <div class="output_area">
-<div id="fbfa718f-5894-4c62-9d21-e412bd6c46d9"></div>
+<div id="d2873dee-c700-4696-adc6-4bb4c8f41907"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#fbfa718f-5894-4c62-9d21-e412bd6c46d9');
+var element = $('#d2873dee-c700-4696-adc6-4bb4c8f41907');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
@@ -941,8 +946,6 @@ Test acc: 88.7%
                     </span>
 
                 </p>
-
-
 
 
 
@@ -1201,7 +1204,7 @@ function closeTocNav() {
     document.getElementById("tocNav").style.width = "0%";
 }
 
-function toggleTovNav() {
+function toggleTocNav() {
     var current_width = document.getElementById("tocNav").style.width;
     if (current_width == "100%") {
         document.getElementById("tocNav").style.width = "0%";
@@ -1209,6 +1212,20 @@ function toggleTovNav() {
         document.getElementById("tocNav").style.width = "100%";
     }
 }
+
+function closeLeftNavImage(elementId) {
+    document.getElementById(elementId).style.width = "0%";
+}
+
+function toggleLeftNavImage(elementId) {
+    var current_width = document.getElementById(elementId).style.width;
+    if (current_width == "100%") {
+        document.getElementById(elementId).style.width = "0%";
+    } else {
+        document.getElementById(elementId).style.width = "100%";
+    }
+}
+
 </script>
 
 

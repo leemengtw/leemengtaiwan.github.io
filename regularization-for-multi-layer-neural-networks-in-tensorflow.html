@@ -143,6 +143,8 @@
       </div>
     </div>
 
+    <!--custom images with icon shown on left nav-->
+    <!--the details are set in `pelicanconf.py` as `LEFT_NAV_IMAGES`-->
 
     <article class="blog-single">
 
@@ -169,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2017-09-25 (Mon)</li>
                         <li class="page-view">
-                            359 views
+                            368 views
                         </li>
                     </ul>
 
@@ -196,7 +198,7 @@
 
     <div id="toc-wrap">
         <a title="顯示/隱藏 文章章節">
-            <i class="im im-menu" aria-hidden="true" onclick="toggleTovNav()"></i>
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTocNav()"></i>
         </a>
     </div>
 
@@ -220,6 +222,9 @@
             <i class="im im-twitter" aria-hidden="true"></i>
         </a>
     </div>
+
+
+    <!--custom images with icon shown on left nav-->
 
 </div>
 
@@ -571,10 +576,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="13f2f822-0201-4375-9fd0-ad09d9220901"></div>
+<div id="c060d6de-f22b-44ba-a53c-fef1cc2a8eba"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#13f2f822-0201-4375-9fd0-ad09d9220901');
+var element = $('#c060d6de-f22b-44ba-a53c-fef1cc2a8eba');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -636,10 +641,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="6afdd7bb-0d63-4507-b5af-aa408bfcebb4"></div>
+<div id="b1e2b27b-eea4-4c2a-923e-d98e9fcac81e"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6afdd7bb-0d63-4507-b5af-aa408bfcebb4');
+var element = $('#b1e2b27b-eea4-4c2a-923e-d98e9fcac81e');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -693,10 +698,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="1edbcda8-996f-4719-9b8a-d74b2f02c083"></div>
+<div id="6113b61f-04c3-400d-80a8-ce86d208a2a3"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#1edbcda8-996f-4719-9b8a-d74b2f02c083');
+var element = $('#6113b61f-04c3-400d-80a8-ce86d208a2a3');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -750,10 +755,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="df4a3e39-31e8-4622-9c10-68cbee1dc980"></div>
+<div id="ce178823-0b27-462d-9929-8b108a4e8b56"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#df4a3e39-31e8-4622-9c10-68cbee1dc980');
+var element = $('#ce178823-0b27-462d-9929-8b108a4e8b56');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -813,10 +818,10 @@ Initialized
 </div>
 </div>
 <div class="output_area">
-<div id="6ed24005-e3b0-4511-b1c6-727754db984c"></div>
+<div id="4cadeec9-0875-4485-961f-9c27227afcf1"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6ed24005-e3b0-4511-b1c6-727754db984c');
+var element = $('#4cadeec9-0875-4485-961f-9c27227afcf1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -859,8 +864,6 @@ Test acc: 94.3%
                     </span>
 
                 </p>
-
-
 
 
 
@@ -1117,7 +1120,7 @@ function closeTocNav() {
     document.getElementById("tocNav").style.width = "0%";
 }
 
-function toggleTovNav() {
+function toggleTocNav() {
     var current_width = document.getElementById("tocNav").style.width;
     if (current_width == "100%") {
         document.getElementById("tocNav").style.width = "0%";
@@ -1125,6 +1128,20 @@ function toggleTovNav() {
         document.getElementById("tocNav").style.width = "100%";
     }
 }
+
+function closeLeftNavImage(elementId) {
+    document.getElementById(elementId).style.width = "0%";
+}
+
+function toggleLeftNavImage(elementId) {
+    var current_width = document.getElementById(elementId).style.width;
+    if (current_width == "100%") {
+        document.getElementById(elementId).style.width = "0%";
+    } else {
+        document.getElementById(elementId).style.width = "100%";
+    }
+}
+
 </script>
 
 
