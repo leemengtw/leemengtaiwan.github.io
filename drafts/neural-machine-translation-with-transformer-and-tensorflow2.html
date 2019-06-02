@@ -14,7 +14,7 @@
 <title>LeeMeng - 淺談神經機器翻譯：如何用 Transformer 以及 Tensorflow 2 實現英中翻譯</title>
     <!--- article-specific meta data
     ================================================== -->
-        <meta name="description" content="本文向讀者介紹近年深度學習在機器翻譯任務上的一些重要模型及概念。我們也會實際使用 TensorFlow 2 來實作一個可以將英文句子翻譯成中文的 Transformer。Transformer 是一個近年十分熱門、基於自注意力機制的 Seq2Seq 模型。透過實作並瞭解其背後運作原理，讀者將能把類似的概念應用到如圖像描述、閱讀理解以及語音辨識等 ML 任務之上並達到卓越成果。" />
+        <meta name="description" content="本文向讀者介紹近年深度學習在機器翻譯任務上的一些重要模型及概念。我們也會實際使用 TensorFlow 2 來實作一個可以將英文句子翻譯成中文的 Transformer。Transformer 是一個近年十分熱門、基於自注意機制的 Seq2Seq 模型。透過實作並瞭解其背後運作原理，讀者將能把類似的概念應用到如圖像描述、閱讀理解以及語音辨識等 ML 任務之上並達到卓越成果。" />
         <meta name="keywords" content="自然語言處理, NLP, Tensorflow" />
         <meta name="tags" content="自然語言處理" />
         <meta name="tags" content="NLP" />
@@ -27,7 +27,7 @@
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://leemeng.tw/drafts/neural-machine-translation-with-transformer-and-tensorflow2.html" />
         <meta property="og:title" content="淺談神經機器翻譯：如何用 Transformer 以及 Tensorflow 2 實現英中翻譯" />
-        <meta property="og:description" content="本文向讀者介紹近年深度學習在機器翻譯任務上的一些重要模型及概念。我們也會實際使用 TensorFlow 2 來實作一個可以將英文句子翻譯成中文的 Transformer。Transformer 是一個近年十分熱門、基於自注意力機制的 Seq2Seq 模型。透過實作並瞭解其背後運作原理，讀者將能把類似的概念應用到如圖像描述、閱讀理解以及語音辨識等 ML 任務之上並達到卓越成果。" />
+        <meta property="og:description" content="本文向讀者介紹近年深度學習在機器翻譯任務上的一些重要模型及概念。我們也會實際使用 TensorFlow 2 來實作一個可以將英文句子翻譯成中文的 Transformer。Transformer 是一個近年十分熱門、基於自注意機制的 Seq2Seq 模型。透過實作並瞭解其背後運作原理，讀者將能把類似的概念應用到如圖像描述、閱讀理解以及語音辨識等 ML 任務之上並達到卓越成果。" />
 
     <!-- mobile specific metas
     ================================================== -->
@@ -135,7 +135,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="淺談神經機器翻譯：如何用 Transformer 以及 Tensorflow 2 實現英中翻譯">淺談神經機器翻譯：如何用 Transformer 以及 Tensorflow 2 實現英中翻譯</a><ul><li><a class="toc-href" href="#基礎知識" title="基礎知識">基礎知識</a></li><li><a class="toc-href" href="#機器翻譯近代史" title="機器翻譯近代史">機器翻譯近代史</a><ul><li><a class="toc-href" href="#統計機器翻譯：基於短語的翻譯" title="統計機器翻譯：基於短語的翻譯">統計機器翻譯：基於短語的翻譯</a></li><li><a class="toc-href" href="#神經機器翻譯：Encoder-Decoder-模型" title="神經機器翻譯：Encoder-Decoder 模型">神經機器翻譯：Encoder-Decoder 模型</a></li><li><a class="toc-href" href="#Encoder-Decoder-模型-+-注意力機制" title="Encoder-Decoder 模型 + 注意力機制">Encoder-Decoder 模型 + 注意力機制</a></li><li><a class="toc-href" href="#Transformer：Seq2Seq-模型-+-自注意力機制" title="Transformer：Seq2Seq 模型 + 自注意力機制">Transformer：Seq2Seq 模型 + 自注意力機制</a></li><li><a class="toc-href" href="#簡單回顧：NMT-簡易時間軸" title="簡單回顧：NMT 簡易時間軸">簡單回顧：NMT 簡易時間軸</a></li></ul></li><li><a class="toc-href" href="#Transformer-實作時間_1" title="Transformer 實作時間">Transformer 實作時間</a></li><li><a class="toc-href" href="#Experiment" title="Experiment">Experiment</a></li><li><a class="toc-href" href="#Gdrive" title="Gdrive">Gdrive</a></li><li><a class="toc-href" href="#Setup-input-pipeline" title="Setup input pipeline">Setup input pipeline</a></li><li><a class="toc-href" href="#Positional-encoding" title="Positional encoding">Positional encoding</a></li><li><a class="toc-href" href="#Masking" title="Masking">Masking</a><ul><li><a class="toc-href" href="#TODO" title="TODO">TODO</a></li></ul></li><li><a class="toc-href" href="#Scaled-dot-product-attention_1" title="Scaled dot product attention">Scaled dot product attention</a></li><li><a class="toc-href" href="#Multi-head-attention" title="Multi-head attention">Multi-head attention</a></li><li><a class="toc-href" href="#Point-wise-feed-forward-network" title="Point wise feed forward network">Point wise feed forward network</a></li><li><a class="toc-href" href="#Encoder-and-decoder" title="Encoder and decoder">Encoder and decoder</a><ul><li><a class="toc-href" href="#Encoder-layer" title="Encoder layer">Encoder layer</a></li><li><a class="toc-href" href="#Decoder-layer" title="Decoder layer">Decoder layer</a></li><li><a class="toc-href" href="#Encoder" title="Encoder">Encoder</a></li><li><a class="toc-href" href="#Decoder" title="Decoder">Decoder</a></li></ul></li><li><a class="toc-href" href="#Create-the-Transformer_1" title="Create the Transformer">Create the Transformer</a></li><li><a class="toc-href" href="#Set-hyperparameters" title="Set hyperparameters">Set hyperparameters</a><ul><li><a class="toc-href" href="#Setup-experiment-path" title="Setup experiment path">Setup experiment path</a></li></ul></li><li><a class="toc-href" href="#Optimizer_1" title="Optimizer">Optimizer</a></li><li><a class="toc-href" href="#Loss-and-metrics" title="Loss and metrics">Loss and metrics</a></li><li><a class="toc-href" href="#Training-and-checkpointing" title="Training and checkpointing">Training and checkpointing</a><ul><li><a class="toc-href" href="#Chinese-font-setup-for-matplotlib" title="Chinese font setup for matplotlib">Chinese font setup for matplotlib</a></li><li><a class="toc-href" href="#TODO_1" title="TODO">TODO</a></li></ul></li><li><a class="toc-href" href="#Tensorboard_1" title="Tensorboard">Tensorboard</a></li><li><a class="toc-href" href="#TODO_2" title="TODO">TODO</a></li><li><a class="toc-href" href="#Evaluate" title="Evaluate">Evaluate</a></li><li><a class="toc-href" href="#Summary" title="Summary">Summary</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="淺談神經機器翻譯：如何用 Transformer 以及 Tensorflow 2 實現英中翻譯">淺談神經機器翻譯：如何用 Transformer 以及 Tensorflow 2 實現英中翻譯</a><ul><li><a class="toc-href" href="#基礎知識" title="基礎知識">基礎知識</a></li><li><a class="toc-href" href="#機器翻譯近代史" title="機器翻譯近代史">機器翻譯近代史</a><ul><li><a class="toc-href" href="#統計機器翻譯：基於短語的翻譯" title="統計機器翻譯：基於短語的翻譯">統計機器翻譯：基於短語的翻譯</a></li><li><a class="toc-href" href="#神經機器翻譯：Encoder-Decoder-模型" title="神經機器翻譯：Encoder-Decoder 模型">神經機器翻譯：Encoder-Decoder 模型</a></li><li><a class="toc-href" href="#Encoder-Decoder-模型-+-注意機制" title="Encoder-Decoder 模型 + 注意機制">Encoder-Decoder 模型 + 注意機制</a></li><li><a class="toc-href" href="#Transformer：Seq2Seq-模型-+-自注意機制" title="Transformer：Seq2Seq 模型 + 自注意機制">Transformer：Seq2Seq 模型 + 自注意機制</a></li><li><a class="toc-href" href="#簡單小回顧：簡易-NMT-時間表" title="簡單小回顧：簡易 NMT 時間表">簡單小回顧：簡易 NMT 時間表</a></li></ul></li><li><a class="toc-href" href="#Transformer-實作時間_1" title="Transformer 實作時間">Transformer 實作時間</a></li><li><a class="toc-href" href="#Experiment" title="Experiment">Experiment</a></li><li><a class="toc-href" href="#Gdrive" title="Gdrive">Gdrive</a></li><li><a class="toc-href" href="#Setup-input-pipeline" title="Setup input pipeline">Setup input pipeline</a></li><li><a class="toc-href" href="#Positional-encoding" title="Positional encoding">Positional encoding</a></li><li><a class="toc-href" href="#Masking" title="Masking">Masking</a><ul><li><a class="toc-href" href="#TODO" title="TODO">TODO</a></li></ul></li><li><a class="toc-href" href="#Scaled-dot-product-attention_1" title="Scaled dot product attention">Scaled dot product attention</a></li><li><a class="toc-href" href="#Multi-head-attention" title="Multi-head attention">Multi-head attention</a></li><li><a class="toc-href" href="#Point-wise-feed-forward-network" title="Point wise feed forward network">Point wise feed forward network</a></li><li><a class="toc-href" href="#Encoder-and-decoder" title="Encoder and decoder">Encoder and decoder</a><ul><li><a class="toc-href" href="#Encoder-layer" title="Encoder layer">Encoder layer</a></li><li><a class="toc-href" href="#Decoder-layer" title="Decoder layer">Decoder layer</a></li><li><a class="toc-href" href="#Encoder" title="Encoder">Encoder</a></li><li><a class="toc-href" href="#Decoder" title="Decoder">Decoder</a></li></ul></li><li><a class="toc-href" href="#Create-the-Transformer_1" title="Create the Transformer">Create the Transformer</a></li><li><a class="toc-href" href="#Set-hyperparameters" title="Set hyperparameters">Set hyperparameters</a><ul><li><a class="toc-href" href="#Setup-experiment-path" title="Setup experiment path">Setup experiment path</a></li></ul></li><li><a class="toc-href" href="#Optimizer_1" title="Optimizer">Optimizer</a></li><li><a class="toc-href" href="#Loss-and-metrics" title="Loss and metrics">Loss and metrics</a></li><li><a class="toc-href" href="#Training-and-checkpointing" title="Training and checkpointing">Training and checkpointing</a><ul><li><a class="toc-href" href="#Chinese-font-setup-for-matplotlib" title="Chinese font setup for matplotlib">Chinese font setup for matplotlib</a></li><li><a class="toc-href" href="#TODO_1" title="TODO">TODO</a></li></ul></li><li><a class="toc-href" href="#Tensorboard_1" title="Tensorboard">Tensorboard</a></li><li><a class="toc-href" href="#TODO_2" title="TODO">TODO</a></li><li><a class="toc-href" href="#Evaluate" title="Evaluate">Evaluate</a></li><li><a class="toc-href" href="#Summary" title="Summary">Summary</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -237,7 +237,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這是聖經中著名的<a href="https://zh.wikipedia.org/wiki/%E5%B7%B4%E5%88%A5%E5%A1%94">巴別塔</a>橋段，用來解釋為何當今世上有那麼多種語言。當年的上帝或許過於杞人憂天，但近年多虧了<a href="https://zh.wikipedia.org/zh-hant/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度學習（Deep Learning）</a>，<a href="https://zh.wikipedia.org/wiki/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91">機器翻譯（<strong>M</strong>achine <strong>T</strong>ranslation）</a>的快速發展讓人不禁覺得，或許巴別塔很快就不再只是虛幻傳說了。</p>
+<p>這是聖經中著名的<a href="https://zh.wikipedia.org/wiki/%E5%B7%B4%E5%88%A5%E5%A1%94">巴別塔</a>橋段，用來解釋為何當今世上有那麼多種語言。當年的上帝或許過於杞人憂天，但近年多虧了<a href="https://zh.wikipedia.org/zh-hant/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度學習</a>，<a href="https://zh.wikipedia.org/wiki/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91">機器翻譯</a>的快速發展讓人不禁覺得，或許巴別塔很快就不再只是虛幻傳說了。</p>
 </div>
 </div>
 </div>
@@ -283,7 +283,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這是一個非常簡化的示意圖。Transformer 實際上是一種基於自注意力機制的 <a href="https://youtu.be/ZjfjPzXw6og?t=3208">Seq2Seq 模型</a>，近年在<a href="https://paperswithcode.com/task/image-captioning">圖像描述</a>、<a href="https://zh.wikipedia.org/wiki/%E8%81%8A%E5%A4%A9%E6%A9%9F%E5%99%A8%E4%BA%BA">聊天機器人</a>、<a href="https://zh.wikipedia.org/zh-hant/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB">語音辨識</a>以及機器翻譯等各大領域大發異彩。但因為其相對複雜，到現在還是有種現象：</p>
+<p>這是一個非常簡化的示意圖。Transformer 實際上是一種基於自注意機制的 <a href="https://youtu.be/ZjfjPzXw6og?t=3208">Seq2Seq 模型</a>，近年在<a href="https://paperswithcode.com/task/image-captioning">圖像描述</a>、<a href="https://zh.wikipedia.org/wiki/%E8%81%8A%E5%A4%A9%E6%A9%9F%E5%99%A8%E4%BA%BA">聊天機器人</a>、<a href="https://zh.wikipedia.org/zh-hant/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB">語音辨識</a>以及機器翻譯等各大領域大發異彩。但因為其相對複雜，到現在還是有種現象：</p>
 </div>
 </div>
 </div>
@@ -304,7 +304,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>當然這並不僅限於 Transformer，因為深度學習及 AI 的研究範圍實在太廣了。但希望這篇文章能讓有興趣的人開始理解神經機器翻譯在做些什麼以及 Transformer 的內部架構與精神。（在<a href="#基礎知識">基礎知識</a>一節會看到我推薦你先掌握的基礎清單）</p>
-<p>當我們完成本文並訓練出一個 Transformer 以後，除了可以英翻中以外，我們還能一窺其是如何利用強大的<a href="https://www.youtube.com/watch?v=jd9DtlR90ak&amp;feature=youtu.be">注意力機制</a>（我們在 <a href="#Encoder-Decoder-%E6%A8%A1%E5%9E%8B-+-%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A9%9F%E5%88%B6">Encoder-Decoder 模型 + 注意力機制</a>一節會仔細探討此概念）來做到精準且自然的翻譯。</p>
+<p>當我們完成本文並訓練出一個 Transformer 以後，除了可以英翻中以外，我們還能一窺其是如何利用強大的<a href="https://www.youtube.com/watch?v=jd9DtlR90ak&amp;feature=youtu.be">注意機制</a>（我們在 <a href="#Encoder-Decoder-模型-+-注意機制">Encoder-Decoder 模型 + 注意機制</a>一節會仔細探討此概念）來做到精準且自然的翻譯。</p>
 </div>
 </div>
 </div>
@@ -381,7 +381,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>文中會盡量言簡意賅地介紹所有讀者需要了解的相關知識，但就像在<a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html">天龍八部</a>或是眾多武俠小說都有提過的重要概念：</p>
+<p>我在文中會盡量言簡意賅地介紹所有你需要了解的相關知識，但就像在<a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html">天龍八部</a>或是眾多武俠小說都有提過的重要準則：</p>
 </div>
 </div>
 </div>
@@ -430,8 +430,26 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>希望這樣的要求沒把你嚇跑（因為實際上你會需要更多基礎 ^_^）</p>
-<p>你可以先繼續閱讀，然後在需要了解更多細節時參考這節的內容或是文內說明概念時所附上的參考文獻。</p>
+<p>希望這樣的要求沒把你嚇跑（因為實際上你可能會需要更多基礎 ^_^）我能給你的最好建議就是在需要了解更多細節時，參考這節內容或是文內說明概念時所附上的參考文獻。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        有任何讀完文中敘述還不清楚的概念，點擊各圖片描述中的「圖片來源」去進一步了解就對了。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>前言很長，但好戲才在後頭。如果你已經準備好進入神經機器翻譯的世界的話，現在就讓我們正式開始這趟旅程吧！</p>
 </div>
 </div>
@@ -447,7 +465,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>鑑往知來。了解一點機器翻譯的歷史以及 Transformer 是怎麼跑出來的會對實作很有幫助。</p>
-<p>機器翻譯本身的概念<a href="https://zh.wikipedia.org/zh-tw/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91#%E6%AD%B7%E5%8F%B2">最早可追溯到 17 世紀</a>。自從那開始，人們嘗試並研究了各式各樣的方法，寫了一大堆規則、蒐集了數以萬計的翻譯結果來嘗試自動化翻譯。隨著時代演進，我們有了：</p>
+<p>機器翻譯（<strong>M</strong>achine <strong>T</strong>ranslation）本身的概念<a href="https://zh.wikipedia.org/zh-tw/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91#%E6%AD%B7%E5%8F%B2">最早可追溯到 17 世紀</a>。自從那開始，人們嘗試並研究了各式各樣的方法，寫了一大堆規則、蒐集了數以萬計的翻譯結果來嘗試自動化翻譯。隨著時代演進，我們有了：</p>
 <ul>
 <li>基於規則的機器翻譯 RBMT</li>
 <li>基於範例的機器翻譯 EBMT</li>
@@ -580,7 +598,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Seq2Seq 模型裡頭 Encoder 跟 Decoder 是各自獨立的 RNN。Encoder 把輸入的句子做處理後所得到的向量（圖中的 <code>Hidden State#3</code>）交給 Decoder 來生成目標語言。</p>
-<p>你可以想像兩個語義相同的法英句子雖然使用的語言、語順不一樣，但因為它們有相同的語義，Encoder 在將整個<strong>法文</strong>句子濃縮成一個嵌入空間（Embedding Space）中的向量後，Decoder 能使用隱含在該向量中的語義資訊來重新生成具有相同意涵的<strong>英文</strong>句子。</p>
+<p>你可以想像兩個語義相同的法英句子雖然使用的語言、語順不一樣，但因為它們有相同的語義，Encoder 在將整個<strong>法文</strong>句子濃縮成一個嵌入空間（Embedding Space）中的向量後，Decoder 能利用隱含在該向量中的語義資訊來重新生成具有相同意涵的<strong>英文</strong>句子。</p>
 <p>這樣的模型就像是在模擬人類做翻譯的<a href="https://zh.wikipedia.org/zh-tw/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91#%E7%BF%BB%E8%AD%AF%E6%B5%81%E7%A8%8B">兩個主要過程</a>：</p>
 <ul>
 <li>（Encoder）解譯來源文字的文意</li>
@@ -657,9 +675,9 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>此研究告訴我們，只要對自然語言做正確的轉換，就能將語言相異但同語義的句子都轉換成彼此距離相近的語義向量，並以此做出好的翻譯。</p>
-<p>以下是上圖中自成一群，距離非常接近的 3 個句子：</p>
+<p>以下是我隨意挑選出來的一組句子，它們在該空間裡的距離相近：</p>
 <div class="highlight"><pre><span></span>英文：
-From low-cost pharmacy brand moisturizers to high-priced department store cosmetics brand moisturizers ,competition is fierce.
+From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moisturizers, competition is fierce.
 
 日文：
 低価格の薬品ブランドの保湿剤から高価な百貨店の化粧品ブランドのためには, 競争が激しい
@@ -667,7 +685,8 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 韓文：
 싸구려백화점화장품브랜드 moisturizers 에 저렴한약국브랜드 moisturizers 에서 , 경쟁이큰있습니다
 </pre></div>
-<p>而它們都代表著相近的意思：「從低價的保濕劑到高價的化妝品牌，競爭都十分激烈」。如果你想進一步了解這個視覺化結果，可以閱讀 <a href="https://youtu.be/ulLx2iPTIcs?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;t=789">Google Brain 的詳細解說</a>或是上 <a href="https://projector.tensorflow.org/">Embedding Projector</a> 自己試看看。</p>
+<p>就算你看不懂日韓文也沒關係，因為它們都代表著一樣的意思：「從低價的保濕劑到高價的化妝品牌，競爭都十分激烈」。</p>
+<p>如果你想進一步了解這個視覺化結果，可以閱讀 <a href="https://youtu.be/ulLx2iPTIcs?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;t=789">Google Brain 的詳細解說</a>或是上 <a href="https://projector.tensorflow.org/">Embedding Projector</a> 自己試看看。</p>
 <p>另外值得注意的是，機器翻譯本身是一種<a href="https://youtu.be/ZjfjPzXw6og?t=2816">有條件的序列生成任務（Conditional Sequence Generation）</a>：給定一個特定的輸入句子（文字序列），依此條件輸出另外一個句子（文字序列）。這跟在<a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html">讓 AI 寫點金庸</a>一文中會隨機生成天龍八部文章的<a href="https://zh.wikipedia.org/wiki/%E8%AA%9E%E8%A8%80%E6%A8%A1%E5%9E%8B">語言模型（Language Model）</a>是有所差異的：</p>
 </div>
 </div>
@@ -699,14 +718,14 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Encoder-Decoder-模型-+-注意力機制">Encoder-Decoder 模型 + 注意力機制<a class="anchor-link" href="#Encoder-Decoder-模型-+-注意力機制">&para;</a></h3>
+<h3 id="Encoder-Decoder-模型-+-注意機制">Encoder-Decoder 模型 + 注意機制<a class="anchor-link" href="#Encoder-Decoder-模型-+-注意機制">&para;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>好啦，你現在應該已經了解如何使用 Seq2Seq 模型來做 NMT 了，不過讓我們再複習一次它是如何運作的。這次我們把以 RNN 為基礎的 Encoder / Decoder 在每個時間點做的事情從左到右一字排開：</p>
+<p>好啦，你現在應該已經了解如何使用 Seq2Seq 模型來做 NMT 了，不過讓我們再複習一次它是如何運作的。這次我們把用 RNN 實作的 Encoder / Decoder 在每個時間點做的事情從左到右一字排開：</p>
 </div>
 </div>
 </div>
@@ -730,11 +749,8 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>基本款的 Seq2Seq 模型表現得不錯，但其實有可以改善的地方。你有看出來了嗎？先別繼續閱讀，往上看個 60 秒並想像當輸入句子很長時可能會發生什麼問題。</p>
-<p>...</p>
-<p>（在非洲，每 60 秒就有一分鐘過去了）</p>
-<p>...</p>
-<p>我想你應該多多少少可以猜到了。我們前面曾提過 Seq2Seq 模型的一個重要假設是 Encoder 能把輸入句子的語義 / 文本脈絡全都壓縮成<strong>一個</strong>嵌入空間的語義向量。之後 Decoder 只要利用該向量裡頭的資訊就能重新生成具有相同意義，但不同語言的句子。</p>
+<p>基本款的 Seq2Seq 模型表現得不錯，但其實有可以改善的地方。你有看出來了嗎？想像輸入句子很長時會發生什麼問題（圖中的輸入句子只有 3 個詞彙）。</p>
+<p>我想你應該多多少少可以猜到了。我們前面曾提過 Seq2Seq 模型裡的一個重要假設是 Encoder 能把輸入句子的語義 / 文本脈絡全都壓縮成<strong>一個</strong>固定維度的語義向量。之後 Decoder 只要利用該向量裡頭的資訊就能重新生成具有相同意義，但不同語言的句子。</p>
 <p>但你可以想像當輸入句子很長時只用一個向量是不太可能把輸入句子的全部資訊都打包起來的。</p>
 <p>這時候怎麼辦呢？</p>
 </div>
@@ -745,7 +761,7 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
-                        與其只把 Encoder 處理完句子後產生的最後「一個」向量交給 Decoder 並要求 Decoder 從中萃取整個句子的資訊，不如將 Encoder 在處理每個詞彙後所生成的「所有」輸出向量都交給 Decoder，讓 Decoder 自己決定在生成新序列的時候要把「注意力」放在 Encoder 的哪些輸出向量上面。
+                        與其只把 Encoder 處理完句子產生的最後「一個」向量交給 Decoder 並要求其從中萃取整句資訊，不如將 Encoder 在處理每個詞彙後所生成的「所有」輸出向量都交給 Decoder，讓 Decoder 自己決定在生成新序列的時候要把「注意」放在 Encoder 的哪些輸出向量上面。
                         <br/>
 <br/>
 </p>
@@ -756,8 +772,8 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這事實上就是<a href="https://www.youtube.com/watch?v=jd9DtlR90ak&amp;feature=youtu.be">注意力機制（Attention Mechanism）</a>的中心思想：提供更多資訊給 Decoder，並令其自行學出該怎麼提取資訊。兩篇核心論文分別在 <a href="https://arxiv.org/abs/1409.0473">2014 年 9 月</a>及 <a href="https://arxiv.org/abs/1508.04025">2015 年 8 月</a>釋出，概念不難但威力十分強大。</p>
-<p>以下則是將注意力機制加到我們上面看過的 Seq2Seq 模型後的結果：</p>
+<p>這事實上就是<a href="https://www.youtube.com/watch?v=jd9DtlR90ak&amp;feature=youtu.be">注意機制（Attention Mechanism）</a>的中心思想：提供更多資訊給 Decoder，並透過類似資料庫存取的概念，令其自行學會該怎麼提取資訊。兩篇核心論文分別在 <a href="https://arxiv.org/abs/1409.0473">2014 年 9 月</a>及 <a href="https://arxiv.org/abs/1508.04025">2015 年 8 月</a>釋出，概念不難但威力十分強大。</p>
+<p>以下則是將注意機制加到 Seq2Seq 模型後的結果：</p>
 </div>
 </div>
 </div>
@@ -769,7 +785,7 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <center>
-                        注意力機制讓 Decoder 在生成新序列時能查看 Encoder 裡所有可能有用的語義向量
+                        注意機制讓 Decoder 在生成新序列時能查看 Encoder 裡所有可能有用的語義向量
                         （<a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/" target="_blank">圖片來源</a>）
                         
                         <br/>
@@ -781,8 +797,8 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>你可以拉回去跟沒有注意力機制的 Seq2Seq 模型比較一下差異。</p>
-<p>現在你會看到 Encoder 把處理完每個詞彙所產生的向量都交給 Decoder 了。且在有注意力機制的協助下，Decoder 在生成新序列的每個元素時都能<strong>動態地</strong>考慮自己要看哪些 Encoder 的向量（還有看多少），因此這種架構又被稱作<a href="https://youtu.be/ZjfjPzXw6og?t=3528">動態的條件序列生成（Dynamic Conditional Generation）</a>。</p>
+<p>你可以拉回去跟沒有注意機制的 Seq2Seq 模型比較一下差異。</p>
+<p>現在你會看到 Encoder 把處理完每個詞彙所產生的向量都交給 Decoder 了。且透過注意機制，Decoder 在生成新序列的每個元素時都能<strong>動態地</strong>考慮自己要看哪些 Encoder 的向量（還有決定從中該擷取多少資訊），因此這種架構又被稱作<a href="https://youtu.be/ZjfjPzXw6og?t=3528">動態的條件序列生成（Dynamic Conditional Generation）</a>。</p>
 </div>
 </div>
 </div>
@@ -806,7 +822,92 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>將注意力機制加入 Seq2Seq 模型後，NMT 系統的翻譯水準再次起飛。Google 在 2016 年推出的 <a href="https://ai.googleblog.com/2016/09/a-neural-network-for-machine.html">Google Neural Machine Translation system（GNMT）</a> 是一個知名的案例。除了注意力機制以外，GNMT <a href="https://arxiv.org/abs/1609.08144">在 Encoder 跟 Decoder 都採用了多達 8 層的 LSTM 神經網路</a>，讓更多人見識到深度學習的威力。</p>
+<p>構想並實際證明其有效的研究者們十分厲害，且其概念也挺符合人類直覺的，對吧？</p>
+<p>為了方便讀者理解，上面動畫實際上隱藏了一些細節：</p>
+<ul>
+<li>呈現算好的注意程度而不是計算過程</li>
+<li>Encoder / 跟 Decoder 的實際架構</li>
+</ul>
+<p>既然是深度學習，Encoder / Decoder 一般來說都是由多個 <a href="https://en.wikipedia.org/wiki/Long_short-term_memory">LSTM</a> / <a href="https://en.wikipedia.org/wiki/Gated_recurrent_unit">GRU</a> 等 RNN Layers 所疊起來的。而注意機制在這種情境下實際的運作方式如下：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/transformer/attention_mechanism_luong.jpg"/>
+</center>
+<center>
+                        英翻法情境下，Decoder 在第一個時間點進行的注意機制
+                        （<a href="https://github.com/tensorflow/nmt#background-on-the-attention-mechanism" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>橫軸是輸入及輸出的序列長度，縱軸則是多層的神經網路區塊 / 層。而上一張動畫就是將其中的注意權重（attention weights ）視覺化出來的結果（注意權重和為 1）。</p>
+<p>讓我們看一下注意機制實際的計算步驟。在 Decoder 的每個時間點，我們都會進行注意機制以讓 Decoder 從 Encoder 取得語境資訊：</p>
+<ol>
+<li>拿 Decoder 當下的紅色隱狀態向量 <code>ht</code> 跟 Encoder 所有藍色隱狀態向量 <code>hs</code> 做比較，利用 <code>score</code> 函式計算對每個 <code>hs</code> 的注意程度</li>
+<li>以此注意程度為權重，<strong>加權平均</strong>所有 Encoder 隱狀態向量 <code>hs</code> 取得上下文向量 <code>context vector</code></li>
+<li>將此上下文向量與 Decoder 隱狀態向量結合成一個注意向量 <code>attention vector</code> 輸出</li>
+<li>該注意向量會作為 Decoder 下個時間點的輸入</li>
+</ol>
+<p>定義 <code>score</code> 函式的方式不少，現在就先讓我們假設有這麼一個函式。</p>
+<p>理論上你現在應該能看懂注意機制的計算公式：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/transformer/attention-equation.jpg"/>
+</center>
+<center>
+                        注意機制前 3 步驟的數學式子
+                        （<a href="https://github.com/tensorflow/nmt#background-on-the-attention-mechanism" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>而之所以稱為注意權重（attention weights），是因為注意機制可以被視為是一個學習來源語言和目標語言<strong>每一個單詞之間關係</strong>的小型神經網路，而這些權重是該神經網路的參數。</p>
+<p>我們在<a href="#TODO">後面</a>會實際看到，在訓練還沒開始前這些權重都是隨機無意義的。是透過訓練，神經網路才知道該為這些權重賦予多少值。</p>
+<p>你也會發現「注意權重」就是文中我提及多次的「注意程度」，而後者是一種擬人化的說法。你可以想像這些權重值讓當下的 Decoder 曉得該放多少關注在 Encoder 個別的隱狀態身上，並依此從它們身上取得上下文資訊（步驟 2）。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        而事實上神經網路並沒有意識，因此也不會有感知層次上的「注意」。它學到的是讓注意機制產生最好結果的「參數權重」，而不是我們人類想像的「注意程度」。只有人類可以賦予神經網路意義。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>有點扯遠了，畢竟這裡應該沒有人文學系的讀者。</p>
+<p>讓我們拉回注意機制。</p>
+<p>將此機制加入 Seq2Seq 模型後，NMT 系統的翻譯水準再次起飛。Google 在 2016 年推出的 <a href="https://ai.googleblog.com/2016/09/a-neural-network-for-machine.html">Google Neural Machine Translation system（GNMT）</a> 是一個知名的案例。除了注意機制以外，GNMT <a href="https://arxiv.org/abs/1609.08144">在 Encoder 跟 Decoder 都採用了多達 8 層的 LSTM 神經網路</a>，讓更多人見識到深度學習的威力。</p>
 <p>跟 Google 10 年前推出的 PBMT 系統比起來，翻譯錯誤率平均下降了 60 %。</p>
 </div>
 </div>
@@ -832,7 +933,13 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上圖為 GNMT 做中翻英的過程。Encoder 跟 Decoder 之間的線條代表注意力（Attention），線條越粗代表下面的 Decoder 在生成某英文字時越關注上方的某些中文字。模型自己學會在翻譯時該看來源句子中的哪些資訊，很聰明，不是嗎？</p>
-<p>因為其卓越的翻譯品質，在 GNMT 推出的那段時間搭配注意力機制的 Seq2Seq 模型基本上就是拿來做 NMT 系統的不二人選。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>因為其卓越的翻譯品質，在 GNMT 推出的那段時間，搭配注意機制的 Seq2Seq 模型基本上就是拿來做 NMT 系統的不二人選。</p>
 </div>
 </div>
 </div>
@@ -862,14 +969,15 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Transformer：Seq2Seq-模型-+-自注意力機制">Transformer：Seq2Seq 模型 + 自注意力機制<a class="anchor-link" href="#Transformer：Seq2Seq-模型-+-自注意力機制">&para;</a></h3>
+<h3 id="Transformer：Seq2Seq-模型-+-自注意機制">Transformer：Seq2Seq 模型 + 自注意機制<a class="anchor-link" href="#Transformer：Seq2Seq-模型-+-自注意機制">&para;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>萬眾矚目的時刻來了。你現在可能在想：</p>
+<p>好酒沉甕底，萬眾矚目的時刻來了。</p>
+<p>你現在可能在想：</p>
 </div>
 </div>
 </div>
@@ -878,7 +986,7 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
-                        Seq2Seq 模型搭配注意力機制已經非常威猛了，難道還有什麼可以改善的地方嗎？
+                        Seq2Seq 模型搭配注意機制感覺已經很猛了，難道還有什麼可以改善的嗎？
                         <br/>
 <br/>
 </p>
@@ -891,7 +999,7 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>答案是肯定的 Yes。</p>
 <p>不過這次問題不是出在 Encoder 跟 Decoder 中間交換的資訊不夠，也不是 Seq2Seq 架構本身有什麼問題，問題是出在我們是用 <strong>RNN</strong> 來實作 Encoder 以及 Decoder。</p>
-<p><a href="http://colah.github.io/posts/2015-09-NN-Types-FP/">循環神經網路 RNN</a> 時常被拿來處理序列數據，但其一直存在的最大問題在於無法平行運算。以一個有 4 個元素的輸入序列為例：</p>
+<p><a href="http://colah.github.io/posts/2015-09-NN-Types-FP/">循環神經網路 RNN</a> 時常被拿來處理序列數據，但其運作方式存在著一個困擾研究者已久的問題：無法有效地平行運算。以一個有 4 個元素的輸入序列為例：</p>
 <div class="highlight"><pre><span></span>[a1, a2, a3, a4]
 </pre></div>
 <p>要獲得最後一個時間點的輸出向量 <code>b4</code> 得把整個輸入序列跑過一遍才行：</p>
@@ -905,7 +1013,7 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <img src="https://leemeng.tw/images/transformer/rnn-vs-self-attn-layer.jpg"/>
 </center>
 <center>
-                        自注意力層可以做到跟雙向 RNN 一樣的事情，還可以平行運算
+                        自注意層可以做到跟雙向 RNN 一樣的事情，還可以平行運算
                         （<a href="https://www.youtube.com/watch?v=ugWDIIOHtPA" target="_blank">圖片來源</a>）
                         
                         <br/>
@@ -917,12 +1025,12 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://arxiv.org/abs/1706.03762">Google 在 2017 年 6 月的一篇論文：Attention Is All You Need</a> 裡提出了<strong>自</strong>注意力機制（Self-Attention mechanism）。這個機制不只跟 RNN 一樣可以處理序列數據，還可以平行運算。</p>
+<p><a href="https://arxiv.org/abs/1706.03762">Google 在 2017 年 6 月的一篇論文：Attention Is All You Need</a> 裡參考了注意機制，提出了<strong>自</strong>注意機制（Self-Attention mechanism）。這個機制不只跟 RNN 一樣可以處理序列數據，還可以平行運算。</p>
 <p>以剛剛的輸入序列 <code>a[]</code> 為例：</p>
 <div class="highlight"><pre><span></span>[a1, a2, a3, a4]
 </pre></div>
-<p>一個自注意力層（Self-Attention Layer）可以在等同於 RNN 的一個時間點內就回傳所有 <code>bi</code> ，且每個 <code>bi</code> 都包含了整個輸入序列的資訊。</p>
-<p>我們後面會看到計算細節，不過在給定一個輸入序列的情境下，自注意力的基本精神就是：</p>
+<p>一個自注意層（Self-Attention Layer）可以在等同於 RNN 的一個時間點內就回傳所有 <code>bi</code> ，且每個 <code>bi</code> 都包含了整個輸入序列的資訊。</p>
+<p>在給定一個輸入序列的情境下，自注意機制的基本精神就是：</p>
 </div>
 </div>
 </div>
@@ -931,7 +1039,7 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
-                        在處理每個元素時，同時去「注意」同個序列中其他所有元素（包含自己）。從它們身上擷取出跟自己相關的資訊後合併這些訊息，當作自己的輸出回傳。
+                        在處理序列中的每個元素時，同時去「注意」並擷取同個序列中其他元素（包含自己）的資訊。接著將這些資訊合併並當作自己這次的輸出回傳。
                         <br/>
 <br/>
 </p>
@@ -942,9 +1050,61 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>而因為同序列中其他元素也都同時在做一樣的事情，在一個時間點內就能回傳所有元素的輸出結果。</p>
-<p>以剛剛的輸入序列 <code>a[]</code> 為例，當自注意力層在處理序列中的每個元素 <code>ai</code> 的時候，會同時去「關注」同個序列中所有元素（包含自己） <code>aj</code> 的資訊並產生 <code>bi</code>。而每個 <code>bi</code> 的這個計算是可以同步進行的。</p>
-<p>論文作者們更以自注意力層打造了一個完全不需使用 RNN 的 Seq2Seq 模型：Transformer。</p>
+<p>而因為同時序列裡頭的其他元素也都在做一樣的事情，在一個時間點內自注意層就能回傳所有元素的輸出結果。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/transformer/self-attn-layer-naive.jpg"/>
+</center>
+<center>
+                        自注意層跟 RNN 一樣吃進一序列，吐出一序列，還可以平行運算
+                        （<a href="https://www.youtube.com/watch?v=ugWDIIOHtPA" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>以剛剛的輸入序列 <code>a[]</code> 為例，當自注意層在處理序列中的每個元素 <code>ai</code> 的時候，會同時去「關注」同個序列中所有元素（包含自己） <code>aj</code> 的資訊並產生 <code>bi</code>。而每個 <code>bi</code> 的這個計算是可以同步進行的。</p>
+<p>另外雖然前面我們一直強調自注意機制的平行能力，事實上如果你已經徹底地瞭解了我們在<a href="#Encoder-Decoder-模型-+-注意機制">上一節</a>說明的注意機制，就會發現在 Seq2Seq 架構裡頭自注意機制跟注意機制講的是同樣一件事情：</p>
+<ul>
+<li>注意機制讓 Decoder 在生成輸出元素的 repr. 時關注 Encoder 的輸出序列，從中獲得上下文資訊</li>
+<li>自注意機制讓 Encoder 在生成輸入元素的 repr. 時關注自己序列中的其他元素，從中獲得上下文資訊</li>
+<li>自注意機制讓 Decoder 在生成輸出元素的 repr. 時關注自己序列中的其他元素，從中獲得上下文資訊</li>
+</ul>
+<p>你應該看出 pattern 了：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        注意機制跟自注意機制都是透過關注周遭來將上下文資訊匯總到某元素的 representation 裡頭，只是關注的對象有所不同罷了。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Decoder 利用注意機制關注 Encoder，而 Encoder 跟 Decoder 都利用自注意機制關注自己，now you got the idea.</p>
+<p>了解兩者之間緊密的關係以後，你就會知道為何我們在實際只需要實作一個<a href="#TODO">計算注意力的函式</a>就能拿來它來計算注意機制了。</p>
+<p>當然，（自）注意機制可以運用在除了 Seq2Seq 架構以外的所有地方，這也是近年以注意機制為基礎的深度學習研究那麼夯的原因。</p>
+<p>為了避免贅述，之後文中的<strong>（自）注意機制</strong>代表注意機制 &amp; 自注意機制。</p>
+<p>透過新設計的自注意機制以及原有的注意機制，論文作者們打造了一個完全不需使用 RNN 的 Seq2Seq 模型：Transformer。</p>
 </div>
 </div>
 </div>
@@ -970,14 +1130,14 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這動畫基本上可以分為 6 個步驟：</p>
 <ul>
-<li>Encoder 為輸出序列裡的每個詞彙產生初始的 representation （即詞向量），以空圈表示</li>
-<li>透過自注意力機制<strong>同時</strong>為每個詞彙匯總其他詞彙（含自己）的資訊，並為每個詞彙都重新產生一個包含整個句子文本脈絡的 repr.，以實圈表示</li>
-<li>重複自注意力計算 3 次，讓每個詞彙的 repr. 持續修正以包含整個句子的語義</li>
-<li>跟一般<a href="#Encoder-Decoder-%E6%A8%A1%E5%9E%8B-+-%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A9%9F%E5%88%B6">使用注意力的 Seq2Seq 模型</a>相同，Decoder 關注 Encoder 的所有輸出，一次輸出一個元素</li>
-<li>除了第一個時間點的 <code>&lt;start&gt;</code>，Decoder 在生成包含 <code>Je</code> 以後的每個法文字時也運用了自注意力機制，關注自己之前已經生成的元素，將其語義納入之後生成的元素</li>
-<li>重複自注意力數次以讓當前元素完整包含整體語義</li>
+<li>Encoder 為輸入序列裡的每個詞彙產生初始的 representation （即詞向量），以空圈表示</li>
+<li><strong>同時</strong>為每個詞彙匯總其他詞彙的資訊，並為每個詞彙都產生一個包含句子脈絡的 repr.，以實圈表示</li>
+<li>重複此自注意機制 3 次，讓每個詞彙的 repr. 持續修正以完整納入整個句子的語義</li>
+<li>跟一般的<a href="#Encoder-Decoder-%E6%A8%A1%E5%9E%8B-+-%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A9%9F%E5%88%B6"> Seq2Seq 模型</a>相同，Decoder 關注 Encoder 的所有輸出，一次輸出一個元素</li>
+<li>除了第一個時間點的 <code>&lt;start&gt;</code>，Decoder 在生成包含 <code>Je</code> 以後的每個法文字時也運用了自注意機制，關注自己之前已經生成的元素，將其語義納入之後生成的元素</li>
+<li>重複此自注意機制 3 次以讓當前元素完整包含整體語義</li>
 </ul>
-<p>如果你看懂這張圖的資訊流動以及運算方式，就等於瞭解 Transformer 了，恭喜！如果仍然有些不明瞭的地方，建議你閱讀 <a href="https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html">Google AI 部落格的原文</a>。</p>
+<p>如果你看懂這張圖的資訊流動以及運算方式，就等於瞭解 Transformer 的精神了，恭喜！如果仍然有不明瞭的地方，建議直接閱讀 <a href="https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html">Google AI 部落格的原文</a>。</p>
 </div>
 </div>
 </div>
@@ -1000,8 +1160,8 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>自注意力機制等於解開 RNN 加在 GPU 上的拘束器。作者們用了 8 個 <a href="https://www.nvidia.com.tw/object/tesla-p100-tw.html">NVIDIA P100 GPU</a>，花了 3 天半訓練了一個 Transformer，而該模型在 <a href="http://statmt.org/wmt14/">WMT 2014</a>  英法 / 英德翻譯都取得了最高水準的成績。</p>
-<p>跟其他模型相比，這訓練時間跟其對應的表現可以說是逆天的存在。自此「大注意力時代」展開，該論文至今超過 1800 次引用，所有研究領域都被自注意力相關的論文洗了一波。</p>
+<p>自注意機制解開了 RNN 加在 GPU 上的拘束器。作者們用了 8 個 <a href="https://www.nvidia.com.tw/object/tesla-p100-tw.html">NVIDIA P100 GPU</a>，花了 3 天半訓練了一個 Transformer，而該模型在 <a href="http://statmt.org/wmt14/">WMT 2014</a>  英法 / 英德翻譯都取得了最高水準的成績。</p>
+<p>跟其他模型相比，這訓練時間跟其創造的優異成績可以說是逆天的存在。自此「大注意時代」展開，該論文至今超過 1800 次引用，所有研究領域都被自注意機制相關的論文洗了一波。</p>
 </div>
 </div>
 </div>
@@ -1016,7 +1176,7 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>沒趕上洗論文的潮流也別傷心難過，對我們來說有個重要訊息：</p>
+<p>沒趕上開心洗論文的最佳時機也別傷心難過，對我們來說有個非常重要的訊息：</p>
 </div>
 </div>
 </div>
@@ -1025,7 +1185,7 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
-                        所有以 RNN 做過的研究，都可以用自注意力機制來取代；所有用 Seq2Seq 架構實現過的應用，也都可以用 Transformer 來替換。效果可能更好，訓練速度更快。
+                        所有以 RNN 做過的研究，都可以用自注意機制來取代；所有用 Seq2Seq 架構實現過的應用，也都可以用 Transformer 來替換。效果可能更好，訓練速度更快。
                         <br/>
 <br/>
 </p>
@@ -1036,7 +1196,7 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這個訊息也是促使我寫這篇文章的理由之一。雖然本文以機器翻譯為引子介紹 Transformer，事實上只要是當初以 RNN 或是 Seq2Seq 模型進行的研究領域，你都會看到已經有大量以自注意力機制或是 Transformer 出發的研究了。隨意舉幾些例子：</p>
+<p>這也是我決定寫這篇文章的理由之一。雖然本文是以機器翻譯的角度來介紹 Transformer，但事實上只要是能用 RNN 或 Seq2Seq 模型進行的研究領域，你都會看到已經有大量跟（自）注意機制或是 Transformer 有關的論文了：</p>
 <ul>
 <li>文本摘要（Text Summarization）</li>
 <li>圖像描述（Image Captioning）</li>
@@ -1044,30 +1204,17 @@ From low-cost pharmacy brand moisturizers to high-priced department store cosmet
 <li>語音辨識（Voice Recognition）</li>
 <li>語言模型（Language Model）</li>
 <li>聊天機器人（Chat Bot）</li>
-<li>其他任何可以用 RNN 的應用</li>
+<li>其他任何可以用 RNN 的潛在應用</li>
 </ul>
-<p>而未來會有更多基於 Transformer 的研究。因此了解自注意力機制以及 Transformer 的運作方式可說是在深度學習與 AI 旅程中的必經之路。</p>
+<p>而現在還有很多基於 Transformer 的研究。因此了解（自）注意機制以及 Transformer 的運作方式可說是接下來在深度學習與 AI 旅程中的必經之路。</p>
+<p>我知道你快受不了了，但在實作 Transformer 之前，讓我們簡單回顧一下一路上學了什麼。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>rnn 限制</li>
-<li>自注意力 layer 概念</li>
-<li>自注意力 naive imple</li>
-<li>multi-head self-attn</li>
-<li>李鴻毅講解 transformer</li>
-<li>BERT 的應用</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="簡單回顧：NMT-簡易時間軸">簡單回顧：NMT 簡易時間軸<a class="anchor-link" href="#簡單回顧：NMT-簡易時間軸">&para;</a></h3>
+<h3 id="簡單小回顧：簡易-NMT-時間表">簡單小回顧：簡易 NMT 時間表<a class="anchor-link" href="#簡單小回顧：簡易-NMT-時間表">&para;</a></h3>
 </div>
 </div>
 </div>
@@ -6378,6 +6525,19 @@ Time taken for 1 epoch: 347.0608217716217 secs
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Ian goodfellow interview</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">幾個要求</span><span class="err">：</span>
+<span class="o">-</span> <span class="n">用大螢幕看</span>
+<span class="o">-</span> <span class="n">分享給更多人知道</span>
+<span class="o">-</span> <span class="n">給我你的</span> <span class="n">fb</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
