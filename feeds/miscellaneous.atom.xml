@@ -1703,8 +1703,8 @@ print()
 字典大小：8135
 前 10 個 subwords：[', ', 'the_', 'of_', 'to_', 'and_', 's_', 'in_', 'a_', 'that_', 'is_']
 
-CPU times: user 42.8 ms, sys: 4.88 ms, total: 47.7 ms
-Wall time: 48.6 ms
+CPU times: user 41 ms, sys: 7.43 ms, total: 48.4 ms
+Wall time: 391 ms
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1870,8 +1870,8 @@ print()
 字典大小：4201
 前 10 個 subwords：['的', '，', '。', '国', '在', '是', '一', '和', '不', '这']
 
-CPU times: user 25.8 ms, sys: 802 &amp;micro;s, total: 26.6 ms
-Wall time: 29.6 ms
+CPU times: user 27.6 ms, sys: 121 &amp;micro;s, total: 27.7 ms
+Wall time: 337 ms
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2109,8 +2109,8 @@ The eurozone&amp;rsquo;s collapse forces a major realignment of European politic
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="output_subarea output_stream output_stderr output_text"&gt;
-&lt;pre&gt;W0616 13:30:56.990976 140396063598336 backprop.py:842] The dtype of the watched tensor must be floating (e.g. tf.float32), got tf.string
-W0616 13:30:56.999325 140396063598336 backprop.py:842] The dtype of the watched tensor must be floating (e.g. tf.float32), got tf.string
+&lt;pre&gt;W0616 23:46:10.571188 140648854296320 backprop.py:842] The dtype of the watched tensor must be floating (e.g. tf.float32), got tf.string
+W0616 23:46:10.573221 140648854296320 backprop.py:842] The dtype of the watched tensor must be floating (e.g. tf.float32), got tf.string
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2211,9 +2211,9 @@ tf.Tensor([4201   48  557  116   48   81 4202], shape=(7,), dtype=int64)
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="output_subarea output_stream output_stderr output_text"&gt;
-&lt;pre&gt;W0616 13:30:57.179452 140396055205632 backprop.py:842] The dtype of the watched tensor must be floating (e.g. tf.float32), got tf.string
-W0616 13:30:57.184260 140396055205632 backprop.py:842] The dtype of the watched tensor must be floating (e.g. tf.float32), got tf.string
-W0616 13:30:57.197380 140396063598336 backprop.py:842] The dtype of the watched tensor must be floating (e.g. tf.float32), got tf.string
+&lt;pre&gt;W0616 23:46:10.753194 140648845903616 backprop.py:842] The dtype of the watched tensor must be floating (e.g. tf.float32), got tf.string
+W0616 23:46:10.760091 140648845903616 backprop.py:842] The dtype of the watched tensor must be floating (e.g. tf.float32), got tf.string
+W0616 23:46:10.768630 140648845903616 backprop.py:842] The dtype of the watched tensor must be floating (e.g. tf.float32), got tf.string
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2315,23 +2315,23 @@ tf.Tensor(
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;英文索引序列的 batch
 tf.Tensor(
-[[8135  137   11 ...    0    0    0]
- [8135  433 5607 ...    0    0    0]
- [8135   17  583 ...    0    0    0]
+[[8135  222    1 ...    0    0    0]
+ [8135 3812  162 ...    0    0    0]
+ [8135 6267  838 ...    0    0    0]
  ...
- [8135 3415 3347 ...    0    0    0]
- [8135   89  627 ...    0    0    0]
- [8135  561    2 ...    0    0    0]], shape=(128, 39), dtype=int64)
+ [8135   17 1042 ...    0    0    0]
+ [8135 7877 1165 ...    0    0    0]
+ [8135 6414 7911 ...    0    0    0]], shape=(128, 40), dtype=int64)
 --------------------
 中文索引序列的 batch
 tf.Tensor(
-[[4201   45   90 ...    0    0    0]
- [4201   97   15 ...    0    0    0]
- [4201   34  255 ...    0    0    0]
+[[4201  109   54 ...    3 4202    0]
+ [4201   30    4 ...    0    0    0]
+ [4201  402    4 ...    0    0    0]
  ...
- [4201   18  392 ...    0    0    0]
- [4201  830    6 ...    0    0    0]
- [4201   35  157 ...    0    0    0]], shape=(128, 40), dtype=int64)
+ [4201  626  515 ...    0    0    0]
+ [4201   49  249 ...    0    0    0]
+ [4201  905  209 ...    0    0    0]], shape=(128, 40), dtype=int64)
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2728,7 +2728,7 @@ emb_tar[0]: tf.Tensor(
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;tf.Tensor: id=191337, shape=(2, 1, 1, 8), dtype=float32, numpy=
+&lt;pre&gt;&amp;lt;tf.Tensor: id=193029, shape=(2, 1, 1, 8), dtype=float32, numpy=
 array([[[[0., 0., 0., 0., 0., 0., 1., 1.]]],
 
 
@@ -2885,7 +2885,7 @@ tf.squeeze(inp_mask): tf.Tensor(
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;tf.Tensor: id=191351, shape=(2, 8, 4), dtype=float32, numpy=
+&lt;pre&gt;&amp;lt;tf.Tensor: id=193043, shape=(2, 8, 4), dtype=float32, numpy=
 array([[[1., 0., 0., 0.],
         [0., 1., 0., 1.],
         [0., 0., 0., 1.],
@@ -3299,7 +3299,7 @@ inp_mask: tf.Tensor(
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;tf.Tensor: id=191394, shape=(2, 8, 2), dtype=float32, numpy=
+&lt;pre&gt;&amp;lt;tf.Tensor: id=193086, shape=(2, 8, 2), dtype=float32, numpy=
 array([[[0.        , 0.        ],
         [0.        , 0.        ],
         [0.        , 0.        ],
@@ -3527,7 +3527,7 @@ look_ahead_mask tf.Tensor(
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;tf.Tensor: id=191434, shape=(2, 10), dtype=float32, numpy=
+&lt;pre&gt;&amp;lt;tf.Tensor: id=193126, shape=(2, 10), dtype=float32, numpy=
 array([[1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
        [1., 0., 0., 0., 0., 0., 0., 0., 0., 0.]], dtype=float32)&amp;gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -3555,7 +3555,7 @@ array([[1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;tf.Tensor: id=191439, shape=(2, 10), dtype=float32, numpy=
+&lt;pre&gt;&amp;lt;tf.Tensor: id=193131, shape=(2, 10), dtype=float32, numpy=
 array([[0.49974996, 0.50025004, 0.        , 0.        , 0.        ,
         0.        , 0.        , 0.        , 0.        , 0.        ],
        [0.4994912 , 0.5005088 , 0.        , 0.        , 0.        ,
@@ -4242,7 +4242,7 @@ out.shape: (64, 10, 512)
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;tf.Tensor: id=191893, shape=(5, 4), dtype=float32, numpy=
+&lt;pre&gt;&amp;lt;tf.Tensor: id=193585, shape=(5, 4), dtype=float32, numpy=
 array([[ 2.8674245, -2.174698 , -1.3073452, -6.4233937],
        [ 2.8674245, -2.174698 , -1.3073452, -6.4233937],
        [ 3.650207 , -0.973258 , -2.4126565, -6.5094995],
@@ -4863,7 +4863,7 @@ dec_enc_attn_weights: (2, 2, 10, 8)
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;tf.Tensor: id=192849, shape=(1, 50, 512), dtype=float32, numpy=
+&lt;pre&gt;&amp;lt;tf.Tensor: id=194541, shape=(1, 50, 512), dtype=float32, numpy=
 array([[[ 0.        ,  0.        ,  0.        , ...,  1.        ,
           1.        ,  1.        ],
         [ 0.84147096,  0.8218562 ,  0.8019618 , ...,  1.        ,
@@ -5567,7 +5567,7 @@ predictions: tf.Tensor(
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;tf.Tensor: id=195795, shape=(3,), dtype=float32, numpy=array([0.31326166, 0.31326166, 1.3132616 ], dtype=float32)&amp;gt;&lt;/pre&gt;
+&lt;pre&gt;&amp;lt;tf.Tensor: id=197487, shape=(3,), dtype=float32, numpy=array([0.31326166, 0.31326166, 1.3132616 ], dtype=float32)&amp;gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -6563,7 +6563,7 @@ layer_name: decoder_layer4_block2
     &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_xlim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_len_tar&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     
     &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_yticks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sentence&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_xticklabels&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;subword_encoder_zh&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; 
+    &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_xticklabels&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;subword_encoder_zh&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;predicted_seq&lt;/span&gt; 
                         &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;subword_encoder_zh&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;vocab_size&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; 
                        &lt;span class="n"&gt;fontdict&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;fontdict&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    
     
@@ -7708,7 +7708,7 @@ AAAQdtgUAwAAAAAAQNhhUwwAAAAAAABh538BV+7UE2tVRNEAAAAASUVORK5CYII=
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;我不是你，不知道你當初跟現在的感受，但我相信在你閱讀完本文，尤其是對自注意機制以及 Transformer 有了深刻理解之後，這之間的感受肯定是有不少差異的。&lt;/p&gt;
+&lt;p&gt;我不知道你當初跟現在的感受，但我相信在你閱讀完本文，尤其是對自注意機制以及 Transformer 有了深刻理解之後，這之間的感受肯定是有不少差異的。&lt;/p&gt;
 &lt;p&gt;儘管其運算機制十分錯綜複雜，閱讀本文後 Transformer 對你來說不再是黑魔法，也不再是遙不可及的存在。如果你現在覺得「Transformer 也不過就這樣嘛！」那就達成我寫這篇文章的目的了。&lt;/p&gt;
 &lt;p&gt;自注意力機制以及 Transformer 在推出之後就被非常廣泛地使用並改進，但在我自己開始接觸相關知識以後一直沒有發現完整的繁中教學，因此寫了這篇當初的我殷殷期盼的文章，也希望能幫助到更多人學習。&lt;/p&gt;
 &lt;p&gt;在進入結語之前，讓我們看看文中的 Transformer 是怎麼逐漸學會做好翻譯的：&lt;/p&gt;
@@ -7740,10 +7740,22 @@ AAAQdtgUAwAAAAAAQNhhUwwAAAAAAABh538BV+7UE2tVRNEAAAAASUVORK5CYII=
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;為了撰寫本文我花了非常大的心力，而支持我寫下去的最大動力是因為我相信這篇文章能幫助到不少人，而這些人跟當初的我一樣，想直觀且正確地瞭解注意機制和 Transformer。&lt;/p&gt;
-&lt;p&gt;我也相信人類之所以強大是因為集體知識：我們能透過書籍、影片以及語言將一個人腦中的知識與思想共享給其他人，讓寶貴的知識能夠「scale」，在更多人的腦袋中發光發熱，創造更多價值。&lt;/p&gt;
-&lt;p&gt;我希望你有從本文中學到一點東西，並能幫助我將本文的這些知識「scale」，把文章分享給更多有興趣的人，並利用本文學到的東西應用在一些你一直想要完成的任務上面。&lt;/p&gt;
-&lt;p&gt;最後一點提醒，就算 Transformer 比古早時代的方法好再多終究也只是個工具，其最大價值不會超過其被應用的問題上面。就好像現在早就有一大堆超越基本 Transformer，能做到更好的翻譯方法，但機器翻譯的需求仍然一直都在。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+                        這篇是當初在學習 Transformer 的我希望有人分享給自己的文章。
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;我相信人類之所以強大是因為集體知識：我們能透過書籍、影片以及語言將一個人腦中的知識與思想共享給其他人，讓寶貴的知識能夠「scale」，在更多人的腦袋中發光發熱，創造更多價值。&lt;/p&gt;
+&lt;p&gt;我希望你有從本文中學到一點東西，並幫助我將本文的這些知識「scale」，把文章分享給更多有興趣的人，並利用所學應用在一些你一直想要完成的任務上面。&lt;/p&gt;
+&lt;p&gt;最後一點提醒，就算 Transformer 比古早時代的方法好再多終究也只是個工具，其最大價值不會超過於被你拿來應用的問題之上。就好像現在已有不少超越基本 Transformer 的翻譯方法，但我們仍然持續在追尋更好的機器翻譯系統。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
