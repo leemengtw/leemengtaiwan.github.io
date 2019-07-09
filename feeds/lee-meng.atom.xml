@@ -1,5 +1,2035 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng - Lee Meng</title><link href="https://leemeng.tw/" rel="alternate"></link><link href="https://leemeng.tw/feeds/lee-meng.atom.xml" rel="self"></link><id>https://leemeng.tw/</id><updated>2019-06-17T05:40:00+09:00</updated><entry><title>淺談神經機器翻譯 &amp; 用 Transformer 與 TensorFlow 2 英翻中</title><link href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html" rel="alternate"></link><published>2019-06-17T05:40:00+09:00</published><updated>2019-06-17T05:40:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2019-06-17:/neural-machine-translation-with-transformer-and-tensorflow2.html</id><summary type="html">&lt;p&gt;本文分為兩大部分。前半將帶讀者簡單回顧 Seq2Seq 模型、自注意力機制以及 Transformer 等近年在機器翻譯領域裡頭的重要發展與概念；後半段則將帶著讀者實作一個可以將英文句子翻譯成中文的 Transformer。透過瞭解其背後運作原理，讀者將能把類似的概念應用到如圖像描述、閱讀理解以及語音辨識等各式各樣的機器學習任務之上。&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng - Lee Meng</title><link href="https://leemeng.tw/" rel="alternate"></link><link href="https://leemeng.tw/feeds/lee-meng.atom.xml" rel="self"></link><id>https://leemeng.tw/</id><updated>2019-07-10T09:00:00+09:00</updated><entry><title>進擊的 BERT：NLP 界的巨人之力與遷移學習</title><link href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html" rel="alternate"></link><published>2019-07-10T09:00:00+09:00</published><updated>2019-07-10T09:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2019-07-10:/attack_on_bert_transfer_learning_in_nlp.html</id><summary type="html">&lt;p&gt;這篇是給所有人的 BERT 科普文以及操作入門手冊。文中將簡單介紹知名的語言代表模型 BERT 以及如何用其實現兩階段的遷移學習。讀者將有機會透過 PyTorch 的程式碼來直觀理解 BERT 的運作方式並實際 fine tune 一個真實存在的假新聞分類任務。閱讀完本文的讀者將能把 BERT 與遷移學習運用到其他自己感興趣的 NLP 任務。&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+                        這是一篇 BERT 科普文，帶你直觀理解並實際運用現在 NLP 領域的巨人之力。
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;如果你還有印象，在&lt;a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html"&gt;自然語言處理（NLP）與深度學習入門指南&lt;/a&gt;裡我使用了 LSTM 以及 Google 的語言代表模型 &lt;a href="https://github.com/google-research/bert"&gt;BERT&lt;/a&gt; 來分類中文假新聞。而最後因為 BERT 本身的強大，我不費吹灰之力就在&lt;a href="https://www.kaggle.com/c/fake-news-pair-classification-challenge/leaderboard"&gt;該 Kaggle 競賽&lt;/a&gt;達到 85 % 的正確率，距離第一名 3 %，總排名前 30 %。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;img src="https://leemeng.tw/images/nlp-kaggle-intro/kaggle-final-result.png"/&gt;
+&lt;br/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;當初我是使用 &lt;a href="https://github.com/google-research/bert"&gt;TensorFlow 官方釋出的 BERT&lt;/a&gt; 進行 fine tuning，但使用方式並不是那麼直覺。最近適逢 &lt;a href="https://pytorch.org/hub"&gt;PyTorch Hub&lt;/a&gt; 上架 &lt;a href="https://pytorch.org/hub/huggingface_pytorch-pretrained-bert_bert/"&gt;BERT&lt;/a&gt;，李宏毅教授的&lt;a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML19.html"&gt;機器學習課程&lt;/a&gt;也推出了 &lt;a href="https://www.youtube.com/watch?v=UYPa347-DdE"&gt;BERT 的教學影片&lt;/a&gt;，我認為現在正是你了解並&lt;strong&gt;實際運用&lt;/strong&gt; BERT 的最佳時機！&lt;/p&gt;
+&lt;p&gt;這篇文章會簡單介紹 BERT 並展示如何使用 BERT 做&lt;a href="https://docs.google.com/presentation/d/1DJI1yX4U5IgApGwavt0AmOCLWwso7ou1Un93sMuAWmA/edit?usp=sharing"&gt;遷移學習（Transfer Learning）&lt;/a&gt;。我在文末也會提供一些有趣的研究及應用 ，讓你可以進一步探索變化快速的 NLP 世界。&lt;/p&gt;
+&lt;p&gt;如果你完全不熟 NLP 或是壓根子沒聽過什麼是 BERT，我強力建議你之後找時間（或是現在！）觀看李宏毅教授說明 &lt;a href="https://allennlp.org/elmo"&gt;ELMo&lt;/a&gt;、BERT 以及 &lt;a href="https://github.com/openai/gpt-2"&gt;GPT&lt;/a&gt; 等模型的影片，淺顯易懂：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div class="resp-container"&gt;
+&lt;iframe allow="accelerometer; 
+                            autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="resp-iframe" frameborder="0" src="https://www.youtube-nocookie.com/embed/UYPa347-DdE"&gt;
+&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;center&gt;
+                        李宏毅教授講解目前 NLP 領域的最新研究是如何讓機器讀懂文字的（我超愛這截圖）
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;我接下來會花點篇幅闡述 BERT 的基礎概念。如果你已經十分熟悉 BERT 而且迫不及待想要馬上將 BERT 應用到自己的 NLP 任務上面，可以直接跳到&lt;a href="#用-BERT-fine-tune-下游任務"&gt;用 BERT fine tune 下游任務&lt;/a&gt;一節。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="BERT：理解上下文的語言代表模型"&gt;BERT：理解上下文的語言代表模型&lt;a class="anchor-link" href="#BERT：理解上下文的語言代表模型"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;一個簡單的 convention，等等文中會穿插使用的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;代表&lt;/li&gt;
+&lt;li&gt;representation&lt;/li&gt;
+&lt;li&gt;repr.&lt;/li&gt;
+&lt;li&gt;repr. 向量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;指的都是一個可以用來&lt;strong&gt;代表&lt;/strong&gt;某詞彙（在某個語境下）的多維連續向量（continuous vector）。&lt;/p&gt;
+&lt;p&gt;現在在 NLP 圈混的，應該沒有人會說自己不曉得 Transformer 的&lt;a href="https://arxiv.org/abs/1706.03762"&gt;經典論文 Attention Is All You Need&lt;/a&gt; 以及其知名的&lt;a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html#Encoder-Decoder-%E6%A8%A1%E5%9E%8B-+-%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A9%9F%E5%88%B6"&gt;自注意力機制（Self-attention mechanism）&lt;/a&gt;。&lt;a href="https://arxiv.org/abs/1810.04805"&gt;BERT&lt;/a&gt; 全名為 &lt;strong&gt;B&lt;/strong&gt;idirectional &lt;strong&gt;E&lt;/strong&gt;ncoder &lt;strong&gt;R&lt;/strong&gt;epresentations from &lt;strong&gt;T&lt;/strong&gt;ransformers，是 Google 以無監督的方式利用大量無標註文本「煉成」的&lt;strong&gt;語言代表模型&lt;/strong&gt;，其架構為 Transformer 中的 Encoder。&lt;/p&gt;
+&lt;p&gt;我在&lt;a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html"&gt;淺談神經機器翻譯 &amp;amp; 用 Transformer 英翻中&lt;/a&gt;一文已經鉅細靡遺地解說過所有 Transformer 的相關概念，這邊就不再贅述。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/bert/bert-intro.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        BERT 其實就是 Transformer 中的 Encoder，只是有很多層
+                        （&lt;a href="https://youtu.be/UYPa347-DdE?list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4" target="_blank"&gt;圖片來源&lt;/a&gt;）
+                        
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;BERT 是傳統語言模型的一種變形，而&lt;a href="https://youtu.be/iWea12EAu6U"&gt;語言模型（&lt;strong&gt;L&lt;/strong&gt;anguage &lt;strong&gt;M&lt;/strong&gt;odel, LM）&lt;/a&gt;做的事情就是在給定一些詞彙的前提下， 去估計下一個詞彙出現的機率分佈。在&lt;a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html"&gt;讓 AI 給我們寫點金庸&lt;/a&gt;裡的 LSTM 也是一個語言模型 ，只是跟 BERT 差了很多個數量級。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/bert/lm-equation.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        給定前 t 個在字典裡的詞彙，語言模型要去估計第 t + 1 個詞彙的機率分佈 P
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;為何會想要訓練一個 LM？因為有種種好處：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;好處 1：無監督數據無限大。不像 &lt;a href="http://www.image-net.org/"&gt;ImageNet&lt;/a&gt; 還要找人標注數據，要訓練 LM 的話網路上所有文本都是你潛在的資料集（BERT 預訓練使用的數據集共有 33 &lt;strong&gt;億&lt;/strong&gt;個字，其中包含維基百科及 &lt;a href="https://arxiv.org/abs/1506.06724"&gt;BooksCorpus&lt;/a&gt;）&lt;/li&gt;
+&lt;li&gt;好處 2：厲害的 LM 能夠學會語法結構、解讀語義甚至&lt;a href="http://ckip.iis.sinica.edu.tw/project/coreference/"&gt;指代消解&lt;/a&gt;。透過特徵擷取或是 fine-tuning 能更有效率地訓練下游任務並提升其表現&lt;/li&gt;
+&lt;li&gt;好處 3：減少處理不同 NLP 任務所需的 architecture engineering 成本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一般人很容易理解前兩點的好處，但事實上第三點的影響也十分深遠。以往為了解決不同的 NLP 任務，我們會為該任務設計一個最適合的神經網路架構並做訓練。以下是一些簡單例子：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/bert/model_architecture_nlp_tasks.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        一般會依照不同 NLP 任務的性質為其貼身打造特定的模型架構
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;我不會介紹上述模型的運作原理，只是想讓你了解不同的 NLP 任務通常需要不同的模型，而設計這些模型並測試其 performance 是非常耗費成本的（人力、時間、計算資源）。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+                        如果有一個能直接處理各式 NLP 任務的通用架構該有多好？
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;隨著時代演進，不少人很自然地有了這樣子的想法，而 BERT 就是其中一個將此概念付諸實踐的例子。&lt;a href="https://arxiv.org/pdf/1810.04805.pdf"&gt;BERT 論文&lt;/a&gt;的作者們使用 Transfomer Encoder、大量文本以及兩個預訓練目標，事先訓練好一個可以套用到多個 NLP 任務的 BERT 模型，再以此為基礎 fine tune 多個下游任務。&lt;/p&gt;
+&lt;p&gt;這就是近來 NLP 領域非常流行的&lt;strong&gt;兩階段&lt;/strong&gt;遷移學習：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;先以 LM Pretraining 的方式預先訓練出一個對自然語言有一定「理解」的通用模型&lt;/li&gt;
+&lt;li&gt;再將該模型拿來做特徵擷取或是 fine tune 下游的（監督式）任務&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/bert/bert-2phase.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        兩階段遷移學習在 BERT 下的應用：使用預先訓練好的 BERT 對下游任務做 fine tuning
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;上面這個示意圖最重要的概念是預訓練步驟跟 fine-tuning 步驟所用的 BERT 是&lt;strong&gt;一模一樣&lt;/strong&gt;的。當你學會使用 BERT 就能用同個架構訓練多種 NLP 任務，大大減少自己設計模型的 architecture engineering 成本，投資報酬率高到爆炸。&lt;/p&gt;
+&lt;p&gt;壞消息是，天下沒有白吃的午餐。&lt;/p&gt;
+&lt;p&gt;要訓練好一個有 1.1 億參數的 12 層 &lt;strong&gt;BERT-BASE&lt;/strong&gt; 得用 16 個 &lt;a href="https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-global-availability.html"&gt;TPU chips&lt;/a&gt; 跑上整整 4 天，&lt;a href="https://medium.com/syncedreview/the-staggering-cost-of-training-sota-ai-models-e329e80fa82"&gt;花費 500 鎂&lt;/a&gt;；24 層的 &lt;strong&gt;BERT-LARGE&lt;/strong&gt; 則有 3.4 億個參數，得用 64 個 TPU chips（約 7000 鎂）訓練。喔對了，別忘了多次實驗得把這些成本乘上幾倍。&lt;a href="https://twitter.com/arnicas/status/1147426600180494337?s=20"&gt;最近也有 NLP 研究者呼籲大家把訓練好的模型開源釋出&lt;/a&gt;以減少重複訓練對環境造成的影響。&lt;/p&gt;
+&lt;p&gt;好消息是，BERT 作者們有開源釋出訓練好的模型，只要使用 &lt;a href="https://github.com/google-research/bert"&gt;TensorFlow&lt;/a&gt; 或是 &lt;a href="https://github.com/huggingface/pytorch-pretrained-BERT"&gt;PyTorch&lt;/a&gt; 將已訓練好的 BERT 載入，就能省去預訓練步驟的所有昂貴成本。好 BERT 不用嗎？&lt;/p&gt;
+&lt;p&gt;雖然一般來說我們只需要用訓練好的 BERT 做 fine-tuning，稍微瞭解預訓練步驟的內容能讓你直觀地理解它在做些什麼。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/bert/bert-pretrain-tasks.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        BERT 在預訓練時需要完成的兩個任務
+                        （&lt;a href="https://youtu.be/UYPa347-DdE?list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4" target="_blank"&gt;圖片來源&lt;/a&gt;）
+                        
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Google 在預訓練 BERT 時讓它&lt;strong&gt;同時&lt;/strong&gt;進行兩個任務：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;克漏字填空（&lt;a href="https://journals.sagepub.com/doi/abs/10.1177/107769905303000401"&gt;1953 年被提出的 Cloze task&lt;/a&gt;，學術點的說法是 &lt;strong&gt;M&lt;/strong&gt;asked &lt;strong&gt;L&lt;/strong&gt;anguage &lt;strong&gt;M&lt;/strong&gt;odel, MLM）&lt;/li&gt;
+&lt;li&gt;判斷第 2 個句子在原始文本中是否跟第 1 個句子相接（&lt;strong&gt;N&lt;/strong&gt;ext &lt;strong&gt;S&lt;/strong&gt;entence &lt;strong&gt;P&lt;/strong&gt;rediction, NSP）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;對上通天文下知地理的鄉民們來說，要完成這兩個任務簡單到爆。只要稍微看一下&lt;strong&gt;前後文&lt;/strong&gt;就能知道左邊克漏字任務的 &lt;code&gt;[MASK]&lt;/code&gt; 裡頭該填 &lt;code&gt;退了&lt;/code&gt;；而 &lt;code&gt;醒醒吧&lt;/code&gt; 後面接 &lt;code&gt;你沒有妹妹&lt;/code&gt; 也十分合情合理。&lt;/p&gt;
+&lt;p&gt;讓我們馬上載入 &lt;a href="https://pytorch.org/hub"&gt;PyTorch Hub&lt;/a&gt; 上的 &lt;a href="https://pytorch.org/hub/huggingface_pytorch-pretrained-bert_bert/"&gt;BERT 模型&lt;/a&gt;體驗看看。首先我們需要安裝一些簡單的函式庫：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;%%bash
+pip install tqdm boto3 requests regex -q
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;接著載入中文 BERT 使用的 tokenizer：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;torch&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.display&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;clear_output&lt;/span&gt;
+
+&lt;span class="n"&gt;GITHUB_REPO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"huggingface/pytorch-pretrained-BERT"&lt;/span&gt; &lt;span class="c1"&gt;# 感謝 HuggingFace 團隊造福後人&lt;/span&gt;
+&lt;span class="n"&gt;PRETRAINED_MODEL_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"bert-base-chinese"&lt;/span&gt;  &lt;span class="c1"&gt;# 指定繁簡中文 BERT-BASE 預訓練模型&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 取得此預訓練模型所使用的 tokenizer&lt;/span&gt;
+&lt;span class="n"&gt;tokenizer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hub&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;GITHUB_REPO&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'bertTokenizer'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PRETRAINED_MODEL_NAME&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;clear_output&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"PyTorch 版本："&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__version__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;PyTorch 版本： 1.1.0
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;為了讓你直觀了解 BERT 運作，本文使用包含繁體與簡體中文的預訓練模型。 你可以在 &lt;a href="https://github.com/huggingface/pytorch-pretrained-BERT/blob/master/hubconfs/bert_hubconf.py"&gt;Hugging Face 團隊的 repo &lt;/a&gt; 裡看到所有可從 PyTorch Hub 載入的 BERT 預訓練模型。截至目前為止有以下模型可供使用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bert-base-chinese&lt;/li&gt;
+&lt;li&gt;bert-base-uncased&lt;/li&gt;
+&lt;li&gt;bert-base-cased&lt;/li&gt;
+&lt;li&gt;bert-base-german-cased&lt;/li&gt;
+&lt;li&gt;bert-base-multilingual-uncased&lt;/li&gt;
+&lt;li&gt;bert-base-multilingual-cased&lt;/li&gt;
+&lt;li&gt;bert-large-cased&lt;/li&gt;
+&lt;li&gt;bert-large-uncased&lt;/li&gt;
+&lt;li&gt;bert-large-uncased-whole-word-masking&lt;/li&gt;
+&lt;li&gt;bert-large-cased-whole-word-masking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這些模型的參數都已經被訓練完成，而主要差別在於：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;預訓練步驟時用的文本語言&lt;/li&gt;
+&lt;li&gt;有無分大小寫&lt;/li&gt;
+&lt;li&gt;層數的不同&lt;/li&gt;
+&lt;li&gt;預訓練時遮住 wordpieces 或是整個 word&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;除了本文使用的中文 BERT 以外，常被拿來應用與研究的是英文的 &lt;code&gt;bert-base-cased&lt;/code&gt; 模型。&lt;/p&gt;
+&lt;p&gt;現在讓我們看看 tokenizer 裡頭的字典資訊：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;vocab&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;vocab&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"字典大小："&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;vocab&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;字典大小： 21128
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;如上所示，中文 BERT 的字典大小約有 2.1 萬個 tokens。沒記錯的話，英文 BERT 的字典則大約是 3 萬 tokens 左右。我們可以瞧瞧中文 BERT 字典裡頭紀錄的一些 tokens 以及其對應的索引：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;random&lt;/span&gt;
+&lt;span class="n"&gt;random_tokens&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sample&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;vocab&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;random_ids&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;vocab&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;random_tokens&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;{0:20}{1:15}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"token"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"index"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"-"&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random_tokens&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_ids&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;{0:15}{1:10}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;token               index          
+-------------------------
+看                    4692
+##闰                 20368
+weeks               11973
+##犯                 17363
+##嘅                 14703
+max                  8621
+##朽                 16380
+##う                  8981
+尾                    2227
+佳                     881
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;BERT 使用當初 &lt;a href="https://ai.googleblog.com/2016/09/a-neural-network-for-machine.html"&gt;Google NMT&lt;/a&gt; 提出的 &lt;a href="https://arxiv.org/abs/1609.08144"&gt;WordPiece Tokenization&lt;/a&gt; ，將本來的 words 拆成更小粒度的 wordpieces，有效處理&lt;a href="https://en.wiktionary.org/wiki/OOV"&gt;不在字典裡頭的詞彙&lt;/a&gt; 。中文的話大致上就像是 character-level tokenization，而有 &lt;code&gt;##&lt;/code&gt; 前綴的 tokens 即為 wordpieces。&lt;/p&gt;
+&lt;p&gt;以詞彙 &lt;code&gt;fragment&lt;/code&gt; 來說，其可以被拆成 &lt;code&gt;frag&lt;/code&gt; 與 &lt;code&gt;##ment&lt;/code&gt; 兩個 pieces，而一個 word 也可以獨自形成一個 wordpiece。wordpieces 可以由蒐集大量文本並找出其中常見的 pattern 取得。&lt;/p&gt;
+&lt;p&gt;另外有趣的是ㄅㄆㄇㄈ也有被收錄：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;indices&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;647&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;657&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;some_pairs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;vocab&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;indices&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;pair&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;some_pairs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pair&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;('ㄅ', 647)
+('ㄆ', 648)
+('ㄇ', 649)
+('ㄉ', 650)
+('ㄋ', 651)
+('ㄌ', 652)
+('ㄍ', 653)
+('ㄎ', 654)
+('ㄏ', 655)
+('ㄒ', 656)
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;讓我們利用中文 BERT 的 tokenizer 將一個中文句子斷詞看看：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"[CLS] 等到潮水 [MASK] 了，就知道誰沒穿褲子。"&lt;/span&gt;
+&lt;span class="n"&gt;tokens&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tokenize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ids&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;convert_tokens_to_ids&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tokens&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tokens&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s1"&gt;'...'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ids&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s1"&gt;'...'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;[CLS] 等到潮水 [MASK] 了，就知道誰沒穿褲子。
+['[CLS]', '等', '到', '潮', '水', '[MASK]', '了', '，', '就', '知'] ...
+[101, 5023, 1168, 4060, 3717, 103, 749, 8024, 2218, 4761] ...
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;除了一般的 wordpieces 以外，BERT 裡頭有 5 個特殊 tokens 各司其職：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;[CLS]&lt;/code&gt;：在做分類任務時其最後一層的 repr. 會被視為整個輸入序列的 repr.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[SEP]&lt;/code&gt;：有兩個句子的文本會被串接成一個輸入序列，並在兩句之間插入這個 token 以做區隔&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[UNK]&lt;/code&gt;：沒出現在 BERT 字典裡頭的字會被這個 token 取代&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[PAD]&lt;/code&gt;：zero padding 遮罩，將長度不一的輸入序列補齊方便做 batch 運算&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[MASK]&lt;/code&gt;：未知遮罩，僅在預訓練階段會用到&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如上例所示，&lt;code&gt;[CLS]&lt;/code&gt; 一般會被放在輸入序列的最前面，而 zero padding 在之前的 &lt;a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html#%E7%9B%B4%E8%A7%80%E7%90%86%E8%A7%A3%E9%81%AE%E7%BD%A9%E5%9C%A8%E6%B3%A8%E6%84%8F%E5%87%BD%E5%BC%8F%E4%B8%AD%E7%9A%84%E6%95%88%E6%9E%9C"&gt;Transformer 文章裡已經有非常詳細的介紹&lt;/a&gt;。&lt;code&gt;[MASK]&lt;/code&gt; token 一般在 fine-tuning 或是 feature extraction 時不會用到，這邊只是為了展示預訓練階段的克漏字任務才使用的。&lt;/p&gt;
+&lt;p&gt;現在馬上讓我們看看給定上面有 &lt;code&gt;[MASK]&lt;/code&gt; 的句子，BERT 會填入什麼字：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="sd"&gt;這段程式碼載入已經訓練好的 masked 語言模型並對有 [MASK] 的句子做預測&lt;/span&gt;
+&lt;span class="sd"&gt;"""&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 除了 tokens 以外我們還需要辨別句子的 segment ids&lt;/span&gt;
+&lt;span class="n"&gt;tokens_tensor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tensor&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;ids&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;  &lt;span class="c1"&gt;# (1, seq_len)&lt;/span&gt;
+&lt;span class="n"&gt;segments_tensors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros_like&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tokens_tensor&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# (1, seq_len)&lt;/span&gt;
+&lt;span class="n"&gt;maskedLM_model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hub&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;GITHUB_REPO&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                                &lt;span class="s1"&gt;'bertForMaskedLM'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                                &lt;span class="n"&gt;PRETRAINED_MODEL_NAME&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;clear_output&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 使用 masked LM 估計 [MASK] 位置所代表的實際 token &lt;/span&gt;
+&lt;span class="n"&gt;maskedLM_model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;no_grad&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;predictions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maskedLM_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tokens_tensor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;segments_tensors&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;# (1, seq_len, num_hidden_units)&lt;/span&gt;
+&lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;maskedLM_model&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 將 [MASK] 位置的機率分佈取 top k 最有可能的 tokens 出來&lt;/span&gt;
+&lt;span class="n"&gt;masked_index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="n"&gt;probs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;indices&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;topk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;softmax&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;predictions&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;masked_index&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;predicted_tokens&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;convert_ids_to_tokens&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;indices&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tolist&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 顯示 top k 可能的字。一般我們就是取 top 1 當作預測值&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"輸入 tokens ："&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tokens&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s1"&gt;'...'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'-'&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;predicted_tokens&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;probs&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;tokens&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;masked_index&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Top &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; (&lt;/span&gt;&lt;span class="si"&gt;{:2}&lt;/span&gt;&lt;span class="s2"&gt;%)：&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;tokens&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt; &lt;span class="s1"&gt;'...'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;輸入 tokens ： ['[CLS]', '等', '到', '潮', '水', '[MASK]', '了', '，', '就', '知'] ...
+--------------------------------------------------
+Top 1 (67%)：['[CLS]', '等', '到', '潮', '水', '來', '了', '，', '就', '知'] ...
+Top 2 (25%)：['[CLS]', '等', '到', '潮', '水', '濕', '了', '，', '就', '知'] ...
+Top 3 ( 2%)：['[CLS]', '等', '到', '潮', '水', '過', '了', '，', '就', '知'] ...
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Google 在訓練中文 BERT 鐵定沒看&lt;a href="https://term.ptt.cc/"&gt;批踢踢&lt;/a&gt;，還無法預測出我們最想要的那個 &lt;code&gt;退&lt;/code&gt; 字。而最接近的 &lt;code&gt;過&lt;/code&gt; 的出現機率只有 2%，但我會說以語言代表模型以及自然語言理解的角度來看這結果已經不差了。BERT 透過關注 &lt;code&gt;潮&lt;/code&gt; 與 &lt;code&gt;水&lt;/code&gt; 這兩個字，從 2 萬多個 wordpieces 的可能性中選出 &lt;code&gt;來&lt;/code&gt; 作為這個情境下 &lt;code&gt;[MASK]&lt;/code&gt; token 的預測值 ，也還算說的過去。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;img src="https://leemeng.tw/images/bert/bert-attention.jpg"/&gt;
+&lt;br/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這是 &lt;a href="https://github.com/jessevig/bertviz"&gt;BertViz&lt;/a&gt; 視覺化 BERT 注意力的結果，我等等會列出安裝步驟讓你自己玩玩。值得一提的是，以上是第 8 層 Encoder block 中 &lt;a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html#Multi-head-attention%EF%BC%9A%E4%BD%A0%E7%9C%8B%E4%BD%A0%E7%9A%84%EF%BC%8C%E6%88%91%E7%9C%8B%E6%88%91%E7%9A%84"&gt;Multi-head attention&lt;/a&gt; 裡頭某一個 head 的自注意力結果。並不是每個 head 都會關注在一樣的位置。透過 multi-head 自注意力機制，BERT 可以讓不同 heads 在不同的 representation subspaces 裡學會關注不同位置的不同 repr.。&lt;/p&gt;
+&lt;p&gt;學會填克漏字讓 BERT 更好地 model 每個詞彙在不同語境下該有的 repr.，而 NSP 任務則能幫助 BERT model 兩個句子之間的關係，這在&lt;a href="https://zh.wikipedia.org/wiki/%E5%95%8F%E7%AD%94%E7%B3%BB%E7%B5%B1"&gt;問答系統 QA&lt;/a&gt;、&lt;a href="http://nlpprogress.com/english/natural_language_inference.html"&gt;自然語言推論 NLI &lt;/a&gt;或是後面我們會看到的&lt;a href="#用-BERT-fine-tune-下游任務"&gt;假新聞分類任務&lt;/a&gt;都很有幫助。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這樣的 word repr. 就是近年十分盛行的 &lt;a href="https://youtu.be/S-CspeZ8FHc"&gt;contextual word representation&lt;/a&gt; 概念。跟以往沒有蘊含上下文資訊的 &lt;a href="https://youtu.be/8rXD5-xhemo"&gt;Word2Vec、GloVe&lt;/a&gt; 等無語境的詞嵌入向量有很大的差異。用稍微學術一點的說法就是：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+                        Contextual word repr. 讓同 word type 的 word token 在不同語境下有不同的表示方式；而傳統的詞向量無論上下文，都會讓同 type 的 word token 的 repr. 相同。
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;直覺上 contextual word representation 比較能反映人類語言的真實情況，畢竟同個詞彙的含義在不同情境下相異是再正常不過的事情。在不同語境下給同個詞彙相同的 word repr. 這件事情在近年的 NLP 領域裡頭顯得越來越不合理。&lt;/p&gt;
+&lt;p&gt;為了讓你加深印象，讓我再舉個具體的例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;情境 1：
+
+胖虎叫大雄去買漫畫，回來慢了就打他。
+
+情境 2：
+
+妹妹說胖虎是「胖子」，他聽了很不開心。
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;很明顯地，在這兩個情境裡頭「他」所代表的語義以及指稱的對象皆不同。如果仍使用沒蘊含上下文 / 語境資訊的詞向量，機器就會很難正確地「解讀」這兩個句子所蘊含的語義了。&lt;/p&gt;
+&lt;p&gt;現在讓我們跟隨&lt;a href="https://colab.research.google.com/drive/1g2nhY9vZG-PLC3w3dcHGqwsHBAXnD9EY"&gt;這個 Colab 筆記本&lt;/a&gt;安裝 BERT 的視覺化工具 &lt;a href="https://github.com/jessevig/bertviz"&gt;BertViz&lt;/a&gt;，看看 BERT 會怎麼處理這兩個情境：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 安裝 BertViz&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nb"&gt;test&lt;/span&gt; -d bertviz_repo &lt;span class="o"&gt;||&lt;/span&gt; git clone https://github.com/jessevig/bertviz bertviz_repo
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="s1"&gt;'bertviz_repo'&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'bertviz_repo'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# import packages&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bertviz.pytorch_pretrained_bert&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BertModel&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;BertTokenizer&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bertviz.head_view_bert&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;show&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 在 jupyter notebook 裡頭顯示 visualzation 的 helper&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;call_html&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+  &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;IPython&lt;/span&gt;
+  &lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;IPython&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;HTML&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'''&lt;/span&gt;
+&lt;span class="s1"&gt;        &amp;lt;script src="/static/components/requirejs/require.js"&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;        &amp;lt;script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;          requirejs.config({&lt;/span&gt;
+&lt;span class="s1"&gt;            paths: {&lt;/span&gt;
+&lt;span class="s1"&gt;              base: '/static/base',&lt;/span&gt;
+&lt;span class="s1"&gt;              "d3": "https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.8/d3.min",&lt;/span&gt;
+&lt;span class="s1"&gt;              jquery: '//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min',&lt;/span&gt;
+&lt;span class="s1"&gt;            },&lt;/span&gt;
+&lt;span class="s1"&gt;          });&lt;/span&gt;
+&lt;span class="s1"&gt;        &amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;        '''&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="n"&gt;clear_output&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Setup 以後就能非常輕鬆地將 BERT 內部的注意力機制視覺化出來：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 記得我們是使用中文 BERT&lt;/span&gt;
+&lt;span class="n"&gt;bert_version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'bert-base-chinese'&lt;/span&gt;
+&lt;span class="n"&gt;bertviz_model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BertModel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_pretrained&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bert_version&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;bertviz_tokenizer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BertTokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_pretrained&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bert_version&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 情境 1 的句子&lt;/span&gt;
+&lt;span class="n"&gt;sentence_a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"胖虎叫大雄去買漫畫，"&lt;/span&gt;
+&lt;span class="n"&gt;sentence_b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"回來慢了就打他。"&lt;/span&gt;
+&lt;span class="n"&gt;call_html&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bertviz_model&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bertviz_tokenizer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sentence_a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sentence_b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 注意：執行這段程式碼以後只會顯示下圖左側的結果。&lt;/span&gt;
+&lt;span class="c1"&gt;# 為了方便你比較，我把情境 2 的結果也同時附上&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;img src="https://leemeng.tw/images/bert/bert-coreference.jpg"/&gt;
+&lt;br/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這是 BERT 裡第 9 層 Encoder block 其中一個 head 的注意力結果。&lt;/p&gt;
+&lt;p&gt;圖中的線條代表該 head 在更新「他」（左側）的 repr. 時關注其他詞彙（右側）的注意力程度。越粗代表關注權重（attention weights）越高。很明顯地這個 head 具有一定的&lt;a href="https://youtu.be/i19m4GzBhfc"&gt;指代消解（Coreference Resolution）&lt;/a&gt;能力，能正確地關注「他」所指代的對象。&lt;/p&gt;
+&lt;p&gt;要處理指代消解需要對自然語言有不少理解，而 BERT 在沒有標注數據的情況下透過自注意力機制、深度雙向語言模型以及「閱讀」大量文本達到這樣的水準，是一件令人雀躍的事情。&lt;/p&gt;
+&lt;p&gt;當然 BERT 並不是第一個嘗試產生 contextual word repr. 的語言模型。在它之前最知名的例子有剛剛提到的 &lt;a href="https://allennlp.org/elmo"&gt;ELMo&lt;/a&gt; 以及 &lt;a href="https://github.com/openai/gpt-2"&gt;GPT&lt;/a&gt;：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/bert/bert_elmo_gpt.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        ELMo、GPT 以及 BERT 都透過訓練語言模型來獲得 contextual word representation
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;ELMo 利用獨立訓練的雙向兩層 LSTM  做語言模型並將中間得到的隱狀態向量串接當作每個詞彙的 contextual word repr.；GPT 則是使用 Transformer 的 Decoder 來訓練一個中規中矩從左到右的語言模型。&lt;/p&gt;
+&lt;p&gt;BERT 跟它們的差異在於利用 MLM（即克漏字）的概念及 Transformer Encoder 的架構，擺脫以往語言模型只能從單個方向（由左到右或由右到左）估計下個詞彙出現機率的窘境，訓練出一個&lt;strong&gt;雙向&lt;/strong&gt;的語言代表模型。這使得 BERT 輸出的每個 token 的 repr. &lt;code&gt;Tn&lt;/code&gt; 都同時蘊含了前後文資訊，真正的&lt;strong&gt;雙向&lt;/strong&gt; representation。&lt;/p&gt;
+&lt;p&gt;跟以往模型相比，BERT 能更好地處理自然語言，在著名的問答任務 &lt;a href="https://rajpurkar.github.io/SQuAD-explorer/"&gt;SQuAD2.0&lt;/a&gt; 也有卓越表現：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/bert/squad2.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        SQuAD 2.0 目前排行榜的前 5 名有 4 個有使用 BERT
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;我想我又犯了解說癖，這些東西你可能在看這篇文章之前就全懂了。但希望這些對 BERT 的 high level 介紹能幫助更多人直覺地理解 BERT 的強大之處以及為何值得學習它。&lt;/p&gt;
+&lt;p&gt;假如你仍然似懂非懂，只需記得：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+                        BERT 是一個強大的語言代表模型，給它一段文本序列，它能回傳一段相同長度且蘊含上下文資訊的 word repr. 序列，對下游的 NLP 任務很有幫助。
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;有了這樣的概念以後，我們接下來要做的事情很簡單，就是將自己感興趣的 NLP 任務的文本丟入 BERT ，為文本裡頭的每個 token 取得有語境的 word repr.，並以此 repr. 進一步 fine tune 當前任務，取得更好的結果。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="用-BERT-fine-tune-下游任務"&gt;用 BERT fine tune 下游任務&lt;a class="anchor-link" href="#用-BERT-fine-tune-下游任務"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;我們在&lt;a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html"&gt;給所有人的 NLP 入門指南&lt;/a&gt;碰過的&lt;a href="https://www.kaggle.com/c/fake-news-pair-classification-challenge/submissions"&gt;假新聞分類任務&lt;/a&gt;將會是本文拿 BERT 來做 fine-tuning 的例子。選擇這個任務的最主要理由是因為中文數據容易理解，另外網路上針對兩個句子做分類的例子也較少。&lt;/p&gt;
+&lt;p&gt;就算你對假新聞分類沒興趣也建議繼續閱讀。因為本節談到的所有概念完全可以被套用到其他語言的文本以及不同的 NLP 任務之上。因此我希望接下來你能一邊閱讀一邊想像如何用同樣的方式把 BERT 拿來處理你自己感興趣的 NLP 任務。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/nlp-kaggle-intro/view-data-on-kaggle.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        給定假新聞 title1，判斷另一新聞 title2 跟 title1 的關係（同意、反對或無關）
+                        （&lt;a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html" target="_blank"&gt;圖片來源&lt;/a&gt;）
+                        
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;fine tune BERT 來解決新的下游任務有 5 個簡單步驟：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="#1.-準備原始文本數據"&gt;準備原始文本數據&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#2.-將原始文本轉換成-BERT-相容的輸入格式"&gt;將原始文本轉換成 BERT 相容的輸入格式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#3.-在-BERT-之上加入新-layer-成下游任務模型"&gt;在 BERT 之上加入新 layer 成下游任務模型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#4.-訓練該下游任務模型"&gt;訓練該下游任務模型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#5.-對新樣本做推論"&gt;對新樣本做推論&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;對，就是那麼直覺。而且你應該已經看出步驟 1、4 及 5 都跟訓練一般模型所需的步驟無太大差異。跟 BERT 最相關的細節事實上是步驟 2 跟 3：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何將原始數據轉換成 &lt;strong&gt;BERT 相容&lt;/strong&gt;的輸入格式？&lt;/li&gt;
+&lt;li&gt;如何在 BERT 之上建立 layer(s) 以符合下游任務需求？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;事不宜遲，讓我們馬上以假新聞分類任務為例回答這些問題。&lt;a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html"&gt;我在之前的文章已經說明過&lt;/a&gt;，這個任務的輸入是兩個句子，輸出是 3 個類別機率的多類別分類任務（multi-class classification task），跟 NLP 領域裡常見的&lt;a href="https://paperswithcode.com/task/natural-language-inference/latest"&gt;自然語言推論（Natural Language Inference）&lt;/a&gt;具有相同性質。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="1.-準備原始文本數據"&gt;1. 準備原始文本數據&lt;a class="anchor-link" href="#1.-準備原始文本數據"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;為了最大化再現性（reproducibility）以及幫助有興趣的讀者深入研究，我會列出所有的程式碼，你只要複製貼上就能完整重現文中所有結果並生成能提交到 Kaggle 競賽的預測檔案。你當然也可以選擇直接閱讀，不一定要下載數據。&lt;/p&gt;
+&lt;p&gt;因為 Kaggle 網站本身的限制，我無法直接提供數據載點。如果你想要跟著本文練習以 BERT fine tune 一個假新聞的分類模型，可以先&lt;a href="https://www.kaggle.com/c/fake-news-pair-classification-challenge/data"&gt;前往該 Kaggle 競賽下載資料集&lt;/a&gt;。下載完數據你的資料夾裡應該會有兩個壓縮檔，分別代表訓練集和測試集：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;glob&lt;/span&gt;
+&lt;span class="n"&gt;glob&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;glob&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"*.csv.zip"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;['test.csv.zip', 'train.csv.zip']&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;接著就是我實際處理訓練資料集的程式碼。再次申明，你只需稍微瀏覽註解並感受一下處理邏輯即可，no pressure。&lt;/p&gt;
+&lt;p&gt;因為競賽早就結束，我們不必花費時間衝高分數。比起衝高準確度，讓我們做點有趣的事情：從 32 萬筆訓練數據裡頭隨機抽樣 1 % 來讓 BERT 學怎麼分類假新聞。&lt;/p&gt;
+&lt;p&gt;我們可以看看 BERT 本身的語言理解能力對只有少量標註數據的任務有什麼幫助：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="sd"&gt;前處理原始的訓練數據集。&lt;/span&gt;
+&lt;span class="sd"&gt;你不需了解細節，只需要看註解了解邏輯或是輸出的數據格式即可&lt;/span&gt;
+&lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 解壓縮從 Kaggle 競賽下載的訓練壓縮檔案&lt;/span&gt;
+&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"unzip train.csv.zip"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 簡單的數據清理，去除空白標題的 examples&lt;/span&gt;
+&lt;span class="n"&gt;df_train&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"train.csv"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;empty_title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'title2_zh'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isnull&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; \
+               &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'title1_zh'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isnull&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; \
+               &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'title2_zh'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; \
+               &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'title2_zh'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'0'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;df_train&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="n"&gt;empty_title&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 剔除過長的樣本以避免 BERT 無法將整個輸入序列放入記憶體不多的 GPU&lt;/span&gt;
+&lt;span class="n"&gt;MAX_LENGTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;
+&lt;span class="n"&gt;df_train&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title1_zh&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;MAX_LENGTH&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="n"&gt;df_train&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title2_zh&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;MAX_LENGTH&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 只用 1% 訓練數據看看 BERT 對少量標註數據有多少幫助&lt;/span&gt;
+&lt;span class="n"&gt;SAMPLE_FRAC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.01&lt;/span&gt;
+&lt;span class="n"&gt;df_train&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sample&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;frac&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;SAMPLE_FRAC&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;9527&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 去除不必要的欄位並重新命名兩標題的欄位名&lt;/span&gt;
+&lt;span class="n"&gt;df_train&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reset_index&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;df_train&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loc&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'title1_zh'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'title2_zh'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'label'&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+&lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'text_a'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'text_b'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'label'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# idempotence, 將處理結果另存成 tsv 供 PyTorch 使用&lt;/span&gt;
+&lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"train.tsv"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sep&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"訓練樣本數："&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;img src="https://leemeng.tw/images/bert/df_train.jpg"/&gt;
+&lt;br/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;事情變得更有趣了。因為我們在抽樣 1 % 的數據後還將過長的樣本去除，實際上會被拿來訓練的樣本數只有 2,657 筆，佔不到參賽時可以用的訓練數據的 1 %，是非常少量的數據。&lt;/p&gt;
+&lt;p&gt;我們也可以看到 &lt;code&gt;unrelated&lt;/code&gt; 的樣本佔了 68 %，因此我們用 BERT 訓練出來的分類器最少最少要超過多數決的 68 % baseline 才行：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value_counts&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;unrelated    0.679338
+agreed       0.294317
+disagreed    0.026346
+Name: label, dtype: float64&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;接著我也對最後要預測的測試集做些非常基本的前處理，方便之後提交符合競賽要求的格式。你也不需了解所有細節，只要知道我們最後要預測 8 萬筆樣本：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"unzip test.csv.zip"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;df_test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"test.csv"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;df_test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df_test&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loc&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"title1_zh"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"title2_zh"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"id"&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+&lt;span class="n"&gt;df_test&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"text_a"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"text_b"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Id"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;df_test&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"test.tsv"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sep&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"預測樣本數："&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df_test&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;df_test&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;img src="https://leemeng.tw/images/bert/df_test.jpg"/&gt;
+&lt;br/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;ratio&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df_test&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"測試集樣本數 / 訓練集樣本數 = &lt;/span&gt;&lt;span class="si"&gt;{:.1f}&lt;/span&gt;&lt;span class="s2"&gt; 倍"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ratio&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;測試集樣本數 / 訓練集樣本數 = 30.2 倍
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;因為測試集的樣本數是我們迷你訓練集的 30 倍之多，後面你會看到反而是推論需要花費比較久的時間，模型本身一下就訓練完了。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="2.-將原始文本轉換成-BERT-相容的輸入格式"&gt;2. 將原始文本轉換成 BERT 相容的輸入格式&lt;a class="anchor-link" href="#2.-將原始文本轉換成-BERT-相容的輸入格式"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;處理完原始數據以後，最關鍵的就是了解如何讓 BERT 讀取這些數據以做訓練和推論。這時候我們需要了解 BERT 的輸入編碼格式。&lt;/p&gt;
+&lt;p&gt;這步驟是本文的精華所在，你將看到在其他只單純說明 BERT 概念的文章不會提及的所有實務細節。以下是&lt;a href="https://arxiv.org/pdf/1810.04805.pdf"&gt;原論文&lt;/a&gt;裡頭展示的成對句子編碼示意圖：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/bert/practical_bert_encoding_for_pytorch.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        加入 PyTorch 使用細節的 BERT 成對句子編碼示意圖
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;第二條分隔線&lt;strong&gt;之上&lt;/strong&gt;的內容是論文裡展示的例子。圖中的每個 Token Embedding 都對應到前面提過的一個 wordpiece，而 Segment Embeddings 則代表不同句子的位置，是學出來的。Positional Embeddings 則跟其他 Transformer 架構中出現的位置編碼同出一轍。&lt;/p&gt;
+&lt;p&gt;實際運用 PyTorch 的 BERT 時最重要的則是在第二條分隔線&lt;strong&gt;之下&lt;/strong&gt;的資訊。我們需要將原始文本轉換成  &lt;strong&gt;3 種 id tensors&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tokens_tensor&lt;/code&gt;：代表識別每個 token 的索引值，用 tokenizer 轉換即可&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;segments_tensor&lt;/code&gt;：用來識別句子界限。第一句為 0，第二句則為 1。另外注意句子間的 &lt;code&gt;[SEP]&lt;/code&gt; 為 0&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;masks_tensor&lt;/code&gt;：用來界定自注意力機制範圍。1 讓 BERT 關注該位置，0 則代表是 padding 不需關注&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;論文裡的例子並沒有說明 &lt;code&gt;[PAD]&lt;/code&gt; token，但實務上每個 batch 裡頭的輸入序列長短不一，為了讓 GPU 平行運算我們需要將 batch 裡的每個輸入序列都補上 zero padding 以保證它們長度一致。另外 &lt;code&gt;masks_tensor&lt;/code&gt; 以及 &lt;code&gt;segments_tensor&lt;/code&gt; 在 &lt;code&gt;[PAD]&lt;/code&gt; 對應位置的值也都是 0，切記切記。&lt;/p&gt;
+&lt;p&gt;有了這些背景知識以後，要實作一個 &lt;code&gt;Dataset&lt;/code&gt; 並將原始文本轉換成 BERT 相容的格式就變得十分容易了：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="sd"&gt;實作一個可以用來讀取訓練 / 測試集的 Dataset，這是你需要徹底了解的部分。&lt;/span&gt;
+&lt;span class="sd"&gt;此 Dataset 每次將 tsv 裡的一筆成對句子轉換成 BERT 相容的格式，並回傳 3 個 tensors：&lt;/span&gt;
+&lt;span class="sd"&gt;- tokens_tensor：兩個句子合併後的索引序列，包含 [CLS] 與 [SEP]&lt;/span&gt;
+&lt;span class="sd"&gt;- segments_tensor：可以用來識別兩個句子界限的 binary tensor&lt;/span&gt;
+&lt;span class="sd"&gt;- label_tensor：將分類標籤轉換成類別索引的 tensor, 如果是測試集則回傳 None&lt;/span&gt;
+&lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;torch.utils.data&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Dataset&lt;/span&gt;
+ 
+    
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;FakeNewsDataset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dataset&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c1"&gt;# 讀取前處理後的 tsv 檔並初始化一些參數&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"train"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"test"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="c1"&gt;# 一般訓練你會需要 dev set&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;
+        &lt;span class="c1"&gt;# 大數據你會需要用 iterator=True&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;".tsv"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sep&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fillna&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;""&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;len&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;label_map&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'agreed'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'disagreed'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'unrelated'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tokenizer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tokenizer&lt;/span&gt;  &lt;span class="c1"&gt;# 我們將使用 BERT tokenizer&lt;/span&gt;
+    
+    &lt;span class="c1"&gt;# 定義回傳一筆訓練 / 測試數據的函式&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"test"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;text_a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text_b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iloc&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;
+            &lt;span class="n"&gt;label_tensor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;text_a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text_b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iloc&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;:]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;
+            &lt;span class="c1"&gt;# 將 label 文字也轉換成索引方便轉換成 tensor&lt;/span&gt;
+            &lt;span class="n"&gt;label_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;label_map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+            &lt;span class="n"&gt;label_tensor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tensor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            
+        &lt;span class="c1"&gt;# 建立第一個句子的 BERT tokens 並加入分隔符號 [SEP]&lt;/span&gt;
+        &lt;span class="n"&gt;word_pieces&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"[CLS]"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="n"&gt;tokens_a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tokenize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text_a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;word_pieces&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;tokens_a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"[SEP]"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="n"&gt;len_a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;word_pieces&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        
+        &lt;span class="c1"&gt;# 第二個句子的 BERT tokens&lt;/span&gt;
+        &lt;span class="n"&gt;tokens_b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tokenize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text_b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;word_pieces&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;tokens_b&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"[SEP]"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="n"&gt;len_b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;word_pieces&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;len_a&lt;/span&gt;
+        
+        &lt;span class="c1"&gt;# 將整個 token 序列轉換成索引序列&lt;/span&gt;
+        &lt;span class="n"&gt;ids&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;convert_tokens_to_ids&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;word_pieces&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;tokens_tensor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tensor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ids&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        
+        &lt;span class="c1"&gt;# 將第一句包含 [SEP] 的 token 位置設為 0，其他為 1 表示第二句&lt;/span&gt;
+        &lt;span class="n"&gt;segments_tensor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tensor&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;len_a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;len_b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                                        &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;long&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tokens_tensor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;segments_tensor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label_tensor&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__len__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;len&lt;/span&gt;
+    
+    
+&lt;span class="c1"&gt;# 初始化一個專門讀取訓練樣本的 Dataset，使用中文 BERT 斷詞&lt;/span&gt;
+&lt;span class="n"&gt;trainset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;FakeNewsDataset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"train"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這段程式碼不難，我也很想硬掰些台詞撐撐場面，但該說的重點都寫成註解給你看了。如果你想要把自己手上的文本轉換成 BERT 看得懂的東西，那徹底理解這個 &lt;code&gt;Dataset&lt;/code&gt; 的實作邏輯就非常重要了。&lt;/p&gt;
+&lt;p&gt;現在讓我們看看第一個訓練樣本轉換前後的格式差異：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 選擇第一個樣本&lt;/span&gt;
+&lt;span class="n"&gt;sample_idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 將原始文本拿出做比較&lt;/span&gt;
+&lt;span class="n"&gt;text_a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text_b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;trainset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iloc&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sample_idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 利用剛剛建立的 Dataset 取出轉換後的 id tensors&lt;/span&gt;
+&lt;span class="n"&gt;tokens_tensor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;segments_tensor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label_tensor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;trainset&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sample_idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 將 tokens_tensor 還原成文本&lt;/span&gt;
+&lt;span class="n"&gt;tokens&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;convert_ids_to_tokens&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tokens_tensor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tolist&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;span class="n"&gt;combined_text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tokens&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 渲染前後差異，毫無反應就是個 print。可以直接看輸出結果&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"""[原始文本]&lt;/span&gt;
+&lt;span class="s2"&gt;句子 1：&lt;/span&gt;&lt;span class="si"&gt;{text_a}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+&lt;span class="s2"&gt;句子 2：&lt;/span&gt;&lt;span class="si"&gt;{text_b}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+&lt;span class="s2"&gt;分類  ：&lt;/span&gt;&lt;span class="si"&gt;{label}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+
+&lt;span class="s2"&gt;--------------------&lt;/span&gt;
+
+&lt;span class="s2"&gt;[Dataset 回傳的 tensors]&lt;/span&gt;
+&lt;span class="s2"&gt;tokens_tensor  ：&lt;/span&gt;&lt;span class="si"&gt;{tokens_tensor}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+
+&lt;span class="s2"&gt;segments_tensor：&lt;/span&gt;&lt;span class="si"&gt;{segments_tensor}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+
+&lt;span class="s2"&gt;label_tensor   ：&lt;/span&gt;&lt;span class="si"&gt;{label_tensor}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+
+&lt;span class="s2"&gt;--------------------&lt;/span&gt;
+
+&lt;span class="s2"&gt;[還原 tokens_tensors]&lt;/span&gt;
+&lt;span class="si"&gt;{combined_text}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+&lt;span class="s2"&gt;"""&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;[原始文本]
+句子 1：苏有朋要结婚了，但网友觉得他还是和林心如比较合适
+句子 2：好闺蜜结婚给不婚族的秦岚扔花球，倒霉的秦岚掉水里笑哭苏有朋！
+分類  ：unrelated
+
+--------------------
+
+[Dataset 回傳的 tensors]
+tokens_tensor  ：tensor([ 101, 5722, 3300, 3301, 6206, 5310, 2042,  749, 8024,  852, 5381, 1351,
+        6230, 2533,  800, 6820, 3221, 1469, 3360, 2552, 1963, 3683, 6772, 1394,
+        6844,  102, 1962, 7318, 6057, 5310, 2042, 5314,  679, 2042, 3184, 4638,
+        4912, 2269, 2803, 5709, 4413, 8024,  948, 7450, 4638, 4912, 2269, 2957,
+        3717, 7027, 5010, 1526, 5722, 3300, 3301, 8013,  102])
+
+segments_tensor：tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1])
+
+label_tensor   ：2
+
+--------------------
+
+[還原 tokens_tensors]
+[CLS]苏有朋要结婚了，但网友觉得他还是和林心如比较合适[SEP]好闺蜜结婚给不婚族的秦岚扔花球，倒霉的秦岚掉水里笑哭苏有朋！[SEP]
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;好啦，我很雞婆地幫你把處理前後的差異都列了出來，你現在應該了解我們定義的 &lt;code&gt;trainset&lt;/code&gt; 回傳的 tensors 跟原始文本之間的關係了吧！如果你之後想要一行行解析上面我定義的這個 &lt;code&gt;Dataset&lt;/code&gt;，強烈建議安裝在 Github 上已經得到超過 1 萬星的 &lt;a href="https://github.com/cool-RR/PySnooper"&gt;PySnooper&lt;/a&gt;：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pysnooper&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;q&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pysnooper&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;FakeNewsDataset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dataset&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="nd"&gt;@pysnooper.snoop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# 加入以了解所有轉換過程&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;加上 &lt;code&gt;@pysnooper.snoop()&lt;/code&gt;、重新定義 &lt;code&gt;FakeNewsDataset&lt;/code&gt;、初始化一個新的 &lt;code&gt;trainset&lt;/code&gt; 並將第一個樣本取出即可看到這樣的 logging 訊息：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/bert/debug_with_pysnooper.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        使用 PySnooper 讓你輕鬆了解怎麼將原始文本變得「 BERT 相容」
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;有了 &lt;code&gt;Dataset&lt;/code&gt; 以後，我們還需要一個 &lt;code&gt;DataLoader&lt;/code&gt; 來回傳成一個個的 mini-batch。畢竟我們不可能一次把整個數據集塞入 GPU，對吧？&lt;/p&gt;
+&lt;p&gt;痾 ... 你剛剛應該沒有打算這麼做吧？&lt;/p&gt;
+&lt;p&gt;除了上面的 &lt;code&gt;FakeNewsDataset&lt;/code&gt; 實作以外，以下的程式碼是你在想將 BERT 應用到自己的 NLP 任務時會需要徹底搞懂的部分：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="sd"&gt;實作可以一次回傳一個 mini-batch 的 DataLoader&lt;/span&gt;
+&lt;span class="sd"&gt;這個 DataLoader 吃我們上面定義的 `FakeNewsDataset`，&lt;/span&gt;
+&lt;span class="sd"&gt;回傳訓練 BERT 時會需要的 4 個 tensors：&lt;/span&gt;
+&lt;span class="sd"&gt;- tokens_tensors  : (batch_size, max_seq_len_in_batch)&lt;/span&gt;
+&lt;span class="sd"&gt;- segments_tensors: (batch_size, max_seq_len_in_batch)&lt;/span&gt;
+&lt;span class="sd"&gt;- masks_tensors   : (batch_size, max_seq_len_in_batch)&lt;/span&gt;
+&lt;span class="sd"&gt;- label_ids       : (batch_size)&lt;/span&gt;
+&lt;span class="sd"&gt;"""&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;torch.utils.data&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DataLoader&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;torch.nn.utils.rnn&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;pad_sequence&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 這個函式的輸入 `samples` 是一個 list，裡頭的每個 element 都是&lt;/span&gt;
+&lt;span class="c1"&gt;# 剛剛定義的 `FakeNewsDataset` 回傳的一個樣本，每個樣本都包含 3 tensors：&lt;/span&gt;
+&lt;span class="c1"&gt;# - tokens_tensor&lt;/span&gt;
+&lt;span class="c1"&gt;# - segments_tensor&lt;/span&gt;
+&lt;span class="c1"&gt;# - label_tensor&lt;/span&gt;
+&lt;span class="c1"&gt;# 它會對前兩個 tensors 作 zero padding，並產生前面說明過的 masks_tensors&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_mini_batch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;samples&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;tokens_tensors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;samples&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;segments_tensors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;samples&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    
+    &lt;span class="c1"&gt;# 測試集有 labels&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;samples&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;label_ids&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stack&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;samples&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;label_ids&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+    
+    &lt;span class="c1"&gt;# zero pad 到同一序列長度&lt;/span&gt;
+    &lt;span class="n"&gt;tokens_tensors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pad_sequence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tokens_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                                  &lt;span class="n"&gt;batch_first&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;segments_tensors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pad_sequence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;segments_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                                    &lt;span class="n"&gt;batch_first&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    
+    &lt;span class="c1"&gt;# attention masks，將 tokens_tensors 裡頭不為 zero padding&lt;/span&gt;
+    &lt;span class="c1"&gt;# 的位置設為 1 讓 BERT 只關注這些位置的 tokens&lt;/span&gt;
+    &lt;span class="n"&gt;masks_tensors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tokens_tensors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                                &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;long&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;masks_tensors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;masks_tensors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;masked_fill&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;tokens_tensors&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;tokens_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;segments_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;masks_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label_ids&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# 初始化一個每次回傳 64 個訓練樣本的 DataLoader&lt;/span&gt;
+&lt;span class="c1"&gt;# 利用 `collate_fn` 將 list of samples 合併成一個 mini-batch 是關鍵&lt;/span&gt;
+&lt;span class="n"&gt;BATCH_SIZE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;64&lt;/span&gt;
+&lt;span class="n"&gt;trainloader&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DataLoader&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;trainset&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;batch_size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;BATCH_SIZE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                         &lt;span class="n"&gt;collate_fn&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;create_mini_batch&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;加上註解，我相信這應該是你在整個網路上能看到最平易近人的實作了。這段程式碼是你要實際將 mini-batch 丟入 BERT 做訓練以及預測的關鍵，務必搞清楚每一行在做些什麼。&lt;/p&gt;
+&lt;p&gt;有了可以回傳 mini-batch 的 &lt;code&gt;DataLoader&lt;/code&gt; 後，讓我們馬上拿出一個 batch 看看：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;iter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;trainloader&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="n"&gt;tokens_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;segments_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; \
+    &lt;span class="n"&gt;masks_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label_ids&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"""&lt;/span&gt;
+&lt;span class="s2"&gt;tokens_tensors.shape   = &lt;/span&gt;&lt;span class="si"&gt;{tokens_tensors.shape}&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;
+&lt;span class="si"&gt;{tokens_tensors}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+&lt;span class="s2"&gt;------------------------&lt;/span&gt;
+&lt;span class="s2"&gt;segments_tensors.shape = &lt;/span&gt;&lt;span class="si"&gt;{segments_tensors.shape}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+&lt;span class="si"&gt;{segments_tensors}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+&lt;span class="s2"&gt;------------------------&lt;/span&gt;
+&lt;span class="s2"&gt;masks_tensors.shape    = &lt;/span&gt;&lt;span class="si"&gt;{masks_tensors.shape}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+&lt;span class="si"&gt;{masks_tensors}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+&lt;span class="s2"&gt;------------------------&lt;/span&gt;
+&lt;span class="s2"&gt;label_ids.shape        = &lt;/span&gt;&lt;span class="si"&gt;{label_ids.shape}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+&lt;span class="si"&gt;{label_ids}&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
+&lt;span class="s2"&gt;"""&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;
+tokens_tensors.shape   = torch.Size([64, 63]) 
+tensor([[ 101, 5722, 3300,  ...,    0,    0,    0],
+        [ 101, 4255, 3160,  ..., 8013,  102,    0],
+        [ 101,  711, 2506,  ..., 8013,  102,    0],
+        ...,
+        [ 101,  671, 2157,  ...,    0,    0,    0],
+        [ 101, 1380,  677,  ...,    0,    0,    0],
+        [ 101, 2458, 1853,  ...,    0,    0,    0]])
+------------------------
+segments_tensors.shape = torch.Size([64, 63])
+tensor([[0, 0, 0,  ..., 0, 0, 0],
+        [0, 0, 0,  ..., 1, 1, 0],
+        [0, 0, 0,  ..., 1, 1, 0],
+        ...,
+        [0, 0, 0,  ..., 0, 0, 0],
+        [0, 0, 0,  ..., 0, 0, 0],
+        [0, 0, 0,  ..., 0, 0, 0]])
+------------------------
+masks_tensors.shape    = torch.Size([64, 63])
+tensor([[1, 1, 1,  ..., 0, 0, 0],
+        [1, 1, 1,  ..., 1, 1, 0],
+        [1, 1, 1,  ..., 1, 1, 0],
+        ...,
+        [1, 1, 1,  ..., 0, 0, 0],
+        [1, 1, 1,  ..., 0, 0, 0],
+        [1, 1, 1,  ..., 0, 0, 0]])
+------------------------
+label_ids.shape        = torch.Size([64])
+tensor([2, 0, 2, 2, 1, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 2,
+        2, 2, 2, 2, 0, 2, 2, 2, 2, 1, 2, 0, 2, 0, 2, 2, 2, 2, 2, 0, 2, 2, 2, 0,
+        0, 2, 0, 2, 2, 0, 2, 2, 0, 2, 2, 0, 0, 2, 0, 0])
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;建立 BERT 用的 mini-batch 時最需要注意的就是 zero padding 的存在了。你可以發現除了 &lt;code&gt;lable_ids&lt;/code&gt; 以外，其他 3 個 tensors 的每個樣本的最後大都為 0，這是因為每個樣本的 tokens 序列基本上長度都會不同，需要補 padding。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;img src="https://leemeng.tw/images/bert/from_raw_data_to_bert_compatible.jpg"/&gt;
+&lt;br/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;到此為止我們已經成功地將原始文本轉換成 BERT 相容的輸入格式了。這節是本篇文章最重要，也最需要花點時間咀嚼的內容。在有這些 tensors 的前提下，要在 BERT 之上訓練我們自己的下游任務完全是一塊蛋糕。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="3.-在-BERT-之上加入新-layer-成下游任務模型"&gt;3. 在 BERT 之上加入新 layer 成下游任務模型&lt;a class="anchor-link" href="#3.-在-BERT-之上加入新-layer-成下游任務模型"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;我從&lt;a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML19.html"&gt;李宏毅教授講解 BERT 的投影片&lt;/a&gt;中擷取出&lt;a href="https://arxiv.org/pdf/1810.04805.pdf"&gt;原論文&lt;/a&gt;提到的 4 種 fine-tuning BERT 情境，並整合了一些有用資訊：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/bert/bert_fine_tuning_tasks.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        在 4 種 NLP 任務上 fine-tuning BERT 的例子
+                        （&lt;a href="https://www.youtube.com/watch?v=UYPa347-DdE" target="_blank"&gt;圖片來源&lt;/a&gt;）
+                        
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;資訊量不少，但我假設你在&lt;a href="https://youtu.be/UYPa347-DdE"&gt;前面教授的 BERT 影片&lt;/a&gt;或是其他地方已經看過類似的圖。&lt;/p&gt;
+&lt;p&gt;首先，我們前面一直提到的 fine-tuning BERT 指的是在&lt;strong&gt;預訓練完&lt;/strong&gt;的 BERT 之上加入新的線性分類器（Linear Classifier），並利用下游任務的目標函式&lt;strong&gt;從頭&lt;/strong&gt;訓練分類器並&lt;strong&gt;微調&lt;/strong&gt; BERT 的參數。這樣做的目的是讓整個模型（BERT + Linear Classifier）能一起最大化當前下游任務的目標。&lt;/p&gt;
+&lt;p&gt;圖中紅色小字則是該任務類型常被拿來比較的資料集，比方說 &lt;a href="https://www.nyu.edu/projects/bowman/multinli/"&gt;MNLI&lt;/a&gt; 及 &lt;a href="https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/"&gt;SQuAD v1.1&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;不過現在對我們來說最重要的是圖中的藍色字體。多虧了 &lt;a href="https://pytorch.org/hub/huggingface_pytorch-pretrained-bert_bert/"&gt;HuggingFace 團隊&lt;/a&gt;，要用 PyTorch fine-tuing BERT 是件非常容易的事情。每個藍色字體都對應到一個可以處理下游任務的&lt;strong&gt;模型&lt;/strong&gt;，而這邊說的模型指的是&lt;strong&gt;已訓練的 BERT + Linear Classifier&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;按圖索驥，因為假新聞分類是一個成對句子分類任務，自然就對應到上圖的左下角。&lt;code&gt;FINETUNE_TASK&lt;/code&gt; 則為 bertForSequenceClassification：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 載入一個可以做中文多分類任務的模型，n_class = 3&lt;/span&gt;
+&lt;span class="n"&gt;GITHUB_REPO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"huggingface/pytorch-pretrained-BERT"&lt;/span&gt;
+&lt;span class="n"&gt;PRETRAINED_MODEL_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"bert-base-chinese"&lt;/span&gt;
+&lt;span class="n"&gt;FINETUNE_TASK&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"bertForSequenceClassification"&lt;/span&gt;
+
+&lt;span class="n"&gt;NUM_LABELS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+
+&lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hub&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;GITHUB_REPO&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                       &lt;span class="n"&gt;FINETUNE_TASK&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                       &lt;span class="n"&gt;PRETRAINED_MODEL_NAME&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                       &lt;span class="n"&gt;num_labels&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;NUM_LABELS&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;clear_output&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# high-level 顯示此模型裡的 modules&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"""&lt;/span&gt;
+&lt;span class="s2"&gt;name            module&lt;/span&gt;
+&lt;span class="s2"&gt;----------------------"""&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;named_children&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"bert"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;named_children&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+            &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;{name}&lt;/span&gt;&lt;span class="s2"&gt;:&lt;/span&gt;&lt;span class="si"&gt;{n}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;{:15}&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;
+name            module
+----------------------
+bert:embeddings
+bert:encoder
+bert:pooler
+dropout         Dropout(p=0.1)
+classifier      Linear(in_features=768, out_features=3, bias=True)
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;沒錯，一行程式碼就初始化了一個可以用 BERT 做文本多分類的模型 &lt;code&gt;model&lt;/code&gt;。我也列出了 &lt;code&gt;model&lt;/code&gt; 裡頭最 high level 的模組，資料流則從上到下，通過：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;BERT 處理各種 &lt;code&gt;embeddings&lt;/code&gt; 的模組&lt;/li&gt;
+&lt;li&gt;在&lt;a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html"&gt;神經機器翻譯&lt;/a&gt;就已經看過的 Transformer Encoder&lt;/li&gt;
+&lt;li&gt;一個 pool &lt;code&gt;[CLS]&lt;/code&gt; token 在所有層的 repr. 的 &lt;a href="https://github.com/huggingface/pytorch-pretrained-BERT/blob/a6f2511811f08c24184f8162f226f252cb6ceaa4/pytorch_pretrained_bert/modeling.py#L494"&gt;BertPooler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Dropout 層&lt;/li&gt;
+&lt;li&gt;回傳 3 個類別 logits 的線性分類器 &lt;code&gt;classifier&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而 &lt;code&gt;classifer&lt;/code&gt; 就只是將從 BERT 那邊拿到的 &lt;code&gt;[CLS]&lt;/code&gt; token 的 repr. 做一個線性轉換而已，非常簡單。我也將我們實際使用的分類模型 &lt;code&gt;BertForSequenceClassification&lt;/code&gt; 實作簡化一下供你參考：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BertForSequenceClassification&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BertPreTrainedModel&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_labels&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BertForSequenceClassification&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;num_labels&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;num_labels&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bert&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BertModel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# 載入預訓練 BERT&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dropout&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Dropout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hidden_dropout_prob&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c1"&gt;# 簡單 linear 層&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;classifier&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Linear&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hidden_size&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_labels&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+          &lt;span class="o"&gt;...&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;forward&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;input_ids&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;token_type_ids&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;attention_mask&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;labels&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c1"&gt;# BERT 輸入就是 tokens, segments, masks&lt;/span&gt;
+        &lt;span class="n"&gt;outputs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;input_ids&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;token_type_ids&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;attention_mask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;...&lt;/span&gt;
+        &lt;span class="n"&gt;pooled_output&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dropout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pooled_output&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c1"&gt;# 線性分類器將 dropout 後的 BERT repr. 轉成類別 logits&lt;/span&gt;
+        &lt;span class="n"&gt;logits&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;classifier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pooled_output&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# 輸入有 labels 的話直接計算 Cross Entropy 回傳，方便！&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;labels&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;loss_fct&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CrossEntropyLoss&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+            &lt;span class="n"&gt;loss&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;loss_fct&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;logits&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;num_labels&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;labels&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;loss&lt;/span&gt;
+        &lt;span class="c1"&gt;# 有要求回傳注意矩陣的話回傳&lt;/span&gt;
+        &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;output_attentions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;all_attentions&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;logits&lt;/span&gt;
+        &lt;span class="c1"&gt;# 回傳各類別的 logits&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;logits&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這樣應該清楚多了吧！我們的分類模型 &lt;code&gt;model&lt;/code&gt; 也就只是在 BERT 之上加入 dropout 以及簡單的 linear classifier，最後輸出用來預測類別的 logits。 這就是兩階段遷移學習強大的地方：你不用再自己依照不同 NLP 任務從零設計非常複雜的模型，只需要站在巨人肩膀上，然後再做一點點事情就好了。&lt;/p&gt;
+&lt;p&gt;你也可以看到整個分類模型 &lt;code&gt;model&lt;/code&gt; 預設的隱狀態維度為 768。如果你想要更改 BERT 的超參數，可以透過給一個 &lt;code&gt;config&lt;/code&gt; dict 來設定。以下則是分類模型 &lt;code&gt;model&lt;/code&gt; 預設的參數設定：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;{
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 21128
+}&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Dropout、LayerNorm、全連接層數以及 mutli-head attentions 的 &lt;code&gt;num_attention_heads&lt;/code&gt; 等超參數我們也都已經在之前的 Transformer 文章看過了，這邊就不再贅述。&lt;/p&gt;
+&lt;p&gt;目前 &lt;a href="https://pytorch.org/hub/huggingface_pytorch-pretrained-bert_bert/"&gt;PyTorch Hub&lt;/a&gt; 上有 8 種模型以及一個 tokenizer 可供使用，依照用途可以分為：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基本款：&lt;ul&gt;
+&lt;li&gt;bertModel&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;bertTokenizer&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;預訓練階段&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;bertForMaskedLM&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;bertForNextSentencePrediction&lt;/li&gt;
+&lt;li&gt;bertForPreTraining&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Fine-tuning 階段&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;bertForSequenceClassification&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;bertForTokenClassification&lt;/li&gt;
+&lt;li&gt;bertForQuestionAnswering&lt;/li&gt;
+&lt;li&gt;bertForMultipleChoice&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;粗體是本文用到的模型。如果你想要完全 DIY 自己的模型，可以載入純 &lt;code&gt;bertModel&lt;/code&gt; 並參考上面看到的 &lt;code&gt;BertForSequenceClassification&lt;/code&gt; 的實作。當然建議盡量不要重造輪子。如果只是想要了解其背後實作邏輯，可以參考 &lt;a href="https://github.com/huggingface/pytorch-pretrained-BERT"&gt;pytorch-pretrained-BERT&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;有了 &lt;code&gt;model&lt;/code&gt; 以及我們在前一節建立的 &lt;code&gt;trainloader&lt;/code&gt;，讓我們寫一個簡單函式測試現在 &lt;code&gt;model&lt;/code&gt; 在訓練集上的分類準確率：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="sd"&gt;定義一個可以針對特定 DataLoader 取得模型預測結果以及分類準確度的函式&lt;/span&gt;
+&lt;span class="sd"&gt;之後也可以用來生成上傳到 Kaggle 競賽的預測結果&lt;/span&gt;
+&lt;span class="sd"&gt;"""&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_predictions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dataloader&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;compute_acc&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;predictions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+    &lt;span class="n"&gt;correct&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    
+    &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# 推論模式&lt;/span&gt;
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;no_grad&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="c1"&gt;# 遍巡整個資料集&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dataloader&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="c1"&gt;# 將所有 tensors 移到 GPU 上&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parameters&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_cuda&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"cuda:0"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+            
+            &lt;span class="c1"&gt;# 別忘記前 3 個 tensors 分別為 tokens, segments 以及 masks&lt;/span&gt;
+            &lt;span class="n"&gt;logits&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+            &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pred&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;logits&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            
+            &lt;span class="c1"&gt;# 用來計算訓練集的分類準確率&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;compute_acc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;labels&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+                &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;labels&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                &lt;span class="n"&gt;correct&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pred&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;labels&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+                
+            &lt;span class="c1"&gt;# 將當前 batch 記錄下來&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;predictions&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;predictions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pred&lt;/span&gt;
+            &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;predictions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cat&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;predictions&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pred&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;compute_acc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;acc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;correct&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;predictions&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;acc&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;predictions&lt;/span&gt;
+    
+&lt;span class="c1"&gt;# 讓模型跑在 GPU 上並取得訓練集的分類準確率&lt;/span&gt;
+&lt;span class="n"&gt;device&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"cuda:0"&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cuda&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_available&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s2"&gt;"cpu"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"device:"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;acc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_predictions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;trainloader&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;compute_acc&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"classification acc:"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;device: cuda:0
+classification acc: 0.5216409484380881
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;毫不意外，模型裡新加的線性分類器才剛剛被初始化，整個分類模型的表現低於 68 %  的 baseline 是非常正常的。因為模型是隨機初始化的，你的執行結果可能跟我有點差距，但應該不會超過 68 %。&lt;/p&gt;
+&lt;p&gt;另外我們也可以算算整個分類模型以及裡頭的簡單分類器有多少參數：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_learnable_params&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parameters&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;requires_grad&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+     
+&lt;span class="n"&gt;model_params&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_learnable_params&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;clf_params&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_learnable_params&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;classifier&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"""&lt;/span&gt;
+&lt;span class="s2"&gt;整個分類模型的參數量：{sum(p.numel() for p in model_params)}&lt;/span&gt;
+&lt;span class="s2"&gt;線性分類器的參數量：{sum(p.numel() for p in clf_params)}&lt;/span&gt;
+&lt;span class="s2"&gt;"""&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;
+整個分類模型的參數量：102269955
+線性分類器的參數量：2307
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;新增的 classifier 在 BERT 面前可說是滄海一粟。而因為分類模型大多數的參數都是從已訓練的 BERT 來的，實際上我們需要從頭訓練的參數量非常之少，這也是遷移學習的好處。&lt;/p&gt;
+&lt;p&gt;當然，一次 forward 所需的時間也不少就是了。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="4.-訓練該下游任務模型"&gt;4. 訓練該下游任務模型&lt;a class="anchor-link" href="#4.-訓練該下游任務模型"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;接下來沒有什麼新玩意了，除了需要記得我們前面定義的 batch 數據格式以外，訓練分類模型 &lt;code&gt;model&lt;/code&gt; 就跟一般你使用 PyTorch 訓練模型做的事情相同。&lt;/p&gt;
+&lt;p&gt;為了避免失焦，訓練程式碼我只保留核心部分：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;time&lt;/span&gt;
+
+# 使用 Adam Optim 更新整個分類模型的參數
+optimizer = torch.optim.Adam(model_params, lr=1.0e-4)
+
+EPOCHS = 6  # 幸運數字
+for epoch in range(EPOCHS):
+    
+    running_loss = 0.0
+    for data in trainloader:
+        
+        tokens_tensors, segments_tensors, \
+        masks_tensors, labels = [t.to(device) for t in data]
+
+        # 將參數梯度歸零
+        optimizer.zero_grad()
+        # forward pass
+        loss = model(input_ids=tokens_tensors, 
+                     token_type_ids=segments_tensors, 
+                     attention_mask=masks_tensors, 
+                     labels=labels)
+        # backward
+        loss.backward()
+        optimizer.step()
+        
+        # 紀錄當前 batch loss
+        running_loss += loss.item()
+        
+    # 計算分類準確率
+    _, acc = get_predictions(model, trainloader, compute_acc=True)
+
+    print('[epoch %d] loss: %.3f, acc: %.3f' %
+          (epoch + 1, running_loss, acc))
+    
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;[epoch 1] loss: 21.751, acc: 0.906
+[epoch 2] loss: 10.893, acc: 0.977
+[epoch 3] loss: 6.226, acc: 0.944
+[epoch 4] loss: 4.111, acc: 0.987
+[epoch 5] loss: 1.886, acc: 0.992
+[epoch 6] loss: 0.931, acc: 0.998
+CPU times: user 2min 43s, sys: 1min 49s, total: 4min 32s
+Wall time: 4min 34s
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;哇嗚！我們成功地 Fine-tune BERT 了！&lt;/p&gt;
+&lt;p&gt;儘管擁有 1 億參數的分類模型十分巨大，多虧了小訓練集的助攻（？），幾個 epochs 的訓練過程在 5 分鐘內就結束了。從準確率看得出我們的分類模型在非常小量的訓練集的表現已經接近完美，讓我們看看這個模型在真實世界，也就是 Kaggle 競賽上的測試集能得到怎麼樣的成績。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="5.-對新樣本做推論"&gt;5. 對新樣本做推論&lt;a class="anchor-link" href="#5.-對新樣本做推論"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;這邊我們要做的事情很單純，就只是用訓練過後的分類模型 &lt;code&gt;model&lt;/code&gt; 為測試集裡的每個樣本產生預測分類。執行完以下程式碼，我們就能得到一個能直接繳交到 Kaggle 競賽的 csv 檔案：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;time&lt;/span&gt;
+# 建立測試集。這邊我們可以用跟訓練時不同的 batch_size，看你 GPU 多大
+testset = FakeNewsDataset("test", tokenizer=tokenizer)
+testloader = DataLoader(testset, batch_size=256, 
+                        collate_fn=create_mini_batch)
+
+# 用分類模型預測測試集
+predictions = get_predictions(model, testloader)
+
+# 用來將預測的 label id 轉回 label 文字
+index_map = {v: k for k, v in testset.label_map.items()}
+
+# 生成 Kaggle 繳交檔案
+df = pd.DataFrame({"Category": predictions.tolist()})
+df['Category'] = df.Category.apply(lambda x: index_map[x])
+df_pred = pd.concat([testset.df.loc[:, ["Id"]], 
+                          df.loc[:, 'Category']], axis=1)
+df_pred.to_csv('bert_1_prec_training_samples.csv', index=False)
+df_pred.head()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;CPU times: user 4min 28s, sys: 2min 40s, total: 7min 8s
+Wall time: 7min 9s
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;img src="https://leemeng.tw/images/bert/kaggle_csv.jpg"/&gt;
+&lt;br/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;ls bert*.csv
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;bert_1_prec_training_samples.csv
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;我們前面就說過測試集是訓練集的 30 倍，因此光是做推論就得花不少時間。廢話不多說，讓我將生成的預測結果上傳到 Kaggle 網站，看看會得到怎麼樣的結果：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/bert/kaggle_result.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        在不到 1 % 的數據 Fine-tuing BERT 可以達到 80 % 測試準確率
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;測試集是訓練集的 30 倍大，overfitting 完全是可預期的。不過跟我們一開始多數決的 68 % baseline 相比，以 BERT fine tune 的分類模型在測試集達到 80 %，整整上升了 12 %。雖然這篇文章的重點一直都不在最大化這個假新聞分類任務的準確率，還是別忘了我們只用了不到原來競賽 1 % 的數據以及不到 5 分鐘的時間就達到這樣的結果。&lt;/p&gt;
+&lt;p&gt;讓我們忘了準確率，看看 BERT 本身在 fine tuning 之前與之後的差異。以下程式碼列出模型成功預測 &lt;code&gt;disagreed&lt;/code&gt; 類別的一些例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;predictions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_predictions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;trainloader&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s2"&gt;"predicted"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;predictions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tolist&lt;/span&gt;&lt;span class="p"&gt;()})&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'predicted'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predicted&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;index_map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="n"&gt;df1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;concat&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;trainset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loc&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt; &lt;span class="s1"&gt;'predicted'&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;disagreed_tp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;df1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'disagreed'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; \
+                &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;df1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predicted&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; \
+                &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text_a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;span class="n"&gt;df1&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;disagreed_tp&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;img src="https://leemeng.tw/images/bert/disagreed_df.jpg"/&gt;
+&lt;br/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;其實用肉眼看看這些例子，以你對自然語言的理解應該能猜出要能正確判斷 &lt;code&gt;text_b&lt;/code&gt; 是反對 &lt;code&gt;text_a&lt;/code&gt;，首先要先關注「謠」、「假」等代表反對意義的詞彙，接著再看看兩個句子間有沒有含義相反的詞彙。&lt;/p&gt;
+&lt;p&gt;讓我們從中隨意選取一個例子，看看 fine tuned 後的 BERT 能不能關注到該關注的位置。再次出動 &lt;a href="https://github.com/jessevig/bertviz"&gt;BertViz&lt;/a&gt; 來視覺化 BERT 的注意權重：&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 觀察訓練過後的 model 在處理假新聞分類任務時關注的位置&lt;/span&gt;
+&lt;span class="c1"&gt;# 去掉 `state_dict` 即可觀看原始 BERT 結果&lt;/span&gt;
+&lt;span class="n"&gt;bert_version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'bert-base-chinese'&lt;/span&gt;
+&lt;span class="n"&gt;bertviz_model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BertModel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_pretrained&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bert_version&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                                          &lt;span class="n"&gt;state_dict&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bert&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;state_dict&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+
+&lt;span class="n"&gt;sentence_a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"烟王褚时健去世"&lt;/span&gt;
+&lt;span class="n"&gt;sentence_b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"辟谣：一代烟王褚时健安好！"&lt;/span&gt;
+
+&lt;span class="n"&gt;call_html&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bertviz_model&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bertviz_tokenizer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sentence_a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sentence_b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# 這段程式碼會顯示下圖中右邊的結果&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;img src="https://leemeng.tw/images/bert/cls_repr_change_after_fine_tuning.jpg"/&gt;
+&lt;br/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;我們說過在 BERT 裡頭，第一個 &lt;code&gt;[CLS]&lt;/code&gt; 的 repr. 代表著整個輸入序列的 repr.。&lt;/p&gt;
+&lt;p&gt;左邊是一般預訓練完的 BERT。如果你還記得 BERT 的其中一個預訓練任務 NSP 的話，就會了解這時的 &lt;code&gt;[CLS]&lt;/code&gt; 所包含的資訊大多是要用來預測第二句本來是否接在第一句後面。以這個 head 而言，&lt;code&gt;[CLS]&lt;/code&gt; 仍只把注意力放在兩句間的 &lt;code&gt;[SEP]&lt;/code&gt; 上。&lt;/p&gt;
+&lt;p&gt;有趣的是在看過一些假新聞分類數據以後（右圖），這個 head 在更新 &lt;code&gt;[CLS]&lt;/code&gt; 的 repr. 時會開始關注跟下游任務目標相關的詞彙。在 fine tune 一陣子之後，它學會關注兩句之間「衝突」的位置，並將這些資訊更新到 &lt;code&gt;[CLS]&lt;/code&gt; 裡頭，讓之後的 Linear Classifier 有辦法從中獲得分類的資訊：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;闢謠&lt;/li&gt;
+&lt;li&gt;去世&lt;/li&gt;
+&lt;li&gt;安好&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;考慮到我們只給 BERT 看不到 1 % 的數據，這樣的結果不差。我想如果有時間 fine tune 整個訓練集的話能會得到更好的成果。&lt;/p&gt;
+&lt;p&gt;好啦，到此為止你應該充分理解 BERT 並能自己動手 fine tuning 了。讓我們進入最後一個小節。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="結語_1"&gt;結語&lt;a class="anchor-link" href="#結語"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;一路過來，你現在應該已經能夠：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;直觀理解 BERT 內部自注意力機制的物理意義&lt;/li&gt;
+&lt;li&gt;向其他人清楚解釋何謂 BERT 以及其運作的原理&lt;/li&gt;
+&lt;li&gt;了解 contextual word repr. 及兩階段遷移學習&lt;/li&gt;
+&lt;li&gt;將文本數據轉換成 BERT 相容的輸入格式&lt;/li&gt;
+&lt;li&gt;依據下游任務 fine tuning BERT 並進行推論&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;恭喜！你現在已經具備能夠進一步探索最新 NLP 研究與應用的領域了。&lt;/p&gt;
+&lt;p&gt;（好啦，事實上沒那麼簡單，但至少是個好的開始）&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;center&gt;
+&lt;img src="https://leemeng.tw/images/bert/unilm.jpg"/&gt;
+&lt;/center&gt;
+&lt;center&gt;
+                        UniLM 用 3 種語言模型作為預訓練目標，可以 fine tune 自然語言生成任務，是值得期待的研究
+                        （&lt;a href="https://arxiv.org/abs/1905.03197" target="_blank"&gt;圖片來源&lt;/a&gt;）
+                        
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;我還有好多東西想跟你分享，但因為時間有限，在這邊就簡單地條列出來：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;BERT 的 Encoder 架構很適合做&lt;a href="http://web.stanford.edu/class/cs224u/"&gt;自然語言理解 NLU &lt;/a&gt;任務，但如文章摘要等&lt;a href="https://youtu.be/4uG1NMKNWCU"&gt;自然語言生成 NLG &lt;/a&gt;的任務就不太 okay。&lt;a href="https://github.com/nlpyang/BertSum"&gt;BertSum&lt;/a&gt; 則是一篇利用 BERT 做萃取式摘要並在 &lt;a href="https://paperswithcode.com/sota/document-summarization-on-cnn-daily-mail"&gt;CNN/Dailymail 取得 SOTA&lt;/a&gt; 的研究，適合想要在 BERT 之上開發自己模型的人參考作法&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1905.03197"&gt;UniLM&lt;/a&gt; 透過「玩弄」注意力遮罩使得其可以在預訓練階段同時訓練 3 種語言模型，讓 fine tune NLG 任務不再是夢想。如果你懂我在&lt;a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html"&gt;之前的 Transformer 文章&lt;/a&gt;內講解的遮罩概念，上面那張圖你馬上就能讀懂&lt;/li&gt;
+&lt;li&gt;最近新的 NLP 王者非 &lt;a href="https://arxiv.org/abs/1906.08237"&gt;XLNet&lt;/a&gt; 莫屬。其表現打敗 BERT 自然不需多言，但&lt;a href="https://medium.com/syncedreview/the-staggering-cost-of-training-sota-ai-models-e329e80fa82"&gt;訓練該模型所需的花費&lt;/a&gt;令人不禁思考這樣的大公司遊戲是否就是我們要的未來&lt;/li&gt;
+&lt;li&gt;有些人認為 BERT 不夠通用，因為 Fine-tuning 時還要依照不同下游任務加入新的 Linear Classifier。有些人提倡使用 Multitask Learning 想辦法弄出更通用的模型，而 &lt;a href="https://decanlp.com/"&gt;decaNLP&lt;/a&gt; 是一個知名例子。&lt;/li&gt;
+&lt;li&gt;PyTorch 的 BERT 雖然使用上十分直覺，如果沒有強大的 GPU 還是很難在實務上使用。你可以嘗試特徵擷取或是 freeze BERT。另外如果你是以個人身份進行研究，但又希望能最小化成本並加快模型訓練效率，我會推薦花點時間學會&lt;a href="https://colab.sandbox.google.com/github/google-research/bert/blob/master/predicting_movie_reviews_with_bert_on_tf_hub.ipynb"&gt;在 Colab 上使用 TensorFlow Hub 及 TPU 訓練模型 &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其他的碎念留待下次吧。&lt;/p&gt;
+&lt;p&gt;當時在撰寫&lt;a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html"&gt;進入 NLP 世界的最佳橋樑&lt;/a&gt;一文時我希望能用自己的微薄之力搭起一座橋樑，讓更多人平順地進入 NLP 世界。作為該篇文章的續篇，這次我希望已經在 NLP 世界的你，能夠進一步掌握突破城牆的巨人之力，前往更遠的地方。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+                        對，這篇文章就是那巨人的脊髓液。
+                        &lt;br/&gt;
+&lt;br/&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;
+</content><category term="自然語言處理"></category><category term="NLP"></category><category term="PyTorch"></category></entry><entry><title>淺談神經機器翻譯 &amp; 用 Transformer 與 TensorFlow 2 英翻中</title><link href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html" rel="alternate"></link><published>2019-06-17T05:40:00+09:00</published><updated>2019-06-17T05:40:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2019-06-17:/neural-machine-translation-with-transformer-and-tensorflow2.html</id><summary type="html">&lt;p&gt;本文分為兩大部分。前半將帶讀者簡單回顧 Seq2Seq 模型、自注意力機制以及 Transformer 等近年在機器翻譯領域裡頭的重要發展與概念；後半段則將帶著讀者實作一個可以將英文句子翻譯成中文的 Transformer。透過瞭解其背後運作原理，讀者將能把類似的概念應用到如圖像描述、閱讀理解以及語音辨識等各式各樣的機器學習任務之上。&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -29785,10 +31815,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="0858e7b9-d095-4b98-ab1b-96429d2e10c0"&gt;&lt;/div&gt;
+&lt;div id="28720b8b-d049-406e-98dc-b2944c330ccd"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#0858e7b9-d095-4b98-ab1b-96429d2e10c0');
+var element = $('#28720b8b-d049-406e-98dc-b2944c330ccd');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -33060,10 +35090,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="46f88870-76e8-44d6-8da1-1e5173824f0c"&gt;&lt;/div&gt;
+&lt;div id="198c2779-35b6-4869-b6ab-e9bec4bee946"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#46f88870-76e8-44d6-8da1-1e5173824f0c');
+var element = $('#198c2779-35b6-4869-b6ab-e9bec4bee946');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -33827,10 +35857,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="1b8ede6b-9e69-4db6-972b-6566e4a19e43"&gt;&lt;/div&gt;
+&lt;div id="0ce82601-080a-4b3e-8d2e-5e8c775dc8ab"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#1b8ede6b-9e69-4db6-972b-6566e4a19e43');
+var element = $('#0ce82601-080a-4b3e-8d2e-5e8c775dc8ab');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -34020,10 +36050,10 @@ Test accuracy: 89.4%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="3702c253-f898-49fa-b67d-d8b21a3dd5db"&gt;&lt;/div&gt;
+&lt;div id="242fc536-d852-4f54-87e6-caf8b6c7d752"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3702c253-f898-49fa-b67d-d8b21a3dd5db');
+var element = $('#242fc536-d852-4f54-87e6-caf8b6c7d752');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -34787,10 +36817,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="d583d2d0-0fea-4fb0-a0be-6dc4b0c90124"&gt;&lt;/div&gt;
+&lt;div id="0e2bc9fc-da24-473a-baee-00f61db44317"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#d583d2d0-0fea-4fb0-a0be-6dc4b0c90124');
+var element = $('#0e2bc9fc-da24-473a-baee-00f61db44317');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -34991,10 +37021,10 @@ Test accuracy: 90.7%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="14048d7a-d8e0-4d19-b270-4fedc83d1e00"&gt;&lt;/div&gt;
+&lt;div id="dc0cb048-4421-40cb-8b8d-8b65bac1d01f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#14048d7a-d8e0-4d19-b270-4fedc83d1e00');
+var element = $('#dc0cb048-4421-40cb-8b8d-8b65bac1d01f');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -35758,10 +37788,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="bcb116ee-e96b-4ea7-959a-61722dab4a4c"&gt;&lt;/div&gt;
+&lt;div id="cd128b2b-c0c4-4243-b0c2-ce543d90e433"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#bcb116ee-e96b-4ea7-959a-61722dab4a4c');
+var element = $('#cd128b2b-c0c4-4243-b0c2-ce543d90e433');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -36142,10 +38172,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="e62f1933-b11f-4259-94de-aea5819015cb"&gt;&lt;/div&gt;
+&lt;div id="9816af5e-8861-46ce-a47e-151483b8875c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#e62f1933-b11f-4259-94de-aea5819015cb');
+var element = $('#9816af5e-8861-46ce-a47e-151483b8875c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -36207,10 +38237,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="68d5821b-0047-46e9-8e45-77c2de4cef8f"&gt;&lt;/div&gt;
+&lt;div id="4d84f89e-b39d-46a5-af8f-b5bce4b18392"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#68d5821b-0047-46e9-8e45-77c2de4cef8f');
+var element = $('#4d84f89e-b39d-46a5-af8f-b5bce4b18392');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -36264,10 +38294,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="d22ae954-d854-43de-a225-a327e24f0874"&gt;&lt;/div&gt;
+&lt;div id="bf2c24b3-e1b9-4100-991c-d545285d8858"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#d22ae954-d854-43de-a225-a327e24f0874');
+var element = $('#bf2c24b3-e1b9-4100-991c-d545285d8858');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -36321,10 +38351,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="97b0df62-346f-4a4d-a837-b5160dd86d28"&gt;&lt;/div&gt;
+&lt;div id="c92f96ba-c36b-42cc-baa7-cc8e63b0b3b3"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#97b0df62-346f-4a4d-a837-b5160dd86d28');
+var element = $('#c92f96ba-c36b-42cc-baa7-cc8e63b0b3b3');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -36384,10 +38414,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="9f0dba14-475f-45c4-a424-1c6ea56bf8fb"&gt;&lt;/div&gt;
+&lt;div id="f17519f7-a5a3-4863-b99c-138de95836ab"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9f0dba14-475f-45c4-a424-1c6ea56bf8fb');
+var element = $('#f17519f7-a5a3-4863-b99c-138de95836ab');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -36753,10 +38783,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="6e61c0a6-a2d8-434d-b53f-c8893df765a9"&gt;&lt;/div&gt;
+&lt;div id="de335a37-8214-407e-98a6-897c9fd45b4c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#6e61c0a6-a2d8-434d-b53f-c8893df765a9');
+var element = $('#de335a37-8214-407e-98a6-897c9fd45b4c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -36905,10 +38935,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="6915a51b-7c82-44c7-b8e3-97eb07817ac3"&gt;&lt;/div&gt;
+&lt;div id="998b7624-db2f-4510-91e2-461a11c6afd2"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#6915a51b-7c82-44c7-b8e3-97eb07817ac3');
+var element = $('#998b7624-db2f-4510-91e2-461a11c6afd2');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -37066,10 +39096,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="e1a1a7f8-c16d-4513-b726-81945ae5efca"&gt;&lt;/div&gt;
+&lt;div id="b93662da-ab15-4e23-bbed-1c4bc09da8d2"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#e1a1a7f8-c16d-4513-b726-81945ae5efca');
+var element = $('#b93662da-ab15-4e23-bbed-1c4bc09da8d2');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
