@@ -168,7 +168,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-07-10 (Wed)</li>
                         <li class="page-view">
-                            429 views
+                            616 views
                         </li>
                     </ul>
 
@@ -228,6 +228,15 @@
             <div class="col-full blog-content__main">
 
                 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<style>
+    pre {overflow-x: auto;}
+</style>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -426,7 +435,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上面這個示意圖最重要的概念是預訓練步驟跟 fine-tuning 步驟所用的 BERT 是<strong>一模一樣</strong>的。當你學會使用 BERT 就能用同個架構訓練多種 NLP 任務，大大減少自己設計模型的 architecture engineering 成本，投資報酬率高到爆炸。</p>
 <p>壞消息是，天下沒有白吃的午餐。</p>
-<p>要訓練好一個有 1.1 億參數的 12 層 <strong>BERT-BASE</strong> 得用 16 個 <a href="https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-global-availability.html">TPU chips</a> 跑上整整 4 天，<a href="https://medium.com/syncedreview/the-staggering-cost-of-training-sota-ai-models-e329e80fa82">花費 500 鎂</a>；24 層的 <strong>BERT-LARGE</strong> 則有 3.4 億個參數，得用 64 個 TPU chips（約 7000 鎂）訓練。喔對了，別忘了多次實驗得把這些成本乘上幾倍。<a href="https://twitter.com/arnicas/status/1147426600180494337?s=20">最近也有 NLP 研究者呼籲大家把訓練好的模型開源釋出</a>以減少重複訓練對環境造成的影響。</p>
+<p>要訓練好一個有 1.1 億參數的 12 層 <strong>BERT-BASE</strong> 得用 16 個 <a href="https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-global-availability.html">TPU chips</a> 跑上整整 4 天，<a href="https://medium.com/syncedreview/the-staggering-cost-of-training-sota-ai-models-e329e80fa82">花費 500 鎂</a>；24 層的 <strong>BERT-LARGE</strong> 則有 3.4 億個參數，得用 64 個 TPU chips（約 7000 鎂）訓練。喔對，別忘了多次實驗得把這些成本乘上幾倍。<a href="https://twitter.com/arnicas/status/1147426600180494337?s=20">最近也有 NLP 研究者呼籲大家把訓練好的模型開源釋出</a>以減少重複訓練對環境造成的影響。</p>
 <p>好消息是，BERT 作者們有開源釋出訓練好的模型，只要使用 <a href="https://github.com/google-research/bert">TensorFlow</a> 或是 <a href="https://github.com/huggingface/pytorch-pretrained-BERT">PyTorch</a> 將已訓練好的 BERT 載入，就能省去預訓練步驟的所有昂貴成本。好 BERT 不用嗎？</p>
 <p>雖然一般來說我們只需要用訓練好的 BERT 做 fine-tuning，稍微瞭解預訓練步驟的內容能讓你直觀地理解它在做些什麼。</p>
 </div>
