@@ -310,6 +310,12 @@ pip install tqdm boto3 requests regex -q
 &lt;li&gt;層數的不同&lt;/li&gt;
 &lt;li&gt;預訓練時遮住 wordpieces 或是整個 word&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;除了本文使用的中文 BERT 以外，常被拿來應用與研究的是英文的 &lt;code&gt;bert-base-cased&lt;/code&gt; 模型。&lt;/p&gt;
 &lt;p&gt;現在讓我們看看 tokenizer 裡頭的字典資訊：&lt;/p&gt;
 &lt;/div&gt;
