@@ -1955,8 +1955,28 @@ Wall time: 7min 9s
 &lt;li&gt;安好&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;在 fine tune 一陣子之後， 這層 Encoder block 學會關注兩句之間「衝突」的位置，並將這些資訊更新到 &lt;code&gt;[CLS]&lt;/code&gt; 裡頭。有了這些資訊，之後的 Linear Classifier 可以將其轉換成更好的分類預測。考慮到我們只給 BERT 看不到 1 % 的數據，這樣的結果不差。如果有時間 fine tune 整個訓練集，我們能得到更好的成果。&lt;/p&gt;
-&lt;p&gt;好啦，到此為止你應該已經能直觀地理解 BERT 並可以開始動手 fine tuning 自己的 NLP 任務了。你也可以選擇先重現本文的結果以鞏固學到的東西。&lt;/p&gt;
-&lt;p&gt;讓我們做點小總結。&lt;/p&gt;
+&lt;p&gt;好啦，到此為止你應該已經能直觀地理解 BERT 並開始 fine tuning 自己的下游任務了。如果你要做的是如 &lt;a href="https://github.com/huggingface/pytorch-pretrained-BERT#squad"&gt;SQuAD 問答&lt;/a&gt;等常見的任務，甚至可以用 &lt;a href="https://github.com/huggingface/pytorch-pretrained-BERT"&gt;pytorch-pretrained-BERT&lt;/a&gt; 準備好的 Python 腳本一鍵完成訓練與推論：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 腳本模式的好處是可以透過改變參數快速進行各種實驗。&lt;/span&gt;
+&lt;span class="c1"&gt;# 壞處是黑盒子效應，不過對閱讀完本文的你應該不是個問題。&lt;/span&gt;
+&lt;span class="c1"&gt;# 選擇適合自己的方式 fine-tuning BERT 吧！&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;SQUAD_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/SQUAD
+
+python run_squad.py &lt;span class="se"&gt;\&lt;/span&gt;
+  --bert_model bert-base-uncased &lt;span class="se"&gt;\&lt;/span&gt;
+  --do_train &lt;span class="se"&gt;\&lt;/span&gt;
+  --do_predict &lt;span class="se"&gt;\&lt;/span&gt;
+  --do_lower_case &lt;span class="se"&gt;\&lt;/span&gt;
+  --train_file &lt;span class="nv"&gt;$SQUAD_DIR&lt;/span&gt;/train-v1.1.json &lt;span class="se"&gt;\&lt;/span&gt;
+  --predict_file &lt;span class="nv"&gt;$SQUAD_DIR&lt;/span&gt;/dev-v1.1.json &lt;span class="se"&gt;\&lt;/span&gt;
+  --train_batch_size &lt;span class="m"&gt;12&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+  --learning_rate 3e-5 &lt;span class="se"&gt;\&lt;/span&gt;
+  --num_train_epochs &lt;span class="m"&gt;2&lt;/span&gt;.0 &lt;span class="se"&gt;\&lt;/span&gt;
+  --max_seq_length &lt;span class="m"&gt;384&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+  --doc_stride &lt;span class="m"&gt;128&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+  --output_dir /tmp/debug_squad/
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;用腳本的好處是你不需要知道所有實作細節，只要調整自己感興趣的參數就好。我在&lt;a href="http://localhost:8000/generate-anime-using-cartoongan-and-tensorflow2.html"&gt;用 CartoonGAN 與 TensorFlow 2 生成新海誠動畫&lt;/a&gt;一文也採用同樣方式，提供讀者一鍵生成卡通圖片的 Python 腳本。&lt;/p&gt;
+&lt;p&gt;當然，你也可以先試著一步步執行本文列出的程式碼，複習並鞏固學到的東西。最後，讓我們做點簡單的總結。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1978,8 +1998,7 @@ Wall time: 7min 9s
 &lt;li&gt;將文本數據轉換成 BERT 相容的輸入格式&lt;/li&gt;
 &lt;li&gt;依據下游任務 fine tuning BERT 並進行推論&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;恭喜！你現在已經具備能夠進一步探索最新 NLP 研究與應用的領域了。&lt;/p&gt;
-&lt;p&gt;（好啦，事實上沒那麼簡單，但至少是個好的開始）&lt;/p&gt;
+&lt;p&gt;恭喜！你現在已經具備能夠進一步探索最新 NLP 研究與應用的能力了。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2002,7 +2021,7 @@ Wall time: 7min 9s
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;我還有好多東西想跟你分享，但因為時間有限，在這邊就簡單地條列出來：&lt;/p&gt;
+&lt;p&gt;我還有不少東西想跟你分享，但因為時間有限，在這邊就簡單地條列出來：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;BERT 的 Encoder 架構很適合做&lt;a href="http://web.stanford.edu/class/cs224u/"&gt;自然語言理解 NLU &lt;/a&gt;任務，但如文章摘要等&lt;a href="https://youtu.be/4uG1NMKNWCU"&gt;自然語言生成 NLG &lt;/a&gt;的任務就不太 okay。&lt;a href="https://github.com/nlpyang/BertSum"&gt;BertSum&lt;/a&gt; 則是一篇利用 BERT 做萃取式摘要並在 &lt;a href="https://paperswithcode.com/sota/document-summarization-on-cnn-daily-mail"&gt;CNN/Dailymail 取得 SOTA&lt;/a&gt; 的研究，適合想要在 BERT 之上開發自己模型的人參考作法&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://arxiv.org/abs/1905.03197"&gt;UniLM&lt;/a&gt; 透過「玩弄」注意力遮罩使得其可以在預訓練階段同時訓練 3 種語言模型，讓 fine tune NLG 任務不再是夢想。如果你懂我在&lt;a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html"&gt;之前的 Transformer 文章&lt;/a&gt;內講解的遮罩概念的話，馬上就是理解上面的 UNiLM 架構&lt;/li&gt;
@@ -2011,7 +2030,7 @@ Wall time: 7min 9s
 &lt;li&gt;PyTorch 的 BERT 雖然使用上十分直覺，如果沒有強大的 GPU 還是很難在實務上使用。你可以嘗試特徵擷取或是 freeze BERT。另外如果你是以個人身份進行研究，但又希望能最小化成本並加快模型訓練效率，我會推薦花點時間學會&lt;a href="https://colab.sandbox.google.com/github/google-research/bert/blob/master/predicting_movie_reviews_with_bert_on_tf_hub.ipynb"&gt;在 Colab 上使用 TensorFlow Hub 及 TPU 訓練模型 &lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;其他的碎念留待下次吧。&lt;/p&gt;
-&lt;p&gt;當時在撰寫&lt;a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html"&gt;進入 NLP 世界的最佳橋樑&lt;/a&gt;一文時我希望能用點微薄之力搭起一座橋樑，讓更多人平順地進入 NLP 世界。作為該篇文章的續篇，這次我希望已經在 NLP 世界裡闖蕩的你，能夠進一步掌握突破城牆的巨人之力，前往更遠的地方。&lt;/p&gt;
+&lt;p&gt;當時在撰寫&lt;a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html"&gt;進入 NLP 世界的最佳橋樑&lt;/a&gt;一文時我希望能用點微薄之力搭起一座小橋，幫助更多人平順地進入 NLP 世界。作為該篇文章的延伸，這次我希望已經在 NLP 世界闖蕩的你能夠進一步掌握突破城牆的巨人之力，前往更遠的地方。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2020,7 +2039,7 @@ Wall time: 7min 9s
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;blockquote&gt;
 &lt;p&gt;
-                        對，這篇文章就是那巨人的脊髓液。
+                        啊，我想這篇文章就是讓你變成那巨人的脊髓液了！我們牆外見。
                         &lt;br/&gt;
 &lt;br/&gt;
 &lt;/p&gt;
