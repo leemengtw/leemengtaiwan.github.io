@@ -1947,15 +1947,16 @@ Wall time: 7min 9s
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;我們說過在 BERT 裡頭，第一個 &lt;code&gt;[CLS]&lt;/code&gt; 的 repr. 代表著整個輸入序列的 repr.。&lt;/p&gt;
-&lt;p&gt;左邊是一般預訓練完的 BERT。如果你還記得 BERT 的其中一個預訓練任務 NSP 的話，就會了解這時的 &lt;code&gt;[CLS]&lt;/code&gt; 所包含的資訊大多是要用來預測第二句本來是否接在第一句後面。以這個 head 而言，&lt;code&gt;[CLS]&lt;/code&gt; 仍只把注意力放在兩句間的 &lt;code&gt;[SEP]&lt;/code&gt; 上。&lt;/p&gt;
-&lt;p&gt;有趣的是在看過一些假新聞分類數據以後（右圖），這個 head 在更新 &lt;code&gt;[CLS]&lt;/code&gt; 的 repr. 時會開始關注跟下游任務目標相關的詞彙。在 fine tune 一陣子之後，它學會關注兩句之間「衝突」的位置，並將這些資訊更新到 &lt;code&gt;[CLS]&lt;/code&gt; 裡頭，讓之後的 Linear Classifier 有辦法從中獲得分類的資訊：&lt;/p&gt;
+&lt;p&gt;左邊是一般預訓練完的 BERT。如果你還記得 BERT 的其中一個預訓練任務 NSP 的話，就會了解這時的 &lt;code&gt;[CLS]&lt;/code&gt; 所包含的資訊大多是要用來預測第二句本來是否接在第一句後面。以第 8 層 Encoder block 而言，你會發現大多數的 heads 在更新 &lt;code&gt;[CLS]&lt;/code&gt; 時只關注兩句間的 &lt;code&gt;[SEP]&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;有趣的是在看過一些假新聞分類數據以後（右圖），這層的一些 heads 在更新 &lt;code&gt;[CLS]&lt;/code&gt; 的 repr. 時會開始關注跟下游任務目標相關的特定詞彙：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;闢謠&lt;/li&gt;
 &lt;li&gt;去世&lt;/li&gt;
 &lt;li&gt;安好&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;考慮到我們只給 BERT 看不到 1 % 的數據，這樣的結果不差。我想如果有時間 fine tune 整個訓練集的話能會得到更好的成果。&lt;/p&gt;
-&lt;p&gt;好啦，到此為止你應該充分理解 BERT 並能自己動手 fine tuning 了。讓我們進入最後一個小節。&lt;/p&gt;
+&lt;p&gt;在 fine tune 一陣子之後， 這層 Encoder block 學會關注兩句之間「衝突」的位置，並將這些資訊更新到 &lt;code&gt;[CLS]&lt;/code&gt; 裡頭。有了這些資訊，之後的 Linear Classifier 可以將其轉換成更好的分類預測。考慮到我們只給 BERT 看不到 1 % 的數據，這樣的結果不差。如果有時間 fine tune 整個訓練集，我們能得到更好的成果。&lt;/p&gt;
+&lt;p&gt;好啦，到此為止你應該已經能直觀地理解 BERT 並可以開始動手 fine tuning 自己的 NLP 任務了。你也可以選擇先重現本文的結果以鞏固學到的東西。&lt;/p&gt;
+&lt;p&gt;讓我們做點小總結。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2004,13 +2005,13 @@ Wall time: 7min 9s
 &lt;p&gt;我還有好多東西想跟你分享，但因為時間有限，在這邊就簡單地條列出來：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;BERT 的 Encoder 架構很適合做&lt;a href="http://web.stanford.edu/class/cs224u/"&gt;自然語言理解 NLU &lt;/a&gt;任務，但如文章摘要等&lt;a href="https://youtu.be/4uG1NMKNWCU"&gt;自然語言生成 NLG &lt;/a&gt;的任務就不太 okay。&lt;a href="https://github.com/nlpyang/BertSum"&gt;BertSum&lt;/a&gt; 則是一篇利用 BERT 做萃取式摘要並在 &lt;a href="https://paperswithcode.com/sota/document-summarization-on-cnn-daily-mail"&gt;CNN/Dailymail 取得 SOTA&lt;/a&gt; 的研究，適合想要在 BERT 之上開發自己模型的人參考作法&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://arxiv.org/abs/1905.03197"&gt;UniLM&lt;/a&gt; 透過「玩弄」注意力遮罩使得其可以在預訓練階段同時訓練 3 種語言模型，讓 fine tune NLG 任務不再是夢想。如果你懂我在&lt;a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html"&gt;之前的 Transformer 文章&lt;/a&gt;內講解的遮罩概念，上面那張圖你馬上就能讀懂&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1905.03197"&gt;UniLM&lt;/a&gt; 透過「玩弄」注意力遮罩使得其可以在預訓練階段同時訓練 3 種語言模型，讓 fine tune NLG 任務不再是夢想。如果你懂我在&lt;a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html"&gt;之前的 Transformer 文章&lt;/a&gt;內講解的遮罩概念的話，馬上就是理解上面的 UNiLM 架構&lt;/li&gt;
 &lt;li&gt;最近新的 NLP 王者非 &lt;a href="https://arxiv.org/abs/1906.08237"&gt;XLNet&lt;/a&gt; 莫屬。其表現打敗 BERT 自然不需多言，但&lt;a href="https://medium.com/syncedreview/the-staggering-cost-of-training-sota-ai-models-e329e80fa82"&gt;訓練該模型所需的花費&lt;/a&gt;令人不禁思考這樣的大公司遊戲是否就是我們要的未來&lt;/li&gt;
 &lt;li&gt;有些人認為 BERT 不夠通用，因為 Fine-tuning 時還要依照不同下游任務加入新的 Linear Classifier。有些人提倡使用 Multitask Learning 想辦法弄出更通用的模型，而 &lt;a href="https://decanlp.com/"&gt;decaNLP&lt;/a&gt; 是一個知名例子。&lt;/li&gt;
 &lt;li&gt;PyTorch 的 BERT 雖然使用上十分直覺，如果沒有強大的 GPU 還是很難在實務上使用。你可以嘗試特徵擷取或是 freeze BERT。另外如果你是以個人身份進行研究，但又希望能最小化成本並加快模型訓練效率，我會推薦花點時間學會&lt;a href="https://colab.sandbox.google.com/github/google-research/bert/blob/master/predicting_movie_reviews_with_bert_on_tf_hub.ipynb"&gt;在 Colab 上使用 TensorFlow Hub 及 TPU 訓練模型 &lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;其他的碎念留待下次吧。&lt;/p&gt;
-&lt;p&gt;當時在撰寫&lt;a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html"&gt;進入 NLP 世界的最佳橋樑&lt;/a&gt;一文時我希望能用自己的微薄之力搭起一座橋樑，讓更多人平順地進入 NLP 世界。作為該篇文章的續篇，這次我希望已經在 NLP 世界的你，能夠進一步掌握突破城牆的巨人之力，前往更遠的地方。&lt;/p&gt;
+&lt;p&gt;當時在撰寫&lt;a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html"&gt;進入 NLP 世界的最佳橋樑&lt;/a&gt;一文時我希望能用點微薄之力搭起一座橋樑，讓更多人平順地進入 NLP 世界。作為該篇文章的續篇，這次我希望已經在 NLP 世界裡闖蕩的你，能夠進一步掌握突破城牆的巨人之力，前往更遠的地方。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2026,8 +2027,6 @@ Wall time: 7min 9s
 &lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;/div&gt;
 </content><category term="自然語言處理"></category><category term="NLP"></category><category term="PyTorch"></category></entry><entry><title>淺談神經機器翻譯 &amp; 用 Transformer 與 TensorFlow 2 英翻中</title><link href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html" rel="alternate"></link><published>2019-06-17T05:40:00+09:00</published><updated>2019-06-17T05:40:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2019-06-17:/neural-machine-translation-with-transformer-and-tensorflow2.html</id><summary type="html">&lt;p&gt;本文分為兩大部分。前半將帶讀者簡單回顧 Seq2Seq 模型、自注意力機制以及 Transformer 等近年在機器翻譯領域裡頭的重要發展與概念；後半段則將帶著讀者實作一個可以將英文句子翻譯成中文的 Transformer。透過瞭解其背後運作原理，讀者將能把類似的概念應用到如圖像描述、閱讀理解以及語音辨識等各式各樣的機器學習任務之上。&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -31860,10 +31859,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="8b258c74-26bd-40b3-938e-fc857d9fd68e"&gt;&lt;/div&gt;
+&lt;div id="7d156ef0-cec0-4e5e-a0a6-f8d2be4d5171"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#8b258c74-26bd-40b3-938e-fc857d9fd68e');
+var element = $('#7d156ef0-cec0-4e5e-a0a6-f8d2be4d5171');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -35135,10 +35134,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="3cbcf15b-0fba-490f-99b3-2fcad32a8c11"&gt;&lt;/div&gt;
+&lt;div id="bafe9f18-8b93-4ba9-ac8c-d44a71289bea"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3cbcf15b-0fba-490f-99b3-2fcad32a8c11');
+var element = $('#bafe9f18-8b93-4ba9-ac8c-d44a71289bea');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -35902,10 +35901,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="b5d03d3b-4946-4c6c-902e-508a6e110eaa"&gt;&lt;/div&gt;
+&lt;div id="2993e8ee-293c-4bda-993a-037be2dfb60f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#b5d03d3b-4946-4c6c-902e-508a6e110eaa');
+var element = $('#2993e8ee-293c-4bda-993a-037be2dfb60f');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -36095,10 +36094,10 @@ Test accuracy: 89.4%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="68041263-0367-4f34-bb76-7b4cc449bd06"&gt;&lt;/div&gt;
+&lt;div id="6a73d830-6cf9-4cd6-bbf9-3d3c91f6e3b4"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#68041263-0367-4f34-bb76-7b4cc449bd06');
+var element = $('#6a73d830-6cf9-4cd6-bbf9-3d3c91f6e3b4');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -36862,10 +36861,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="45ebea13-61fe-49da-a08e-e4dd58e9721e"&gt;&lt;/div&gt;
+&lt;div id="ec21434b-483b-4e44-b0d3-14a5cb5afd37"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#45ebea13-61fe-49da-a08e-e4dd58e9721e');
+var element = $('#ec21434b-483b-4e44-b0d3-14a5cb5afd37');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -37066,10 +37065,10 @@ Test accuracy: 90.7%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="7103bd44-e35e-4f52-97af-89577db41ce9"&gt;&lt;/div&gt;
+&lt;div id="2f8fc1c0-ed60-4c69-b83f-c370af100f3a"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#7103bd44-e35e-4f52-97af-89577db41ce9');
+var element = $('#2f8fc1c0-ed60-4c69-b83f-c370af100f3a');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -37833,10 +37832,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="4d2f8676-2f26-45a5-8e12-4d48ed697a9f"&gt;&lt;/div&gt;
+&lt;div id="260ed6eb-28cc-461a-ab64-92cc8e5165bc"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#4d2f8676-2f26-45a5-8e12-4d48ed697a9f');
+var element = $('#260ed6eb-28cc-461a-ab64-92cc8e5165bc');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -38217,10 +38216,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="0f7847d4-05fb-4b0d-95d6-89578840590e"&gt;&lt;/div&gt;
+&lt;div id="4293e2b7-f235-4fc0-bd5e-901dde08d67b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#0f7847d4-05fb-4b0d-95d6-89578840590e');
+var element = $('#4293e2b7-f235-4fc0-bd5e-901dde08d67b');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -38282,10 +38281,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="6f1cdd61-9c3a-4c42-ac11-d03d58609d55"&gt;&lt;/div&gt;
+&lt;div id="be4c194f-3d56-4502-9757-d13124546d2b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#6f1cdd61-9c3a-4c42-ac11-d03d58609d55');
+var element = $('#be4c194f-3d56-4502-9757-d13124546d2b');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -38339,10 +38338,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="8f4385fc-44f5-469d-b7fe-6cbf3e8f8604"&gt;&lt;/div&gt;
+&lt;div id="eb1422cc-a246-4af4-9157-160f5c81bf39"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#8f4385fc-44f5-469d-b7fe-6cbf3e8f8604');
+var element = $('#eb1422cc-a246-4af4-9157-160f5c81bf39');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -38396,10 +38395,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="f7aff0a4-ffb4-4e95-85ac-3ebac8e6c7a7"&gt;&lt;/div&gt;
+&lt;div id="4e512185-0c5f-41b8-a65a-356684c6be0b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f7aff0a4-ffb4-4e95-85ac-3ebac8e6c7a7');
+var element = $('#4e512185-0c5f-41b8-a65a-356684c6be0b');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -38459,10 +38458,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="fb044bae-06e4-4963-9848-c65370c8bc59"&gt;&lt;/div&gt;
+&lt;div id="caf96335-bc4b-42f8-833f-9fdd7a6b2cb3"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#fb044bae-06e4-4963-9848-c65370c8bc59');
+var element = $('#caf96335-bc4b-42f8-833f-9fdd7a6b2cb3');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -38828,10 +38827,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="8e227f22-5458-420c-875a-12d948c651e8"&gt;&lt;/div&gt;
+&lt;div id="6bea5f2f-cf82-4a36-9dfa-6d3386427fe5"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#8e227f22-5458-420c-875a-12d948c651e8');
+var element = $('#6bea5f2f-cf82-4a36-9dfa-6d3386427fe5');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -38980,10 +38979,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="e8d07248-f55f-4226-a86f-d86971d916c0"&gt;&lt;/div&gt;
+&lt;div id="2d5367f8-8074-4514-9678-857108d84c46"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#e8d07248-f55f-4226-a86f-d86971d916c0');
+var element = $('#2d5367f8-8074-4514-9678-857108d84c46');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -39141,10 +39140,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="458c6e82-b2a5-4379-a513-b72308cbc466"&gt;&lt;/div&gt;
+&lt;div id="50cc1bea-dc76-48df-9959-069b2fa64d03"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#458c6e82-b2a5-4379-a513-b72308cbc466');
+var element = $('#50cc1bea-dc76-48df-9959-069b2fa64d03');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
