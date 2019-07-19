@@ -168,7 +168,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-07-10 (Wed)</li>
                         <li class="page-view">
-                            1,841 views
+                            1,884 views
                         </li>
                     </ul>
 
@@ -726,7 +726,8 @@ max                  8621
 <span class="c1"># 使用 masked LM 估計 [MASK] 位置所代表的實際 token </span>
 <span class="n">maskedLM_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-    <span class="n">predictions</span> <span class="o">=</span> <span class="n">maskedLM_model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">segments_tensors</span><span class="p">)</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">maskedLM_model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">segments_tensors</span><span class="p">)</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="c1"># (1, seq_len, num_hidden_units)</span>
 <span class="k">del</span> <span class="n">maskedLM_model</span>
 
