@@ -209,18 +209,162 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>toc</p>
 <ul>
-<li>資料集<ul>
-<li>線上爬 html</li>
-<li>資料來源</li>
+<li>每個章節都是點擊看更多</li>
+<li>pandas還有numpy使用vertorization 還有 broadcasting來加快運算, 多使用內建函數</li>
+<li>建立 dataframe<ul>
+<li>基本用用鐵達尼號資料夾展示</li>
+<li>clipboard</li>
+<li>csv / 結合多個 csvs (row / columns) <code>pd.concat</code><ul>
+<li>去頭</li>
+<li>只讀取特定 column <code>usecol</code> in read_csv</li>
+<li>使用 <code>df.info</code> 看記憶體使用量並將 numerical 轉成 categorical 省資源</li>
 </ul>
 </li>
+<li>線上爬 html (from url) </li>
+<li>dummy data frame<ul>
+<li>created for fast testing<ul>
+<li>pd.util.testing.makeDataFrame() ➡️ contains random values</li>
+<li>.makeMissingDataframe() ➡️ some values missing</li>
+<li>.makeTimeDataFrame() ➡️ has DateTimeIndex</li>
+<li>.makeMixedDataFrame() ➡️ mixed data type</li>
+</ul>
+</li>
+<li>made from <code>dict</code>: key = col, v = list of values</li>
+<li>np.rand.(#row, #col)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>數據清理 / 整理<ul>
+<li>drop columns<ul>
+<li><a href="https://gist.github.com/600474cca52227129872d44559d312f2">https://gist.github.com/600474cca52227129872d44559d312f2</a></li>
+</ul>
+</li>
+<li>rename columns</li>
+<li>reindex 然後 drop</li>
+<li>fillna</li>
+<li>(conditional) drop columns</li>
+<li>將字串 split 成兩個 columns</li>
+<li>將 numerical 切成 categorical (pd.cut)</li>
+</ul>
+</li>
+<li>select data<ul>
+<li>記得loc, iloc, ix, at, iat都不是function, 而是attribute, 所以是使用[], 而不是()</li>
+<li>reserve row / col orders</li>
+<li>row and/or columns slicer <ul>
+<li>[col_a:col_b]</li>
+</ul>
+</li>
+<li>mask and <code>query</code></li>
+<li>選出任何一行有 NLL 值的 rows<ul>
+<li><code>df[df.isnull().any(axis=1)]</code></li>
+</ul>
+</li>
+<li>選擇 dtype 為特定型態的 column</li>
+<li>選擇某些 column 特定值 (<code>isin</code>)</li>
+<li>選擇某些 column 為 top k 值的 row</li>
+<li><code>df.filter</code><ul>
+<li>下面的例子把string的columns 還有 年份從20XX年的columns取出來 (19XX的columns被過濾掉)<ul>
+<li><code>cols = ['RegionID', 'RegionName', 'State', 'Metro', 'CountyName', 'SizeRank', '20.*']</code></li>
+<li><code>df.filter(regex='|'.join(cols), axis=1).head()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>iterows 做特定處理</li>
+<li>依照某個string column值來選擇row<ul>
+<li><code>df2[df2['comment'].str.contains('yoooo')]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>sorting</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">CategoricalIndex</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> 
+                               <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">'Monday'</span><span class="p">,</span> <span class="s1">'Tuesday'</span><span class="p">,</span> <span class="s1">'Wednesday'</span><span class="p">,</span> <span class="s1">'Thursday'</span><span class="p">,</span> <span class="s1">'Friday'</span><span class="p">,</span><span class="s1">'Saturday'</span><span class="p">,</span> <span class="s1">'Sunday'</span><span class="p">],</span> 
+                               <span class="nb">sorted</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'bar'</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+</pre></div>
+<ul>
+<li>數據處理<ul>
 <li>apply</li>
-<li>groupby</li>
-<li>簡單畫圖</li>
+<li>將一個 list column 轉成多個 columns</li>
+<li>切兩個 subset</li>
+<li>to_datetime<ul>
+<li><a href="https://twitter.com/justmarkham/status/1148217934298406912?s=20">https://twitter.com/justmarkham/status/1148217934298406912?s=20</a></li>
+</ul>
+</li>
+<li>join dataframe<ul>
+<li><code>df.merge</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>匯總<ul>
+<li>value_counts + sorted value</li>
+<li>unique</li>
+<li>groupby + (multi-agg func or describe())<ul>
+<li>對時間的匯總可以用 <code>resample</code><ul>
+<li><a href="https://twitter.com/justmarkham/status/1151846604216971264?s=20">https://twitter.com/justmarkham/status/1151846604216971264?s=20</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>group by custom lambda func</li>
+<li>transform 函式</li>
+<li>multi-index groupby (<code>unstack</code>) VS pivot_table</li>
+</ul>
+</li>
+<li>簡單畫圖<ul>
+<li>easy plot + nice style<ul>
+<li><code>df.plot()</code></li>
+</ul>
+</li>
+<li>改變 display options / style obj.<ul>
+<li>chain your operations!</li>
+<li><a href="https://t.co/6xlytNLmGm">https://t.co/6xlytNLmGm</a></li>
+<li><a href="https://t.co/mhz9GiueaN">https://t.co/mhz9GiueaN</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>output<ul>
+<li>windows friendly output: <code>to_csv(encoding="cp932")</code></li>
+</ul>
+</li>
+<li>powerful tools<ul>
+<li>pandas profiling<ul>
+<li><code>pip install pandas-profiling</code></li>
+<li>適合用在 numerical features 的分析</li>
+</ul>
+</li>
+<li>qgrid<ul>
+<li><a href="https://www.evernote.com/l/AET7-dpk349LNJcQVCWP-rGWdnyGA6-mz2w">https://www.evernote.com/l/AET7-dpk349LNJcQVCWP-rGWdnyGA6-mz2w</a></li>
+</ul>
+</li>
+<li>tqdm<ul>
+<li><a href="https://www.evernote.com/l/AETKpFnXeB5B84M5PbPBwXR_dMDZ4vAu0Xw">https://www.evernote.com/l/AETKpFnXeB5B84M5PbPBwXR_dMDZ4vAu0Xw</a></li>
+</ul>
+</li>
+<li>swifter</li>
+<li>Facets<ul>
+<li><a href="https://www.evernote.com/l/AETaGMqtguRAKbEF9z4hWtF9HazEVkWr70c">https://www.evernote.com/l/AETaGMqtguRAKbEF9z4hWtF9HazEVkWr70c</a></li>
+</ul>
+</li>
+<li>cufflinks and plotly<ul>
+<li><a href="https://www.kdnuggets.com/2019/07/10-simple-hacks-speed-data-analysis-python.html">https://www.kdnuggets.com/2019/07/10-simple-hacks-speed-data-analysis-python.html</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>good reference<ul>
 <li>youtube</li>
 <li>pocket 那篇 10 個</li>
 <li>safari</li>
+<li>dataquest cheat sheet<ul>
+<li><a href="https://storage.googleapis.com/molten/lava/2018/09/f0c721d9-pandas-cheat-sheet-dataquest.jpg">https://storage.googleapis.com/molten/lava/2018/09/f0c721d9-pandas-cheat-sheet-dataquest.jpg</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
