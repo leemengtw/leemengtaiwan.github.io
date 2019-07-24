@@ -29,9 +29,15 @@ th, td {
   border-top: 0px
 }
 
+/*增加 dataframe index padding*/
+.table th {
+  padding-left: 1rem;
+}
+
 .table {
   font-size: 0.6rem;
   margin-bottom: 35px;
+  margin-left: 1rem;
 }
 
 /*置中 output area 的 圖片*/
