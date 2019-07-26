@@ -606,7 +606,7 @@ Top 3 ( 2%)：['[CLS]', '等', '到', '潮', '水', '過', '了', '，', '就', 
   &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'bertviz_repo'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="c1"&gt;# import packages&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bertviz.pytorch_pretrained_bert&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BertModel&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;BertTokenizer&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bertviz.pytorch_transformers_attn&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BertModel&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;BertTokenizer&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bertviz.head_view_bert&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;show&lt;/span&gt;
 
 &lt;span class="c1"&gt;# 在 jupyter notebook 裡頭顯示 visualzation 的 helper&lt;/span&gt;
@@ -1614,8 +1614,9 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
             &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parameters&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_cuda&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
                 &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"cuda:0"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
             
+            &lt;span class="n"&gt;outputs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
             &lt;span class="c1"&gt;# 別忘記前 3 個 tensors 分別為 tokens, segments 以及 masks&lt;/span&gt;
-            &lt;span class="n"&gt;logits&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+            &lt;span class="n"&gt;logits&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;outputs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
             &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pred&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;logits&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
             
             &lt;span class="c1"&gt;# 用來計算訓練集的分類準確率&lt;/span&gt;
@@ -1741,10 +1742,11 @@ for epoch in range(EPOCHS):
         # 將參數梯度歸零
         optimizer.zero_grad()
         # forward pass
-        loss = model(input_ids=tokens_tensors, 
-                     token_type_ids=segments_tensors, 
-                     attention_mask=masks_tensors, 
-                     labels=labels)
+        outputs = model(input_ids=tokens_tensors, 
+                        token_type_ids=segments_tensors, 
+                        attention_mask=masks_tensors, 
+                        labels=labels)
+        loss = outputs[0]
         # backward
         loss.backward()
         optimizer.step()
@@ -31903,10 +31905,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="27234175-790f-4c47-9b9d-2577b96a159d"&gt;&lt;/div&gt;
+&lt;div id="7e6f2b15-82a6-420b-9261-30c19c805939"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#27234175-790f-4c47-9b9d-2577b96a159d');
+var element = $('#7e6f2b15-82a6-420b-9261-30c19c805939');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -35178,10 +35180,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="09f1277f-a58a-4b6c-b4c4-e18ddf18af9b"&gt;&lt;/div&gt;
+&lt;div id="e1fab3f3-fce6-41bf-8c0a-6074b14cbca8"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#09f1277f-a58a-4b6c-b4c4-e18ddf18af9b');
+var element = $('#e1fab3f3-fce6-41bf-8c0a-6074b14cbca8');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -35945,10 +35947,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="efa5f121-feb6-4053-a29a-a9c20c7d439d"&gt;&lt;/div&gt;
+&lt;div id="29439c3a-5b67-4492-a300-22215e506515"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#efa5f121-feb6-4053-a29a-a9c20c7d439d');
+var element = $('#29439c3a-5b67-4492-a300-22215e506515');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -36138,10 +36140,10 @@ Test accuracy: 89.4%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="660aab70-a1df-44bd-b856-a7047e86a738"&gt;&lt;/div&gt;
+&lt;div id="e2551e3b-a39f-4b1b-9658-5d91d3184267"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#660aab70-a1df-44bd-b856-a7047e86a738');
+var element = $('#e2551e3b-a39f-4b1b-9658-5d91d3184267');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -36905,10 +36907,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="912226f4-f26e-48a9-b67e-c34906ec54ca"&gt;&lt;/div&gt;
+&lt;div id="aac6b32d-d206-4827-a6a1-9fc74b618ae2"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#912226f4-f26e-48a9-b67e-c34906ec54ca');
+var element = $('#aac6b32d-d206-4827-a6a1-9fc74b618ae2');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -37109,10 +37111,10 @@ Test accuracy: 90.7%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="c206c8d7-e8dd-47f7-9495-80269961cf91"&gt;&lt;/div&gt;
+&lt;div id="6b177de4-4c89-4760-ada5-c3d08ff0fea6"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#c206c8d7-e8dd-47f7-9495-80269961cf91');
+var element = $('#6b177de4-4c89-4760-ada5-c3d08ff0fea6');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -37876,10 +37878,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="15ce7315-b284-4662-ae0d-f2c078d62224"&gt;&lt;/div&gt;
+&lt;div id="82a649a5-054a-47cb-9df6-12a5b02ae035"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#15ce7315-b284-4662-ae0d-f2c078d62224');
+var element = $('#82a649a5-054a-47cb-9df6-12a5b02ae035');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -38260,10 +38262,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="9ff5bfbe-76a1-4484-9f09-bb0c2612a842"&gt;&lt;/div&gt;
+&lt;div id="2dea2bf4-5ca1-4677-84df-2d497e58b5f9"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9ff5bfbe-76a1-4484-9f09-bb0c2612a842');
+var element = $('#2dea2bf4-5ca1-4677-84df-2d497e58b5f9');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -38325,10 +38327,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="1e75dc6b-12ae-42d5-8d9f-e53508a90e60"&gt;&lt;/div&gt;
+&lt;div id="1b70437a-49d8-419f-accf-2f6cc7c25cd8"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#1e75dc6b-12ae-42d5-8d9f-e53508a90e60');
+var element = $('#1b70437a-49d8-419f-accf-2f6cc7c25cd8');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -38382,10 +38384,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="233ae0ab-bb36-4d52-bfec-84e6325843a2"&gt;&lt;/div&gt;
+&lt;div id="c348e83e-a526-4da8-b7c8-02623b9c3217"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#233ae0ab-bb36-4d52-bfec-84e6325843a2');
+var element = $('#c348e83e-a526-4da8-b7c8-02623b9c3217');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -38439,10 +38441,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="82464260-f860-432d-9ab0-b8f2f047f203"&gt;&lt;/div&gt;
+&lt;div id="18f835dc-b0f9-4b9d-b7f5-a22e8898dd9e"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#82464260-f860-432d-9ab0-b8f2f047f203');
+var element = $('#18f835dc-b0f9-4b9d-b7f5-a22e8898dd9e');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -38502,10 +38504,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="9eda7ee9-b1e8-4c12-98f9-81ad27083e57"&gt;&lt;/div&gt;
+&lt;div id="1cbfaf6c-4e06-499b-9faf-aeccf263e316"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9eda7ee9-b1e8-4c12-98f9-81ad27083e57');
+var element = $('#1cbfaf6c-4e06-499b-9faf-aeccf263e316');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -38871,10 +38873,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="2f01f8fc-225b-4668-adba-7de93195a5a9"&gt;&lt;/div&gt;
+&lt;div id="52dc8800-cb27-4c60-91e7-1898dcb36417"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#2f01f8fc-225b-4668-adba-7de93195a5a9');
+var element = $('#52dc8800-cb27-4c60-91e7-1898dcb36417');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -39023,10 +39025,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="48e5f69d-cd46-4524-91ec-4825c3b42246"&gt;&lt;/div&gt;
+&lt;div id="a46b1064-0d65-4393-b8d5-13f0624d5c6e"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#48e5f69d-cd46-4524-91ec-4825c3b42246');
+var element = $('#a46b1064-0d65-4393-b8d5-13f0624d5c6e');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -39184,10 +39186,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="733b43dc-426f-41da-af97-9b50c5bc520d"&gt;&lt;/div&gt;
+&lt;div id="9990c80e-e94b-4acb-9cca-a442269df831"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#733b43dc-426f-41da-af97-9b50c5bc520d');
+var element = $('#9990c80e-e94b-4acb-9cca-a442269df831');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
