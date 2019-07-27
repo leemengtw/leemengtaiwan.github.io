@@ -175,7 +175,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-06-17 (Mon)</li>
                         <li class="page-view">
-                            2,547 views
+                            2,556 views
                         </li>
                     </ul>
 
@@ -1166,7 +1166,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 <li>聊天機器人（Chat Bot）</li>
 <li>其他任何可以用 RNN 的潛在應用</li>
 </ul>
-<p>當然不是每個人都喜歡或需要看論文。如果你只是想要應用 Transformer 也沒問題。除了閱讀學術論文以外，Google 的 <a href="https://github.com/google-research/bert">BERT（Github 上現在超過 1.5 萬顆星）</a>顛覆以往自然語言的處理方式，讓你可以進行 NLP 的遷移學習（transfer learning），輕鬆利用前人智慧來完成手上的 NLP 任務； <a href="https://openai.com/blog/better-language-models/">OpenAI 的 GPT</a> 則是非常厲害的語言模型，能產生非常順暢的文章。你可以在這邊看到一個<a href="https://talktotransformer.com">線上產生各種文章的 demo</a>，或是最近<a href="https://lexfridman.com/deeptweets/"> Lex Fridman 使用 GPT-2 產生名人 Tweets</a> 的例子 。</p>
+<p>當然不是每個人都喜歡或需要看論文。如果你只是想要應用 Transformer 也沒問題。我在<a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">進擊的 BERT：NLP 界的巨人之力與遷移學習</a>一文詳細說明你可以如何用 Transformer-based 的語言代表模型進行遷移學習（transfer learning），輕鬆利用前人智慧來完成手上的 NLP 任務； <a href="https://openai.com/blog/better-language-models/">OpenAI 的 GPT</a> 則是非常厲害的語言模型，能產生非常順暢的文章。你可以在這邊看到一個<a href="https://talktotransformer.com">線上產生各種文章的 demo</a>，或是最近<a href="https://lexfridman.com/deeptweets/"> Lex Fridman 使用 GPT-2 產生名人 Tweets</a> 的例子 。</p>
 <p>這些都是 Transformer 的應用。想了解更多，我推薦李宏毅教授最近<a href="https://www.youtube.com/watch?v=UYPa347-DdE">講解 ELMO、BERT 以及 GPT 的 YouTube 影片</a>，十分通俗易懂 ：</p>
 </div>
 </div>
@@ -3223,7 +3223,7 @@ attention_weights: tf.Tensor(
 
 <span class="o">...</span>
 </pre></div>
-<p>因此在注意函式裡頭，我們將遮罩乘上一個接近<strong>負</strong>無窮大的 <code>-1e9</code>，並把它加到進入 softmax <strong>前</strong>的 logits 上面。這樣可以讓這些被加上極小值的位置變得無關緊要，在經過 softmax 以後的值趨近於 0。這效果等同於序列 <code>q</code> 中的某個子詞 <code>sub_q</code> 完全沒放注意力在這些被遮罩蓋住的子詞 <code>sub_k</code> 之上（此例中 <code>sub_k</code> 指是的 <code>&lt;pad&gt;</code>）。</p>
+<p>因此在注意函式裡頭，我們將遮罩乘上一個接近<strong>負</strong>無窮大的 <code>-1e9</code>，並把它加到進入 softmax <strong>前</strong>的 logits 上面。這樣可以讓這些被加上<strong>極大負值</strong>的位置變得無關緊要，在經過 softmax 以後的值趨近於 0。這效果等同於序列 <code>q</code> 中的某個子詞 <code>sub_q</code> 完全沒放注意力在這些被遮罩蓋住的子詞 <code>sub_k</code> 之上（此例中 <code>sub_k</code> 指是的 <code>&lt;pad&gt;</code>）。</p>
 <p>（動腦時間：為何遮罩要放在 softmax 之前而不能放之後？）</p>
 <p>聽我說那麼多不如看實際的運算結果。讓我們再次為英文句子 <code>inp</code> 產生對應的 padding mask：</p>
 </div>
@@ -4063,7 +4063,7 @@ output: tf.Tensor(
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這應該是你這輩子第一次看到 multi-head 注意力機制是怎麼處理 4 維張量的。</p>
+<p>這應該是你這輩子第一次也可能是唯一一次有機會看到 multi-head 注意力機制是怎麼處理 4 維張量的。</p>
 <p>細節不少，我建議將動畫跟程式碼比較一下，確保你能想像每一個步驟產生的張量以及其物理意義。到此為止，我們已經把 Transformer 裡最困難的 multi-head attention 的概念以及運算都看過一遍了。</p>
 <p>如果你腦袋還是一團亂，只要記得最後一個畫面：在 <code>q</code>、<code>k</code> 以及 <code>v</code> 的最後一維已經是 <code>d_model</code> 的情況下，multi-head attention 跟 scaled dot product attention 一樣，就是吐出一個完全一樣維度的張量 <code>output</code>。</p>
 <p>multi-head attention 的輸出張量 <code>output</code> 裡頭每個句子的每個字詞的 repr. 維度 <code>d_model</code> 雖然跟函式的輸入張量相同，但實際上已經是從同個序列中<strong>不同位置且不同空間</strong>中的 repr. 取得語義資訊的結果。</p>
