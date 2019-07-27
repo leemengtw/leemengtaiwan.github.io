@@ -232,8 +232,7 @@
             <div class="col-full blog-content__main">
 
                 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The goal of this assignment is to train a Word2Vec skip-gram model over <a href="http://mattmahoney.net/dc/textdata">Text8</a> data using Tensorflow.</p>
 <p>Word2vec is a kind of vector space model (VSM) in natural language processing (NLP) where the core assumption/intuition is that words that appear in similar 'context' share similar meaning and they should be near in the vector space. So what word2vec trying to do is to find a vector representation (embedding) for each word in our training corpus where words with similar meanings are near in the vector space.</p>
@@ -241,8 +240,7 @@
 </caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Unlike supervised learning, we don't have labels that tell us 'kitten' = 'cat'. So how do we train a model that will learn the relationship between these two words?</p>
 <p>Recap the assumption mentioned before, words with similar meaning tend to appear in similar context. Because 'kitten' and 'cat' appear in similar context, if we can train a model to predict the context of the target word 'cat' and 'kitten' respectively, model should learn a similar representation for both 'kitten' and 'cat' because they produce similar context.</p>
@@ -250,16 +248,14 @@
 </caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As shown above, for each words like 'cat' in raw text, we will treat them as <strong>target word</strong> and the words surrounding it as <strong>context</strong> and construct the training instances (x, y) where x is target word and y is one of the word in context. And the definition of 'context' is decided by the parameter 'window size'.</p>
 <p>First, let's load the text data and build the training data in order to train our model.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Libraries">Libraries<a class="anchor-link" href="#Libraries">&para;</a></h2>
 </div>
@@ -293,15 +289,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Raw-text-data">Raw text data<a class="anchor-link" href="#Raw-text-data">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Download-/-load-data">Download / load data<a class="anchor-link" href="#Download-/-load-data">&para;</a></h3><p>Download the data from the source website if necessary. will store the zip file in the 'datasets' subdirectory.</p>
 </div>
@@ -349,8 +343,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Turn-data-into-words">Turn data into words<a class="anchor-link" href="#Turn-data-into-words">&para;</a></h3><p>Read the data into a string.</p>
 </div>
@@ -384,16 +377,14 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Look-into-text-corpus">Look into text corpus<a class="anchor-link" href="#Look-into-text-corpus">&para;</a></h3><p>The 'data size' above mean how many words we have in the data. That is, there are about 17 millions words!<br/>
 Let's show some parts of the text data to make some sense of it.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Some phrases which include word 'cat' with window size = '2'.</p>
 </div>
@@ -425,8 +416,7 @@ force australia cat six two
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Some phrases which include word 'kitten' with window size = '2'.</p>
 </div>
@@ -458,23 +448,20 @@ called a kitten which is
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Create-training-data_1">Create training data<a class="anchor-link" href="#Create-training-data">&para;</a></h2><p>In order to let TensorFlow make use of the text corpus, we have to transform the text corpus into sequence of numbers. The way to achieve this to build a dictionary which map every word to a unique number and use that dictionary to transform the corpus into number-based data.</p>
 <center><img src="images/turn_corpus_into_numbers.png" style="width:60%"/><caption><center> <u><font color="purple"> Figure 3</font></u><font color="purple">: Build dictionary and turn text into numbers<br/> <font color="black"> </font></font></center>
 </caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice that some rare words may appear very few times in the entire text corpus. We may want to exclude these terms to keep our dictionary in a reasonable size. In order to do this, we will build the dictionary and view these terms as UNK tokens. UNK means unknown word that doesn't exist in the vocabulary set and the default number of a UNK in dictionary is 0 as shown above.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Decide-dictionary-size">Decide dictionary size<a class="anchor-link" href="#Decide-dictionary-size">&para;</a></h3><p>Depend on the size of the vocabulary, we will construct a dictionary for top <strong>vocabulary_size - 1</strong> common words. For example, if the <code>vocabulary_size = 50000</code>, we will first count the frequencies of every word appeared in the text corpus and put the most common 49,999 terms into our vocabulary and make the rest of words as UNK token. ( thus the 50,000 th term in the vocabulary).</p>
 </div>
@@ -490,8 +477,7 @@ called a kitten which is
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Build-dictionary-and-transform-text-corpus-into-sequence-of-numbers">Build dictionary and transform text corpus into sequence of numbers<a class="anchor-link" href="#Build-dictionary-and-transform-text-corpus-into-sequence-of-numbers">&para;</a></h3>
 </div>
@@ -570,8 +556,7 @@ called a kitten which is
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="See-transformed-text-corpus">See transformed text corpus<a class="anchor-link" href="#See-transformed-text-corpus">&para;</a></h3>
 </div>
@@ -605,8 +590,7 @@ was transformed into
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Function-to-generate-a-training-batch-for-the-skip-gram-model._1">Function to generate a training batch for the skip-gram model.<a class="anchor-link" href="#Function-to-generate-a-training-batch-for-the-skip-gram-model.">&para;</a></h2><p>As usual, we will use mini-batch GD to update our model's parameters.<br/>
 Other than batch_size, we also have to decide the range of context surrounding target word (skip_window) and how many training instances are we going to create from a single (target, context) pair.</p>
@@ -723,22 +707,19 @@ Other than batch_size, we also have to decide the range of context surrounding t
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Word2Vec-skip-gram-model.">Word2Vec skip-gram model.<a class="anchor-link" href="#Word2Vec-skip-gram-model.">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center><img src="images/word2vec_model.png" style="width:70%"/><caption><center> <u><font color="purple"> Figure 5</font></u><font color="purple">: Word2vec model<br/> <font color="black"> </font></font></center>
 </caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Computation-graph">Computation graph<a class="anchor-link" href="#Computation-graph">&para;</a></h3>
 </div>
@@ -813,8 +794,7 @@ Other than batch_size, we also have to decide the range of context surrounding t
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Train-the-model">Train the model<a class="anchor-link" href="#Train-the-model">&para;</a></h3>
 </div>
@@ -868,10 +848,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 </div>
 </div>
 <div class="output_area">
-<div id="7e6f2b15-82a6-420b-9261-30c19c805939"></div>
+<div id="28def4bb-bff9-452f-a90f-e6167c49fefa"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#7e6f2b15-82a6-420b-9261-30c19c805939');
+var element = $('#28def4bb-bff9-452f-a90f-e6167c49fefa');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -1114,8 +1094,7 @@ Nearest to will: would, could, must, can, should, may, might, cannot,
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Transform-embedding-into-2D-using-t-SNE_1">Transform embedding into 2D using t-SNE<a class="anchor-link" href="#Transform-embedding-into-2D-using-t-SNE">&para;</a></h2>
 </div>
@@ -1144,18 +1123,17 @@ Nearest to will: would, could, must, can, should, may, might, cannot,
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-num_points = 400
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">num_points</span> <span class="o">=</span> <span class="mi">400</span>
 
-tsne = TSNE(perplexity=30, n_components=2, init='pca', n_iter=5000, method='exact')
-two_d_embeddings = tsne.fit_transform(final_embeddings[1:num_points+1, :])
+<span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">perplexity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">'pca'</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">'exact'</span><span class="p">)</span>
+<span class="n">two_d_embeddings</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">final_embeddings</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">num_points</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Visualize-result">Visualize result<a class="anchor-link" href="#Visualize-result">&para;</a></h2>
 </div>
@@ -3749,8 +3727,7 @@ AAAAAHiA4Q0AAAAAPPAD6qjcfWntDHEAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Todo">Todo<a class="anchor-link" href="#Todo">&para;</a></h2><p>CBOW</p>
 <p>An alternative to skip-gram is another Word2Vec model called <a href="http://arxiv.org/abs/1301.3781">CBOW</a> (Continuous Bag of Words). In the CBOW model, instead of predicting a context word from a word vector, you predict a word from the sum of all the word vectors in its context. Implement and evaluate a CBOW model trained on the text8 dataset.</p>
@@ -3758,14 +3735,23 @@ AAAAAHiA4Q0AAAAAPPAD6qjcfWntDHEAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="References">References<a class="anchor-link" href="#References">&para;</a></h2><ul>
 <li>Original <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/5_word2vec.ipynb">jupyter notebook</a> from the Udacity MOOC course: <a href="https://www.udacity.com/course/deep-learning--ud730">Deep learning by Google</a>.</li>
 <li><a href="https://www.tensorflow.org/tutorials/word2vec">TensorFlow word2vec tutorial</a></li>
 <li><a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/</a></li>
 </ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -3784,6 +3770,10 @@ AAAAAHiA4Q0AAAAAPPAD6qjcfWntDHEAAAAASUVORK5CYII=
                     </span>
 
                 </p>
+
+
+
+
 
 
 

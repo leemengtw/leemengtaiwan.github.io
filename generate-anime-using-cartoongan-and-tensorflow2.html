@@ -168,7 +168,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-05-05 (Sun)</li>
                         <li class="page-view">
-                            2,420 views
+                            2,428 views
                         </li>
                     </ul>
 
@@ -232,8 +232,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <link href="https://leemeng.tw/tfjs-apps/cartoongan/cartoongan.css" rel="stylesheet"/>
 </div>
@@ -241,8 +240,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -254,16 +252,14 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這篇文章將簡單介紹最近我與夥伴 <a href="https://github.com/mnicnc404">mnicnc404</a> 以 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0 Alpha</a> 實作的 CartoonGAN（<a href="https://github.com/mnicnc404/CartoonGan-tensorflow">Github 連結</a>）。我們同時也會展示一個 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 應用，讓你可以直接在瀏覽器上產生動漫。</p>
 <p><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">CartoonGAN（原論文）</a> 於 2018 <a href="http://cvpr2019.thecvf.com/">CVPR</a> 推出，是一個嘗試將真實世界圖片轉換成動漫的<a href="https://youtu.be/yFBFl1cLYx8?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;t=1879">對抗生成網路（Generative Adversarial Network，以下簡稱 GAN）</a>。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/cartoongan/cat_cover.jpg">
 <source src="https://leemeng.tw/images/cartoongan/cat_cover.mp4" type="video/mp4"/>
@@ -277,16 +273,14 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>當初看到這篇<a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">論文</a>覺得很有趣，且裡頭正好展示了我喜愛的兩位日本動畫作家：<a href="https://zh.wikipedia.org/wiki/%E6%96%B0%E6%B5%B7%E8%AA%A0">新海誠</a>及<a href="https://zh.wikipedia.org/zh-tw/%E5%AE%AB%E5%B4%8E%E9%AA%8F">宮崎駿</a>的風格轉換結果，因此決定寫個 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 應用，讓更多人可以實際體驗這個有趣的 CartoonGAN。</p>
 <p>使用方法很直覺，選擇風格並上傳照片，完成！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/generate-anime-using-cartoongan-and-tensorflow2.html">
 <source src="https://leemeng.tw/images/cartoongan/tfjs-demo.mp4" type="video/mp4"/>
@@ -296,8 +290,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>TensorFlow.js 在瀏覽器裡運行，其背後處理主要分為兩個步驟：</p>
 <ul>
@@ -312,15 +305,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="動手玩-CartoonGAN">動手玩 CartoonGAN<a class="anchor-link" href="#動手玩-CartoonGAN">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>以下就是實際的應用：</p>
 </div>
@@ -328,8 +319,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="row" id="container">
 <div class="column50">
@@ -366,8 +356,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>結果出來了嗎？如果上傳圖片後一直停在：</p>
 <ul>
@@ -378,22 +367,19 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="TensorFlow-2-畫動漫">TensorFlow 2 畫動漫<a class="anchor-link" href="#TensorFlow-2-畫動漫">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>適逢 <a href="https://tensorflow.devpost.com/">PoweredByTF 2.0 挑戰</a>，我們也用 TensorFlow 2.0 Alpha 完整地實作了 CartoonGAN 的訓練以及推論邏輯。如果你想要轉換大張圖片或是動圖，可以執行<a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX">這個 Colab 筆記本</a>：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/cartoongan/colab-demo.jpg">
 <source src="https://leemeng.tw/images/cartoongan/colab-demo.mp4" type="video/mp4"/>
@@ -407,8 +393,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://colab.research.google.com/">Google Colaboratory</a> 是一個雲端 <a href="https://jupyter.org/">Jupyter 筆記本</a>環境，提供 GPU 讓任何人都可以立即開始一個深度學習專案。</p>
 <p>在<a href="https://colab.research.google.com/drive/1WIZBHix_cYIGsBKa4phIwCq5qXwO8fRX">這個筆記本</a>裡頭，以下步驟都幫你寫好了：</p>
@@ -422,15 +407,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="一些轉換後的動漫結果">一些轉換後的動漫結果<a class="anchor-link" href="#一些轉換後的動漫結果">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>獨樂樂不如眾樂樂。這一節和你分享一些我們用 CartoonGAN 得到的結果。</p>
 <p>以下每張圖片都分為四個區塊，從左到右、由上而下分別為：</p>
@@ -446,8 +429,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <style>
 <!-- https://www.w3schools.com/w3css/w3css_slideshow.asp -->
@@ -613,8 +595,7 @@ function showDivs(n) {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br/></p>
 <p>從漫威電影到可愛貓咪，從自然風景到人氣偶像，任何你想得到的圖片都可以拿來進行轉換。一旦訓練完成，我們就能使用 CartoonGAN 在彈指之間將各式各樣的圖片跟動漫做連結。</p>
@@ -626,8 +607,7 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -639,22 +619,19 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>順帶一提，我們在<a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html">讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</a>也已經看過類似的概念。只是在該篇裡頭，我們是讓機器生成武俠小說而非動漫圖片。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="訓練你自己的-CartoonGAN">訓練你自己的 CartoonGAN<a class="anchor-link" href="#訓練你自己的-CartoonGAN">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你可能發現本文非常注重在 CartoonGAN 的實際應用而非演算法細節。這是因為：</p>
 <ul>
@@ -664,15 +641,13 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>對 CartoonGAN 的實作細節有興趣的讀者可以參考<a href="https://github.com/mnicnc404/CartoonGan-tensorflow">我們的 Github 專案</a>。基本上只要依照指示裝好開發環境以及準備好資料集，你甚至可以一鍵訓練 CartoonGAN：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/cartoongan/train-demo.gif"/>
@@ -685,8 +660,7 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因為所有邏輯皆以 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0 Alpha</a> 實作，非常適合想要跟上最新 TensorFlow 發展的讀者學習：</p>
 <ul>
@@ -698,15 +672,13 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>訓練 GAN 本身並不是一件非常容易的事情。你會需要時時觀察模型的表現以評估如何調整超參數。因此我們的<a href="https://github.com/mnicnc404/CartoonGan-tensorflow/blob/master/train.py">訓練腳本</a>也整合了 <a href="https://www.tensorflow.org/tensorboard/r2/get_started#using_tensorboard_with_other_methods">TensorBoard</a>，讓你可以在執行後即時地監控模型表現：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/cartoongan/tensorboard-metrics.jpg"/>
@@ -719,15 +691,13 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>除了指標與損失函數以外，在訓練 GAN 的過程中觀察模型生成的圖片也是一件非常重要的事情。因此我們也將 CartoonGAN 生成的圖片寫入 TensorBoard 以方便你觀測比較：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/cartoongan/tensorboard-image-demo.jpg"/>
@@ -740,8 +710,7 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>雖然我們只紀錄專屬於 CartoonGAN 的指標以及生成圖片，你完全可以運用類似的方法來監測任何想要訓練的模型。</p>
 <p>最後，為了方便了解 CartoonGAN 在訓練過程的表現，我們可以事先存一組真實世界的圖片當作驗證集（Validation Set），並固定讓模型在訓練一段時間後都試著將其轉換成動漫。</p>
@@ -749,8 +718,7 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/cartoongan/training_progress.jpg">
 <source src="https://leemeng.tw/images/cartoongan/training_progress.mp4" type="video/mp4"/>
@@ -764,8 +732,7 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>儘管尚未訓練完成，你可以看到模型逐漸學會將原始圖片轉換成簡單的動漫：線條變得清晰、顏色變得平滑。</p>
 <p>跟訓練一個<a href="https://www.tensorflow.org/tutorials/keras/basic_classification">簡單分類器</a>比起來，訓練一個 GAN 的難度可說是完全不同級別。但我們盡量讓<a href="https://github.com/mnicnc404/CartoonGan-tensorflow"> Github 專案</a>裡頭的程式碼邏輯簡單易懂，希望能讓更多人入門 TensorFlow 2.0 以及 GAN 的實作。</p>
@@ -773,22 +740,19 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="推薦的-GAN-學習資源">推薦的 GAN 學習資源<a class="anchor-link" href="#推薦的-GAN-學習資源">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>近年以深度學習為基礎的生成模型（Generative Models）領域蓬勃發展，其中最亮眼的發展之一當屬對抗生成網路了。而本文的 CartoonGAN 也是<a href="https://github.com/hindupuravinash/the-gan-zoo">眾多 GANs</a> 裡頭的其中一個小夥子。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/cartoongan/tf-dcgan.png"/>
@@ -803,8 +767,7 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>對 GAN 的理論 &amp; 基礎知識有興趣的讀者，我推薦以下的學習資源：</p>
 <ul>
@@ -820,8 +783,7 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/cartoongan/mit-gan.png"/>
@@ -836,23 +798,20 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>生成模型及 GAN 的研究領域博大精深，但我相信參考過以上資源，你將具備實作一個簡單 GAN 所需的基礎知識。</p>
 <p>更多學習資源則請參閱<a href="https://leemeng.tw/deep-learning-resources.html">由淺入深的深度學習資源整理</a>。另外如果你有其他推薦的學習資源，還請不吝留言與我及其他讀者分享，謝謝！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -864,16 +823,14 @@ function showDivs(n) {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>以 CartoonGAN 為例，本文先專注在<strong>如何讓每個人都能實際體驗並應用此技術</strong>，接著才簡單介紹讀者可以如何使用<a href="https://github.com/mnicnc404/CartoonGan-tensorflow">我們的 Github 專案</a>來訓練自己的模型。最後我也附上了一些實用的學習資源供對背後原理有興趣的讀者做些參考。</p>
 <p>這是我第一次用 <a href="https://www.tensorflow.org/alpha">TensorFlow 2.0</a> 以及 <a href="https://www.tensorflow.org/js">TensorFlow.js</a> 實作 GAN，感謝 CartoonGAN 原作者的研究、TensorFlow / TensorFlow.js 團隊的努力、夥伴 <a href="https://github.com/mnicnc404">mnicnc404</a> 強大的實作支援以及許多寶貴見解，獲益良多。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>希望透過此文能讓更多人進一步探索 GAN 以及生成模型的相關知識，嘗試更多新的可能性，做出更多有趣的 AI 應用。</p>
 <p>也別忘了跟我分享你生成的動漫！你可以在 <a href="https://twitter.com/leemengtw">Twitter</a> 或是 <a href="https://www.facebook.com/LeeMengTaiwan">Facebook</a> 上標註我：）</p>
@@ -882,8 +839,7 @@ function showDivs(n) {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <script src="https://leemeng.tw/tfjs-apps/cartoongan/dist/tf.js"></script>
 <script src="https://leemeng.tw/tfjs-apps/cartoongan/cartoongan.js"></script>
@@ -905,6 +861,8 @@ function showDivs(n) {
                     </span>
 
                 </p>
+
+
 
 
 

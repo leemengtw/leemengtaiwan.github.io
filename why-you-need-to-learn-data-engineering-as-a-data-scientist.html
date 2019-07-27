@@ -170,7 +170,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-04-23 (Mon)</li>
                         <li class="page-view">
-                            6,709 views
+                            6,715 views
                         </li>
                     </ul>
 
@@ -230,16 +230,14 @@
             <div class="col-full blog-content__main">
 
                 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>透過描述資料科學家的一天日常，本文將簡單介紹資料工程（Data Engineering）的概念、其如何跟資料科學相關。以及最重要的，作為一個資料科學家（Data Scientist）應該如何學習並善用這些知識來創造最大價值。</p>
 <p>身為一個資料科學家，擁有資料工程的知識可以提升工作效率，點亮你的方向並加速專案前進。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="目錄">目錄<a class="anchor-link" href="#目錄">&para;</a></h2><ul>
 <li><a href="#資料科學家的一天">資料科學家的一天</a><ul>
@@ -258,8 +256,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="資料科學家的一天">資料科學家的一天<a class="anchor-link" href="#資料科學家的一天">&para;</a></h2><p>一說到資料科學，在你腦海中浮現的幾個關鍵字可能是：</p>
 <ul>
@@ -278,19 +275,18 @@
     <br/>
 </center><h3 id="資料準備">資料準備<a class="anchor-link" href="#資料準備">&para;</a></h3><p>說到資料準備，你可能會聯想到我們在前一篇<a href="data-visualization-from-matplotlib-to-ggplot2.html#載入資料-+-簡單資料處理">淺談資料視覺化以及 ggplot2 實踐</a>裡頭，使用 R 語言做的簡單資料清理：</p>
 <div class="highlight"><pre><span></span><span class="c1"># 將 CSV 檔案載入成資料框架（dataframe）</span>
-ramen_all <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">"datasets//ramen-ratings.csv"</span><span class="p">)</span>
+<span class="n">ramen_all</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">"datasets//ramen-ratings.csv"</span><span class="p">)</span>
 <span class="c1"># 將「星星數」轉成定量資料</span>
-ramen_all<span class="o">$</span>Stars <span class="o">&lt;-</span> <span class="kp">as.numeric</span><span class="p">(</span>ramen_all<span class="o">$</span>Stars<span class="p">)</span> 
+<span class="n">ramen_all</span><span class="o">$</span><span class="n">Stars</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">ramen_all</span><span class="o">$</span><span class="n">Stars</span><span class="p">)</span> 
 <span class="c1"># Subset 資料</span>
-ramen <span class="o">&lt;-</span> ramen_all <span class="o">%&gt;%</span>
-  filter<span class="p">(</span>Country <span class="o">%in%</span> count<span class="p">(</span>ramen_all<span class="p">,</span> Country<span class="p">,</span> sort <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> drop<span class="o">=</span><span class="kc">TRUE</span><span class="p">])</span> <span class="o">%&gt;%</span>
-  filter<span class="p">(</span>Style <span class="o">%in%</span> count<span class="p">(</span>ramen_all<span class="p">,</span> Style<span class="p">,</span> sort <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="m">1</span> <span class="p">,</span> drop<span class="o">=</span><span class="kc">TRUE</span><span class="p">])</span>
+<span class="n">ramen</span> <span class="o">&lt;-</span> <span class="n">ramen_all</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="n">Country</span> <span class="o">%in%</span> <span class="nf">count</span><span class="p">(</span><span class="n">ramen_all</span><span class="p">,</span> <span class="n">Country</span><span class="p">,</span> <span class="n">sort</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span><span class="n">[1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">TRUE</span><span class="n">]</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="n">Style</span> <span class="o">%in%</span> <span class="nf">count</span><span class="p">(</span><span class="n">ramen_all</span><span class="p">,</span> <span class="n">Style</span><span class="p">,</span> <span class="n">sort</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span><span class="n">[1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="m">1</span> <span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">TRUE</span><span class="n">]</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在做分析之前，我們做了以下的步驟來準備資料：</p>
 <ul>
@@ -314,15 +310,13 @@ ramen <span class="o">&lt;-</span> ramen_all <span class="o">%&gt;%</span>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="第一挑戰：資料量大增">第一挑戰：資料量大增<a class="anchor-link" href="#第一挑戰：資料量大增">&para;</a></h3><p>實際上一個資料科學家每天需要分析的資料量可能要乘上幾個級數。現在假設你從銷售部門拿到一個包含數百萬筆銷售紀錄，大小為 60G 的 CSV 檔案，我想你應該不會想要直接打開它，即使它在某些人眼裡還不夠資格稱為大數據 (&acute;；&omega;；｀)</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你殫精竭慮，最後決定去問公司內一位資深的<a href="https://medium.freecodecamp.org/the-rise-of-the-data-engineer-91be18f1e603">資料工程師（Data Engineer）</a>該怎麼解決這問題。</p>
 <p>該仁兄施了點你不曉得的魔法，過了幾分鐘從 Slack 丟來個神秘的 URL。連到上面，你發現熟悉的 <a href="http://jupyter.org/">Jupyter Nook</a> 介面，而且 CSV 還幫你載好了 &Sigma;(ﾟдﾟ;</p>
@@ -340,8 +334,7 @@ ramen <span class="o">&lt;-</span> ramen_all <span class="o">%&gt;%</span>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="第二挑戰：非結構化資料">第二挑戰：非結構化資料<a class="anchor-link" href="#第二挑戰：非結構化資料">&para;</a></h3><p>除了資料量級的差異，一個資料科學家在企業裡頭會遇到的另外一個挑戰是非結構化資料（Unstructured Data）的快速增加。你如何將各種不同格式（JSON、存取日誌、CSV 等）的資料以有效率的方式跟平常熟悉的關聯式資料庫如 <a href="https://www.postgresql.org/">PostgreSQL</a> 裡頭的資料結合以供分析？</p>
 <center>
@@ -360,23 +353,20 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你想著想著就到下班時間了。</p>
 <p>「算了，還是先回家睡個覺，明天再厚著臉皮問資料工程師吧！反正之前他也幫我在<a href="https://zh.wikipedia.org/wiki/%E8%B3%87%E6%96%99%E5%80%89%E5%84%B2">資料倉儲（Data Warehouse）</a>加了新的表格。」</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="資料為本_1">資料為本<a class="anchor-link" href="#資料為本">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>從上面這個資料科學家的一天，我們得到什麼啟示？</p>
 </div>
@@ -391,8 +381,7 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>老實說這個例子裡頭的資料科學家已經非常幸運：公司裡有資料工程師能幫他把大量、複雜格式的資料做 ETL 並以資料倉儲中的一個新表格（Table）的方式呈現轉換過後的資料以供他使用。硬要說稍微不方便的地方，頂多就是該資料科學家得等資料工程師搞定好資料就是了。</p>
 <p>然而因為資料工程師是一個很新的職位，多數的企業現在並沒有這樣的人存在。大多數的資料科學家只能自己下海，想辦法生出可以用的資料。實際上，<a href="https://hackernoon.com/@mrogati?source=post_header_lockup">Monica Rogati</a> 在 <a href="https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007">The AI Hierarchy of Needs</a> 提到，一些常見的資料科學專案像是</p>
@@ -414,8 +403,7 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>以金字塔最下三層為例，要讓資料科學的專案順利進行，你最少要（由下而上）：</p>
 <ol>
@@ -438,8 +426,7 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>身為資料科學家，如果我們也能了解資料工程相關的知識的話，不就能更快地、更有效率地進行資料分析了嗎？</p>
 <p>這個想法即是所謂的<a href="http://www.effectiveengineer.com/blog/master-adjacent-disciplines">從鄰近專業（Adjacent Disciplines）學習</a>：透過學習跟本業息息相關的資料工程，資料科學家可以加速資料科學的專案進行，並為個人以及團隊創造更大價值。想閱讀更多，可以看看<a href="https://medium.com/@rchang/a-beginners-guide-to-data-engineering-part-i-4227c5c457d7">在 Airbnb 工作的資料科學家怎麼說</a>。</p>
@@ -447,8 +434,7 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="資料管道">資料管道<a class="anchor-link" href="#資料管道">&para;</a></h2><p>依照前面的論述，資料工程最主要的目的就是建構資料科學的基本設施（Infrastructure）。而這些基礎設施裡頭一個很重要的部分是<a href="https://www.alooma.com/answers/what-is-the-difference-between-a-data-pipeline-and-an-etl-pipeline">資料管道（Data Pipeline）</a>的建置：將資料從來源 <strong>S</strong>ource 導向目的地 
 <strong>T</strong>arget 以供之後的利用。有必要的話，對資料進行一些轉換。</p>
@@ -466,8 +452,7 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/data-engineering/etl-flow.png" style=""/>
@@ -481,8 +466,7 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>資料的來源或目的地可以是：</p>
 <ul>
@@ -515,8 +499,7 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>那經過資料管道處理後的資料要怎麼存取/分析？依照存取方式的不同，資料管道的架構方式也會有所不同。</p>
 <p>而存取資料的方式大概可以分為兩種：</p>
@@ -527,8 +510,7 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="資料倉儲_1">資料倉儲<a class="anchor-link" href="#資料倉儲">&para;</a></h2><p>資料倉儲的概念就跟實際的倉儲相同：你在這邊將原料（原始資料）轉化成可以消化的產品（資料庫裡頭的經過整理的一筆筆紀錄）並存起來方便之後分析。</p>
 <p>這邊最重要的概念是：為了方便商業智慧的萃取，在將資料放入資料倉儲前，資料科學家 / 資料工程師需要花很多的心力決定資料庫綱目（Database Schema）要長什麼樣子。
@@ -559,8 +541,7 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="資料湖_1">資料湖<a class="anchor-link" href="#資料湖">&para;</a></h2><p>「每天新增的資料量太多，要把所有想分析的資料都做詳細的 Schema 轉換再存入資料倉儲太花人力成本。總之先把這些資料原封不動地存到分散式檔案儲存系統上，之後利用如 <a href="https://aws.amazon.com/tw/glue/">AWS Glue</a> 等服務將資料的 schema 爬出來並分析。」這就是以資料湖為核心的資料管道架構想法。一般這種存取資料的方式我們稱之為 Schema-on-Read，因為 Schema 是在實際載入原始資料的時候才被使用。</p>
 <p><a href="https://aws.amazon.com/tw/athena/">AWS Athena</a> 就是一個 AWS 依照這樣的想法打造的服務。</p>
@@ -601,8 +582,7 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="如何實際應用資料工程？_1">如何實際應用資料工程？<a class="anchor-link" href="#如何實際應用資料工程？">&para;</a></h2><p>首先你得先了解目前環境的資料基礎設施。而為了釐清這點，你可以問自己或者相關人員以下問題：</p>
 <ul>
@@ -634,8 +614,7 @@ ON s.sale_id = c.sale_id</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2><p>我嘗試在這篇文章說明資料工程對資料科學家的重要，以及你可以如何開始學習資料工程。</p>
 <p>在這個大數據時代，資料科學家的價值在於找出「大量」資料背後的潛在價值，不要反而讓「資料量太多」這邊成了你最大的限制。
@@ -658,6 +637,10 @@ ON s.sale_id = c.sale_id</code></pre>
                     </span>
 
                 </p>
+
+
+
+
 
 
 

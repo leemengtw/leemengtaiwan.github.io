@@ -166,7 +166,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-09-08 (Sat)</li>
                         <li class="page-view">
-                            3,116 views
+                            3,122 views
                         </li>
                     </ul>
 
@@ -226,8 +226,7 @@
             <div class="col-full blog-content__main">
 
                 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>今天我們來聊聊如何將 <a href="https://zh.wikipedia.org/wiki/Docker_(%E8%BB%9F%E9%AB%94)" target="_blank">Docker</a> 應用在資料科學領域裡頭吧！</p>
 <p>全文共分上下 2 篇。在這篇裡頭，我們將透過一些簡單的比喻來直觀地理解何謂 Docker，並讓你能在閱讀本文後馬上利用 Docker 來加速你的開發效率；在下篇的內容當中，我則會分享一個資料科學家（<strong>D</strong>ata <strong>S</strong>cientist：DS）為了解決一些數據問題而時常碰到的 3 種 Docker 使用方式。</p>
@@ -241,15 +240,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="雲端運算-&amp;-Docker">雲端運算 &amp; Docker<a class="anchor-link" href="#雲端運算-&amp;-Docker">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在解釋何謂 Docker 之前，讓我把你已經非常熟悉的雲端運算（Cloud Computing）老朋友叫出來。</p>
 <p><a href="https://aws.amazon.com/tw/">Amazon Web Service（AWS）</a>、<a href="https://cloud.google.com/">Google 雲端平台（GCP）</a> 以及 <a href="https://azure.microsoft.com/zh-tw/">Microsoft Azure</a> 大概是大家最耳熟能詳的幾家雲端計算 / 服務平台了。隨著時代的演進，這些平台提供越來越多樣的機器學習 API，讓開發人員不需做複雜的開發，透過一個 HTTP 要求就能直接使用各種酷炫的服務，比方說：</p>
@@ -262,8 +259,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/docker/network-2402637_1280.jpg" style=""/>
@@ -277,8 +273,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a name="three-tasks"></a>除了直接用各家雲端平台提供的 API 以外，一個 DS 可能更常需要利用雲端上的計算資源來完成以下的工作：</p>
 <ol>
@@ -291,15 +286,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>雖然我們現在不會細談，但如果你再看一次上面的 3 個工作的話，會發現裡頭可不只包含資料科學（Data Science）。除了建置儀表板以及設計 ML 演算法以外，這裡頭還包含了不少軟體工程、資料工程甚至 <a href="https://zh.wikipedia.org/wiki/DevOps">DevOps</a> 成分。當然資料工程師（<strong>D</strong>ata <strong>E</strong>ngineer）很樂意幫助你，但如果你想要快速地自己兜出一些方法呢？你該用什麼工具？</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/docker/work-2005640_1280.jpg" style=""/>
@@ -309,30 +302,26 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你可能覺得一個 DS 要在各種 deadlines 內完成以上所有的事情是不可能的。不過後面我們會慢慢發現，活用 Docker 能讓這些工作變得簡單許多。</p>
 <p>接著就讓我們以 DS 的角度了解 Docker 到底是什麼技術。我相信閱讀接下來的文章，對你之後開發效率的提升是一個非常好的投資。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Docker：可愛的大鯨魚">Docker：可愛的大鯨魚<a class="anchor-link" href="#Docker：可愛的大鯨魚">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>首先看看以下這張 Docker 示意圖：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/docker/1_JAJ910fg52ODIRZjHXASBQ.png" style=""/>
@@ -344,8 +333,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有什麼感覺嗎？注意到上圖包含了 3 個要素：</p>
 <ul>
@@ -357,8 +345,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果你把雲端運算的平台想像成一個充滿運算資源的<strong>大海</strong>的話，Docker 就是如圖中在裡頭悠遊的大<strong>鯨魚</strong>。這隻<strong>鯨魚</strong>將上述所有 DS 想要做的數據處理工作、執行的 App，一個個封裝成彼此獨立的<strong>貨櫃</strong>，並載著它們在這大海上運行。</p>
 <p><a href="https://towardsdatascience.com/how-docker-can-help-you-become-a-more-effective-data-scientist-7fc048ef91d5" target="_blank">Docker</a> 提供的抽象化讓我們能輕鬆地運行任何想使用的資料科學工具、軟體而不需花費過多時間在建置底層環境。</p>
@@ -366,8 +353,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="鯨魚背上的貨櫃：Docker-容器">鯨魚背上的貨櫃：Docker 容器<a class="anchor-link" href="#鯨魚背上的貨櫃：Docker-容器">&para;</a></h2><p>實際上這一個個假想的貨櫃就代表著 Docker 術語裡頭的容器（Container）。</p>
 <p>「容器」顧名思義，是一個「容納」了某些東西的「器具」。</p>
@@ -385,8 +371,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/docker/docker-inside-container.png" style=""/>
@@ -400,8 +385,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>容器裡頭不只包含 App 自己本身的程式碼，也涵蓋了所有能讓這個 App 順利執行的必要環境：</p>
 <ul>
@@ -426,8 +410,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因為連 OS 都被包起來了，實際上每個容器（container）的執行環境都是自給自足的（self-contained）。</p>
 <p>你可以把它想像成非常輕量的<a href="https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8">虛擬機器</a>，其執行結果不會因為啟動該容器的「計算環境」不同而受到影響，在任何地方（Anywhere）都能順利被執行，且執行的結果都是一樣的。</p>
@@ -435,8 +418,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/docker/container-on-the-sea.jpg" style=""/>
@@ -450,8 +432,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有一點值得澄清的是，就算 Docker 幫我們抽象化建置一個 App 環境的工作，在執行一個容器的時候，我們還是需要實際的計算資源來跑這些容器。</p>
 <p>因此前面所謂的「計算環境」指的是一個擁有計算資源（CPU、GPU、記憶體 etc）且我們實際運行 Docker 的地方。這計算環境可以是任何一家雲端服務平台上的機器，如 AWS 的某台 <a href="https://aws.amazon.com/tw/ec2/">EC2 機器</a>、<a href="https://cloud.google.com/kubernetes-engine/">GCP</a> 上一個包含數千台機器的群集（Cluster），或是你現在用來看本文的筆電。只要 Docker 能在該計算環境下運行，它就能幫我們在該環境「之上」執行任何容器。</p>
@@ -468,22 +449,19 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>現在你對 Docker 以及容器概念有個高層次的理解了，讓我們來看看這些 Docker 容器實際上是怎麼來的吧！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="貨櫃（Docker-容器）從哪來">貨櫃（Docker 容器）從哪來<a class="anchor-link" href="#貨櫃（Docker-容器）從哪來">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在了解 Docker 這隻大鯨魚能幫我們運行任意的容器 / App 以後，你腦中浮現的第一個問題應該是：</p>
 <ul>
@@ -492,8 +470,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>非常好的一個問題。</p>
 <p>事實上，要產生一個新的 Docker 容器，Docker 需要一份「環境安裝步驟書」來讓它幫我們自動地建置容器內的環境，比方說使用什麼 OS，用什麼版本的 TensorFlow 等等。這份步驟書在 Docker 的世界裡被稱作 <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a>。</p>
@@ -519,7 +496,7 @@
 
 ...
 
-<span class="k">CMD</span><span class="s"> ["/run_jupyter.sh", "--allow-root"]</span>
+<span class="k">CMD</span> <span class="p">[</span><span class="s2">"/run_jupyter.sh"</span><span class="p">,</span> <span class="s2">"--allow-root"</span><span class="p">]</span>
 </pre></div>
 <p>除了 <code>RUN</code>、<code>CMD</code> 等 Docker 專屬的關鍵字以後，你會發現這份 Dockfile 裡頭的指令其實跟你平常在本地開發時也會使用的指令如 <code>pip install</code> 沒有相差太多。差別在於透過第一行的 <code>FROM ubuntu:16.04</code> 指令，我們要求 Docker 在這個容器裡頭建置一個 Ubuntu OS 後，在其之上安裝這些函式庫。</p>
 <h2 id="追求規模性：Docker-映像檔的誕生">追求規模性：Docker 映像檔的誕生<a class="anchor-link" href="#追求規模性：Docker-映像檔的誕生">&para;</a></h2><p>聽完以上的解釋，你可能會覺得在我們每次要啟動一個新的容器的時候，Docker 就得拿出 Dockerfile，一步步建置該容器的環境。</p>
@@ -527,8 +504,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/airflow/thought-2123970_1280.jpg" style=""/>
@@ -538,8 +514,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>其中一個考量是可擴展性（Scalability）。</p>
 <p>有時你會想要用同一份 Dockerfile 在短時間內迅速地產生好幾個一模一樣的容器(s)：</p>
@@ -552,8 +527,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/docker/docker-three-basic-elements.png" style=""/>
@@ -567,8 +541,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>到了這邊，我們已經了解 Docker 最基本也是最重要的概念：</p>
 </div>
@@ -583,30 +556,26 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>坐而言不如起而行。</p>
 <p>在掌握了這些概念以後，我相信你也迫不及待地想要開始使用 Docker 了，接下來就讓我們實際操作 Docker 來體會一下它的威力。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Docker-映像檔：法式千層酥">Docker 映像檔：法式千層酥<a class="anchor-link" href="#Docker-映像檔：法式千層酥">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>不管是 Windows 或是 Mac 用戶，你都可以很輕鬆地在<a href="https://www.docker.com/get-started">官方網站</a>下載 Docker 並安裝。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <a href="https://www.docker.com/get-started" target="_blank">
@@ -620,8 +589,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下載完以後啟動 Docker，大鯨魚就會在你的筆電上開始閒晃，等待你的指示。一般而言，我們會在 terminal 使用各種 <code>docker</code> 指令來跟大鯨魚溝通。</p>
 <p>當 Docker 就緒以後，依照我們前面的所學，你會需要一個 Dockerfile 或是 Docker 映像檔來產生一個 Docker 容器。就像 <a href="https://github.com/">Github</a> 是一個被大家拿來分享程式碼的地方，<a href="https://hub.docker.com/">Dockerhub</a> 則被用來分享 Dockerfile 以及 Docker 映像檔。</p>
@@ -660,8 +628,7 @@ Status: Downloaded newer image <span class="k">for</span> tensorflow/tensorflow:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/docker/mille_feuille.jpg" style=""/>
@@ -677,8 +644,7 @@ Status: Downloaded newer image <span class="k">for</span> tensorflow/tensorflow:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>依照你的網路速度，下載映像檔所需的時間可能有所不同。</p>
 <p>在下載完成以後，輸入 <code>docker images</code> 指令可以顯示所有目前本地端擁有的 Docker 映像檔：</p>
@@ -706,8 +672,7 @@ tensorflow/tensorflow   latest              76fb62c3cb89        <span class="m">
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/docker/tensorflow-notebook.png" style=""/>
@@ -723,8 +688,7 @@ tensorflow/tensorflow   latest              76fb62c3cb89        <span class="m">
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>對你沒看錯，你已經用 Docker 建置了一個完整的資料科學環境，裡頭有 TensorFlow 以及 Jupyter Notebook。</p>
 <p>而你只需要 2 個指令：</p>
@@ -737,15 +701,13 @@ docker run -it -p <span class="m">1234</span>:8888 tensorflow/tensorflow
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="利用-Docker-分享你的成果">利用 Docker 分享你的成果<a class="anchor-link" href="#利用-Docker-分享你的成果">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>為了加強你使用 Docker 的動機，讓我再給個例子。</p>
 <p>有持續關注我文章的讀者會發現，我在<a href="https://leemeng.tw/data-science-digest-volume-3.html">資料科學文摘 Vol.3 Pandas、Docker 以及數據時代的反思</a>裡頭有提到，Docker 除了讓我們免除建置環境的痛苦以外，也能讓我們與他人簡單地分享開發結果。</p>
@@ -758,15 +720,13 @@ docker run -it -p <span class="m">2468</span>:5000 leemeng/cat
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>接著他們就能在瀏覽器輸入 <code>localhost:2468</code> 來看到我的 App：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/docker/cat-demo.jpg" style=""/>
@@ -780,22 +740,19 @@ docker run -it -p <span class="m">2468</span>:5000 leemeng/cat
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>當然這個 ML App 在預測能力以及 UI 上都不完美，但這邊重點是你能利用 Docker 與他人快速地分享成果。如果你有想到其他利用 Docker 封裝好的 ML App 例子（或者是你接下來打算做一個自己的），非常歡迎留言讓我知道它們的存在：）</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="總結">總結<a class="anchor-link" href="#總結">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>呼！看完本文以後，相信你現在應該對 Docker 有個非常清楚的認識了：</p>
 <ul>
@@ -809,8 +766,7 @@ docker run -it -p <span class="m">2468</span>:5000 leemeng/cat
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/docker/1_JAJ910fg52ODIRZjHXASBQ.png" style=""/>
@@ -824,20 +780,19 @@ docker run -it -p <span class="m">2468</span>:5000 leemeng/cat
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>正因為我們是資料科學家，利用 Docker能幫我們抽象化很多不必要的環境建置工作，加速我們的開發效率。</p>
 <p>在本系列文章的下篇出爐之前，我鼓勵你先<a href="https://www.docker.com/get-started">下載 Docker</a>，並開始在 <a href="https://hub.docker.com/">Docker Hub</a> 或者 Google 搜尋一些你感興趣的映像檔，甚至自己寫一個 Dockerfile 將你目前的專案打包起來跟別人分享。</p>
 <p>雖然我們這篇因為篇幅關係沒有細講，但只要有一個 Dockerfile，你就能使用 <code>docker build</code> 來輕鬆建立一個自給自足的 Docker 映像檔。一個 Dockerfile 也不難寫，像是上面貓咪的 App 的 Dockerfile 也不過就如此幾行：</p>
 <div class="highlight"><pre><span></span><span class="k">FROM</span><span class="s"> python:3.6.3</span>
 <span class="k">MAINTAINER</span><span class="s"> Meng Lee "b98705001@gmail.com"</span>
-COPY ./requirements.txt /app/requirements.txt
+<span class="k">COPY</span> ./requirements.txt /app/requirements.txt
 <span class="k">WORKDIR</span><span class="s"> /app</span>
 <span class="k">RUN</span> pip install -r requirements.txt
-COPY . /app
-<span class="k">ENTRYPOINT</span><span class="s"> [ "python3" ]</span>
-<span class="k">CMD</span><span class="s"> ["app.py"]</span>
+<span class="k">COPY</span> . /app
+<span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">"python3"</span> <span class="p">]</span>
+<span class="k">CMD</span> <span class="p">[</span><span class="s2">"app.py"</span><span class="p">]</span>
 </pre></div>
 <p>在本篇裡頭我們都是在自己的機器上使用 Docker。在下篇，我們將利用本篇學到的 Docker 知識，將其運用在浩瀚無垠的雲端平台之上，去最大化我們的影響力。</p>
 <p>在那之前你可以先熟悉熟悉 Docker，下次遇到你的 DS 同事時，可以問問他/她：</p>
@@ -865,6 +820,10 @@ COPY . /app
                     </span>
 
                 </p>
+
+
+
+
 
 
 

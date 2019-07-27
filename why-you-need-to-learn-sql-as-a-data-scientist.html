@@ -168,7 +168,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-04-30 (Mon)</li>
                         <li class="page-view">
-                            5,372 views
+                            5,380 views
                         </li>
                     </ul>
 
@@ -228,16 +228,14 @@
             <div class="col-full blog-content__main">
 
                 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這篇簡單討論<a href="https://zh.wikipedia.org/wiki/SQL">結構化查詢語言（SQL）</a>在概念上跟命令式程式語言如 Python 有什麼不同之處，以及在什麼樣的情況下我們會想要利用 SQL 做資料分析。</p>
 <p>這篇注重在為何你會想要使用 SQL 做資料分析，而非 SQL 本身功能的教學。如果要學習 SQL 本身，可以參考最後面的<a href="#推薦閱讀">推薦閱讀</a>。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="使用-SQL-與數據對話">使用 SQL 與數據對話<a class="anchor-link" href="#使用-SQL-與數據對話">&para;</a></h2><p>身為資料科學家或者是分析人員，我們都知道 SQL 基本上是必備的分析工具。</p>
 <p>簡單來說，<a href="https://zh.wikipedia.org/wiki/%E5%AE%A3%E5%91%8A%E5%BC%8F%E7%B7%A8%E7%A8%8B">SQL 是一種程式語言</a>，我們可以透過它對被儲存在<a href="https://zh.wikipedia.org/wiki/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93">關聯式資料庫</a>裡頭的資料進行查詢或操作。</p>
@@ -253,8 +251,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在沒接觸過 SQL 之前，你可能會想</p>
 <ul>
@@ -276,8 +273,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上面這個查詢翻為白話就是：</p>
 <ul>
@@ -315,8 +311,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>實際上，資料庫可能需要做以下運算來取得資料：</p>
 <ul>
@@ -331,8 +326,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/sql/yoal-desurmont-619654-unsplash.jpg" style=""/>
@@ -347,8 +341,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>換句話說，當我們在寫 SQL 的時候，是在進行<a href="https://zh.wikipedia.org/wiki/%E5%AE%A3%E5%91%8A%E5%BC%8F%E7%B7%A8%E7%A8%8B">宣告式程式設計（Declarative Programming）</a>：我們只告訴資料庫，我們想要什麼資料（What），而不是怎麼取得（How）它們。</p>
 <p>這跟一般常見的<a href="https://zh.wikipedia.org/wiki/%E6%8C%87%E4%BB%A4%E5%BC%8F%E7%B7%A8%E7%A8%8B">命令式程式語言（Imperative Programming）</a>如 Python、Java 有所不同。在寫 SQL 時，我們告訴資料庫它該達成的目標 - 取得什麼資料（What）；在寫 Python 時，我們得告訴程式該怎麼達成該目標（How）。</p>
@@ -356,15 +349,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="用-Python-達到-SQL-查詢效果">用 Python 達到 SQL 查詢效果<a class="anchor-link" href="#用-Python-達到-SQL-查詢效果">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>首先先假設所有顧客資料是透過一個 <code>list</code> 儲存，裡頭包含多個 <code>dict</code>。每個 <code>dict</code> 則代表一個顧客的資料：</p>
 </div>
@@ -383,8 +374,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>而購買記錄則是一個 <code>dict</code>，<code>dict</code> 的鍵值為所有顧客的 <code>custkey</code>；鍵值對應的值則是包含該顧客所有購買紀錄的 <code>list</code>：</p>
 </div>
@@ -405,8 +395,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>所以 <code>orders["1"]</code> 就代表 <code>custkey = 1</code> 的顧客的購買紀錄。</p>
 <p>了解背後的資料結構以後，我們可以寫一段 Python 程式碼來取得資料：</p>
@@ -455,8 +444,7 @@ Customer#000000001 | 270087.44 | 1997-03-04
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>所以我們使用 Python 達到跟上面的 SQL 查詢一樣的結果了。但兩者在執行上有什麼差異？</p>
 <p>使用命令式程式語言來處理資料時，我們需要：</p>
@@ -468,8 +456,7 @@ Customer#000000001 | 270087.44 | 1997-03-04
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>再看一次先前的 SQL 查詢（+註解）：</p>
 <div class="highlight"><pre><span></span><span class="c1">-- 給我以下幾個欄位：顧客名稱、總購買金額、購買日期</span>
@@ -499,15 +486,13 @@ Customer#000000001 | 270087.44 | 1997-03-04
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="結語">結語<a class="anchor-link" href="#結語">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>雖然我們這篇只舉了一個十分簡單的例子，但一般來說 SQL 非常適合以下的使用情境：</p>
 <ul>
@@ -519,15 +504,13 @@ Customer#000000001 | 270087.44 | 1997-03-04
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="推薦閱讀">推薦閱讀<a class="anchor-link" href="#推薦閱讀">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li><a href="https://www.datacamp.com/courses/intro-to-sql-for-data-science">DataCamp - Intro to SQL for Data Science</a></li>
@@ -550,6 +533,10 @@ Customer#000000001 | 270087.44 | 1997-03-04
                     </span>
 
                 </p>
+
+
+
+
 
 
 

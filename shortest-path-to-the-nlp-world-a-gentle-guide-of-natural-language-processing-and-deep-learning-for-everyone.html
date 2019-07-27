@@ -170,7 +170,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-12-24 (Mon)</li>
                         <li class="page-view">
-                            10,872 views
+                            10,910 views
                         </li>
                     </ul>
 
@@ -230,8 +230,7 @@
             <div class="col-full blog-content__main">
 
                 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -243,47 +242,41 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>自從<a href="https://leemeng.tw/3-lessons-i-learnt-from-emnlp-2018-at-belgium.html"> 11 月從比利時 EMNLP</a> 回來後，最近工作之餘都在學習<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86">自然語言處理</a>（Natural Language Processing, 後簡稱為 NLP）。</p>
 <p>上上週陰錯陽差地參加了一個 <a href="https://www.kaggle.com/">Kaggle</a> 競賽。在該比賽中，我實際應用到不少前陣子所學的 NLP 知識，也獲得不少心得。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/emnlp2018/nlp-word-cloud.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因此我想借此機會，在文中鉅細靡遺地介紹自己在這次比賽運用以及學到的 NLP 概念，希望能幫助更多對人工智慧、<a href="https://zh.wikipedia.org/zh-tw/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度學習</a>或是 NLP 有興趣但卻不知如何開始的你，在閱讀本故事之後能得到一些啟發與方向，並展開自己的 NLP 之旅。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/chris-ried-512801-unsplash.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>雖然不是必備，但有點程式經驗會讓你比較好理解本文的內容，因為在文中有不少 <a href="https://www.python.org/">Python</a> 程式碼；另外，如果你熟悉<a href="https://zh.wikipedia.org/zh-hant/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度學習（Deep Learning）</a>以及<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神經網路（Neural Network）</a>，那你可以趁機複習一些以前學過的東西。</p>
 <p>依據維基百科，NLP 的定義為：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -295,31 +288,27 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在這篇文章裡頭，我將描述如何利用最近學到的 NLP 知識以及深度學習框架 <a href="https://keras.io/">Keras</a> 來教會神經網路如何辨別眼前的假新聞。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/robot-read.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>儘管此文的 NLP 任務是假新聞分類，你將可以把從此文學到的基礎知識運用到如機器翻譯、教機器寫詩、語音辨識等大部分的 NLP 任務。我也會在文末附上<a href="#3-門推薦的線上課程">推薦的學習資源以及文章</a>供你進一步探索。</p>
 <p>如果你已經準備好展開一趟刺激的 NLP 冒險之旅的話，就繼續往下閱讀吧！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="本文章節">本文章節<a class="anchor-link" href="#本文章節">&para;</a></h2><ul>
 <li><a class="toc-href" href="#30-秒重要訊息" title="30 秒重要訊息">30 秒重要訊息</a></li>
@@ -344,15 +333,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>本文編排已將手機讀者放在第一位，但我仍然建議你使用較大的螢幕閱讀。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/toc-intro.jpg"/>
@@ -365,8 +352,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="30-秒重要訊息">30 秒重要訊息<a class="anchor-link" href="#30-秒重要訊息">&para;</a></h2><p>沒錯，光看上面的章節數，你應該了解無法在 10 分鐘內 KO 這篇文章，但我相信這篇文章會是你學習 NLP 基礎的最短捷徑之一。</p>
 <p>針對那些時間寶貴的你，我在這邊直接列出本文想傳達的 3 個重要訊息：</p>
@@ -379,15 +365,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>讓我們開始吧！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="意料之外的-Kaggle-競賽">意料之外的 Kaggle 競賽<a class="anchor-link" href="#意料之外的-Kaggle-競賽">&para;</a></h2><p><a href="https://www.kaggle.com/">Kaggle</a> 是一個資料科學家以及機器學習愛好者互相切磋的數據建模和數據分析競賽平台。</p>
 <p>本文提到的 Kaggle 競賽是 <a href="https://www.kaggle.com/c/fake-news-pair-classification-challenge">WSDM - Fake News Classification</a>。</p>
@@ -395,8 +379,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/wsdm-intro.jpg"/>
@@ -411,16 +394,14 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>而因為我所任職的 <a href="https://www.smartnews.com/en/">SmartNews</a> 主打產品也是手機新聞應用（主要針對日本與美國用戶），像是這種哪個企業又辦了 Kaggle 競賽、又開發什麼新功能等等的消息都會在公司內部流動。</p>
 <p>話雖如此，在我從同事得知這個為期一個月的競賽時，事實上離截止時間只剩一個禮拜了！（傻眼）</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/emnlp2018/emnlp-entrance.jpg"/>
@@ -435,31 +416,27 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>但心念一轉，想說從 <a href="https://leemeng.tw/3-lessons-i-learnt-from-emnlp-2018-at-belgium.html">EMNLP 會議</a>回來後也學了一些不少 NLP 知識，不仿就趁著這個機會，試著在一週內兜出個模型來解決這個問題。</p>
 <p>名符其實的「志在參加」。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="假新聞分類任務">假新聞分類任務<a class="anchor-link" href="#假新聞分類任務">&para;</a></h2><p>既然決定要參加了，當然得看看資料集長的什麼樣子。訓練資料集（Training Set）約有 32 萬筆數據、測試資料集（Test Set）則約為 8 萬筆。而訓練資料集一部份的內容如下所示：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/view-data-on-kaggle.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>要了解此資料集，讓我們先專注在第一列（Row），大蒜與地溝油新聞的每一個欄位。</p>
 <p>（部分讀者可能會對簡體中文表示意見，但請體諒我沒有辦法事先將此大量數據全部轉為繁體）</p>
@@ -479,8 +456,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/chris-liverani-552022-unsplash.jpg"/>
@@ -493,23 +469,20 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>接著看到資料集（下圖）第一列最右邊的 <code>label</code> 欄位為 <code>agreed</code>，代表 B 同意 A 的敘述，則我們可以判定 B 也是假新聞。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/view-data-on-kaggle.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這就是一個簡單的「假新聞分類問題」：給定一個成對的新聞標題 A &amp; B，在已知 A 為假新聞的情況下，預測 B 跟 A 之間的關係。其關係可以分為 3 個類別：</p>
 <ul>
@@ -520,29 +493,25 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>順帶一提，上圖同時包含了 3 個類別的例子供你了解不同分類的實際情況。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>第 3、 4 欄位則為新聞標題的英文翻譯。而因為該翻譯為機器翻譯，不一定能 100% 正確反映本來中文新聞想表達的意思，因此接下來的文章會忽視這兩個欄位，只使用簡體中文的新聞標題來訓練 NLP 模型。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="用直覺找出第一條底線">用直覺找出第一條底線<a class="anchor-link" href="#用直覺找出第一條底線">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>現在任務目標很明確了，我們就是要將有 32 萬筆數據的訓練資料集（Training Set）交給我們的 NLP 模型，讓它「閱讀」每一列裡頭的假新聞 A 與新聞 B 的標題並瞭解它們之間的關係（不相關、B 同意 A、B 不同意 A）。</p>
 <p>理想上，在看過一大堆案例以後，我們的模型就能夠「學會」一些法則，讓它在被給定一組從來沒看過的假新聞標題 A 以及新聞標題 B 的情況下，也能正確判斷新聞 A 與新聞 B 的關係。</p>
@@ -550,8 +519,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/Train-Test-Split-Diagram.jpg"/>
@@ -566,8 +534,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這樣的陳述是一個非常典型的<a href="https://zh.wikipedia.org/wiki/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">機器學習（Machine Learning, ML）</a>問題。我們當然希望不管使用什麼樣的模型，該模型都能夠幫我們減少人工檢查的成本，並同時最大化分類的準確度。</p>
 <p>但在開始使用任何 ML 方法之前，為了衡量我們的自動化模型能提供多少潛在價值，讓我們先找出一個簡單方法作為底線（Baseline）。</p>
@@ -586,8 +553,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這張圖顯示了訓練資料集（Training Set）裏頭各個分類所佔的比例。是一個常見的 Unbalanced Dataset：特定的分類佔了數據的大半比例。</p>
 <p>我們可以看到接近 70 % 的「成對新聞」都是不相關的。這邊的「成對新聞」指的是資料集裡，每一行的假新聞標題 A 以及對應的標題 B 所組成的 pairs。</p>
@@ -596,16 +562,14 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/airflow/thought-2123970_1280.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>對沒錯，就是全部猜 <code>unrelated</code> 就對了！</p>
 <p>事實上，此競賽在 Evaluation 階段使用 <a href="https://www.kaggle.com/c/fake-news-pair-classification-challenge#evaluation">Weighted Categorization Accuracy</a>，來稍微調降猜對 <code>unrelated</code> 的分數。畢竟（1）能正確判斷出兩個新聞是 <code>unrelated</code> 跟（2）能判斷出新聞 B <code>disagreed</code> 假新聞 A 的價值是不一樣的。（後者的價值比較高，因為比較稀有）</p>
@@ -613,31 +577,27 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/major-baseline.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>不過當你前往該 <a href="https://www.kaggle.com/c/fake-news-pair-classification-challenge/leaderboard">Kaggle 排行榜</a>的時候，卻會發現不少人低於這個標準：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/find-the-baseline-for-ml.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>第一次參加 Kaggle 的人可能會覺得這現象很奇怪。</p>
 <p>但這是由於 Kaggle 競賽 1 天只能提交 2 次結果，因此通常不會有人浪費提交次數來上傳「多數票決」的結果（儘管分數會上升，大家還是會想把僅僅 2 次的上傳機會用來測試自己的 ML 模型的準確度）；另外也是因為不少人是上傳 1、2 次就放棄比賽了。</p>
@@ -645,8 +605,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -658,38 +617,33 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>現在我們知道，要保證做出來的模型有點價值，最少要超過 baseline 才可以。以本文來說，就是多數票決法則得到的 0.666 準確度。</p>
 <p>（ baseline 的定義依照研究目的以及比較方法而有所不同）</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="資料前處理：讓機器能夠處理文字">資料前處理：讓機器能夠處理文字<a class="anchor-link" href="#資料前處理：讓機器能夠處理文字">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>要讓電腦或是任何 NLP 模型理解一篇新聞標題在說什麼，我們不能將自己已經非常習慣的語言文字直接扔給電腦，而是要轉換成它熟悉的形式：數字。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/mika-baumeister-703680-unsplash.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因此這章節就是介紹一系列的數據轉換步驟，來將人類熟悉的語言如：</p>
 <div class="highlight"><pre><span></span>用大蒜鉴别地沟油的方法,怎么鉴别地沟油
@@ -805,8 +759,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>跟我們在 Kaggle 預覽的數據一致。不過為了畫面簡潔，讓我們只選取 2 個中文新聞標題以及分類結果（Label）的欄位：</p>
 </div>
@@ -885,22 +838,19 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了必要的欄位以後，我們可以開始進行數據的前處理了。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="文本分詞">文本分詞<a class="anchor-link" href="#文本分詞">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://en.wikipedia.org/wiki/Text_segmentation">文本分詞（Text Segmentation）</a>是一個將一連串文字切割成多個有意義的單位的步驟。這單位可以是</p>
 <ul>
@@ -912,16 +862,14 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/word-segmentation.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>以英文來說，Word Segmentation 十分容易。通常只要依照空白分割，就能得到一個有意義的詞彙列表了（在這邊讓我們先無視標點符號）：</p>
 </div>
@@ -948,8 +896,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>但很明顯地，中文無法這樣做。這時候我們將藉助 <a href="https://github.com/fxsjy/jieba">Jieba</a> 這個中文斷詞工具，來為一連串的文字做有意義的切割：</p>
 </div>
@@ -987,8 +934,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如上所示，Jieba 將我們的中文文本切成有意義的詞彙列表，並為每個詞彙附上對應的詞性（Flag）。</p>
 <p>假設我們不需要標點符號，則只要將 <code>flag == x</code> 的詞彙去除即可。</p>
@@ -1009,8 +955,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們可以利用 Pandas 的 <code>apply</code> 函式，將 <code>jieba_tokenizer</code> 套用到所有新聞標題 A 以及 B 之上，做文本分詞：</p>
 </div>
@@ -1031,8 +976,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>新聞標題 A 的斷詞結果如下：</p>
 </div>
@@ -1114,8 +1058,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>新聞標題 B 的結果則為：</p>
 </div>
@@ -1195,39 +1138,34 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>太棒了，將新聞標題切割成一個個有意義的詞彙以後，我們就能進入下一個步驟了！</p>
 <p>另外值得一提的是，不管最後是使用哪種切法，切完之後的每個文字片段在 NLP 領域裡頭習慣上會被稱之為 Token。（如上例中的警方、GDP）</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="建立字典並將文本轉成數字序列">建立字典並將文本轉成數字序列<a class="anchor-link" href="#建立字典並將文本轉成數字序列">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>當我們將完整的新聞標題切成一個個有意義的詞彙（Token）以後，下一步就是將這些詞彙轉換成一個數字序列，方便電腦處理。</p>
 <p>這些數字是所謂的索引（Index），分別對應到特定的詞彙。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/erik-mclean-1118005-unsplash.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>為了方便你理解這小節的概念，想像個極端的例子。假設我們現在就只有一個新聞標題：「狐狸被陌生人拍照」。</p>
 <p>這時候要怎麼將這個句子轉成一個數字的序列呢？跟上一小節相同，我們首先會對此標題做斷詞，將句子分成多個有意義的詞彙：</p>
@@ -1256,8 +1194,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了詞彙的列表以後，我們可以建立一個字典 <code>word_index</code>。</p>
 <p>該 dict 裏頭將上面的 4 個詞彙當作鍵值（Key），每個鍵值對應的值（Value）則為不重複的數字：</p>
@@ -1287,8 +1224,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了這個字典以後，我們就能把該句子轉成一個數字序列：</p>
 </div>
@@ -1316,8 +1252,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>簡單明瞭，不是嗎？</p>
 <p>如果來了一個新的句子：「陌生人被狐狸拍照」，我們也能利用手上已有的字典 <code>word_index</code> 如法炮製：</p>
@@ -1349,15 +1284,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在這個簡單的狐狸例子裡頭，<code>word_index</code> 就是我們的字典；我們利用該字典，將 1 句話轉成包含多個數字的序列，而每個數字實際上代表著一個 Token。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>同理，我們可以分 4 個步驟將手上的新聞標題全部轉為數字序列：</p>
 <ol>
@@ -1369,16 +1302,14 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/text-corpus.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這種文字前處理步驟因為出現頻率實在太過頻繁，Keras 有專門的文字前處理模組來提升我們的效率：</p>
 </div>
@@ -1399,15 +1330,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Tokenizer 顧名思義，即是將一段文字轉換成一系列的詞彙（Tokens），並為其建立字典。這邊的 <code>num_words=10000</code> 代表我們限制字典只能包含 10,000 個詞彙，一旦字典達到這個大小以後，剩餘的新詞彙都會被視為 Unknown，以避免字典過於龐大。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如同上述的步驟 1，我們得將新聞 A 及新聞 B 的標題全部聚集起來，為它們建立字典：</p>
 </div>
@@ -1436,8 +1365,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因為訓練集有大約 32 萬列（Row）的成對新聞（每一列包含 2 筆新聞：A &amp; B），因此將所有新聞放在一起的話，就有 2 倍的大小。而這些文本的集合在習慣上被稱作語料庫（Text Corpus），代表著我們有的所有文本數據。</p>
 <p>以下是我們語料庫的一小部分：</p>
@@ -1512,8 +1440,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了語料庫以後，接下來就是呼叫 <code>tokenizer</code> 為我們查看所有文本，並建立一個字典（步驟 2 &amp; 3）：</p>
 </div>
@@ -1529,8 +1456,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>以我們的語料庫大小來說，這大約需時 10 秒鐘。而等到 <code>tokenizer</code> 建好字典以後，我們可以進行上述第 4 個步驟，請 <code>tokenizer</code> 利用內部生成的字典分別將我們的新聞標題 A 與 新聞 B 轉換成數字序列：</p>
 </div>
@@ -1551,8 +1477,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>讓我們看看結果：</p>
 </div>
@@ -1596,8 +1521,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>x1_train</code> 為一個 Python <code>list</code>，裡頭包含了每一筆假新聞標題 A 對應的數字序列。</p>
 <p>讓我們利用 <code>tokenizer.index_word</code> 來將索引數字對應回本來的詞彙：</p>
@@ -1625,23 +1549,20 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>輕鬆寫意，不是嗎？</p>
 <p>到此為止，我們已經將所有新聞標題轉換成電腦容易處理的數字序列，進入下個步驟！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="序列的-Zero-Padding">序列的 Zero Padding<a class="anchor-link" href="#序列的-Zero-Padding">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>雖然我們已經將每個新聞標題的文本轉為一行行的數字序列，你會發現每篇標題的序列長度並不相同：</p>
 </div>
@@ -1677,8 +1598,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>最長的序列甚至達到 61 個詞彙：</p>
 </div>
@@ -1705,8 +1625,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>而為了方便之後的 NLP 模型處理（見<a href="#有記憶的循環神經網路">循環神經網路</a>一章），一般會設定一個 <code>MAX_SEQUENCE_LENGTH</code> 來讓所有序列的長度一致。</p>
 <p>長度超過此數字的序列尾巴會被刪掉；而針對原來長度不足的序列，我們則會在詞彙前面補零。Keras 一樣有個方便函式 <code>pad_sequences</code> 來幫助我們完成這件工作：</p>
@@ -1734,8 +1653,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>一般來說 <code>MAX_SEQUENCE_LENGTH</code> 可以設定成最長序列的長度（此例中的 61）。但這邊為了讓模型可以只看前 20 個詞彙就做出判斷以節省訓練時間，我們先暫時使用 20 這個數字。</p>
 <p>讓我們看看經過 Zero Padding 的第一篇假新聞標題 A 變成什麼樣子：</p>
@@ -1762,8 +1680,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你可以清楚看到，因為該新聞標題原本的序列長度並沒有達到剛剛設定的 <code>MAX_SEQUENCE_LENGTH</code>，因此在總長度為 20 的序列中，前面 6 個值被 Keras 補上 0 以說明該序列中的前 6 個詞彙並不存在。</p>
 <p>我們還可以發現，所有的新聞標題都被轉成長度為 20 的數字序列了：</p>
@@ -1793,8 +1710,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>再看一次轉換後的新聞標題：</p>
 </div>
@@ -1829,38 +1745,33 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在這邊，可以看到前 5 個新聞標題都已經各自被轉換為長度為 20 的數字序列，而序列裡頭的每個數字則對應到字典裡頭一個特定的 Token，整整齊齊。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/pop-zebra-754186-unsplash.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>到此為止，我們已經將原本以自然語言呈現的新聞標題轉換成機器容易理解的數字序列了。很神奇，不是嗎？</p>
 <p>喔不過，別忘了還有 <code>label</code> 這個文字欄位等著我們的處理。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="將正解做-One-hot-Encoding">將正解做 One-hot Encoding<a class="anchor-link" href="#將正解做-One-hot-Encoding">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>到目前為止，我們已經將所有的新聞標題以數字型態表示，只剩分類欄位 <code>label</code> 要進行從文本到數字的轉換了：</p>
 </div>
@@ -1891,8 +1802,7 @@ Name: label, dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>不過 <code>label</code> 的處理相對簡單。跟新聞標題相同，我們一樣需要一個字典將分類的文字轉換成索引：</p>
 </div>
@@ -1933,8 +1843,7 @@ Name: label, dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>現在每個分類的文字標籤都已經被轉成對應的數字，接著讓我們利用 Keras 做 <a href="https://hackernoon.com/what-is-one-hot-encoding-why-and-when-do-you-have-to-use-it-e3c6186d008f">One Hot Encoding</a>：</p>
 </div>
@@ -1967,8 +1876,7 @@ Name: label, dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上述矩陣的每一列即為 1 個 label，而你可以看到現在每個 label 都從 1 個數字變成一個 3 維的向量（Vector）。</p>
 <p>每 1 維度則對應到 1 個分類：</p>
@@ -1981,8 +1889,7 @@ Name: label, dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/one-encoding.jpg"/>
@@ -1995,8 +1902,7 @@ Name: label, dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在<a href="#決定如何衡量模型的表現">決定如何衡量模型的表現</a>一節我們會看到，給定一組新聞標題 A、B，我們的模型會預測此成對標題屬於每個分類的機率值，比方說 <code>[0.7,  0.2, 0.1]</code>。而此預測結果代表模型認為這 2 個新聞標題的關係有 70 % 的機率為 <code>unrelated</code>、20 % 的機率是 <code>agreed</code> 而 10 % 為 <code>disagreed</code>。</p>
 <p>因此，如果正解也事先用同樣的方式表達的話，會讓我們比較好計算以下兩者之間的差距：</p>
@@ -2010,15 +1916,13 @@ Name: label, dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="切割訓練資料集-&amp;-驗證資料集">切割訓練資料集 &amp; 驗證資料集<a class="anchor-link" href="#切割訓練資料集-&amp;-驗證資料集">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這部分很簡單，我們只需決定要將整個訓練資料集（Training Set）的多少比例切出來當作驗證資料集（Validation Set）。此例中我們用 10 %。</p>
 <p>但為何要再把本來的訓練資料集切成 2 個部分呢？</p>
@@ -2026,8 +1930,7 @@ Name: label, dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/train-valid-test-split.png"/>
@@ -2042,8 +1945,7 @@ Name: label, dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>等到模型在驗證資料集也表現得夠好後，便在最終的測試資料集（Test Set）進行最後一次的預測並將該結果上傳到 Kaggle。</p>
 <p>要了解為何我們需要驗證資料集可以查看<a href="https://stats.stackexchange.com/questions/19048/what-is-the-difference-between-test-set-and-validation-set">這邊的討論</a>。</p>
@@ -2051,8 +1953,7 @@ Name: label, dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/cat-peep.jpg"/>
@@ -2065,16 +1966,14 @@ Name: label, dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>儘管你沒有直接讓模型看到驗證資料集（Validation Set）內的任何數據，你還是間接地洩漏了該資料集的重要資訊：你讓模型知道怎樣的參數設定會讓它在該資料集表現比較好，亦或表現較差。</p>
 <p>因此有一個完全跟模型訓練過程獨立的測試資料集（Test Set）就顯得重要許多了。（這也是為何我到現在都還沒有碰它的原因）</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -2086,8 +1985,7 @@ Name: label, dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>回歸正題，要切訓練資料集 / 驗證資料集，<a href="https://scikit-learn.org/stable/documentation.html">scikit-learn</a> 中的 <code>train_test_split</code> 函式是一個不錯的選擇：</p>
 </div>
@@ -2117,8 +2015,7 @@ Name: label, dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在這邊，我們分別將新聞標題 A <code>x1_train</code>、新聞標題 B <code>x2_train</code> 以及分類標籤 <code>y_train</code> 都分成兩個部分：訓練部分 &amp; 驗證部分。</p>
 <p>以假新聞 A 的標題 <code>x1_train</code> 為例，本來完整 32 萬筆的 <code>x1_train</code> 會被分為包含 90 % 數據的訓練資料集 <code>x1_train</code> 以及 10 % 的驗證資料集 <code>x1_val</code>。</p>
@@ -2166,8 +2063,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們可以看到，切割後的訓練資料集有 288,488 筆資料。每一筆資料裡頭，成對新聞標題 A &amp; B 的長度皆為 20 個 Tokens，分類結果則有 3 個；驗證資料集的內容一模一樣，僅差在資料筆數較少（32,055 筆）。</p>
 <p>到此為此，資料前處理大功告成！</p>
@@ -2175,31 +2071,27 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="有記憶的循環神經網路_1">有記憶的循環神經網路<a class="anchor-link" href="#有記憶的循環神經網路">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>針對這次的 Kaggle 競賽，我們將使用<a href="https://zh.wikipedia.org/wiki/%E9%80%92%E5%BD%92%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">循環神經網路（Recurrent Neural Network, 後簡稱 RNN）</a>來處理剛剛得到的序列數據。</p>
 <p>RNN 是一種有「記憶力」的神經網路，其最為人所知的形式如下：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/rnn-static.png"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如同上圖等號左側所示，RNN 跟一般深度學習中常見的<a href="https://en.wikipedia.org/wiki/Feedforward_neural_network">前饋神經網路（Feedforward Neural Network, 後簡稱 FFNN）</a>最不一樣的地方在於它有一個迴圈（Loop）。</p>
 <p>要了解這個迴圈在 RNN 裏頭怎麼運作，現在讓我們想像有一個輸入序列 X（Input Sequence）其長相如下：</p>
@@ -2209,45 +2101,39 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/rnn-static.png"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在下個時間點 <code>t1</code>，RNN 如法炮製，讀入序列 X 中的下一個元素 <code>x1</code>，並利用剛剛處理完 <code>x0</code> 得到的細胞狀態，處理 <code>x1</code> 並更新自己的狀態（也被稱為記憶），接著輸出另個結果 <code>h1</code>。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>剩下的 <code>xt</code> 都會被以同樣的方式處理。但不管輸入的序列 X 有多長，RNN 的本體從頭到尾都是等號左邊的樣子：迴圈代表細胞 A 利用「上」一個時間點（比方說 <code>t1</code>）儲存的狀態，來處理當下的輸入（比方說 <code>x2</code> ）。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/rnn-static.png"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>但如果你將不同時間點（<code>t0</code>、<code>t1</code> ...）的 RNN 以及它的輸入一起截圖，並把所有截圖從左到右一字排開的話，就會長得像等號右邊的形式。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>將 RNN 以右邊的形式表示的話，你可以很清楚地了解，當輸入序列越長，向右展開的 RNN 也就越長。（模型也就需要訓練更久時間，這也是為何我們在資料前處理時<a href="#序列的-Zero-Padding">設定了序列的最長長度</a>）</p>
 <p>為了確保你 100 % 理解 RNN，讓我們假設剛剛的序列 X 實際上是一個內容如下的英文問句：</p>
@@ -2258,8 +2144,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/rnn-animate.gif"/>
@@ -2274,8 +2159,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>現在你可以想像為何 RNN 非常適合拿來處理像是自然語言這種序列數據了。</p>
 <p>就像你現在閱讀這段話一樣，你是由左到右逐字在大腦裡處理我現在寫的文字，同時不斷地更新你腦中的記憶狀態。</p>
@@ -2288,8 +2172,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/thought-catalog-196661-unsplash.jpg"/>
@@ -2302,8 +2185,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>到此為止，你應該已經了解 RNN 的基本運作方式了。現在你可能會問：「那我們該如何實作一個 RNN 呢？」</p>
 <p>好問題，以下是一個簡化到不行的 RNN 實現：</p>
@@ -2328,8 +2210,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/nn-layers.jpg"/>
@@ -2344,22 +2225,19 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>好啦，相信你現在已經掌握基本 RNN 了。事實上，除了 <code>SimpleRNN</code> 以外，Keras 裡頭還有其他更常被使用的 Layer，現在就讓我們看看一個知名的例子：長短期記憶。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="記憶力好的-LSTM-細胞">記憶力好的 LSTM 細胞<a class="anchor-link" href="#記憶力好的-LSTM-細胞">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>讓我們再看一次前面的簡易 RNN 實作：</p>
 <div class="highlight"><pre><span></span><span class="n">state_t</span> <span class="o">=</span> <span class="mi">0</span>
@@ -2374,16 +2252,14 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/forget-what-had-said-before.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這就好像一個人在講了好長一段話以後，忘了前面到底講過些什麼的情境。</p>
 <p><a href="https://zh.wikipedia.org/wiki/%E9%95%B7%E7%9F%AD%E6%9C%9F%E8%A8%98%E6%86%B6">長短期記憶（Long Short-Term Memory, 後簡稱 LSTM）</a>就是被設計來解決 RNN 的這個問題。</p>
@@ -2391,15 +2267,14 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/lstm-cell.png"/>
 </center>
 <center>
                         以抽象的層次來看，LSTM 就是實現 RNN 中細胞 A 邏輯的一個方式
-                        （<a href="https://hackernoon.com/understanding-architecture-of-lstm-cell-from-scratch-with-code-8da40f0b71f4" target="_blank">圖片來源</a>）
+                        （<a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank">圖片來源</a>）
                         
                         <br/>
 <br/>
@@ -2407,8 +2282,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>基本上一個 LSTM 細胞裡頭會有 3 個閘門（Gates）來控制細胞在不同時間點的記憶狀態：</p>
 <ul>
@@ -2421,8 +2295,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/lstm-cell-detailed.png"/>
@@ -2437,24 +2310,21 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>想像 LSTM 細胞裡頭的記憶狀態是一個包裹，上面那條直線就代表著一個輸送帶。</p>
 <p>LSTM 可以把任意時間點的記憶狀態（包裹）放上該輸送帶，然後在未來的某個時間點將其原封不動地取下來使用。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/accumulation-conveyor-101.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因為這樣的機制，讓 LSTM 即使面對很長的序列數據也能有效處理，不遺忘以前的記憶。</p>
 <p>因為效果卓越，LSTM 非常廣泛地被使用。事實上，當有人跟你說他用 RNN 做了什麼 NLP 專案時，有 9 成機率他是使用 LSTM 或是 <a href="https://en.wikipedia.org/wiki/Gated_recurrent_unit">GRU（LSTM 的改良版，只使用 2 個閘門）</a> 來實作，而不是使用最簡單的 <code>SimpleRNN</code>。</p>
@@ -2473,22 +2343,19 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>現在，既然我們已經有了在<a href="#資料前處理：讓機器能夠處理文字">資料前處理步驟</a>被轉換完成的序列數據，也決定好要使用 LSTM 作為我們的 NLP 模型，接著就讓我們試著將這些數據讀入 LSTM 吧！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="詞向量：將詞彙表達成有意義的向量">詞向量：將詞彙表達成有意義的向量<a class="anchor-link" href="#詞向量：將詞彙表達成有意義的向量">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在將序列數據塞入模型之前，讓我們重新檢視一下數據。比方說，以下是在訓練資料集裡頭前 5 筆的假新聞標題 A：</p>
 </div>
@@ -2536,8 +2403,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你可以看到，每個新聞標題都被轉成長度為 20 的數字序列。裡頭的每個數字都代表著一個詞彙（ <code>0</code> 代表 <a href="#序列的-Zero-Padding">Zero Padding</a>）。</p>
 </div>
@@ -2562,8 +2428,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>而我們在訓練資料集則總共有 288,488 筆新聞標題，每筆標題如同剛剛所說的，是一個包含 20 個數字的序列。</p>
 <p>當然，我們可以用 <code>tokenizer</code> 裡頭的字典 <code>index_word</code> 還原文本看看：</p>
@@ -2607,8 +2472,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>其他新聞標題像是：</p>
 <ul>
@@ -2622,8 +2486,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/rnn-process-vectors.gif"/>
@@ -2638,16 +2501,14 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>所以現在的問題變成：</p>
 <p>「要怎麼將一個詞彙表示成一個 N 維向量 ？」</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>其中一個方法是我們隨便決定一個 N，然後為語料庫裡頭的每一個詞彙都指派一個隨機生成的 N 維向量。</p>
 <p>假設我們現在有 5 個詞彙：</p>
@@ -2674,15 +2535,13 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br/></p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這些代表詞彙的向量被稱之為詞向量，但是你可以想像這樣的隨機轉換很沒意義。</p>
 <p>比方說上圖，我們就無法理解：</p>
@@ -2709,8 +2568,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br/></p>
 <p>在這個 2 維空間裡頭，我們可以發現一個好的轉換有 2 個特性：</p>
@@ -2721,24 +2579,21 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/dog-and-cat.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果我們能把語料庫（Corpus）裏頭的每個詞彙都表示成一個像是這樣有意義的詞向量，神經網路就能幫我們找到潛藏在大量詞彙中的語義關係，並進一步改善 NLP 任務的精準度。</p>
 <p>好消息是，大部分的情況我們並不需要自己手動設定每個詞彙的詞向量。我們可以隨機初始化所有詞向量（如前述的隨機轉換），並利用平常訓練神經網路的<a href="https://zh.wikipedia.org/wiki/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95">反向傳播算法（Backpropagation）</a>，讓神經網路自動學到一組適合當前 NLP 任務的詞向量（如上張圖的理想狀態）。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/backpropagation-example.gif"/>
@@ -2753,8 +2608,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在 NLP 裏頭，這種將一個詞彙或句子轉換成一個實數詞向量（Vectors of real numbers）的技術被稱之為<a href="https://zh.wikipedia.org/wiki/%E8%AF%8D%E5%B5%8C%E5%85%A5">詞嵌入（Word Embedding）</a>。</p>
 <p>而在 Keras 裡頭，我們可以使用 <code>Embedding</code> 層來幫我們做到這件事情：</p>
@@ -2773,16 +2627,14 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>MAX_NUM_WORDS</code> 是我們的字典大小（10,000 個詞彙）、<code>NUM_EMBEDDING_DIM</code> 則是詞向量的維度。常見的詞向量維度有 128、256 或甚至 1,024。</p>
 <p><code>Embedding</code> 層一次接收 k 個長度任意的數字序列，並輸出 k 個長度相同的序列。輸出的序列中，每個元素不再是數字，而是一個 <code>NUM_EMBEDDING_DIM</code> 維的詞向量。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>假如我們將第一筆（也就是 k = 1）假新聞標題 A 丟入 <code>Embedding</code> 層，並設定 <code>NUM_EMBEDDING_DIM</code> 為 3 的話，原來的標題 A：</p>
 </div>
@@ -2823,8 +2675,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>就會被轉換成類似以下的形式：</p>
 </div>
@@ -2864,15 +2715,13 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>序列裡頭的每個數字（即詞彙）都被轉換成一個 3 維的詞向量，而相同數字則當然都會對應到同一個詞向量（如前 3 個 <code>0</code> 所對應到的詞向量）。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/rnn-process-vectors.gif"/>
@@ -2887,23 +2736,20 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了這樣的轉換，我們就能將轉換後的詞向量丟入 RNN / LSTM 裏頭，讓模型逐步修正隨機初始化的詞向量，使得詞向量裡頭的值越來越有意義。</p>
 <p>有了兩個新聞標題的詞向量，接著讓我們瞧瞧能夠處理這些數據的神經網路架構吧！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="一個神經網路，兩個新聞標題">一個神經網路，兩個新聞標題<a class="anchor-link" href="#一個神經網路，兩個新聞標題">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>一般來說，多數你見過的神經網路只會接受一個資料來源：</p>
 <ul>
@@ -2914,16 +2760,14 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/one-data-source-nn.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>單一輸入的神經網路架構可以解決大部分的深度學習問題。但在這個 Kaggle 競賽裡頭，我們想要的是一個能夠讀入成對新聞標題，並判斷兩者之間關係的神經網路架構：</p>
 <ul>
@@ -2936,8 +2780,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/siamese-network.jpg"/>
@@ -2950,8 +2793,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這張圖是本文最重要的一張圖，但現在你只需關注紅框的部分即可。剩餘細節我會在後面的<a href="#定義神經網路的架構">定義神經網路的架構</a>小節詳述。</p>
 <p>重複觀察幾次，我相信你就會知道何謂孿生神經網路架構：一部份的神經網路（紅框部分）被重複用來處理多個不同的資料來源（在本篇中為 2 篇不同的新聞標題）。</p>
@@ -2959,8 +2801,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -2972,8 +2813,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>以這樣的觀點來看的話，我們並不需要兩個不同的 LSTM 來分別將新聞 A 以及新聞 B 的詞向量做有意義的轉換，而是只需要讓標題 A 與標題 B 共享一個 LSTM 即可。畢竟，標題 A 跟標題 B 的數據結構很像。</p>
 <p>如果我們只寫一個 Python 函式就能處理 2 個相同格式的輸入的話，為何要寫 2 個函式呢？</p>
@@ -2981,8 +2821,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/siamese-cats.jpg"/>
@@ -2995,29 +2834,25 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>好了，在了解如何同時讀入 2 個資料來源後，就讓我們實際用 Keras 動手將此模型建出來吧！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="深度學習-3-步驟">深度學習 3 步驟<a class="anchor-link" href="#深度學習-3-步驟">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>深度學習以及 NLP 領域的學問博大精深，但一般來說，當你想要實際動手寫出一個神經網路的時候，有 3 個基本步驟可以 follow：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/deep-learning-three-steps-with-keras.jpg"/>
@@ -3032,8 +2867,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ol>
 <li>定義神經網路的架構</li>
@@ -3045,22 +2879,19 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="定義神經網路的架構">定義神經網路的架構<a class="anchor-link" href="#定義神經網路的架構">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在實作之前，先讓我們回顧一下前面段落看到的模型架構：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/siamese-network.jpg"/>
@@ -3073,8 +2904,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>從左到右掃過一遍，你可以很清楚地發現我們需要以下 5 個元素來完成這個模型：</p>
 <ul>
@@ -3089,8 +2919,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/siamese-network.jpg"/>
@@ -3103,8 +2932,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因此，如果等等你不了解底下某個特定的變數所代表的意義，可以回來利用這張架構圖來釐清概念。</p>
 <p>以下就是此模型的 Keras 實作：</p>
@@ -3195,15 +3023,13 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這段程式碼的確不短，但有將近一半是我寫給你的註解。而且這段程式碼的邏輯跟上面的架構圖一模一樣，只差架構圖是從左到右、程式碼是從上到下而已。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>為了確保用 Keras 定義出的模型架構跟預期相同，我們也可以將其畫出來：</p>
 </div>
@@ -3225,47 +3051,41 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/model.png"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>除了模型架構以外，我們還可以看到所有層的輸入 / 輸出張量（Tensor）的維度。在 Keras 裏頭，張量的第 1 個維度通常為樣本數（比方說 5 則新聞標題），而 <code>None</code> 則代表可以指定任意值。</p>
 <p>最重要的是，這個用 Keras 定義出來的模型，跟我們之前想像中的孿生神經網路可以說是一模一樣：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/siamese-network.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我沒有騙你，對吧？</p>
 <p>現在你應該發現，只要擁有前面幾章學到的 NLP 知識以及基礎 Python 程式能力，要建立一個像這樣看似複雜的孿生 LSTM（Siamese LSTM）神經網路其實也並沒有那麼困難。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>事實上，使用 Keras 建立深度學習模型這件事情感覺上就像是在玩疊疊樂一樣，一層加上一層：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/playing-with-keras.jpg"/>
@@ -3280,29 +3100,25 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="全連接層">全連接層<a class="anchor-link" href="#全連接層">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>唯一沒有在前面章節提到的是<a href="https://leonardoaraujosantos.gitbooks.io/artificial-inteligence/content/fc_layer.html">全連接層（Fully Connected Layer）</a>以及其使用的 <a href="https://zh.wikipedia.org/wiki/Softmax%E5%87%BD%E6%95%B0">Softmax 函式</a>。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>全連接層顧名思義，代表該層的每個神經元（Neuron）都會跟前一層的所有神經元享有連結：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/fully-connected.jpg"/>
@@ -3315,8 +3131,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>而為了確認我們計算的參數量無誤，還可以使用 <code>model.summary()</code> 來看每一層的參數量以及輸出的張量（Tensor）長相：</p>
 </div>
@@ -3332,16 +3147,14 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/model-summary.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>全連接層在最下面。而因為其與前一層「緊密」連接的緣故，它在 Keras 裏頭被稱為 <code>Dense</code> 層。它也是最早出現、最簡單的神經網路層之一。</p>
 <p><code>Param #</code> 則紀錄了每一層所包含的模型參數（Parameters）。在機器學習的過程中，這些參數都會不斷地被調整，直到能讓模型能做出很好的預測。詞嵌入層有最多的參數，因為我們要為 字典裡頭的每個詞彙都建立一個 256 維度的詞向量，因此參數量為 10,000 * 256。</p>
@@ -3369,31 +3182,27 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>嗯，結果跟我們想像的一樣。</p>
 <p>而之所以每層的樣本數為 <code>None</code> 是因為 Keras 為了因應在不同場合會丟入不同數量的樣本需求。比方說，在訓練時你可能會一次丟 32 筆資料給模型訓練，但在預測的時候一次只丟 16 筆資料。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Softmax-函式">Softmax 函式<a class="anchor-link" href="#Softmax-函式">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Softmax 函式一般都會被用在整個神經網路的最後一層上面，比方說我們這次的全連接層。</p>
 <p>Softmax 函式能將某層中的所有神經元裡頭的數字作正規化（Normalization）：將它們全部壓縮到 0 到 1 之間的範圍，並讓它們的和等於 1。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/softmax-and-fully-connectead.jpg"/>
@@ -3408,8 +3217,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因為</p>
 <ol>
@@ -3427,22 +3235,19 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在定義好模型以後，我們就可以進入下個步驟：定義衡量模型好壞的指標。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="決定如何衡量模型的表現">決定如何衡量模型的表現<a class="anchor-link" href="#決定如何衡量模型的表現">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>為了讓機器自動「學習」，我們得給它一個<a href="https://zh.wikipedia.org/wiki/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0">損失函數（Loss Function）</a>。</p>
 <p>給定一個正確解答 <code>y</code> 以及模型預測的結果 <code>y_head</code>，我們的模型透過損失函數就能自動計算出現在的預測結果跟正解的差距為多少。</p>
@@ -3450,8 +3255,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/loss-function.jpg"/>
@@ -3466,8 +3270,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>那你會問，在假新聞分類裡頭，我們應該使用什麼損失函數呢？</p>
 <p>我們在<a href="#將正解做-One-hot-Encoding">將正解做 One-hot Encoding</a> 一節有稍微提到，我們會希望</p>
@@ -3479,8 +3282,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/cross-entropy.jpg"/>
@@ -3495,8 +3297,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在 Keras 裏頭，我們可以這樣定義模型的損失函數：</p>
 </div>
@@ -3515,8 +3316,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>categorical_crossentropy</code> 即是我們剛剛所說的交叉熵，而 <code>accuracy</code> 則是準確度，會被我們用來在訓練過程中了解模型的表現情況。</p>
 <p>精準度的定義為：</p>
@@ -3528,8 +3328,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/loss-function-learning.gif"/>
@@ -3544,8 +3343,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>雖然我們有很多種優化器，但它們基本上都是從<a href="https://zh.wikipedia.org/wiki/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95">梯度下降法（Gradient Descent）</a>延伸而來。</p>
 <p>在上圖的不同位置，梯度下降法會重新計算每個參數對損失函數的梯度（斜率）。接著梯度下降法會利用該梯度來修正參數，使得使用新參數算出來的損失函數的值能夠持續往下降。</p>
@@ -3554,15 +3352,13 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="訓練模型並挑選最好的結果">訓練模型並挑選最好的結果<a class="anchor-link" href="#訓練模型並挑選最好的結果">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這步驟很直觀，我們就是實際使用 <code>model.fit</code> 來訓練剛剛定義出來的孿生 LSTM 模型：</p>
 </div>
@@ -3600,8 +3396,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這邊特別值得拿出來提的是以下兩個參數：</p>
 <ul>
@@ -3613,16 +3408,14 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/rawpixel-584290-unsplash.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>實務上都是每次只放入幾筆訓練數據，讓模型看完這些資料後就做一次參數的更新。而這個「幾筆」，就是 <code>BATCH_SIZE</code>。</p>
 <p>依照 <code>BATCH_SIZE</code> 的大小，梯度下降（Gradient Descent, 後稱 GD）可以概括為 3 個類別：</p>
@@ -3634,8 +3427,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/sgd-vs-mini-batch.jpg"/>
@@ -3650,16 +3442,14 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如上圖所示，下方的 GD 因為在每次更新參數前都會看完訓練資料集裡頭所有的數據，因此它更新參數的方向是最可靠的。但要往前走一步就就得看完 32 萬筆數據，未免成本也太大。</p>
 <p>另一個極端是上方的 SGD：模型每看完 1 個訓練數據就嘗試更新權重，而因為單一一筆訓練數據並不能很好地代表整個訓練資料集，前進的方向非常不穩定。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/mini-batch.jpg"/>
@@ -3674,23 +3464,20 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因此我們常常採用的是中庸之道： Mini-batch GD 的方式來訓練模型，而這靠的是指定 <code>model.fit</code> 函式裡頭的 <code>batch_size</code>。</p>
 <p><code>NUM_EPOCHS</code> 則很容易理解：你希望模型不只將 32 萬筆的訓練數據都看過一遍，而是每一筆資料還要多看過好幾次，以讓模型確確實實地從它們身上學到東西。<code>NUM_EPOCHS</code> = 10 的意思就代表模型會重複看整個訓練資料集 10 次。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>接著讓我們看看 Keras 的訓練過程：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/training-process.jpg"/>
@@ -3703,8 +3490,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因為模型的目標就是要最小化損失函數（Loss Function），你可以觀察到當模型看過越多訓練資料集（Training Set）的數據以後，損失值（loss）就越低，分類的準確度（acc）則越高。</p>
 <p>這代表我們的模型越來越熟悉訓練資料集裡頭的數據，因此在訓練資料集裡頭的表現越來越好。</p>
@@ -3718,24 +3504,21 @@ Test Set
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/training-result.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>很明顯地，我們的神經網路有過適（Overfittng）的問題：儘管在訓練資料集表現得非常好（準確度超過 90 %、損失小於 0.2），在從沒看過的驗證資料集的表現就相對遜色不少。且在第 6 個 epoch 之後驗證資料集的準確度 <code>val_acc</code> 就沒什麼在上升，驗證集的損失 <code>val_loss</code> 則已經逐漸上升。</p>
 <p>這代表模型利用從訓練資料集學到的模式（Pattern）還無法非常精準地預測沒見過的事物。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/deep-learning-three-steps-with-keras.jpg"/>
@@ -3748,23 +3531,20 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如同我們在<a href="#深度學習-3-步驟">這章節一開頭</a>所說的，雖然第 3 步驟：「訓練模型並挑選最好的結果」的 Keras 實作非常簡單（基本上就是 <code>model.fit( ...)</code>），但實際上在一個機器學習 / 深度學習專案裡頭，你將會花 80 % 的時間在這個步驟裡頭調整參數，想辦法找到一個最棒的模型。</p>
 <p>儘管如此，我們現在最想知道的還是這個模型在真實世界（也就是測試資料集）到底能表現多好，因此先讓我們試著拿這個簡單模型來做預測吧！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="進行預測並提交結果_1">進行預測並提交結果<a class="anchor-link" href="#進行預測並提交結果">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>就跟我們對訓練 / 驗證資料集做的<a href="#資料前處理：讓機器能夠處理文字">資料前處理</a>一樣，要對測試資料集（Test Set）做預測，我們得先將裡頭的文本數據通通轉換成能夠丟進模型的數字序列資料。</p>
 <p>首先，讓我們把測試資料集讀取進來：</p>
@@ -3860,8 +3640,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>測試資料集跟訓練資料集的唯一差別只在沒有 <code>label</code> 欄位，因此我們只需要將當初在<a href="#資料前處理：讓機器能夠處理文字">資料前處理</a>章節使用的步驟原封不動地套用在測試資料集即可。</p>
 <p>你可以趁機複習一下有哪些步驟：</p>
@@ -3911,8 +3690,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這些步驟現在對你來說應該都已經不再陌生。</p>
 <p>讓我們看一下從模型得到的預測結果長什麼樣子：</p>
@@ -3929,16 +3707,14 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/test-predictions.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>跟我們之前討論過的一樣，模型針對每一筆成對新聞標題的輸入，會回傳給我們 3 個分類的機率值。</p>
 <p>現在，我們只要將機率值最大的類別當作答案，並將這個結果轉回對應的文本標籤即可上傳到 Kaggle：</p>
@@ -3964,23 +3740,20 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/submission.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>得到上面的 DataFrame 以後，我們可以將其儲存成 CSV 並上傳到 kaggle，而結果如下：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/first-submission-result.jpg"/>
@@ -3993,24 +3766,21 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果你還記得我們在<a href="#用直覺找出第一條底線">用直覺找出第一條底線</a>的章節內容的話，就會知道這並不是應該多好的預測結果，但的確比多數票決好了一點點。</p>
 <p>不過不需要操之過急，因為任何機器學習專案都是一個持續重複改善的迴圈。在第一次預測就做出完美結果的情況很少，重點是持續改善。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/thor-alvis-754589-unsplash.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在第一次提交結果以後，我們還可以做非常多事情來嘗試改善模型效能：</p>
 <ul>
@@ -4027,15 +3797,13 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="我們是怎麼走到這裡的">我們是怎麼走到這裡的<a class="anchor-link" href="#我們是怎麼走到這裡的">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在這趟 NLP 旅程裏頭，我們學會了不少東西。</p>
 <p>現在的你應該已經了解：</p>
@@ -4053,16 +3821,14 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/wil-stewart-24562-unsplash.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>能閱讀到這裡，我相信你對深度學習以及 NLP 領域是抱著不少興趣的。而為了讓你在閱讀本文以後能夠繼續探索這個世界，在下一章節我則會介紹 3 門非常推薦的線上課程。</p>
 <p>最後，我則會在文末總結一下自己的心得。</p>
@@ -4070,8 +3836,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="3-門推薦的線上課程">3 門推薦的線上課程<a class="anchor-link" href="#3-門推薦的線上課程">&para;</a></h2><p>為了奠定 NLP 的基礎，這一個月我一邊複習舊教材，一邊看了不少教學文章以及線上課程。</p>
 <p>截至目前，我認為有 3 個 CP 值十分高的課程值得推薦給你：</p>
@@ -4093,8 +3858,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/Hung-yi-Lee-ml-courses.jpg"/>
@@ -4109,16 +3873,14 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="http://www.ee.ntu.edu.tw/profile?id=1020908">李宏毅教授</a>的機器學習課程內行的都知道，大概是全世界最好、最完整的 Deep Learning 中文學習資源。李教授在課程中廣徵博引學術論文，但卻同時非常淺顯易懂。你可以在這邊看到<a href="https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ/playlists">教授所有的 Youtube 課程播放清單</a>。</p>
 <p>就我所知，教授在台大上課很注重實作，有不少作業需要完成，但因為線上只有影片可以查看，因此我將其分類為「奠定理論基礎」。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/deeplearning-ai-courses.jpg"/>
@@ -4133,24 +3895,21 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>原 Google Brain 的<a href="https://zh.wikipedia.org/wiki/%E5%90%B4%E6%81%A9%E8%BE%BE">吳恩達教授</a>的 <a href="https://www.coursera.org/specializations/deep-learning">Deep Learning 專項課程</a>則是 Coursera 上最受歡迎的深度學習課程。跟我們這篇文章最相關的 NLP 技術則被涵蓋在該專項課程的最後一堂課：<a href="https://www.coursera.org/learn/nlp-sequence-models">Sequence Models</a>。</p>
 <p>我在大約一年前完成包含<a href="https://www.coursera.org/learn/convolutional-neural-networks">卷積神經網路 CNN</a> 的前四堂課，而因為課程上線已有一段時間，現在影片大都有簡體或繁體中文的字幕，不太需要煩惱聽不懂英文。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/deeplearning-with-python.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://www.oreilly.com/library/view/deep-learning-with/9781617294433VE/">Deep Learning with Python Video Edition</a> 的作者 <a href="https://ai.google/research/people/105096">Fran&ccedil;ois Chollet</a> 為軟體工程師出身，設計出知名深度學習框架 <a href="https://keras.io/">Keras</a>，目前則在 Google AI 工作。</p>
 <p>該書以 Programmer 的角度出發，提供了利用 Keras 實現各種 NLP 任務的範例，十分適合在熟悉深度學習理論後想要實作的人閱讀。</p>
@@ -4158,39 +3917,34 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/maxwell-ridgeway-685077-unsplash.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這些課程可以說是幫助我完成這篇文章以及 Kaggle 競賽的最大功臣，而我也希望能透過這篇文章的微薄之力讓你知道他們的存在，並隨著他們繼續你從這裏開始的 NLP 探險。</p>
 <p>當然，除了以上 3 堂課程，你還可以在<a href="https://leemeng.tw/deep-learning-resources.html">由淺入深的深度學習資源整理</a>一文看到更多我整理的深度學習資源。你也可以直接前往 <a href="https://github.com/leemengtaiwan/deep-learning-resources">Github Repo</a> 查看。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="結語：從掌握基礎到運用巨人之力">結語：從掌握基礎到運用巨人之力<a class="anchor-link" href="#結語：從掌握基礎到運用巨人之力">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>網路上多的是專業的 NLP 教學文章或論文探討，但平易近人的中文文章卻少之又少。</p>
 <p>在文章開頭我說：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -4202,8 +3956,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這野心聽起來很狂妄，但至少我已經嘗試用最平易近人的詞彙向你介紹這個 NLP 世界的一丁點基礎知識，而我也希望你真的學到了些什麼、獲得些啟發。</p>
 <p>現在深度學習以及 NLP 領域實在發展太快，就算一個人有興趣也常常不知從何開始學起。</p>
@@ -4211,8 +3964,7 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/jack-anstey-383370-unsplash.jpg"/>
@@ -4225,48 +3977,42 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這邊說的 NLP，其實更適合用人工智慧取代。</p>
 <p>對還沒掌握機器學習 / 深度學習 / NLP 知識的人來說，這些技術只會離自己越來越遠，最後遠到只會在<a href="https://buzzorange.com/techorange/2018/12/22/ai-breakthrough-in-2018/">新聞報導</a>或科幻小說上看到，儘管被這些技術驅動的龐大系統每天影響著他們的生活。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/rawpixel-780496-unsplash.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>至於那些已經掌握這些知識的人，透過運用<a href="https://github.com/google-research/bert">如遷移學習等巨人之力</a>，就連一般人也能做到以前憑自己力量做不到的事情。</p>
 <p>比方說利用 Google 在今年 11 月公開的龐大<a href="https://github.com/google-research/bert">語言代表模型 BERT</a>，我不費吹灰之力就在本文的 <a href="https://www.kaggle.com/c/fake-news-pair-classification-challenge/leaderboard">Kaggle 競賽</a>達到 85 % 的正確率，距離第一名 3 %，總排名前 30 %。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/kaggle-final-result.png"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們之前設計的 LSTM 模型則僅有 67 % 準確度。</p>
 <p>並不是說只要用新的語言代表模型就好，這篇學的東西都不重要。事實上正好相反：正是因為有了此篇的 NLP 基礎知識，才讓我得以順利地運用該巨人之力。如果你有興趣深入了解，可以接著閱讀<a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">進擊的 BERT：NLP 界的巨人之力與遷移學習</a>，用最直觀的方式理解並實際運用這個巨人之力。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/bert/bert-intro.jpg"/>
@@ -4281,16 +4027,14 @@ Test Set
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>深度學習以及 NLP 領域發展快速，但你總要從某個地方開始好好地學習基礎，而且越快開始越好。</p>
 <p>所以我留給你的最後一個問題就是：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -4316,6 +4060,8 @@ Test Set
                     </span>
 
                 </p>
+
+
 
 
 
@@ -4367,9 +4113,9 @@ Test Set
                             </a>
                         </div>
                         <div class="blog-content__next">
-                            <a href="https://leemeng.tw/3-lessons-i-learnt-from-emnlp-2018-at-belgium.html" rel="next">
+                            <a href="https://leemeng.tw/chartify-a-simple-yet-powerful-python-data-visualization-tool-which-boost-your-productivity-as-a-data-scientist.html" rel="next">
                                 <span>Next Post</span>
-                                我在比利時 EMNLP 之旅中學到的 3 堂課
+                                Chartify：讓數據科學家效率加倍的 Python 資料視覺化工具
                             </a>
                         </div>
                     </div>

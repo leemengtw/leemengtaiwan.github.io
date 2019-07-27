@@ -180,7 +180,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2017-09-21 (Thu)</li>
                         <li class="page-view">
-                            2,384 views
+                            2,390 views
                         </li>
                     </ul>
 
@@ -240,8 +240,7 @@
             <div class="col-full blog-content__main">
 
                 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.</p>
 <p>Finally, train a Neural Network with one-hidden layer using ReLU activation units to see whether we can boost our model's performance further.</p>
@@ -250,8 +249,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Import-libraries">Import libraries<a class="anchor-link" href="#Import-libraries">&para;</a></h2>
 </div>
@@ -274,8 +272,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Load-notMNIST-dataset">Load notMNIST dataset<a class="anchor-link" href="#Load-notMNIST-dataset">&para;</a></h2><p>This time we will use the dataset which has been normalized and randomized before to omit the data preprocessing step.</p>
 <p>Tips:</p>
@@ -323,15 +320,13 @@ Test set (10000, 28, 28) (10000,)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Reformat-data-for-easier-training">Reformat data for easier training<a class="anchor-link" href="#Reformat-data-for-easier-training">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Reformat both pixels(features) and labels that's more adapted to the models we're going to train:</p>
 <ul>
@@ -344,8 +339,7 @@ Test set (10000, 28, 28) (10000,)
 </caption></center></caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Tips:</p>
 <ul>
@@ -399,23 +393,20 @@ Test set (784, 10000) (10, 10000)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Logistic-regression-with-gradient-descent">Logistic regression with gradient descent<a class="anchor-link" href="#Logistic-regression-with-gradient-descent">&para;</a></h2><p>For logistic regression, we use the formula $WX + b = Y'$ to do the computation. W is of shape (10, 784), X is of shape (784, m) and Y' is of shape (10, m) where $m$ is the number of training instances/images. After compute the probabilities of 10 classes stored in Y', we will use built-in <code>tf.nn.softmax_cross_entropy_with_logits</code> to compute cross-entropy between Y' and Y(train_labels) as cost.</p>
 <p>We will first instruct Tensorflow how to do all the computation and make it run the optimization several times.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Build-the-Tensorflow-computation-graph">Build the Tensorflow computation graph<a class="anchor-link" href="#Build-the-Tensorflow-computation-graph">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We're first going to train a multinomial logistic regression using simple gradient descent.</p>
 <p>TensorFlow works like this:</p>
@@ -489,8 +480,7 @@ Test set (784, 10000) (10, 10000)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Tips:</p>
 <ul>
@@ -500,15 +490,13 @@ Test set (784, 10000) (10, 10000)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Gradient-descent-by-iterating-computation-graph">Gradient descent by iterating computation graph<a class="anchor-link" href="#Gradient-descent-by-iterating-computation-graph">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we can tell TensorFlow to run this computation and iterate.<br/>
 Here we will use <code>tqdm</code> library to help us easily visualize the progress and the time used in the iterations.</p>
@@ -579,10 +567,10 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 </div>
 <div class="output_area">
-<div id="52dc8800-cb27-4c60-91e7-1898dcb36417"></div>
+<div id="c9491923-d465-4657-b013-3a609682c5ae"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#52dc8800-cb27-4c60-91e7-1898dcb36417');
+var element = $('#c9491923-d465-4657-b013-3a609682c5ae');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -608,15 +596,13 @@ Test acc: 82.8%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Logistic-regression-with-SGD_1">Logistic regression with SGD<a class="anchor-link" href="#Logistic-regression-with-SGD">&para;</a></h2><p>Or more precisely, mini-batch approach.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>From the result above, we can see it cost about 20 seconds (on my computer) to iterate 10,000 training instances by simple gradient descent. Let's now switch to stochastic gradient descent training instead, which is much faster.</p>
 <p>The graph will be similar, except that instead of holding all the training data into a constant node, we create a <code>Placeholder</code> node which will be fed actual data at every call of <code>session.run()</code>.</p>
@@ -628,8 +614,7 @@ Test acc: 82.8%
 </caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Build-computation-graph">Build computation graph<a class="anchor-link" href="#Build-computation-graph">&para;</a></h3>
 </div>
@@ -679,8 +664,7 @@ Test acc: 82.8%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Iterate-using-SGD">Iterate using SGD<a class="anchor-link" href="#Iterate-using-SGD">&para;</a></h3>
 </div>
@@ -731,10 +715,10 @@ Test acc: 82.8%
 </div>
 </div>
 <div class="output_area">
-<div id="a46b1064-0d65-4393-b8d5-13f0624d5c6e"></div>
+<div id="cfe8aa20-2a41-483e-9023-feb520349539"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a46b1064-0d65-4393-b8d5-13f0624d5c6e');
+var element = $('#cfe8aa20-2a41-483e-9023-feb520349539');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -758,22 +742,19 @@ Test acc: 86.9%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It took only about 3 seconds in my computer to finish the optimization using SGD (which took gradient descent about 20 seconds) and got a even slightly better result. The key of SGD is take <strong>randomized</strong> samples / mini-batches and feed that into the model every iteration (thus the <code>feed_dict</code> term).</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="2-layer-NN-with-ReLU-units_1">2-layer NN with ReLU units<a class="anchor-link" href="#2-layer-NN-with-ReLU-units">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Instead all just linear combination of features, we want to introduce non-linearlity in our logistic regression. By turning the logistic regression example with SGD into a 1-hidden layer neural network with rectified linear units <a href="https://www.tensorflow.org/versions/r0.7/api_docs/python/nn.html#relu">nn.relu()</a> and 1024 hidden nodes, we should be able to improve validation / test accuracy.</p>
 <p>A 2-layer NN (1-hidden layer NN) look like this:</p>
@@ -782,8 +763,7 @@ Test acc: 86.9%
 </caption></center></caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Build-compuation-graph">Build compuation graph<a class="anchor-link" href="#Build-compuation-graph">&para;</a></h3><p>In this part, use the notation $X$ in replace of  <code>dataset</code>. The weights and biases of the hidden layer are denoted as $W1$ and $b1$, and the weights and biases of the output layer are denoted as $W2$ and $b2$.</p>
 <p>Thus the pre-activation output(logits) of output layer is computed as $ logits = W2 * ReLU(W1 * X + b1) + b2 $</p>
@@ -838,8 +818,7 @@ Test acc: 86.9%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Run-the-iterations">Run the iterations<a class="anchor-link" href="#Run-the-iterations">&para;</a></h3>
 </div>
@@ -892,10 +871,10 @@ Test acc: 86.9%
 </div>
 </div>
 <div class="output_area">
-<div id="9990c80e-e94b-4acb-9cca-a442269df831"></div>
+<div id="acbcada2-ac9f-4351-a947-175f7aa48744"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#9990c80e-e94b-4acb-9cca-a442269df831');
+var element = $('#acbcada2-ac9f-4351-a947-175f7aa48744');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
@@ -919,10 +898,19 @@ Test acc: 88.7%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Summary_1">Summary<a class="anchor-link" href="#Summary">&para;</a></h2><p>Because we use a more complex model(1 hidden-layer NN), it take a little longer to train, but we're able to gain more performance from logistic regression even with the same hyper-parameter settings (learning rate = 0.5, batch_size=128). Better performance may be gained by tuning hyper parameters of the 2 layer NN. Also notice that by using mini-batch / SGD, we can save lots of time training models and even get a better result.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -949,6 +937,10 @@ Test acc: 88.7%
                     </span>
 
                 </p>
+
+
+
+
 
 
 

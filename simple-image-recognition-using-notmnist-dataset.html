@@ -236,8 +236,7 @@
             <div class="col-full blog-content__main">
 
                 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Today we're going to do some simple image recogintion using NotMNIST dataset. But before creating model for prediction, it's more important to explore, clean and normalize our dataset in order to make the learning go smoother when we actually build predictive models.</p>
 <p>I motified the <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb">notebook</a> from Udacity's online Deep learning course and the objective of this assignment is to learn about <strong>simple data curation practices</strong>, and familiarize you with some of the data we'll be reusing later.</p>
@@ -246,8 +245,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This notebook is mainly foucsing on data preprocessing rather than building models.</p>
 <h2 id="Workflow">Workflow<a class="anchor-link" href="#Workflow">&para;</a></h2><ul>
@@ -269,8 +267,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Import-libraries">Import libraries<a class="anchor-link" href="#Import-libraries">&para;</a></h2>
 </div>
@@ -302,8 +299,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Dataset">Dataset<a class="anchor-link" href="#Dataset">&para;</a></h2><ul>
 <li>Download compressed dataset if the dataset is not available yet</li>
@@ -311,8 +307,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>First, we'll download the dataset to our local machine. The data consists of characters rendered in a variety of fonts on a 28x28 image. <strong>The labels are limited to 'A' through 'J' (10 classes). The training set has about 500k and the testset 19000 labeled examples.</strong> Given these sizes, it should be possible to train models quickly on any machine.</p>
 </div>
@@ -376,8 +371,7 @@ Found and verified ./datasets/notMNIST_small.tar.gz
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Extract-the-dataset-into-folders-by-characters">Extract the dataset into folders by characters<a class="anchor-link" href="#Extract-the-dataset-into-folders-by-characters">&para;</a></h2><p>Extract the dataset from the compressed .tar.gz file.
 This should give you a set of directories, labeled A through J.</p>
@@ -432,8 +426,7 @@ This should give you a set of directories, labeled A through J.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr/>
 <h2 id="Problem-1---Sample-some-images-in-dataset-and-render-them">Problem 1 - Sample some images in dataset and render them<a class="anchor-link" href="#Problem-1---Sample-some-images-in-dataset-and-render-them">&para;</a></h2><p>Let's take a peek at some of the data to make sure it looks sensible. Each exemplar should be an image of a character A through J rendered in a different font. Display a sample of the images that we just downloaded. Hint: you can use the package IPython.display.</p>
@@ -2851,8 +2844,7 @@ KBQKhUKhUCgUigminDCFQqFQKBQKhUKhmCD/B49LVnfWJaUqAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Data-curation_1">Data curation<a class="anchor-link" href="#Data-curation">&para;</a></h2><ul>
 <li>drop unreadable images</li>
@@ -2862,8 +2854,7 @@ KBQKhUKhUCgUigminDCFQqFQKBQKhUKhmCD/B49LVnfWJaUqAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now let's load the data in a more manageable format. Since, depending on your computer setup you might not be able to fit it all in memory, we'll load each class into a separate dataset, store them on disk and curate them independently. Later we'll merge them into a single dataset of manageable size.</p>
 <p>We'll convert the entire dataset into a 3D array (image index, x, y) of floating point values, <strong>normalized</strong> to have approximately zero mean and standard deviation ~0.5 to make training easier down the road.</p>
@@ -2871,8 +2862,7 @@ KBQKhUKhUCgUigminDCFQqFQKBQKhUKhmCD/B49LVnfWJaUqAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Debugging">Debugging<a class="anchor-link" href="#Debugging">&para;</a></h3><p>In case of following error occur:</p>
 <div class="highlight"><pre><span></span><span class="ne">ImportError</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="kn">import</span> <span class="nn">the</span> <span class="nn">Python</span> <span class="nn">Imaging</span> <span class="nn">Library</span> <span class="p">(</span><span class="n">PIL</span><span class="p">)</span> <span class="n">required</span> <span class="n">to</span> <span class="n">load</span> <span class="n">image</span> <span class="n">files</span><span class="o">.</span>
@@ -2990,8 +2980,7 @@ to<div class="highlight"><pre><span></span><span class="kn">from</span> <span cl
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr/>
 <h2 id="Problem-2_1">Problem 2<a class="anchor-link" href="#Problem-2">&para;</a></h2><p>Let's verify that the data still looks good. Displaying a sample of the labels and images from the ndarray. Hint: you can use matplotlib.pyplot.</p>
@@ -3867,8 +3856,7 @@ scQSSyyxxBJLLLHEEsszShyExRJLLLHEEkssscQSSyyxPKP8P1FhT5WvXKEnAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr/>
 <h2 id="Problem-3_1">Problem 3<a class="anchor-link" href="#Problem-3">&para;</a></h2><p>We expect the data to be balanced across classes.<br/>
@@ -3908,8 +3896,7 @@ Number of samples in ./datasets/notMNIST_large/J.pickle: 52911
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Merge-seperate-character-dataset-together-(for-all-training/test/valid)">Merge seperate character dataset together (for all training/test/valid)<a class="anchor-link" href="#Merge-seperate-character-dataset-together-(for-all-training/test/valid)">&para;</a></h2><p>Merge and prune the training data as needed. Depending on your computer setup, you might not be able to fit it all in memory, and you can tune <code>train_size</code> as needed. The labels will be stored into a separate array of <strong>integers 0 through 9.</strong></p>
 <p>Also create a validation dataset for hyperparameter tuning.</p>
@@ -3995,8 +3982,7 @@ Testing: (10000, 28, 28) (10000,)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Randomize-data">Randomize data<a class="anchor-link" href="#Randomize-data">&para;</a></h2><p>Next, we'll randomize the data. It's important to have the labels well shuffled for the training and test distributions to match. The purpose of randomizing data is to perserve the assumption that we get the data randomly as predict phase. We don't want to train models sequantially on training instances like AAA ... BBB ... CCC.</p>
 <p>Keypoints:</p>
@@ -4027,8 +4013,7 @@ Testing: (10000, 28, 28) (10000,)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr/>
 <h2 id="Problem-4---Sanity-check-after-shuffling-dataset">Problem 4 - Sanity check after shuffling dataset<a class="anchor-link" href="#Problem-4---Sanity-check-after-shuffling-dataset">&para;</a></h2><p>Convince yourself that the data is still good after shuffling!<br/>
@@ -5318,8 +5303,7 @@ YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Serialize-dataset-for-later-usage">Serialize dataset for later usage<a class="anchor-link" href="#Serialize-dataset-for-later-usage">&para;</a></h2><p>Everything looks good, finally, let's save the data for later reuse:</p>
 </div>
@@ -5372,8 +5356,7 @@ YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr/>
 <h2 id="Problem-5---Remove-overlapping-samples-in-test/valid-set">Problem 5 - Remove overlapping samples in test/valid set<a class="anchor-link" href="#Problem-5---Remove-overlapping-samples-in-test/valid-set">&para;</a></h2><p>By construction, this dataset might contain a lot of overlapping samples, including training data that's also contained in the validation and test set! Overlap between training and test can skew the results if you expect to use your model in an environment where there is <strong>never</strong> an overlap, but are actually ok if you expect to see training samples recur when you use it.
@@ -5387,8 +5370,7 @@ Measure how much overlap there is between training, validation and test samples.
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Find-duplicate-images-in-test-set">Find duplicate images in test set<a class="anchor-link" href="#Find-duplicate-images-in-test-set">&para;</a></h3><p>I used Cosine Similarity to measure whether image A in training set is identical to those image B in valid/test set.</p>
 <p><img src="images/cosine_sim.png" width="50%"/></p>
@@ -5404,53 +5386,53 @@ Measure how much overlap there is between training, validation and test samples.
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-def get_duplicate_data(source_dataset, target_dataset, threshold=1, num_duplicate_to_show=0):
-    X = source_dataset.reshape(source_dataset.shape[0], -1)
-    Y = target_dataset.reshape(target_dataset.shape[0], -1)
-    assert(X.shape[1] == Y.shape[1])
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="k">def</span> <span class="nf">get_duplicate_data</span><span class="p">(</span><span class="n">source_dataset</span><span class="p">,</span> <span class="n">target_dataset</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_duplicate_to_show</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">source_dataset</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">source_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">target_dataset</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">target_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">assert</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     
-    dim = X.shape[1]
-    cosine_sim = np.inner(X, Y) / np.inner(np.abs(X), np.abs(Y))
-    assert(cosine_sim.shape == (X.shape[0], Y.shape[0]))
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">cosine_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
+    <span class="k">assert</span><span class="p">(</span><span class="n">cosine_sim</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
     
-    # for each image in training set, find corresponding duplicate in test/valid set
-    dup_target_indices = []
-    show_duplicate_counter = 0
-    for source_idx in range(cosine_sim.shape[0]):
-        dup_indices = list(np.where(cosine_sim[source_idx, :] &gt;= threshold)[0])
+    <span class="c1"># for each image in training set, find corresponding duplicate in test/valid set</span>
+    <span class="n">dup_target_indices</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">show_duplicate_counter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">source_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cosine_sim</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">dup_indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">cosine_sim</span><span class="p">[</span><span class="n">source_idx</span><span class="p">,</span> <span class="p">:]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
     
-        # render duplicate images when is available. may omit if visual output is not required
-        if dup_indices and num_duplicate_to_show and (show_duplicate_counter &lt; num_duplicate_to_show):
-            # show only non-redudent duplicate images
-            for i in dup_indices:
-                if i in dup_target_indices:
-                    dup_indices.remove(i)
-            if not dup_indices: continue
+        <span class="c1"># render duplicate images when is available. may omit if visual output is not required</span>
+        <span class="k">if</span> <span class="n">dup_indices</span> <span class="ow">and</span> <span class="n">num_duplicate_to_show</span> <span class="ow">and</span> <span class="p">(</span><span class="n">show_duplicate_counter</span> <span class="o">&lt;</span> <span class="n">num_duplicate_to_show</span><span class="p">):</span>
+            <span class="c1"># show only non-redudent duplicate images</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dup_indices</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dup_target_indices</span><span class="p">:</span>
+                    <span class="n">dup_indices</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">dup_indices</span><span class="p">:</span> <span class="k">continue</span>
             
-            if len(dup_indices) == 1:
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dup_indices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             
-                fig = plt.figure(figsize=(3, 15))
-                fig.add_subplot(1, len(dup_indices) + 1, 1)
-                plt.imshow(source_dataset[source_idx, :, :], cmap='gray')
-                plt.title('Source: ' + str(source_idx))
-                plt.axis('off')
+                <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+                <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dup_indices</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">source_dataset</span><span class="p">[</span><span class="n">source_idx</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Source: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">source_idx</span><span class="p">))</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
             
             
-                for i, target_idx in enumerate(dup_indices):
-                    fig.add_subplot(1, len(dup_indices) + 1, i + 2)
-                    plt.imshow(target_dataset[target_idx, :, :], cmap='gray')
-                    plt.title('Target: ' + str(target_idx))
-                    plt.axis('off')
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">target_idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dup_indices</span><span class="p">):</span>
+                    <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dup_indices</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">target_dataset</span><span class="p">[</span><span class="n">target_idx</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Target: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">target_idx</span><span class="p">))</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
 
-                show_duplicate_counter += 1
+                <span class="n">show_duplicate_counter</span> <span class="o">+=</span> <span class="mi">1</span>
         
-        dup_target_indices.extend(dup_indices)
-    return list(set(dup_target_indices))
+        <span class="n">dup_target_indices</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">dup_indices</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">dup_target_indices</span><span class="p">))</span>
         
     
-dup_indices_test = get_duplicate_data(train_dataset, test_dataset, num_duplicate_to_show=5)
-print('Number of duplicates in test dataset: {}'.format(len(dup_indices_test)))
+<span class="n">dup_indices_test</span> <span class="o">=</span> <span class="n">get_duplicate_data</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">test_dataset</span><span class="p">,</span> <span class="n">num_duplicate_to_show</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Number of duplicates in test dataset: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dup_indices_test</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -5929,8 +5911,7 @@ RU5ErkJggg==
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Duplicate-images-in-validation-set">Duplicate images in validation set<a class="anchor-link" href="#Duplicate-images-in-validation-set">&para;</a></h3>
 </div>
@@ -5940,9 +5921,9 @@ RU5ErkJggg==
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-dup_indices_valid = get_duplicate_data(train_dataset, valid_dataset, num_duplicate_to_show=5)
-print('Number of duplicates in validation dataset: {}'.format(len(dup_indices_valid)))
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">dup_indices_valid</span> <span class="o">=</span> <span class="n">get_duplicate_data</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">valid_dataset</span><span class="p">,</span> <span class="n">num_duplicate_to_show</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Number of duplicates in validation dataset: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dup_indices_valid</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -6468,8 +6449,7 @@ RK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Serialize-sanitized-dataset-for-later-model-performance-comparison">Serialize sanitized dataset for later model performance comparison<a class="anchor-link" href="#Serialize-sanitized-dataset-for-later-model-performance-comparison">&para;</a></h3><ul>
 <li>Remove duplicates in test/valid set</li>
@@ -6567,8 +6547,7 @@ Number of duplicate images in valid set: 1507
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr/>
 <h2 id="Problem-6---Build-naive-classifier-using-logistic-regression_1">Problem 6 - Build naive classifier using logistic regression<a class="anchor-link" href="#Problem-6---Build-naive-classifier-using-logistic-regression">&para;</a></h2><p>Let's get an idea of what an off-the-shelf classifier can give you on this data. It's always good to check that there is something to learn, and that it's a problem that is not so trivial that a canned solution solves it.</p>
@@ -7089,8 +7068,7 @@ AAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As show above, there are seveal things worth mentioning:</p>
 <ul>
@@ -7102,6 +7080,16 @@ AAAASUVORK5CYII=
 <ul>
 <li>Notice that we just want to have a off-the-shelf model quickly, so we don't even tune hyper-parameters using validation set. We may be able to further improve model's predictive performance by tuning hyper-parameters or using Neural Network in another notebook.</li>
 </ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -7124,6 +7112,10 @@ AAAASUVORK5CYII=
                     </span>
 
                 </p>
+
+
+
+
 
 
 

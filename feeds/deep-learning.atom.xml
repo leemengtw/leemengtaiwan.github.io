@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>LeeMeng - Deep Learning</title><link href="https://leemeng.tw/" rel="alternate"></link><link href="https://leemeng.tw/feeds/deep-learning.atom.xml" rel="self"></link><id>https://leemeng.tw/</id><updated>2017-09-30T18:30:00+09:00</updated><entry><title>Find Word Semantic by Using Word2vec in TensorFlow</title><link href="https://leemeng.tw/find-word-semantic-by-using-word2vec-in-tensorflow.html" rel="alternate"></link><published>2017-09-30T18:30:00+09:00</published><updated>2017-09-30T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-30:/find-word-semantic-by-using-word2vec-in-tensorflow.html</id><summary type="html">&lt;p&gt;Naive Word2vec implementation using Tensorflow&lt;/p&gt;</summary><content type="html">
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The goal of this assignment is to train a Word2Vec skip-gram model over &lt;a href="http://mattmahoney.net/dc/textdata"&gt;Text8&lt;/a&gt; data using Tensorflow.&lt;/p&gt;
 &lt;p&gt;Word2vec is a kind of vector space model (VSM) in natural language processing (NLP) where the core assumption/intuition is that words that appear in similar 'context' share similar meaning and they should be near in the vector space. So what word2vec trying to do is to find a vector representation (embedding) for each word in our training corpus where words with similar meanings are near in the vector space.&lt;/p&gt;
@@ -9,8 +8,7 @@
 &lt;/caption&gt;&lt;/center&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Unlike supervised learning, we don't have labels that tell us 'kitten' = 'cat'. So how do we train a model that will learn the relationship between these two words?&lt;/p&gt;
 &lt;p&gt;Recap the assumption mentioned before, words with similar meaning tend to appear in similar context. Because 'kitten' and 'cat' appear in similar context, if we can train a model to predict the context of the target word 'cat' and 'kitten' respectively, model should learn a similar representation for both 'kitten' and 'cat' because they produce similar context.&lt;/p&gt;
@@ -18,16 +16,14 @@
 &lt;/caption&gt;&lt;/center&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;As shown above, for each words like 'cat' in raw text, we will treat them as &lt;strong&gt;target word&lt;/strong&gt; and the words surrounding it as &lt;strong&gt;context&lt;/strong&gt; and construct the training instances (x, y) where x is target word and y is one of the word in context. And the definition of 'context' is decided by the parameter 'window size'.&lt;/p&gt;
 &lt;p&gt;First, let's load the text data and build the training data in order to train our model.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Libraries"&gt;Libraries&lt;a class="anchor-link" href="#Libraries"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
@@ -61,15 +57,13 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Raw-text-data"&gt;Raw text data&lt;a class="anchor-link" href="#Raw-text-data"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Download-/-load-data"&gt;Download / load data&lt;a class="anchor-link" href="#Download-/-load-data"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Download the data from the source website if necessary. will store the zip file in the 'datasets' subdirectory.&lt;/p&gt;
 &lt;/div&gt;
@@ -117,8 +111,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Turn-data-into-words"&gt;Turn data into words&lt;a class="anchor-link" href="#Turn-data-into-words"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Read the data into a string.&lt;/p&gt;
 &lt;/div&gt;
@@ -152,16 +145,14 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Look-into-text-corpus"&gt;Look into text corpus&lt;a class="anchor-link" href="#Look-into-text-corpus"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The 'data size' above mean how many words we have in the data. That is, there are about 17 millions words!&lt;br/&gt;
 Let's show some parts of the text data to make some sense of it.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Some phrases which include word 'cat' with window size = '2'.&lt;/p&gt;
 &lt;/div&gt;
@@ -193,8 +184,7 @@ force australia cat six two
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Some phrases which include word 'kitten' with window size = '2'.&lt;/p&gt;
 &lt;/div&gt;
@@ -226,23 +216,20 @@ called a kitten which is
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Create-training-data_1"&gt;Create training data&lt;a class="anchor-link" href="#Create-training-data"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;In order to let TensorFlow make use of the text corpus, we have to transform the text corpus into sequence of numbers. The way to achieve this to build a dictionary which map every word to a unique number and use that dictionary to transform the corpus into number-based data.&lt;/p&gt;
 &lt;center&gt;&lt;img src="images/turn_corpus_into_numbers.png" style="width:60%"/&gt;&lt;caption&gt;&lt;center&gt; &lt;u&gt;&lt;font color="purple"&gt; Figure 3&lt;/font&gt;&lt;/u&gt;&lt;font color="purple"&gt;: Build dictionary and turn text into numbers&lt;br/&gt; &lt;font color="black"&gt; &lt;/font&gt;&lt;/font&gt;&lt;/center&gt;
 &lt;/caption&gt;&lt;/center&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Notice that some rare words may appear very few times in the entire text corpus. We may want to exclude these terms to keep our dictionary in a reasonable size. In order to do this, we will build the dictionary and view these terms as UNK tokens. UNK means unknown word that doesn't exist in the vocabulary set and the default number of a UNK in dictionary is 0 as shown above.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Decide-dictionary-size"&gt;Decide dictionary size&lt;a class="anchor-link" href="#Decide-dictionary-size"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Depend on the size of the vocabulary, we will construct a dictionary for top &lt;strong&gt;vocabulary_size - 1&lt;/strong&gt; common words. For example, if the &lt;code&gt;vocabulary_size = 50000&lt;/code&gt;, we will first count the frequencies of every word appeared in the text corpus and put the most common 49,999 terms into our vocabulary and make the rest of words as UNK token. ( thus the 50,000 th term in the vocabulary).&lt;/p&gt;
 &lt;/div&gt;
@@ -258,8 +245,7 @@ called a kitten which is
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Build-dictionary-and-transform-text-corpus-into-sequence-of-numbers"&gt;Build dictionary and transform text corpus into sequence of numbers&lt;a class="anchor-link" href="#Build-dictionary-and-transform-text-corpus-into-sequence-of-numbers"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -338,8 +324,7 @@ called a kitten which is
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="See-transformed-text-corpus"&gt;See transformed text corpus&lt;a class="anchor-link" href="#See-transformed-text-corpus"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -373,8 +358,7 @@ was transformed into
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Function-to-generate-a-training-batch-for-the-skip-gram-model._1"&gt;Function to generate a training batch for the skip-gram model.&lt;a class="anchor-link" href="#Function-to-generate-a-training-batch-for-the-skip-gram-model."&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;As usual, we will use mini-batch GD to update our model's parameters.&lt;br/&gt;
 Other than batch_size, we also have to decide the range of context surrounding target word (skip_window) and how many training instances are we going to create from a single (target, context) pair.&lt;/p&gt;
@@ -491,22 +475,19 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Word2Vec-skip-gram-model."&gt;Word2Vec skip-gram model.&lt;a class="anchor-link" href="#Word2Vec-skip-gram-model."&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;center&gt;&lt;img src="images/word2vec_model.png" style="width:70%"/&gt;&lt;caption&gt;&lt;center&gt; &lt;u&gt;&lt;font color="purple"&gt; Figure 5&lt;/font&gt;&lt;/u&gt;&lt;font color="purple"&gt;: Word2vec model&lt;br/&gt; &lt;font color="black"&gt; &lt;/font&gt;&lt;/font&gt;&lt;/center&gt;
 &lt;/caption&gt;&lt;/center&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Computation-graph"&gt;Computation graph&lt;a class="anchor-link" href="#Computation-graph"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -581,8 +562,7 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Train-the-model"&gt;Train the model&lt;a class="anchor-link" href="#Train-the-model"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -636,10 +616,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="7e6f2b15-82a6-420b-9261-30c19c805939"&gt;&lt;/div&gt;
+&lt;div id="28def4bb-bff9-452f-a90f-e6167c49fefa"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#7e6f2b15-82a6-420b-9261-30c19c805939');
+var element = $('#28def4bb-bff9-452f-a90f-e6167c49fefa');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -882,8 +862,7 @@ Nearest to will: would, could, must, can, should, may, might, cannot,
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Transform-embedding-into-2D-using-t-SNE_1"&gt;Transform embedding into 2D using t-SNE&lt;a class="anchor-link" href="#Transform-embedding-into-2D-using-t-SNE"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
@@ -912,18 +891,17 @@ Nearest to will: would, could, must, can, should, may, might, cannot,
 &lt;div class="input"&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;time&lt;/span&gt;
-num_points = 400
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%%time&lt;/span&gt;
+&lt;span class="n"&gt;num_points&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;400&lt;/span&gt;
 
-tsne = TSNE(perplexity=30, n_components=2, init='pca', n_iter=5000, method='exact')
-two_d_embeddings = tsne.fit_transform(final_embeddings[1:num_points+1, :])
+&lt;span class="n"&gt;tsne&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TSNE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;perplexity&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n_components&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'pca'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n_iter&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'exact'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;two_d_embeddings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tsne&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit_transform&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;final_embeddings&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;num_points&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;:])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Visualize-result"&gt;Visualize result&lt;a class="anchor-link" href="#Visualize-result"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
@@ -3517,8 +3495,7 @@ AAAAAHiA4Q0AAAAAPPAD6qjcfWntDHEAAAAASUVORK5CYII=
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Todo"&gt;Todo&lt;a class="anchor-link" href="#Todo"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;CBOW&lt;/p&gt;
 &lt;p&gt;An alternative to skip-gram is another Word2Vec model called &lt;a href="http://arxiv.org/abs/1301.3781"&gt;CBOW&lt;/a&gt; (Continuous Bag of Words). In the CBOW model, instead of predicting a context word from a word vector, you predict a word from the sum of all the word vectors in its context. Implement and evaluate a CBOW model trained on the text8 dataset.&lt;/p&gt;
@@ -3526,8 +3503,7 @@ AAAAAHiA4Q0AAAAAPPAD6qjcfWntDHEAAAAASUVORK5CYII=
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="References"&gt;References&lt;a class="anchor-link" href="#References"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Original &lt;a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/5_word2vec.ipynb"&gt;jupyter notebook&lt;/a&gt; from the Udacity MOOC course: &lt;a href="https://www.udacity.com/course/deep-learning--ud730"&gt;Deep learning by Google&lt;/a&gt;.&lt;/li&gt;
@@ -3537,9 +3513,18 @@ AAAAAHiA4Q0AAAAAPPAD6qjcfWntDHEAAAAASUVORK5CYII=
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="Python"></category><category term="TensorFlow"></category><category term="Word2Vec"></category><category term="NLP"></category><category term="VSM"></category></entry><entry><title>Simple Convolutional Neural Network using TensorFlow</title><link href="https://leemeng.tw/simple-convolutional-neural-network-using-tensorflow.html" rel="alternate"></link><published>2017-09-26T18:30:00+09:00</published><updated>2017-09-26T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-26:/simple-convolutional-neural-network-using-tensorflow.html</id><summary type="html">&lt;p&gt;The goal here is to practice building convolutional neural networks to classify notMNIST characters using TensorFlow. As image size become bigger and bigger, it become unpractical to train fully-connected NN because there will be just too many parameters and thus the model will overfit very soon. And CNN solve this problem by weight sharing. We will start by building a CNN with two convolutional layers connected by a fully connected layer and then try also pooling layer and other thing to improve the model performance.&lt;/p&gt;</summary><content type="html">
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
 &lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="Python"></category><category term="TensorFlow"></category><category term="Word2Vec"></category><category term="NLP"></category><category term="VSM"></category></entry><entry><title>Simple Convolutional Neural Network using TensorFlow</title><link href="https://leemeng.tw/simple-convolutional-neural-network-using-tensorflow.html" rel="alternate"></link><published>2017-09-26T18:30:00+09:00</published><updated>2017-09-26T18:30:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-26:/simple-convolutional-neural-network-using-tensorflow.html</id><summary type="html">&lt;p&gt;The goal here is to practice building convolutional neural networks to classify notMNIST characters using TensorFlow. As image size become bigger and bigger, it become unpractical to train fully-connected NN because there will be just too many parameters and thus the model will overfit very soon. And CNN solve this problem by weight sharing. We will start by building a CNN with two convolutional layers connected by a fully connected layer and then try also pooling layer and other thing to improve the model performance.&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The goal here is to practice building convolutional neural networks to classify &lt;a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html"&gt;notMNIST&lt;/a&gt; characters using TensorFlow.
 As image size become bigger and bigger, it become unpractical to train fully-connected NN because there will be just too many parameters and thus the model will overfit very soon. And CNN solve this problem by weight sharing.&lt;/p&gt;
@@ -3548,8 +3533,7 @@ As image size become bigger and bigger, it become unpractical to train fully-con
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Import-libraries"&gt;Import libraries&lt;a class="anchor-link" href="#Import-libraries"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
@@ -3578,8 +3562,7 @@ As image size become bigger and bigger, it become unpractical to train fully-con
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Load-notMNIST-dataset"&gt;Load notMNIST dataset&lt;a class="anchor-link" href="#Load-notMNIST-dataset"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
@@ -3620,15 +3603,13 @@ Test set (10000, 28, 28) (10000,)
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Reformat-data"&gt;Reformat data&lt;a class="anchor-link" href="#Reformat-data"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Reformat into a TensorFlow-friendly shape:&lt;/p&gt;
 &lt;ul&gt;
@@ -3689,8 +3670,7 @@ Test set (10000, 28, 28, 1) (10000, 10)
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Helper-for-training-visualization"&gt;Helper for training visualization&lt;a class="anchor-link" href="#Helper-for-training-visualization"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Let's define a function that make better visualization of our training progress.&lt;br/&gt;
 The function will draw mini-batch loss and training/validation accuracy dynamically.&lt;/p&gt;
@@ -3720,22 +3700,19 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="NN-with-2-convolutional-layers"&gt;NN with 2 convolutional layers&lt;a class="anchor-link" href="#NN-with-2-convolutional-layers"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Let's build a small network with two convolutional layers, followed by one fully connected layer. Convolutional networks are more expensive computationally, so we'll limit its depth and number of fully connected nodes.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Computation-graph"&gt;Computation graph&lt;a class="anchor-link" href="#Computation-graph"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Although this assignment already provide good Tensorflow code to build convoluational networks, I found that I can't imagine what NN I was going to build by reading the code. So I tried to draw what we're going to build and explain some parameters used in code by comments.&lt;/p&gt;
 &lt;p&gt;The convolutional network we're going to build:&lt;/p&gt;
@@ -3743,8 +3720,7 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;/caption&gt;&lt;/center&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Something worth mentioning:&lt;/p&gt;
 &lt;ul&gt;
@@ -3844,8 +3820,7 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Train-the-model-and-visualize-the-result"&gt;Train the model and visualize the result&lt;a class="anchor-link" href="#Train-the-model-and-visualize-the-result"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The best thing of the visualization is that it's rendered in a real-time manner.&lt;/p&gt;
 &lt;/div&gt;
@@ -3911,10 +3886,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="e1fab3f3-fce6-41bf-8c0a-6074b14cbca8"&gt;&lt;/div&gt;
+&lt;div id="d34a4a15-edc2-421b-bd2d-0f662d000ebb"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#e1fab3f3-fce6-41bf-8c0a-6074b14cbca8');
+var element = $('#d34a4a15-edc2-421b-bd2d-0f662d000ebb');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -4678,10 +4653,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="29439c3a-5b67-4492-a300-22215e506515"&gt;&lt;/div&gt;
+&lt;div id="f565bf38-c782-4b4a-95aa-4c30815bd13b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#29439c3a-5b67-4492-a300-22215e506515');
+var element = $('#f565bf38-c782-4b4a-95aa-4c30815bd13b');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -4710,15 +4685,13 @@ Test accuracy: 89.4%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;As shown above, mini-batch loss dropped rapidly at first 200 iterations, training and validation accuracy also improve quickly (both achieved about 80%). After 200 iterations, validation performance become stable but still improved about 5%. The test accuracy is about 89%.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Problem-1---Use-pooling-layers-to-reduce-dimensionality_1"&gt;Problem 1 - Use pooling layers to reduce dimensionality&lt;a class="anchor-link" href="#Problem-1---Use-pooling-layers-to-reduce-dimensionality"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The convolutional model above uses convolutions with stride 2 to reduce the dimensionality. Replace the strides by a max pooling operation (&lt;code&gt;nn.max_pool()&lt;/code&gt;) of stride 2 and kernel size 2.&lt;/p&gt;
 &lt;p&gt;The reason why we're going to use pooling layer is that we can reduce spatial size thus parameters to reduce the chance of overfitting. And the advantage of pooling layer is that it require no new parameters. Let's see how much performance we can gain by using max pooling.&lt;/p&gt;
@@ -4726,8 +4699,7 @@ Test accuracy: 89.4%
 &lt;/caption&gt;&lt;/center&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Build-model-with-pooling-layers"&gt;Build model with pooling layers&lt;a class="anchor-link" href="#Build-model-with-pooling-layers"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Actually, what we will do is just to add pooling layers right after ReLU layers and let the convoluational layer use stride 1. In intuition, we let the convoluational layers look more 'closely' into the images, but also try to limit the number of activation and extract the important parts by pooling layers.&lt;/p&gt;
 &lt;/div&gt;
@@ -4804,8 +4776,7 @@ Test accuracy: 89.4%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Train-the-model"&gt;Train the model&lt;a class="anchor-link" href="#Train-the-model"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -4871,10 +4842,10 @@ Test accuracy: 89.4%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="e2551e3b-a39f-4b1b-9658-5d91d3184267"&gt;&lt;/div&gt;
+&lt;div id="0b6228a3-ffd6-42c9-b9d4-a7d25ac93b1c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#e2551e3b-a39f-4b1b-9658-5d91d3184267');
+var element = $('#0b6228a3-ffd6-42c9-b9d4-a7d25ac93b1c');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -5638,10 +5609,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="aac6b32d-d206-4827-a6a1-9fc74b618ae2"&gt;&lt;/div&gt;
+&lt;div id="cfd4169e-8247-4b1a-b064-7b98eaaab018"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#aac6b32d-d206-4827-a6a1-9fc74b618ae2');
+var element = $('#cfd4169e-8247-4b1a-b064-7b98eaaab018');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -5669,23 +5640,20 @@ Test accuracy: 90.7%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;There is some performance gain in my current iteration between model w/o pooling layer ( about 1.3% ). And it seems that after several iterations, the validation set performance is slightly better with the pooling layers. But it took about 1 minute and 30 seconds to train CNN with pooling layers, and only 30 seconds to train the one without pooling layers. I think it depends on whether you're willing to gain a little more performance by using more time to train the model.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Problem-2_1"&gt;Problem 2&lt;a class="anchor-link" href="#Problem-2"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Try to get the best performance you can using a convolutional net. Look for example at the classic &lt;a href="http://yann.lecun.com/exdb/lenet/"&gt;LeNet5&lt;/a&gt; architecture, adding Dropout, and/or adding learning rate decay.&lt;/p&gt;
 &lt;p&gt;I will just try to add a convoluational layer here and train a little longer to see how the performance changed.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Computation-graph_1"&gt;Computation graph&lt;a class="anchor-link" href="#Computation-graph"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -5775,8 +5743,7 @@ Test accuracy: 90.7%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Train-the-model_1"&gt;Train the model&lt;a class="anchor-link" href="#Train-the-model"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -5842,10 +5809,10 @@ Test accuracy: 90.7%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="6b177de4-4c89-4760-ada5-c3d08ff0fea6"&gt;&lt;/div&gt;
+&lt;div id="33752e7a-3d61-49ee-8225-280f5d2896a2"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#6b177de4-4c89-4760-ada5-c3d08ff0fea6');
+var element = $('#33752e7a-3d61-49ee-8225-280f5d2896a2');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -6609,10 +6576,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="82a649a5-054a-47cb-9df6-12a5b02ae035"&gt;&lt;/div&gt;
+&lt;div id="61919ed1-2ab2-4f9d-bc10-55c2fed5d6e9"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#82a649a5-054a-47cb-9df6-12a5b02ae035');
+var element = $('#61919ed1-2ab2-4f9d-bc10-55c2fed5d6e9');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -6640,24 +6607,21 @@ Test accuracy: 94.6%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;By adding a new convoluational layer and train 10x steps, our model's performance can even boost to almost 95%! (though it take about 5 minutes to train on my pc) and I think there are still many things we can tune to make the model better, but I will stop here to move on to sequence model!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </content><category term="Python"></category><category term="Tensorflow"></category><category term="Deep Learning"></category><category term="Convolutional Neural Network"></category><category term="CNN"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Regularization for Multi-layer Neural Networks in Tensorflow</title><link href="https://leemeng.tw/regularization-for-multi-layer-neural-networks-in-tensorflow.html" rel="alternate"></link><published>2017-09-25T16:00:00+09:00</published><updated>2017-09-25T16:00:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-25:/regularization-for-multi-layer-neural-networks-in-tensorflow.html</id><summary type="html">&lt;p&gt;The goal of this assignment is to explore regularization techniques.&lt;/p&gt;</summary><content type="html">
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The goal of this assignment is to explore regularization techniques.
 The original notebook can be found &lt;a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/3_regularization.ipynb"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Import-libraries"&gt;Import libraries&lt;a class="anchor-link" href="#Import-libraries"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
@@ -6679,15 +6643,13 @@ The original notebook can be found &lt;a href="https://github.com/tensorflow/ten
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Load-NotMNIST-dataset"&gt;Load NotMNIST dataset&lt;a class="anchor-link" href="#Load-NotMNIST-dataset"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;First reload the data we generated in &lt;code&gt;1_notmnist.ipynb&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -6728,15 +6690,13 @@ Test set (10000, 28, 28) (10000,)
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Reformat-dataset"&gt;Reformat dataset&lt;a class="anchor-link" href="#Reformat-dataset"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Reformat into a shape that's more adapted to the models we're going to train:&lt;/p&gt;
 &lt;ul&gt;
@@ -6786,8 +6746,7 @@ Test set (784, 10000) (784, 10000)
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Using-Accuracy-as-Default-Metric"&gt;Using Accuracy as Default Metric&lt;a class="anchor-link" href="#Using-Accuracy-as-Default-Metric"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Because as we explored before, there exist no unbalanced problem in the dataset,&lt;br/&gt;
 so accuracy alone will be sufficient for evaluating performance of our model on the classification task.&lt;/p&gt;
@@ -6807,15 +6766,13 @@ so accuracy alone will be sufficient for evaluating performance of our model on 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="3-layer-NN-as-base-model_1"&gt;3-layer NN as base model&lt;a class="anchor-link" href="#3-layer-NN-as-base-model"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;In order to test the effect with/without regularization, we will use a little more complex neural network with 2 hidden layers as our base model. And we will be using ReLU as our activation function.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Hyper-parameters"&gt;Hyper parameters&lt;a class="anchor-link" href="#Hyper-parameters"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -6841,8 +6798,7 @@ so accuracy alone will be sufficient for evaluating performance of our model on 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Build-model"&gt;Build model&lt;a class="anchor-link" href="#Build-model"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -6959,8 +6915,7 @@ so accuracy alone will be sufficient for evaluating performance of our model on 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Train-model-without-regularization"&gt;Train model without regularization&lt;a class="anchor-link" href="#Train-model-without-regularization"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -6993,10 +6948,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="2dea2bf4-5ca1-4677-84df-2d497e58b5f9"&gt;&lt;/div&gt;
+&lt;div id="d4c8608a-34ab-405e-a509-d37c6c038975"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#2dea2bf4-5ca1-4677-84df-2d497e58b5f9');
+var element = $('#d4c8608a-34ab-405e-a509-d37c6c038975');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -7022,8 +6977,7 @@ Test acc: 94.2%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="L2-regularization_1"&gt;L2 regularization&lt;a class="anchor-link" href="#L2-regularization"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Introduce and tune L2 regularization for the models. Remember that L2 amounts to adding a penalty on the norm of the weights to the loss. In TensorFlow, you can compute the L2 loss for a tensor &lt;code&gt;t&lt;/code&gt; using &lt;code&gt;nn.l2_loss(t)&lt;/code&gt;. The right amount of regularization should improve your validation / test accuracy.&lt;/p&gt;
 &lt;/div&gt;
@@ -7058,10 +7012,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="1b70437a-49d8-419f-accf-2f6cc7c25cd8"&gt;&lt;/div&gt;
+&lt;div id="7357e89c-76c0-4dd4-b5f3-68c619002608"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#1b70437a-49d8-419f-accf-2f6cc7c25cd8');
+var element = $('#7357e89c-76c0-4dd4-b5f3-68c619002608');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -7081,8 +7035,7 @@ Test acc: 81.4%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Case-of-overfitting"&gt;Case of overfitting&lt;a class="anchor-link" href="#Case-of-overfitting"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Let's demonstrate an extreme case of overfitting. Restrict your training data to just a few batches. What happens?&lt;/p&gt;
 &lt;/div&gt;
@@ -7115,10 +7068,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="c348e83e-a526-4da8-b7c8-02623b9c3217"&gt;&lt;/div&gt;
+&lt;div id="d5e72833-5361-47da-912b-e70e66541850"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#c348e83e-a526-4da8-b7c8-02623b9c3217');
+var element = $('#d5e72833-5361-47da-912b-e70e66541850');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -7136,8 +7089,7 @@ Test acc: 20.7%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Dropout"&gt;Dropout&lt;a class="anchor-link" href="#Dropout"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Introduce Dropout on the hidden layer of the neural network. Remember: Dropout should only be introduced during training, not evaluation, otherwise your evaluation results would be stochastic as well. TensorFlow provides &lt;code&gt;nn.dropout()&lt;/code&gt; for that, but you have to make sure it's only inserted during training.&lt;/p&gt;
 &lt;p&gt;What happens to our extreme overfitting case?&lt;/p&gt;
@@ -7172,10 +7124,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="18f835dc-b0f9-4b9d-b7f5-a22e8898dd9e"&gt;&lt;/div&gt;
+&lt;div id="e878de77-a41b-4b90-8a42-105fcdf0cfc4"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#18f835dc-b0f9-4b9d-b7f5-a22e8898dd9e');
+var element = $('#e878de77-a41b-4b90-8a42-105fcdf0cfc4');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -7193,8 +7145,7 @@ Test acc: 17.3%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Boost-performance-by-using-Multi-layer-NN"&gt;Boost performance by using Multi-layer NN&lt;a class="anchor-link" href="#Boost-performance-by-using-Multi-layer-NN"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Try to get the best performance you can using a multi-layer model! The best reported test accuracy using a deep network is &lt;a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html?showComment=1391023266211#c8758720086795711595"&gt;97.1%&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;One avenue you can explore is to add multiple layers.&lt;/p&gt;
@@ -7235,10 +7186,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="1cbfaf6c-4e06-499b-9faf-aeccf263e316"&gt;&lt;/div&gt;
+&lt;div id="03fba498-9f87-4fc3-96ae-ca27d0b17d83"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#1cbfaf6c-4e06-499b-9faf-aeccf263e316');
+var element = $('#03fba498-9f87-4fc3-96ae-ca27d0b17d83');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -7264,9 +7215,18 @@ Test acc: 94.3%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="Tensorflow"></category><category term="Python"></category><category term="Deep Learning"></category><category term="Regularization"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title><link href="https://leemeng.tw/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="alternate"></link><published>2017-09-21T23:50:00+09:00</published><updated>2017-09-21T23:50:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-21:/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</id><summary type="html">&lt;p&gt;The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.&lt;/p&gt;</summary><content type="html">
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
 &lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="Tensorflow"></category><category term="Python"></category><category term="Deep Learning"></category><category term="Regularization"></category><category term="Deep Learning by Google"></category><category term="Machine Learning Engineer by kaggle"></category><category term="Udacity"></category></entry><entry><title>Using TensorFlow to Train a Shallow NN with Stochastic Gradient Descent</title><link href="https://leemeng.tw/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html" rel="alternate"></link><published>2017-09-21T23:50:00+09:00</published><updated>2017-09-21T23:50:00+09:00</updated><author><name>Lee Meng</name></author><id>tag:leemeng.tw,2017-09-21:/using-tensorflow-to-train-a-shallow-nn-with-stochastic-gradient-descent.html</id><summary type="html">&lt;p&gt;The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.&lt;/p&gt;
 &lt;p&gt;Finally, train a Neural Network with one-hidden layer using ReLU activation units to see whether we can boost our model's performance further.&lt;/p&gt;
@@ -7275,8 +7235,7 @@ Test acc: 94.3%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Import-libraries"&gt;Import libraries&lt;a class="anchor-link" href="#Import-libraries"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
@@ -7299,8 +7258,7 @@ Test acc: 94.3%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Load-notMNIST-dataset"&gt;Load notMNIST dataset&lt;a class="anchor-link" href="#Load-notMNIST-dataset"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;This time we will use the dataset which has been normalized and randomized before to omit the data preprocessing step.&lt;/p&gt;
 &lt;p&gt;Tips:&lt;/p&gt;
@@ -7348,15 +7306,13 @@ Test set (10000, 28, 28) (10000,)
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Reformat-data-for-easier-training"&gt;Reformat data for easier training&lt;a class="anchor-link" href="#Reformat-data-for-easier-training"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Reformat both pixels(features) and labels that's more adapted to the models we're going to train:&lt;/p&gt;
 &lt;ul&gt;
@@ -7369,8 +7325,7 @@ Test set (10000, 28, 28) (10000,)
 &lt;/caption&gt;&lt;/center&gt;&lt;/caption&gt;&lt;/center&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Tips:&lt;/p&gt;
 &lt;ul&gt;
@@ -7424,23 +7379,20 @@ Test set (784, 10000) (10, 10000)
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Logistic-regression-with-gradient-descent"&gt;Logistic regression with gradient descent&lt;a class="anchor-link" href="#Logistic-regression-with-gradient-descent"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;For logistic regression, we use the formula $WX + b = Y'$ to do the computation. W is of shape (10, 784), X is of shape (784, m) and Y' is of shape (10, m) where $m$ is the number of training instances/images. After compute the probabilities of 10 classes stored in Y', we will use built-in &lt;code&gt;tf.nn.softmax_cross_entropy_with_logits&lt;/code&gt; to compute cross-entropy between Y' and Y(train_labels) as cost.&lt;/p&gt;
 &lt;p&gt;We will first instruct Tensorflow how to do all the computation and make it run the optimization several times.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Build-the-Tensorflow-computation-graph"&gt;Build the Tensorflow computation graph&lt;a class="anchor-link" href="#Build-the-Tensorflow-computation-graph"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We're first going to train a multinomial logistic regression using simple gradient descent.&lt;/p&gt;
 &lt;p&gt;TensorFlow works like this:&lt;/p&gt;
@@ -7514,8 +7466,7 @@ Test set (784, 10000) (10, 10000)
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Tips:&lt;/p&gt;
 &lt;ul&gt;
@@ -7525,15 +7476,13 @@ Test set (784, 10000) (10, 10000)
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Gradient-descent-by-iterating-computation-graph"&gt;Gradient descent by iterating computation graph&lt;a class="anchor-link" href="#Gradient-descent-by-iterating-computation-graph"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Now we can tell TensorFlow to run this computation and iterate.&lt;br/&gt;
 Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visualize the progress and the time used in the iterations.&lt;/p&gt;
@@ -7604,10 +7553,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="52dc8800-cb27-4c60-91e7-1898dcb36417"&gt;&lt;/div&gt;
+&lt;div id="c9491923-d465-4657-b013-3a609682c5ae"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#52dc8800-cb27-4c60-91e7-1898dcb36417');
+var element = $('#c9491923-d465-4657-b013-3a609682c5ae');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -7633,15 +7582,13 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Logistic-regression-with-SGD_1"&gt;Logistic regression with SGD&lt;a class="anchor-link" href="#Logistic-regression-with-SGD"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Or more precisely, mini-batch approach.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;From the result above, we can see it cost about 20 seconds (on my computer) to iterate 10,000 training instances by simple gradient descent. Let's now switch to stochastic gradient descent training instead, which is much faster.&lt;/p&gt;
 &lt;p&gt;The graph will be similar, except that instead of holding all the training data into a constant node, we create a &lt;code&gt;Placeholder&lt;/code&gt; node which will be fed actual data at every call of &lt;code&gt;session.run()&lt;/code&gt;.&lt;/p&gt;
@@ -7653,8 +7600,7 @@ Test acc: 82.8%
 &lt;/caption&gt;&lt;/center&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Build-computation-graph"&gt;Build computation graph&lt;a class="anchor-link" href="#Build-computation-graph"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -7704,8 +7650,7 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Iterate-using-SGD"&gt;Iterate using SGD&lt;a class="anchor-link" href="#Iterate-using-SGD"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -7756,10 +7701,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="a46b1064-0d65-4393-b8d5-13f0624d5c6e"&gt;&lt;/div&gt;
+&lt;div id="cfe8aa20-2a41-483e-9023-feb520349539"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#a46b1064-0d65-4393-b8d5-13f0624d5c6e');
+var element = $('#cfe8aa20-2a41-483e-9023-feb520349539');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -7783,22 +7728,19 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;It took only about 3 seconds in my computer to finish the optimization using SGD (which took gradient descent about 20 seconds) and got a even slightly better result. The key of SGD is take &lt;strong&gt;randomized&lt;/strong&gt; samples / mini-batches and feed that into the model every iteration (thus the &lt;code&gt;feed_dict&lt;/code&gt; term).&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="2-layer-NN-with-ReLU-units_1"&gt;2-layer NN with ReLU units&lt;a class="anchor-link" href="#2-layer-NN-with-ReLU-units"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Instead all just linear combination of features, we want to introduce non-linearlity in our logistic regression. By turning the logistic regression example with SGD into a 1-hidden layer neural network with rectified linear units &lt;a href="https://www.tensorflow.org/versions/r0.7/api_docs/python/nn.html#relu"&gt;nn.relu()&lt;/a&gt; and 1024 hidden nodes, we should be able to improve validation / test accuracy.&lt;/p&gt;
 &lt;p&gt;A 2-layer NN (1-hidden layer NN) look like this:&lt;/p&gt;
@@ -7807,8 +7749,7 @@ Test acc: 86.9%
 &lt;/caption&gt;&lt;/center&gt;&lt;/caption&gt;&lt;/center&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Build-compuation-graph"&gt;Build compuation graph&lt;a class="anchor-link" href="#Build-compuation-graph"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;In this part, use the notation $X$ in replace of  &lt;code&gt;dataset&lt;/code&gt;. The weights and biases of the hidden layer are denoted as $W1$ and $b1$, and the weights and biases of the output layer are denoted as $W2$ and $b2$.&lt;/p&gt;
 &lt;p&gt;Thus the pre-activation output(logits) of output layer is computed as $ logits = W2 * ReLU(W1 * X + b1) + b2 $&lt;/p&gt;
@@ -7863,8 +7804,7 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Run-the-iterations"&gt;Run the iterations&lt;a class="anchor-link" href="#Run-the-iterations"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -7917,10 +7857,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="9990c80e-e94b-4acb-9cca-a442269df831"&gt;&lt;/div&gt;
+&lt;div id="acbcada2-ac9f-4351-a947-175f7aa48744"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9990c80e-e94b-4acb-9cca-a442269df831');
+var element = $('#acbcada2-ac9f-4351-a947-175f7aa48744');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
@@ -7944,10 +7884,19 @@ Test acc: 88.7%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Summary_1"&gt;Summary&lt;a class="anchor-link" href="#Summary"&gt;&amp;para;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Because we use a more complex model(1 hidden-layer NN), it take a little longer to train, but we're able to gain more performance from logistic regression even with the same hyper-parameter settings (learning rate = 0.5, batch_size=128). Better performance may be gained by tuning hyper parameters of the 2 layer NN. Also notice that by using mini-batch / SGD, we can save lots of time training models and even get a better result.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;

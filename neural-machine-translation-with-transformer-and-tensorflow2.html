@@ -175,7 +175,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-06-17 (Mon)</li>
                         <li class="page-view">
-                            2,519 views
+                            2,547 views
                         </li>
                     </ul>
 
@@ -241,8 +241,7 @@
             <div class="col-full blog-content__main">
 
                 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <style>
    pre {
@@ -255,8 +254,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -269,15 +267,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這是聖經中著名的<a href="https://zh.wikipedia.org/wiki/%E5%B7%B4%E5%88%A5%E5%A1%94">巴別塔</a>橋段，用來解釋為何當今世上有那麼多種語言。當年的上帝或許過於杞人憂天，但近年多虧了<a href="https://zh.wikipedia.org/zh-hant/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度學習</a>，<a href="https://zh.wikipedia.org/wiki/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91">機器翻譯</a>的快速發展讓人不禁覺得，或許巴別塔很快就不再只是虛幻傳說了。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/google-translate.jpg">
 <source src="https://leemeng.tw/images/transformer/google-translate.mp4" type="video/mp4"/>
@@ -291,16 +287,14 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>機器翻譯的研究之所以如此重要且迷人，是因為它將有機會讓未來任何人都不受語言的限制，獲得世界上任何他或她想要的資訊與知識。</p>
 <p>在這篇文章的前半部分，我們會先花點時間來回顧<a href="https://en.wikipedia.org/wiki/Neural_machine_translation">神經機器翻譯</a>裡頭的一些重要概念。接著在具備這些概念以及<a href="#%E5%B8%AB%E5%82%85%E5%BC%95%E9%80%B2%E9%96%80%EF%BC%8C%E4%BF%AE%E8%A1%8C%E5%9C%A8%E5%80%8B%E4%BA%BA">其他背景知識</a>的前提之下，利用最新的 <a href="https://www.tensorflow.org/">TensorFlow 2</a> 來實作一個可以將英文句子翻譯成中文的神經網路架構：<a href="https://www.tensorflow.org/beta/tutorials/text/transformer">Transformer</a>。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/transformer-high-level-view.png"/>
@@ -315,15 +309,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這是一個非常簡化的示意圖。Transformer 實際上是一種基於自注意力機制的 <a href="https://youtu.be/ZjfjPzXw6og?t=3208">Seq2Seq 模型</a>，近年在<a href="https://paperswithcode.com/task/image-captioning">圖像描述</a>、<a href="https://zh.wikipedia.org/wiki/%E8%81%8A%E5%A4%A9%E6%A9%9F%E5%99%A8%E4%BA%BA">聊天機器人</a>、<a href="https://zh.wikipedia.org/zh-hant/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB">語音辨識</a>以及機器翻譯等各大領域大發異彩。但因為其相對複雜，到現在還是有種現象：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -335,16 +327,14 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>當然這並不僅限於 Transformer，因為深度學習牽涉的研究範圍實在太廣了。透過這篇文章，我希望能幫助你開始了解神經機器翻譯以及 Transformer 的相關知識。</p>
 <p>當我們完成實作並訓練出一個 Transformer 以後，除了可以英翻中以外，我們還能清楚地了解其是如何利用強大的<a href="https://www.youtube.com/watch?v=jd9DtlR90ak&amp;feature=youtu.be">注意力機制</a>（我們在 <a href="#Encoder-Decoder-模型-+-注意力機制">Encoder-Decoder 模型 + 注意力機制</a>一節會仔細探討此概念）來做到精準且自然的翻譯。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/en-to-ch-attention-map.png"/>
@@ -357,8 +347,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>除了翻譯出來的中文正確無誤以外，從上圖你可以發現很有趣的現象。</p>
 <p>給定左側的英文，Transformer 在生成其對應的中文翻譯時都會給每個英文詞彙不同的「注意程度」。小方格越亮則代表模型在生成某中文字時放越多的注意力在左側對應的英文詞彙上。</p>
@@ -372,8 +361,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -385,15 +373,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在英翻中的情境下，神經網路要做的事情就是讀入左側的英文句子，接著生成右側的中文句子（繁中對英文的翻譯資料集稀少，此文將以簡體為例）</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/en-zh-training-sentences.jpg"/>
@@ -406,22 +392,19 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="一些你需先具備的基礎知識">一些你需先具備的基礎知識<a class="anchor-link" href="#一些你需先具備的基礎知識">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我在文中會盡量言簡意賅地介紹所有你需要了解的深度學習概念，並附上相關連結供你參考。但就像在<a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html">天龍八部</a>或是眾多武俠小說都有提過的重要準則：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -433,8 +416,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>儘管在 <a href="https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf">2017 年就已被提出</a>，本文即將探討並實作的 <a href="https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf">Transformer</a> 仍算是相當進階的神經網路架構。因此具備以下的基礎知識能幫助你更順利地理解本文內容：</p>
 <ul>
@@ -446,8 +428,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/nlp-intro.jpg"/>
@@ -462,16 +443,14 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>希望這樣的要求沒把你嚇跑，因為事實上你大約需要好幾倍的相關知識來成功實作 Transformer。<a href="#%E5%B8%AB%E5%82%85%E5%BC%95%E9%80%B2%E9%96%80%EF%BC%8C%E4%BF%AE%E8%A1%8C%E5%9C%A8%E5%80%8B%E4%BA%BA">儘管在實作前你會看到一些額外要求</a>，本文的前半部分還是相當平易近人的，還請放心閱讀。</p>
 <p>當你想要深入了解某些細節的時候，可以參考這節附上的連結或是文內說明概念時附上的圖片來源。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -483,22 +462,19 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>前言很長，但好戲才在後頭。如果你已經準備好進入神經機器翻譯的世界的話，現在就讓我們正式開始這趟旅程吧！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="機器翻譯近代史">機器翻譯近代史<a class="anchor-link" href="#機器翻譯近代史">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>鑑往知來。了解一點機器翻譯的歷史以及 Transformer 是怎麼跑出來的會對實作很有幫助。</p>
 <p>機器翻譯（<strong>M</strong>achine <strong>T</strong>ranslation）本身的概念<a href="https://zh.wikipedia.org/zh-tw/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91#%E6%AD%B7%E5%8F%B2">最早可追溯到 17 世紀</a>。自從那開始，人們嘗試並研究了各式各樣的方法，寫了一大堆規則、蒐集了數以萬計的翻譯結果來嘗試自動化翻譯。隨著時代演進，我們有了：</p>
@@ -511,8 +487,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/mt-history.jpg"/>
@@ -527,30 +502,26 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>很多遠古時代的東西我們不會討論，而 NMT 當然是本文的重點。不過在那之前讓我們非常簡短地看一下 SMT。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="統計機器翻譯：基於短語的翻譯">統計機器翻譯：基於短語的翻譯<a class="anchor-link" href="#統計機器翻譯：基於短語的翻譯">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>機器翻譯的歷史很長，但一直要到 21 世紀初期<a href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E8%AE%A1%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91">統計機器翻譯（<strong>S</strong>tatistical <strong>M</strong>achine <strong>T</strong>ranslation，簡稱 SMT）</a>技術成熟以後，機器翻譯的品質才稍微使人滿意。其中最知名的例子當屬 <a href="https://ai.googleblog.com/2006/04/statistical-machine-translation-live.html">Google 在 2006 年發布的 SMT 翻譯系統</a>。</p>
 <p>不限於 Google，當時不少最先進的 SMT 系統都採用了<a href="https://en.wikipedia.org/wiki/Statistical_machine_translation#Phrase-based_translation">基於短語的機器翻譯（Phrase-Based MT）</a> 演算法。PBMT 最大的特色是先將來源語言（Source Language）的句子切成短語或是詞彙，接著大致上獨立地將這些詞彙翻譯成目標語言（Target Language）。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/pbmt.jpg"/>
@@ -565,8 +536,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>PBMT 的翻譯結果相較於早年基於規則（Rule-Based）的手法已經進步很多，但仍然需要大量的<a href="https://zh.wikipedia.org/wiki/%E5%B9%B3%E8%A1%8C%E8%AF%AD%E6%96%99">平行語料</a>、對齊語料來取得較好的結果。且因為是以短語為單位在做翻譯，這些短語拼湊出來的句子仍然不夠自然。</p>
 <p>如果你跟我一樣有用過早年的 Google 翻譯，應該還能隱約記得當年那些充斥著「機械感」的翻譯結果。</p>
@@ -574,23 +544,20 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="神經機器翻譯：Encoder-Decoder-模型">神經機器翻譯：Encoder-Decoder 模型<a class="anchor-link" href="#神經機器翻譯：Encoder-Decoder-模型">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>顧名思義，神經機器翻譯 NMT 即代表使用<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">類神經網路（Neural Network）</a>來做機器翻譯。</p>
 <p>不管是英文、法文還是中文，一個自然語言的句子基本上可以被視為一個有時間順序的序列數據（Sequence Data）。而<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E6%9C%89%E8%A8%98%E6%86%B6%E7%9A%84%E5%BE%AA%E7%92%B0%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF_1">我們曾提過 RNN 很適合用來處理有時間關係的序列數據</a>。給定一個向量序列，RNN 就是回傳一個一樣長度的向量序列作為輸出。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/nlp-kaggle-intro/rnn-animate.gif"/>
@@ -605,16 +572,14 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>當我們把來源語言以及目標語言的句子都視為一個獨立的序列以後，機器翻譯事實上就是一個<a href="https://youtu.be/ZjfjPzXw6og">序列生成（Sequence Generation）</a>任務：對一個輸入序列（來源語言）做些有意義的轉換與處理以後，輸出一個新的序列（目標語言）。</p>
 <p>而在深度學習時代，我們一般會使用以 RNN 為基礎的 <a href="https://youtu.be/ZjfjPzXw6og?t=3208">Encoder-Decoder 架構（又被稱作 Sequence to Sequence / Seq2Seq 模型）</a>來做序列生成：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/seq2seq-animate.jpg">
 <source src="https://leemeng.tw/images/transformer/seq2seq-animate.mp4" type="video/mp4"/>
@@ -630,8 +595,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Seq2Seq 模型裡頭 Encoder 跟 Decoder 是各自獨立的 RNN。Encoder 把輸入的句子做處理後所得到的隱狀態向量（圖中的 <code>Hidden State#3</code>）交給 Decoder 來生成目標語言。</p>
 <p>你可以想像兩個語義相同的法英句子雖然使用的語言、語順不一樣，但因為它們有相同的語義，Encoder 在將整個<strong>法文</strong>句子濃縮成一個嵌入空間（Embedding Space）中的向量後，Decoder 能利用隱含在該向量中的語義資訊來重新生成具有相同意涵的<strong>英文</strong>句子。</p>
@@ -645,8 +609,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -658,16 +621,14 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這是一個很好的研究問題。</p>
 <p>而如果我們試著把這個問題圖像化，則結果可能長得像這樣：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/multi-lang-emb.jpg"/>
@@ -682,8 +643,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>圖中的點代表不同句子，不同顏色則代表不同語言。如果結果是左邊，代表神經網路並沒有創出一個「語義」空間，而只是把不同語言都投射到該嵌入空間裡頭的不同位置，接著才在該空間裡進行不同語言之間的轉換（中轉英、英轉法 etc.）。</p>
 <p>我們比較想要的是右邊的情況：無關語言，只要句子的語義接近，彼此的距離就相近的語義空間。</p>
@@ -693,8 +653,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/gnmt-multilingual.jpg">
 <source src="https://leemeng.tw/images/transformer/gnmt-multilingual.mp4" type="video/mp4"/>
@@ -710,8 +669,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>此研究告訴我們，只要對自然語言做正確的轉換，就能將語言相異但同語義的句子都轉換成彼此距離相近的語義向量，並以此做出好的翻譯。</p>
 <p>以下是我隨意挑選出來的一組句子，它們在該空間裡的距離相近：</p>
@@ -730,8 +688,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/lstm-sequence-generation.jpg">
 <source src="https://leemeng.tw/images/transformer/lstm-sequence-generation.mp4" type="video/mp4"/>
@@ -747,30 +704,26 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>一般來說，語言模型可以在不給定任何輸入的情況下生成非常隨機的文字序列；但針對機器翻譯這種有條件的序列生成任務，我們通常希望給定相同輸入，輸出的結果越穩定越好（或是每次都一模一樣）。</p>
 <p>我們在<a href="#TODO">實作的時候</a>會看到怎麼達成這件事情。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Encoder-Decoder-模型-+-注意力機制">Encoder-Decoder 模型 + 注意力機制<a class="anchor-link" href="#Encoder-Decoder-模型-+-注意力機制">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>好啦，你現在應該已經了解如何使用 Seq2Seq 模型來做 NMT 了，不過現在讓我們再次複習其運作方式。這次我們把用 RNN 實作的 Encoder / Decoder 在每個時間點做的事情從左到右一字排開：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="{filename}images/transformer/seq2seq-unrolled-no-attention.jpg">
 <source src="https://leemeng.tw/images/transformer/seq2seq-unrolled-no-attention.mp4" type="video/mp4"/>
@@ -786,8 +739,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>基本款的 Seq2Seq 模型表現得不錯，但其實有可以改善的地方。你有看出來了嗎？上圖的輸入句子只有 3 個詞彙，但如果我們想輸入一個很長的句子呢？</p>
 <p>我們前面曾提過 Seq2Seq 模型裡的一個重要假設是 Encoder 能把輸入句子的語義 / 文本脈絡全都壓縮成<strong>一個</strong>固定維度的語義向量。之後 Decoder 只要利用該向量裡頭的資訊就能重新生成具有相同意義，但不同語言的句子。</p>
@@ -796,8 +748,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -809,16 +760,14 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這事實上就是<a href="https://www.youtube.com/watch?v=jd9DtlR90ak&amp;feature=youtu.be">注意力機制（Attention Mechanism）</a>的中心思想：提供更多資訊給 Decoder，並透過類似資料庫存取的概念，令其自行學會該怎麼提取資訊。兩篇核心論文分別在 <a href="https://arxiv.org/abs/1409.0473">2014 年 9 月</a>及 <a href="https://arxiv.org/abs/1508.04025">2015 年 8 月</a>釋出，概念不難但威力十分強大。</p>
 <p>以下就是將注意力機制加到 Seq2Seq 模型後的結果：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/seq2seq-unrolled-with-attention.jpg">
 <source src="https://leemeng.tw/images/transformer/seq2seq-unrolled-with-attention.mp4" type="video/mp4"/>
@@ -834,16 +783,14 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你可以拉回去跟沒有注意力機制的 Seq2Seq 模型比較一下差異。</p>
 <p>現在你會看到 Encoder 把處理完每個詞彙所產生的向量都交給 Decoder 了。且透過注意力機制，Decoder 在生成新序列的每個元素時都能<strong>動態地</strong>考慮自己要看哪些 Encoder 的向量（還有決定從中該擷取多少資訊），因此這種運用注意力機制的 Seq2Seq 架構又被稱作<a href="https://youtu.be/ZjfjPzXw6og?t=3528">動態的條件序列生成（Dynamic Conditional Generation）</a>。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/seq2seq_detail.jpg">
 <source src="https://leemeng.tw/images/transformer/seq2seq_detail.mp4" type="video/mp4"/>
@@ -859,8 +806,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>實際構想並證明其有效的研究者們十分厲害，且其概念也挺符合人類直覺的，對吧？</p>
 <p>為了方便讀者理解，上面動畫實際上隱藏了一些細節：</p>
@@ -872,8 +818,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/attention_mechanism_luong.jpg"/>
@@ -888,8 +833,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>左右兩邊分別是 Encoder 與 Decoder ，縱軸則是多層的神經網路區塊 / 層。</p>
 <p>雖然上張動畫是法翻英（這邊是英翻法），但該動畫也是以一樣的概念將圖中的注意權重（attention weights ）視覺化出來（注意權重和為 1）。</p>
@@ -905,8 +849,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/attention-equation.jpg"/>
@@ -921,8 +864,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>而之所以稱為注意權重（attention weights），是因為注意力機制可以被視為是一個學習來源語言和目標語言<strong>每一個單詞之間關係</strong>的小型神經網路，而這些權重是該神經網路的參數。</p>
 <p>我們在<a href="#TODO">後面的章節</a>會實際看到，在訓練還沒開始前，這些權重都是隨機且無意義的。是透過訓練，神經網路才知道該為這些權重賦予什麼值。</p>
@@ -930,8 +872,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -943,8 +884,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有點扯遠了，畢竟這裡應該沒有人文學系的讀者。</p>
 <p>讓我們拉回注意力機制。</p>
@@ -953,8 +893,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/nmt-model-fast.jpg">
 <source src="https://leemeng.tw/images/transformer/nmt-model-fast.mp4" type="video/mp4"/>
@@ -970,22 +909,19 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上圖為 GNMT 做中翻英的過程。Encoder 跟 Decoder 之間的線條代表注意力（Attention），線條越粗代表下面的 Decoder 在生成某英文字時越關注上方的某些中文字。模型自己學會在翻譯時該看來源句子中的哪些資訊，很聰明，不是嗎？</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因為其卓越的翻譯品質，在 GNMT 推出的那段時間，搭配注意力機制的 Seq2Seq 模型基本上就是拿來做 NMT 系統的不二人選。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/nmt-vs-pbmt.png"/>
@@ -1000,22 +936,19 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>話說當年 Google 導入 GNMT 時釋出了 8 個語言之間的對應翻譯，<a href="https://blog.google/products/translate/found-translation-more-accurate-fluent-sentences-google-translate/">涵蓋了約 1/3 的世界人口以及超過 35 % 的 Google 翻譯查詢</a>，是機器翻譯發展的一個重要里程碑。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Transformer：Seq2Seq-模型-+-自注意力機制">Transformer：Seq2Seq 模型 + 自注意力機制<a class="anchor-link" href="#Transformer：Seq2Seq-模型-+-自注意力機制">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>好酒沉甕底，萬眾矚目的時刻來了。</p>
 <p>標題已經破梗。你已經知道我們將探討本文主角 Transformer，且理論上越後面出來的 BOSS 越強。</p>
@@ -1023,8 +956,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -1036,8 +968,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>答案是肯定的 Yes。</p>
 <p>不過這次問題不是出在 Encoder 跟 Decoder 中間交換的資訊不夠，也不是 Seq2Seq 架構本身有什麼問題，問題是出在我們是用 <strong>RNN</strong> 來實作 Encoder 以及 Decoder。</p>
@@ -1048,8 +979,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/rnn-vs-self-attn-layer.jpg"/>
@@ -1064,8 +994,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://arxiv.org/abs/1706.03762">Google 在 2017 年 6 月的一篇論文：Attention Is All You Need</a> 裡參考了注意力機制，提出了<strong>自</strong>注意力機制（Self-Attention mechanism）。這個機制不只跟 RNN 一樣可以處理序列數據，還可以平行運算。</p>
 <p>以剛剛的輸入序列 <code>a[]</code> 為例：</p>
@@ -1076,8 +1005,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -1089,8 +1017,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>repr. 為 <a href="https://dictionary.cambridge.org/zht/%E8%A9%9E%E5%85%B8/%E8%8B%B1%E8%AA%9E-%E6%BC%A2%E8%AA%9E-%E7%B9%81%E9%AB%94/representation">representation</a> 縮寫，在本文的機器翻譯情境裡頭，其意味著可以用來描述某個詞彙、句子意涵的多維實數張量。</p>
 <p>雖然我們一直強調自注意力機制的平行能力，如果你還記得我們在<a href="#Encoder-Decoder-模型-+-注意力機制">上一節</a>講述的注意力機制，就會發現在 Seq2Seq 架構裡頭自注意力機制跟注意力機制講的根本是同樣一件事情：</p>
@@ -1102,15 +1029,13 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們發現一個非常重要的模式：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -1122,15 +1047,13 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這也是為何<a href="#Scaled-dot-product-attention：一種注意函式">在後面實作時我們只需要一個注意函式</a>就好了。總之透過新設計的自注意力機制以及原有的注意力機制，<a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need 論文</a>作者們打造了一個完全不需使用 RNN 的 Seq2Seq 模型：Transformer。以下是 Transformer 中非常簡化的 Encoder-Decoder 版本，讓我們找找哪邊用到了（自）注意力機制：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/Transformer_decoder.png"/>
@@ -1145,16 +1068,14 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在 Transformer 裡頭，Decoder 利用注意力機制關注 Encoder 的輸出序列（Encoder-Decoder Attention），而 Encoder 跟 Decoder 各自利用自注意力機制關注自己處理的序列（Self-Attention）。無法平行運算的 RNN 完全消失，名符其實的 Attention is all you need.</p>
 <p>以下則是 Transformer 實際上將英文句子翻譯到法文的過程：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/transformer-nmt-encode-decode.jpg">
 <source src="https://leemeng.tw/images/transformer/transformer-nmt-encode-decode.mp4" type="video/mp4"/>
@@ -1170,8 +1091,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>以 Transformer 實作的 NMT 系統基本上可以分為 6 個步驟：</p>
 <ol>
@@ -1187,8 +1107,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/en-ge-bleu-comparison.png"/>
@@ -1203,31 +1122,27 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>自注意力機制解開了 RNN 加在 GPU 上的拘束器。作者們用了 8 個 <a href="https://www.nvidia.com.tw/object/tesla-p100-tw.html">NVIDIA P100 GPU</a>，花了 3 天半訓練了一個 Transformer，而該模型在 <a href="http://statmt.org/wmt14/">WMT 2014</a>  英法 / 英德翻譯都取得了最高水準的成績。</p>
 <p>跟其他模型相比，這訓練時間跟其創造的優異成績在當時可以說是逆天的存在。自此「大注意時代」展開，該論文至今超過 1800 次引用，所有研究領域都被自注意力機制相關的論文洗了一波。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/ramona-flwrs-1310216-unsplash.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>沒能趕上開心洗論文的最佳時機也別傷心難過，對我們來說仍然有個十分重要的訊息：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -1239,8 +1154,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這也是我決定寫這篇文章的理由之一。雖然本文是以機器翻譯的角度來介紹 Transformer，但事實上只要是能用 RNN 或 Seq2Seq 模型進行的研究領域，你都會看到已經有大量跟（自）注意力機制或是 Transformer 有關的論文了：</p>
 <ul>
@@ -1257,8 +1171,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="resp-container">
 <iframe allow="accelerometer; 
@@ -1273,31 +1186,27 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果你接下來想往深度學習領域發展（尤其是自然語言處理這塊），了解（自）注意力機制以及 Transformer 的運作方式幾乎可以說是必經之路。就算沒打算自己手刻 Transformer，你現在應該也稍微能夠體會現代的神經網路到底在在對自然語言做些什麼了。</p>
 <p>至此本文的上半部分結束。在下半段我們將實作一個能進行英翻中的 Transformer。等等會說明一項要你完成的事情，不過現在先離開位置喝點東西、讓眼睛跟腦袋休息一下吧！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/adam-jaime-119551-unsplash.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="師傅引進門，修行在個人_1">師傅引進門，修行在個人<a class="anchor-link" href="#師傅引進門，修行在個人">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你回來了嗎？還是等不及待地想繼續往下閱讀？</p>
 <p>接下來我們會進入實際的程式實作。但跟前半段相比難度呈指數型上升，因此我只推薦符合以下條件的讀者閱讀：</p>
@@ -1308,23 +1217,20 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你馬上就會知道 1 個小時代表什麼意思。如果你覺得這聽起來很 ok，那可以繼續閱讀。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/obama-not-bad.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在<a href="#機器翻譯近代史">機器翻譯近代史</a>一章我們已經花了不少篇幅講解了許多在實作 Transformer 時會有幫助的重要概念，其中包含：</p>
 <ul>
@@ -1337,8 +1243,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/tf-tutorial-oveview.jpg">
 <source src="https://leemeng.tw/images/transformer/tf-tutorial-oveview.mp4" type="video/mp4"/>
@@ -1352,8 +1257,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上面是我用這輩子最快的速度捲動該頁面再加速後的結果，可以看出內容還真不少。儘管中文化很重要，我在這篇文章裡不會幫你把其中的敘述翻成中文（畢竟你的英文可能比我好）</p>
 <p>反之，我將利用 TensorFlow 官方的程式碼，以最適合「初心者」理解的實作順序來講述 Transformer 的重要技術細節及概念。在閱讀本文之後，你將有能力自行理解 TensorFlow 官方教學以及其他網路上的實作（比方說 HarvardNLP 以 <a href="https://pytorch.org/">Pytorch</a> 實現的 <a href="http://nlp.seas.harvard.edu//2018/04/03/attention.html#additional-components-bpe-search-averaging">The Annotated Transformer</a>）。</p>
@@ -1361,8 +1265,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="resp-container">
 <iframe allow="accelerometer; 
@@ -1377,8 +1280,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>現在閱讀此文的讀者真的很幸福。</p>
 <p>李宏毅教授前陣子才在<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML19.html">他 2019 年的台大機器學習課程</a>發佈了 <a href="https://www.youtube.com/watch?v=ugWDIIOHtPA">Transformer 的教學影片</a>，而這可以說是世界上最好的中文教學影片。如果你真的想要深入理解 Transformer，在實作前至少把上面的影片看完吧！你可以少走很多彎路。</p>
@@ -1387,23 +1289,20 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/you-should-not-pass.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="11-個重要-Transformer-概念回顧">11 個重要 Transformer 概念回顧<a class="anchor-link" href="#11-個重要-Transformer-概念回顧">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>怎麼樣？你應該已經從教授的課程中學到不少重要概念了吧？我不知道你還記得多少，但讓我非常簡單地幫你複習一下。</p>
 <ol>
@@ -1434,15 +1333,13 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>另外你之後也可以隨時透過左側導覽的圖片 icon 來快速回顧 Transformer 的整體架構以及教授添加的註解。我相信在實作的時候它可以幫得上點忙：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/transformer-left-nav.jpg">
 <source src="https://leemeng.tw/images/transformer/transformer-left-nav.mp4" type="video/mp4"/>
@@ -1452,23 +1349,20 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了這些背景知識以後，在理解程式碼時會輕鬆許多。你也可以一邊執行 <a href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/r2/tutorials/text/transformer.ipynb">TensorFlow 官方的 Colab 筆記本</a>一邊參考底下實作。</p>
 <p>好戲登場！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="安裝函式庫並設置環境">安裝函式庫並設置環境<a class="anchor-link" href="#安裝函式庫並設置環境">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在這邊我們引進一些常用的 <a href="https://www.python.org/">Python</a> 函式庫，這應該不需要特別說明。</p>
 </div>
@@ -1490,8 +1384,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>比較值得注意的是我們將以<a href="https://pypi.org/project/tf-nightly-2.0-preview/">最新的 TensorFlow 2 Beta 版本</a>來實作本文的 Transformer。另外也會透過 <a href="https://www.tensorflow.org/datasets">TensorFlow Datasets</a> 來使用前人幫我們準備好的英中翻譯資料集：</p>
 </div>
@@ -1522,8 +1415,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>另外為了避免 TensorFlow 吐給我們太多不必要的資訊，在此文中我也將改變 logging 等級。<a href="https://www.tensorflow.org/alpha/guide/effective_tf2#api_cleanup">在 TensorFlow 2 裡頭因為 <code>tf.logging</code> 被 deprecated</a>，我們可以直接用 <code>logging</code>  模組來做到這件事情：</p>
 </div>
@@ -1542,8 +1434,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們同時也讓 numpy 不要顯示科學記號。這樣可以讓我們之後在做一些 Tensor 運算的時候版面能乾淨一點。</p>
 </div>
@@ -1555,8 +1446,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>接著定義一些之後在儲存檔案時會用到的路徑變數：</p>
 </div>
@@ -1584,30 +1474,26 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="建立輸入管道">建立輸入管道<a class="anchor-link" href="#建立輸入管道">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>現行的 GPU 以及 TPU 能透過平行運算幫我們顯著地縮短訓練一個 step 所需的時間。而為了讓平行計算能發揮最佳性能，我們需要最佳化<a href="https://www.tensorflow.org/guide/performance/datasets?hl=zh_cn">輸入管道（Input pipeline）</a>，以在當前訓練步驟完成之前就準備好下一個時間點 GPU 要用的數據。</p>
 <p>而我們將透過 <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/data">tf.data API</a> 以及前面導入的 <a href="https://www.tensorflow.org/datasets">TensorFlow Datasets</a> 來建置高效的輸入管道，並將<a href="http://www.statmt.org/wmt19/">機器翻譯競賽 WMT 2019</a> 的中英資料集準備好。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="下載並準備資料集">下載並準備資料集<a class="anchor-link" href="#下載並準備資料集">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>首先看看 <code>tfds</code> 裡頭 WMT 2019 的中英翻譯有哪些資料來源：</p>
 </div>
@@ -1643,8 +1529,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>可以看到在 WMT 2019 裡中英對照的數據來源還算不少。其中幾個很好猜到其性質：</p>
 <ul>
@@ -1676,8 +1561,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/tfds-demo.jpg">
 <source src="https://leemeng.tw/images/transformer/tfds-demo.mp4" type="video/mp4"/>
@@ -1687,8 +1571,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上面的指令約需 2 分鐘完成，而在過程中 <code>tfds</code> 幫我們完成不少工作：</p>
 <ul>
@@ -1703,15 +1586,13 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="切割資料集">切割資料集<a class="anchor-link" href="#切割資料集">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>雖然我們只下載了一個新聞評論的數據集，裡頭還是有超過 30 萬筆的中英平行句子。為了減少訓練所需的時間，讓我們使用 <code>tfds.Split</code> 定義一個將此數據集切成多個部分的 <code>split</code>：</p>
 </div>
@@ -1743,8 +1624,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這個 <code>split</code> 請 <code>tfds</code> 將剛剛處理好的新聞評論資料集再進一步切成 3 個部分，數據量分佈如下：</p>
 <ul>
@@ -1780,8 +1660,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你可以在<a href="https://github.com/tensorflow/datasets/blob/master/docs/splits.md">這邊</a>找到更多跟 <code>split</code> 相關的用法。</p>
 <p>這時候 <code>train_examples</code> 跟 <code>val_examples</code> 都已經是 <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/data/Dataset">tf.data.Dataset</a>。我們在<a href="#前處理數據">前處理數據</a>一節會看到這些數據在被丟入神經網路前需要經過什麼轉換，不過現在先讓我們簡單讀幾筆數據出來看看：</p>
@@ -1819,8 +1698,7 @@ tf.Tensor(b'\xe5\x8f\xaa\xe6\x9c\x89\xe5\x9c\xa8\xe5\x8f\x91\xe7\x94\x9f\xe6\xb7
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>跟預期一樣，每一個例子（每一次的 <code>take</code>）都包含了 2 個以 unicode 呈現的 <code>tf.Tensor</code>。它們有一樣的語義，只是一個是英文，一個是中文。</p>
 <p>讓我們將這些 Tensors 實際儲存的字串利用 <code>numpy()</code> 取出並解碼看看：</p>
@@ -1888,23 +1766,20 @@ Managing the rise of NCDs will require long-term thinking, and government leader
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>想像一下沒有對應的中文，要閱讀這些英文得花多少時間。你可以試著消化其中幾句中文與其對應的英文句子，並比較一下所需要的時間差異。</p>
 <p>雖然只是隨意列出的 10 個中英句子，你應該跟我一樣也能感受到機器翻譯研究的重要以及其能帶給我們的價值。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="建立中文與英文字典">建立中文與英文字典<a class="anchor-link" href="#建立中文與英文字典">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>就跟大多數 NLP 專案相同，有了原始的中英句子以後我們得分別為其建立字典來將每個詞彙轉成索引（Index）。<code>tfds.features.text</code> 底下的 <code>SubwordTextEncoder</code> 提供非常方便的 API 讓我們掃過整個訓練資料集並建立字典。</p>
 <p>首先為英文語料建立字典：</p>
@@ -1915,23 +1790,23 @@ Managing the rise of NCDs will require long-term thinking, and government leader
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-try:
-  subword_encoder_en = tfds.features.text.SubwordTextEncoder.load_from_file(en_vocab_file)
-  print(f"載入已建立的字典： {en_vocab_file}")
-except:
-  print("沒有已建立的字典，從頭建立。")
-  subword_encoder_en = tfds.features.text.SubwordTextEncoder.build_from_corpus(
-      (en.numpy() for en, _ in train_examples), 
-      target_vocab_size=2**13) # 有需要可以調整字典大小
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">subword_encoder_en</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">SubwordTextEncoder</span><span class="o">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="n">en_vocab_file</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"載入已建立的字典： </span><span class="si">{en_vocab_file}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"沒有已建立的字典，從頭建立。"</span><span class="p">)</span>
+  <span class="n">subword_encoder_en</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">SubwordTextEncoder</span><span class="o">.</span><span class="n">build_from_corpus</span><span class="p">(</span>
+      <span class="p">(</span><span class="n">en</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">en</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">train_examples</span><span class="p">),</span> 
+      <span class="n">target_vocab_size</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">13</span><span class="p">)</span> <span class="c1"># 有需要可以調整字典大小</span>
   
-  # 將字典檔案存下以方便下次 warmstart
-  subword_encoder_en.save_to_file(en_vocab_file)
+  <span class="c1"># 將字典檔案存下以方便下次 warmstart</span>
+  <span class="n">subword_encoder_en</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">(</span><span class="n">en_vocab_file</span><span class="p">)</span>
   
 
-print(f"字典大小：{subword_encoder_en.vocab_size}")
-print(f"前 10 個 subwords：{subword_encoder_en.subwords[:10]}")
-print()
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"字典大小：</span><span class="si">{subword_encoder_en.vocab_size}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"前 10 個 subwords：</span><span class="si">{subword_encoder_en.subwords[:10]}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1952,16 +1827,14 @@ Wall time: 391 ms
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果你的語料庫（corpus） 不小，要掃過整個資料集並建立一個字典得花不少時間。因此實務上我們會先使用 <code>load_from_file</code> 函式嘗試讀取之前已經建好的字典檔案，失敗才 <code>build_from_corpus</code>。</p>
 <p>這招很基本，但在你需要重複處理巨大語料庫時非常重要。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>subword_encoder_en</code> 則是利用 <a href="https://arxiv.org/pdf/1609.08144.pdf">GNMT 當初推出的 wordpieces</a> 來進行斷詞，而簡單來說其產生的子詞（subword）介於這兩者之間：</p>
 <ul>
@@ -1971,8 +1844,7 @@ Wall time: 391 ms
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在掃過所有英文句子以後，<code>subword_encoder_en</code> 建立一個有 8135 個子詞的字典。我們可以用該字典來幫我們將一個英文句子轉成對應的索引序列（index sequence）：</p>
 </div>
@@ -1999,8 +1871,7 @@ Wall time: 391 ms
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這樣的索引序列你應該已經見怪不怪了。我們在<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html">以前的 NLP 入門文章</a>也使用 <code>tf.keras</code> 裡頭的 <code>Tokenizer</code> 做過類似的事情。</p>
 <p>接著讓我們將這些索引還原，看看它們的長相：</p>
@@ -2039,8 +1910,7 @@ Wall time: 391 ms
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>當 subword tokenizer 遇到從沒出現過在字典裡的詞彙，會將該詞拆成多個子詞（subwords）。比方說上面句中的 <code>beautiful</code> 就被拆成 <code>bea uti ful</code>。這也是為何這種斷詞方法比較不怕沒有出現過在字典裡的字（out-of-vocabulary words）。</p>
 <p>另外別在意我為了對齊寫的 <code>print</code> 語法。重點是我們可以用 <code>subword_encoder_en</code> 的 <code>decode</code> 函式再度將索引數字轉回其對應的子詞。編碼與解碼是 2 個完全可逆（invertable）的操作：</p>
@@ -2071,8 +1941,7 @@ Wall time: 391 ms
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>酷！接著讓我們如法炮製，為中文也建立一個字典：</p>
 </div>
@@ -2082,23 +1951,23 @@ Wall time: 391 ms
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-try:
-  subword_encoder_zh = tfds.features.text.SubwordTextEncoder.load_from_file(zh_vocab_file)
-  print(f"載入已建立的字典： {zh_vocab_file}")
-except:
-  print("沒有已建立的字典，從頭建立。")
-  subword_encoder_zh = tfds.features.text.SubwordTextEncoder.build_from_corpus(
-      (zh.numpy() for _, zh in train_examples), 
-      target_vocab_size=2**13, # 有需要可以調整字典大小
-      max_subword_length=1) # 每一個中文字就是字典裡的一個單位
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">subword_encoder_zh</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">SubwordTextEncoder</span><span class="o">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="n">zh_vocab_file</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"載入已建立的字典： </span><span class="si">{zh_vocab_file}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"沒有已建立的字典，從頭建立。"</span><span class="p">)</span>
+  <span class="n">subword_encoder_zh</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">SubwordTextEncoder</span><span class="o">.</span><span class="n">build_from_corpus</span><span class="p">(</span>
+      <span class="p">(</span><span class="n">zh</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">zh</span> <span class="ow">in</span> <span class="n">train_examples</span><span class="p">),</span> 
+      <span class="n">target_vocab_size</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">13</span><span class="p">,</span> <span class="c1"># 有需要可以調整字典大小</span>
+      <span class="n">max_subword_length</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 每一個中文字就是字典裡的一個單位</span>
   
-  # 將字典檔案存下以方便下次 warmstart 
-  subword_encoder_zh.save_to_file(zh_vocab_file)
+  <span class="c1"># 將字典檔案存下以方便下次 warmstart </span>
+  <span class="n">subword_encoder_zh</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">(</span><span class="n">zh_vocab_file</span><span class="p">)</span>
 
-print(f"字典大小：{subword_encoder_zh.vocab_size}")
-print(f"前 10 個 subwords：{subword_encoder_zh.subwords[:10]}")
-print()
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"字典大小：</span><span class="si">{subword_encoder_zh.vocab_size}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"前 10 個 subwords：</span><span class="si">{subword_encoder_zh.subwords[:10]}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2119,8 +1988,7 @@ Wall time: 337 ms
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在使用 <code>build_from_corpus</code> 函式掃過整個中文資料集時，我們將 <code>max_subword_length</code> 參數設置為 1。這樣可以讓每個漢字都會被視為字典裡頭的一個單位。畢竟跟英文的 abc 字母不同，一個漢字代表的意思可多得多了。而且如果使用 n-gram 的話可能的詞彙組合太多，在小數據集的情況非常容易遇到不存在字典裡頭的字。</p>
 <p>另外所有漢字也就大約 4000 ~ 5000 個可能，作為一個分類問題（classification problem）還是可以接受的。</p>
@@ -2152,8 +2020,7 @@ Wall time: 337 ms
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>好的，我們把中英文斷詞及字典的部分都搞定了。現在給定一個例子（example，在這邊以及後文指的都是一組包含同語義的中英平行句子），我們都能將其轉換成對應的索引序列了：</p>
 </div>
@@ -2202,22 +2069,19 @@ The eurozone&rsquo;s collapse forces a major realignment of European politics.
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>接著讓我們針對這些索引序列（index sequence）做一些前處理。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="前處理數據">前處理數據<a class="anchor-link" href="#前處理數據">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在處理序列數據時我們時常會在一個序列的前後各加入一個特殊的 token，以標記該序列的開始與完結，而它們常有許多不同的稱呼：</p>
 <ul>
@@ -2248,8 +2112,7 @@ The eurozone&rsquo;s collapse forces a major realignment of European politics.
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因為 <code>tf.data.Dataset</code> 裡頭都是在操作 Tensors（而非 Python 字串），所以這個 <code>encode</code> 函式預期的輸入也是 TensorFlow 裡的 <a href="https://www.tensorflow.org/guide/eager">Eager Tensors</a>。但只要我們使用 <code>numpy()</code> 將 Tensor 裡的實際字串取出以後，做的事情就跟上一節完全相同。</p>
 <p>讓我們從訓練集裡隨意取一組中英的 Tensors 來看看這個函式的實際輸出：</p>
@@ -2298,8 +2161,7 @@ The eurozone&rsquo;s collapse forces a major realignment of European politics.
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你可以看到不管是英文還是中文的索引序列，前面都加了一個代表 BOS 的索引（分別為 8135 與 4201），最後一個索引則代表 EOS（分別為 8136 與 4202）</p>
 <p>但如果我們將 <code>encode</code> 函式直接套用到整個訓練資料集時會產生以下的錯誤訊息：</p>
@@ -2308,16 +2170,14 @@ The eurozone&rsquo;s collapse forces a major realignment of European politics.
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/tf-dataset-map-error.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這是因為目前 <code>tf.data.Dataset.map</code> 函式裡頭的計算是在<a href="https://www.tensorflow.org/guide/graphs">計算圖模式（Graph mode）</a>下執行，所以裡頭的 Tensors 並不會有 <a href="https://www.tensorflow.org/alpha/guide/eager">Eager Execution</a> 下才有的 <code>numpy</code> 屬性。</p>
 <p>解法是使用 <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/py_function">tf.py_function</a> 將我們剛剛定義的 <code>encode</code> 函式包成一個以 eager 模式執行的 TensorFlow Op：</p>
@@ -2365,8 +2225,7 @@ tf.Tensor([4201   48  557  116   48   81 4202], shape=(7,), dtype=int64)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有點 tricky 但任務完成！注意在套用 <code>map</code> 函式以後，<code>tmp_dataset</code> 的輸出已經是兩個索引序列，而非原文字串。</p>
 <p>為了讓 Transformer  快點完成訓練，讓我們將長度超過 40 個 tokens 的序列都去掉吧！我們在底下定義了一個布林（boolean）函式，其輸入為一個包含兩個英中序列 <code>en, zh</code> 的例子，並在只有這 2 個序列的長度都小於 40 的時候回傳真值（True）：</p>
@@ -2391,8 +2250,7 @@ tf.Tensor([4201   48  557  116   48   81 4202], shape=(7,), dtype=int64)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>簡單檢查是否有序列超過我們指定的長度，順便計算過濾掉過長序列後剩餘的訓練集筆數：</p>
 <div class="highlight"><pre><span></span><span class="c1"># 因為我們數據量小可以這樣 count</span>
@@ -2421,8 +2279,7 @@ tf.Tensor([4201   48  557  116   48   81 4202], shape=(7,), dtype=int64)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>過濾掉較長句子後還有接近 3 萬筆的訓練例子，看來不用擔心數據太少。</p>
 <p>最後值得注意的是每個例子裡的索引序列長度不一，這在建立 batch 時可能會發生問題。不過別擔心，輪到 <code>padded_batch</code> 函式出場了：</p>
@@ -2485,8 +2342,7 @@ tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>padded_batch</code> 函式能幫我們將每個 batch 裡頭的序列都補 0 到跟當下 batch 裡頭最長的序列一樣長。</p>
 <p>比方說英文 batch 裡最長的序列為 34；而中文 batch 裡最長的序列則長達 40 個 tokens，剛好是我們前面設定過的序列長度上限。</p>
@@ -2522,15 +2378,13 @@ tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>建構訓練資料集時我們還添加了些沒提過的函式。它們的用途大都是用來提高輸入效率，並不會影響到輸出格式。如果你想深入了解這些函式的運作方式，可以參考 <a href="https://www.tensorflow.org/guide/performance/datasets?hl=zh_cn">tf.data 的官方教學</a>。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>現在讓我們看看最後建立出來的資料集長什麼樣子：</p>
 </div>
@@ -2579,8 +2433,7 @@ tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>嘿！我們建立了一個可供訓練的輸入管道（Input pipeline）！</p>
 <p>你會發現訓練集：</p>
@@ -2594,8 +2447,7 @@ tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在這一節我們建立了一個通用資料集。「通用」代表不限於 Transformer，你也能用<a href="https://www.tensorflow.org/beta/tutorials/text/nmt_with_attention">一般搭配注意力機制的 Seq2Seq 模型</a>來處理這個資料集並做中英翻譯。</p>
 <p>但從下節開始讓我們把這個數據集先擺一邊，將注意力全部放到 Transformer 身上並逐一實作其架構裡頭的各個元件。</p>
@@ -2610,23 +2462,20 @@ tf.Tensor(
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="理解-Transformer-之旅：跟著多維向量去冒險_1">理解 Transformer 之旅：跟著多維向量去冒險<a class="anchor-link" href="#理解-Transformer-之旅：跟著多維向量去冒險">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在實作 Transformer 及注意力機制這種高度平行運算的模型時，你將需要一點「空間想像力」，能夠想像最高高達 4 維的向量是怎麼在 Transformer 的各個元件被處理與轉換的。</p>
 <p>如果你跟我一樣腦袋並不是那麼靈光的話，這可不是一件簡單的事情。不過別擔心，從這節開始我會把 Transfomer （主要針對注意力機制）裡頭的矩陣運算過程視覺化（visualize）出來，讓你在這個多維空間裡頭也能悠遊自在。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/the-matrix-world.jpg"/>
@@ -2639,8 +2488,7 @@ tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>就好像一般你在寫程式時會追蹤某些變數在函式裡頭的變化，一個直觀理解 Transformer 的方法是將幾個句子丟入其中，並觀察 Transformer 對它們做了些什麼轉換。</p>
 <p>首先讓我們建立兩個要拿來持續追蹤的中英平行句子：</p>
@@ -2672,8 +2520,7 @@ tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>接著利用<a href="#建立輸入管道">之前建立資料集的方法</a>將這 2 組中英句子做些前處理並以 Tensor 的方式讀出：</p>
 </div>
@@ -2719,30 +2566,26 @@ tar: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上節建立的數據集屍骨未寒，你應該還記得 <code>inp</code>  shape 裡頭第一個維度的 <code>2</code> 代表著這個 batch 有 2 個句子，而第二維度的 <code>8</code> 則代表著句子的長度（單位：子詞）；<code>tar</code> 則為中文子詞序列（subword sequence），不過因為中文我們以漢字為單位作斷詞，長度一般會比對應的英文句子來的長（shape 中的 <code>10</code>）。</p>
 <p>2 維矩陣還很容易想像，但我擔心等到你進入 3 維空間後就會想放棄人生了。所以還是先讓我們用人類比較容易理解的方式來呈現這些數據。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="視覺化原始句子">視覺化原始句子<a class="anchor-link" href="#視覺化原始句子">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果我們把這 2 個 batch 用你比較熟悉的方式呈現的話會長這樣：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/inp_tar.jpg">
 <source src="https://leemeng.tw/images/transformer/inp_tar.mp4" type="video/mp4"/>
@@ -2754,8 +2597,7 @@ tar: tf.Tensor(
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這樣清楚多了不是嗎？現在點擊播放鍵，將索引序列還原成原始的子詞序列。</p>
 <p>你可以清楚地看到每個<strong>原始</strong>句子前後都有 <code>&lt;start&gt;</code> 與 <code>&lt;end&gt;</code>。而為了讓同個 batch 裡頭的序列長度相同，我們在較短的序列後面也補上足夠的 0，代表著 <code>&lt;pad&gt;</code>。</p>
@@ -2771,15 +2613,13 @@ tar: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="視覺化-3-維詞嵌入張量">視覺化 3 維詞嵌入張量<a class="anchor-link" href="#視覺化-3-維詞嵌入張量">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在將索引序列丟入神經網路之前，我們一般會做<a href="https://zh.wikipedia.org/wiki/%E8%AF%8D%E5%B5%8C%E5%85%A5">詞嵌入（word embedding）</a>，將一個維度為字典大小的高維離散空間「嵌入」到低維的連續空間裡頭。</p>
 <p>讓我們為英文與中文分別建立一個詞嵌入層並實際對 <code>inp</code> 及 <code>tar</code> 做轉換：</p>
@@ -2790,8 +2630,7 @@ tar: tf.Tensor(
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="c1"># + 2 是因為我們額外加了 &lt;start&gt; 以及 &lt;end&gt; tokens</span>
 <span class="n">vocab_size_en</span> <span class="o">=</span> <span class="n">subword_encoder_en</span><span class="o">.</span><span class="n">vocab_size</span> <span class="o">+</span> <span class="mi">2</span>
@@ -2861,8 +2700,7 @@ emb_tar: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>注意你的詞嵌入層的隨機初始值會跟我不同，結果可能會有一點差異。</p>
 <p>但重點是你能在腦海中理解這兩個 3 維張量嗎？花了幾秒鐘？我相信在座不乏各路高手，而且事實上在這一行混久了，你也必須能直覺地理解這個表示方式。</p>
@@ -2872,8 +2710,7 @@ emb_tar: tf.Tensor(
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/emb_inp_tar.jpeg">
 <source src="https://leemeng.tw/images/transformer/emb_inp_tar.mp4" type="video/mp4"/>
@@ -2883,8 +2720,7 @@ emb_tar: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>依照前面提過的準則，張量中第一個維度的 <code>2</code> 代表著句子數 <code>batch_size</code>。在 3 維空間裡頭，我會將不同句子畫在 z 軸上，也就是你現在把臉貼近 /  遠離螢幕這個維度。你同時也能用不同顏色來區分句子。</p>
 <p>緊跟著句子的下一個維度則一樣是本來的子詞（subword）。只是現在每個子詞都已從一個索引數字被轉換成一個 4 維的詞嵌入向量，因此每個子詞都以 y 軸來表示。最後一維則代表著詞嵌入空間的維度，一樣以 x 軸來表示。</p>
@@ -2920,23 +2756,20 @@ emb_tar[0]: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>它們都是 <code>&lt;pad&gt;</code> token（以 <code>0</code> 表示），理當有一樣的詞嵌入向量。</p>
 <p>不同顏色也讓我們可以很直觀地理解一個句子是怎麼從一個 1 維向量被轉換到 2 維的。你後面就會發現，你將需要能夠非常直覺地理解像是 <code>emb_tar</code> 這種 3 維張量裡頭每個維度所代表的意義。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="遮罩：Transformer-的祕密配方">遮罩：Transformer 的祕密配方<a class="anchor-link" href="#遮罩：Transformer-的祕密配方">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們在前面並沒有仔細談過遮罩（masking）的概念，但事實上它可以說是在實作 Transformer 時最重要卻也最容易被搞砸的一環。它讓 Transformer 在進行自注意力機制（Self-Attention Mechanism）時不至於偷看到不該看的。</p>
 <p>在 Transformer 裡頭有兩種 masks：</p>
@@ -2979,8 +2812,7 @@ array([[[[0., 0., 0., 0., 0., 0., 1., 1.]]],
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>登登！我們的第一個 4 維張量！不過別緊張，我們在中間加了 2 個新維度是為了之後可以做 <a href="https://www.numpy.org/devdocs/user/theory.broadcasting.html">broadcasting</a>，現在可以忽視。喔！不過如果這是你第一次聽到 broadcasting，我強烈建議你現在就閱讀 <a href="https://www.numpy.org/devdocs/user/theory.broadcasting.html">numpy 官方的簡短教學</a>了解其概念。我們後面也會看到實際的 broadcasting 例子。</p>
 <p>回到我們的 <code>inp_mask</code> 遮罩。現在我們可以先將額外的維度去掉以方便跟 <code>inp</code> 作比較：</p>
@@ -3015,8 +2847,7 @@ tf.squeeze(inp_mask): tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你可以看到 <code>inp_mask</code> 將 <code>inp</code> 裡頭為 <code>0</code> 的對應位置設為 1 凸顯出來，這樣之後其他函式就知道要把哪邊「遮住」。 讓我們看看被降到 2 維的 <code>inp_mask</code> 是怎麼被套用在 <code>inp</code> 身上的：</p>
 </div>
@@ -3024,8 +2855,7 @@ tf.squeeze(inp_mask): tf.Tensor(
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/padding_mask.jpg">
 <source src="https://leemeng.tw/images/transformer/padding_mask.mp4" type="video/mp4"/>
@@ -3035,23 +2865,20 @@ tf.squeeze(inp_mask): tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>很好懂，不是嗎？但這只是小暖身，等到之後要將遮罩 broadcast 到 3、4 維張量的時候你可能會黑人問號，所以最好做點心理準備（笑</p>
 <p>至於另外一種遮罩 look ahead mask，等我們說明完下節的注意函式以後你會比較容易理解它的作用，所以先賣個關子。現在讓我們進入 Tranformer 最核心的部分：注意力機制。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Scaled-dot-product-attention：一種注意函式">Scaled dot product attention：一種注意函式<a class="anchor-link" href="#Scaled-dot-product-attention：一種注意函式">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們在文中以及教授的影片已經多次看到，所謂的注意力機制（或稱注意函式，attention function）概念上就是拿一個查詢（query）去跟一組 key-values 做運算，最後產生一個輸出。只是我們會利用矩陣運算同時讓多個查詢跟一組 key-values 做運算，最大化計算效率。</p>
 <p>而不管是查詢（query）、鍵值（keys）還是值（values）或是輸出，全部都是向量（vectors）。該輸出是 values 的加權平均，而每個 value  獲得的權重則是由當初 value 對應的 key 跟 query 計算匹配程度所得來的。（<a href="https://arxiv.org/pdf/1706.03762.pdf">論文原文</a>稱此計算匹配程度的函式為 compatibility function）</p>
@@ -3059,8 +2886,7 @@ tf.squeeze(inp_mask): tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/scaled-dot-product.jpg"/>
@@ -3073,8 +2899,7 @@ tf.squeeze(inp_mask): tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們是第一次秀出論文裡頭的圖片（左），但右邊你應該不陌生才對。</p>
 <p>Scaled dot product attention 跟以往 multiplicative attention 一樣是先將維度相同的 Q 跟 K 做<a href="https://zh.wikipedia.org/wiki/%E7%82%B9%E7%A7%AF">點積</a>：將對應維度的值兩兩相乘後相加得到單一數值，接著把這些數值除以一個 scaling factor <code>sqrt(dk)</code> ，然後再丟入 <a href="https://www.youtube.com/watch?v=mlaLLQofmR8">softmax 函式</a>得到相加為 1 的注意權重（attention weights）。</p>
@@ -3083,8 +2908,7 @@ tf.squeeze(inp_mask): tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/softmax-function.jpg"/>
@@ -3097,8 +2921,7 @@ tf.squeeze(inp_mask): tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>說完概念，讓我們看看 Transformer 論文中的這個注意函式怎麼運作吧！首先我們得先準備這個函式的輸入 Q, K, V 才行。我們在 <a href="#Multi-head-attention：你看你的，我看我的">Multi-head attention</a> 一節會看到，在進行 scaled dot product attention 時會需要先將 Q、K 以及 V 分別做一次線性轉換，但現在讓我們先忽略這部分。</p>
 <p>這邊我們可以拿已經被轉換成詞嵌入空間的英文張量 <code>emb_inp</code> 來充當左圖中的 Q 以及 K，讓它自己跟自己做匹配。V 則讓我隨機產生一個 binary 張量（裡頭只有 1 或 0）來當作每個 K 所對應的值，方便我們直觀解讀 scaled dot product attention 的輸出結果：</p>
@@ -3149,8 +2972,7 @@ array([[[1., 0., 0., 0.],
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>好啦，我想你現在應該能快速地解讀 3 維張量了，但還是讓我雞婆點，將現在的 Q, K, V 都畫出來讓你參考：</p>
 </div>
@@ -3158,16 +2980,14 @@ array([[[1., 0., 0., 0.],
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/q_k_v.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>注意顏色。雖然我們將拿 Q 跟 K 來做匹配，這個匹配只會發生在同個句子（同個顏色）底下（即 <code>shape[1:]</code>）。在深度學習世界，我們會為了最大化 GPU 的運算效率而一次將 64 個、128 個或是更多個 <code>batch_size</code> 的句子丟入模型。習慣 batch 維度的存在是非常實際的。</p>
 <p>接著讓我們看看 scaled dot product attention 在 TensorFlow 裡是<a href="https://www.tensorflow.org/beta/tutorials/text/transformer?authuser=1#scaled_dot_product_attention">怎麼被實作</a>的：</p>
@@ -3217,8 +3037,7 @@ array([[[1., 0., 0., 0.],
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>別被嚇到了。除了遮罩的運算部分我們還沒解釋，這 Python 函式事實上就是用 TensorFlow API 來實現剛剛才說的注意力機制邏輯罷了：</p>
 <ol>
@@ -3309,8 +3128,7 @@ attention_weights: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>scaled_dot_product_attention</code> 函式輸出兩個張量：</p>
 <ul>
@@ -3323,8 +3141,7 @@ attention_weights: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/scaled_dot_product_attention.jpg">
 <source src="https://leemeng.tw/images/transformer/scaled_dot_product_attention.mp4" type="video/mp4"/>
@@ -3338,8 +3155,7 @@ attention_weights: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>別只聽我碎碎念，自己點擊播放鍵來了解背後到底發生什麼事情吧！</p>
 <p>動畫裡包含許多細節，但只要有矩陣運算的基本概念，你應該已經能夠直觀且正確地理解注意函式是怎麼運作的了。在真實世界裡我們當然會用更長的序列、更大的 <code>batch_size</code> 來處理數據，但上面呈現的是程式碼的實際結果，而非示意圖而已。這是注意力機制真正的「所見即所得」。</p>
@@ -3352,15 +3168,13 @@ attention_weights: tf.Tensor(
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="直觀理解遮罩在注意函式中的效果">直觀理解遮罩在注意函式中的效果<a class="anchor-link" href="#直觀理解遮罩在注意函式中的效果">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>剛剛為了讓你消化注意函式裡頭最重要的核心邏輯，我刻意忽略了遮罩（masking）的存在。現在讓我們重新把 <code>scaled_dot_product_attention</code> 裡頭跟遮罩相關的程式碼拿出來瞧瞧：</p>
 <div class="highlight"><pre><span></span><span class="o">...</span>
@@ -3381,8 +3195,7 @@ attention_weights: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/softmax.jpg">
 <source src="https://leemeng.tw/images/transformer/softmax.mp4" type="video/mp4"/>
@@ -3396,8 +3209,7 @@ attention_weights: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果序列 <code>k</code> 裡頭的每個子詞 <code>sub_k</code> 都是實際存在的中文字或英文詞彙，這運算當然沒問題。我們會希望序列 <code>q</code> 裡頭的每個子詞 <code>sub_q</code> 都能從每個 <code>sub_k</code> 獲得它所需要的語義資訊。</p>
 <p>但李組長眉頭一皺，發現案情並不單純。</p>
@@ -3453,8 +3265,7 @@ inp_mask: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>很明顯地，<strong>第一個</strong>英文序列的最後 2 個位置是不具任何語義的 <code>&lt;pad&gt;</code>（圖中為 <code>0</code> 的部分）。而這也是為何我們需要將遮罩 <code>inp_mask</code> 輸入到注意函式，避免序列中的子詞關注到這 2 個傢伙的原因。</p>
 <p>我們這次把 <code>inp_mask</code> 降到 3 維，並且將其跟剛剛的 <code>q</code>、<code>k</code> 和 <code>v</code> 一起丟進注意函式裡頭，看看注意權重有什麼變化：</p>
@@ -3518,8 +3329,7 @@ inp_mask: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>加了 padding mask 後，第一個句子裡頭的每個子詞針對倒數兩個字詞的「注意權重」的值都變成 0 了。上句話非常饒舌，但我相信已經是非常精準的說法了。讓我把這句話翻譯成 numpy 的 slice 語法：</p>
 </div>
@@ -3563,16 +3373,14 @@ array([[[0.        , 0.        ],
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>第一個英文句子的最後 2 個位置因為是 <code>&lt;pad&gt;</code> 所以被遮罩「蓋住」而沒有權重值（上方 2 維陣列）；第二個句子的序列（下方 2 維陣列）則因為最後 2 個位置仍是正常的英文子詞，因此都有被其他子詞關注。</p>
 <p>如果聽完我的碎碎念你還是無法理解以上結果，或是不確定有遮罩的注意函式到底怎麼運作，就實際看看其中的計算過程吧！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/padding_mask_in_attn_func.jpg">
 <source src="https://leemeng.tw/images/transformer/padding_mask_in_attn_func.mp4" type="video/mp4"/>
@@ -3586,8 +3394,7 @@ array([[[0.        , 0.        ],
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>一張圖勝過千言萬語。在 padding mask 的幫助下，注意函式輸出的新序列 <code>output</code> 裡頭的每個子詞都只從序列 <code>k</code> （也就是序列 <code>q</code> 自己）的前 6 個實際子詞而非 <code>&lt;pad&gt;</code> 來獲得語義資訊（最後一張圖的黑框部分）。</p>
 <p>再次提醒，因為我們輸入注意函式的 <code>q</code> 跟 <code>k</code> 都是同樣的英文詞嵌入張量 <code>emb_inp</code>，事實上這邊做的就是讓英文句子裡頭的每個子詞都去關注同句子中其他位置的子詞的資訊，並從中獲得上下文語義，而這就是所謂的自注意力機制（self-attention）：序列關注自己。</p>
@@ -3597,8 +3404,7 @@ array([[[0.        , 0.        ],
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>打鐵趁熱，讓我們看看前面提過的另一種遮罩 look ahead mask：</p>
 </div>
@@ -3667,8 +3473,7 @@ look_ahead_mask tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們已經知道 demo 用的中文（目標語言）的序列長度為 <code>10</code>，而 look ahead 遮罩就是產生一個 2 維矩陣，其兩個維度都跟中文的詞嵌入張量 <code>emb_tar</code> 的倒數第 2 個維度（序列長度）一樣，且裡頭是一個倒三角形（1 的部分）。</p>
 <p>我們<a href="#%E9%81%AE%E7%BD%A9%EF%BC%9ATransformer-%E7%9A%84%E7%A5%95%E5%AF%86%E9%85%8D%E6%96%B9">前面曾經說過</a> <code>look_ahead_mask</code> 是用來確保 Decoder 在進行自注意力機制時輸出序列裡頭的每個子詞只會關注到自己之前（左邊）的字詞，不會不小心關注到未來（右邊）理論上還沒被  Decoder 生成的子詞。</p>
@@ -3748,8 +3553,7 @@ look_ahead_mask tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>答案呼之欲出，套用 look ahead mask 的結果就是讓序列 <code>q</code> 裡的每個字詞只關注包含自己左側的子詞，在自己之後的位置的字詞都不看。比方說兩個中文句子的第一個字詞都只關注自己：</p>
 </div>
@@ -3776,8 +3580,7 @@ array([[1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>注意到了嗎？兩個句子的第一個子詞因為自己前面已經沒有其他子詞，所以將全部的注意力 <code>1</code>都放在自己身上。讓我們看看第二個子詞：</p>
 </div>
@@ -3807,8 +3610,7 @@ array([[0.49974996, 0.50025004, 0.        , 0.        , 0.        ,
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>兩個句子的第 2 個子詞因為只能看到序列中的第一個子詞以及自己，因此前兩個位置的注意權重加總即為 1，後面位置的權重皆為 0。而現在 2 個值都接近 0.5 是因為我們還沒開始訓練，Transformer 還不知道該把注意力放在哪裡。</p>
 <p>就跟一般的 <a href="#%E7%A5%9E%E7%B6%93%E6%A9%9F%E5%99%A8%E7%BF%BB%E8%AD%AF%EF%BC%9AEncoder-Decoder-%E6%A8%A1%E5%9E%8B">Seq2Seq 模型</a>相同，Transformer 裡頭的 Decoder 在生成輸出序列時也是一次產生一個子詞。因此跟輸入的英文句子不同，中文句子裡頭的每個子詞都是在不同時間點產生的。所以理論上 Decoder 在時間點 <code>t - 1</code> （或者說是位置 <code>t - 1</code>）已經生成的子詞 <code>subword_t_minus_1</code> 在生成的時候是不可能能夠關注到下個時間點 <code>t</code>（位置 <code>t</code>）所生成的子詞 <code>subword_t</code> 的，儘管它們在 Transformer 裡頭同時被做矩陣運算。</p>
@@ -3820,8 +3622,7 @@ array([[0.49974996, 0.50025004, 0.        , 0.        , 0.        ,
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/look_ahead_mask_in_attn_func.jpg">
 <source src="https://leemeng.tw/images/transformer/look_ahead_mask_in_attn_func.mp4" type="video/mp4"/>
@@ -3835,8 +3636,7 @@ array([[0.49974996, 0.50025004, 0.        , 0.        , 0.        ,
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在實際做矩陣運算的時候我們當然還是會讓注意權重為 0 的位置跟對應的 <code>v</code> 相乘，但是上圖的黑框才是實際會對最後的 <code>output</code> 值造成影響的權重與 <code>v</code>。</p>
 <p>我們在這節了解 Transformer 架構裡頭的兩種遮罩以及它們的作用：</p>
@@ -3849,30 +3649,26 @@ array([[0.49974996, 0.50025004, 0.        , 0.        , 0.        ,
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/transformer-movie.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Multi-head-attention：你看你的，我看我的">Multi-head attention：你看你的，我看我的<a class="anchor-link" href="#Multi-head-attention：你看你的，我看我的">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有好好聽教授講解 Transformer 的話，你應該還記得所謂的多頭注意（multi-head attention）概念。如果你到現在還沒看課程影片或者想複習一下，我把 multi-head attention 的開始跟結束時間都設置好了，你只需觀看大約 1 分半左右的影片：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="resp-container">
 <iframe allow="accelerometer; 
@@ -3887,8 +3683,7 @@ array([[0.49974996, 0.50025004, 0.        , 0.        , 0.        ,
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>複習完了嗎？mutli-head attention 的概念本身並不難，用比較正式的說法就是將 Q、K 以及 V 這三個張量先<strong>個別</strong>轉換到 <em>d_model</em> 維空間，再將其拆成多個比較低維的 <em>depth</em> 維度 N 次以後，將這些產生的小 q、小 k 以及小 v 分別丟入前面的注意函式得到 N 個結果。接著將這 N 個 heads 的結果串接起來，最後通過一個線性轉換就能得到 multi-head attention 的輸出</p>
 <p>而為何要那麼「搞剛」把本來 <code>d_model</code> 維的空間投影到多個維度較小的子空間（subspace）以後才各自進行注意力機制呢？這是因為這給予模型更大的彈性，讓它可以同時關注不同位置的子詞在不同子空間下的 representation，而不只是本來 <code>d_model</code> 維度下的一個 representation。</p>
@@ -3896,16 +3691,14 @@ array([[0.49974996, 0.50025004, 0.        , 0.        , 0.        ,
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/en-to-ch-attention-map.png"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在經過<a href="#Scaled-dot-product-attention：一種注意函式">前面 2 節注意函式</a>的洗禮之後，你應該已經能夠看出這裏每張小圖都是一個注意權重（為了方便渲染我做了 transpose）。而事實上每張小圖都是 multi-head attention 裡頭某一個 head 的結果，總共是 8 個 heads。</p>
 <p>你會發現每個 head 在 Transformer 生成同樣的中文字時關注的英文子詞有所差異：</p>
@@ -3919,16 +3712,14 @@ array([[0.49974996, 0.50025004, 0.        , 0.        , 0.        ,
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/multi-head-imagining.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>為了要實現 multi-head attention，得先能把一個 head 變成多個 heads。而這實際上就是把一個 <code>d_model</code> 維度的向量「折」成 <code>num_heads</code> 個 <code>depth</code> 維向量，使得：</p>
 <div class="highlight"><pre><span></span>num_heads * depth = d_model
@@ -4038,8 +3829,7 @@ output: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>觀察 <code>output</code> 與 <code>emb_inp</code> 之間的關係，你會發現 3 維詞嵌入張量 <code>emb_inp</code> 已經被轉換成一個 4 維張量了，且最後一個維度 <code>shape[-1] = 4</code> 被拆成兩半。</p>
 <p>不過如果你不熟 TensorFlow API 或是矩陣運算，或許無法馬上理解 head 的維度在哪裡、還有不同 heads 之間有什麼差異。為了幫助你直觀理解 <code>split_heads</code> 函式，我將運算過程中產生的張量都視覺化出來給你瞧瞧：</p>
@@ -4048,8 +3838,7 @@ output: tf.Tensor(
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/split_heads.jpg">
 <source src="https://leemeng.tw/images/transformer/split_heads.mp4" type="video/mp4"/>
@@ -4063,8 +3852,7 @@ output: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>觀察 <code>split_heads</code> 的輸入輸出，你會發現序列裡每個子詞原來為 <code>d_model</code> 維的 reprsentation 被拆成多個相同但較短的 <code>depth</code> 維度。而每個 head 的 2 維矩陣事實上仍然代表原來的序列，只是裡頭子詞的 repr. 維度降低了。</p>
 <p>透過動畫，你現在應該已經能夠了解要產生 multi-head 就是將輸入張量中本來是 <code>d_model</code> 的最後一個維度平均地「折」成想要的 head 數，進而產生一個新的 head 維度。一個句子裡頭的子詞現在不只會有一個 <code>d_model</code> 的 repr.，而是會有 <code>num_heads</code> 個 <code>depth</code> 維度的 representation。</p>
@@ -4146,16 +3934,14 @@ output: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>是的，就算你有自己實作過 keras layer，multi-head attention layer 也不算短的實作。如果這是你第一次碰到客製化的 keras layer，別打退堂鼓，你可以多看幾次我寫給你的註解，或是參考等等下方的動畫來加深對 multi-head attention 的理解。</p>
 <p><code>split_heads</code> 函式我們在前面就已經看過了，你應該還有印象。<code>call</code> 函式則定義了這個 multi-head attention layer 實際的計算流程，而這流程跟我在本節開頭講的可以說是有 87% 相似：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -4167,8 +3953,7 @@ output: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>差別只在於實際上我們是利用矩陣運算以及 broadcasting 讓 GPU 一次計算整個 batch 裡所有句子的所有 head 的注意結果。</p>
 <p>定義了一個新 layer 當然要實際試試。現在讓我們初始一個 multi-head attention layer 並將英文詞嵌入向量 <code>emb_inp</code> 輸入進去看看：</p>
@@ -4177,8 +3962,7 @@ output: tf.Tensor(
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="c1"># emb_inp.shape == (batch_size, seq_len, d_model)</span>
 <span class="c1">#               == (2, 8, 4)</span>
@@ -4249,8 +4033,7 @@ output: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你現在應該明白為何<a href="#遮罩：Transformer-的祕密配方">我們當初要在 padding mask 加入兩個新維度了</a>：一個是用來遮住同個句子但是不同 head 的注意權重，一個則是用來 broadcast 到 2 維注意權重的（詳見<a href="#直觀理解遮罩在注意函式中的效果">直觀理解遮罩</a>一節）。</p>
 <p>沒意外的話你也已經能夠解讀 mutli-head attention 的輸出了：</p>
@@ -4262,8 +4045,7 @@ output: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/multi-head-attention.jpg">
 <source src="https://leemeng.tw/images/transformer/multi-head-attention.mp4" type="video/mp4"/>
@@ -4279,8 +4061,7 @@ output: tf.Tensor(
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這應該是你這輩子第一次看到 multi-head 注意力機制是怎麼處理 4 維張量的。</p>
 <p>細節不少，我建議將動畫跟程式碼比較一下，確保你能想像每一個步驟產生的張量以及其物理意義。到此為止，我們已經把 Transformer 裡最困難的 multi-head attention 的概念以及運算都看過一遍了。</p>
@@ -4290,30 +4071,26 @@ output: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/explain-mha.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>喔對了，不用擔心我們做 multi-head 以後計算量會大增。因為 head 的數目雖然變多了，每個子空間的維度也下降了。跟 single-head attention 使用的計算量是差不多的。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="打造-Transformer：疊疊樂時間_1">打造 Transformer：疊疊樂時間<a class="anchor-link" href="#打造-Transformer：疊疊樂時間">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://leemeng.tw/deep-learning-resources.html">以前我們曾提到</a>深度學習模型就是一層層的幾何運算過程。Transformer 也不例外，剛才實作的 mutli-head attention layer 就是一個最明顯的例子。而它正好是 Transformer 裡頭最重要的一層運算。</p>
 <p>在這節我們會把 Transformer 裡頭除了注意力機制的其他運算通通實作成一個個的 layers，並將它們全部「疊」起來。</p>
@@ -4321,8 +4098,7 @@ output: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/steps-to-build-transformer.jpg">
 <source src="https://leemeng.tw/images/transformer/steps-to-build-transformer.mp4" type="video/mp4"/>
@@ -4336,8 +4112,7 @@ output: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果這是你第一次看到 Transformer 的架構圖 ... 代表你沒認真上教授的課，等等別忘記<a href="#師傅引進門，修行在個人_1">去前面領補課號碼牌</a>。</p>
 <p>影片中左側就是我們接下來會依序實作的 layers。<a href="#Transformer：Seq2Seq-模型-+-自注意力機制">Transformer 是一種使用自注意力機制的 Seq2Seq 模型</a> ，裡頭包含了兩個重要角色，分別為 Encoder 與 Decoder：</p>
@@ -4378,15 +4153,13 @@ output: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Position-wise-Feed-Forward-Networks">Position-wise Feed-Forward Networks<a class="anchor-link" href="#Position-wise-Feed-Forward-Networks">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如同影片中所看到的， Encoder layer 跟 Decoder layer 裡頭都各自有一個 Feed Forward 的元件。此元件構造簡單，不用像前面的 multi-head attention 建立<a href="https://www.tensorflow.org/beta/tutorials/eager/custom_layers">客製化的 keras layer</a>，只需要寫一個 Python 函式讓它在被呼叫的時候回傳一個<strong>新的</strong> <a href="https://www.tensorflow.org/beta/tutorials/quickstart/beginner">tf.keras.Sequential 模型</a>給我們即可：</p>
 </div>
@@ -4409,8 +4182,7 @@ output: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>此函式在每次被呼叫的時候都會回傳一組新的全連接前饋神經網路（Fully-connected <strong>F</strong>eed <strong>F</strong>orward <strong>N</strong>etwork，FFN），其輸入張量與輸出張量的最後一個維度皆為 <code>d_model</code>，而在 FFN 中間層的維度則為 <code>dff</code>。一般會讓 <code>dff</code> 大於 <code>d_model</code>，讓 FFN 從輸入的 <code>d_model</code> 維度裡頭擷取些有用的資訊。在論文中 <code>d_model</code> 為 512，<code>dff</code> 則為 4 倍的 2048。兩個都是可以調整的超參數。</p>
 <p>讓我們建立一個 FFN 試試：</p>
@@ -4447,8 +4219,7 @@ out.shape: (64, 10, 512)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在輸入張量的最後一維已經是 <code>d_model</code> 的情況，FFN 的輸出張量基本上會跟輸入一模一樣：</p>
 <ul>
@@ -4494,30 +4265,26 @@ array([[ 2.8674245, -2.174698 , -1.3073452, -6.4233937],
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你會發現同一個子詞不會因為<strong>位置的改變</strong>而造成 FFN 的輸出結果產生差異。但因為我們實際上會有多個 Encoder / Decoder layers，而每個 layers 都會有不同參數的 FFN，因此每個 layer 裡頭的 FFN 做的轉換都會有所不同。</p>
 <p>值得一提的是，儘管對所有位置的子詞都做一樣的轉換，這個轉換是獨立進行的，因此被稱作 Position-wise Feed-Forward Networks。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Encoder-layer：Encoder-小弟">Encoder layer：Encoder 小弟<a class="anchor-link" href="#Encoder-layer：Encoder-小弟">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了 <strong>M</strong>ulti-<strong>H</strong>ead <strong>A</strong>ttention（MHA）以及 <strong>F</strong>eed-<strong>F</strong>orward <strong>N</strong>etwork（FFN），我們事實上已經可以實作第一個 Encoder layer 了。讓我們複習一下這 layer 裡頭有什麼重要元件：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/encoder-layer.jpg">
 <source src="https://leemeng.tw/images/transformer/encoder-layer.mp4" type="video/mp4"/>
@@ -4531,8 +4298,7 @@ array([[ 2.8674245, -2.174698 , -1.3073452, -6.4233937],
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我想上面的動畫已經很清楚了。一個 Encoder layer 裡頭會有兩個 sub-layers，分別為 MHA 以及 FFN。在 Add &amp; Norm 步驟裡頭，每個 sub-layer 會有一個<a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf">殘差連結（residual connection）</a>來幫助減緩梯度消失（Gradient Vanishing）的問題。接著兩個 sub-layers 都會針對最後一維 <code>d_model</code> 做 <a href="https://arxiv.org/abs/1607.06450">layer normalization</a>，將 batch 裡頭每個子詞的輸出獨立做轉換，使其平均與標準差分別靠近 0 和 1 之後輸出。</p>
 <p>另外在將 sub-layer 的輸出與其輸入相加之前，我們還會做點 regularization，對該 sub-layer 的輸出使用 <a href="http://jmlr.org/papers/volume15/srivastava14a.old/srivastava14a.pdf">dropout</a>。</p>
@@ -4589,8 +4355,7 @@ out = LayerNorm(x + sub_layer_out)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>跟當初 MHA layer 的實作比起來輕鬆多了，對吧？</p>
 <p>基本上 Encoder layer 裡頭就是兩個架構一模一樣的 sub-layer，只差在一個是 MHA，一個是 FFN。另外為了方便 residual connection 的計算，所有 sub-layers 的<strong>輸出</strong>維度都是 <code>d_model</code>。而 sub-layer 內部產生的維度當然就隨我們開心啦！我們可以為 FFN 設置不同的 <code>dff</code> 值，也能設定不同的 <code>num_heads</code> 來改變 MHA 內部每個 head 裡頭的維度。</p>
@@ -4681,23 +4446,20 @@ enc_out: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在本來的輸入維度即為 <code>d_model</code> 的情況下，Encoder layer 就是給我們一個一模一樣 shape 的張量。當然，實際上內部透過 MHA 以及 FFN sub-layer 的轉換，每個子詞的 repr. 都大幅改變了。</p>
 <p>有了 Encoder layer，接著讓我們看看 Decoder layer 的實作。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Decoder-layer：Decoder-小弟">Decoder layer：Decoder 小弟<a class="anchor-link" href="#Decoder-layer：Decoder-小弟">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>一個 Decoder layer 裡頭有 3 個 sub-layers：</p>
 <ol>
@@ -4709,8 +4471,7 @@ enc_out: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/decoder-layer.jpg">
 <source src="https://leemeng.tw/images/transformer/decoder-layer.mp4" type="video/mp4"/>
@@ -4724,8 +4485,7 @@ enc_out: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>跟實作 Encoder layer 時一樣，每個 sub-layer 的邏輯同下：</p>
 <div class="highlight"><pre><span></span>sub_layer_out = Sublayer(x)
@@ -4798,8 +4558,7 @@ out = LayerNorm(x + sub_layer_out)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Decoder layer 的實作跟 Encoder layer 大同小異，不過還是有幾點細節特別需要注意：</p>
 <ul>
@@ -4885,8 +4644,7 @@ combined_mask: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>注意 <code>combined_mask</code> 的 shape 以及裡頭遮罩所在的位置。利用 broadcasting 我們將 <code>combined_mask</code> 的 shape 也擴充到 4 維：</p>
 <div class="highlight"><pre><span></span>(batch_size, num_heads, seq_len_tar, seq_len_tar)
@@ -5009,16 +4767,14 @@ dec_enc_attn_weights: (2, 2, 10, 8)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>跟 Encoder layer 相同，Decoder layer 輸出張量的最後一維也是 <code>d_model</code>。而 <code>dec_self_attn_weights</code> 則代表著 Decoder layer 的自注意權重，因此最後兩個維度皆為中文序列的長度 <code>10</code>；而 <code>dec_enc_attn_weights</code> 因為 Encoder 輸出序列的長度為 <code>8</code>，最後一維即爲 <code>8</code>。</p>
 <p>都讀到這裡了，判斷每一維的物理意義對你來說應該是小菜一碟了。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Positional-encoding：神奇數字">Positional encoding：神奇數字<a class="anchor-link" href="#Positional-encoding：神奇數字">&para;</a></h3><p>透過多層的自注意力層，Transformer 在處理序列時裡頭所有子詞都是「天涯若比鄰」：想要關注序列中<strong>任何</strong>位置的資訊只要 O(1) 就能辦到。這讓 Transformer 能很好地 model 序列中長距離的依賴關係（long-range dependencise）。但反過來說 Transformer 則無法 model 序列中字詞的順序關係，所以我們得額外加入一些「位置資訊」給 Transformer。</p>
 <p>這個資訊被稱作位置編碼（Positional Encoding），實作上是直接加到最一開始的英文 / 中文詞嵌入向量（word embedding）裡頭。其直觀的想法是想辦法讓被加入位置編碼的 word embedding 在 <code>d_model</code> 維度的空間裡頭不只會因為<strong>語義相近</strong>而靠近，也會因為<strong>位置靠近</strong>而在該空間裡頭靠近。</p>
@@ -5026,16 +4782,14 @@ dec_enc_attn_weights: (2, 2, 10, 8)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/position-encoding-equation.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>嗯 ... 第一次看到這函式的人會黑人問號是很正常。</p>
 <p><a href="https://arxiv.org/pdf/1706.03762.pdf">論文裡頭提到</a>他們之所以這樣設計位置編碼（<strong>P</strong>ositional <strong>E</strong>ncoding, PE）是因為這個函數有個很好的特性：給定任一位置 <code>pos</code> 的位置編碼 <code>PE(pos)</code>，跟它距離 <code>k</code> 個單位的位置 <code>pos + k</code> 的位置編碼 <code>PE(pos + k)</code> 可以表示為 <code>PE(pos)</code> 的一個線性函數（linear function）。</p>
@@ -5043,8 +4797,7 @@ dec_enc_attn_weights: (2, 2, 10, 8)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -5057,8 +4810,7 @@ dec_enc_attn_weights: (2, 2, 10, 8)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>就算我們無法自己想出論文裡頭的位置編碼公式，還是可以直接把 <a href="https://www.tensorflow.org/beta/tutorials/text/transformer#positional_encoding">TensorFlow 官方</a>的實作搬過來使用：</p>
 </div>
@@ -5123,8 +4875,7 @@ array([[[ 0.        ,  0.        ,  0.        , ...,  1.        ,
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>一路看下來你應該也可以猜到位置編碼的每一維意義了：</p>
 <ul>
@@ -5138,8 +4889,7 @@ array([[[ 0.        ,  0.        ,  0.        , ...,  1.        ,
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">pos_encoding</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'RdBu'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'d_model'</span><span class="p">)</span>
@@ -5151,31 +4901,27 @@ array([[[ 0.        ,  0.        ,  0.        , ...,  1.        ,
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/positional-encoding.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這圖你應該在很多教學文章以及教授的影片裡都看過了。就跟我們前面看過的各種 2 維矩陣相同，x 軸代表著跟詞嵌入向量相同的維度 <code>d_model</code>，y 軸則代表序列中的每個位置。之後我們會看輸入 / 輸出序列有多少個子詞，就加入幾個位置編碼。</p>
 <p>關於位置編碼我們現在只需要知道這些就夠了，但如果你想知道更多相關的數學計算，可以參考<a href="https://github.com/tensorflow/examples/blob/master/community/en/position_encoding.ipynb">這個筆記本</a>。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Encoder">Encoder<a class="anchor-link" href="#Encoder">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Encoder 裡頭主要包含了 3 個元件：</p>
 <ul>
@@ -5239,8 +4985,7 @@ array([[[ 0.        ,  0.        ,  0.        , ...,  1.        ,
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>比較值得注意的是我們依照論文將 word embedding 乘上 <code>sqrt(d_model)</code>，並在 embedding 跟位置編碼相加以後通過 dropout 層來達到 regularization 的效果。</p>
 <p>現在我們可以直接將索引序列 <code>inp</code> 丟入 Encoder：</p>
@@ -5302,8 +5047,7 @@ enc_out: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>注意因為 Encoder 已經包含了詞嵌入層，因此我們不用再像呼叫 <a href="#Encoder-的小弟">Encoder layer</a> 時一樣還得自己先做 word embedding。現在的輸入及輸出張量為：</p>
 <ul>
@@ -5314,15 +5058,13 @@ enc_out: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Decoder">Decoder<a class="anchor-link" href="#Decoder">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Decoder layer 本來就只跟 Encoder layer 差在一個 MHA，而這邏輯被包起來以後呼叫它的 Decoder 做的事情就跟 Encoder 基本上沒有兩樣了。</p>
 <p>在 Decoder 裡頭我們只需要建立一個專門給中文用的詞嵌入層以及位置編碼即可。我們在呼叫每個 Decoder layer 的時候也順便把其注意權重存下來，方便我們了解模型訓練完後是怎麼做翻譯的。</p>
@@ -5379,8 +5121,7 @@ enc_out: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>接著讓我們初始並呼叫一個 Decoder 看看：</p>
 </div>
@@ -5516,8 +5257,7 @@ decoder_layer2_block2.shape: (2, 2, 10, 8)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>麻雀雖小，五臟俱全。雖然我們是使用 demo 數據，但基本上這就是你在呼叫 Decoder 時需要做的所有事情：</p>
 <ul>
@@ -5529,22 +5269,19 @@ decoder_layer2_block2.shape: (2, 2, 10, 8)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="第一個-Transformer">第一個 Transformer<a class="anchor-link" href="#第一個-Transformer">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>沒錯，終於到了這個時刻。在實作 Transformer 之前先點擊影片來簡單回顧一下我們在這一章實作了什麼些玩意兒：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/transformer-imple.jpg">
 <source src="https://leemeng.tw/images/transformer/transformer-imple.mp4" type="video/mp4"/>
@@ -5558,8 +5295,7 @@ decoder_layer2_block2.shape: (2, 2, 10, 8)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在我們前面已經將大大小小的 layers 一一實作並組裝起來以後，真正的 Transformer  模型只需要 3 個元件：</p>
 <ol>
@@ -5610,8 +5346,7 @@ decoder_layer2_block2.shape: (2, 2, 10, 8)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>扣掉註解，Transformer 的實作本身非常簡短。</p>
 <p>被輸入 Transformer 的多個 2 維英文張量 <code>inp</code> 會一路通過 <strong>Encoder</strong> 裡頭的詞嵌入層，位置編碼以及 N 個 Encoder layers 後被轉換成 Encoder 輸出 <code>enc_output</code>，接著對應的中文序列 <code>tar</code> 則會在 <strong>Decoder</strong> 裡頭走過相似的旅程並在每一層的 Decoder layer 利用 MHA 2 關注 Encoder 的輸出 <code>enc_output</code>，最後被 Decoder 輸出。</p>
@@ -5726,8 +5461,7 @@ predictions: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了前面的各種 layers，建立一個 Transformer 並不難。但要輸入什麼數據就是一門大學問了：</p>
 <div class="highlight"><pre><span></span><span class="o">...</span>
@@ -5746,8 +5480,7 @@ predictions: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video controls="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/how-sequence-generation-work.jpg">
 <source src="https://leemeng.tw/images/transformer/how-sequence-generation-work.mp4" type="video/mp4"/>
@@ -5763,8 +5496,7 @@ predictions: tf.Tensor(
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你現在應該明白 Transformer 在訓練的時候並不是吃整個中文序列，而是吃一個去掉尾巴的序列 <code>tar_inp</code>，然後試著去預測「左移」一個字以後的序列 <code>tar_real</code>。同樣概念當然也可以運用到以 RNN 或是 CNN-based 的模型上面。</p>
 <p>從影片中你也可以發現給定 <code>tar_inp</code> 序列中的任一位置，其對應位置的 <code>tar_real</code> 就是下個時間點模型應該要預測的中文字。</p>
@@ -5774,15 +5506,13 @@ predictions: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="定義損失函數與指標_1">定義損失函數與指標<a class="anchor-link" href="#定義損失函數與指標">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因為被視為是一個分類任務，我們可以使用 cross entropy 來計算序列生成任務中實際的中文字跟模型預測的中文字分佈（distribution）相差有多遠。</p>
 <p>這邊簡單定義一個損失函式：</p>
@@ -5814,8 +5544,7 @@ predictions: tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果你曾做過分類問題，應該能看出預測序列 <code>pred</code> 裡頭的第 3 個預測結果出錯因此 entropy 值上升。損失函數 <code>loss_object</code> 做的事情就是比較 2 個序列並計算 cross entropy：</p>
 <ul>
@@ -5882,8 +5611,7 @@ tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了 <code>loss_object</code> 實際算 cross entropy 以後，我們需要另外一個函式來建立遮罩並加總序列裡頭不包含 `<pad> token 位置的損失：</pad></p>
 </div>
@@ -5907,8 +5635,7 @@ tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我另外再定義兩個 <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/keras/metrics">tf.keras.metrics</a>，方便之後使用 <a href="https://www.tensorflow.org/guide/summaries_and_tensorboard?hl=zh-cn">TensorBoard</a> 來追蹤模型 performance：</p>
 </div>
@@ -5926,15 +5653,13 @@ tf.Tensor(
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="設置超參數">設置超參數<a class="anchor-link" href="#設置超參數">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>前面實作了那麼多 layers，你應該還記得有哪些是你自己可以調整的超參數吧？</p>
 <p>讓我幫你全部列出來：</p>
@@ -5988,37 +5713,32 @@ target_vocab_size: 4203
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>4 層 Encoder / Decoder layers 不算貪心，小巫見大巫（笑</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="設置-Optimizer">設置 Optimizer<a class="anchor-link" href="#設置-Optimizer">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們在這邊跟<a href="https://arxiv.org/pdf/1706.03762.pdf">論文</a>一致，使用 <a href="optimization-6be9a291375c">Adam optimizer</a> 以及自定義的 learning rate scheduler：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/lr-equation.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這 schedule 讓訓練過程的前 <code>warmup_steps</code> 的 learning rate 線性增加，在那之後則跟步驟數 <code>step_num</code> 的反平方根成比例下降。不用擔心你沒有完全理解這公式，我們一樣可以直接使用 <a href="https://www.tensorflow.org/beta/tutorials/text/transformer?authuser=1#optimizer">TensorFlow 官方教學的實作</a>：</p>
 </div>
@@ -6054,8 +5774,7 @@ target_vocab_size: 4203
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們可以觀察看看這個 schedule 是怎麼隨著訓練步驟而改變 learning rate 的：</p>
 </div>
@@ -6063,8 +5782,7 @@ target_vocab_size: 4203
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="n">d_models</span> <span class="o">=</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">]</span>
 <span class="n">warmup_steps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1000</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
@@ -6088,8 +5806,7 @@ target_vocab_size: 4203
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/transformer/transformer-custom-lr.jpg"/>
@@ -6102,22 +5819,19 @@ target_vocab_size: 4203
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>你可以明顯地看到所有 schedules 都先經過 <code>warmup_steps</code> 個步驟直線提升 learning rate，接著逐漸平滑下降。另外我們也會給比較高維的 <code>d_model</code> 維度比較小的 learning rate。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="實際訓練以及定時存檔">實際訓練以及定時存檔<a class="anchor-link" href="#實際訓練以及定時存檔">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>好啦，什麼都準備齊全了，讓我們開始訓練 Transformer 吧！記得使用前面已經定義好的超參數來初始化一個全新的 Transformer：</p>
 </div>
@@ -6162,8 +5876,7 @@ dropout_rate: 0.1
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>打遊戲時你會記得要定期存檔以防任何意外發生，訓練深度學習模型也是同樣道理。設置 <a href="https://www.tensorflow.org/beta/guide/checkpoints">checkpoint</a> 來定期儲存 / 讀取模型及 optimizer 是必備的。</p>
 <p>我們在底下會定義一個 checkpoint 路徑，此路徑包含了各種超參數的資訊，方便之後比較不同實驗的結果並載入已訓練的進度。我們也需要一個 checkpoint manager 來做所有跟存讀模型有關的雜事，並只保留最新 5 個 checkpoints 以避免佔用太多空間：</p>
@@ -6213,16 +5926,14 @@ dropout_rate: 0.1
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/am-i-a-joke-to-you.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我知道你在想什麼。</p>
 <p>「誒！？ 你不當場訓練嗎？」「直接載入已訓練的模型太狗了吧！」</p>
@@ -6257,8 +5968,7 @@ dropout_rate: 0.1
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果沒有本文前面針對遮罩的詳細說明，很多第一次實作的人得花不少時間來確實地掌握這些遮罩的用途。不過對現在的你來說應該也是小菜一碟。</p>
 <p>一個數據集包含多個 batch，而每次拿一個 batch 來訓練的步驟就稱作 <code>train_step</code>。為了讓程式碼更簡潔以及容易優化，我們會定義 Transformer 在一次訓練步驟（處理一個 batch）所需要做的所有事情。</p>
@@ -6309,8 +6019,7 @@ dropout_rate: 0.1
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果你曾經以TensorFlow 2 實作過稍微複雜一點的模型，應該就知道  <code>train_step</code> 函式的寫法非常固定：</p>
 <ul>
@@ -6381,8 +6090,7 @@ dropout_rate: 0.1
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如訊息所示，當指定的 <code>EPOCHS</code> 「落後」於之前的訓練進度我們就不再訓練了。但如果是第一次訓練或是訓練到指定 <code>EPOCHS</code> 的一部分，我們都會從正確的地方開始訓練並存檔，不會浪費到訓練時間或計算資源。</p>
 <p>這邊的邏輯也很簡單，在每個 epoch 都：</p>
@@ -6402,16 +6110,14 @@ dropout_rate: 0.1
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img src="https://leemeng.tw/images/transformer/go-home-every-body.jpg"/>
 <br/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>嗯 ... 話是這麼說，但我仍然建議你至少要記得存檔並將訓練過程顯示出來。我知道你會好奇訓練一個這樣的 Transformer 要多久時間，讓我把之前訓練的一些 log 顯示出來給你瞧瞧：</p>
 </div>
@@ -6456,8 +6162,7 @@ Time taken for 1 epoch: 68.7313539981842 secs
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>事實上我們定義的 4 層 Transformer 大約每 70 秒就可以看完一遍有 3 萬筆訓練例子的數據集，而且你從上面的 loss 以及 accuracy 可以看出來 Transformer 至少在訓練集裡頭進步地挺快的。</p>
 <p>而就我自己的觀察大約經過 30 個 epochs 翻譯結果就很穩定了。所以你大約只需半個小時就能有一個非常簡單，有點水準的英翻中 Transformer（在至少有個一般 GPU 的情況）。</p>
@@ -6468,8 +6173,7 @@ Time taken for 1 epoch: 68.7313539981842 secs
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><video autoplay="" loop="" muted="" playsinline="">
 <source src="https://leemeng.tw/images/transformer/tensorboard.mp4" type="video/mp4"/>
@@ -6482,22 +6186,19 @@ Time taken for 1 epoch: 68.7313539981842 secs
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>透過 TensorBoard，你能非常清楚地比較不同實驗以及不同點子的效果，知道什麼 work 什麼不 work，進而修正之後嘗試的方向。如果只是簡單寫個 <code>print</code>，那你永遠只會看到最新一次訓練過程的 log，然後忘記之前到底發生過什麼事。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="實際進行英翻中">實際進行英翻中<a class="anchor-link" href="#實際進行英翻中">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了已經訓練一陣子的 Transformer，當然得拿它來實際做做翻譯。</p>
 <p>跟訓練的時候不同，在做預測時我們不需做 teacher forcing 來穩定 Transformer 的訓練過程。反之，我們將 Transformer 在每個時間點生成的中文索引加到之前已經生成的序列尾巴，並以此新序列作為其下一次的輸入。這是因為 Transformer 事實上是一個<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E8%BF%B4%E6%AD%B8%E6%A8%A1%E5%9E%8B">自迴歸模型（Auto-regressive  model）</a>：依據自己生成的結果預測下次輸出。</p>
@@ -6519,8 +6220,7 @@ Time taken for 1 epoch: 68.7313539981842 secs
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -6532,15 +6232,13 @@ Time taken for 1 epoch: 68.7313539981842 secs
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>答案也很簡單，因為 Decoder 可以透過「關注」 Encoder 處理完不同英文句子的輸出來獲得語義資訊，了解它在當下該生成什麼中文字作為第一個輸出。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>現在讓我們定義一個 <code>evaluate</code> 函式實現上述邏輯。此函式的輸入是一個完全沒有經過處理的英文句子（以字串表示），輸出則是一個索引序列，裡頭的每個索引就代表著 Transformer 預測的中文字。</p>
 <p>讓我們實際看看 <code>evaluate</code> 函式：</p>
@@ -6603,8 +6301,7 @@ Time taken for 1 epoch: 68.7313539981842 secs
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我知道這章節程式碼很多很長，但搭配註解後你會發現它們實際上都不難，而且這也是你看這篇文章的主要目的：實際了解 Transformer 是怎麼做英中翻譯的。你不想只是紙上談兵，對吧？</p>
 <p>有了 <code>evaluate</code> 函式，要透過 Transformer 做翻譯非常容易：</p>
@@ -6652,8 +6349,7 @@ predicted_sentence: 中国、印度和其他国家都享受了经济增长的持
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>考慮到這個 Transformer 不算巨大（約 400 萬個參數），且模型訓練時用的數據集不大的情況下，我們達到相當不錯的結果，你說是吧？在這個例子裡頭該翻的詞彙都翻了出來，句子本身也還算自然。</p>
 </div>
@@ -6692,15 +6388,13 @@ _________________________________________________________________
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="視覺化注意權重">視覺化注意權重<a class="anchor-link" href="#視覺化注意權重">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>除了其運算高度平行以及表現不錯以外，Transformer 另外一個優點在於我們可以透過視覺化注意權重（attention weights）來了解模型實際在生成序列的時候放「注意力」在哪裡。別忘記我們當初在 Decoder layers 做完 multi-head attention 之後都將注意權重輸出。現在正是它們派上用場的時候了。</p>
 <p>先讓我們看看有什麼注意權重可以拿來視覺化：</p>
@@ -6756,8 +6450,7 @@ layer_name: decoder_layer4_block2
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>block1</code> 代表是 Decoder layer 自己關注自己的 MHA 1，因此倒數兩個維度都跟中文序列長度相同；<code>block2</code> 則是 Decoder layer 用來關注 Encoder 輸出的 MHA 2 ，在這邊我們選擇最後一個 Decoder layer 的 MHA 2 來看 Transformer 在生成中文序列時關注在英文句子的那些位置。</p>
 <p>但首先，我們得要有一個繪圖的函式才行：</p>
@@ -6824,8 +6517,7 @@ layer_name: decoder_layer4_block2
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這個函式不難，且裡頭不少是調整圖片的細節設定因此我將它留給你自行參考。</p>
 <p>比較值得注意的是因為我們在這篇文章是做英文（來源）到中文（目標）的翻譯，注意權重的 shape 為：</p>
@@ -7923,8 +7615,7 @@ AAAQdtgUAwAAAAAAQNhhUwwAAAAAAABh538BV+7UE2tVRNEAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br/>
 <br/></p>
@@ -7933,8 +7624,7 @@ AAAQdtgUAwAAAAAAQNhhUwwAAAAAAABh538BV+7UE2tVRNEAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -7946,8 +7636,7 @@ AAAQdtgUAwAAAAAAQNhhUwwAAAAAAABh538BV+7UE2tVRNEAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我不知道你當初跟現在的感受，但我相信在你閱讀完本文，尤其是對自注意機制以及 Transformer 有了深刻理解之後，這之間的感受肯定是有不少差異的。</p>
 <p>儘管其運算機制十分錯綜複雜，閱讀本文後 Transformer 對你來說不再是黑魔法，也不再是遙不可及的存在。如果你現在覺得「Transformer 也不過就這樣嘛！」那就達成我寫這篇文章的目的了。</p>
@@ -7956,8 +7645,7 @@ AAAQdtgUAwAAAAAAQNhhUwwAAAAAAABh538BV+7UE2tVRNEAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><video autoplay="" loop="" muted="" playsinline="">
 <source src="https://leemeng.tw/images/transformer/attention_weights_change_by_time.mp4" type="video/mp4"/>
@@ -7971,15 +7659,13 @@ AAAQdtgUAwAAAAAAQNhhUwwAAAAAAABh538BV+7UE2tVRNEAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="在你離開之前">在你離開之前<a class="anchor-link" href="#在你離開之前">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -7991,16 +7677,14 @@ AAAQdtgUAwAAAAAAQNhhUwwAAAAAAABh538BV+7UE2tVRNEAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我相信人類之所以強大是因為集體知識：我們能透過書籍、影片以及語言將一個人腦中的知識與思想共享給其他人，讓寶貴的知識能夠「scale」，在更多人的腦袋中發光發熱，創造更多價值。</p>
 <p>我希望你有從本文中學到一點東西，並幫助我將本文的這些知識「scale」，把文章分享給更多有興趣的人，並利用所學應用在一些你一直想要完成的任務上面。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="https://leemeng.tw/images/bert/bert-intro.jpg"/>
@@ -8015,16 +7699,14 @@ AAAQdtgUAwAAAAAAQNhhUwwAAAAAAABh538BV+7UE2tVRNEAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果你想要了解更多 Transformer 的相關應用，我推薦接著閱讀<a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">進擊的 BERT：NLP 界的巨人之力與遷移學習</a>，了解現在 NLP 領域裡頭知名的語言代表模型 BERT。</p>
 <p>最後一點提醒，就算 Transformer 比古早時代的方法好再多終究也只是個工具，其最大價值不會超過於被你拿來應用的問題之上。就好像現在已有不少超越基本 Transformer 的翻譯方法，但我們仍然持續在追尋更好的機器翻譯系統。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -8049,6 +7731,8 @@ AAAQdtgUAwAAAAAAQNhhUwwAAAAAAABh538BV+7UE2tVRNEAAAAASUVORK5CYII=
                     </span>
 
                 </p>
+
+
 
 
 

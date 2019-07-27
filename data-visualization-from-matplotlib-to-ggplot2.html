@@ -170,7 +170,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-04-14 (Sat)</li>
                         <li class="page-view">
-                            4,260 views
+                            4,263 views
                         </li>
                     </ul>
 
@@ -230,23 +230,20 @@
             <div class="col-full blog-content__main">
 
                 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這篇主要描述自己以往在利用 Python 做資料視覺化 (data visualization) 時常犯的思維瑕疵，而該思維如何在接觸 R 的 <a href="http://ggplot2.org/">ggplot2</a> 以後得到改善。</p>
 <p>本文會試著說明資料視覺化的本質為何，以及在設計視覺化時，概念上應該包含什麼要素以及步驟。最後展示如何透過 ggplot2 活用前述的概念，來實際做資料視覺化。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="目錄">目錄<a class="anchor-link" href="#目錄">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>文章內容大致上會分為以下幾個小節：</p>
 <ul>
@@ -259,15 +256,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="資料視覺化是資料與圖的直接映射？">資料視覺化是資料與圖的直接映射？<a class="anchor-link" href="#資料視覺化是資料與圖的直接映射？">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>身為一個 Python 起家的資料科學家，在做資料視覺化的時候，我很自然地使用 Python ecosystem 裡像是 <a href="https://matplotlib.org/">matplotlib</a> 以及 <a href="https://seaborn.pydata.org/">seaborn</a> 等繪圖 packages。針對手中的資料，我會想辦法找到一個「對應」的圖然後把資料塞進去。簡單無腦 <em>(:3 」&ang;)</em></p>
 <p>舉例來說，當我們手上有三個變數 x, y, z 且其各自的資料型態為：</p>
@@ -285,22 +280,19 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="資料視覺化應該是-..">資料視覺化應該是 ..<a class="anchor-link" href="#資料視覺化應該是-..">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="先確認觀眾及目的">先確認觀眾及目的<a class="anchor-link" href="#先確認觀眾及目的">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在完成一些 <a href="#References">ggplot2 的 tutorials</a> 後，可以發現資料視覺化一般依用途可以分為兩種：</p>
 <ul>
@@ -310,8 +302,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/ggplot2/data-vis-purpose.png" style=""/>
@@ -325,22 +316,19 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>依照目的以及觀眾的不同，資料視覺化的方式會有所不同。一個常見的例子是當我們第一次接觸某個資料集。這時候資料視覺化的觀眾是自己，目的是在最短的時間了解資料特性。則這時我們在做圖的時候的要求就可以很寬鬆，像是不加上標題，或是只要能做出自己能理解的視覺化即可。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="正式定義">正式定義<a class="anchor-link" href="#正式定義">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在確認觀眾及目的以後，我們終於可以開始進行資料視覺化了！資料視覺化的定義因人而異，而這邊我想給出一個非常直觀的定義：</p>
 </div>
@@ -355,8 +343,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>一些常見且肉眼容易識別的視覺變數 / 刻度（visual variables / scales）包含：</p>
 <ul>
@@ -385,8 +372,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="一個簡單例子">一個簡單例子<a class="anchor-link" href="#一個簡單例子">&para;</a></h3>
 </div>
@@ -394,8 +380,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>事實上，我們可能平常每天都在做資料視覺化而不自知。比方說我們有一個數列 <code>y</code>：</p>
 <div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.055</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.132</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.522</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.229</span><span class="p">,</span> <span class="mf">0.013</span> <span class="o">..</span> <span class="p">]</span>
@@ -408,22 +393,19 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這邊我們利用視覺變數「Y軸位置」來呈現數值的變化，可以馬上看出數列裡頭的值都落在 -3 到 3 之間，而這是因為我們肉眼很容易辨別「位置」這個視覺變數的變化。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="圖像的分層文法">圖像的分層文法<a class="anchor-link" href="#圖像的分層文法">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在 <a href="http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf">A Layered Grammar of Graphics</a> 裡頭，<a href="http://hadley.nz/">Hadley Wickham</a> 闡述所謂的圖像（包含由資料視覺化產生的圖像）實際上如同我們平常使用的語言，是有文法的。而其文法可以拆成 7 個部分（層）。前述的</p>
 <ul>
@@ -434,8 +416,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/ggplot2/layered-grammar-of-graphics.png" style="width:80%"/>
@@ -449,8 +430,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>看到這你一定會「哇靠那我每次畫個圖都要實作七層？」。實際上不需要，上面幾層像是主題（Theme）比較像是裝飾品，給我們更大的自由與彈性來訂製（customize）視覺化結果。在下一節我們會看到，ggplot2 會自動幫我們設定合適的主題或座標。（如果沒特別指定的話）</p>
 <p>但一般而言，一個圖像最基本的組成是底下三層。也就是除了前述的兩層（資料、視覺變數）以外還需要加上</p>
@@ -462,8 +442,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/ggplot2/make-geom-layer-independent.png" style=""/>
@@ -478,22 +457,19 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>將「幾何圖形」這個選擇獨立出來一層讓我們在資料視覺化的時候有更大的彈性。有了這些基本概念以後，我們可以開始嘗試使用 ggplot2 來實際做一些資料視覺化。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="ggplot2-實踐_1">ggplot2 實踐<a class="anchor-link" href="#ggplot2-實踐">&para;</a></h2><p>在這個章節裡頭我們將使用 Kaggle 的 <a href="https://www.kaggle.com/residentmario/ramen-ratings/data">Ramen Ratings</a> 來做資料視覺化。這資料集紀錄了各國泡麵所得到的星星數。首先我們要先載入這次的主角：R 語言裡頭最著名的視覺化 package ggplot2。<a href="http://yaojenkuo.io/r_programming/ch14#(1">dplyr</a> 則是 R 語言用來處理資料的 package。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="載入-packages">載入 packages<a class="anchor-link" href="#載入-packages">&para;</a></h3>
 </div>
@@ -510,15 +486,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>值得一提的是它們都是同屬於 <a href="https://medium.com/datainpoint/tidyverse-r-%E8%AA%9E%E8%A8%80%E5%AD%B8%E7%BF%92%E4%B9%8B%E6%97%85%E7%9A%84%E6%96%B0%E8%B5%B7%E9%BB%9E-3b01ca6a348c">TidyVerse</a> 的一員。TidyVerse 是 R 裡頭常被用來做資料科學的 packages 的集合，以 Python 來說大概就像是 Pandas + Matplotlib + Numpy 的感覺吧。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="載入資料-+-簡單資料處理">載入資料 + 簡單資料處理<a class="anchor-link" href="#載入資料-+-簡單資料處理">&para;</a></h3><p>如下註解所示，這邊將資料集讀入，做一些簡單的資料型態轉變後選擇一部分的資料集（subset）來做之後的視覺化：</p>
 </div>
@@ -543,8 +517,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>除了我們使用 dplyr 的 <code>filter</code> 依照條件 subset 資料集以外，值得一提的是 pipe 運算子 <code>%&gt;%</code>。它是前面提到的 TidyVerse 裡頭的 packages 共享的介面（interface），將前一個函示的輸出當作下一個函式的輸入，讓我們可以把運算全部串（chain）在一起。在 Linux 裡頭就是如同 <code>|</code> 的存在。</p>
 <p>而實際我們的資料長這樣：</p>
@@ -580,15 +553,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="簡單資料視覺化">簡單資料視覺化<a class="anchor-link" href="#簡單資料視覺化">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有了資料，讓我們再確定一下資料視覺化的目的及觀眾：</p>
 <ul>
@@ -917,11 +888,10 @@ QACBVAT+H+5PGMGtxImPAAAAAElFTkSuQmCC"/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在</p>
-<div class="highlight"><pre><span></span>ggplot<span class="p">(</span>ramen<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> Style<span class="p">))</span> <span class="o">+</span> geom_bar<span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">ramen</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Style</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_bar</span><span class="p">()</span>
 </pre></div>
 <p>裡頭，我們實際上已經建構了圖表最基礎的三層元素：</p>
 <ul>
@@ -937,15 +907,13 @@ QACBVAT+H+5PGMGtxImPAAAAAElFTkSuQmCC"/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="基本層數缺一不可">基本層數缺一不可<a class="anchor-link" href="#基本層數缺一不可">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上面的例子很簡單，但假如我們沒有指定幾何圖形層的話，圖會長什麼樣子呢？</p>
 </div>
@@ -1151,22 +1119,19 @@ EMAzfAZ6+QQIECAwMwUE8Mycb141AQIECMxwgf8HT5fWj6lkuOUAAAAASUVORK5CYII="/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>就像我們剛剛所說的，雖然 ggplot2 已經知道要用什麼資料框架、要用什麼視覺變數，不知道要用什麼圖形表示的話就會是空白一張圖。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="另個簡單例子">另個簡單例子<a class="anchor-link" href="#另個簡單例子">&para;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>讓我們依樣畫葫蘆，來解決第二個問題：</p>
 <ul>
@@ -1742,8 +1707,7 @@ YII="/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br/>
 這邊有兩個值得注意的地方：</p>
@@ -1756,8 +1720,7 @@ YII="/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="複雜例子">複雜例子<a class="anchor-link" href="#複雜例子">&para;</a></h3><p>讓我們解決最後一個問題：</p>
 <ul>
@@ -2599,8 +2562,7 @@ KoE66EiWrwAAAABJRU5ErkJggg=="/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br/>
 實際上在上面的程式碼裡頭，我們多操作了額外兩層：</p>
@@ -2610,22 +2572,20 @@ KoE66EiWrwAAAABJRU5ErkJggg=="/>
 </ul>
 <p>首先 ggplot2 的 <code>geom_bar</code> 預設只需要 <code>x</code> 視覺變數，因為匯總資料的統計層會把 x 依照不同的值分別計數（也就是各個包裝的數量），然後讓 <code>geom_bar</code> 顯示。但我們並不希望 <code>geom_bar</code> 使用這個數值，因此使用 <code>geom_bar</code> 裡頭的 <code>stat = "identity"</code> 是告訴統計層不要分別計數，而是使用我們給定的星星數 <code>y</code> 。</p>
 <p>而 <code>facet_wrap( ~ Country)</code> 則是告訴小平面層依照 <code>Country</code> 這個變數重複畫</p>
-<div class="highlight"><pre><span></span>ggplot<span class="p">(</span>ramen<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> Style<span class="p">,</span> y <span class="o">=</span> Stars<span class="p">))</span> <span class="o">+</span>
-  geom_bar<span class="p">(</span>stat <span class="o">=</span> <span class="s">"identity"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">ramen</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Style</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Stars</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span> <span class="o">=</span> <span class="s">"identity"</span><span class="p">)</span>
 </pre></div>
 <p>注意所有的圖的 x, y 軸都是一致的，方便我們做比較。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="結語_1">結語<a class="anchor-link" href="#結語">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>資料視覺化需要統計知識以及設計美感，涵蓋範圍非常廣大。這篇雖然打了落落長，但真的只有碰到皮毛（淚）。資料視覺化感覺都可以打個系列文了。但最後再次重申資料視覺化的定義：</p>
 </div>
@@ -2640,15 +2600,13 @@ KoE66EiWrwAAAABJRU5ErkJggg=="/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>總之先確認你的觀眾與目的，選好你想要觀察的變數，選擇適當的視覺變數做可視化吧！</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="References">References<a class="anchor-link" href="#References">&para;</a></h2><ul>
 <li><a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1">DataCamp - Data Visualization with ggplot2 (Part 1)</a></li>
@@ -2674,6 +2632,10 @@ KoE66EiWrwAAAABJRU5ErkJggg=="/>
                     </span>
 
                 </p>
+
+
+
+
 
 
 

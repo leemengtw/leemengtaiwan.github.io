@@ -228,8 +228,7 @@
             <div class="col-full blog-content__main">
 
                 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>有些人可能已經注意到這個部落格是用 <a href="https://github.com/getpelican/pelican">Pelican</a> 所寫成並且 host 在 <a href="https://github.com/leemengtaiwan/leemengtaiwan.github.io">Github</a> 上。這篇主要紀錄如何使用 <a href="http://jinja.pocoo.org/docs/2.10/">Jinja2</a> 自訂主題。</p>
 <p>Pelican 是一個用 Python 寫的靜態網頁生成器, 可以幫我們把 reStructedText, Markdown file 甚至 <a href="http://jupyter.org/">Jupyer notebook</a> 轉成靜態的 HTML 檔案。 靜態網頁的好處就是我們不需要一個 web server 或者是資料庫來管理內容, 可以把 HTML 檔案 host 在想要的地方，比方說 <a href="https://pages.github.com/">Github Pages</a>。用 Pelican 官網一句來介紹的話就是：</p>
@@ -245,8 +244,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Google 一下你會發現除了 Pelican 以外還有很多其他像是 Jekyll, Hexo 等<a href="https://www.staticgen.com/">靜態網頁生成器</a>。 之所以會選擇 Pelican 是因為以下幾點：</p>
 <ul>
@@ -258,29 +256,25 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center><img src="images/jinja2.jpeg"/></center>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Jinja2 是 Python 知名的模組引擎 (templating engine)，可以有系統地產生 HTML，很常出現在 <a href="http://flask.pocoo.org/">Flask</a> 或是 <a href="https://www.djangoproject.com/">Django</a> Apps 裡頭。以下介紹在建立 Pelican blog 時常用到的功能。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="再利用-HTML-區塊">再利用 HTML 區塊<a class="anchor-link" href="#再利用-HTML-區塊">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>比方說我們可以建立一個汎用的 template base.html 來定義整個部落格共用的資訊，像是 header 裡頭要 import 的 css / favicon 等等：</p>
 <div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -300,8 +294,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>注意到上面的 <code>{% block head %}</code> jinja2 語法。會在多個 HTML 檔案重複使用的部分我們可以用 <code>{% block BLOCKNAME %}</code> 以及 <code>{% endblock BLOCKNAME %}</code> 包起來，然後在獨立顯示一篇文章的 article.html 裡頭我們可以定義：</p>
 <div class="highlight"><pre><span></span><span class="p">{</span><span class="o">%</span> <span class="n">extends</span> <span class="s2">"base.html"</span> <span class="o">%</span><span class="p">}</span>
@@ -318,15 +311,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上面的 code 基本上是告訴 jinja2 article.html 要繼承 base.html 的所有內容，而在 <code>head</code> block 除了用<code>{{ super() }}</code> 繼承 base.html 的內容以外，在下面再追加新的內容。而 <code>content</code> block 則是完全取代。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>因此最後 article.html 會被渲染成：</p>
 <div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -343,30 +334,26 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="為當前文章取得前/後一篇文章連結">為當前文章取得前/後一篇文章連結<a class="anchor-link" href="#為當前文章取得前/後一篇文章連結">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center><img src="images/pagination_prev_and_next.png" style="width:70%"/></center>
 <center><font color="purple"> Pagination 範例: 顯示前後文章連結 <br/></font></center>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>依照主題不同，有些主題可能文章頁面裡頭並沒有提供前一篇/後一篇文章的連結。要像上圖為每一篇文章取得前後文章的連結，可以在 article.html 裡存取 <a href="https://github.com/getpelican/pelican/blob/master/docs/themes.rst#common-variables">articles Variable</a> 並使用 jinja2 <a href="http://jinja.pocoo.org/docs/2.10/templates/#assignments">namespace</a> 來取得前後文章(<code>namespace</code> 要在 jinja 2.10+ 以後才能使用)</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="p">{</span><span class="c1"># get prev- and next-article for pagination #}</span>
 <span class="p">{</span><span class="o">%</span> <span class="nb">set</span> <span class="n">ns</span> <span class="o">=</span> <span class="n">namespace</span><span class="p">(</span><span class="n">found</span><span class="o">=</span><span class="n">false</span><span class="p">,</span> <span class="n">prev</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="o">%</span><span class="p">}</span>
@@ -386,15 +373,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上面的 code 會 iterate 所有文章，當遇到當前文章的時候利用 <code>loop.previtem</code> 以及 <code>loop.nextitem</code> 把前後文章記下來。 <a href="https://stackoverflow.com/questions/9486393/jinja2-change-the-value-of-a-variable-inside-a-loop">jinja2 預設是無法在 loop 裡頭改變變數的值</a>，但使用 <code>namespace</code> 即可。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>接著就能利用剛剛取得的前後 article 物件來渲染前後連結：</p>
 <div class="highlight"><pre><span></span>{# 方便起見的 assignment %}
@@ -421,8 +406,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="傳參數給子-template">傳參數給子 template<a class="anchor-link" href="#傳參數給子-template">&para;</a></h2><p>有時候多個 templates 會使用類似的 HTML，像是當首頁 index.html 以及部落格 blog.html 都用相同格式渲染最新幾篇文章時，我們可以定義一個 article_entries.html 如下：</p>
 <div class="highlight"><pre><span></span><span class="p">{</span><span class="c1"># 簡化版 #}</span>
@@ -436,8 +420,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>注意這時候如果直接在 index.html 使用</p>
 <div class="highlight"><pre><span></span><span class="p">{</span><span class="o">%</span> <span class="n">include</span> <span class="s1">'article_entries.html'</span> <span class="o">%</span><span class="p">}</span>
@@ -446,8 +429,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>解決方法是在 index.html 裡透過 <code>{% with %}</code> 語法定義一個 scope：</p>
 <div class="highlight"><pre><span></span><span class="p">{</span><span class="c1"># 選擇前五篇文章來渲染 #}</span>
@@ -461,15 +443,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>使用 <code>with</code> 的好處是可以把子 template article_entries.html 當作 function 來使用，我們可以依照母 template 的需要，傳進想要渲染的文章即可。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Reference">Reference<a class="anchor-link" href="#Reference">&para;</a></h2><ul>
 <li><a href="http://jinja.pocoo.org/docs/2.9/templates/#extensions">Jinja2 Extension</a></li>
@@ -490,6 +470,10 @@
                     </span>
 
                 </p>
+
+
+
+
 
 
 

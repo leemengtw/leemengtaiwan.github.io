@@ -168,7 +168,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-03-13 (Tue)</li>
                         <li class="page-view">
-                            1,117 views
+                            1,118 views
                         </li>
                     </ul>
 
@@ -228,29 +228,25 @@
             <div class="col-full blog-content__main">
 
                 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://cloud.google.com/data-studio/">Google Data Studio</a> 是 Google 推出的一個 Dashboard / Reporting 的服務，讓我們可以利用多種<a href="https://support.google.com/datastudio/answer/7530149?hl=en&amp;ref_topic=6370347">連結器</a>將儲存在如 Google Analytics、 Google 試算表及 Google BigQuery 等特定資料來源的資料做出漂亮的 visualization ，用資料講故事而不用自己設計 UI。公司內部雖然有自己的 dashboards 不過想說多試一些方案沒有壞處，而且現在 Data Studio 還是 Beta 版本，雖然介面是中文，說明文件還只有英文，想說把學到的一些技巧以及使用心得記錄下來。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="將-Google-試算表的資料可視化">將 Google 試算表的資料可視化<a class="anchor-link" href="#將-Google-試算表的資料可視化">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>為了快速展示 Data Studio 的功能，我們將使用<a href="https://data.gov.tw/">政府資料開放平臺</a>上由交通部觀光局提供的<a href="https://data.gov.tw/dataset/45444">105年來台旅客性別統計</a>資料。將 CSV 檔案下載下來，稍微簡化格式後上傳到 Google 試算表以當作報表的資料來源。下圖是簡化後的資料：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/google-data-studio/table-preview.png" style=""/>
@@ -263,8 +259,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="條件欄位應用">條件欄位應用<a class="anchor-link" href="#條件欄位應用">&para;</a></h2><p><a href="https://support.google.com/datastudio/answer/7359285">條件欄位</a>讓我們可以針對試算表裡頭每一列做 IF ELSE 判斷，依照判斷結果給予不同的值。現在假設我們想知道有多少國家的男性遊客過半數，可以使用簡易的評量表來計算：</p>
 <center>
@@ -276,8 +271,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們發現高達八成的國家（有些是區域）的訪台男性遊客較女性為多。我們可以調查其他國家的訪客性別比，看是不是只有台灣有此現象。要產生分母的「國家數」很直覺，我們只要新增一個欄位並計算有幾個國家即可：</p>
 <center>
@@ -289,8 +283,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>但要計算分子的「男性遊客過半國家數」就稍微 tricky 了。我們想做的是，針對每一國家（每一列），只有在該國訪台男性遊客百分比過半（超過 50%)的時候才會被納入結果。而 Data Studio 的<a href="https://support.google.com/datastudio/answer/7359285">條件欄位</a>就是專門針對這種情況設計的。</p>
 <center>
@@ -311,15 +304,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="篩選器（filter）應用">篩選器（filter）應用<a class="anchor-link" href="#篩選器（filter）應用">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>根據上個分析，我們知道女性遊客過半的國家只佔 20%。假設我們想確切知道是哪些國家的女性遊客過半，可以從女性百分比最高的國家開始列出男女比：</p>
 <center>
@@ -331,15 +322,13 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們發現女性遊客過半的都是亞洲國家，或許我們可以簡單解釋成這些國家與台灣的距離短，適合女性遊客拜訪。而為了讓圖表易讀，上面這張組合圖額外建立一個篩選器來過濾掉男性遊客比女性多的國家：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/google-data-studio/female-more-than-half.png" style="width:70%"/>
@@ -351,8 +340,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="維度-VS-指標">維度 VS 指標<a class="anchor-link" href="#維度-VS-指標">&para;</a></h2><p>在 Data Studio 裡頭，了解<a href="https://support.google.com/datastudio/answer/6402048?ref_topic=7441655&amp;utm_source=product&amp;utm_medium=cta&amp;utm_campaign=wwr&amp;utm_content=dims_mets">維度跟指標的差異</a>很重要。</p>
 <p>以我們現在的資料集為例，每一列就是一筆紀錄（record），每一行則是一個欄位。每個欄位則是維度或指標。</p>
@@ -377,8 +365,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>像我們前面定義的「男性遊客過半國家數」欄位因為有經過 <code>SUM</code> 公式匯總成為一個數值，因此為一個指標（藍）。而如果我們透過 <code>CASE</code> 語法新定義一個「男性過半」欄位如下：</p>
 <center>
@@ -396,8 +383,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="資料透視表-(Pivot-Table)">資料透視表 (Pivot Table)<a class="anchor-link" href="#資料透視表-(Pivot-Table)">&para;</a></h2><p>資料透視表很適合拿來看在不同條件下某個指標的表現。下圖是一個依照</p>
 <ul>
@@ -408,8 +394,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/google-data-studio/pivot-table.png" style=""/>
@@ -417,8 +402,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>依照<a href="https://support.google.com/datastudio/answer/7516660?hl=en">官方文件</a>有幾點值得注意：</p>
 <ul>
@@ -428,8 +412,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="限制">限制<a class="anchor-link" href="#限制">&para;</a></h2><p>可能因為還處在 beta 版本，在這篇文章寫的時候（2018/03）試用了一陣子發現 Data Studio 也有一些使用案例沒有辦法做到，像是：</p>
 <ul>
@@ -440,8 +423,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="實戰演練">實戰演練<a class="anchor-link" href="#實戰演練">&para;</a></h2><p>這篇文章用的報表連結在<a href="https://datastudio.google.com/open/19a--FnAQ9asll18anhv7negoXGO0fpyH">此</a>，可以自己試試不同 visualization。有任何 feedback 也歡迎聯絡。</p>
 <center>
@@ -465,6 +447,10 @@
                     </span>
 
                 </p>
+
+
+
+
 
 
 

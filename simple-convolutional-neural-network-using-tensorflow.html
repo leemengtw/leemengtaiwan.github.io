@@ -235,8 +235,7 @@
             <div class="col-full blog-content__main">
 
                 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The goal here is to practice building convolutional neural networks to classify <a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html">notMNIST</a> characters using TensorFlow.
 As image size become bigger and bigger, it become unpractical to train fully-connected NN because there will be just too many parameters and thus the model will overfit very soon. And CNN solve this problem by weight sharing.</p>
@@ -245,8 +244,7 @@ As image size become bigger and bigger, it become unpractical to train fully-con
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Import-libraries">Import libraries<a class="anchor-link" href="#Import-libraries">&para;</a></h2>
 </div>
@@ -275,8 +273,7 @@ As image size become bigger and bigger, it become unpractical to train fully-con
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Load-notMNIST-dataset">Load notMNIST dataset<a class="anchor-link" href="#Load-notMNIST-dataset">&para;</a></h2>
 </div>
@@ -317,15 +314,13 @@ Test set (10000, 28, 28) (10000,)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Reformat-data">Reformat data<a class="anchor-link" href="#Reformat-data">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Reformat into a TensorFlow-friendly shape:</p>
 <ul>
@@ -386,8 +381,7 @@ Test set (10000, 28, 28, 1) (10000, 10)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Helper-for-training-visualization">Helper for training visualization<a class="anchor-link" href="#Helper-for-training-visualization">&para;</a></h2><p>Let's define a function that make better visualization of our training progress.<br/>
 The function will draw mini-batch loss and training/validation accuracy dynamically.</p>
@@ -417,22 +411,19 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="NN-with-2-convolutional-layers">NN with 2 convolutional layers<a class="anchor-link" href="#NN-with-2-convolutional-layers">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's build a small network with two convolutional layers, followed by one fully connected layer. Convolutional networks are more expensive computationally, so we'll limit its depth and number of fully connected nodes.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Computation-graph">Computation graph<a class="anchor-link" href="#Computation-graph">&para;</a></h3><p>Although this assignment already provide good Tensorflow code to build convoluational networks, I found that I can't imagine what NN I was going to build by reading the code. So I tried to draw what we're going to build and explain some parameters used in code by comments.</p>
 <p>The convolutional network we're going to build:</p>
@@ -440,8 +431,7 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 </caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Something worth mentioning:</p>
 <ul>
@@ -541,8 +531,7 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Train-the-model-and-visualize-the-result">Train the model and visualize the result<a class="anchor-link" href="#Train-the-model-and-visualize-the-result">&para;</a></h3><p>The best thing of the visualization is that it's rendered in a real-time manner.</p>
 </div>
@@ -608,10 +597,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="e1fab3f3-fce6-41bf-8c0a-6074b14cbca8"></div>
+<div id="d34a4a15-edc2-421b-bd2d-0f662d000ebb"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#e1fab3f3-fce6-41bf-8c0a-6074b14cbca8');
+var element = $('#d34a4a15-edc2-421b-bd2d-0f662d000ebb');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -1375,10 +1364,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="29439c3a-5b67-4492-a300-22215e506515"></div>
+<div id="f565bf38-c782-4b4a-95aa-4c30815bd13b"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#29439c3a-5b67-4492-a300-22215e506515');
+var element = $('#f565bf38-c782-4b4a-95aa-4c30815bd13b');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -1407,15 +1396,13 @@ Test accuracy: 89.4%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As shown above, mini-batch loss dropped rapidly at first 200 iterations, training and validation accuracy also improve quickly (both achieved about 80%). After 200 iterations, validation performance become stable but still improved about 5%. The test accuracy is about 89%.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Problem-1---Use-pooling-layers-to-reduce-dimensionality_1">Problem 1 - Use pooling layers to reduce dimensionality<a class="anchor-link" href="#Problem-1---Use-pooling-layers-to-reduce-dimensionality">&para;</a></h2><p>The convolutional model above uses convolutions with stride 2 to reduce the dimensionality. Replace the strides by a max pooling operation (<code>nn.max_pool()</code>) of stride 2 and kernel size 2.</p>
 <p>The reason why we're going to use pooling layer is that we can reduce spatial size thus parameters to reduce the chance of overfitting. And the advantage of pooling layer is that it require no new parameters. Let's see how much performance we can gain by using max pooling.</p>
@@ -1423,8 +1410,7 @@ Test accuracy: 89.4%
 </caption></center></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Build-model-with-pooling-layers">Build model with pooling layers<a class="anchor-link" href="#Build-model-with-pooling-layers">&para;</a></h3><p>Actually, what we will do is just to add pooling layers right after ReLU layers and let the convoluational layer use stride 1. In intuition, we let the convoluational layers look more 'closely' into the images, but also try to limit the number of activation and extract the important parts by pooling layers.</p>
 </div>
@@ -1501,8 +1487,7 @@ Test accuracy: 89.4%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Train-the-model">Train the model<a class="anchor-link" href="#Train-the-model">&para;</a></h3>
 </div>
@@ -1568,10 +1553,10 @@ Test accuracy: 89.4%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="e2551e3b-a39f-4b1b-9658-5d91d3184267"></div>
+<div id="0b6228a3-ffd6-42c9-b9d4-a7d25ac93b1c"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#e2551e3b-a39f-4b1b-9658-5d91d3184267');
+var element = $('#0b6228a3-ffd6-42c9-b9d4-a7d25ac93b1c');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -2335,10 +2320,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="aac6b32d-d206-4827-a6a1-9fc74b618ae2"></div>
+<div id="cfd4169e-8247-4b1a-b064-7b98eaaab018"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#aac6b32d-d206-4827-a6a1-9fc74b618ae2');
+var element = $('#cfd4169e-8247-4b1a-b064-7b98eaaab018');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -2366,23 +2351,20 @@ Test accuracy: 90.7%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>There is some performance gain in my current iteration between model w/o pooling layer ( about 1.3% ). And it seems that after several iterations, the validation set performance is slightly better with the pooling layers. But it took about 1 minute and 30 seconds to train CNN with pooling layers, and only 30 seconds to train the one without pooling layers. I think it depends on whether you're willing to gain a little more performance by using more time to train the model.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Problem-2_1">Problem 2<a class="anchor-link" href="#Problem-2">&para;</a></h2><p>Try to get the best performance you can using a convolutional net. Look for example at the classic <a href="http://yann.lecun.com/exdb/lenet/">LeNet5</a> architecture, adding Dropout, and/or adding learning rate decay.</p>
 <p>I will just try to add a convoluational layer here and train a little longer to see how the performance changed.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Computation-graph_1">Computation graph<a class="anchor-link" href="#Computation-graph">&para;</a></h3>
 </div>
@@ -2472,8 +2454,7 @@ Test accuracy: 90.7%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Train-the-model_1">Train the model<a class="anchor-link" href="#Train-the-model">&para;</a></h3>
 </div>
@@ -2539,10 +2520,10 @@ Test accuracy: 90.7%
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div id="6b177de4-4c89-4760-ada5-c3d08ff0fea6"></div>
+<div id="33752e7a-3d61-49ee-8225-280f5d2896a2"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#6b177de4-4c89-4760-ada5-c3d08ff0fea6');
+var element = $('#33752e7a-3d61-49ee-8225-280f5d2896a2');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -3306,10 +3287,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="output_area">
-<div id="82a649a5-054a-47cb-9df6-12a5b02ae035"></div>
+<div id="61919ed1-2ab2-4f9d-bc10-55c2fed5d6e9"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#82a649a5-054a-47cb-9df6-12a5b02ae035');
+var element = $('#61919ed1-2ab2-4f9d-bc10-55c2fed5d6e9');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -3337,8 +3318,7 @@ Test accuracy: 94.6%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>By adding a new convoluational layer and train 10x steps, our model's performance can even boost to almost 95%! (though it take about 5 minutes to train on my pc) and I think there are still many things we can tune to make the model better, but I will stop here to move on to sequence model!</p>
 </div>
@@ -3362,6 +3342,10 @@ Test accuracy: 94.6%
                     </span>
 
                 </p>
+
+
+
+
 
 
 
