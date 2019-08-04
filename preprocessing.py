@@ -46,6 +46,15 @@ Description: 這裡紀錄了我在學習深度學習時蒐集的一些線上資�
 Image: joshua-newton-214848-unsplash.jpg
 Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText
 
+<style>
+    h3 {
+        margin-top: 3rem;
+    }
+    h3 a {
+        font-size: 18px;
+    }
+</style>
+
 <div class="cell border-box-sizing code_cell rendered">
     <div class="input">
         <div class="inner_cell">
