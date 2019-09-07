@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 直觀理解 GPT-2 語言模型並生成金庸武俠小說</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="這篇文章將簡單向讀者介紹 OpenAI 的知名語言模型 GPT-2，並展示能夠生成金庸小說的 GPT-2 模型。文中也將透過視覺化工具 BertViz 來帶讀者直觀了解基於 Transformer 架構的 NLP 模型背後的自注意力機制。讀者也能透過文中提供的 GPT-2 模型及 Colab 筆記本自行生成全新的金庸橋段。" />
+        <meta name="keywords" content="自然語言處理, NLP, PyTorch" />
+        <meta name="tags" content="自然語言處理" />
+        <meta name="tags" content="NLP" />
+        <meta name="tags" content="PyTorch" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/godslar-zboO0K1WfY4-unsplash.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html" />
+        <meta property="og:title" content="直觀理解 GPT-2 語言模型並生成金庸武俠小說" />
+        <meta property="og:description" content="這篇文章將簡單向讀者介紹 OpenAI 的知名語言模型 GPT-2，並展示能夠生成金庸小說的 GPT-2 模型。文中也將透過視覺化工具 BertViz 來帶讀者直觀了解基於 Transformer 架構的 NLP 模型背後的自注意力機制。讀者也能透過文中提供的 GPT-2 模型及 Colab 筆記本自行生成全新的金庸橋段。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+
+    <!--for responsive embed youtube video-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/embed_youtube.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="https://demo.leemeng.tw">Demo</a>
+        </li>
+        <li>
+            <a href="../books.html">Books</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="直觀理解 GPT-2 語言模型並生成金庸武俠小說">直觀理解 GPT-2 語言模型並生成金庸武俠小說</a><ul><li><a class="toc-href" href="#前置知識" title="前置知識">前置知識</a></li><li><a class="toc-href" href="#先睹為快：看看-GPT-2-生成的金庸橋段" title="先睹為快：看看 GPT-2 生成的金庸橋段">先睹為快：看看 GPT-2 生成的金庸橋段</a></li><li><a class="toc-href" href="#GPT-2：基於-Transformer-的巨大語言模型" title="GPT-2：基於 Transformer 的巨大語言模型">GPT-2：基於 Transformer 的巨大語言模型</a></li><li><a class="toc-href" href="#論文作者：GPT-2-能做的可不只是生成文本" title="論文作者：GPT-2 能做的可不只是生成文本">論文作者：GPT-2 能做的可不只是生成文本</a></li><li><a class="toc-href" href="#用-BertViz-觀察-GPT-2-生成文本" title="用 BertViz 觀察 GPT-2 生成文本">用 BertViz 觀察 GPT-2 生成文本</a></li><li><a class="toc-href" href="#故事尾聲" title="故事尾聲">故事尾聲</a></li><li><a class="toc-href" href="#延伸閱讀：課外參考資源" title="延伸閱讀：課外參考資源">延伸閱讀：課外參考資源</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+    <!--custom images with icon shown on left nav-->
+    <!--the details are set in `pelicanconf.py` as `LEFT_NAV_IMAGES`-->
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/godslar-zboO0K1WfY4-unsplash.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemeng.tw/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
+                            <a href="https://leemeng.tw/tag/nlp.html" rel="tag">NLP</a>
+                            <a href="https://leemeng.tw/tag/pytorch.html" rel="tag">PyTorch</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html" title="">
+                            直觀理解 GPT-2 語言模型並生成金庸武俠小說
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2019-09-07 (Sat)</li>
+                        <li class="page-view">
+                            0 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTocNav()"></i>
+        </a>
+    </div>
+
+    <div id="social-wrap" style="cursor: pointer">
+        <a class="open-popup" title="訂閱最新文章">
+            <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html&title=%E7%9B%B4%E8%A7%80%E7%90%86%E8%A7%A3%20GPT-2%20%E8%AA%9E%E8%A8%80%E6%A8%A1%E5%9E%8B%E4%B8%A6%E7%94%9F%E6%88%90%E9%87%91%E5%BA%B8%E6%AD%A6%E4%BF%A0%E5%B0%8F%E8%AA%AA&summary=%E9%80%99%E7%AF%87%E6%96%87%E7%AB%A0%E5%B0%87%E7%B0%A1%E5%96%AE%E5%90%91%E8%AE%80%E8%80%85%E4%BB%8B%E7%B4%B9%20OpenAI%20%E7%9A%84%E7%9F%A5%E5%90%8D%E8%AA%9E%E8%A8%80%E6%A8%A1%E5%9E%8B%20GPT-2%EF%BC%8C%E4%B8%A6%E5%B1%95%E7%A4%BA%E8%83%BD%E5%A4%A0%E7%94%9F%E6%88%90%E9%87%91%E5%BA%B8%E5%B0%8F%E8%AA%AA%E7%9A%84%20GPT-2%20%E6%A8%A1%E5%9E%8B%E3%80%82%E6%96%87%E4%B8%AD%E4%B9%9F%E5%B0%87%E9%80%8F%E9%81%8E%E8%A6%96%E8%A6%BA%E5%8C%96%E5%B7%A5%E5%85%B7%20BertViz%20%E4%BE%86%E5%B8%B6%E8%AE%80%E8%80%85%E7%9B%B4%E8%A7%80%E4%BA%86%E8%A7%A3%E5%9F%BA%E6%96%BC%20Transformer%20%E6%9E%B6%E6%A7%8B%E7%9A%84%20NLP%20%E6%A8%A1%E5%9E%8B%E8%83%8C%E5%BE%8C%E7%9A%84%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A9%9F%E5%88%B6%E3%80%82%E8%AE%80%E8%80%85%E4%B9%9F%E8%83%BD%E9%80%8F%E9%81%8E%E6%96%87%E4%B8%AD%E6%8F%90%E4%BE%9B%E7%9A%84%20GPT-2%20%E6%A8%A1%E5%9E%8B%E5%8F%8A%20Colab%20%E7%AD%86%E8%A8%98%E6%9C%AC%E8%87%AA%E8%A1%8C%E7%94%9F%E6%88%90%E5%85%A8%E6%96%B0%E7%9A%84%E9%87%91%E5%BA%B8%E6%A9%8B%E6%AE%B5%E3%80%82&source=https%3A//leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html" target="_blank" title="分享到 LinkedIn">
+            <i class="im im-linkedin" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://twitter.com/intent/tweet?text=%E7%9B%B4%E8%A7%80%E7%90%86%E8%A7%A3%20GPT-2%20%E8%AA%9E%E8%A8%80%E6%A8%A1%E5%9E%8B%E4%B8%A6%E7%94%9F%E6%88%90%E9%87%91%E5%BA%B8%E6%AD%A6%E4%BF%A0%E5%B0%8F%E8%AA%AA&url=https%3A//leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html&hashtags=zi-ran-yu-yan-chu-li,nlp,pytorch" target="_blank" title="分享到 Twitter">
+            <i class="im im-twitter" aria-hidden="true"></i>
+        </a>
+    </div>
+
+
+    <!--custom images with icon shown on left nav-->
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        這是一篇以「介紹 GPT-2」之名，行「推坑金庸」之實的自然語言處理文章。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>嗨，會點擊進來，我想你應該至少看過武俠小說泰斗<a href="https://zh.wikipedia.org/wiki/金庸">金庸</a>的一部著作吧！</p>
+<p>這篇文章將簡單介紹 <a href="https://openai.com/">OpenAI</a> 在今年提出的知名<strong>語言模型</strong> <a href="https://openai.com/blog/better-language-models">GPT-2</a>，並展示一個能夠用來生成金庸風格文本的小型 GPT-2。在讀完本文之後，你也能使用我的 <a href="https://colab.research.google.com/drive/1MaT8-HUHfZkdCra0OqZEIr0IFCq0MJBx" target="_blank">Colab 筆記本</a>來生成屬於你自己的金庸小說。文中也將透過視覺化工具 <a href="https://github.com/jessevig/bertviz">BertViz</a> 讓你能夠直觀地感受 GPT-2 等<a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html">基於 Transformer 架構的 NLP 模型</a>如何利用<a href="https://www.youtube.com/watch?v=jd9DtlR90ak&amp;feature=youtu.be">注意力機制（Attention Mechanism）</a>來生成文本。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你想要直觀地了解<a href="http://research.sinica.edu.tw/nlp-natural-language-processing-chinese-knowledge-information/">自然語言處理（<strong>N</strong>atural <strong>L</strong>anguage <strong>P</strong>rocessing, NLP）</a>以及<a href="https://leemeng.tw/deep-learning-resources.html">深度學習</a>可以如何被用來生成金庸小說，這篇應該很適合你。</p>
+<h2 id="前置知識">前置知識<a class="anchor-link" href="#前置知識">&para;</a></h2><p>如果你已讀過我寫的幾篇 NLP 文章，我相信你可以非常輕鬆地理解本文提及的 GPT-2 概念：</p>
+<ul>
+<li><a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html">進入 NLP 世界的最佳橋樑：寫給所有人的自然語言處理與深度學習入門指南</a></li>
+<li><a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html">讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</a></li>
+<li><a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html">淺談神經機器翻譯 &amp; 用 Transformer 與 TensorFlow 2 英翻中</a></li>
+<li><a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">進擊的 BERT：NLP 界的巨人之力與遷移學習</a></li>
+</ul>
+<p>基本上排越後面越進階。別擔心，我還是會用最平易近人的方式介紹 GPT-2！但你之後可能會想要回來參考這些文章。不管如何，現在先讓我們開始這趟 GPT-2 之旅吧！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="先睹為快：看看-GPT-2-生成的金庸橋段">先睹為快：看看 GPT-2 生成的金庸橋段<a class="anchor-link" href="#先睹為快：看看-GPT-2-生成的金庸橋段">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>首先，你可以把本文想成是<a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html">如何用 TensorFlow 2 及 TensorFlow.js 寫天龍八部</a>的升級版本（是的，我太愛金庸所以要寫第兩篇文章）。本文跟該篇文章的最大差異在於：</p>
+<ul>
+<li><strong>模型升級</strong>：當初我們使用輕量的<a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">長短期記憶 LSTM</a> 作為語言模型，這篇則使用更新、更強大的 GPT-2</li>
+<li><strong>數據增加</strong>：當初我們只讓 LSTM「閱讀」一本<a href="https://bit.ly/2luD3JM">《天龍八部》</a>，這篇則用了整整 14 部金庸武俠小說來訓練 GPT-2</li>
+<li><strong>強調概念</strong>：當初我們用 <a href="https://www.tensorflow.org/">TensorFlow</a> 一步步實作 LSTM，這篇則會專注在 GPT-2 的運作原理並額外提供 <a href="https://colab.research.google.com/drive/1MaT8-HUHfZkdCra0OqZEIr0IFCq0MJBx">Colab 筆記本</a>供你之後自己生成文本以及視覺化結果</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/gpt2/金庸全作品.jpg"/>
+</center>
+<center>
+                        用來訓練 GPT-2 的金庸武俠小說：第一排由左到右：飛雪連天射白鹿；第二排：笑書神俠倚碧鴛
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        飛雪連天射白鹿，笑書神俠倚碧鴛。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 金庸作品首字詩</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>從《飛狐外傳》、《倚天屠龍記》、《笑傲江湖》到《鴛鴦刀》，這 14 部經典的金庸著作你讀過幾本呢？哪一本是你的最愛呢？還記得多少橋段呢？</p>
+<p>在實際介紹 GPT-2 之前，讓我們先看看將這些作品讀過上百遍的 GPT-2 會生成出怎麼樣的橋段。你可以從底下的這些生成例子感受一下 GPT-2 的語言能力以及腦補技巧：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<style>
+<!-- https://www.w3schools.com/w3css/w3css_slideshow.asp -->
+.w3-content,
+.w3-auto {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.w3-content {
+    max-width: 980px
+}
+
+.w3-display-container:hover .w3-display-hover {
+    display: block
+}
+
+.w3-display-container:hover span.w3-display-hover {
+    display: inline-block
+}
+
+.w3-display-container {
+    position: relative
+}
+
+.w3-button:hover {
+    color: #000!important;
+    background-color: inherit;
+}
+
+.w3-button {
+    border: none;
+    display: inline-block;
+    padding: 3px 3px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap
+}
+
+.w3-button {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 2.4rem;
+}
+
+.w3-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.3
+}
+
+.w3-display-left {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+    -ms-transform: translate(-0%, -50%)
+}
+
+.w3-display-right {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%)
+}
+
+.mySlides {display:none;}
+</style><div class="w3-content w3-display-container" style="background-color:#404452 !important">
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/4_天龍八部.jpg" style="width:100%"/>
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/1_飛狐外傳.jpg" style="width:100%"/>
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/2_雪山飛狐.jpg" style="width:100%"/>
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/3_連城訣.jpg" style="width:100%"/>
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/5_射雕英雄傳.jpg" style="width:100%"/>
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/6_白馬嘯西風.jpg" style="width:100%"/>
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/7_鹿鼎記.jpg" style="width:100%"/>
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/8_笑傲江湖.jpg" style="width:100%"/>
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/9_書劍恩仇錄.jpg" style="width:100%"/>
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/10_神鵰俠侶.jpg" style="width:100%"/>
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/11_俠客行.jpg" style="width:100%"/>
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/12_倚天屠龍記.jpg" style="width:100%"/>
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/13_碧血劍.jpg" style="width:100%"/>
+<img class="mySlides" src="https://leemeng.tw/images/gpt2/14_鴛鴦刀.jpg" style="width:100%"/>
+<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">❮</button>
+<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">❯</button>
+</div>
+<div style="text-align:center">
+點擊左右箭頭可查看 GPT-2 生成不同金庸著作的橋段
+</div><script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br/></p>
+<p>沒錯，很ㄎㄧㄤ！但這些文本不是我自己吸麻瞎掰出來的。（事實上，GPT-2 比我厲害多了）在用 14 部金庸武俠小說訓練完 GPT-2 之後，我從這些小說中隨意抽取一段文字作為<strong>前文脈絡</strong>，接著就讓它自己腦補後續橋段。你可以從左上角得知模型是在生成哪部武俠小說。</p>
+<p>這些文本當然不完美，但跟<a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html">我們當初用 LSTM 生成《天龍八部》</a>的結果相比，已有不少進步：</p>
+<ul>
+<li>生成的文本更加通順、語法也顯得更為自然</li>
+<li>記憶能力好，能夠持續生成跟前文相關的文章而不亂跳人物</li>
+</ul>
+<p>值得一提的是，如果你讀過《天龍八部》，就會知道第一個例子的前文脈絡（context）是<code>段譽</code>與<code>王語嫣</code>墜入井內最終兩情相悅的橋段。儘管每次生成的結果會因為隨機抽樣而有所不同，GPT-2 在看了這段前文後為我們生成了一本超級放閃的言情小說，儘管放閃的兩人貌似跟我們預期地不太一樣。且在該平行時空底下，貌似<code>慕容復</code>也到了井裡（笑</p>
+<p>你可以跟當初 LSTM 的生成結果比較，感受 GPT-2 進步了多少：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="w3-content w3-display-container" style="background-color:#404452 !important">
+<img class="mySlides1" src="https://leemeng.tw/images/gpt2/gpt-vs-lstm.jpg" style="width:100%"/>
+<img class="mySlides1" src="https://leemeng.tw/images/gpt2/4_天龍八部.jpg" style="width:100%"/>
+<button class="w3-button w3-black w3-display-left" onclick="plusDivs1(-1)">❮</button>
+<button class="w3-button w3-black w3-display-right" onclick="plusDivs1(1)">❯</button>
+</div>
+<div style="text-align:center">
+點擊左右箭頭切換 LSTM 與 GPT-2 的生成橋段
+</div><script>
+var slideIndex = 1;
+showDivs1(slideIndex);
+
+function plusDivs1(n) {
+  showDivs1(slideIndex += n);
+}
+
+function showDivs1(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides1");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br/></p>
+<p>雖然很有金庸架勢，細看會發現 LSTM 的用詞不太自然（比如說 <code>四具屍體匆匆忙逼</code>、<code>伸掌在膝頭褲子</code>）。且明明前文脈絡提到的是<code>段譽</code>與<code>王語嫣</code>，LSTM 開頭馬上出現不相干的<code>南海鱷神</code>、接著跳到<code>虛竹</code>、然後又扯到<code>蕭峰</code> ...</p>
+<p>無庸置疑，<a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">LSTM</a> 是你在 NLP 路上必學的重要神經網路。不過很明顯地，跟當初用詞不順且不斷跳 tune 的 LSTM 相比，新的 GPT-2 的生成結果穩定且流暢許多（當然，訓練文本及參數量的差異不小）。在看過生成結果以後，讓我們看看 GPT-2 實際上是個怎麼樣的語言模型。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="GPT-2：基於-Transformer-的巨大語言模型">GPT-2：基於 Transformer 的巨大語言模型<a class="anchor-link" href="#GPT-2：基於-Transformer-的巨大語言模型">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>GPT-2 的前身是 <a href="https://blog.openai.com/language-unsupervised/">GPT</a>，其全名為 <a href="https://openai.com/blog/better-language-models/"><strong>G</strong>enerative <strong>P</strong>re-<strong>T</strong>raining</a>。在 <a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">GPT-2 的論文</a>裡頭，作者們首先從網路上爬了將近 40 GB，名為 <a href="https://skylion007.github.io/OpenWebTextCorpus/">WebText（開源版）</a> 的文本數據，並用此龐大文本訓練了數個以 <a href="https://arxiv.org/abs/1706.03762">Transformer</a> 架構為基底的<a href="https://youtu.be/iWea12EAu6U">語言模型（language model）</a>，讓這些模型在讀進一段文本之後，能夠預測下一個字（word）。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/bert/lm-equation.jpg"/>
+</center>
+<center>
+                        給定前 t 個在字典裡的詞彙，語言模型要去估計第 t + 1 個詞彙的機率分佈 P 
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如今無人不知、無人不曉的神經網路架構 Transformer 在 2017 年由至今已超過 3,000 次引用的論文 <a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a> 提出，是一個不使用循環神經網路、<a href="https://demo.leemeng.tw">卷積神經網路</a>並完全仰賴<a href="https://www.youtube.com/watch?v=jd9DtlR90ak&amp;feature=youtu.be">注意力機制</a>的 <a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html#Encoder-Decoder-%E6%A8%A1%E5%9E%8B-+-%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A9%9F%E5%88%B6">Encoder-Decoder 模型</a>。在<a href="#前置知識">前置知識一節</a>提過的<a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html">神經機器翻譯 &amp; Transformer</a>一文裡已經用了大量動畫帶你理解並實作自注意力機制及 Transformer，這邊就不再贅述了。</p>
+<p>基本上只要了解 Transformer 架構，你馬上就懂 GPT-2 了。因為該語言模型的本體事實上就是 Transformer 裡的 <strong>Decoder</strong>：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/gpt2/elmo-bert-gpt2.jpg"/>
+</center>
+<center>
+                        GPT-2 與兩知名模型 ELMo 與 BERT 使用的參數量比較
+                        （<a href="https://youtu.be/UYPa347-DdE?list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4&amp;t=2967" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>更精準地說，GPT-2 使用的 Transformer Decoder 是<a href="https://arxiv.org/abs/1706.03762">原始 Transformer 論文</a>的<a href="https://arxiv.org/abs/1801.10198">小變形</a>（比方說沒有了關注 Encoder 的 Decoder-Encoder Attention Layer），但<a href="https://youtu.be/f1KUUz7v8g4?list=PLJV_el3uVTsPMxPbjeX7PicgWbY7F8wW9">序列生成（Sequence Generation）</a>的概念是完全相同的。</p>
+<p>架構本身沒什麼特別。但 GPT-2 之所以出名，是因為它訓練模型時所使用的數據以及參數量都是前所未有地<strong>龐大</strong>：</p>
+<ul>
+<li><strong>訓練數據</strong>：使用從 800 萬個網頁爬來的 40 GB 高品質文本。把金庸 14 部著作全部串起來也不過 50 MB。WebText 的數據量是金庸著作的 800 倍。想像一下光是要看完這 14 部著作<strong>一遍</strong>所需花費的時間就好。</li>
+<li><strong>模型參數</strong>：15 億參數，是已經相當巨大、擁有 3.4 億參數的 <a href="https://github.com/google-research/bert">BERT-Large</a> 語言代表模型的 4.5 倍之多。BERT-Large 使用了 24 層 Transformer blocks，GPT-2 則使用了 48 層。</li>
+</ul>
+<p>這可是有史以來最多參數的語言模型。而 GPT-2 獨角獸（unicorn）的形象則是因為當初作者在<a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">論文</a>裡生成文本時，給了 GPT-2 一段關於「住在安地斯山脈，且會說英文的一群獨角獸」作為前文脈絡，而 GPT-2 接著生成的結果有模有樣、頭頭是道，讓許多人都驚呆了：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/gpt2/gpt2-unicorns.jpg"/>
+</center>
+<center>
+                        GPT-2 作者用跟本文生成金庸橋段一樣的方式讓模型生成獨角獸文章
+                        （<a href="https://openai.com/blog/better-language-models/" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你可以前往在<a href="https://leemeng.tw/deep-learning-resources.html">由淺入深的深度學習資源整理</a>就已經介紹過的 <a href="https://talktotransformer.com/">Talk to Transformer</a> 生成上例的獨角獸文章、復仇者聯盟劇本或是任何其他類型的<strong>英文</strong>文章。</p>
+<p>我懂，對非英文母語的我們來說，其實很難深切地感受 GPT-2 生成的文章到底有多厲害。這也是為何我決定要使用金庸小說來訓練一個中文模型並介紹 GPT-2，因為這樣你比較能夠實際感受並了解模型生成的文本。<a href="https://github.com/openai/gpt-2/issues/31">官方釋出的 GPT-2 能夠輸出中文字</a>，但因為大部分文本都是透過 <a href="https://www.reddit.com/">Reddit</a> 爬下來的英文文章，因此是沒有辦法做到如同本文的中文生成的。</p>
+<p>讓 GPT-2 在社群上被熱烈討論的另個原因是作者等人<a href="https://openai.com/blog/better-language-models/">當初在部落格上展示驚人的生成結果後表示</a>：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        因為顧慮到這項技術可能會遭到惡意運用，我們目前並不打算釋出已訓練好的模型。但為了促進研究我們將釋出規模小很多的模型供研究者參考。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ OpenAI, 2019/02</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>此言一出，一片譁然。看看隔壁棚幾乎可以說是以開源為志向的 <a href="https://github.com/google-research/bert">Google BERT</a>！網路上有人甚至嘲諷 OpenAI 一點都不 open，而是 CloseAI；也有人說 OpenAI 只是為了炒話題，GPT-2 並沒有那麼厲害；當然也有人認為作者們的論文已經有足夠的學術貢獻，並非一定得釋出模型。</p>
+<p>不過至少目前看來 OpenAI 只是採取相對謹慎的態度在釋出模型。該團隊在今年 2 月將最小的 124M GPT-2 Small（1.2 億參數）與<a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">論文</a>一起釋出，並在 5 月釋出 355M 的 GPT-2 Medium。而就在<a href="https://openai.com/blog/gpt-2-6-month-follow-up/">不久前的 8 月釋出了有 7.74 億參數的 GPT-2 Large</a>，其模型大小是 1558M GPT-2 完全體的一半。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/gpt2/gpt2-model-sizes.jpg"/>
+</center>
+<center>
+                        作者們實驗的 4 種不同大小的 GPT-2 模型，774M 版本在上個月被釋出
+                        （<a href="https://jalammar.github.io/illustrated-gpt2/" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>一群人歡欣鼓舞，迫不及待地把玩最新玩具 GPT-2 Large。剛剛提到的 <a href="https://talktotransformer.com">Talk to Transformer</a> 事實上就已經是在使用最新的 GPT-2 Large 了，手腳很快。</p>
+<p>其他相關應用多如牛毛。比方說之前介紹過的 <a href="https://www.thiswaifudoesnotexist.net/">This Waifu Does Not Exist</a> 在使用 GAN 生成動漫頭像的同時也利用 GPT-2 隨機生成一段動漫劇情；而 <a href="https://tabnine.com/">TabNine</a> 則是一個加拿大團隊利用 GPT-2 做智慧 auto-complete 的開發工具，志在讓工程師們減少不必要的打字，甚至推薦更好的寫法：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/gpt2/tabnine_demo_java_3.jpg">
+<source src="https://leemeng.tw/images/gpt2/tabnine_demo_java_3.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        TabNine 透過 GPT-2 讓工程師更有效率地開發程式（以 Java 為例）
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>由強大的深度學習模型驅動，可以想像未來（現在已經是了！）會有更多如 TabNine 的應用影響我們的工作與生活。而這也是為何你最好花點時間 follow 深度學習以及 AI 發展趨勢。當然，你也可以選擇在文末訂閱此部落格，只是我不敢保證文章的更新速度（笑</p>
+<p>GPT-2 公布時在多個 language modeling 任務取得 SOTA 結果，因此所有人都在引頸期盼著 OpenAI 將最大、擁有 15 億參數的 GPT-2 模型釋出。而該團隊也表示<a href="https://openai.com/blog/gpt-2-6-month-follow-up/">他們會先觀察人們怎麼使用 774M GPT-2，並持續考慮開源的可能性</a>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/gpt2/bert-gpt2-researcher.jpg"/>
+</center>
+<center>
+                        在有了 BERT 之後，不少研究者開始垂涎著後來發表的 GPT-2
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>不過別走開！GPT-2 的故事還沒有結束。可別以為 OpenAI 會僅僅滿足於能夠生成獨角獸文章的一個語言模型。</p>
+<p>重頭戲現在才要開始。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="論文作者：GPT-2-能做的可不只是生成文本">論文作者：GPT-2 能做的可不只是生成文本<a class="anchor-link" href="#論文作者：GPT-2-能做的可不只是生成文本">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>要了解 GPT-2，先看其前身 GPT。</p>
+<p>我們前面就已經提過，<a href="https://blog.openai.com/language-unsupervised/">GPT</a> 的全名是 <strong>G</strong>enerative <strong>P</strong>re-<strong>T</strong>raining。<strong>G</strong>enerative（生成）指的是上節看到的 language modeling，將爬來的文本餵給 GPT，並要求它預測（生成）下一個字；<strong>P</strong>re-<strong>T</strong>raining 則是最近 NLP 界非常流行的<strong>兩階段</strong>遷移學習的第一階段：<a href="https://www.youtube.com/watch?v=iwh5o_M4BNU">無監督式學習（Unsupervised Learning）</a>。相關概念我們在<a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">進擊的 BERT：NLP 界的巨人之力與遷移學習</a>就已經非常詳細地探討過了，但為了幫助你理解，讓我很快地再次簡單說明。</p>
+<p>近年 NLP 界十分流行的兩階段遷移學習會先蒐集大量文本（無需任何標注數據），並以無監督的方式訓練一個<strong>通用</strong> NLP 模型，接著再微調（Fine-tune）該模型以符合<strong>特定</strong>任務的需求。常見的 NLP 任務有文章分類、自然語言推論、問答以及閱讀理解等等。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/bert/bert-intro.jpg"/>
+</center>
+<center>
+                        Google 的語言代表模型 BERT 則是 Transformer 中的 Encoder
+                        （<a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>值得一提的是，<a href="https://openai.com/blog/language-unsupervised/">OpenAI 提出的 GPT</a> 跟 <a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">Google 的語言代表模型 BERT</a> 都信奉著兩階段遷移學習：利用大量文本訓練出一個<strong>通用</strong>、具有高度自然語言理解能力的 NLP 模型。有了一個這樣的通用模型之後，之後就能透過簡單地微調<strong>同一個</strong>模型來解決各式各樣的 NLP 任務，而無需每次都為不同任務設計特定的神經網路架構，省時省力有效率。</p>
+<p>兩者的差別則在於進行無監督式訓練時選用的訓練目標以及使用的模型有所不同：</p>
+<ul>
+<li>GPT 選擇 Transformer 裡的 <strong>Decoder</strong>，訓練目標為一般的語言模型，預測下個字</li>
+<li>BERT 選擇 Transformer 裡的 <strong>Encoder</strong>，訓練目標則為克漏字填空以及下句預測</li>
+</ul>
+<p>我們這邊不會細談，但基本上不同模型架構適合的訓練目標就會有所不同。不管如何，兩者都使用了 <a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html">Transformer</a> 架構的一部份。而這主要是因為 Transformer 裡頭的<a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html#Transformer%EF%BC%9ASeq2Seq-%E6%A8%A1%E5%9E%8B-+-%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A9%9F%E5%88%B6">自注意力機制（Self-Attention Mechanism）</a>十分有效且相當適合平行運算。GPT(-2) 的 Transformer Decoder 裡頭疊了很多層 Decoder blocks，以下則是某一層 Decoder block 透過自注意力機制處理一段文字的示意圖：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/gpt2/decoder-block-attention.jpg"/>
+</center>
+<center>
+                        訓練好的 Transformer Decoder 在處理某詞彙時能關注前方相關的其他詞彙，進而為該詞彙的 representation 融入語境資訊
+                        （<a href="https://jalammar.github.io/illustrated-gpt2/" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>給定一段文本：</p>
+<div class="highlight"><pre><span></span>&lt;s&gt; a robot must obey the orders given it ...
+</pre></div>
+<p>你可以很輕易地看出 <code>it</code> <a href="http://ckip.iis.sinica.edu.tw/project/coreference/">指代</a>前面出現過的 <code>robot</code>。而這是因為你懂得去<strong>關注</strong>（pay <strong>attention</strong> to）前文並修正當前詞彙 <code>it</code> 的語意。在給定相同句子時，<a href="https://youtu.be/kEMJRjEdNzM">傳統詞嵌入（Word Embeddings）</a>方法是很難做到這件事情的。所幸，透過強大的自注意力機制，我們可以讓模型學會<strong>關注</strong>上文以決定每個詞彙所代表的語意。</p>
+<p>以上例而言，訓練好的 GPT 可以在看到 <code>it</code> 時知道該去關注前面的 <code>a</code> 及 <code>robot</code>，並進而調整 <code>it</code> 在當下代表的意思（即修正該詞彙的 vector representation）。而被融入前文語意的新 representation 就是所謂的 <a href="https://youtu.be/S-CspeZ8FHc">Contextual Word Representation</a>。</p>
+<p>我們可以再看一個 <a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">BERT 文章</a>裡出現過的自注意力例子：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/bert/bert-coreference.jpg"/>
+</center>
+<center>
+                        BERT 用自注意力機制理解句中的「他」究竟代表什麼意思
+                        （<a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>關於自注意力機制（Self-Attention），有個值得記住的重要概念：在 GPT 之後問世的 BERT 是同時關注<strong>整個</strong>序列來修正一個特定詞彙的 representation，讓該詞彙的 repr. 同時隱含<strong>上下文</strong>資訊；而 GPT 是一個由左到右的常見語言模型，會額外透過<a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html#%E9%81%AE%E7%BD%A9%EF%BC%9ATransformer-%E7%9A%84%E7%A5%95%E5%AF%86%E9%85%8D%E6%96%B9">遮罩技巧（Masking）</a>來確保模型只會關注到某詞彙<strong>以左</strong>的<strong>上文</strong>資訊。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/gpt2/self-attention-vs-masked-version.jpg"/>
+</center>
+<center>
+                        在原始的 Transformer 架構裡頭就包含了 Encoder 與 Decoder，分別使用左側與右側的自注意力機制。BERT 跟 GPT 其實只是各選一邊來用
+                        （<a href="https://jalammar.github.io/illustrated-gpt2/" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>再次提醒，如果你想要深入了解如何實際用 TensorFlow 來實作遮罩，並將左側的自注意力機制變成右側的遮罩版本，可以參考<a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html">之前的 Transformer 文章</a>。假設你仍無法理解我在胡扯些什麼的話，只要記得：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        Transformer 的自注意力機制讓我們可以用更有意義、具備當下語境的方式來表達一段文字裡頭的每個詞彙，進而提升模型的自然語言理解能力。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我在<a href="#用-BertViz-觀察-GPT-2-生成文本">下一節</a>還會用些額外的例子讓你能更直觀地理解這個概念。</p>
+<p>了解 GPT 後 GPT-<strong>2</strong> 就容易了解了，因為 GPT-<strong>2</strong> 基本上就是 GPT 第二代：一樣是 Transformer Decoder 架構，但使用的數據及模型大小都直接霸氣地乘上 <strong>10 倍</strong>。有了如此龐大的數據與模型，在做完第一階段的無監督式訓練以後，GPT-2 的作者們決定做些瘋狂的事情：不再遵循兩階段遷移學習，直接做 zero-shot learning！這也就意味著直接把只看過 WebText 的 GPT-2 帶上考場，「裸測」它在多個跟 WebText 無關的 NLP 任務上的表現。而實驗結果如下：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/gpt2/gpt2-zero-shot-result.jpg"/>
+</center>
+<center>
+                        由左至右分別為閱讀理解、翻譯、摘要以及問答任務
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>乍看之下你可能會覺得這張圖沒什麼。畢竟就算是最大、最右側的 GPT-2 模型（1542M）在多數特定的 NLP 任務上還是比不過專門為那些任務設計的神經網路架構（比方說閱讀理解的 DrQA + PGNet）。但 GPT-2 的作者們認為他們最大的貢獻在於展現了用大量無標註數據訓練巨大語言模型的潛力：數大就是美！除了摘要（Summarization）任務之外，基本上只要模型參數越大，zero-shot 的結果就越好。</p>
+<p>且因為在模型參數越來越大時，訓練 / 測試集的結果仍然都持續進步且表現水準相仿，作者們認為就算是最大的 GPT-2 模型也還 underfit 他們爬的 WebText 數據集，還有進步空間。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/gpt2/gpt-underfit.jpg"/>
+</center>
+<center>
+                        不同大小的 GPT-2 在 WebText 上表現
+                        （<a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>令某些研究者興奮的是，這實驗結果隱含的一個訊息是「或許只要用夠多的文本訓練夠大的語言模型，就能讓該模型在沒有監督的情況下完成更多 NLP 任務」。</p>
+<p>總而言之，GPT-2 整篇論文的核心思想可以被這樣總結：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        給定越多參數以及越多樣、越大量的文本，無監督訓練一個語言模型或許就可讓該模型具備更強的自然語言理解能力，並在沒有任何監督的情況下開始學會解決不同類型的 NLP 任務。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這個概念用一個簡單但合適的比喻就是「觸類旁通」：GPT-2 在被要求預測 WebText 裡頭各式各樣文章的下一個字時，逐漸掌握理解自然語言的能力，最後就算不經過特別的訓練也能做些簡單的問答、翻譯以及閱讀理解任務。現在回頭看看，你從論文標題：<a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Language Models are Unsupervised Multitask Learners</a> 就能理解當初 GPT-2 作者們想要傳達的想法了。他們也希望這些實驗結果能吸引更多研究者往這個方向發展。當然，不是每個人都有能力與資源做這種龐大模型的研究，且我個人事實上比較喜歡如 <a href="https://medium.com/huggingface/distilbert-8cf3380435b5">DistilBERT</a> 等輕量級模型的研究與應用，之後有時間再撰文分享。</p>
+<p>好啦！基本上你現在應該已經掌握 GPT-2 的核心概念與思想了。如果你欲罷不能、想要了解更多，我在<a href="#延伸閱讀：課外參考資源">最後一節</a>會附上更多相關連結供你參考。在下一節，讓我們再回去看看金庸 GPT-2。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="用-BertViz-觀察-GPT-2-生成文本">用 BertViz 觀察 GPT-2 生成文本<a class="anchor-link" href="#用-BertViz-觀察-GPT-2-生成文本">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>取決於超參數設定，GPT-2 是一個有上千萬、甚至上億參數的語言模型，因此有時你很難理解它裡頭究竟在做些什麼。這節我想花點時間說明如何透過 <a href="https://github.com/jessevig/bertviz">BertViz</a> 工具來視覺化（visualize）本文的金庸 GPT-2 裡頭的自注意力機制，以加深你對 GPT-2 的理解。</p>
+<p>讓我們先比較一下金庸 GPT-2 跟論文裡 4 個模型的差距：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/gpt2/gpt2-model-comparison.jpg"/>
+</center>
+<center>
+                        本文的金庸 GPT-2 與其他 GPT-2 論文模型的規模比較
+                        （<a href="https://jalammar.github.io/illustrated-gpt2/" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>是的，金庸 GPT-2 不管是在訓練數據還是模型尺寸都比論文裡最小的 GPT-2 Small 還來得小，因此你不該期待它表現地跟任何使用大型 GPT-2 模型的線上 demo 一樣好。但因為它是讀<strong>中文</strong>文章，非常適合我們理解，是作為教學用途的好夥伴。另外注意金庸 GPT-2 使用了 10 層 Decoder blocks，而我們可以用 BertViz 輕易地視覺化每一層的自注意力機制。</p>
+<p>比方說給定一個在金庸原著裡不存在，但我超級想要實現的《天龍八部》劇情：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        喬峯帶阿朱回到北方，喬峯對她說：「我們兩人永遠留在這裡！」
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>透過我為你準備好的 <a href="https://colab.research.google.com/drive/1MaT8-HUHfZkdCra0OqZEIr0IFCq0MJBx">Colab 筆記本及預先訓練好的金庸 GPT-2</a>，你只需幾行 Python 程式碼就能視覺化每一層 Decoder block 處理這段文本的結果：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bertviz.pytorch_transformers_attn</span> <span class="kn">import</span> <span class="n">GPT2Model</span>
+<span class="n">gpt2_model</span> <span class="o">=</span> <span class="n">GPT2Model</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s1">'喬峯帶阿朱回到北方，喬峯對她說：「我們兩人永遠留在這裡！」'</span>
+<span class="n">view</span> <span class="o">=</span> <span class="s1">'model'</span>
+<span class="n">show</span><span class="p">(</span><span class="n">gpt2_model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">view</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/gpt2/gpt-bertviz-model-view.jpg">
+<source src="https://leemeng.tw/images/gpt2/gpt-bertviz-model-view.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        BertViz 的 model view 讓你輕鬆「鳥瞰」整個模型。這裡只顯示第 6 - 9 層 blocks（zero-index）
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我們在這邊不會細談，但你會發現<strong>上下</strong>每一層 Decoder block <strong>左右</strong>各有 12 個 heads。這就是<a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html#Multi-head-attention%EF%BC%9A%E4%BD%A0%E7%9C%8B%E4%BD%A0%E7%9A%84%EF%BC%8C%E6%88%91%E7%9C%8B%E6%88%91%E7%9A%84">之前介紹過的 Multi-head Attention 機制</a>，目的是讓模型能夠給予每個詞彙多個不同的 representations 並在不同 representation spaces 裡關注不同位置，增加表達能力。</p>
+<p>這些圖的解讀方式是當 GPT-2 看<strong>左側</strong>特定詞彙時，關注<strong>右側</strong>同序列中出現在該詞彙<strong>之前</strong>（包含自己）的其他詞彙。關注的程度則透過線條<strong>粗</strong>細來表示。</p>
+<p>而如果我們將 GPT-2 生成這段文本的自注意力機制的變化依照詞彙的生成順序顯示出來的話，會看起來像這樣：</p>
+<div class="highlight"><pre><span></span><span class="c1"># BertViz 的 neuron view 可以看到 key, value 的匹配</span>
+<span class="n">view</span> <span class="o">=</span> <span class="s1">'neuron'</span>
+<span class="n">show</span><span class="p">(</span><span class="n">gpt2_model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">view</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/gpt2/gpt-seq-generation.jpg">
+<source src="https://leemeng.tw/images/gpt2/gpt-seq-generation.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        GPT-2 在生成新詞彙時會持續透過自注意力機制關注前文
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這邊的重點是前面講過的 Masked Self-Attention：一個傳統、<strong>單向</strong>的語言模型在處理新詞彙時只會、也只能<strong>關注</strong>前面已經被生成的其他詞彙，而不該去看「未來」的詞彙。</p>
+<p>不知道你有沒有注意到，在上面的例子中，GPT-2 在處理詞彙「她」時會去關注前面靠近人名的「阿」，這是一件很了不起的事情：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/gpt2/gpt2-bertviz-attention-example.jpg"/>
+</center>
+<center>
+                        GPT-2 透過自注意力機制建立具有語境的 word representations
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如同我們在<a href="#論文作者：GPT-2-能做的可不只是生成文本">前面章節</a>提過的，中文字「她」與「這」本身並沒有太多含義，只有在了解情境之後才能判別它們所代表的意義。而這是具有自注意力機制的 NLP 模型可以想辦法學會的。</p>
+<p>我們也可以看看不同層的 Decoder blocks 在關注同樣的文本時有什麼變化：</p>
+<div class="highlight"><pre><span></span><span class="c1"># 實際上只會產生一個可以選擇不同層的 UI，我隨意選了 3 層的截圖結果</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s1">'喬峯帶阿朱回到北方，喬峯對她說：「我們兩人永遠留在這裡！」'</span>
+<span class="n">view</span> <span class="o">=</span> <span class="s1">'head'</span>
+<span class="n">show</span><span class="p">(</span><span class="n">gpt2_model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">view</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/gpt2/layerwise-self-attention.jpg"/>
+</center>
+<center>
+                        不同層的 Decoder blocks 關注相同文本的結果
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你可以明顯地觀察到底層（第一層）的 Decoder block 在處理詞彙「她」時將注意力放到多個詞彙上以擷取整個前文資訊。而越上層的 block 的注意力越顯集中，到了最後一層的 Decoder block 時就相當專注在較遠的人名附近。</p>
+<p>透過這些視覺化結果，你現在應該對 GPT-2 的運作模式有著更直觀的理解了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="故事尾聲">故事尾聲<a class="anchor-link" href="#故事尾聲">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>呼！我希望你享受這趟跟我一起探索 GPT-2 以及金庸著作的旅程。</p>
+<p>就我所知，這應該是網路上第一篇以中文 GPT-2 為背景，用最白話的方式講解相關概念的中文文章了。我在撰寫本文時嘗試用初學者最容易理解的章節編排方式、省略不必要的艱澀詞彙並避免丟上一長串程式碼。如果你讀完覺得本文內容很簡單，GPT-2 也不過就這樣，或者迫不及待想要知道更多細節，那就達成我撰寫本文的目標了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<a href="#前置知識"><img src="https://leemeng.tw/images/gpt2/previous-nlp-posts.jpg"/></a>
+</center>
+<center>
+    跟本篇相關的 NLP 文章
+    <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>本文為了顧及更多剛剛入門 NLP 的讀者省略了不少技術細節，如長距離依賴（Long-range Dependencies）的探討、自注意力機制的實作細節及研究 GPT-2 是真的學習還是只是記憶等課題。想要深入研究相關概念的讀者，<a href="#延伸閱讀：課外參考資源">下節的延伸閱讀</a>可供你做參考。而如果你想要打好 NLP 基礎以及本文提到的相關知識，我會推薦你回到前面的<a href="#前置知識">前置知識</a>一節，選擇最合你胃口的 NLP 文章開始閱讀。</p>
+<p>正如<a href="https://en.wikipedia.org/wiki/George_E._P._Box">統計學家喬治&middot;E&middot;P&middot;博克斯</a>所說的：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        所有模型都是錯的；但有些是有用的。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ George E. P. Box</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>等到哪天有更好的語言模型可以拿來生成金庸武俠小說，你就會再次看到我撰寫相關文章了。</p>
+<p>但今天就到這裡啦！我現在還得煩惱該從哪部金庸小說開始複習呢 ...</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="延伸閱讀：課外參考資源">延伸閱讀：課外參考資源<a class="anchor-link" href="#延伸閱讀：課外參考資源">&para;</a></h2><p>我在文中講述 GPT-2 時已經附上相當多連結，如果你很好學，事實上應該已經花了不少時間才讀到這裡。這節系統性地列出相關連結供你做延伸閱讀。</p>
+<ul>
+<li>教學文章、課程影片<ul>
+<li><a href="https://youtu.be/UYPa347-DdE?list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4">李宏毅教授 2019 機器學習課程的 ELMO, BERT, GPT 影片</a></li>
+<li><a href="https://jalammar.github.io/illustrated-gpt2/">The Illustrated GPT-2 (Visualizing Transformer Language Models)</a></li>
+<li><a href="https://openai.com/blog/better-language-models/">Better Language Models and Their Implications</a></li>
+<li><a href="http://web.stanford.edu/class/cs224n/">CS224n: Natural Language Processing with Deep Learning</a></li>
+</ul>
+</li>
+<li>論文<ul>
+<li><a href="https://arxiv.org/abs/1801.10198">Generating Wikipedia by Summarizing Long Sequences</a></li>
+<li><a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf">Improving language understanding by generative pre-training</a></li>
+<li><a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Language Models are Unsupervised Multitask Learners</a></li>
+<li><a href="https://arxiv.org/abs/1904.02679">Visualizing Attention in Transformer-Based Language Representation Models</a></li>
+</ul>
+</li>
+<li>實作<ul>
+<li><a href="https://github.com/huggingface/pytorch-transformers">pytorch-transformers</a></li>
+<li><a href="https://github.com/Morizeyao/GPT2-Chinese">GPT2-Chinese</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemeng.tw/tag/zi-ran-yu-yan-chu-li.html" rel="tag">自然語言處理</a>
+                        <a href="https://leemeng.tw/tag/nlp.html" rel="tag">NLP</a>
+                        <a href="https://leemeng.tw/tag/pytorch.html" rel="tag">PyTorch</a>
+                    </span>
+
+                </p>
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__next">
+                            <a href="https://leemeng.tw/practical-pandas-tutorial-for-aspiring-data-scientists.html" rel="next">
+                                <span>Next Post</span>
+                                資料科學家的 pandas 實戰手冊：掌握 40 個實用數據技巧
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '直觀理解 GPT-2 語言模型並生成金庸武俠小說';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--https://instant.page/-->
+    <script src="//instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
+
+
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTocNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+
+function closeLeftNavImage(elementId) {
+    document.getElementById(elementId).style.width = "0%";
+}
+
+function toggleLeftNavImage(elementId) {
+    var current_width = document.getElementById(elementId).style.width;
+    if (current_width == "100%") {
+        document.getElementById(elementId).style.width = "0%";
+    } else {
+        document.getElementById(elementId).style.width = "100%";
+    }
+}
+
+</script>
+
+
+</body>
+</html>
