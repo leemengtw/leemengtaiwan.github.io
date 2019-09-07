@@ -168,7 +168,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-07-10 (Wed)</li>
                         <li class="page-view">
-                            6,280 views
+                            6,300 views
                         </li>
                     </ul>
 
@@ -876,7 +876,7 @@ Top 3 ( 2%)：['[CLS]', '等', '到', '潮', '水', '過', '了', '，', '就', 
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ELMo 利用獨立訓練的雙向兩層 LSTM  做語言模型並將中間得到的隱狀態向量串接當作每個詞彙的 contextual word repr.；GPT 則是使用 Transformer 的 Decoder 來訓練一個中規中矩從左到右的語言模型。</p>
+<p>ELMo 利用獨立訓練的雙向兩層 LSTM  做語言模型並將中間得到的隱狀態向量串接當作每個詞彙的 contextual word repr.；GPT 則是使用 Transformer 的 Decoder 來訓練一個中規中矩，從左到右的<strong>單向</strong>語言模型。你可以參考我另一篇文章：<a href="https://leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html">直觀理解 GPT-2 語言模型並生成金庸武俠小說</a>來深入了解 GPT 與 GPT-2。</p>
 <p>BERT 跟它們的差異在於利用 MLM（即克漏字）的概念及 Transformer Encoder 的架構，擺脫以往語言模型只能從單個方向（由左到右或由右到左）估計下個詞彙出現機率的窘境，訓練出一個<strong>雙向</strong>的語言代表模型。這使得 BERT 輸出的每個 token 的 repr. <code>Tn</code> 都同時蘊含了前後文資訊，真正的<strong>雙向</strong> representation。</p>
 <p>跟以往模型相比，BERT 能更好地處理自然語言，在著名的問答任務 <a href="https://rajpurkar.github.io/SQuAD-explorer/">SQuAD2.0</a> 也有卓越表現：</p>
 </div>
