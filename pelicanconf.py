@@ -16,7 +16,21 @@ SITE_DESCRIPTION_LIST = [
 ]
 SITE_DESCRIPTION = "".join(SITE_DESCRIPTION_LIST)
 
-SITE_KEYWORDS = "部落格, 資料科學, 數據科學, Python, R, 機器學習, 資料分析, 深度學習, 資料視覺化, 軟體工程, 資料工程, 雲端運算, 台灣, blog, data science, machine learning, deep learning, data analysis, data visualization, data engineering, taiwan, tensorflow, tensorflow.js, keras"
+BLOG_DESCRIPTION_LIST = [
+    "不只是資料科學家，處在資訊時代的各行各業都需要能活用資料科學的人才。",
+    "透過分享自己的學習心得以及業界經驗，我希望讓更多人接觸到資料科學的奧秘。",
+    "部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。"
+]
+BLOG_DESCRIPTION = "".join(BLOG_DESCRIPTION_LIST)
+
+BOOK_DESCRIPTION_LIST = [
+    "這邊記錄了那些為我的生活以及思考帶來不少影響的著作，推薦給你，也方便提醒自己隨時反思咀嚼。",
+    "一個人的想法、價值觀、乃至思考方式都深深地受到那些他 / 她平常接觸的書籍與著作影響。",
+    "這些「精神糧食」充實我們的內在，讓我們成為更好的人。"
+]
+BOOK_DESCRIPTION = "".join(BOOK_DESCRIPTION_LIST)
+
+SITE_KEYWORDS = "部落格, 資料科學, 數據科學, Python, R, 機器學習, 資料分析, 深度學習, 資料視覺化, 軟體工程, 資料工程, 雲端運算, 台灣, blog, data science, machine learning, deep learning, data analysis, data visualization, data engineering, taiwan, tensorflow, tensorflow.js, keras, pytorch, transformer, bert, gpt"
 PATH = 'content'
 
 # Set path for stat files like favicon and robot.txt
@@ -146,6 +160,7 @@ PAGINATED_DIRECT_TEMPLATES = ['index', 'blog']
 IPYNB_NB_SAVE_AS = 'notebooks/{slug}.ipynb'
 
 # Email receiving setting
+# TODO: 測試 message form
 EMAIL_FORM_ACTION = "https://formspree.io/b98705001@gmail.com"
 
 # Portfolio setting, order matters
@@ -223,7 +238,7 @@ IGNORE_FILES = [
 ]
 
 # left navigation image information for all articles
-# TODO: 把相關的圖（scaled attn, multi head ...）弄成一張
+# left_nav_image_id: img info
 LEFT_NAV_IMAGES = {
     "transformer": {
         "name": "Transformer 架構圖",
