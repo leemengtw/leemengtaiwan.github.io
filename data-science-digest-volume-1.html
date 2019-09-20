@@ -45,6 +45,9 @@
     <!--for responsive embed youtube video-->
         <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/embed_youtube.css">
 
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
@@ -139,7 +142,26 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學文摘 Vol.1 AutoML、Airflow 及 DAU">資料科學文摘 Vol.1 AutoML、Airflow 及 DAU</a><ul><li><a class="toc-href" href="#在開始閱讀之前" title="在開始閱讀之前">在開始閱讀之前</a></li><li><a class="toc-href" href="#本週分享：機器學習、資料工程及-App-分析" title="本週分享：機器學習、資料工程及 App 分析">本週分享：機器學習、資料工程及 App 分析</a></li><li><a class="toc-href" href="#What-do-machine-learning-practitioners-actually-do" title="What do machine learning practitioners actually do">What do machine learning practitioners actually do</a></li><li><a class="toc-href" href="#An-Opinionated-Introduction-to-AutoML-and-Neural-Architecture-Search" title="An Opinionated Introduction to AutoML and Neural Architecture Search">An Opinionated Introduction to AutoML and Neural Architecture Search</a></li><li><a automl:="" class="toc-href" cutting="" href="#Google" hype'="" s="" s-automl:-cutting-through-the-hype'="" the="" through="" title="Google">Google's AutoML: Cutting Through the Hype</a></li><li><a class="toc-href" href="#Airflow:-a-workflow-management-platform" title="Airflow: a workflow management platform">Airflow: a workflow management platform</a></li><li><a class="toc-href" href="#DAU/MAU-is-an-important-metric-to-measure-engagement,-but-here&rsquo;s-where-it-fails" title="DAU/MAU is an important metric to measure engagement, but here&rsquo;s where it fails">DAU/MAU is an important metric to measure engagement, but here&rsquo;s where it fails</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學文摘 Vol.1 AutoML、Airflow 及 DAU">資料科學文摘 Vol.1 AutoML、Airflow 及 DAU</a><ul><li><a class="toc-href" href="#在開始閱讀之前" title="在開始閱讀之前">在開始閱讀之前</a></li><li><a class="toc-href" href="#本週分享：機器學習、資料工程及-App-分析" title="本週分享：機器學習、資料工程及 App 分析">本週分享：機器學習、資料工程及 App 分析</a></li><li><a class="toc-href" href="#What-do-machine-learning-practitioners-actually-do" title="
+What do machine learning practitioners actually do
+">
+What do machine learning practitioners actually do
+</a></li><li><a class="toc-href" href="#An-Opinionated-Introduction-to-AutoML-and-Neural-Architecture-Search" title="
+An Opinionated Introduction to AutoML and Neural Architecture Search
+">
+An Opinionated Introduction to AutoML and Neural Architecture Search
+</a></li><li><a '="" automl:="" class="toc-href" cutting="" href="#Google" hype="" s="" s-automl:-cutting-through-the-hype'="" the="" through="" title="
+Google">
+Google's AutoML: Cutting Through the Hype
+</a></li><li><a class="toc-href" href="#Airflow:-a-workflow-management-platform" title="
+Airflow: a workflow management platform
+">
+Airflow: a workflow management platform
+</a></li><li><a class="toc-href" href="#DAU/MAU-is-an-important-metric-to-measure-engagement,-but-here&rsquo;s-where-it-fails" title="
+DAU/MAU is an important metric to measure engagement, but here&rsquo;s where it fails
+">
+DAU/MAU is an important metric to measure engagement, but here&rsquo;s where it fails
+</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -252,10 +274,8 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center>
-<img src="images/digests/budda-data-scientist.jpg" style=""/>
+<img class="" src="https://leemeng.tw/images/digests/budda-data-scientist.jpg" style="width:70%;"/>
 <br/>
-</center>
 </div>
 </div>
 </div>
@@ -267,12 +287,16 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>You are what you read. - Oscar Wilde</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        You are what you read.
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ Oscar Wilde</span>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -315,12 +339,21 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-do-machine-learning-practitioners-actually-do"><a href="http://www.fast.ai/2018/07/12/auto-ml-1/">What do machine learning practitioners actually do</a><a class="anchor-link" href="#What-do-machine-learning-practitioners-actually-do">&para;</a></h2><center>
-<a href="http://www.fast.ai/2018/07/12/auto-ml-1/" target="_blacnk">
-<img src="images/digests/automl_1.jpg" style=""/>
+<h2 id="What-do-machine-learning-practitioners-actually-do">
+<a href="http://www.fast.ai/2018/07/12/auto-ml-1/" target="_blank">What do machine learning practitioners actually do</a><a class="anchor-link" href="#What-do-machine-learning-practitioners-actually-do">&para;</a>
+</h2>
+<center>
+<a href="http://www.fast.ai/2018/07/12/auto-ml-1/" target="_blank">
+<img src="https://leemeng.tw/images/digests/automl_1.jpg" style=""/>
 </a>
 <br/>
-</center><p>這篇介紹機器學習工程師平常在做些什麼，在理解這點以後，我們才知道中間有什麼地方可以自動化，以讓機器學習專案更有效率。</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這篇介紹機器學習工程師平常在做些什麼，在理解這點以後，我們才知道中間有什麼地方可以自動化，以讓機器學習專案更有效率。</p>
 <p>一個完整的機器學習專案通常會包含這些步驟：</p>
 <ul>
 <li>理解企業脈絡</li>
@@ -336,13 +369,21 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="An-Opinionated-Introduction-to-AutoML-and-Neural-Architecture-Search"><a href="http://www.fast.ai/2018/07/16/auto-ml2/">An Opinionated Introduction to AutoML and Neural Architecture Search</a><a class="anchor-link" href="#An-Opinionated-Introduction-to-AutoML-and-Neural-Architecture-Search">&para;</a></h2><p><center>
-<a href="http://www.fast.ai/2018/07/16/auto-ml2/" target="_blacnk">
-<img src="images/digests/automl-headlines.png" style=""/>
+<h2 id="An-Opinionated-Introduction-to-AutoML-and-Neural-Architecture-Search">
+<a href="http://www.fast.ai/2018/07/16/auto-ml2/" target="_blank">An Opinionated Introduction to AutoML and Neural Architecture Search</a><a class="anchor-link" href="#An-Opinionated-Introduction-to-AutoML-and-Neural-Architecture-Search">&para;</a>
+</h2>
+<center>
+<a href="http://www.fast.ai/2018/07/16/auto-ml2/" target="_blank">
+<img src="https://leemeng.tw/images/digests/automl-headlines.png" style=""/>
 </a>
 <br/>
 </center>
-神經結構搜索或者 AutoML 領域可以幫助我們在「訓練模型」這個步驟的時候，訓練並選擇出最好的超參數（Hyperparameters）。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>神經結構搜索或者 AutoML 領域可以幫助我們在「訓練模型」這個步驟的時候，訓練並選擇出最好的超參數（Hyperparameters）。</p>
 <p>但如同上篇文所述，這通常只是機器學習專案的其中一小部分，資料科學家或機器學習相關人才並不會因此被全部取代且失業。</p>
 <p>現在 AutoML 是非常計算密集（Computation-intensive）的：拿大量的 GPU 計算能力換取研究員的時間。但沒有大量計算能力的人，等 Google 等大公司把最佳化的架構推出來再使用或許是一個比較實際的方案。</p>
 <p><a href="https://www.groundai.com/project/darts-differentiable-architecture-search/">DARTS</a> 也是 CMU 與 DeepMind 在嘗試解決「神經結構搜索」這個問題時提出的一個架構，不過他們的假設是所有可行的模型之間是「連續的」，因此可以用常見的「梯度學習」的方式找出最佳模型。這個概念使得他們所需要的計算資源大量減少，值得關注。</p>
@@ -351,13 +392,21 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Google's-AutoML:-Cutting-Through-the-Hype"><a href="http://www.fast.ai/2018/07/23/auto-ml-3/">Google's AutoML: Cutting Through the Hype</a><a class="anchor-link" href="#Google's-AutoML:-Cutting-Through-the-Hype">&para;</a></h2><p><center>
-<a href="http://www.fast.ai/2018/07/23/auto-ml-3/" target="_blacnk">
-<img src="images/digests/sundar_pichai2.jpg" style=""/>
-<br/>
+<h2 id="Google's-AutoML:-Cutting-Through-the-Hype">
+<a href="http://www.fast.ai/2018/07/23/auto-ml-3/" target="_blank">Google's AutoML: Cutting Through the Hype</a><a class="anchor-link" href="#Google's-AutoML:-Cutting-Through-the-Hype">&para;</a>
+</h2>
+<center>
+<a href="http://www.fast.ai/2018/07/23/auto-ml-3/" target="_blank">
+<img src="https://leemeng.tw/images/digests/sundar_pichai2.jpg" style=""/>
 </a>
+<br/>
 </center>
-作者認為 Google 在推廣 AutoML 的主張：「我們需要更多計算能力來做神經架構搜尋」值得懷疑，因為就算我們能自動化搜尋出最好的神經模型架構，如何用這些模型解決真正的企業問題、如何實際部署並持續改善機器學習應用等課題，都需要人動腦筋來解決，而這部分還無法自動化。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>作者認為 Google 在推廣 AutoML 的主張：「我們需要更多計算能力來做神經架構搜尋」值得懷疑，因為就算我們能自動化搜尋出最好的神經模型架構，如何用這些模型解決真正的企業問題、如何實際部署並持續改善機器學習應用等課題，都需要人動腦筋來解決，而這部分還無法自動化。</p>
 <p>另外畢竟不是所有做機器學習的人都需要、且有（計算）能力使用神經架構搜尋來訓練自己的模型。但我們可以透過轉換學習（Transfer Learning）來使用已訓練過的模型（pre-trained model）來解決類似問題。與其想著自己也要做最夯的神經架構搜尋，不如多多善用如 Dropout、Batch Normalization 以及 ReLU Linear Unit 來強化模型的預測能力。</p>
 <p>不過 <a href="https://colab.research.google.com/notebooks/welcome.ipynb">Google Colab Notebook</a> 是不錯的免費計算資源，可以善加利用。</p>
 </div>
@@ -365,13 +414,21 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Airflow:-a-workflow-management-platform"><a href="https://medium.com/airbnb-engineering/airflow-a-workflow-management-platform-46318b977fd8">Airflow: a workflow management platform</a><a class="anchor-link" href="#Airflow:-a-workflow-management-platform">&para;</a></h2><p><center>
-<a href="https://medium.com/airbnb-engineering/airflow-a-workflow-management-platform-46318b977fd8" target="_blacnk">
-<img src="images/digests/airflow-example-python-operator.jpg" style=""/>
-<br/>
+<h2 id="Airflow:-a-workflow-management-platform">
+<a href="https://medium.com/airbnb-engineering/airflow-a-workflow-management-platform-46318b977fd8" target="_blank">Airflow: a workflow management platform</a><a class="anchor-link" href="#Airflow:-a-workflow-management-platform">&para;</a>
+</h2>
+<center>
+<a href="https://medium.com/airbnb-engineering/airflow-a-workflow-management-platform-46318b977fd8" target="_blank">
+<img src="https://leemeng.tw/images/digests/airflow-example-python-operator.jpg" style=""/>
 </a>
+<br/>
 </center>
-資料科學家在進行各式各樣的分析前，首先需要做的事情通常是蒐集、整理並匯總各式各樣的資料來源以供分析。舉幾個例子：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>資料科學家在進行各式各樣的分析前，首先需要做的事情通常是蒐集、整理並匯總各式各樣的資料來源以供分析。舉幾個例子：</p>
 <ul>
 <li>建立數據倉儲（Data Warehousing）</li>
 <li>做 A/B 測試的效果分析</li>
@@ -386,12 +443,21 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="DAU/MAU-is-an-important-metric-to-measure-engagement,-but-here&rsquo;s-where-it-fails"><a href="https://andrewchen.co/dau-mau-is-an-important-metric-but-heres-where-it-fails/">DAU/MAU is an important metric to measure engagement, but here&rsquo;s where it fails</a><a class="anchor-link" href="#DAU/MAU-is-an-important-metric-to-measure-engagement,-but-here&rsquo;s-where-it-fails">&para;</a></h2><center>
-<a href="https://andrewchen.co/dau-mau-is-an-important-metric-but-heres-where-it-fails/" target="_blacnk">
-<img src="images/digests/daumau-header.jpg" style=""/>
-<br/>
+<h2 id="DAU/MAU-is-an-important-metric-to-measure-engagement,-but-here&rsquo;s-where-it-fails">
+<a href="https://andrewchen.co/dau-mau-is-an-important-metric-but-heres-where-it-fails/" target="_blank">DAU/MAU is an important metric to measure engagement, but here&rsquo;s where it fails</a><a class="anchor-link" href="#DAU/MAU-is-an-important-metric-to-measure-engagement,-but-here&rsquo;s-where-it-fails">&para;</a>
+</h2>
+<center>
+<a href="https://andrewchen.co/dau-mau-is-an-important-metric-but-heres-where-it-fails/" target="_blank">
+<img src="https://leemeng.tw/images/digests/daumau-header.jpg" style=""/>
 </a>
-</center><p>多年前由 Facebook 開始使用，DAU / MAU 是一個 App 產業常用的指標，用來衡量使用者利用自家 App 的程度。</p>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>多年前由 Facebook 開始使用，DAU / MAU 是一個 App 產業常用的指標，用來衡量使用者利用自家 App 的程度。</p>
 <ul>
 <li>DAU：每天活躍人數（Daily Active Users）</li>
 <li>MAU：每月活躍人數（Monthly Active Users）</li>
@@ -496,7 +562,7 @@
                         </div>
                     </div>
                     <div class="blog-content__all">
-                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                        <a class="open-popup btn btn--primary ">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
                     </div>
                 </div>
                 <!-- end Mail-list-subscribe -->
@@ -555,55 +621,18 @@ var disqus_title = '資料科學文摘 Vol.1 AutoML、Airflow 及 DAU';
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
-    <!-- footer
-    ================================================== -->
-    <footer>
-        <div class="row">
-            <div class="col-full">
-
-                <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
-                </div>
-
-                <ul class="footer-social">
-<li><a href="https://github.com/leemengtaiwan" target="_blank">
-    <i class="im im-github" aria-hidden="true"></i>
-    <span>Github</span>
-</a></li>
-<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
-    <i class="im im-facebook" aria-hidden="true"></i>
-    <span>Facebook</span>
-</a></li>
-<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
-    <i class="im im-instagram" aria-hidden="true"></i>
-    <span>Instagram</span>
-</a></li>
-<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
-    <i class="im im-linkedin" aria-hidden="true"></i>
-    <span>LinkedIn</span>
-</a></li>                </ul>
+<!-- footer
+================================================== -->
+<footer>
+    <div class="row footer-bottom">
+        <div class="col-twelve">
+            <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
             </div>
         </div>
+    </div> <!-- end footer-bottom -->
+</footer> <!-- end footer -->
 
-        <div class="row footer-bottom">
-            <div class="col-twelve">
-                <div class="copyright">
-                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
-                    <span>© Copyright Hola 2017</span>
-                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
-                </div>
-
-                <div class="go-top">
-                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div> <!-- end footer-bottom -->
-    </footer> <!-- end footer -->
-
-
-    <div id="preloader">
-        <div id="loader"></div>
-    </div>
 
         <!-- Javascript
     ================================================== -->
@@ -682,6 +711,25 @@ function toggleLeftNavImage(elementId) {
     }
 }
 
+</script><!--https://darkmodejs.learn.uno/-->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js"></script>
+<script>
+var options = {
+  bottom: '32px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.2s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
 </script>
 
 

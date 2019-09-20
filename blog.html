@@ -39,6 +39,9 @@
 
     <!--for responsive embed youtube video-->
 
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
@@ -84,6 +87,9 @@
         <meta property="og:url" content="https://leemeng.tw/blog.html" />
         <meta property="og:title" content="部落格第 1 頁" />
         <meta property="og:description" content="不只是資料科學家，處在資訊時代的各行各業都需要能活用資料科學的人才。透過分享自己的學習心得以及業界經驗，我希望讓更多人接觸到資料科學的奧秘。部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。此為部落格第 1 頁。" />
+
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
 
 </head>
 
@@ -188,7 +194,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/practical-pandas-tutorial-for-aspiring-data-scientists.html">2019-07-27 (Sat)</a>
                         <br>
-                        2,024 views
+                        2,144 views
                     </div>
 
                     <h2 class="h01">
@@ -212,7 +218,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">2019-07-10 (Wed)</a>
                         <br>
-                        7,588 views
+                        7,842 views
                     </div>
 
                     <h2 class="h01">
@@ -236,7 +242,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html">2019-06-17 (Mon)</a>
                         <br>
-                        4,814 views
+                        4,899 views
                     </div>
 
                     <h2 class="h01">
@@ -260,7 +266,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/generate-anime-using-cartoongan-and-tensorflow2.html">2019-05-05 (Sun)</a>
                         <br>
-                        3,087 views
+                        3,114 views
                     </div>
 
                     <h2 class="h01">
@@ -284,7 +290,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html">2019-03-27 (Wed)</a>
                         <br>
-                        7,477 views
+                        7,547 views
                     </div>
 
                     <h2 class="h01">
@@ -308,7 +314,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/10-key-takeaways-from-ai-for-everyone-course.html">2019-03-05 (Tue)</a>
                         <br>
-                        6,549 views
+                        6,784 views
                     </div>
 
                     <h2 class="h01">
@@ -332,7 +338,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/deep-learning-resources.html">2019-01-08 (Tue)</a>
                         <br>
-                        10,224 views
+                        10,309 views
                     </div>
 
                     <h2 class="h01">
@@ -357,7 +363,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html">2018-12-24 (Mon)</a>
                         <br>
-                        13,438 views
+                        13,590 views
                     </div>
 
                     <h2 class="h01">
@@ -382,7 +388,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/chartify-a-simple-yet-powerful-python-data-visualization-tool-which-boost-your-productivity-as-a-data-scientist.html">2018-11-26 (Mon)</a>
                         <br>
-                        3,701 views
+                        3,725 views
                     </div>
 
                     <h2 class="h01">
@@ -405,7 +411,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/3-lessons-i-learnt-from-emnlp-2018-at-belgium.html">2018-11-19 (Mon)</a>
                         <br>
-                        1,052 views
+                        1,054 views
                     </div>
 
                     <h2 class="h01">
@@ -497,10 +503,6 @@
     </footer> <!-- end footer -->
 
 
-    <div id="preloader">
-        <div id="loader"></div>
-    </div>
-
         <!-- Javascript
     ================================================== -->
     <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
@@ -524,6 +526,25 @@
           hideNav: '.pagination',
         });
     </script>
+<!--https://darkmodejs.learn.uno/-->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js"></script>
+<script>
+var options = {
+  bottom: '32px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.2s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
 
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+</script>
 </body>
 </html>

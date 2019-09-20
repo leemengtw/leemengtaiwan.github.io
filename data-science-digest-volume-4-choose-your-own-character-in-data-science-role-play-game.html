@@ -43,6 +43,9 @@
     <!--for responsive embed youtube video-->
         <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/embed_youtube.css">
 
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
@@ -137,7 +140,27 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學文摘 Vol.4 數據科學 MMORPG 上線！你，選好自己的角色了嗎？">資料科學文摘 Vol.4 數據科學 MMORPG 上線！你，選好自己的角色了嗎？</a><ul><li><a class="toc-href" href="#本週閱讀清單" title="本週閱讀清單">本週閱讀清單</a><ul><li><a class="toc-href" href="#One-Data-Science-Job-Doesn&rsquo;t-Fit-All" title="One Data Science Job Doesn&rsquo;t Fit All">One Data Science Job Doesn&rsquo;t Fit All</a></li><li><a class="toc-href" href="#The-Death-of-the-Data-Scientist" title="The Death of the Data Scientist">The Death of the Data Scientist</a></li><li><a class="toc-href" href="#How-to-be-a-bad-data-scientist!" title="How to be a bad data scientist!">How to be a bad data scientist!</a></li><li><a class="toc-href" href="#Beyond-Interactive:-Notebook-Innovation-at-Netflix" title="Beyond Interactive: Notebook Innovation at Netflix">Beyond Interactive: Notebook Innovation at Netflix</a></li><li><a class="toc-href" href="#What-Data-Scientists-Really-Do,-According-to-35-Data-Scientists" title="What Data Scientists Really Do, According to 35 Data Scientists">What Data Scientists Really Do, According to 35 Data Scientists</a></li></ul></li><li><a class="toc-href" href="#結語_1" title="結語">結語</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學文摘 Vol.4 數據科學 MMORPG 上線！你，選好自己的角色了嗎？">資料科學文摘 Vol.4 數據科學 MMORPG 上線！你，選好自己的角色了嗎？</a><ul><li><a class="toc-href" href="#本週閱讀清單" title="本週閱讀清單">本週閱讀清單</a></li><li><a class="toc-href" href="#One-Data-Science-Job-Doesn&rsquo;t-Fit-All" title="
+One Data Science Job Doesn&rsquo;t Fit All
+">
+One Data Science Job Doesn&rsquo;t Fit All
+</a></li><li><a class="toc-href" href="#The-Death-of-the-Data-Scientist" title="
+The Death of the Data Scientist
+">
+The Death of the Data Scientist
+</a></li><li><a class="toc-href" href="#How-to-be-a-bad-data-scientist!" title="
+How to be a bad data scientist!
+">
+How to be a bad data scientist!
+</a></li><li><a class="toc-href" href="#Beyond-Interactive:-Notebook-Innovation-at-Netflix" title="
+Beyond Interactive: Notebook Innovation at Netflix
+">
+Beyond Interactive: Notebook Innovation at Netflix
+</a></li><li><a class="toc-href" href="#What-Data-Scientists-Really-Do,-According-to-35-Data-Scientists" title="
+What Data Scientists Really Do, According to 35 Data Scientists
+">
+What Data Scientists Really Do, According to 35 Data Scientists
+</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -166,7 +189,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-08-29 (Wed)</li>
                         <li class="page-view">
-                            2,256 views
+                            2,262 views
                         </li>
                     </ul>
 
@@ -243,12 +266,13 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/digests/diablo-3-characters.jpg" style=""/>
+<img class="" src="https://leemeng.tw/images/digests/diablo-3-characters.jpg" style=""/>
 </center>
 <center>
-    如同<a href="https://zh.wikipedia.org/wiki/%E5%A4%A7%E5%9E%8B%E5%A4%9A%E4%BA%BA%E5%9C%A8%E7%BA%BF%E8%A7%92%E8%89%B2%E6%89%AE%E6%BC%94%E6%B8%B8%E6%88%8F" target="_blacnk">大型多人線上角色扮演遊戲（MMORPG）一般</a>，在後數據時代，萬能、什麼數據工作都會的「資料科學家」這個幻想已在式微。取而代之的是各個對相關領域專精的「數據」職業角色們：商業分析師、資料工程師、機器學習工程師、AI 研究者等（圖為<a href="https://tw.diablo3.com/zh/" target="_blacnk">線上遊戲：暗黑破壞神 3 </a>的角色一覽）
-    <br/>
-<br/>
+                        如同多人線上角色扮演遊戲，在後數據時代，萬能、什麼數據工作都會的「資料科學家」這個幻想已在式微。取而代之的是各個對相關領域專精的「數據」職業角色們：商業分析師、資料工程師、機器學習工程師、AI 研究者等
+                        （圖片來源：<a href="https://tw.diablo3.com/zh/" target="_blank">線上遊戲：暗黑破壞神 3 的角色一覽</a>）
+                        
+                        <br/>
 <br/>
 </center>
 </div>
@@ -278,34 +302,60 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="One-Data-Science-Job-Doesn&rsquo;t-Fit-All"><a href="https://www.linkedin.com/pulse/one-data-science-job-doesnt-fit-all-elena-grewal/">One Data Science Job Doesn&rsquo;t Fit All</a><a class="anchor-link" href="#One-Data-Science-Job-Doesn&rsquo;t-Fit-All">&para;</a></h3><center>
+<h2 id="One-Data-Science-Job-Doesn&rsquo;t-Fit-All">
+<a href="https://www.linkedin.com/pulse/one-data-science-job-doesnt-fit-all-elena-grewal/" target="_blank">One Data Science Job Doesn&rsquo;t Fit All</a><a class="anchor-link" href="#One-Data-Science-Job-Doesn&rsquo;t-Fit-All">&para;</a>
+</h2>
+<center>
 <a href="https://www.linkedin.com/pulse/one-data-science-job-doesnt-fit-all-elena-grewal/" target="_blank">
 <img src="https://leemeng.tw/images/digests/one-data-science-job.jpg" style=""/>
 </a>
 <br/>
-</center><p>在這篇文章中，Airbnb 解釋他們如何在經過多年發展資料科學以後，將資料科學家分為三個路線（Tracks）：</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在這篇文章中，Airbnb 解釋他們如何在經過多年發展資料科學以後，將資料科學家分為三個路線（Tracks）：</p>
 <ul>
 <li>分析路線（Analytics）</li>
 <li>演算法路線（Algorithms）</li>
 <li>推論路線（Inference） </li>
 </ul>
 <p>會這樣做的其中一個很大原因是因為「資料科學」包含的領域太廣，不像這樣細分的話，第一，DS 們不知道自己該注重在什麼方面的知識；第二，公司內部跟某個 DS 合作的團隊也不知道他的專精以及該怎麼期待他的能力。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/digests/airbnb-data-roles.png" style=""/>
-<p>Airbnb 經過多年經驗，將資料科學家細分為三個路線，主要就是為了讓每個 DS 能專注在對的地方</p>
+<img class="" src="https://leemeng.tw/images/digests/airbnb-data-roles.png" style="mix-blend-mode: initial;"/>
+</center>
+<center>
+                        Airbnb 經過多年經驗，將資料科學家細分為三個路線，主要就是為了讓每個 DS 能專注在對的地方
+                        <br/>
 <br/>
-</center><p>其實想想很自然。就像是現在我們很習慣將工程師粗淺地分為前端（Frontend）和後端（Backend），未來的資料科學家也有很大機會依照個人的專精以及企業需求來細分路線。要不現在你想知道一家公司對 DS 的定義，還得親自去問裡頭的資料科學家到底在做什麼，且十家公司的 DS 可能會給你 9 種答案。</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>其實想想很自然。就像是現在我們很習慣將工程師粗淺地分為前端（Frontend）和後端（Backend），未來的資料科學家也有很大機會依照個人的專精以及企業需求來細分路線。要不現在你想知道一家公司對 DS 的定義，還得親自去問裡頭的資料科學家到底在做什麼，且十家公司的 DS 可能會給你 9 種答案。</p>
 <p>理想上一個資料科學家是通才（Generalist），三個路線的專業都大致了解。儘管如此，學海無涯。一個建議是至少找出哪個路線你有興趣，去專精它，並尋找渴望你專業的企業。</p>
 <p>這呼應到我們最前面提到的第 4 項趨勢（也是最重要的一項）：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>跟資料科學領域相關的工作會依照專業越分越細，最終成為各式各樣的數據職業</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        跟資料科學領域相關的工作會依照專業越分越細，最終成為各式各樣的數據職業
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -318,12 +368,21 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-Death-of-the-Data-Scientist"><a href="https://www.datasciencecentral.com/profiles/blogs/the-death-of-the-data-scientist">The Death of the Data Scientist</a><a class="anchor-link" href="#The-Death-of-the-Data-Scientist">&para;</a></h3><center>
+<h2 id="The-Death-of-the-Data-Scientist">
+<a href="https://www.datasciencecentral.com/profiles/blogs/the-death-of-the-data-scientist" target="_blank">The Death of the Data Scientist</a><a class="anchor-link" href="#The-Death-of-the-Data-Scientist">&para;</a>
+</h2>
+<center>
 <a href="https://www.datasciencecentral.com/profiles/blogs/the-death-of-the-data-scientist" target="_blank">
 <img src="https://leemeng.tw/images/digests/Dinosaur.jpg" style=""/>
 </a>
 <br/>
-</center><p>「資料科學家的滅亡」。</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>「資料科學家的滅亡」。</p>
 <p>非常聳動的標題，而且你可以從封面圖片看出作者想要表達 DS 會像恐龍一樣滅絕。</p>
 <p>不過基本上我是認同的。</p>
 <p>不是說 DS 不再重要，而是再過幾年，就像當年的「大數據」風潮，各企業或許不會再像現在一窩蜂地招聘大量的「資料科學家」，而是各行各業的每個人都能很自然地將資料科學應用在自己的工作裡頭。
@@ -332,23 +391,35 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>資料科學家這個職業終將式微或消失，不只 IT 產業，未來（現在）各行各業都會有善用數據的人才</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        資料科學家這個職業終將式微或消失，不只 IT 產業，未來（現在）各行各業都會有善用數據的人才
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="How-to-be-a-bad-data-scientist!"><a href="https://towardsdatascience.com/how-to-be-a-bad-data-scientist-434dfb5a209c">How to be a bad data scientist!</a><a class="anchor-link" href="#How-to-be-a-bad-data-scientist!">&para;</a></h3><center>
+<h2 id="How-to-be-a-bad-data-scientist!">
+<a href="https://towardsdatascience.com/how-to-be-a-bad-data-scientist-434dfb5a209c" target="_blank">How to be a bad data scientist!</a><a class="anchor-link" href="#How-to-be-a-bad-data-scientist!">&para;</a>
+</h2>
+<center>
 <a href="https://towardsdatascience.com/how-to-be-a-bad-data-scientist-434dfb5a209c" target="_blank">
 <img src="https://leemeng.tw/images/digests/1_IDUj1IN8ZvQo2ZO0Fx68pA.jpg" style=""/>
 </a>
 <br/>
-</center><p>這篇說明了一般人在學習資料科學時會有的一些錯誤思維，我們應該隨時警惕自己並改善學習態度。</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這篇說明了一般人在學習資料科學時會有的一些錯誤思維，我們應該隨時警惕自己並改善學習態度。</p>
 <p>我自己歸納一下新手 DS 常會遇到的迷思或困境：</p>
 <ul>
 <li>缺乏持續學習的動力：剛開始你可能因為資料科學很夯，薪水很高決定成為一個 DS。但資料科學領域的最大特色是變動很快。缺乏熱情或是單純跟隨潮流的人，如果沒有持續學習的動力可能會中途開始懷疑人生</li>
@@ -361,12 +432,21 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Beyond-Interactive:-Notebook-Innovation-at-Netflix"><a href="https://medium.com/netflix-techblog/notebook-innovation-591ee3221233">Beyond Interactive: Notebook Innovation at Netflix</a><a class="anchor-link" href="#Beyond-Interactive:-Notebook-Innovation-at-Netflix">&para;</a></h3><center>
+<h2 id="Beyond-Interactive:-Notebook-Innovation-at-Netflix">
+<a href="https://medium.com/netflix-techblog/notebook-innovation-591ee3221233" target="_blank">Beyond Interactive: Notebook Innovation at Netflix</a><a class="anchor-link" href="#Beyond-Interactive:-Notebook-Innovation-at-Netflix">&para;</a>
+</h2>
+<center>
 <a href="https://medium.com/netflix-techblog/notebook-innovation-591ee3221233" target="_blank">
 <img src="https://leemeng.tw/images/digests/neflix-notebook.jpg" style=""/>
 </a>
 <br/>
-</center><p>平常有在關注 <a href="http://jupyter.org/">Jupyter Notebook</a> 的 DS 們想必都注意到 Netflix 這篇文章了吧。</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>平常有在關注 <a href="http://jupyter.org/">Jupyter Notebook</a> 的 DS 們想必都注意到 Netflix 這篇文章了吧。</p>
 <p>Netflix 的資料平台（Data Platform）團隊發現，儘管企業內部有各式各樣使用該平台的使用者（如 DS、資料工程師以及分析人員等），並且表面上看來都在使用不同的程式語言，不同的工具，但事實上這些平常在處理數據的人的工作流程（Workflow）大多都可以分為這幾個步驟：</p>
 <ul>
 <li>存取資料</li>
@@ -374,11 +454,25 @@
 <li>資料視覺化</li>
 <li>排程以及產品化（Productization）</li>
 </ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/digests/netflix-data-roles.jpeg" style=""/>
-<p>Netflix：不同數據專業的人使用很不一樣的工具以及程式語言，但其實宏觀來看，處理數據的工作流程都很類似</p>
+<img class="" src="https://leemeng.tw/images/digests/netflix-data-roles.jpeg" style="mix-blend-mode: initial;"/>
+</center>
+<center>
+                        Netflix：不同數據專業的人使用很不一樣的工具以及程式語言，但其實宏觀來看，處理數據的工作流程都很類似
+                        <br/>
 <br/>
-</center><p>在明白這點以後，Netflix 的資料平台團隊展示了他們如何利用 Notebook 的「介面跟計算分離」這個特性，開發出能讓所有分析人員使用的統一介面。</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在明白這點以後，Netflix 的資料平台團隊展示了他們如何利用 Notebook 的「介面跟計算分離」這個特性，開發出能讓所有分析人員使用的統一介面。</p>
 <p>在 Netflix 裡頭，任何一個 DS / DE 都可以利用一個簡單的 Notebook 介面做到：</p>
 <ul>
 <li>存取 Netflix 裡頭所有的數據：內部有專門的團隊維護一個可以存取所有資料的 Python 函式庫</li>
@@ -389,12 +483,15 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>抽象化（Abstraction）是對付複雜性（Complexity）最好的解藥。</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        抽象化（Abstraction）是對付複雜性（Complexity）最好的解藥。
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -407,12 +504,15 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>資料科學家未來將能花更多時間在從事「更高層次」的工作，但同時也需具備更專業的能力</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        資料科學家未來將能花更多時間在從事「更高層次」的工作，但同時也需具備更專業的能力
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -424,12 +524,21 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="What-Data-Scientists-Really-Do,-According-to-35-Data-Scientists"><a href="https://hbr.org/2018/08/what-data-scientists-really-do-according-to-35-data-scientists">What Data Scientists Really Do, According to 35 Data Scientists</a><a class="anchor-link" href="#What-Data-Scientists-Really-Do,-According-to-35-Data-Scientists">&para;</a></h3><center>
+<h2 id="What-Data-Scientists-Really-Do,-According-to-35-Data-Scientists">
+<a href="https://hbr.org/2018/08/what-data-scientists-really-do-according-to-35-data-scientists" target="_blank">What Data Scientists Really Do, According to 35 Data Scientists</a><a class="anchor-link" href="#What-Data-Scientists-Really-Do,-According-to-35-Data-Scientists">&para;</a>
+</h2>
+<center>
 <a href="https://hbr.org/2018/08/what-data-scientists-really-do-according-to-35-data-scientists" target="_blank">
 <img src="https://leemeng.tw/images/digests/aug18-15-137888421-burakpekakcan-1200x675.jpg" style=""/>
 </a>
 <br/>
-</center><p>如果只有閱讀一篇原文的時間的話，我推薦你這篇哈佛商業評論的文章。</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果只有閱讀一篇原文的時間的話，我推薦你這篇哈佛商業評論的文章。</p>
 <p>這篇透過訪談多位資料科學家的工作經驗，讓我們能好好地思考「資料科學家」這個職業的未來走向。</p>
 <p>首先，根據這些資料科學家所說，（事實上我也這麼認為）一個 DS 並不像有些人想像的，整天在研究 AI 演算法。</p>
 <p>實際上，這些 DS 在做的是：</p>
@@ -455,18 +564,21 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>學習程式語言及分析工具很重要，但是對資料科學家來說，溝通能力以及領域專業順位第一</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        學習程式語言及分析工具很重要，但是對資料科學家來說，溝通能力以及領域專業順位第一
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="結語_1"><a name="ending"></a>結語<a class="anchor-link" href="#結語">&para;</a></h2><p>在這篇文摘裡頭，我們透過閱讀不少跟資料科學家相關的文章，了解到了幾個 DS 的職涯趨勢：</p>
+<h2 id="結語"><a name="ending"></a>結語<a class="anchor-link" href="#結語">&para;</a></h2><p>在這篇文摘裡頭，我們透過閱讀不少跟資料科學家相關的文章，了解到了幾個 DS 的職涯趨勢：</p>
 <ul>
 <li>資料科學家未來將能花更多時間在從事「更高層次」的工作，但同時也需具備更專業的能力</li>
 <li>學習程式語言及分析工具很重要，但是對資料科學家來說，溝通能力以及領域專業順位第一</li>
@@ -483,22 +595,39 @@
 <p>你是喜歡做統計分析、執行 AB 測試來提供產品改善的洞見嗎？</p>
 <p>還是你熱衷於研究機器學習演算法，想辦法利用龐大數據改善企業的數據產品（Data Product）呢？</p>
 <p>或者你對建構能夠處理大規模資料的數據平台的工作感興趣呢？</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="https://leemeng.tw/images/digests/doors-1767562_1280.jpg" style=""/>
-<p>現在就開始思考你想要開的門、走的路線、想要成為的角色是什麼，專精它，並尋找渴望你專業的企業</p>
+<img class="" src="https://leemeng.tw/images/digests/doors-1767562_1280.jpg" style=""/>
+</center>
+<center>
+                        現在就開始思考你想要開的門、走的路線、想要成為的角色是什麼，專精它，並尋找渴望你專業的企業
+                        <br/>
 <br/>
-</center><p>不管你的答案是什麼，既然我們在玩 MMORPG 遊戲（好吧，可能只有我玩）的時候都會去認真地理解每個職業的優缺點、技能樹等等，為何不將各種數據職業視為一個個的 RPG 角色，了解自己的興趣以及跟這些職業的適合程度呢？</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>不管你的答案是什麼，既然我們在玩 MMORPG 遊戲（好吧，可能只有我玩）的時候都會去認真地理解每個職業的優缺點、技能樹等等，為何不將各種數據職業視為一個個的 RPG 角色，了解自己的興趣以及跟這些職業的適合程度呢？</p>
 <p>玩遊戲很嗨，能把規劃數據相關的職涯當做遊戲來玩更嗨。</p>
 <p>最後，讓我把文章開頭所問的問題交給你思考並回答：</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>數據科學 MMORPG 全球玩家齊聚上線。你，選好自己的角色了嗎？</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        數據科學 MMORPG 全球玩家齊聚上線。你，選好自己的角色了嗎？
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -572,7 +701,7 @@
                         </div>
                     </div>
                     <div class="blog-content__all">
-                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                        <a class="open-popup btn btn--primary ">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
                     </div>
                 </div>
                 <!-- end Mail-list-subscribe -->
@@ -631,55 +760,18 @@ var disqus_title = '資料科學文摘 Vol.4 數據科學 MMORPG 上線！你，
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
-    <!-- footer
-    ================================================== -->
-    <footer>
-        <div class="row">
-            <div class="col-full">
-
-                <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
-                </div>
-
-                <ul class="footer-social">
-<li><a href="https://github.com/leemengtaiwan" target="_blank">
-    <i class="im im-github" aria-hidden="true"></i>
-    <span>Github</span>
-</a></li>
-<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
-    <i class="im im-facebook" aria-hidden="true"></i>
-    <span>Facebook</span>
-</a></li>
-<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
-    <i class="im im-instagram" aria-hidden="true"></i>
-    <span>Instagram</span>
-</a></li>
-<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
-    <i class="im im-linkedin" aria-hidden="true"></i>
-    <span>LinkedIn</span>
-</a></li>                </ul>
+<!-- footer
+================================================== -->
+<footer>
+    <div class="row footer-bottom">
+        <div class="col-twelve">
+            <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
             </div>
         </div>
+    </div> <!-- end footer-bottom -->
+</footer> <!-- end footer -->
 
-        <div class="row footer-bottom">
-            <div class="col-twelve">
-                <div class="copyright">
-                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
-                    <span>© Copyright Hola 2017</span>
-                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
-                </div>
-
-                <div class="go-top">
-                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div> <!-- end footer-bottom -->
-    </footer> <!-- end footer -->
-
-
-    <div id="preloader">
-        <div id="loader"></div>
-    </div>
 
         <!-- Javascript
     ================================================== -->
@@ -758,6 +850,25 @@ function toggleLeftNavImage(elementId) {
     }
 }
 
+</script><!--https://darkmodejs.learn.uno/-->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js"></script>
+<script>
+var options = {
+  bottom: '32px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.2s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
 </script>
 
 

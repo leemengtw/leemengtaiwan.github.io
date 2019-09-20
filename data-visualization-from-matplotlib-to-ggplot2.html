@@ -45,6 +45,9 @@
     <!--for responsive embed youtube video-->
         <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/embed_youtube.css">
 
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
@@ -170,7 +173,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-04-14 (Sat)</li>
                         <li class="page-view">
-                            4,359 views
+                            4,361 views
                         </li>
                     </ul>
 
@@ -305,12 +308,13 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/ggplot2/data-vis-purpose.png" style=""/>
+<img class="" src="https://leemeng.tw/images/ggplot2/data-vis-purpose.png" style="mix-blend-mode: initial;"/>
 </center>
 <center>
-<a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1" target="_blank">Image Credit</a>
-<font color="purple">: </font>搞清楚資料視覺化的目的以及觀眾是重要的第一步
-    <br/>
+                        搞清楚資料視覺化的目的以及觀眾是重要的第一步
+                        （<a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1" target="_blank">圖片來源</a>）
+                        
+                        <br/>
 <br/>
 </center>
 </div>
@@ -334,12 +338,15 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>資料視覺化是將資料中的變數映射到視覺變數上，進而有效且有意義地呈現資料的樣貌</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        資料視覺化是將資料中的變數映射到視覺變數上，進而有效且有意義地呈現資料的樣貌
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -386,10 +393,13 @@
 <div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.055</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.132</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.522</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.229</span><span class="p">,</span> <span class="mf">0.013</span> <span class="o">..</span> <span class="p">]</span>
 </pre></div>
 <p>光是看這個數字，肉眼無法看出什麼模式，但我們可以簡單畫個圖：</p>
-<center>
-<img src="images/ggplot2/simple-visual-encoding.png" style="width:70%"/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img class="" src="https://leemeng.tw/images/ggplot2/simple-visual-encoding.png" style="mix-blend-mode: initial;width:70%;"/>
 <br/>
-</center>
 </div>
 </div>
 </div>
@@ -419,12 +429,13 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/ggplot2/layered-grammar-of-graphics.png" style="width:80%"/>
+<img class="" src="https://leemeng.tw/images/ggplot2/layered-grammar-of-graphics.png" style="mix-blend-mode: initial;width:80%;"/>
 </center>
 <center>
-<a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1" target="_blank">Image Credit</a>
-<font color="purple">: </font>圖像的分層文法
-    <br/>
+                        圖像的分層文法
+                        （<a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1" target="_blank">圖片來源</a>）
+                        
+                        <br/>
 <br/>
 </center>
 </div>
@@ -445,13 +456,11 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/ggplot2/make-geom-layer-independent.png" style=""/>
+<img class="" src="https://leemeng.tw/images/ggplot2/make-geom-layer-independent.png" style="mix-blend-mode: initial;"/>
 </center>
 <center>
-    獨立幾何圖形層
-    <font color="purple">: </font>
-<br/>讓資料視覺化不再侷限於「我要畫什麼圖」，而是「我想要怎麼畫」
-    <br/>
+                        獨立幾何圖形層，讓資料視覺化不再侷限於「我要畫什麼圖」，而是「我想要怎麼畫」
+                        <br/>
 <br/>
 </center>
 </div>
@@ -2591,12 +2600,15 @@ KoE66EiWrwAAAABJRU5ErkJggg=="/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>資料視覺化是將資料中的變數映射到視覺變數上，進而有效且有意義地呈現資料的樣貌</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        資料視覺化是將資料中的變數映射到視覺變數上，進而有效且有意義地呈現資料的樣貌
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -2712,7 +2724,7 @@ KoE66EiWrwAAAABJRU5ErkJggg=="/>
                         </div>
                     </div>
                     <div class="blog-content__all">
-                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                        <a class="open-popup btn btn--primary ">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
                     </div>
                 </div>
                 <!-- end Mail-list-subscribe -->
@@ -2771,55 +2783,18 @@ var disqus_title = '淺談資料視覺化以及 ggplot2 實踐';
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
-    <!-- footer
-    ================================================== -->
-    <footer>
-        <div class="row">
-            <div class="col-full">
-
-                <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
-                </div>
-
-                <ul class="footer-social">
-<li><a href="https://github.com/leemengtaiwan" target="_blank">
-    <i class="im im-github" aria-hidden="true"></i>
-    <span>Github</span>
-</a></li>
-<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
-    <i class="im im-facebook" aria-hidden="true"></i>
-    <span>Facebook</span>
-</a></li>
-<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
-    <i class="im im-instagram" aria-hidden="true"></i>
-    <span>Instagram</span>
-</a></li>
-<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
-    <i class="im im-linkedin" aria-hidden="true"></i>
-    <span>LinkedIn</span>
-</a></li>                </ul>
+<!-- footer
+================================================== -->
+<footer>
+    <div class="row footer-bottom">
+        <div class="col-twelve">
+            <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
             </div>
         </div>
+    </div> <!-- end footer-bottom -->
+</footer> <!-- end footer -->
 
-        <div class="row footer-bottom">
-            <div class="col-twelve">
-                <div class="copyright">
-                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
-                    <span>© Copyright Hola 2017</span>
-                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
-                </div>
-
-                <div class="go-top">
-                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div> <!-- end footer-bottom -->
-    </footer> <!-- end footer -->
-
-
-    <div id="preloader">
-        <div id="loader"></div>
-    </div>
 
         <!-- Javascript
     ================================================== -->
@@ -2898,6 +2873,25 @@ function toggleLeftNavImage(elementId) {
     }
 }
 
+</script><!--https://darkmodejs.learn.uno/-->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js"></script>
+<script>
+var options = {
+  bottom: '32px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.2s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
 </script>
 
 

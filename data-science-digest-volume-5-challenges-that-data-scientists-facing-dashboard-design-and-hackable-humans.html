@@ -43,6 +43,9 @@
     <!--for responsive embed youtube video-->
         <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/embed_youtube.css">
 
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
@@ -137,7 +140,27 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學文摘 Vol.5 數據科學家面臨的挑戰、儀表板設計以及未來的被駭人生">資料科學文摘 Vol.5 數據科學家面臨的挑戰、儀表板設計以及未來的被駭人生</a><ul><li><a class="toc-href" href="#本週閱讀清單" title="本週閱讀清單">本週閱讀清單</a><ul><li><a class="toc-href" href="#When-Your-Job-Is-Done-as-a-Data-Scientist" title="When Your Job Is Done as a Data Scientist">When Your Job Is Done as a Data Scientist</a></li><li><a class="toc-href" href="#8-Real-Challenges-Data-Scientists-Face" title="8 Real Challenges Data Scientists Face">8 Real Challenges Data Scientists Face</a></li><li><a class="toc-href" href="#Data-visualisation,-from-1987-to-today" title="Data visualisation, from 1987 to today">Data visualisation, from 1987 to today</a></li><li><a class="toc-href" href="#10-rules-for-better-dashboard-design" title="10 rules for better dashboard design">10 rules for better dashboard design</a></li><li><a class="toc-href" href="#Hackable-humans-and-digital-dictators" title="Hackable humans and digital dictators">Hackable humans and digital dictators</a></li></ul></li><li><a class="toc-href" href="#結語_1" title="結語">結語</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="資料科學文摘 Vol.5 數據科學家面臨的挑戰、儀表板設計以及未來的被駭人生">資料科學文摘 Vol.5 數據科學家面臨的挑戰、儀表板設計以及未來的被駭人生</a><ul><li><a class="toc-href" href="#本週閱讀清單" title="本週閱讀清單">本週閱讀清單</a></li><li><a class="toc-href" href="#When-Your-Job-Is-Done-as-a-Data-Scientist" title="
+When Your Job Is Done as a Data Scientist
+">
+When Your Job Is Done as a Data Scientist
+</a></li><li><a class="toc-href" href="#8-Real-Challenges-Data-Scientists-Face" title="
+8 Real Challenges Data Scientists Face
+">
+8 Real Challenges Data Scientists Face
+</a></li><li><a class="toc-href" href="#Data-visualisation,-from-1987-to-today" title="
+Data visualisation, from 1987 to today
+">
+Data visualisation, from 1987 to today
+</a></li><li><a class="toc-href" href="#10-rules-for-better-dashboard-design" title="
+10 rules for better dashboard design
+">
+10 rules for better dashboard design
+</a></li><li><a class="toc-href" href="#Hackable-humans-and-digital-dictators" title="
+Hackable humans and digital dictators
+">
+Hackable humans and digital dictators
+</a></li><li><a class="toc-href" href="#結語" title="結語">結語</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -166,7 +189,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-09-17 (Mon)</li>
                         <li class="page-view">
-                            1,190 views
+                            1,192 views
                         </li>
                     </ul>
 
@@ -254,12 +277,21 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="When-Your-Job-Is-Done-as-a-Data-Scientist"><a href="https://towardsdatascience.com/when-your-job-is-done-as-a-data-scientist-c5d887bb0d0e">When Your Job Is Done as a Data Scientist</a><a class="anchor-link" href="#When-Your-Job-Is-Done-as-a-Data-Scientist">&para;</a></h3><center>
+<h2 id="When-Your-Job-Is-Done-as-a-Data-Scientist">
+<a href="https://towardsdatascience.com/when-your-job-is-done-as-a-data-scientist-c5d887bb0d0e" target="_blank">When Your Job Is Done as a Data Scientist</a><a class="anchor-link" href="#When-Your-Job-Is-Done-as-a-Data-Scientist">&para;</a>
+</h2>
+<center>
 <a href="https://towardsdatascience.com/when-your-job-is-done-as-a-data-scientist-c5d887bb0d0e" target="_blank">
 <img src="https://leemeng.tw/images/digests/1_7cF6Us4qWFN6jX49OI4zgg.jpg" style=""/>
 </a>
 <br/>
-</center><p>在一個企業裡頭，資料科學家（<strong>D</strong>ata <strong>S</strong>cientist, <strong>DS</strong>）常常會被各個部門（Product, Marketing, Sales Team etc）要求做各種不同的分析。如果你把每個分析視為一個專案（Project）的話，2 個你常常會需要問自己的問題是：</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在一個企業裡頭，資料科學家（<strong>D</strong>ata <strong>S</strong>cientist, <strong>DS</strong>）常常會被各個部門（Product, Marketing, Sales Team etc）要求做各種不同的分析。如果你把每個分析視為一個專案（Project）的話，2 個你常常會需要問自己的問題是：</p>
 <ul>
 <li>什麼時候可以說這個專案完成了？</li>
 <li>要做到什麼程度可以說我這個工作做完了？</li>
@@ -268,12 +300,15 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>如果利害關係人無法利用你的成果做出決策，則你的工作就不算完成。</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        如果利害關係人無法利用你的成果做出決策，則你的工作就不算完成。
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -283,11 +318,17 @@
 <p>如同我們在<a href="https://leemeng.tw/data-science-digest-volume-4-choose-your-own-character-in-data-science-role-play-game.html#What-Data-Scientists-Really-Do,-According-to-35-Data-Scientists">之前的文摘</a>中看到的，比起建立複雜的深度學習模型，學會做一個好的簡報，並跟非技術專業的利害關係人溝通結果，進而<strong>影響企業決策</strong>才是對一個 DS 來說更為重要的事情。</p>
 <p>為了產生最大的影響力，不管在做什麼分析或者專案的時候，都得要好好控管自己的時間以及專案的優先順序（Priority）。</p>
 <p>雖然該作者在文中並沒有著墨於如何管理時間，你可以利用美國總統<a href="https://zh.wikipedia.org/wiki/%E5%BE%B7%E6%80%80%E7%89%B9%C2%B7%E8%89%BE%E6%A3%AE%E8%B1%AA%E5%A8%81%E5%B0%94">艾森豪</a>的<a href="https://en.wikipedia.org/wiki/Time_management#The_Eisenhower_Method">時間管理準則</a>來決定專案的優先順序：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<a href="https://jamesclear.com/eisenhower-box" target="_blank">
-<img src="https://leemeng.tw/images/digests/eisenhower-box.jpg" style=""/>
-</a>
-<br/>
+<img class="" src="https://leemeng.tw/images/digests/eisenhower-box.jpg" style="mix-blend-mode: initial;"/>
+</center>
+<center>
+                        https://jamesclear.com/eisenhower-box
+                        <br/>
 <br/>
 </center>
 </div>
@@ -300,18 +341,25 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>重要的事情通常不太緊急；緊急的事情大多不太重要 - 艾森豪</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        重要的事情通常不太緊急；緊急的事情大多不太重要
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 艾森豪</span>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="8-Real-Challenges-Data-Scientists-Face"><a href="https://www.forbes.com/sites/laurencebradford/2018/09/06/8-real-challenges-data-scientists-face/">8 Real Challenges Data Scientists Face</a><a class="anchor-link" href="#8-Real-Challenges-Data-Scientists-Face">&para;</a></h3><center>
+<h2 id="8-Real-Challenges-Data-Scientists-Face">
+<a href="https://www.forbes.com/sites/laurencebradford/2018/09/06/8-real-challenges-data-scientists-face/" target="_blank">8 Real Challenges Data Scientists Face</a><a class="anchor-link" href="#8-Real-Challenges-Data-Scientists-Face">&para;</a>
+</h2>
+<center>
 <a href="https://www.forbes.com/sites/laurencebradford/2018/09/06/8-real-challenges-data-scientists-face/" target="_blank">
 <img src="https://leemeng.tw/images/digests/8-challenges.png" style=""/>
 </a>
@@ -334,12 +382,15 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>A data scientist that cannot articulate what their model does and why it&rsquo;s of value to business stakeholders is going to have a difficult path to success.</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        A data scientist that cannot articulate what their model does and why it&rsquo;s of value to business stakeholders is going to have a difficult path to success.
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -357,7 +408,10 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Data-visualisation,-from-1987-to-today"><a href="https://medium.economist.com/data-visualisation-from-1987-to-today-65d0609c6017">Data visualisation, from 1987 to today</a><a class="anchor-link" href="#Data-visualisation,-from-1987-to-today">&para;</a></h3><center>
+<h2 id="Data-visualisation,-from-1987-to-today">
+<a href="https://medium.economist.com/data-visualisation-from-1987-to-today-65d0609c6017" target="_blank">Data visualisation, from 1987 to today</a><a class="anchor-link" href="#Data-visualisation,-from-1987-to-today">&para;</a>
+</h2>
+<center>
 <a href="https://medium.economist.com/data-visualisation-from-1987-to-today-65d0609c6017" target="_blank">
 <img src="https://leemeng.tw/images/digests/leroy-stencil-set.jpg" style=""/>
 </a>
@@ -372,12 +426,15 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>Before computers, creating charts was a lot more like art than data science.</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        Before computers, creating charts was a lot more like art than data science.
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -391,12 +448,21 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="10-rules-for-better-dashboard-design"><a href="https://uxplanet.org/10-rules-for-better-dashboard-design-ef68189d734c">10 rules for better dashboard design</a><a class="anchor-link" href="#10-rules-for-better-dashboard-design">&para;</a></h3><center>
+<h2 id="10-rules-for-better-dashboard-design">
+<a href="https://uxplanet.org/10-rules-for-better-dashboard-design-ef68189d734c" target="_blank">10 rules for better dashboard design</a><a class="anchor-link" href="#10-rules-for-better-dashboard-design">&para;</a>
+</h2>
+<center>
 <a href="https://uxplanet.org/10-rules-for-better-dashboard-design-ef68189d734c" target="_blank">
 <img src="https://leemeng.tw/images/digests/1_gOwMfjZn3odOcYdCatiHCw.jpg" style=""/>
 </a>
 <br/>
-</center><p>UX/UI 設計師的 <a href="https://uxplanet.org/@taras.bakusevych">Taras Bakusevych</a> 提供了一些很不錯的儀表板（Dashboard）設計建議。</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>UX/UI 設計師的 <a href="https://uxplanet.org/@taras.bakusevych">Taras Bakusevych</a> 提供了一些很不錯的儀表板（Dashboard）設計建議。</p>
 <p>3 點我覺得可以特別提出來：</p>
 <ol>
 <li>簡潔，想辦法把精華弄在一頁</li>
@@ -407,12 +473,15 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>Don&rsquo;t tell the full story, instead summarize, surface only key info.</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        Don&rsquo;t tell the full story, instead summarize, surface only key info.
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -436,11 +505,8 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center>
-<img src="https://leemeng.tw/images/digests/1_9VanG02d4If1TOIbpcTWbA.jpeg" style=""/>
+<img class="" src="https://leemeng.tw/images/digests/1_9VanG02d4If1TOIbpcTWbA.jpeg" style="mix-blend-mode: initial;"/>
 <br/>
-<br/>
-</center>
 </div>
 </div>
 </div>
@@ -452,12 +518,21 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Hackable-humans-and-digital-dictators"><a href="https://www.aljazeera.com/indepth/features/hackable-humans-digital-dictators-qa-yuval-noah-harari-180824095306982.html">Hackable humans and digital dictators</a><a class="anchor-link" href="#Hackable-humans-and-digital-dictators">&para;</a></h3><center>
+<h2 id="Hackable-humans-and-digital-dictators">
+<a href="https://www.aljazeera.com/indepth/features/hackable-humans-digital-dictators-qa-yuval-noah-harari-180824095306982.html" target="_blank">Hackable humans and digital dictators</a><a class="anchor-link" href="#Hackable-humans-and-digital-dictators">&para;</a>
+</h2>
+<center>
 <a href="https://www.aljazeera.com/indepth/features/hackable-humans-digital-dictators-qa-yuval-noah-harari-180824095306982.html" target="_blank">
 <img src="https://leemeng.tw/images/digests/d0c2f05a21404458aee9066c6cd5219a_18.jpg" style=""/>
 </a>
 <br/>
-</center><p>這篇文章記錄了<a href="https://www.books.com.tw/products/0010647371">人類大歷史</a>的作者，以色列歷史學家 <a href="http://www.ynharari.com/">Yuval Noah Harari</a> 最近在接受新書訪談：<a href="https://www.books.com.tw/products/0010796370?loc=P_037_001"> 21 世紀的 21 堂課</a>的內容。</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這篇文章記錄了<a href="https://www.books.com.tw/products/0010647371">人類大歷史</a>的作者，以色列歷史學家 <a href="http://www.ynharari.com/">Yuval Noah Harari</a> 最近在接受新書訪談：<a href="https://www.books.com.tw/products/0010796370?loc=P_037_001"> 21 世紀的 21 堂課</a>的內容。</p>
 <p>你會說，為何在資料科學文摘裡頭包含了這篇文章？</p>
 <p>在這個一切以數據為本，「數據主義」超越「人文主義」的時代，身為一個 DS，我覺得除了注重數據分析的手法以外，作為一個有血有肉的「人」，也需要去了解數據、機器學習以及 AI 會對未來的我們以及下一代造成什麼樣的影響。這篇訪談中 Harari 用易懂的方式，以歷史學家的角度說明這件事情，值得一讀。以下是我閱讀後整理的摘要。</p>
 <p>21 世紀人類面臨的 3 個挑戰：</p>
@@ -474,18 +549,37 @@
 <li>「透過大數據分析，我比你自己還懂你自己」</li>
 </ul>
 <p>這就是所謂的「被駭人生」：這些利用機器學習或是人工智慧的系統能 hack 我們，透過大數據分析，在我們實際行動之前，就已經精準地預測，或者說是大幅度地直接影響我們內心、腦中的決策。你只要想像你現在在做大多數決策的時候，是比較常「聆聽自己內心的聲音」還是去「查看網站、服務、App 給你的個人推薦」就可以稍微了解這點了。</p>
-<p>We&rsquo;re becoming Hackable human.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        We&rsquo;re becoming Hackable human.
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>注意的是我們可不是在討論科幻小說，這邊的 AI 不會有情緒感情，只是有著龐大數據、運算能力以及複雜演算法的系統。</p>
 <p>如果我們是這些 AI 系統的主人，AI 是為我們每個人自己的利益來服務的話很好。但看看那些大量蒐集你的數據的科技公司：一個比較可能出現的未來是，少數菁英掌握了 AI 力量，而 AI 會為了他們的利益而服務。在這樣的情況下，大多數的人類都會成為不重要的存在，等著被機器取代（如果我們什麼都不做的話）。</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>The most important fact anybody who is alive today needs to know about the 21 century is that we are becoming hackable animals ... If you can hack something, you can replace it.</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        The most important fact anybody who is alive today needs to know about the 21 century is that we are becoming hackable animals ... If you can hack something, you can replace it.
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -495,12 +589,15 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>在找出解決方案之前，你得先了解有什麼問題。</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        在找出解決方案之前，你得先了解有什麼問題。
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -512,7 +609,7 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="結語_1"><a name="ending"></a>結語<a class="anchor-link" href="#結語">&para;</a></h2>
+<h2 id="結語"><a name="ending"></a>結語<a class="anchor-link" href="#結語">&para;</a></h2>
 </div>
 </div>
 </div>
@@ -531,12 +628,15 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>Remember we are what we read. Read those books or articles that will make you a better person ：）</p></blockquote></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        Remember we are what we read. Read those books or articles that will make you a better person ：）
+                        <br/>
+<br/>
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -606,7 +706,7 @@
                         </div>
                     </div>
                     <div class="blog-content__all">
-                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                        <a class="open-popup btn btn--primary ">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
                     </div>
                 </div>
                 <!-- end Mail-list-subscribe -->
@@ -665,55 +765,18 @@ var disqus_title = '資料科學文摘 Vol.5 數據科學家面臨的挑戰、�
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
-    <!-- footer
-    ================================================== -->
-    <footer>
-        <div class="row">
-            <div class="col-full">
-
-                <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
-                </div>
-
-                <ul class="footer-social">
-<li><a href="https://github.com/leemengtaiwan" target="_blank">
-    <i class="im im-github" aria-hidden="true"></i>
-    <span>Github</span>
-</a></li>
-<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
-    <i class="im im-facebook" aria-hidden="true"></i>
-    <span>Facebook</span>
-</a></li>
-<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
-    <i class="im im-instagram" aria-hidden="true"></i>
-    <span>Instagram</span>
-</a></li>
-<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
-    <i class="im im-linkedin" aria-hidden="true"></i>
-    <span>LinkedIn</span>
-</a></li>                </ul>
+<!-- footer
+================================================== -->
+<footer>
+    <div class="row footer-bottom">
+        <div class="col-twelve">
+            <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
             </div>
         </div>
+    </div> <!-- end footer-bottom -->
+</footer> <!-- end footer -->
 
-        <div class="row footer-bottom">
-            <div class="col-twelve">
-                <div class="copyright">
-                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
-                    <span>© Copyright Hola 2017</span>
-                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
-                </div>
-
-                <div class="go-top">
-                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div> <!-- end footer-bottom -->
-    </footer> <!-- end footer -->
-
-
-    <div id="preloader">
-        <div id="loader"></div>
-    </div>
 
         <!-- Javascript
     ================================================== -->
@@ -792,6 +855,25 @@ function toggleLeftNavImage(elementId) {
     }
 }
 
+</script><!--https://darkmodejs.learn.uno/-->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js"></script>
+<script>
+var options = {
+  bottom: '32px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.2s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
 </script>
 
 

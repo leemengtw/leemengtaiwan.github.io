@@ -1,0 +1,80 @@
+.darkmode-layer, .darkmode-toggle {
+  z-index: 500;
+}
+
+/* 不套用 darkmode */
+.darkmode--activated article.col-block img,
+.darkmode--activated div.page-hero,
+.darkmode--activated section.page-hero,
+.darkmode--activated div.rendered_html img,
+.darkmode--activated div.rendered_html > center > img,
+.darkmode--activated div.rendered_html video,
+.darkmode--activated div.rendered_html .w3-display-container,
+.darkmode--activated div.rendered .output img,
+.darkmode--activated table > tbody > tr > td > a > img,
+.darkmode--activated iframe,
+.darkmode--activated div.resp-container iframe {
+  mix-blend-mode: difference;
+}
+
+section.page-header {
+  z-index: 501;
+}
+
+.s-header {
+  z-index: 504;
+}
+
+
+/* ===============article.html ===============*/
+/* [SECTION] 文章 content */
+
+/* 超連結變成符合深色模式的紅色 */
+.darkmode--activated .inner_cell a {
+  color: rgba(242, 49, 49, 0.85);
+}
+
+.darkmode--activated .inner_cell a:hover {
+  color: rgba(242, 49, 49, 1);
+}
+
+/* 引用 quote 記號用適合 dark mode 的灰色 */
+.darkmode--activated blockquote:before {
+  color: grey;
+}
+
+#article-inner-subscribe > div.blog-content__nav > div.blog-content__prev > a {
+  color: black;
+}
+
+#article-inner-subscribe > div.blog-content__all > a {
+  color: white;
+}
+
+
+/* 左側導覽 icon */
+.darkmode--activated #left-navigation i {
+  opacity: 1;
+}
+
+
+/* ===============blog.html =================*/
+/* [SECTION] blog.html 裡頭每個 article entry*/
+
+/* tag 連結 */
+.darkmode--activated .blog-list .blog-cat a {
+  color: rgba(0, 255, 255, 0.85);
+}
+
+.darkmode--activated .blog-list .blog-cat a:hover {
+  color: rgba(0, 255, 255, 1);
+}
+
+/* 日期 */
+.darkmode--activated .blog-date a {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.darkmode--activated .blog-date a:hover {
+  color: rgba(0, 0, 0, 1);
+}

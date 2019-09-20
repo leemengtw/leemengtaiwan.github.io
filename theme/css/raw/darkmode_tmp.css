@@ -1,0 +1,139 @@
+/* ===============article.html ===============*/
+/* [SECTION] 文章 content */
+/* header 變純白色*/
+.darkmode--activated .inner_cell h1, .darkmode--activated .inner_cell h2, .darkmode--activated .inner_cell h3,
+.darkmode--activated .inner_cell h4, .darkmode--activated .inner_cell h5, .darkmode--activated .inner_cell h6 {
+  color: rgba(227, 225, 225, 1);
+}
+
+/* 一般 content */
+.darkmode--activated .inner_cell p, .darkmode--activated .inner_cell li,
+.darkmode--activated .inner_cell center {
+  color: rgba(227, 225, 225, 0.9);
+}
+
+/* 超連結變成符合深色模式的紅色 */
+.darkmode--activated .inner_cell a {
+  color: rgba(242, 49, 49, 0.85);
+}
+
+.darkmode--activated .inner_cell a:hover {
+  color: rgba(242, 49, 49, 1);
+}
+
+/* 引用 quote 記號用適合 dark mode 的灰色 */
+.darkmode--activated blockquote:before {
+  color: grey;
+}
+
+/* [SECTION] 文後的訂閱按鈕、上下篇文章 */
+.darkmode--activated .blog-content__tags span,
+.darkmode--activated　.blog-content__tags span::after {
+  color: rgba(227, 225, 225, 0.9);
+}
+
+.darkmode--activated span.blog-content__tag-list > a {
+  color: rgba(219, 217, 217, 0.8);
+  border: 1px solid rgba(219, 217, 217, 0.8);
+}
+
+.darkmode--activated span.blog-content__tag-list > a:hover {
+  color: rgba(219, 217, 217, 1);
+  border: 1px solid rgba(219, 217, 217, 1);
+}
+
+.darkmode--activated .blog-content__pagenav {
+  border-top: 1px solid rgba(191, 187, 187, 0.85);
+}
+
+.darkmode--activated .blog-content__pagenav p {
+  color: rgba(227, 225, 225, 0.9);
+}
+
+.darkmode--activated #article-inner-neighbor-pages > div.blog-content__nav > div > a > span:hover {
+  color: rgba(219, 217, 217, 0.8);
+}
+
+.darkmode--activated .blog-content__nav span:hover {
+  color: rgba(219, 217, 217, 1);
+}
+
+.darkmode--activated #article-inner-subscribe > div.blog-content__nav > div.blog-content__prev > a,
+.darkmode--activated .blog-content__next a {
+  color: rgba(227, 225, 225, 1);
+}
+
+#article-inner-subscribe a {
+  color: white;
+}
+
+.darkmode--activated #article-inner-subscribe a {
+  color: black;
+}
+
+.darkmode--activated .btn.btn--primary {
+  background: rgba(227, 225, 225, 0.75);
+  border-color: rgba(227, 225, 225, 0.1);
+  color: black;
+}
+
+.darkmode--activated .btn.btn--primary:hover {
+  background: rgba(227, 225, 225, 1);
+  border-color: rgba(227, 225, 225, 1);
+  color: black;
+}
+
+/* 最底下的 progress bar */
+.darkmode--activated .KW_progressContainer {
+  background: black;
+}
+
+/* 左側導覽 icon */
+.darkmode--activated #left-navigation i {
+  opacity: 1;
+}
+
+/* 左下 go top button */
+.darkmode--activated .go-top a,
+.darkmode--activated .go-top a:visited {
+    background: rgba(227, 225, 225, 1);
+    color: black;
+}
+
+table.dataframe {
+    isolation: isolate;
+}
+
+/* ===============blog.html =================*/
+/* [SECTION] blog.html 裡頭每個 article entry*/
+/* 介紹文 */
+.darkmode--activated .col-block p {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+/* 文章標題連結 */
+.darkmode--activated .col-block a {
+  color: rgba(225, 225, 225, 0.9)
+}
+
+.darkmode--activated .col-block a:hover {
+  color: rgba(225, 225, 225, 1)
+}
+
+/* tag 連結 */
+.darkmode--activated .blog-list .blog-cat a {
+  color: rgba(0, 255, 255, 0.85);
+}
+
+.darkmode--activated .blog-list .blog-cat a:hover {
+  color: rgba(0, 255, 255, 1);
+}
+
+/* 日期 */
+.darkmode--activated .blog-date a {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.darkmode--activated .blog-date a:hover {
+  color: rgba(0, 0, 0, 1);
+}

@@ -45,6 +45,9 @@
     <!--for responsive embed youtube video-->
         <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/embed_youtube.css">
 
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
@@ -170,7 +173,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-04-04 (Wed)</li>
                         <li class="page-view">
-                            1,181 views
+                            1,188 views
                         </li>
                     </ul>
 
@@ -252,12 +255,11 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/kinesis/simple-streaming-data-flow.png" style="width:80%"/>
+<img class="" src="https://leemeng.tw/images/kinesis/simple-streaming-data-flow.png" style="mix-blend-mode: initial;width:80%;"/>
 </center>
 <center>
-    Simple Dataflow
-    <font color="purple">: 將 streaming data 透過 Kinesis 保存在 S3</font>
-<br/>
+                        Simple Dataflow：將 streaming data 透過 Kinesis 保存在 S3
+                        <br/>
 <br/>
 </center>
 </div>
@@ -308,9 +310,8 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center>
-<img src="images/kinesis/create-kinesis-stream.png" style="width:80%"/>
-</center>
+<img class="" src="https://leemeng.tw/images/kinesis/create-kinesis-stream.png" style="mix-blend-mode: initial;width:80%;"/>
+<br/>
 </div>
 </div>
 </div>
@@ -372,10 +373,8 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center>
-<img src="images/kinesis/create-delivery-stream.png" style="width:80%"/>
+<img class="" src="https://leemeng.tw/images/kinesis/create-delivery-stream.png" style="mix-blend-mode: initial;width:80%;"/>
 <br/>
-</center>
 </div>
 </div>
 </div>
@@ -401,9 +400,8 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center>
-<img src="images/kinesis/firehose-configure-settings.png" style="width:80%"/>
-</center>
+<img class="" src="https://leemeng.tw/images/kinesis/firehose-configure-settings.png" style="mix-blend-mode: initial;width:80%;"/>
+<br/>
 </div>
 </div>
 </div>
@@ -421,10 +419,8 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center>
-<img src="images/kinesis/firehose-select-destination.png" style="width:80%"/>
+<img class="" src="https://leemeng.tw/images/kinesis/firehose-select-destination.png" style="mix-blend-mode: initial;width:80%;"/>
 <br/>
-</center>
 </div>
 </div>
 </div>
@@ -438,10 +434,12 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/kinesis/s3-bucket-path.png" style="width:80%"/>
+<img class="" src="https://leemeng.tw/images/kinesis/s3-bucket-path.png" style="mix-blend-mode: initial;width:80%;"/>
 </center>
 <center>
-    加入 Prefix 後實際將串流資料存入 S3 時的檔案路徑
+                        加入 Prefix 後實際將串流資料存入 S3 時的檔案路徑
+                        <br/>
+<br/>
 </center>
 </div>
 </div>
@@ -549,10 +547,25 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>注意因為上面的 5 個事件在 $5 * 5 = 25$ 秒內就產生了。且因為我們前面設定 Firehose delivery stream 的 Buffer interval 為 60 秒，Firehose 會把以上的事件的訊息全部串接起來，放到一個檔案裡頭，而不是分成五個檔案：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/kinesis/s3-bucket-path.png" style="width:80%"/>
+<img class="" src="https://leemeng.tw/images/kinesis/s3-bucket-path.png" style="mix-blend-mode: initial;width:80%;"/>
+</center>
+<center>
+                        加入 Prefix 後實際將串流資料存入 S3 時的檔案路徑
+                        <br/>
 <br/>
-</center><p>而實際檔案的內容如下：</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>而實際檔案的內容如下：</p>
 <div class="highlight"><pre><span></span>{"event_id": "56262", "timestamp": 1522740951, "event_type": "write_post"}
 {"event_id": "35672", "timestamp": 1522740956 ...
 </pre></div>
@@ -575,10 +588,25 @@
 <li>使用 Athena 做 ad-hoc 分析</li>
 <li>...</li>
 </ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<img src="images/kinesis/kinesis-firehose-intro.png" style="width:80%"/>
+<img class="" src="https://leemeng.tw/images/kinesis/kinesis-firehose-intro.png" style="mix-blend-mode: initial;width:80%;"/>
+</center>
+<center>
+                        加入 Prefix 後實際將串流資料存入 S3 時的檔案路徑
+                        <br/>
 <br/>
-</center><p>但這邊時間有限，之後有機會再來記錄資料湖之後的分析筆記。</p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>但這邊時間有限，之後有機會再來記錄資料湖之後的分析筆記。</p>
 </div>
 </div>
 </div>
@@ -700,7 +728,7 @@
                         </div>
                     </div>
                     <div class="blog-content__all">
-                        <a class="open-popup btn btn--primary " style="color: #FFFFFF">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                        <a class="open-popup btn btn--primary ">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
                     </div>
                 </div>
                 <!-- end Mail-list-subscribe -->
@@ -759,55 +787,18 @@ var disqus_title = '利用 Kinesis 處理串流資料並建立資料湖';
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
-    <!-- footer
-    ================================================== -->
-    <footer>
-        <div class="row">
-            <div class="col-full">
-
-                <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
-                </div>
-
-                <ul class="footer-social">
-<li><a href="https://github.com/leemengtaiwan" target="_blank">
-    <i class="im im-github" aria-hidden="true"></i>
-    <span>Github</span>
-</a></li>
-<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
-    <i class="im im-facebook" aria-hidden="true"></i>
-    <span>Facebook</span>
-</a></li>
-<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
-    <i class="im im-instagram" aria-hidden="true"></i>
-    <span>Instagram</span>
-</a></li>
-<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
-    <i class="im im-linkedin" aria-hidden="true"></i>
-    <span>LinkedIn</span>
-</a></li>                </ul>
+<!-- footer
+================================================== -->
+<footer>
+    <div class="row footer-bottom">
+        <div class="col-twelve">
+            <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
             </div>
         </div>
+    </div> <!-- end footer-bottom -->
+</footer> <!-- end footer -->
 
-        <div class="row footer-bottom">
-            <div class="col-twelve">
-                <div class="copyright">
-                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
-                    <span>© Copyright Hola 2017</span>
-                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
-                </div>
-
-                <div class="go-top">
-                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div> <!-- end footer-bottom -->
-    </footer> <!-- end footer -->
-
-
-    <div id="preloader">
-        <div id="loader"></div>
-    </div>
 
         <!-- Javascript
     ================================================== -->
@@ -886,6 +877,25 @@ function toggleLeftNavImage(elementId) {
     }
 }
 
+</script><!--https://darkmodejs.learn.uno/-->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js"></script>
+<script>
+var options = {
+  bottom: '32px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.2s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
 </script>
 
 

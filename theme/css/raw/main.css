@@ -3436,6 +3436,11 @@ footer a:hover, footer a:focus {
     color: #FFFFFF;
 }
 
+.darkmode--activated .go-top a,
+.darkmode--activated .go-top a:visited {
+    background: rgba(227, 225, 225, 1);
+    color: black;
+}
 
 /* ------------------------------------------------------------------- 
  * responsive:

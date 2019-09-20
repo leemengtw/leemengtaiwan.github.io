@@ -39,6 +39,9 @@
 
     <!--for responsive embed youtube video-->
 
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
@@ -84,6 +87,9 @@
         <meta property="og:url" content="https://leemeng.tw/blog.html" />
         <meta property="og:title" content="部落格第 3 頁" />
         <meta property="og:description" content="不只是資料科學家，處在資訊時代的各行各業都需要能活用資料科學的人才。透過分享自己的學習心得以及業界經驗，我希望讓更多人接觸到資料科學的奧秘。部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。此為部落格第 3 頁。" />
+
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
 
 </head>
 
@@ -188,7 +194,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html">2018-07-07 (Sat)</a>
                         <br>
-                        2,928 views
+                        2,935 views
                     </div>
 
                     <h2 class="h01">
@@ -212,7 +218,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/some-thought-on-learning-from-machine-learning.html">2018-06-16 (Sat)</a>
                         <br>
-                        1,586 views
+                        1,596 views
                     </div>
 
                     <h2 class="h01">
@@ -235,7 +241,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/intuitive-understandind-of-bayes-rules-and-learn-from-experience.html">2018-05-25 (Fri)</a>
                         <br>
-                        5,918 views
+                        5,933 views
                     </div>
 
                     <h2 class="h01">
@@ -259,7 +265,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/demystify-the-hype-of-data-science-and-its-value.html">2018-05-11 (Fri)</a>
                         <br>
-                        3,798 views
+                        3,801 views
                     </div>
 
                     <h2 class="h01">
@@ -282,7 +288,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/why-you-need-to-learn-sql-as-a-data-scientist.html">2018-04-30 (Mon)</a>
                         <br>
-                        5,888 views
+                        5,904 views
                     </div>
 
                     <h2 class="h01">
@@ -306,7 +312,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/why-you-need-to-learn-data-engineering-as-a-data-scientist.html">2018-04-23 (Mon)</a>
                         <br>
-                        7,025 views
+                        7,042 views
                     </div>
 
                     <h2 class="h01">
@@ -331,7 +337,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/data-visualization-from-matplotlib-to-ggplot2.html">2018-04-14 (Sat)</a>
                         <br>
-                        4,359 views
+                        4,361 views
                     </div>
 
                     <h2 class="h01">
@@ -356,7 +362,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/use-kinesis-streams-and-firehose-to-build-a-data-lake.html">2018-04-04 (Wed)</a>
                         <br>
-                        1,181 views
+                        1,188 views
                     </div>
 
                     <h2 class="h01">
@@ -381,7 +387,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/replicate-data-from-mongodb-to-redshift-using-aws-data-migration-service.html">2018-03-27 (Tue)</a>
                         <br>
-                        296 views
+                        297 views
                     </div>
 
                     <h2 class="h01">
@@ -405,7 +411,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/designing-data-intensive-applications-1-preface.html">2018-03-24 (Sat)</a>
                         <br>
-                        154 views
+                        155 views
                     </div>
 
                     <h2 class="h01">
@@ -427,7 +433,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/google-data-studio-basics.html">2018-03-13 (Tue)</a>
                         <br>
-                        1,299 views
+                        1,306 views
                     </div>
 
                     <h2 class="h01">
@@ -523,10 +529,6 @@
     </footer> <!-- end footer -->
 
 
-    <div id="preloader">
-        <div id="loader"></div>
-    </div>
-
         <!-- Javascript
     ================================================== -->
     <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
@@ -550,6 +552,25 @@
           hideNav: '.pagination',
         });
     </script>
+<!--https://darkmodejs.learn.uno/-->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js"></script>
+<script>
+var options = {
+  bottom: '32px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.2s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
 
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+</script>
 </body>
 </html>

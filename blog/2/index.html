@@ -39,6 +39,9 @@
 
     <!--for responsive embed youtube video-->
 
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
+
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
@@ -84,6 +87,9 @@
         <meta property="og:url" content="https://leemeng.tw/blog.html" />
         <meta property="og:title" content="部落格第 2 頁" />
         <meta property="og:description" content="不只是資料科學家，處在資訊時代的各行各業都需要能活用資料科學的人才。透過分享自己的學習心得以及業界經驗，我希望讓更多人接觸到資料科學的奧秘。部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。此為部落格第 2 頁。" />
+
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
 
 </head>
 
@@ -188,7 +194,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/journey-of-data-scientist-L-part-2-time-traveling-with-data-engineering.html">2018-11-09 (Fri)</a>
                         <br>
-                        842 views
+                        843 views
                     </div>
 
                     <h2 class="h01">
@@ -212,7 +218,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/data-science-digest-volume-7.html">2018-10-26 (Fri)</a>
                         <br>
-                        488 views
+                        489 views
                     </div>
 
                     <h2 class="h01">
@@ -235,7 +241,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/data-science-digest-volume-6.html">2018-10-14 (Sun)</a>
                         <br>
-                        474 views
+                        476 views
                     </div>
 
                     <h2 class="h01">
@@ -258,7 +264,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/gapminder.html">2018-10-08 (Mon)</a>
                         <br>
-                        29,639 views
+                        29,668 views
                     </div>
 
                     <h2 class="h01">
@@ -282,7 +288,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/data-science-digest-volume-5-challenges-that-data-scientists-facing-dashboard-design-and-hackable-humans.html">2018-09-17 (Mon)</a>
                         <br>
-                        1,190 views
+                        1,192 views
                     </div>
 
                     <h2 class="h01">
@@ -305,7 +311,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/3-ways-you-can-leverage-the-power-of-docker-in-data-science-part-1-learn-the-basic.html">2018-09-08 (Sat)</a>
                         <br>
-                        3,515 views
+                        3,530 views
                     </div>
 
                     <h2 class="h01">
@@ -328,7 +334,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/data-science-digest-volume-4-choose-your-own-character-in-data-science-role-play-game.html">2018-08-29 (Wed)</a>
                         <br>
-                        2,256 views
+                        2,262 views
                     </div>
 
                     <h2 class="h01">
@@ -351,7 +357,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">2018-08-21 (Tue)</a>
                         <br>
-                        11,565 views
+                        11,633 views
                     </div>
 
                     <h2 class="h01">
@@ -377,7 +383,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/data-science-digest-volume-3.html">2018-08-10 (Fri)</a>
                         <br>
-                        1,343 views
+                        1,347 views
                     </div>
 
                     <h2 class="h01">
@@ -403,7 +409,7 @@
                     <div class="blog-date">
                         <a href="https://leemeng.tw/data-science-digest-volume-2.html">2018-08-03 (Fri)</a>
                         <br>
-                        987 views
+                        988 views
                     </div>
 
                     <h2 class="h01">
@@ -525,10 +531,6 @@
     </footer> <!-- end footer -->
 
 
-    <div id="preloader">
-        <div id="loader"></div>
-    </div>
-
         <!-- Javascript
     ================================================== -->
     <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
@@ -552,6 +554,25 @@
           hideNav: '.pagination',
         });
     </script>
+<!--https://darkmodejs.learn.uno/-->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js"></script>
+<script>
+var options = {
+  bottom: '32px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.2s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
 
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+</script>
 </body>
 </html>
