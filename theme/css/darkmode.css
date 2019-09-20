@@ -78,3 +78,14 @@ section.page-header {
 .darkmode--activated .blog-date a:hover {
   color: rgba(0, 0, 0, 1);
 }
+
+/* disqus */
+.darkmode--activated #reactions,
+.darkmode--activated .discovery-post .top-comment p {
+.darkmode--activated ul.meta {
+  color: white;
+}
+
+.darkmode--activated p > span.user {
+  color: rgba(225,225,225,.85);
+}
