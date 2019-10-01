@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 神經網路的本質：直觀理解神經網路 & 線性代數</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="s" />
+        <meta name="keywords" content="Manim, Python" />
+        <meta name="tags" content="Manim" />
+        <meta name="tags" content="Python" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="/theme/images/background/TwoLayersReLUInBetweenSolveHardTwoCurves.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html" />
+        <meta property="og:title" content="神經網路的本質：直觀理解神經網路 & 線性代數" />
+        <meta property="og:description" content="s" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="/theme/css/toc-nav.css">
+
+    <!--for responsive embed youtube video-->
+        <link rel="stylesheet" type="text/css" href="/theme/css/embed_youtube.css">
+
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="/theme/css/darkmode.css">
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="/theme/js/modernizr.js"></script>
+    <script src="/theme/js/pace.min.js"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="https://demo.leemeng.tw">Demo</a>
+        </li>
+        <li>
+            <a href="../books.html">Books</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="神經網路的本質：直觀理解神經網路 &amp; 線性代數">神經網路的本質：直觀理解神經網路 &amp; 線性代數</a><ul><li><a class="toc-href" href="#-" title=" "> </a></li><li><a class="toc-href" href="#第一印象：直觀感受簡單-NN-如何解決二分類任務" title="第一印象：直觀感受簡單 NN 如何解決二分類任務">第一印象：直觀感受簡單 NN 如何解決二分類任務</a></li><li><a class="toc-href" href="#結論" title="結論">結論</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+    <!--custom images with icon shown on left nav-->
+    <!--the details are set in `pelicanconf.py` as `LEFT_NAV_IMAGES`-->
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/TwoLayersReLUInBetweenSolveHardTwoCurves.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="/tag/manim.html" rel="tag">Manim</a>
+                            <a href="/tag/python.html" rel="tag">Python</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html" title="">
+                            神經網路的本質：直觀理解神經網路 & 線性代數
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2019-09-21 (Sat)</li>
+                        <li class="page-view">
+                            1 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTocNav()"></i>
+        </a>
+    </div>
+
+
+
+    <!--custom images with icon shown on left nav-->
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        這是篇透過動畫來「直觀」理解神經網路的科普文。讀完本文，你將能夠更直觀地體會神經網路與線性代數之間的緊密關係，並進一步展開自己的深度學習之旅。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>（小提醒：因動畫皆為暗色背景，本文適合以<strong>暗色模式</strong>閱讀。你可以點擊頁面左下的按鈕來切換模式）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這是個眾人對人工智慧（<strong>A</strong>rtificial <strong>I</strong>ntelligence, AI）趨之若鶩的時代。此領域近年的快速發展很大一部份可歸功於<a href="https://leemeng.tw/deep-learning-resources.html">深度學習</a>以及<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">人工神經網路（<strong>N</strong>eural <strong>N</strong>etwork, 後簡稱為 NN）</a>。深度學習框架也日漸成熟，讓任何人都可以輕易地使用 <a href="https://colab.research.google.com/github/tensorflow/docs/blob/r2.0rc/site/en/r2/tutorials/quickstart/beginner.ipynb">TensorFlow</a> 或 <a href="https://pytorch.org/">PyTorch</a> 在 30 秒內就訓練出一個具有 98% 正確率的阿拉伯數字辨識模型：</p>
+<div class="highlight"><pre><span></span><span class="c1"># 此例使用 TensorFlow，但各大深度學習框架的實現邏輯基本上類似</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+
+<span class="c1"># 載入深度學習 Hello World: MNIST 數字 dataset</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>
+<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">/</span> <span class="mf">255.0</span>
+
+<span class="c1"># 建立一個具有 10 萬參數的神經網路（模型）</span>
+<span class="c1"># 在現在模型參數動輒上千萬的年代，此神經網路可說是小到不行</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'softmax'</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="c1"># 選擇 loss func、optimizer 並訓練模型</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s1">'sparse_categorical_crossentropy'</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># 訓練後的 NN 在測試集上可得到近 98% 正確辨識率</span>
+<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="c1"># 測試結果</span>
+<span class="c1"># loss: 0.0750 - accuracy: 0.9763</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你也可以使用<a href="https://colab.research.google.com/github/tensorflow/docs/blob/r2.0rc/site/en/r2/tutorials/quickstart/beginner.ipynb">這個 Colab 筆記本</a>自己訓練看看。我假設你已經能夠讀懂上面這段 <a href="https://www.python.org/">Python</a> 程式碼並了解<a href="https://www.youtube.com/watch?v=Dr-WRlEFefw">最基本的神經網路概念</a>。本文的目的是透過一些圖片與動畫，來讓你對神經網路（NN）多些更<strong>直觀</strong>的理解。</p>
+<p>回到我們剛剛建立的 NN。儘管擁有近 10 萬個可訓練參數，上面這個透過 <a href="https://www.tensorflow.org/guide/keras">Keras</a> 定義的 <code>model</code> 是個在深度學習領域裡會被視為 Hello World 等級的<strong>簡單</strong>神經網路。這很正常，畢竟我們在最近 <a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">BERT</a> 以及 <a href="https://leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html">GPT-2 文章</a>裡看到的都是擁有<strong>上億</strong>參數的強大神經網路。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="/images/manim/mnist-simple.jpg"/>
+</center>
+<center>
+                        輸入是 28*28 = 768 維的圖片像素，輸出則是 10 個數字類別的簡單 2-layers NN
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>但就算是一個如此「簡單」的 NN，我相信仍有不少人「見山不是山」。</p>
+<p>講白點，儘管會使用 TensorFlow 或是 PyTorch 來建立一個這樣的 NN 的人很多，不少人（包含剛入門的我）事實上並不對神經網路有足夠直觀的理解。而之所以會有這樣的現象，主要是因為：</p>
+<ul>
+<li>強大的深度學習框架把底層細節邏輯都包了起來</li>
+<li>不少人還沒搞懂跟 NN 相關的<a href="https://www.youtube.com/watch?v=fNk_zzaMoSs&amp;list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">線性代數</a>概念</li>
+<li>能視覺化神經網路內部機制的手法並不那麼普遍</li>
+</ul>
+<p>為了讓更多人能夠更<strong>直觀</strong>地體會神經網路的運作方式，我將透過以下 3 者：</p>
+<ol>
+<li>繪圖工具：<a href="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw">3Blue1Brown</a> 的強大 Python 動畫引擎 <a href="https://github.com/3b1b/manim">Manim</a></li>
+<li>學習任務：比 <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST</a> 還簡單的<a href="https://en.wikipedia.org/wiki/Binary_classification">二分類（Binary Classification）</a>問題</li>
+<li>模型架構：1 到 2 層、只有不到 10 個參數的超級簡單神經網路</li>
+</ol>
+<p>來闡述基本的 NN 以及相關的線性代數（Linear Algebra）概念。如果這 idea 聽起來還不錯，或是你喜歡看動畫來了解數學概念，那我會建議你繼續閱讀：）</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="-"> <a class="anchor-link" href="#-">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="第一印象：直觀感受簡單-NN-如何解決二分類任務">第一印象：直觀感受簡單 NN 如何解決二分類任務<a class="anchor-link" href="#第一印象：直觀感受簡單-NN-如何解決二分類任務">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">秀出</span> <span class="n">data</span> <span class="n">圖</span><span class="err">，</span><span class="n">問讀者要怎麼解</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你的時間寶貴，因此我事先將本文的精華都濃縮在底下這個 1 分鐘的短片了。此影片展示了一個簡單神經網路解決二分類任務的<strong>完整過程</strong>。我等等會更仔細地說明影片內容，但現在請你馬上點擊播放鍵觀看吧！</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video controls="" muted="" playsinline="" poster="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html">
+<source src="/images/manim/TwoLayersReLUInBetweenSolveHardTwoCurves.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>順帶一提，這是一個只有 9 個參數的神經網路，其規模跟現在媒體整天在報導的 A.I. 相比可說是滄海一粟。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        但這是我看過最美麗、直觀的神經網路運作。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我不知道看影片前的你對神經網路或是線性代數的理解程度，但我相信很多人都能在這短短的一分鐘內（重新）獲得些啟發。如果你願意，我強烈建議你至少再看一次影片並在需要時暫停咀嚼。裡頭有很多十分基本但重要的 NN 概念值得掌握。</p>
+<p>你有再看一遍嗎？讓我幫你把影片裡隱含的重要概念一一列出：</p>
+<ul>
+<li>神經網路是將輸入（維度）做一連串簡單轉換，最後得到理想輸出（維度）的函式</li>
+<li>最基本且常見的神經網路是「層」為單位，每一層的矩陣相乘事實上都在做線性轉換</li>
+<li>線性轉換基本上就是對輸入空間的數據做旋轉、縮放、延伸等轉換</li>
+<li>層跟層之間常會透過非線性轉換函式來提升神經網路整體的轉換能力</li>
+<li>神經網路也常被視為是在做 representation learning，因為每一層的轉換都將該層輸入的數據轉換成更適合達到任務目標的形式</li>
+<li>透過對輸入數據做一連串適當的</li>
+<li>針對某些任務，特定的神經網路架構有其能力極限，我們透過學習從該架構中找出一組參數，讓神經網路做適合的轉換以完成任務</li>
+</ul>
+<p>很多東西你可能都知道了，人類是視覺動物，</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結論">結論<a class="anchor-link" href="#結論">&para;</a></h2><ul>
+<li>下一代</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="/tag/manim.html" rel="tag">Manim</a>
+                        <a href="/tag/python.html" rel="tag">Python</a>
+                    </span>
+
+                </p>
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary ">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__next">
+                            <a href="/gpt2-language-model-generate-chinese-jing-yong-novels.html" rel="next">
+                                <span>Next Post</span>
+                                直觀理解 GPT-2 語言模型並生成金庸武俠小說
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+
+
+<!-- footer
+================================================== -->
+<footer>
+    <div class="row footer-bottom">
+        <div class="col-twelve">
+            <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div> <!-- end footer-bottom -->
+</footer> <!-- end footer -->
+
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="/theme/js/plugins.js"></script>
+    <script src="/theme/js/main.js"></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
+
+    <!--https://instant.page/-->
+    <script src="//instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
+
+
+    <script type='text/javascript' src='/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTocNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+
+function closeLeftNavImage(elementId) {
+    document.getElementById(elementId).style.width = "0%";
+}
+
+function toggleLeftNavImage(elementId) {
+    var current_width = document.getElementById(elementId).style.width;
+    if (current_width == "100%") {
+        document.getElementById(elementId).style.width = "0%";
+    } else {
+        document.getElementById(elementId).style.width = "100%";
+    }
+}
+
+</script><!--https://darkmodejs.learn.uno/-->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js"></script>
+<script>
+var options = {
+  bottom: '32px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.2s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+</script>
+
+
+</body>
+</html>
