@@ -130,7 +130,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="神經網路的本質：直觀理解神經網路 &amp; 線性代數">神經網路的本質：直觀理解神經網路 &amp; 線性代數</a><ul><li><a class="toc-href" href="#-" title=" "> </a></li><li><a class="toc-href" href="#第一印象：直觀感受簡單-NN-如何解決二分類任務" title="第一印象：直觀感受簡單 NN 如何解決二分類任務">第一印象：直觀感受簡單 NN 如何解決二分類任務</a></li><li><a class="toc-href" href="#結論" title="結論">結論</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="神經網路的本質：直觀理解神經網路 &amp; 線性代數">神經網路的本質：直觀理解神經網路 &amp; 線性代數</a><ul><li><a class="toc-href" href="#返璞歸真：神經網路怎麼解決二分類任務？" title="返璞歸真：神經網路怎麼解決二分類任務？">返璞歸真：神經網路怎麼解決二分類任務？</a></li><li><a class="toc-href" href="#第一印象：直觀感受簡單-NN-如何解決二分類任務" title="第一印象：直觀感受簡單 NN 如何解決二分類任務">第一印象：直觀感受簡單 NN 如何解決二分類任務</a></li><li><a class="toc-href" href="#結論" title="結論">結論</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -255,8 +255,13 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>你也可以使用<a href="https://colab.research.google.com/github/tensorflow/docs/blob/r2.0rc/site/en/r2/tutorials/quickstart/beginner.ipynb">這個 Colab 筆記本</a>自己訓練看看。我假設你已經能夠讀懂上面這段 <a href="https://www.python.org/">Python</a> 程式碼並了解<a href="https://www.youtube.com/watch?v=Dr-WRlEFefw">最基本的神經網路概念</a>。本文的目的是透過一些圖片與動畫，來讓你對神經網路（NN）多些更<strong>直觀</strong>的理解。</p>
-<p>回到我們剛剛建立的 NN。儘管擁有近 10 萬個可訓練參數，上面這個透過 <a href="https://www.tensorflow.org/guide/keras">Keras</a> 定義的 <code>model</code> 是個在深度學習領域裡會被視為 Hello World 等級的<strong>簡單</strong>神經網路。這很正常，畢竟我們在最近 <a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">BERT</a> 以及 <a href="https://leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html">GPT-2 文章</a>裡看到的都是擁有<strong>上億</strong>參數的強大神經網路。</p>
+<p>是的，15 行內就搞定了。有興趣的讀者也可以執行<a href="https://colab.research.google.com/github/tensorflow/docs/blob/r2.0rc/site/en/r2/tutorials/quickstart/beginner.ipynb"> TensorFlow 的教學 Colab 筆記本</a>。我假設閱讀本文的讀者至少：</p>
+<ol>
+<li>已經能夠大致讀懂上面這段 <a href="https://www.python.org/">Python</a> 程式碼</li>
+<li>了解大多數線上課程都會教的<a href="https://www.youtube.com/watch?v=Dr-WRlEFefw">基本神經網路概念</a></li>
+</ol>
+<p>本文的主要目的是透過一些圖片與動畫，來加深你對神經網路（NN）的<strong>直觀</strong>理解。</p>
+<p>回到我們剛剛建立的 NN。儘管擁有近 10 萬個可訓練參數，上面這個透過 <a href="https://www.tensorflow.org/guide/keras">Keras</a> 定義的 <code>model</code> 是個在深度學習領域裡會被視為 Hello World 等級的<strong>簡單</strong>神經網路。這很正常，畢竟我們在之前跟自然語言處理相關的 <a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">BERT</a> 以及 <a href="https://leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html">GPT-2 文章</a>裡看到的都是擁有<strong>上億</strong>參數的強大神經網路。</p>
 </div>
 </div>
 </div>
@@ -275,46 +280,57 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>但就算是一個如此「簡單」的 NN，我相信仍有不少人「見山不是山」。</p>
-<p>講白點，儘管會使用 TensorFlow 或是 PyTorch 來建立一個這樣的 NN 的人很多，不少人（包含剛入門的我）事實上並不對神經網路有足夠直觀的理解。而之所以會有這樣的現象，主要是因為：</p>
+<p>但就算是一個如此「簡單」的 NN，你真的對它有足夠的認識嗎？</p>
+<p>講白點，儘管現在會使用 TensorFlow 或是 PyTorch 來建立神經網路的人多如牛毛，事實上不少人（包含剛入門的我）對最基本的神經網路都沒有足夠直觀的理解。而之所以會有這樣的現象，主要是因為：</p>
 <ul>
 <li>強大的深度學習框架把底層細節邏輯都包了起來</li>
-<li>不少人還沒搞懂跟 NN 相關的<a href="https://www.youtube.com/watch?v=fNk_zzaMoSs&amp;list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">線性代數</a>概念</li>
+<li>不少人到現在還沒搞懂跟 NN 相關的<a href="https://www.youtube.com/watch?v=fNk_zzaMoSs&amp;list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">線性代數</a>概念</li>
 <li>能視覺化神經網路內部機制的手法並不那麼普遍</li>
 </ul>
-<p>為了讓更多人能夠更<strong>直觀</strong>地體會神經網路的運作方式，我將透過以下 3 者：</p>
+<p>為了讓更多人能夠更<strong>直觀</strong>地體會神經網路的運作方式，在本文我將透過以下 3 者：</p>
 <ol>
 <li>繪圖工具：<a href="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw">3Blue1Brown</a> 的強大 Python 動畫引擎 <a href="https://github.com/3b1b/manim">Manim</a></li>
-<li>學習任務：比 <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST</a> 還簡單的<a href="https://en.wikipedia.org/wiki/Binary_classification">二分類（Binary Classification）</a>問題</li>
-<li>模型架構：1 到 2 層、只有不到 10 個參數的超級簡單神經網路</li>
+<li>學習任務：比 <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST</a> 還簡單的<a href="https://en.wikipedia.org/wiki/Binary_classification">二分類</a>問題</li>
+<li>模型架構：1 到 2 層、只有不到 10 個參數的超簡單神經網路</li>
 </ol>
-<p>來闡述基本的 NN 以及相關的線性代數（Linear Algebra）概念。如果這 idea 聽起來還不錯，或是你喜歡看動畫來了解數學概念，那我會建議你繼續閱讀：）</p>
+<p>來闡述基本的 NN 以及相關線性代數（Linear Algebra）概念。如果這 idea 聽起來還不錯，或是你喜歡看動畫來了解數學概念，那我會建議你繼續閱讀：）</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-"> <a class="anchor-link" href="#-">&para;</a></h2>
+<h2 id="返璞歸真：神經網路怎麼解決二分類任務？">返璞歸真：神經網路怎麼解決二分類任務？<a class="anchor-link" href="#返璞歸真：神經網路怎麼解決二分類任務？">&para;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://en.wikipedia.org/wiki/Binary_classification">二分類（Binary Classification）</a>是一個在<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML19.html">機器學習（Machine Learning）</a>領域中時常出現的詞彙。其指的是將一個集合（set）中的所有數據點（data point）依照某種分類規則（classification rule）劃分成<strong>兩</strong>個族群（groups）的任務。換句話說，預測每個數據點屬於兩個族群裡頭的哪一個。</p>
+<p>我知道，跟以前文章討論過的問題相比，這任務簡直是在「羞辱」我們智商。如果你還有印象，我們之前已經透過神經網路來：</p>
+<ul>
+<li><a href="https://demo.leemeng.tw/">辨別貓與狗圖片（CNN）</a></li>
+<li><a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">執行假新聞偵測（BERT）</a></li>
+<li><a href="https://leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html">生成新金庸小說（GPT-2）</a></li>
+<li><a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html">把英文翻成中文（Transformer）</a></li>
+<li><a href="https://leemeng.tw/generate-anime-using-cartoongan-and-tensorflow2.html">生成新海誠動畫（CartoonGAN）</a></li>
+</ul>
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這些任務可都比二分類任務複雜多了（當然，也十分有趣且具有挑戰性）。</p>
+<p>但也正是因為二分類任務極度簡單的特性，讓我們能使用最簡單的神經網路架構並視覺化其運作方式。後面你會發現，光是觀察神經網路如何解決這個簡單任務，就能讓你對 NN 有更深刻且直觀的理解。比方說給定以下數據點分布，你能想像 NN 如何將其自然地分成兩個族群嗎？</p>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html">
+<source src="/images/manim/ShowLinearSeparableDataPoints.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<br/>
 </div>
 </div>
 </div>
