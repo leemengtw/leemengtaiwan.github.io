@@ -171,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-07-10 (Wed)</li>
                         <li class="page-view">
-                            9,531 views
+                            10,321 views
                         </li>
                     </ul>
 
@@ -446,6 +446,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>對上通天文下知地理的鄉民們來說，要完成這兩個任務簡單到爆。只要稍微看一下<strong>前後文</strong>就能知道左邊克漏字任務的 <code>[MASK]</code> 裡頭該填 <code>退了</code>；而 <code>醒醒吧</code> 後面接 <code>你沒有妹妹</code> 也十分合情合理。</p>
 <p>讓我們馬上載入 <a href="https://pytorch.org/hub">PyTorch Hub</a> 上的 <a href="https://pytorch.org/hub/huggingface_pytorch-pretrained-bert_bert/">BERT 模型</a>體驗看看。首先我們需要安裝一些簡單的函式庫：</p>
+<p>（2019/10/07 更新：因應 HuggingFace 團隊最近將 GitHub 專案大翻新並更名成 <a href="https://github.com/huggingface/transformers">transformers</a>，本文已直接 <code>import</code> 該 repo 並使用新的方法調用 BERT。底下的程式碼將不再使用該團隊在 PyTorch Hub 上 host 的模型。感謝網友 Hsien 提醒）</p>
 </div>
 </div>
 </div>
@@ -454,7 +455,7 @@
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-pip install tqdm boto3 requests regex -q
+pip install transformers tqdm boto3 requests regex -q
 </pre></div>
 </div>
 </div>
@@ -471,13 +472,13 @@ pip install tqdm boto3 requests regex -q
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">BertTokenizer</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">clear_output</span>
 
-<span class="n">GITHUB_REPO</span> <span class="o">=</span> <span class="s2">"huggingface/pytorch-pretrained-BERT"</span> <span class="c1"># 感謝 HuggingFace 團隊造福後人</span>
 <span class="n">PRETRAINED_MODEL_NAME</span> <span class="o">=</span> <span class="s2">"bert-base-chinese"</span>  <span class="c1"># 指定繁簡中文 BERT-BASE 預訓練模型</span>
 
 <span class="c1"># 取得此預訓練模型所使用的 tokenizer</span>
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">GITHUB_REPO</span><span class="p">,</span> <span class="s1">'bertTokenizer'</span><span class="p">,</span> <span class="n">PRETRAINED_MODEL_NAME</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">BertTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">PRETRAINED_MODEL_NAME</span><span class="p">)</span>
 
 <span class="n">clear_output</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"PyTorch 版本："</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
@@ -489,7 +490,7 @@ pip install tqdm boto3 requests regex -q
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>PyTorch 版本： 1.1.0
+<pre>PyTorch 版本： 1.2.0
 </pre>
 </div>
 </div>
@@ -498,7 +499,7 @@ pip install tqdm boto3 requests regex -q
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>為了讓你直觀了解 BERT 運作，本文使用包含繁體與簡體中文的預訓練模型。 你可以在 <a href="https://github.com/huggingface/pytorch-pretrained-BERT/blob/master/hubconfs/bert_hubconf.py">Hugging Face 團隊的 repo </a> 裡看到所有可從 PyTorch Hub 載入的 BERT 預訓練模型。截至目前為止有以下模型可供使用：</p>
+<p>為了讓你直觀了解 BERT 運作，本文使用包含繁體與簡體中文的預訓練模型。 你可以在 <a href="https://github.com/huggingface/transformers/blob/master/hubconf.py">Hugging Face 團隊的 repo </a> 裡看到所有可從 PyTorch Hub 載入的 BERT 預訓練模型。截至目前為止有以下模型可供使用：</p>
 <ul>
 <li>bert-base-chinese</li>
 <li>bert-base-uncased</li>
@@ -577,16 +578,16 @@ pip install tqdm boto3 requests regex -q
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>token               index          
 -------------------------
-看                    4692
-##闰                 20368
-weeks               11973
-##犯                 17363
-##嘅                 14703
-max                  8621
-##朽                 16380
-##う                  8981
-尾                    2227
-佳                     881
+未                    3313
+哭                    1526
+adsl                13080
+##暱                 16330
+秀                    4899
+##旮                 16253
+##さん                10874
+##洗                 16876
+##篝                 18125
+##婊                 15097
 </pre>
 </div>
 </div>
@@ -689,13 +690,12 @@ max                  8621
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
 <span class="sd">這段程式碼載入已經訓練好的 masked 語言模型並對有 [MASK] 的句子做預測</span>
 <span class="sd">"""</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">BertForMaskedLM</span>
 
 <span class="c1"># 除了 tokens 以外我們還需要辨別句子的 segment ids</span>
 <span class="n">tokens_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">ids</span><span class="p">])</span>  <span class="c1"># (1, seq_len)</span>
 <span class="n">segments_tensors</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">)</span>  <span class="c1"># (1, seq_len)</span>
-<span class="n">maskedLM_model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">GITHUB_REPO</span><span class="p">,</span> 
-                                <span class="s1">'bertForMaskedLM'</span><span class="p">,</span> 
-                                <span class="n">PRETRAINED_MODEL_NAME</span><span class="p">)</span>
+<span class="n">maskedLM_model</span> <span class="o">=</span> <span class="n">BertForMaskedLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">PRETRAINED_MODEL_NAME</span><span class="p">)</span>
 <span class="n">clear_output</span><span class="p">()</span>
 
 <span class="c1"># 使用 masked LM 估計 [MASK] 位置所代表的實際 token </span>
@@ -832,7 +832,9 @@ Top 3 ( 2%)：['[CLS]', '等', '到', '潮', '水', '過', '了', '，', '就', 
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Setup 以後就能非常輕鬆地將 BERT 內部的注意力機制視覺化出來：</p>
 <div class="highlight"><pre><span></span><span class="c1"># 記得我們是使用中文 BERT</span>
+<span class="n">model_type</span> <span class="o">=</span> <span class="s1">'bert'</span>
 <span class="n">bert_version</span> <span class="o">=</span> <span class="s1">'bert-base-chinese'</span>
+
 <span class="n">bertviz_model</span> <span class="o">=</span> <span class="n">BertModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">bert_version</span><span class="p">)</span>
 <span class="n">bertviz_tokenizer</span> <span class="o">=</span> <span class="n">BertTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">bert_version</span><span class="p">)</span>
 
@@ -840,7 +842,7 @@ Top 3 ( 2%)：['[CLS]', '等', '到', '潮', '水', '過', '了', '，', '就', 
 <span class="n">sentence_a</span> <span class="o">=</span> <span class="s2">"胖虎叫大雄去買漫畫，"</span>
 <span class="n">sentence_b</span> <span class="o">=</span> <span class="s2">"回來慢了就打他。"</span>
 <span class="n">call_html</span><span class="p">()</span>
-<span class="n">show</span><span class="p">(</span><span class="n">bertviz_model</span><span class="p">,</span> <span class="n">bertviz_tokenizer</span><span class="p">,</span> <span class="n">sentence_a</span><span class="p">,</span> <span class="n">sentence_b</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">bertviz_model</span><span class="p">,</span> <span class="n">model_type</span><span class="p">,</span> <span class="n">bertviz_tokenizer</span><span class="p">,</span> <span class="n">sentence_a</span><span class="p">,</span> <span class="n">sentence_b</span><span class="p">)</span>
 
 <span class="c1"># 注意：執行這段程式碼以後只會顯示下圖左側的結果。</span>
 <span class="c1"># 為了方便你比較，我把情境 2 的結果也同時附上</span>
@@ -1584,16 +1586,14 @@ tensor([2, 0, 2, 2, 1, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 2,
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 載入一個可以做中文多分類任務的模型，n_class = 3</span>
-<span class="n">GITHUB_REPO</span> <span class="o">=</span> <span class="s2">"huggingface/pytorch-pretrained-BERT"</span>
-<span class="n">PRETRAINED_MODEL_NAME</span> <span class="o">=</span> <span class="s2">"bert-base-chinese"</span>
-<span class="n">FINETUNE_TASK</span> <span class="o">=</span> <span class="s2">"bertForSequenceClassification"</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">BertForSequenceClassification</span>
 
+<span class="n">PRETRAINED_MODEL_NAME</span> <span class="o">=</span> <span class="s2">"bert-base-chinese"</span>
 <span class="n">NUM_LABELS</span> <span class="o">=</span> <span class="mi">3</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">GITHUB_REPO</span><span class="p">,</span> 
-                       <span class="n">FINETUNE_TASK</span><span class="p">,</span> 
-                       <span class="n">PRETRAINED_MODEL_NAME</span><span class="p">,</span> 
-                       <span class="n">num_labels</span><span class="o">=</span><span class="n">NUM_LABELS</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BertForSequenceClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+    <span class="n">PRETRAINED_MODEL_NAME</span><span class="p">,</span> <span class="n">num_labels</span><span class="o">=</span><span class="n">NUM_LABELS</span><span class="p">)</span>
+
 <span class="n">clear_output</span><span class="p">()</span>
 
 <span class="c1"># high-level 顯示此模型裡的 modules</span>
@@ -1620,7 +1620,7 @@ name            module
 bert:embeddings
 bert:encoder
 bert:pooler
-dropout         Dropout(p=0.1)
+dropout         Dropout(p=0.1, inplace=False)
 classifier      Linear(in_features=768, out_features=3, bias=True)
 </pre>
 </div>
@@ -1694,6 +1694,7 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
 <pre>{
   "attention_probs_dropout_prob": 0.1,
   "directionality": "bidi",
+  "finetuning_task": null,
   "hidden_act": "gelu",
   "hidden_dropout_prob": 0.1,
   "hidden_size": 768,
@@ -1703,12 +1704,18 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
   "max_position_embeddings": 512,
   "num_attention_heads": 12,
   "num_hidden_layers": 12,
+  "num_labels": 3,
+  "output_attentions": false,
+  "output_hidden_states": false,
   "pooler_fc_size": 768,
   "pooler_num_attention_heads": 12,
   "pooler_num_fc_layers": 3,
   "pooler_size_per_head": 128,
   "pooler_type": "first_token_transform",
+  "pruned_heads": {},
+  "torchscript": false,
   "type_vocab_size": 2,
+  "use_bfloat16": false,
   "vocab_size": 21128
 }</pre>
 </div>
@@ -1768,6 +1775,7 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
                 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda:0"</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
             
             <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+            
             <span class="c1"># 別忘記前 3 個 tensors 分別為 tokens, segments 以及 masks</span>
             <span class="n">logits</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">_</span><span class="p">,</span> <span class="n">pred</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -1783,6 +1791,8 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
                 <span class="n">predictions</span> <span class="o">=</span> <span class="n">pred</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">predictions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">predictions</span><span class="p">,</span> <span class="n">pred</span><span class="p">))</span>
+            
+            <span class="k">break</span>
     
     <span class="k">if</span> <span class="n">compute_acc</span><span class="p">:</span>
         <span class="n">acc</span> <span class="o">=</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
@@ -1804,7 +1814,7 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>device: cuda:0
-classification acc: 0.5216409484380881
+classification acc: 0.21875
 </pre>
 </div>
 </div>
@@ -1876,10 +1886,14 @@ classification acc: 0.5216409484380881
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 
-<span class="c1"># 使用 Adam Optim 更新整個分類模型的參數</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model_params</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1.0e-4</span><span class="p">)</span>
+<span class="c1"># train mode</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 
-<span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># 幸運數字</span>
+<span class="c1"># 使用 Adam Optim 更新整個分類模型的參數</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1.0e-2</span><span class="p">)</span>
+
+
+<span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">60</span>  <span class="c1"># 幸運數字</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">EPOCHS</span><span class="p">):</span>
     
     <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -1890,6 +1904,7 @@ classification acc: 0.5216409484380881
 
         <span class="c1"># 將參數梯度歸零</span>
         <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        
         <span class="c1"># forward pass</span>
         <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">tokens_tensors</span><span class="p">,</span> 
                         <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">,</span> 
@@ -1899,7 +1914,8 @@ classification acc: 0.5216409484380881
         <span class="c1"># backward</span>
         <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
         <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-        
+
+
         <span class="c1"># 紀錄當前 batch loss</span>
         <span class="n">running_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
         
@@ -1913,21 +1929,11 @@ classification acc: 0.5216409484380881
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[epoch 1] loss: 21.751, acc: 0.906
-[epoch 2] loss: 10.893, acc: 0.977
-[epoch 3] loss: 6.226, acc: 0.944
-[epoch 4] loss: 4.111, acc: 0.987
-[epoch 5] loss: 1.886, acc: 0.992
-[epoch 6] loss: 0.931, acc: 0.998
-CPU times: user 2min 43s, sys: 1min 49s, total: 4min 32s
-Wall time: 4min 34s
-</pre>
 </div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/bert/train_result.jpg" style="mix-blend-mode: initial;"/>
+<br/>
 </div>
 </div>
 </div>
@@ -1981,8 +1987,8 @@ Wall time: 4min 34s
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 4min 28s, sys: 2min 40s, total: 7min 8s
-Wall time: 7min 9s
+<pre>CPU times: user 1.79 s, sys: 831 ms, total: 2.62 s
+Wall time: 2.62 s
 </pre>
 </div>
 </div>
@@ -2015,6 +2021,8 @@ Wall time: 7min 9s
 </div>
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -2188,6 +2196,34 @@ python run_squad.py <span class="se">\</span>
 </div>
 </div>
 </div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
 
 
                 <!-- Tags -->
