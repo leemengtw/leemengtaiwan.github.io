@@ -11,21 +11,22 @@
     ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="Lee Meng" />
-<title>LeeMeng - 神經網路的本質：直觀理解神經網路 & 線性代數</title>
+<title>LeeMeng - 你的第一堂深度學習課程：直觀理解神經網路與線性代數</title>
     <!--- article-specific meta data
     ================================================== -->
         <meta name="description" content="s" />
-        <meta name="keywords" content="Manim, Python" />
+        <meta name="keywords" content="深度學習, Manim, TensorFlow" />
+        <meta name="tags" content="深度學習" />
         <meta name="tags" content="Manim" />
-        <meta name="tags" content="Python" />
+        <meta name="tags" content="TensorFlow" />
 
 
     <!--- Open Graph Object metas
     ================================================== -->
-        <meta property="og:image" content="/theme/images/background/TwoLayersReLUInBetweenSolveHardTwoCurves.jpg" />
+        <meta property="og:image" content="/theme/images/background/CoverSymbolicTwoByThreeMatrixAndNN.png" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html" />
-        <meta property="og:title" content="神經網路的本質：直觀理解神經網路 & 線性代數" />
+        <meta property="og:title" content="你的第一堂深度學習課程：直觀理解神經網路與線性代數" />
         <meta property="og:description" content="s" />
 
     <!-- mobile specific metas
@@ -130,7 +131,7 @@
     <!--TOC navigation displayed when clicked from left-navigation button-->
     <div id="tocNav" class="overlay" onclick="closeTocNav()">
       <div class="overlay-content">
-        <div id="toc"><ul><li><a class="toc-href" href="#" title="神經網路的本質：直觀理解神經網路 &amp; 線性代數">神經網路的本質：直觀理解神經網路 &amp; 線性代數</a><ul><li><a class="toc-href" href="#一些會有幫助的背景知識" title="一些會有幫助的背景知識">一些會有幫助的背景知識</a></li><li><a class="toc-href" href="#深度學習框架操作容易，但你真的了解神經網路嗎？" title="深度學習框架操作容易，但你真的了解神經網路嗎？">深度學習框架操作容易，但你真的了解神經網路嗎？</a></li><li><a class="toc-href" href="#用二元分類連結神經網路-&amp;-線性代數" title="用二元分類連結神經網路 &amp; 線性代數">用二元分類連結神經網路 &amp; 線性代數</a></li><li><a class="toc-href" href="#能夠解決二元分類的神經網路長得是什麼模樣？" title="能夠解決二元分類的神經網路長得是什麼模樣？">能夠解決二元分類的神經網路長得是什麼模樣？</a></li><li><a class="toc-href" href="#結論" title="結論">結論</a></li></ul></li></ul></div>
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="你的第一堂深度學習課程：直觀理解神經網路與線性代數">你的第一堂深度學習課程：直觀理解神經網路與線性代數</a><ul><li><a class="toc-href" href="#一些會有幫助的背景知識" title="一些會有幫助的背景知識">一些會有幫助的背景知識</a></li><li><a class="toc-href" href="#深度學習框架操作容易，但你真的了解神經網路嗎？" title="深度學習框架操作容易，但你真的了解神經網路嗎？">深度學習框架操作容易，但你真的了解神經網路嗎？</a></li><li><a class="toc-href" href="#用二元分類連結神經網路-&amp;-線性代數" title="用二元分類連結神經網路 &amp; 線性代數">用二元分類連結神經網路 &amp; 線性代數</a></li><li><a class="toc-href" href="#怎樣的神經網路才是好的分類器？" title="怎樣的神經網路才是好的分類器？">怎樣的神經網路才是好的分類器？</a></li><li><a class="toc-href" href="#由淺入深：解決看似不可能的分類任務" title="由淺入深：解決看似不可能的分類任務">由淺入深：解決看似不可能的分類任務</a></li><li><a class="toc-href" href="#結語：往下一站出發" title="結語：往下一站出發">結語：往下一站出發</a></li><li><a class="toc-href" href="#TODO" title="TODO">TODO</a></li><li><a class="toc-href" href="#nice-to-have" title="nice to have">nice to have</a></li></ul></li></ul></div>
       </div>
     </div>
 
@@ -141,23 +142,24 @@
 
         <!-- page header/blog hero, use custom cover image if available
         ================================================== -->
-            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/TwoLayersReLUInBetweenSolveHardTwoCurves.jpg)">
+            <div class="page-header page-header--single page-hero" style="background-image:url(/theme/images/background/CoverSymbolicTwoByThreeMatrixAndNN.png)">
 
             <div class="row page-header__content narrow">
                 <article class="col-full">
                     <div class="page-header__info">
                         <div class="page-header__cat">
+                            <a href="/tag/shen-du-xue-xi.html" rel="tag">深度學習</a>
                             <a href="/tag/manim.html" rel="tag">Manim</a>
-                            <a href="/tag/python.html" rel="tag">Python</a>
+                            <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
                         </div>
                     </div>
                     <h1 class="page-header__title">
                         <a href="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html" title="">
-                            神經網路的本質：直觀理解神經網路 & 線性代數
+                            你的第一堂深度學習課程：直觀理解神經網路與線性代數
                         </a>
                     </h1>
                     <ul class="page-header__meta">
-                        <li class="date">2019-09-21 (Sat)</li>
+                        <li class="date">2019-10-13 (Sun)</li>
                         <li class="page-view">
                             1 views
                         </li>
@@ -203,7 +205,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
-                        這是篇幫助你直觀理解神經網路的科普文。讀完本文，你將能夠深刻地體會神經網路與線性代數之間的緊密關係，奠定深度學習之旅的基礎。
+                        這是篇幫助你直觀理解神經網路的科普文。讀完本文，你將能夠深刻地體會神經網路與線性代數之間的緊密關係，奠定 AI 之旅的基礎。
                         <br/>
 <br/>
 </p>
@@ -219,7 +221,7 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這是個眾人對人工智慧（<strong>A</strong>rtificial <strong>I</strong>ntelligence, AI）趨之若鶩的時代。此領域近年的蓬勃發展很大一部份得歸功於<a href="https://leemeng.tw/deep-learning-resources.html">深度學習</a>以及<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神經網路</a>的研究。現行的深度學習框架（framework）也日漸成熟，讓任何人都可以使用 <a href="https://www.tensorflow.org/overview">TensorFlow</a> 或 <a href="https://pytorch.org/">PyTorch</a> 輕鬆建立神經網路，解決各式各樣的問題。</p>
+<p>這是個對人工智慧（<strong>A</strong>rtificial <strong>I</strong>ntelligence, AI）趨之若鶩的時代。此領域近年的蓬勃發展很大一部份得歸功於<a href="https://leemeng.tw/deep-learning-resources.html">深度學習</a>以及<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神經網路</a>的研究。現行的深度學習框架（framework）也日漸成熟，讓任何人都可以使用 <a href="https://www.tensorflow.org/overview">TensorFlow</a> 或 <a href="https://pytorch.org/">PyTorch</a> 輕鬆建立神經網路，解決各式各樣的問題。</p>
 <p>舉例而言，你在 30 秒內就可訓練出一個能夠辨識數字的神經網路：</p>
 </div>
 </div>
@@ -244,7 +246,7 @@
 <span class="p">])</span>
 
 <span class="c1"># 選擇損失函數、optimizer</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">,</span>
+<span class="n">mondel</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">,</span>
               <span class="n">loss</span><span class="o">=</span><span class="s1">'sparse_categorical_crossentropy'</span><span class="p">,</span>
               <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>
 <span class="c1"># 訓練模型</span>
@@ -261,8 +263,8 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>是的，扣除註解不到 15 行就可以把讀取數據、訓練 <code>model</code> 以及推論全部搞定了。這邊秀出程式碼只是要讓你感受一下透過框架建立一個神經網路有多麽地「簡單」。事實上，這也是絕大多數線上課程以及教學文章<strong>能</strong>教你的東西。對此數字辨識應用有興趣的讀者稍後也可自行參考<a href="https://colab.research.google.com/github/tensorflow/docs/blob/r2.0rc/site/en/r2/tutorials/quickstart/beginner.ipynb"> TensorFlow 的 Colab 筆記本</a>。</p>
-<p>我等等要秀給你看的任何一個神經網路都要比 <code>model</code> 還簡單個一萬倍，但了解並觀察這些神經網路的運作將成為你的 AI 旅程中最有趣的經驗之一。</p>
+<p>是的，扣除註解不到 15 行就可以把讀取數據、訓練 <code>model</code> 以及推論全部搞定。這邊秀出程式碼只是想讓你感受一下現在透過框架建立一個神經網路有多麽地「簡單」。事實上，這也是絕大多數線上課程以及教學文章會教你的東西。對此數字辨識應用有興趣的讀者稍後也可自行參考<a href="https://colab.research.google.com/github/tensorflow/docs/blob/r2.0rc/site/en/r2/tutorials/quickstart/beginner.ipynb"> TensorFlow 的 Colab 筆記本</a>。</p>
+<p>我等等要秀給你看的任何一個神經網路都要比這個 <code>model</code> 還簡單個一萬倍（以參數量而言），但觀察並理解這些「簡單」神經網路，將會成為你的 AI 旅程中最有趣且實用的經驗之一。</p>
 </div>
 </div>
 </div>
@@ -274,7 +276,7 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>本文將透過不少動畫帶你理解神經網路（<strong>N</strong>eural <strong>N</strong>etwork, 後簡稱為 NN）與<a href="https://www.youtube.com/watch?v=fNk_zzaMoSs">線性代數（Linear Algebra）</a>之間的緊密關係。不過具備些背景知識將能讓你有更深的體會：</p>
+<p>本文將透過不少動畫帶你直觀理解神經網路（<strong>N</strong>eural <strong>N</strong>etwork, 後與 <strong>NN</strong> 交互使用）與<a href="https://www.youtube.com/watch?v=fNk_zzaMoSs">線性代數（Linear Algebra）</a>之間的緊密關係。不過如果你已經有以下知識，本文可以讓你對 NN 有更深的理解：</p>
 <ol>
 <li>能夠讀懂文章開頭建立 NN 的 <a href="https://www.python.org/">Python</a> 程式碼</li>
 <li>了解線上課程都會教的<a href="https://www.youtube.com/watch?v=Dr-WRlEFefw">超基本 NN 概念</a><ul>
@@ -285,7 +287,7 @@
 </li>
 <li>基本的線性代數概念如矩陣相乘、向量空間</li>
 </ol>
-<p>別擔心，這些是 nice-to-have，就算你沒背景知識也能直接繼續閱讀。</p>
+<p>別擔心，這些是 nice-to-have。我等等會盡量囉唆點，讓你就算腦袋空空也能消化本文內容。</p>
 </div>
 </div>
 </div>
@@ -296,7 +298,7 @@
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <center>
-                        一個簡單 NN 嘗試解決二元分類的過程（線性轉換）
+                        一個簡單 NN 嘗試解決二元分類的線性轉換過程
                         <br/>
 <br/>
 </center>
@@ -305,7 +307,7 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>另外因為篇幅有限，本文會把焦點放在<strong>已經訓練好</strong>的 NN，不會特別說明<a href="https://www.youtube.com/watch?v=IHZwWFHWa-w">訓練神經網路</a>的細節。</p>
+<p>另外值得一提的是，本文主要展示<strong>已經訓練好</strong>的 NN，不會特別說明<a href="https://www.youtube.com/watch?v=IHZwWFHWa-w">訓練一個 NN </a>的細節。</p>
 </div>
 </div>
 </div>
@@ -317,15 +319,18 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>讓我們再次回到文章開頭透過 <a href="https://www.tensorflow.org/guide/keras">Keras</a> 建立的神經網路 <code>model</code>：</p>
-<div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+<p>再次回到文章開頭的 MNIST 例子。</p>
+<p>我們剛剛使用 TensorFlow 高層次 API <a href="https://www.tensorflow.org/guide/keras">Keras</a> 建立了一個神經網路 <code>model</code>：</p>
+<div class="highlight"><pre><span></span><span class="c1"># 在 TensorFlow 裡，全連接層被稱作 Dense 層</span>
+<span class="c1"># 因為這些層之間的神經元「緊密」連接</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
   <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
   <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">),</span>
   <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
   <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'softmax'</span><span class="p">)</span>
 <span class="p">])</span>
 </pre></div>
-<p>就跟你在多數深度學習文章裡頭看到的，現在要使用深度學習框架建立<strong>基本的</strong> NN 非常容易，只要當作疊疊樂一個個 layer 疊上去就好了。下圖則將此 <code>model</code> 用視覺上更容易理解的方式呈現：</p>
+<p>就跟你在多數教學文章裡頭會看到的一樣，現在要使用深度學習框架建立神經網路十分容易，只要當作疊疊樂一個個 layer 疊上去就好了。下圖則將此 <code>model</code> 用視覺上更容易理解的方式呈現：</p>
 </div>
 </div>
 </div>
@@ -344,7 +349,8 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>透過 API，我們也可以輕鬆查看整個 NN 的參數量：</p>
+<p>扣掉神經網路的第一個輸入層（Input Layer），後兩個 layers 的每個神經元（neuron）都跟<strong>前一層的每個</strong>神經元相連，因此被稱作為<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E5%85%A8%E9%80%A3%E6%8E%A5%E5%B1%A4">全連接層（<strong>F</strong>ully <strong>C</strong>onnected Layer，後簡稱 FC）</a>。而因為相連緊密，在有些地方（比如 TensorFlow 的實作裡）則被稱作為 <code>Dense</code> 層。</p>
+<p>我們可以透過 <code>summary</code> 函式輕鬆計算這個神經網路的所有參數量：</p>
 </div>
 </div>
 </div>
@@ -363,17 +369,17 @@
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Model: "sequential_1"
+<pre>Model: "sequential_8"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
 flatten_1 (Flatten)          (None, 784)               0         
 _________________________________________________________________
-dense_2 (Dense)              (None, 128)               100480    
+dense_9 (Dense)              (None, 128)               100480    
 _________________________________________________________________
 dropout_1 (Dropout)          (None, 128)               0         
 _________________________________________________________________
-dense_3 (Dense)              (None, 10)                1290      
+dense_10 (Dense)             (None, 10)                1290      
 =================================================================
 Total params: 101,770
 Trainable params: 101,770
@@ -387,9 +393,9 @@ _________________________________________________________________
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>儘管擁有 10 萬個可訓練參數，此 <code>model</code> 是個在深度學習領域裡只能被歸類在 Hello World 等級的可憐 NN。畢竟這世界很瘋狂，<a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">我們以前討論過的 BERT</a> 以及 <a href="https://leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html">GPT-2</a> 都是現在 NLP 界的知名語言模型，而它們可都是擁有<strong>上億</strong>參數的強大 NN。那可是此 <code>model</code> 的 100 倍大。</p>
+<p>儘管擁有 10 萬個可訓練參數，此 <code>model</code> 是個在深度學習領域裡只能被歸類在 Hello World 等級的可憐 NN。畢竟這世界很瘋狂，<a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">我們以前討論過的 BERT</a> 以及 <a href="https://leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html">GPT-2</a> 都是現在 NLP 界的知名語言模型，而它們可都是擁有<strong>上億</strong>參數的強大 NN。這些模型的大小可有 <code>model</code> 的 100 倍之大。</p>
 <p>但先別管 BERT 或 GPT-2 了，就算是這個 Hello World 等級的 NN，你真的覺得你對它的運作機制有足夠的理解嗎？</p>
-<p>講白點，儘管現在路上隨便拉個人都會使用 TensorFlow 或是 PyTorch 來建立神經網路，我認為許多人（包含剛入門的我）對最基本的神經網路都沒有足夠<strong>直觀</strong>的理解。</p>
+<p>講白點，儘管現在路上隨便拉個人都會使用 TensorFlow 或是 PyTorch 來建立神經網路，許多人（包含剛入門的我）對最基本的神經網路都沒有足夠<strong>直觀</strong>的理解。</p>
 </div>
 </div>
 </div>
@@ -408,7 +414,7 @@ _________________________________________________________________
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>為了讓你能夠更直觀地理解神經網路，我將透過二元分類（Binary Classification）任務說明神經網路以及線性代數之間的緊密關係。前言很長，但如果你想要了解神經網路的本質，或是想要為自己之後的 AI 之旅打下良好基礎，那我會建議你繼續往下閱讀：）</p>
+<p>為了讓更多人能夠直觀且正確地理解神經網路，我將透過二元分類（Binary Classification）任務說明其與線性代數之間的緊密關係。前言很長，但如果你想要了解神經網路的本質，或是想要為自己之後的 AI 之旅打下良好基礎，那我會建議你繼續往下閱讀：）</p>
 </div>
 </div>
 </div>
@@ -420,7 +426,7 @@ _________________________________________________________________
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://en.wikipedia.org/wiki/Binary_classification">二元分類</a>是<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML19.html">機器學習（Machine Learning）</a>領域裡一個十分基本的任務，其目標是把一個集合裡的所有數據點（data points）依照某種分類規則劃分成<strong>兩</strong>個族群（groups）或類別（classes）。比方我們之間看過的<a href="https://demo.leemeng.tw/">貓狗圖像辨識</a>。不過在這篇文章裡，我假設所有數據點<strong>最多只有 2 個維度（dimensions）</strong>。</p>
+<p>不只是深度學習，<a href="https://en.wikipedia.org/wiki/Binary_classification">二元分類</a>是<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML19.html">機器學習（Machine Learning）</a>領域裡一個十分基本的任務，其目標是把一個集合裡的所有數據點（data points）依照某種分類規則劃分成<strong>兩</strong>個族群（groups）或類別（classes）。比方我們之間看過的<a href="https://demo.leemeng.tw/">貓狗圖像辨識</a>。在這篇文章裡，我假設所有數據點<strong>最多只有兩個維度（dimensions）</strong>。</p>
 <p>如果你讀過之前的文章，可能會覺得這假設是在「羞辱」我們。畢竟我們已用過神經網路來：</p>
 <ul>
 <li><a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">執行假新聞偵測（BERT）</a></li>
@@ -433,8 +439,8 @@ _________________________________________________________________
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>以上這些進階任務跟本文的 <strong>2 維</strong>二元分類相比要複雜許多，自然也十分有趣且具有挑戰性。如果你有興趣深入了解，稍後可以點擊連結來查看相關文章。但這篇之所以用二元分類作為目標任務是因其十分單純，所以我們能夠透過它來一窺神經網路的本質。</p>
-<p>以下是一個資料集：</p>
+<p>這些任務的複雜程度要比<strong>二維</strong>二元分類多了幾個數量級，十分具有挑戰性（當然，也非常有趣）。如果你有興趣，稍後可以點擊相關連結來深入了解。但這篇文章之所以選擇二維二元分類作為目標任務是因其簡單明暸。我們將能透過此任務來抓住神經網路的本質（essence）。</p>
+<p>以下是一個包含兩條曲線的資料集：</p>
 </div>
 </div>
 </div>
@@ -445,7 +451,7 @@ _________________________________________________________________
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <center>
-                        包含兩類別（曲線）的 2 維資料集
+                        包含兩類別的二維雙曲線資料集
                         <br/>
 <br/>
 </center>
@@ -454,13 +460,13 @@ _________________________________________________________________
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>在此資料集裡，兩曲線分別來自不同類別，各自包含 100 個數據點 $x$。每個數據點 $x$ 也可以很自然地用 2 維的 $\left (x_{coord}, y_{coord}  \right )$ 座標來表示。你可以從右下角得知黃點的標籤 $y = 0$，藍點為 $1$。</p>
-<p>另外，圖中也描繪了此向量空間中的基底向量（basis vector）：</p>
+<p>在此雙曲線資料集裡，兩條曲線分別來自不同類別，各自包含了 100 個數據點 $x$。每個數據點 $x$ 都可以很自然地用二維 $\left (x_{coord}, y_{coord}  \right )$ 座標來呈現。右下角也標注了兩曲線所屬類別：黃點的標籤 $y = 0$，藍點為 $1$。</p>
+<p>另外，圖中也描繪了此向量空間中的基底向量：</p>
 <ul>
 <li>x 軸上藍色的 $\vec{i}$</li>
 <li>y 軸上紅色的 $\vec{j}$ </li>
 </ul>
-<p>那麼要如何分類這個資料集呢？複習<a href="https://leemeng.tw/10-key-takeaways-from-ai-for-everyone-course.html"> AI For Everyone 裡的其中一個重要概念</a>：</p>
+<p>我們等等會看到，這兩個基底向量（basis vector）能夠幫助我們了解神經網路的運作方式。至於要如何分類這個資料集，回想一下<a href="https://leemeng.tw/10-key-takeaways-from-ai-for-everyone-course.html">之前 AI For Everyone 裡的重要概念</a>：</p>
 </div>
 </div>
 </div>
@@ -479,8 +485,8 @@ _________________________________________________________________
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>套用相同概念，要處理這個分類任務，我們要問的問題就變成「給定所有藍點與黃點 $x = \left (x_{coord}, y_{coord}  \right )$，我們能不能找出一個函數 $f$，將這些 2 維數據 $x$ 完美地<strong>轉換</strong>到它們對應的 1 維標籤 $y$ 呢？」</p>
-<p>換句話說，我們想要找出一個 $x$ 的函數 $f(x)$，使得以下式子成立：</p>
+<p>套用相同概念，要處理這個分類任務，我們要問的問題就變成「給定所有藍點與黃點 $x = \left (x_{coord}, y_{coord}  \right )$，我們能不能找出一個 $x$ 的函數 $f(x)$，將這些二維數據 $x$ 完美地<strong>轉換</strong>到它們所對應的一維標籤 $y$ 呢？」</p>
+<p>換句話說，我們想要找出一個函數 $f(x)$，使得以下式子成立：</p>
 </div>
 </div>
 </div>
@@ -497,7 +503,7 @@ f(x)
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>如果我們能找到符合這個條件的 $f(x)$，就能瞬間預測出一個數據點 $x$ 離哪個類別比較近了。當然，我們有無窮多種 model $f(x)$ 的方法。但在線性代數的世界裡，我們可以用矩陣運算的形式定義 $f(x)$：</p>
+<p>如果我們能找到符合這個條件的 $f(x)$，就能在一瞬間預測出某個數據點 $x_{i}$ 比較可能是哪個類別了。我們有非常多種 model $f(x)$ 的方法，但在線性代數的世界裡，我們可以用矩陣運算的形式來定義 $f(x)$：</p>
 </div>
 </div>
 </div>
@@ -514,14 +520,14 @@ f(x) &amp; = W x + b \\
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>希望你還記得國中、高中或是大學裡任何一位線性代數老師的諄諄教誨。</p>
+<p>我希望你至少還記得國中、高中或是大學裡任何一位線性代數老師的諄諄教誨。</p>
 <p>在上面的式子裡：</p>
 <ul>
-<li>$x$ 是一個 2 維的 column vector</li>
-<li>$W$ 是一個 1 x 2 的<a href="https://zh.wikipedia.org/wiki/%E7%9F%A9%E9%98%B5">權重矩陣（weight matrix）</a></li>
+<li>$x$ 是一個二維 column vector</li>
+<li>$W$ 是一個 1 &times; 2 的<a href="https://zh.wikipedia.org/wiki/%E7%9F%A9%E9%98%B5">權重矩陣（weight matrix）</a></li>
 <li>$b$ 為偏差（bias），是一個純量（scalar）</li>
 </ul>
-<p>如果我們先暫時忽略 $b$，事實上 $f(x)$ 對輸入 $x$ 做的<strong>轉換</strong>跟多數神經網路都會使用到的<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html#%E5%85%A8%E9%80%A3%E6%8E%A5%E5%B1%A4">全連接層（<strong>F</strong>ully <strong>C</strong>onnected Layer，後稱 FC）</a>的作用是完全相同的。換句話說，使用一層 FC 的 NN 基本上就是在做矩陣運算（假設激勵函式為線性）。因此這個形式的 $f(x)$ 與神經網路之間有非常美好的對應關係：</p>
+<p>如果我們先暫時忽略 $b$，事實上 $f(x)$ 對輸入 $x$ 做的<strong>轉換</strong>跟多數神經網路都會使用到的全連接層（FC）的作用是完全相同的。換句話說，使用一層 FC 的 NN 基本上就是在做矩陣運算（假設激勵函式為線性）。因此這個形式的 $f(x)$ 與神經網路之間有非常美好的對應關係：</p>
 </div>
 </div>
 </div>
@@ -532,7 +538,7 @@ f(x) &amp; = W x + b \\
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <center>
-                        1 x 2 矩陣運算與 1-Layer NN 的對應關係
+                        1 &times; 2 矩陣運算與全連接層 FC 的對應關係
                         <br/>
 <br/>
 </center>
@@ -541,10 +547,10 @@ f(x) &amp; = W x + b \\
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>沒錯，透過矩陣運算，我們建立了這世上最簡單的 1-Layer 神經網路！而之所以是 1-Layer，原因在於 NN 的第一層為原始數據（raw data），第二層才是我們實際新定義的神經網路（FC）。矩陣運算跟 FC 的對應關係家喻戶曉，但這應該是你第一次看到兩者共舞。</p>
-<p>從<strong>線性代數</strong>的角度來看，我們是透過權重矩陣 $W$ 對 2 維的 $x$ 進行線性轉換後得到 1 維的 $y$；而以<strong>神經網路</strong>的角度檢視，我們則是將以 2 維向量表示（represent）的數據點 $x$ 透過與權重 $W$ 進行加權總和後得到新的 1 維 representation $y$。這是常有人說神經網路在做<a href="https://arxiv.org/abs/1206.5538">表徵學習（Representation Learning）</a>的原因。</p>
-<p>另外值得一提的是矩陣 $W$ 裡的參數 $w_{mn}$ 實際上對應到 NN 某一層中第 $n$ 個神經元（neuron）連到其下一層中第 $m$ 個神經元的<strong>邊（edge）</strong>。</p>
-<p>而就跟文章開頭看到的程式碼一樣，要使用 TensorFlow 定義這個神經網路也十分容易：</p>
+<p>沒錯，透過矩陣運算，我們剛剛建立了這世上最簡單的 1-Layer 神經網路！而之所以是 1-Layer，原因在於 NN 的第一層為原始數據（raw data），第二層才是我們實際新定義的神經網路（一層 FC）。矩陣運算跟 FC 的對應關係家喻戶曉，但這應該是你第一次看到兩者共舞。</p>
+<p>從<strong>線性代數</strong>的角度來看，我們是透過矩陣運算將二維的 $x$ 轉換成一維的 $y$；而以<strong>神經網路</strong>的角度檢視，我們則是將以二維向量表示（represent）的數據點 $x$ 透過與權重 $W$ 進行加權總和後得到新的一維表徵（representation）$y$。這是常有人說神經網路在做<a href="https://arxiv.org/abs/1206.5538">表徵學習（Representation Learning）</a>的原因。</p>
+<p>另外值得一提的是矩陣 $W$ 裡的每個參數 $w_{mn}$ 實際上就對應到 NN 某一層中第 $n$ 個神經元（neuron）連到其下一層中第 $m$ 個神經元的<strong>邊（edge）</strong>。別擔心，我後面還會有動畫幫助你記憶此對應關係。</p>
+<p>就跟文章開頭看到的一樣，要使用 TensorFlow 定義這個 1-Layer NN 也十分容易：</p>
 </div>
 </div>
 </div>
@@ -554,7 +560,7 @@ f(x) &amp; = W x + b \\
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-<span class="c1"># 將 2 dim 轉成 1 dim</span>
+<span class="c1"># 將 2 維 input  轉成 1 維 output</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> 
                                 <span class="n">use_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                                 <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">)))</span>
@@ -567,11 +573,11 @@ f(x) &amp; = W x + b \\
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Model: "sequential_5"
+<pre>Model: "sequential_6"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
-dense_5 (Dense)              (None, 1)                 2         
+dense_6 (Dense)              (None, 1)                 2         
 =================================================================
 Total params: 2
 Trainable params: 2
@@ -585,7 +591,7 @@ _________________________________________________________________
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>扣除 bias 以後整個神經網路的確只有 2 個參數。為了讓你加深印象，讓我們將數字實際代入 $W$ 與 $x$：</p>
+<p>扣除 bias 以後整個神經網路的確只剩 2 個參數。為了讓你加深印象，讓我們將一些數字代入 $W$ 與 $x$：</p>
 </div>
 </div>
 </div>
@@ -610,19 +616,23 @@ x = \begin{bmatrix} 3 \\ 3 \end{bmatrix}
 <source src="/images/manim/NumberOneByTwoMatrixAndNN.mp4" type="video/mp4"/>
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
+<center>
+                        1 &times; 2 矩陣運算與全連接層 FC 的對應關係（實際數值）
+                        <br/>
 <br/>
+</center>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這邊我刻意讓 $x_{1} = x_{2}$。你可以清楚地看到不同大小的 $w_{mn}$ 可以讓相同的輸入維度 $x_{n}$ 給與輸出值 $y_{m}$ 不同程度的影響力，這也是 $W$ 之所以被稱之為「權重」的原因。</p>
-<p>你現在應該已經了解最基本的矩陣運算還有神經網路的概念，以及兩者之間的緊密關係了。更美妙的是，如果你了解<a href="https://youtu.be/fNk_zzaMoSs">線性代數的本質</a>，就會知道函數 $f(x) = W x + b = y$ 事實定義了兩個簡單轉換來將 2 維的輸入 $x$ 依序轉換成 1 維輸出 $y$：</p>
-<ul>
+<p>這邊我刻意讓 $x_{1} = x_{2} = 3$。你可以清楚地看到不同大小的 $w_{mn}$ 可以讓不同維度，但是相同值的 $x_{n}$ 給與最終輸出 $y_{m}$ 不同程度（權重）的影響力，這也是 $W$ 之所以被稱之為權重（weights）的原因。</p>
+<p>你現在知道最基本的矩陣運算、神經網路以及兩者之間的緊密關係了。更美妙的是，如果你已經了解<a href="https://youtu.be/fNk_zzaMoSs">線性代數的本質</a>，就會知道函數 $f(x) = W x + b = y$ 事實定義了兩個簡單轉換來將二維的輸入 $x$ 依序轉換成一維輸出 $y$：</p>
+<ol>
 <li>線性轉換：$W$</li>
 <li>位移：$b$</li>
-</ul>
-<p>你可能也已經看過<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84">線性轉換（linear transformation, or linear map）</a>的數學定義：</p>
+</ol>
+<p>你多年前可能也已看過<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84">線性轉換（linear transformation, or linear map）</a>的正式數學定義：</p>
 </div>
 </div>
 </div>
@@ -635,12 +645,12 @@ x = \begin{bmatrix} 3 \\ 3 \end{bmatrix}
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這是所有線性轉換都具備的<a href="https://en.wikipedia.org/wiki/Additive_map">可加性（additivity）</a>與<a href="https://zh.wikipedia.org/wiki/%E9%BD%90%E6%AC%A1%E5%87%BD%E6%95%B0">齊次性質（homogeneity）</a>。不過別擔心，在本文裡你不需了解這些定義也能直觀地理解線性轉換。用比較不嚴謹的說法，線性轉換會將一個向量空間（vector space）<strong>旋轉</strong>或<strong>伸縮</strong>（或是兩者皆做），但不會扭曲該空間。</p>
-<p>要直觀瞭解這個概念，讓我們再次將幾個數字代入 $f(x)$ 裡頭：</p>
+<p>這是所有線性轉換都具備的<a href="https://en.wikipedia.org/wiki/Additive_map">可加性（additivity）</a>與<a href="https://zh.wikipedia.org/wiki/%E9%BD%90%E6%AC%A1%E5%87%BD%E6%95%B0">齊次性質（homogeneity）</a>。不過別擔心，在本文裡你不需了解這些定義也能直觀地理解線性轉換。用比較不嚴謹的說法，線性轉換會對其作用的向量空間（vector space）做<strong>旋轉</strong>、<strong>伸縮</strong>等「簡單」轉換。</p>
+<p>要直觀瞭解這個概念，讓我們再次將幾個數字代入 $f(x)$ 的參數裡頭：</p>
 \begin{align}
 f(x) &amp; = \begin{bmatrix} w_{11} &amp; w_{12}  \end{bmatrix} \begin{bmatrix} x_{1} \\ x_{2} \end{bmatrix} + b \\ 
  &amp; = \begin{bmatrix} 1 &amp; 1  \end{bmatrix} \begin{bmatrix} x_{1} \\ x_{2} \end{bmatrix} + (-2) 
-\end{align}<p>這次假設 $w_{11} = w_{12} = 1, b = -2$。另外別忘了我們前面說過的，這個 $f(x)$ 實際上也對應到一個 1-Layer NN。我們可以看看這個神經網路會怎麼轉換 2 維空間裡頭的 $x$：</p>
+\end{align}<p>這次假設 $w_{11} = w_{12} = 1, b = -2$。另外別忘了我們剛學的，這個函數 $f(x)$ 可以被表示成到一個特定的 1-Layer NN。我們可以觀察這個 NN（即 $f(x)$）如何轉換二維空間裡頭的 $x$：</p>
 </div>
 </div>
 </div>
@@ -650,91 +660,72 @@ f(x) &amp; = \begin{bmatrix} w_{11} &amp; w_{12}  \end{bmatrix} \begin{bmatrix} 
 <source src="/images/manim/ApplyMatrixAsSingleLinearTransformation.mp4" type="video/mp4"/>
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
+<center>
+                        利用 1-Layer NN 將二維輸入轉換成一維輸出
+                        <br/>
 <br/>
+</center>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這個 NN 做的轉換非常地簡單，但是隱含不少前面提過的重要概念。</p>
-<p>首先，以<strong>神經網路</strong>的角度而言，此 2 維向量空間裡頭的任一數據點 $ x = \left (x_{coord}, y_{coord}  \right )$ 都對應到左上 NN 第一層（輸入層）中的兩個神經元。權重 $W$ 則以<strong>邊</strong>的方式呈現，負責將第一層 2 神經元的值透過不同比重<strong>送去啟動</strong>（activate）下一層的神經元。此例則因 $w_{1} = w_{2} = 1$ 所以 $x_{1}$ 跟 $x_{2}$ 的值對 $y$ 的值的影響相同。接著 NN 只要再將 $y$ 加上純量 $b$ 即完成轉換。</p>
-<p>以<strong>線性代數</strong>的視角來看，矩陣 $W$ 則定義了一個線性轉換，此轉換說明了原向量空間 $V_{original}$ 裡的 2 個基底向量 $\vec{i}$、$\vec{j}$ 在<strong>轉換後</strong>的空間 $V_{transformed}$ 裡頭的位置。我們透過 $W = [1, 1]$ 將 y 軸的 $\vec{j}$ 放到 $V_{transformed}$（跟 x 軸重疊的數線）裡跟 $\vec{i}$ 一樣的位置（$w_{12} = 1$）；而原 x 軸上的 $\vec{i}$ 則保持在原位（$w_{11} = 1$）。</p>
-<p>為了讓轉換過後的 $\vec{j}$ 在對的位置，y 軸順時針旋轉了 90 度。你也能看到原 2 維空間裡頭的每個數據點 $x$ 都跟著 $\vec{j}$ 一起被轉換成 1 維數線（Number line）上的一個值，而不再是 2 維的座標。透過 $W$ 被轉換到一維空間以後，該數線上的每個數據點只要再被加上純量 $b$ 就完成兩步驟的轉換。</p>
-<p>這邊的重點是，<strong>神經網路</strong>與<strong>線性代數</strong>雖然看似風馬牛不相及，實際上兩者做的是同件事情：利用 $f(x)$ 將輸入 $x$ 進行一系列幾何轉換後輸出 $y$。到此為止，你應該已能瞭解為何<a href="https://demo.leemeng.tw/#%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%EF%BC%9A%E4%B8%80%E5%80%8B%E6%98%A0%E5%B0%84%E5%87%BD%E6%95%B8">我曾說過神經網路是個映射函數的理由了</a>。</p>
+<p>這個 NN 做的轉換十分簡單，但是隱含了不少重要概念。</p>
+<p>首先，以<strong>神經網路</strong>的角度解讀 $f(x)$ 的話，此二維向量空間裡頭的任一數據點 $ x = \left (x_{coord}, y_{coord}  \right )$ 都對應到左上 NN 第一層（輸入層）中的 2 個神經元。權重 $W$ 則以<strong>邊</strong>的方式呈現，負責將第一層中 2 個神經元的值依照不同比重<strong>送去啟動</strong>（activate）下一層的神經元。啟動下層的神經元以後，NN 只要再將純量 $b$ 加到該神經元即完成此 layer 的轉換。</p>
+<p>以<strong>線性代數</strong>的視角檢視 $f(x)$ 的話，裡頭的矩陣 $W$ 則定義了一個線性轉換。此轉換說明了原向量空間 $V_{original}$ 裡的 2 個基底向量 $\vec{i}$、$\vec{j}$ 在<strong>轉換後</strong>的一維空間 $V_{transformed}$ 中的位置。$w_{11} = 1$ 讓原 x 軸上的 $\vec{i}$ 保持在「原位」；$w_{12} = 1$ 則將 $\vec{j}$ 放到 $V_{transformed}$裡與 $\vec{i}$ 一樣的位置。此例中 $V_{transformed}$ 是一個跟 x 軸重疊的一維數線（Number line）。</p>
+<p>為了讓轉換過後的 $\vec{j}$ 能在指定的位置，y 軸順時針旋轉並壓縮到了 x 軸上。你也能看到原二維空間裡頭的每個數據點 $x$ 都跟著 $\vec{j}$ 一起被轉換成一維數線上的一個值，而不再是二維座標。透過 $W$ 被轉換到一維空間以後，該數線上的每個數據點只要再被加上偏差 $b$ 就完成兩步驟的轉換。</p>
+<p>這邊最重要的啟示是，你可以用<strong>神經網路</strong>或是<strong>線性代數</strong>的角度來解讀 $f(x)$ 的作用，但兩者殊途同歸：利用 $f(x)$ 將原始數據 $x$ 進行一系列幾何轉換後輸出理想的 $y$。這也是為何<a href="https://demo.leemeng.tw/#%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%EF%BC%9A%E4%B8%80%E5%80%8B%E6%98%A0%E5%B0%84%E5%87%BD%E6%95%B8">我們說神經網路本質上是一個映射函數</a>的原因。</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="能夠解決二元分類的神經網路長得是什麼模樣？">能夠解決二元分類的神經網路長得是什麼模樣？<a class="anchor-link" href="#能夠解決二元分類的神經網路長得是什麼模樣？">&para;</a></h2>
+<h2 id="怎樣的神經網路才是好的分類器？">怎樣的神經網路才是好的分類器？<a class="anchor-link" href="#怎樣的神經網路才是好的分類器？">&para;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>我們在上一節看到，一個 1-Layer 神經網路可以透過一個全連接層（線性轉換 $W$ + 位移 $b$）將 2 維輸入 $x$ 轉換到一維輸出 $y$。但你剛剛應該也已經注意到，轉換後的 $y$ 實在不是什麼好的分類結果：</p>
+<p>我們剛剛看到，1-Layer NN 可以透過一個 FC（線性轉換 $W$ + 位移 $b$）將二維輸入 $x$ 轉換成一維輸出 $y$。不過由於我們剛剛是隨意設定參數 $W$ 及 $b$，如果以分類器（classifier）的標準去評價該 NN 的話，其表現實在是令人不敢恭維。</p>
+<p>讓我們快速回顧一下剛剛的 NN 做了怎樣的轉換，並計算分類準確率：</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html">
-<source src="{filename}manim/ApplyMatrixAsSingleLinearTransformationAndShowAccuracy.mp4" type="video/mp4"/>
+<source src="/images/manim/ApplyMatrixAsSingleLinearTransformationAndShowAccuracy.mp4" type="video/mp4"/>
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
+<center>
+                        用 1-Layer NN 做二元分類（參數隨意設定）
+                        <br/>
 <br/>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
+</center>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>你的時間寶貴，因此我事先將本文的精華都濃縮在底下這個 1 分鐘的短片了。此影片展示了一個簡單神經網路解決二分類任務的<strong>完整過程</strong>。我等等會更仔細地說明影片內容，但現在請你馬上點擊播放鍵觀看吧！</p>
+<p>我盡量讓所有動畫 speak for themselves，但希望你不介意我再嘮叨一下。</p>
+<p>我們一樣透過 $f(x)$ 將兩組分別以黃色及藍色表示的二維數據點 $x$ 轉成一維的 $y$。接著，我們能輕易地找出一個 $y$ 值（此例中 $y = 1$），畫條垂直線將兩組轉換後的輸出 $y$ 分開。這條分類界線（classification boundary）能使我們分對最多的 $x$。</p>
+<p>我們可以用此分界線定出一個分類規則：任何數據點 $x$ 只要它的 $f(x) = y$ 在這條線的左邊，我們就預測其來自黃色曲線，反之則為藍色曲線。很明顯的，黃色在此界線的左側則是因其標籤值（label）比藍色的小。</p>
+<p>溫馨提醒，這是我們剛剛用來轉換 $x$ 的神經網路 $f(x)$：</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<video controls="" muted="" playsinline="" poster="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html">
-<source src="/images/manim/TwoLayersReLUInBetweenSolveHardTwoCurves.mp4" type="video/mp4"/>
-                    您的瀏覽器不支援影片標籤，請留言通知我：S
-                </video>
-<br/>
+\begin{align}
+f(x) &amp; = \begin{bmatrix} w_{11} &amp; w_{12}  \end{bmatrix} \begin{bmatrix} x_{1} \\ x_{2} \end{bmatrix} + b \\ 
+ &amp; = \begin{bmatrix} 1 &amp; 1  \end{bmatrix} \begin{bmatrix} x_{1} \\ x_{2} \end{bmatrix} + (-2) 
+\end{align}
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>順帶一提，這是一個只有 9 個參數的神經網路，其規模跟現在媒體整天在報導的 A.I. 相比可說是滄海一粟。</p>
+<p>將 $W$ 設為 $[1, 1]$、$b$ 設定為 $-2$ 以後，$f(x)$ 函數對輸入 $x$ 做的轉換不至於錯得離譜，但也就只能把觀測到的 200 個數據點 $x$ 裡頭的 68 個點正確分類，其準確率（accuracy）只有 66%。很明顯的，要透過 $f(x)$ 來解決當前的二元分類任務，我們要問的問題變成：</p>
 </div>
 </div>
 </div>
@@ -742,7 +733,7 @@ f(x) &amp; = \begin{bmatrix} w_{11} &amp; w_{12}  \end{bmatrix} \begin{bmatrix} 
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
-                        但這是我看過最美麗、直觀的神經網路運作。
+                        這組參數的選擇是最佳解嗎？能不能找到一組最好的參數 $W$ 與 $b$，使得 $f(x)$ 最後的分類準確率最大？
                         <br/>
 <br/>
 </p>
@@ -752,26 +743,337 @@ f(x) &amp; = \begin{bmatrix} w_{11} &amp; w_{12}  \end{bmatrix} \begin{bmatrix} 
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>我不知道看影片前的你對神經網路或是線性代數的理解程度，但我相信很多人都能在這短短的一分鐘內（重新）獲得些啟發。如果你願意，我強烈建議你至少再看一次影片並在需要時暫停咀嚼。裡頭有很多十分基本但重要的 NN 概念值得掌握。</p>
-<p>你有再看一遍嗎？讓我幫你把影片裡隱含的重要概念一一列出：</p>
+<p>答案當然是肯定的 Yes，只要適當地運用以下數學概念與技巧就能做到：</p>
 <ul>
-<li>神經網路是將輸入（維度）做一連串簡單轉換，最後得到理想輸出（維度）的函式</li>
-<li>最基本且常見的神經網路是「層」為單位，每一層的矩陣相乘事實上都在做線性轉換</li>
-<li>線性轉換基本上就是對輸入空間的數據做旋轉、縮放、延伸等轉換</li>
-<li>層跟層之間常會透過非線性轉換函式來提升神經網路整體的轉換能力</li>
-<li>神經網路也常被視為是在做 representation learning，因為每一層的轉換都將該層輸入的數據轉換成更適合達到任務目標的形式</li>
-<li>透過對輸入數據做一連串適當的</li>
-<li>針對某些任務，特定的神經網路架構有其能力極限，我們透過學習從該架構中找出一組參數，讓神經網路做適合的轉換以完成任務</li>
+<li><a href="https://www.youtube.com/watch?v=WUvTyaaNkzM&amp;list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr">微積分（Calculus）</a></li>
+<li><a href="https://youtu.be/IHZwWFHWa-w?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi">梯度下降（Gradient Descent）</a></li>
+<li><a href="https://www.youtube.com/watch?v=Ilg3gGewQ5U&amp;list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&amp;index=3">反向傳播演算法（Back Propagation）</a></li>
 </ul>
-<p>很多東西你可能都知道了，人類是視覺動物，</p>
+<p>這也是深度學習核心之一的<strong>學習</strong>過程。在此例的 $f(x)$ 裡頭，其參數 $W$ 與 $b$ 的實際數值會在模型的訓練（training）過程中不斷地被修正以提升分類準確率，所以一般會被稱作可訓練的參數 $\theta$。事實上，我們前面定義 $f(x)$ 時，並不只是定義一個特定的函數，而是一整個函數空間 $f_{\theta}(x)$。此空間裡頭的每個函數雖然<strong>架構</strong>上都是先對 $x$ 做線性轉換再進行位移，但因其參數值 $\theta$ 皆有所不同，實際上做的轉換也就有所差異。這也就意味著：</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="結論">結論<a class="anchor-link" href="#結論">&para;</a></h2><ul>
+<blockquote>
+<p>
+                        我們可以透過矩陣運算的形式定義一個神經網路架構 $f_{\theta}(x)$，再透過微積分與反向傳播等方式，求得此架構裡能最能有效解決任務的參數 $\theta$。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這是為何常有人會跟你說要學好<a href="https://leemeng.tw/deep-learning-resources.html">深度學習</a>，應該掌握好<a href="https://www.youtube.com/watch?v=fNk_zzaMoSs&amp;list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">線性代數</a>以及<a href="https://www.youtube.com/watch?v=WUvTyaaNkzM&amp;list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr">微積分</a>的原因。前者讓你定義出一個具有解決複雜問題「潛力」的數據轉換架構（神經網路），後者則讓你實際找出每個轉換步驟所需的細節（參數權重）。當然，就算你完全不懂後者，深度學習框架也能幫你搞定一切：</p>
+<div class="highlight"><pre><span></span><span class="c1"># 文章開頭的 MNIST 範例程式碼片段</span>
+<span class="c1"># 定義一個能夠解決問題的模型架構</span>
+<span class="n">model</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># 設置學習實際參數所需的東西：損失函數、optimizer</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s1">'sparse_categorical_crossentropy'</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+
+<span class="c1"># 訓練模型，取得最好的參數 theta</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># 打完收工</span>
+</pre></div>
+<p>不幸的是，深度學習框架的方便也成為很多人不明就裡的原因之一。</p>
+<p>如本文開頭所述，我的目標是讓你可以透過線性代數來直觀地了解<strong>已訓練好</strong>的 NN 如何轉換數據並達成任務目標。因此底下展示的都是我先幫你訓練好的 NN（即我們已經知道最好的 $\theta$ 為何）。你在閱讀本文後可以參考 reference，深入了解如何實際訓練一個 NN，找出一組好的 $\theta$。</p>
+<p>事不宜遲，讓我們馬上看看一個訓練好的 1-Layer NN 能把這個二元分類任務做到多好：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html">
+<source src="/images/manim/SingleW1SolveLinearSeparableScene.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        完美分類兩曲線的 1-Layer NN
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>簡單而完美。事實證明，只要使用對的參數 $\theta$，用矩陣形式定義的這個 1-Layer NN 能夠完美地將這兩條曲線分開。另外，如果你再稍微仔細觀察最初的雙曲線並結合前面談到的矩陣概念，就會發現 $W$ 這個線性轉換是非常有意思的：</p>
+\begin{align}
+W &amp; = \begin{bmatrix} w_{11} &amp; w_{12}  \end{bmatrix} \\
+&amp; = \begin{bmatrix} 0.01 &amp; 1.67  \end{bmatrix}
+\end{align}
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你可以用底下動畫再次觀察轉換前的二維向量空間。</p>
+<p>你會發現黃藍雙曲線本身雖然看似複雜，事實上只要用一條幾乎跟 x 軸重疊的<strong>水平線</strong>就能將兩者切開。這也就意味著二維數據點 $x = \left (x_{coord}, y_{coord}  \right )$ 裡頭的第一個維度 $x_{coord}$ 幾乎不會影響<strong>分類</strong>兩曲線的決策。此 NN 學會將 $w_{11}$ 設成一個很小的值 $0.01$，讓原空間中 x 軸上的值都壓縮到幾乎等於 0。檢視動畫左上的 NN 示意圖，你會發現代表 $w_{11}$ 的<strong>第一條邊</strong>幾乎沒有將輸入層中第一個神經元的值傳給輸出神經元。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html">
+<source src="/images/manim/ShowLinearSeparableDataPoints.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        方便你對照，這邊再次展示轉換前的黃藍雙曲線
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>而因為一個數據點的第二個維度 $y_{coord}$ 才是用來判斷其所屬類別的重要信號，且理想上轉換後的藍點 $y$ 要大於黃點的 $y$，因此此 NN 將 $w_{12}$ 設為一個相對大的正值，將原空間 $V_{original}$ 的 y 軸順時針旋轉。很有意思，對吧？你可以把矩陣 $W$ 裡頭的值換掉，並測試看看自己是否能在腦海中想像其對應的線性轉換過程。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="由淺入深：解決看似不可能的分類任務">由淺入深：解決看似不可能的分類任務<a class="anchor-link" href="#由淺入深：解決看似不可能的分類任務">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果有反覆觀看前面動畫並動腦思考，我相信你現在已經能夠直觀地理解並想像一個 1-Layer NN 是怎麼解決二元分類問題的。這是一個很不錯的開始。在這小節，我想提升分類任務的難度，讓你再多點對神經網路的直觀感受。</p>
+<p>比方說我們可以將剛剛 1-Layer NN 完美分類的兩條曲線拉「近」點：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html">
+<source src="/images/manim/MakeBinaryClassificationHarder.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        提升分類任務的「遊戲難度」：讓兩條曲線靠得更近點
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>很明顯地，你現在已經無法找到一條平行線來將兩者切開了。相較於我們前面看過的雙曲線，現在這兩條曲線靠得更近，也讓神經網路更難將它們裡頭的數據點切開了。讓我把這個新的資料集稱作困難雙曲線。</p>
+<p>因為我們前面看過的 1-Layer NN 只透過 FC 做一組簡單的線性轉換與位移，我並不認為它能在困難雙曲線上得到多好的結果。不過眼見為憑，還是讓我們看一下 1-Layer NN 在困難雙曲線上的表現：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html">
+<source src="/images/manim/OneLinearLayerSolveHardTwoCurves.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        「刁難」1-Layer NN：讓它處理更難的分類問題
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>不需特別計算準確率，你應該一眼就能看出 1-layer NN 在這資料集上實在是有點力不從心。兩條曲線在被轉換之後仍然有非常多的重疊部分。換句話說，此 NN 做的（線性）轉換並無法將兩個不同類別的數據點 $x$ <strong>完全</strong>分開。</p>
+<p>而這現象也很容易理解。這個 NN 就是透過參數 $W$ 對<strong>整個</strong>二維空間做一致的旋轉與伸縮，無法將兩條緊靠的雙曲線拉扯開來是意料中事。不過別擔心，深度學習領域裡的人最愛玩疊疊樂了。讓我們多疊一層全連接層（FC），看看新的 2-Layers NN 如何處理這個問題：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html">
+<source src="/images/manim/TwoLinearLayersSolveHardTwoCurves.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        2-Layers NN 解決困難雙曲線分類問題的過程
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這個 2-Layers NN 讓你失望了嗎？還是如你預期？在檢討這個 NN 的分類表現之前，讓我先說明些基本概念。</p>
+<p>雖然這是本文第一次展示 2-Layers NN，動畫應該已經把所有東西都交代得很清楚了。一個 FC 就對應到一組矩陣 $W$ 以及偏差 $b$，因此一個有兩層 FC 的神經網路 $g(x)$ 實際上就是對 $x$ 做兩次矩陣運算：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+\begin{align}
+g(x) &amp; = W_{2}(W_{1} x + b_{1}) + b_{2}
+\end{align}
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這邊 $W_{i}$ 與 $b_{i}$ 分別代表第 $i$ 個 FC 的權重矩陣與偏差。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+\begin{align}
+\text{1-Layer NN} = f(x) &amp; = W x + b
+\end{align}
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>2-Layers NN 裡頭的矩陣 $W_{1}$ 跟 1-Layer NN 裡頭的矩陣 $W$ 都代表著第一個 FC 做的線性轉換。但跟 1-Layer NN 不同的地方在於，$W_{1}$ 並不是直接把原始數據點 $x$ 轉換成一維的 $y$，而是先將 $x$ 轉到另個形式的二維表徵 $h$，接著再讓下一層 FC 將 $h$ 轉換至一維的 $y$。像是這種只存在輸入與輸出之間的表徵一般被稱作隱藏表徵（hidden representation），而生成這些表徵的 FC 層自然就被稱作隱藏層（hidden layer）。</p>
+<p>而建構這種數據轉換架構的背後精神就是<a href="https://arxiv.org/abs/1206.5538">表徵學習（Representation Learning）</a>：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        透過對輸入 $x$ 做一連串簡單的幾何轉換，將此原始表徵 $x$ 逐漸轉換成能夠用來解決我們問題的隱藏表徵 $h$，最後輸出成目標結果 $y$。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>雖然這邊的 2-Layers NN 表現不佳，但這概念可是你在剛接觸深度學習時值得畫上三顆星的重點之一。</p>
+<p>回到剛剛的 2 &times; 2 的 $W_{1}$ 矩陣。跟之前 1 &times; 2 矩陣一樣，這次讓我們看看 $W_{1}$ 跟 FC 之間的關係：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html">
+<source src="/images/manim/SymbolicTwoByTwoMatrixAndNN.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        2 &times; 2 矩陣 $W_{1}$ 的運算與全連接層 FC 之間的關係
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你可能注意到矩陣 $W_{1}$ 裡頭每一行（column）顏色皆不相同。</p>
+<p>矩陣 $W_{1}$ 定義了一個線性轉換，而裡頭的每個 column 則定義了原空間 $V_{original}$ 中的各個基底向量在新空間 $V_{transformed}$ 中的位置。而以神經網路的角度來看，矩陣 $W_{1}$ 中的每一行則對應到某個神經元連到下一層所有神經元的權重值。</p>
+<p>另外值得一提的是，FC 跟矩陣的緊密關係事實上這也部分解釋了神經網路常以一層層（Layers）形式出現的原因。雖然這邊的 NN 只有兩層，在深度學習領域裡我們時常會想對原始數據 $x$ 幾十、幾百次的轉換，且由一連串矩陣組成的運算非常容易平行化，因此在建立深度神經網路（Deep Neural Network）時，疊很多以矩陣運算為基礎的 Layers 是一個非常主流的做法。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html">
+<source src="/images/manim/ShowNonLinearFunctions.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        線性整流函數 ReLU 可以讓神經網路對數據做更複雜的轉換
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>至於為何剛剛的 2-Layers NN 無法解決困難雙曲線？</p>
+<p>在了解矩陣運算以及線性轉換以後，一切都變得很容易解釋。結合前面所學：</p>
+<ul>
+<li>一層 FC 對應到一矩陣運算（加偏差）</li>
+<li>一個權重矩陣對應到一個線性轉換</li>
+<li>一個線性轉換會對作用空間做旋轉伸縮</li>
+</ul>
+<p>可以得知我們的 2-Layers NN $g(x)$ 事實上就是對原空間裡頭的數據點 $x$ 做重複兩次的旋轉與伸縮（當然，動畫已經告訴我們這件事情了）。很直觀地，不管神經網路做幾次這樣的轉換，最後的效果都可以被<strong>單一</strong>線性轉換取代。換句話說，連續多做幾次線性轉換是對困難雙曲線做比單一線性轉換更複雜的事情的。你可以拉回去看看 2-Layers NN 是如何「瞎忙」。</p>
+<p>解法也很直覺。我們可以找一個非線性函數如 <a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0">ReLU</a> 當作 FC 層的激勵函數（activation function），讓 FC 層跟層之間有非線性的轉換，讓神經網路掌握超越線性轉換的能力。</p>
+<p>以下就是 2-Layers NN 使用 ReLU 做為激勵函數的效果：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html">
+<source src="/images/manim/TwoLayersReLUInBetweenSolveHardTwoCurves.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這個轉換過程超美的，不是嗎？這個神經網路只有 9 個參數，卻是我看過最美麗的神經網路之一。</p>
+<p>透過線性轉換與非線性轉換的交替使用，升級後的 2-Layers NN $h(x)$ 成功地將困難雙曲線任務解開，辦到前一代 $g(x)$ 做不到的事情，而兩者只差在一個 ReLU 函數：</p>
+\begin{align}
+g(x) &amp; = W_{2}(W_{1} x + b_{1}) + b_{2} \\
+h(x) &amp; = W_{2} relu(W_{1} x + b_{1}) + b_{2}
+\end{align}<p>再次提醒，激勵函數 $a(z) = relu(z)$ 一般是被<strong>各別</strong>套用到在計算完 $W(x) + b = z$ 的神經元之上，不需做矩陣運算。在深度學習領域裡，使用非線性函數來提升神經網路的處理能力是件稀鬆平常的事。除了常用的 ReLU 之外，其他知名的函數包含了 <a href="https://en.wikipedia.org/wiki/Sigmoid_function">Sigmoid</a>、<a href="https://zh-yue.wikipedia.org/wiki/%E9%9B%99%E6%9B%B2%E5%87%BD%E6%95%B8">Tanh</a> 以及 <a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0">Leaky ReLU</a> 等等。</p>
+<p>到此為止，你已經了解非線性函數之於神經網路的重要性了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="結語：往下一站出發">結語：往下一站出發<a class="anchor-link" href="#結語：往下一站出發">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="/the-essence-of-neural-network-better-understanding-of-nn-and-linear-algebra.html">
+<source src="/images/manim/RandomMatrixNeuralNetworkMapping.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="TODO">TODO<a class="anchor-link" href="#TODO">&para;</a></h2><ul>
+<li>conclusion<ul>
+<li>架構有其極限，這是為何有些 NN 特別適合解某些問題</li>
 <li>下一代</li>
 <li>我們在 dl resource 說過神經網路是一連串的幾何轉換</li>
+<li>LA 與 NN 的交響樂</li>
+<li>在一片 AI Hype 裡頭，AI 教育</li>
+<li>show m x n &lt;-&gt; NN visual mapping</li>
+<li>底下則是 tensorflow code</li>
+</ul>
+</li>
+</ul>
+<h2 id="nice-to-have">nice to have<a class="anchor-link" href="#nice-to-have">&para;</a></h2><ul>
+<li>將開頭的 MNIST animate</li>
+<li>將一些動畫不必要的部份加速</li>
 </ul>
 </div>
 </div>
@@ -811,8 +1113,9 @@ f(x) &amp; = \begin{bmatrix} w_{11} &amp; w_{12}  \end{bmatrix} \begin{bmatrix} 
                     <span>Post Tags</span>
 
                     <span class="blog-content__tag-list">
+                        <a href="/tag/shen-du-xue-xi.html" rel="tag">深度學習</a>
                         <a href="/tag/manim.html" rel="tag">Manim</a>
-                        <a href="/tag/python.html" rel="tag">Python</a>
+                        <a href="/tag/tensorflow.html" rel="tag">TensorFlow</a>
                     </span>
 
                 </p>
