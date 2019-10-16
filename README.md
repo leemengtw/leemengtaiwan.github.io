@@ -92,6 +92,18 @@ ghp-import output -b master -m "Commit Message Here"
 git push origin master
 ```
 
+## 追加 project 步驟
+- 修改 `pelicanconf.py`
+
+
+## 找書的圖片
+- [Rakuten Kobo](https://www.kobo.com/tw/zh/ebook/relr-70c5diu4fjbpvtpfg) 
+- 把圖片中跟 size 相關的 path 刪掉即可得到原圖，再裁剪成 700 * 1000
+- ex:
+    - https://kbimages1-a.akamaihd.net/55fbde1d-55df-489e-b25f-1edd95814662/353/569/90/False/ReLr-70c5DiU4fJBPvTPFg.jpg
+    - https://kbimages1-a.akamaihd.net/55fbde1d-55df-489e-b25f-1edd95814662/ReLr-70c5DiU4fJBPvTPFg.jpg
+
+
 ## 文章內容
 
 Meta Cell template
