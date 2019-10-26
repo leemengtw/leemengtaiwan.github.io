@@ -171,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-07-10 (Wed)</li>
                         <li class="page-view">
-                            13,120 views
+                            13,512 views
                         </li>
                     </ul>
 
@@ -1890,10 +1890,10 @@ classification acc: 0.21875
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 
 <span class="c1"># 使用 Adam Optim 更新整個分類模型的參數</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1.0e-2</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
 
 
-<span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">60</span>  <span class="c1"># 幸運數字</span>
+<span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># 幸運數字</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">EPOCHS</span><span class="p">):</span>
     
     <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
