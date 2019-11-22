@@ -171,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-07-10 (Wed)</li>
                         <li class="page-view">
-                            17,799 views
+                            17,987 views
                         </li>
                     </ul>
 
@@ -490,7 +490,7 @@ pip install transformers tqdm boto3 requests regex -q
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>PyTorch 版本： 1.2.0
+<pre>PyTorch 版本： 1.3.1
 </pre>
 </div>
 </div>
@@ -578,16 +578,16 @@ pip install transformers tqdm boto3 requests regex -q
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>token               index          
 -------------------------
-未                    3313
-哭                    1526
-adsl                13080
-##暱                 16330
-秀                    4899
-##旮                 16253
-##さん                10874
-##洗                 16876
-##篝                 18125
-##婊                 15097
+##int                9824
+孤                    2109
+##肆                 18544
+##既                 16245
+min                  9573
+##琮                 17486
+coco                 8770
+恚                    2611
+privacy              8677
+##炯                 17210
 </pre>
 </div>
 </div>
@@ -1001,7 +1001,7 @@ Top 3 ( 2%)：['[CLS]', '等', '到', '潮', '水', '過', '了', '，', '就', 
 <div class="output">
 <div class="output_area">
 <div class="output_text output_subarea output_execute_result">
-<pre>['test.csv.zip', 'train.csv.zip']</pre>
+<pre>['train.csv.zip', 'test.csv.zip']</pre>
 </div>
 </div>
 </div>
@@ -1707,6 +1707,7 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
   "num_labels": 3,
   "output_attentions": false,
   "output_hidden_states": false,
+  "output_past": true,
   "pooler_fc_size": 768,
   "pooler_num_attention_heads": 12,
   "pooler_num_fc_layers": 3,
@@ -1759,14 +1760,17 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
 <span class="sd">定義一個可以針對特定 DataLoader 取得模型預測結果以及分類準確度的函式</span>
 <span class="sd">之後也可以用來生成上傳到 Kaggle 競賽的預測結果</span>
+
+<span class="sd">2019/11/22 更新：在將 `tokens`、`segments_tensors` 等 tensors</span>
+<span class="sd">丟入模型時，強力建議指定每個 tensor 對應的參數名稱，以避免 HuggingFace</span>
+<span class="sd">更新 repo 程式碼並改變參數順序時影響到我們的結果。</span>
 <span class="sd">"""</span>
 
 <span class="k">def</span> <span class="nf">get_predictions</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">compute_acc</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">predictions</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
-    
-    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>  <span class="c1"># 推論模式</span>
+      
     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
         <span class="c1"># 遍巡整個資料集</span>
         <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
@@ -1774,9 +1778,14 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
             <span class="k">if</span> <span class="nb">next</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="o">.</span><span class="n">is_cuda</span><span class="p">:</span>
                 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda:0"</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
             
-            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
             
             <span class="c1"># 別忘記前 3 個 tensors 分別為 tokens, segments 以及 masks</span>
+            <span class="c1"># 且強烈建議在將這些 tensors 丟入 `model` 時指定對應的參數名稱</span>
+            <span class="n">tokens_tensors</span><span class="p">,</span> <span class="n">segments_tensors</span><span class="p">,</span> <span class="n">masks_tensors</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">tokens_tensors</span><span class="p">,</span> 
+                            <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">,</span> 
+                            <span class="n">attention_mask</span><span class="o">=</span><span class="n">masks_tensors</span><span class="p">)</span>
+            
             <span class="n">logits</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">_</span><span class="p">,</span> <span class="n">pred</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
             
@@ -1791,8 +1800,6 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
                 <span class="n">predictions</span> <span class="o">=</span> <span class="n">pred</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">predictions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">predictions</span><span class="p">,</span> <span class="n">pred</span><span class="p">))</span>
-            
-            <span class="k">break</span>
     
     <span class="k">if</span> <span class="n">compute_acc</span><span class="p">:</span>
         <span class="n">acc</span> <span class="o">=</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
@@ -1814,7 +1821,7 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>device: cuda:0
-classification acc: 0.21875
+classification acc: 0.6789612344749718
 </pre>
 </div>
 </div>
@@ -1886,7 +1893,7 @@ classification acc: 0.21875
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 
-<span class="c1"># train mode</span>
+<span class="c1"># 訓練模式</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 
 <span class="c1"># 使用 Adam Optim 更新整個分類模型的參數</span>
@@ -1910,6 +1917,7 @@ classification acc: 0.21875
                         <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">,</span> 
                         <span class="n">attention_mask</span><span class="o">=</span><span class="n">masks_tensors</span><span class="p">,</span> 
                         <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+
         <span class="n">loss</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="c1"># backward</span>
         <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
@@ -1929,18 +1937,28 @@ classification acc: 0.21875
 </div>
 </div>
 </div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[epoch 1] loss: 26.525, acc: 0.803
+[epoch 2] loss: 18.461, acc: 0.880
+[epoch 3] loss: 13.736, acc: 0.913
+[epoch 4] loss: 11.585, acc: 0.894
+[epoch 5] loss: 9.245, acc: 0.955
+[epoch 6] loss: 5.995, acc: 0.975
+CPU times: user 4min 51s, sys: 3min 3s, total: 7min 54s
+Wall time: 7min 56s
+</pre>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<img src="https://leemeng.tw/images/bert/train_result.jpg" style="mix-blend-mode: initial;"/>
-<br/>
+</div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>哇嗚！我們成功地 Fine-tune BERT 了！</p>
-<p>儘管擁有 1 億參數的分類模型十分巨大，多虧了小訓練集的助攻（？），幾個 epochs 的訓練過程在 5 分鐘內就結束了。從準確率看得出我們的分類模型在非常小量的訓練集的表現已經接近完美，讓我們看看這個模型在真實世界，也就是 Kaggle 競賽上的測試集能得到怎麼樣的成績。</p>
+<p>儘管擁有 1 億參數的分類模型十分巨大，多虧了小訓練集的助攻（？），幾個 epochs 的訓練過程大概在幾分鐘內就結束了。從準確率看得出我們的分類模型在非常小量的訓練集的表現已經十分不錯，接著讓我們看看這個模型在真實世界，也就是 Kaggle 競賽上的測試集能得到怎麼樣的成績。</p>
 </div>
 </div>
 </div>
@@ -1987,8 +2005,8 @@ classification acc: 0.21875
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 1.79 s, sys: 831 ms, total: 2.62 s
-Wall time: 2.62 s
+<pre>CPU times: user 7min 24s, sys: 4min 39s, total: 12min 4s
+Wall time: 12min 4s
 </pre>
 </div>
 </div>
@@ -2085,7 +2103,7 @@ Wall time: 2.62 s
 <span class="n">sentence_b</span> <span class="o">=</span> <span class="s2">"辟谣：一代烟王褚时健安好！"</span>
 
 <span class="n">call_html</span><span class="p">()</span>
-<span class="n">show</span><span class="p">(</span><span class="n">bertviz_model</span><span class="p">,</span> <span class="n">bertviz_tokenizer</span><span class="p">,</span> <span class="n">sentence_a</span><span class="p">,</span> <span class="n">sentence_b</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">bertviz_model</span><span class="p">,</span> <span class="n">model_type</span><span class="p">,</span> <span class="n">bertviz_tokenizer</span><span class="p">,</span> <span class="n">sentence_a</span><span class="p">,</span> <span class="n">sentence_b</span><span class="p">)</span>
 <span class="c1"># 這段程式碼會顯示下圖中右邊的結果</span>
 </pre></div>
 </div>

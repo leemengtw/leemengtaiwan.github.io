@@ -11476,7 +11476,7 @@ pip install transformers tqdm boto3 requests regex -q
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;PyTorch 版本： 1.2.0
+&lt;pre&gt;PyTorch 版本： 1.3.1
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -11564,16 +11564,16 @@ pip install transformers tqdm boto3 requests regex -q
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;token               index          
 -------------------------
-未                    3313
-哭                    1526
-adsl                13080
-##暱                 16330
-秀                    4899
-##旮                 16253
-##さん                10874
-##洗                 16876
-##篝                 18125
-##婊                 15097
+##int                9824
+孤                    2109
+##肆                 18544
+##既                 16245
+min                  9573
+##琮                 17486
+coco                 8770
+恚                    2611
+privacy              8677
+##炯                 17210
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -11987,7 +11987,7 @@ Top 3 ( 2%)：['[CLS]', '等', '到', '潮', '水', '過', '了', '，', '就', 
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;['test.csv.zip', 'train.csv.zip']&lt;/pre&gt;
+&lt;pre&gt;['train.csv.zip', 'test.csv.zip']&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -12693,6 +12693,7 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
   "num_labels": 3,
   "output_attentions": false,
   "output_hidden_states": false,
+  "output_past": true,
   "pooler_fc_size": 768,
   "pooler_num_attention_heads": 12,
   "pooler_num_fc_layers": 3,
@@ -12745,14 +12746,17 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sd"&gt;"""&lt;/span&gt;
 &lt;span class="sd"&gt;定義一個可以針對特定 DataLoader 取得模型預測結果以及分類準確度的函式&lt;/span&gt;
 &lt;span class="sd"&gt;之後也可以用來生成上傳到 Kaggle 競賽的預測結果&lt;/span&gt;
+
+&lt;span class="sd"&gt;2019/11/22 更新：在將 `tokens`、`segments_tensors` 等 tensors&lt;/span&gt;
+&lt;span class="sd"&gt;丟入模型時，強力建議指定每個 tensor 對應的參數名稱，以避免 HuggingFace&lt;/span&gt;
+&lt;span class="sd"&gt;更新 repo 程式碼並改變參數順序時影響到我們的結果。&lt;/span&gt;
 &lt;span class="sd"&gt;"""&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_predictions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dataloader&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;compute_acc&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;predictions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
     &lt;span class="n"&gt;correct&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
     &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
-    
-    &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# 推論模式&lt;/span&gt;
+      
     &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;no_grad&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
         &lt;span class="c1"&gt;# 遍巡整個資料集&lt;/span&gt;
         &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dataloader&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -12760,9 +12764,14 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
             &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parameters&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_cuda&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
                 &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"cuda:0"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
             
-            &lt;span class="n"&gt;outputs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
             
             &lt;span class="c1"&gt;# 別忘記前 3 個 tensors 分別為 tokens, segments 以及 masks&lt;/span&gt;
+            &lt;span class="c1"&gt;# 且強烈建議在將這些 tensors 丟入 `model` 時指定對應的參數名稱&lt;/span&gt;
+            &lt;span class="n"&gt;tokens_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;segments_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;masks_tensors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+            &lt;span class="n"&gt;outputs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;input_ids&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tokens_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                            &lt;span class="n"&gt;token_type_ids&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;segments_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                            &lt;span class="n"&gt;attention_mask&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;masks_tensors&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            
             &lt;span class="n"&gt;logits&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;outputs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
             &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pred&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;logits&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
             
@@ -12777,8 +12786,6 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
                 &lt;span class="n"&gt;predictions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pred&lt;/span&gt;
             &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
                 &lt;span class="n"&gt;predictions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cat&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;predictions&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pred&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-            
-            &lt;span class="k"&gt;break&lt;/span&gt;
     
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;compute_acc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;acc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;correct&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;
@@ -12800,7 +12807,7 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
 &lt;div class="output_area"&gt;
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;device: cuda:0
-classification acc: 0.21875
+classification acc: 0.6789612344749718
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -12872,7 +12879,7 @@ classification acc: 0.21875
 &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%%time&lt;/span&gt;
 
-&lt;span class="c1"&gt;# train mode&lt;/span&gt;
+&lt;span class="c1"&gt;# 訓練模式&lt;/span&gt;
 &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;train&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
 &lt;span class="c1"&gt;# 使用 Adam Optim 更新整個分類模型的參數&lt;/span&gt;
@@ -12896,6 +12903,7 @@ classification acc: 0.21875
                         &lt;span class="n"&gt;token_type_ids&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;segments_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
                         &lt;span class="n"&gt;attention_mask&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;masks_tensors&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
                         &lt;span class="n"&gt;labels&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;labels&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
         &lt;span class="n"&gt;loss&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;outputs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
         &lt;span class="c1"&gt;# backward&lt;/span&gt;
         &lt;span class="n"&gt;loss&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;backward&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -12915,18 +12923,28 @@ classification acc: 0.21875
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;[epoch 1] loss: 26.525, acc: 0.803
+[epoch 2] loss: 18.461, acc: 0.880
+[epoch 3] loss: 13.736, acc: 0.913
+[epoch 4] loss: 11.585, acc: 0.894
+[epoch 5] loss: 9.245, acc: 0.955
+[epoch 6] loss: 5.995, acc: 0.975
+CPU times: user 4min 51s, sys: 3min 3s, total: 7min 54s
+Wall time: 7min 56s
+&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;img src="https://leemeng.tw/images/bert/train_result.jpg" style="mix-blend-mode: initial;"/&gt;
-&lt;br/&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;哇嗚！我們成功地 Fine-tune BERT 了！&lt;/p&gt;
-&lt;p&gt;儘管擁有 1 億參數的分類模型十分巨大，多虧了小訓練集的助攻（？），幾個 epochs 的訓練過程在 5 分鐘內就結束了。從準確率看得出我們的分類模型在非常小量的訓練集的表現已經接近完美，讓我們看看這個模型在真實世界，也就是 Kaggle 競賽上的測試集能得到怎麼樣的成績。&lt;/p&gt;
+&lt;p&gt;儘管擁有 1 億參數的分類模型十分巨大，多虧了小訓練集的助攻（？），幾個 epochs 的訓練過程大概在幾分鐘內就結束了。從準確率看得出我們的分類模型在非常小量的訓練集的表現已經十分不錯，接著讓我們看看這個模型在真實世界，也就是 Kaggle 競賽上的測試集能得到怎麼樣的成績。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -12973,8 +12991,8 @@ classification acc: 0.21875
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;CPU times: user 1.79 s, sys: 831 ms, total: 2.62 s
-Wall time: 2.62 s
+&lt;pre&gt;CPU times: user 7min 24s, sys: 4min 39s, total: 12min 4s
+Wall time: 12min 4s
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -13071,7 +13089,7 @@ Wall time: 2.62 s
 &lt;span class="n"&gt;sentence_b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"辟谣：一代烟王褚时健安好！"&lt;/span&gt;
 
 &lt;span class="n"&gt;call_html&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bertviz_model&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bertviz_tokenizer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sentence_a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sentence_b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bertviz_model&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;model_type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bertviz_tokenizer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sentence_a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sentence_b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="c1"&gt;# 這段程式碼會顯示下圖中右邊的結果&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
