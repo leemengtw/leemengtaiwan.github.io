@@ -9,6 +9,9 @@ def main():
         'googleb61e79b00fce6520.html'
     ]
 
+    if not os.path.exists('output'):
+        os.mkdir('output')
+
     for template in templates:
         copyfile('./{}'.format(template), './output/{}'.format(template))
 
@@ -35,7 +38,7 @@ def main():
 
     # copy deep-learning-resources repo content
     dl_filename = "./content/20190105-deep-learning-resources.md"
-    copyfile('../../personal-repos/deep-learning-resources/README.md', dl_filename)
+    copyfile('../deep-learning-resources/README.md', dl_filename)
     dl_matadata_and_pretext = """Title: 由淺入深的深度學習資源整理
 Date: 2019-01-08 08:00
 Tags: 深度學習, Python, Keras, TensorFlow
@@ -153,7 +156,7 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 
     # process image files
     extensions = ['png', 'jpg', 'gif']
-    source_dir = '../../personal-repos/deep-learning-resources/images'
+    source_dir = '../deep-learning-resources/images'
     destination_dir = './content/images'
     num_files_copied = 0
 

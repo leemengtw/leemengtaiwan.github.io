@@ -99,7 +99,7 @@ MAIL = 'mailto:b9875001@gmail.com'
 
 # enable Pelican to use plugins for additional features
 MARKUP = ('md', 'ipynb')
-PLUGIN_PATHS = ['/Users/meng.lee/git/blog/pelican-plugins']
+PLUGIN_PATHS = ['/Users/meng.lee/Documents/workspace/pelican-plugins']
 PLUGINS = ['pelican-ipynb.markup', 'pelican-toc']
 
 IGNORE_FILES = ['.ipynb_checkpoints']
@@ -149,7 +149,7 @@ DEFAULT_CATEGORY = 'Miscellaneous'
 
 
 # Pelican default theme for dev
-THEME = "/Users/meng.lee/git/blog/pelican-jupyter-notebook/themes/Hola10"
+THEME = "/Users/meng.lee/Documents/workspace/pelican-jupyter-notebook/themes/Hola10"
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search', 'books']
 # DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search']
 # PAGINATED_DIRECT_TEMPLATES = ['index', 'blog', 'books']
@@ -248,7 +248,7 @@ LEFT_NAV_IMAGES = {
     }
 }
 
-
+DELETE_OUTPUT_DIRECTORY = True
 
 # get news feed
 # NEWS_FEEDS = pd.read_csv(PATH + '/additional_content/news-feed/news-feed.csv').fillna('').to_dict('records')
