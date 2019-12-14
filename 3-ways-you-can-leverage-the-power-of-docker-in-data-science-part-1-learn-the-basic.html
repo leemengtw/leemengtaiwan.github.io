@@ -169,7 +169,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-09-08 (Sat)</li>
                         <li class="page-view">
-                            4,156 views
+                            4,174 views
                         </li>
                     </ul>
 
@@ -228,8 +228,7 @@
 
             <div class="col-full blog-content__main">
 
-                
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+                <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>今天我們來聊聊如何將 <a href="https://zh.wikipedia.org/wiki/Docker_(%E8%BB%9F%E9%AB%94)" target="_blank">Docker</a> 應用在資料科學領域裡頭吧！</p>
 <p>全文共分上下 2 篇。在這篇裡頭，我們將透過一些簡單的比喻來直觀地理解何謂 Docker，並讓你能在閱讀本文後馬上利用 Docker 來加速你的開發效率；在下篇的內容當中，我則會分享一個資料科學家（<strong>D</strong>ata <strong>S</strong>cientist：DS）為了解決一些數據問題而時常碰到的 3 種 Docker 使用方式。</p>
@@ -473,7 +472,7 @@
 <p>非常好的一個問題。</p>
 <p>事實上，要產生一個新的 Docker 容器，Docker 需要一份「環境安裝步驟書」來讓它幫我們自動地建置容器內的環境，比方說使用什麼 OS，用什麼版本的 TensorFlow 等等。這份步驟書在 Docker 的世界裡被稱作 <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a>。</p>
 <p>舉個例子，以下是 Tensorflow 官方釋出的一個 <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/docker/Dockerfile">Dockerfile</a>（截錄重要部分）：</p>
-<div class="highlight"><pre><span></span><span class="k">FROM</span><span class="s"> ubuntu:16.04</span>
+<div class="highlight"><pre><span></span><span class="k">FROM</span> <span class="s">ubuntu:16.04</span>
 
 ...
 
@@ -769,7 +768,7 @@ docker run -it -p <span class="m">2468</span>:5000 leemeng/cat
 <p>正因為我們是資料科學家，利用 Docker能幫我們抽象化很多不必要的環境建置工作，加速我們的開發效率。</p>
 <p>在本系列文章的下篇出爐之前，我鼓勵你先<a href="https://www.docker.com/get-started">下載 Docker</a>，並開始在 <a href="https://hub.docker.com/">Docker Hub</a> 或者 Google 搜尋一些你感興趣的映像檔，甚至自己寫一個 Dockerfile 將你目前的專案打包起來跟別人分享。</p>
 <p>雖然我們這篇因為篇幅關係沒有細講，但只要有一個 Dockerfile，你就能使用 <code>docker build</code> 來輕鬆建立一個自給自足的 Docker 映像檔。一個 Dockerfile 也不難寫，像是上面貓咪的 App 的 Dockerfile 也不過就如此幾行：</p>
-<div class="highlight"><pre><span></span><span class="k">FROM</span><span class="s"> python:3.6.3</span>
+<div class="highlight"><pre><span></span><span class="k">FROM</span> <span class="s">python:3.6.3</span>
 <span class="k">MAINTAINER</span><span class="s"> Meng Lee "b98705001@gmail.com"</span>
 <span class="k">COPY</span> ./requirements.txt /app/requirements.txt
 <span class="k">WORKDIR</span><span class="s"> /app</span>

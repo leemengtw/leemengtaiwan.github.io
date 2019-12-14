@@ -178,7 +178,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-06-17 (Mon)</li>
                         <li class="page-view">
-                            9,842 views
+                            9,935 views
                         </li>
                     </ul>
 
@@ -243,8 +243,7 @@
 
             <div class="col-full blog-content__main">
 
-                
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+                <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <style>
    pre {
@@ -728,7 +727,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<video autoplay="" loop="" muted="" playsinline="" poster="{filename}images/transformer/seq2seq-unrolled-no-attention.jpg" style="mix-blend-mode: initial;">
+<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/transformer/seq2seq-unrolled-no-attention.jpg" style="mix-blend-mode: initial;">
 <source src="https://leemeng.tw/images/transformer/seq2seq-unrolled-no-attention.mp4" type="video/mp4"/>
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
@@ -1393,13 +1392,13 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">clear_output</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">clear_output</span>
 </pre></div>
 </div>
 </div>
@@ -1415,7 +1414,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install tensorflow-gpu<span class="o">==</span><span class="m">2</span>.0.0-beta0
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install tensorflow-gpu<span class="o">==</span><span class="m">2</span>.0.0-beta0
 <span class="n">clear_output</span><span class="p">()</span>
 
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
@@ -1446,7 +1445,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">"error"</span><span class="p">)</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1477,7 +1476,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">output_dir</span> <span class="o">=</span> <span class="s2">"nmt"</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">output_dir</span> <span class="o">=</span> <span class="s2">"nmt"</span>
 <span class="n">en_vocab_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s2">"en_vocab"</span><span class="p">)</span>
 <span class="n">zh_vocab_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s2">"zh_vocab"</span><span class="p">)</span>
 <span class="n">checkpoint_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s2">"checkpoints"</span><span class="p">)</span>
@@ -1524,7 +1523,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tmp_builder</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">builder</span><span class="p">(</span><span class="s2">"wmt19_translate/zh-en"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">tmp_builder</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">builder</span><span class="p">(</span><span class="s2">"wmt19_translate/zh-en"</span><span class="p">)</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">tmp_builder</span><span class="o">.</span><span class="n">subsets</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1567,7 +1566,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">translate</span><span class="o">.</span><span class="n">wmt</span><span class="o">.</span><span class="n">WmtConfig</span><span class="p">(</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">translate</span><span class="o">.</span><span class="n">wmt</span><span class="o">.</span><span class="n">WmtConfig</span><span class="p">(</span>
   <span class="n">version</span><span class="o">=</span><span class="n">tfds</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="s1">'0.0.3'</span><span class="p">,</span> <span class="n">experiments</span><span class="o">=</span><span class="p">{</span><span class="n">tfds</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Experiment</span><span class="o">.</span><span class="n">S3</span><span class="p">:</span> <span class="kc">False</span><span class="p">}),</span>
   <span class="n">language_pair</span><span class="o">=</span><span class="p">(</span><span class="s2">"zh"</span><span class="p">,</span> <span class="s2">"en"</span><span class="p">),</span>
   <span class="n">subsets</span><span class="o">=</span><span class="p">{</span>
@@ -1623,7 +1622,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_perc</span> <span class="o">=</span> <span class="mi">20</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_perc</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">val_prec</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">drop_prec</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">train_perc</span> <span class="o">-</span> <span class="n">val_prec</span>
 
@@ -1661,7 +1660,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">examples</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">as_dataset</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="n">split</span><span class="p">,</span> <span class="n">as_supervised</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">examples</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">as_dataset</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="n">split</span><span class="p">,</span> <span class="n">as_supervised</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">train_examples</span><span class="p">,</span> <span class="n">val_examples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">examples</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">train_examples</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">val_examples</span><span class="p">)</span>
@@ -1692,7 +1691,7 @@ From low-cost pharmacy brand moisturizers to high-priced cosmetics brand moistur
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">en</span><span class="p">,</span> <span class="n">zh</span> <span class="ow">in</span> <span class="n">train_examples</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">en</span><span class="p">,</span> <span class="n">zh</span> <span class="ow">in</span> <span class="n">train_examples</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">en</span><span class="p">)</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">zh</span><span class="p">)</span>
   <span class="nb">print</span><span class="p">(</span><span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
@@ -1730,7 +1729,7 @@ tf.Tensor(b'\xe5\x8f\xaa\xe6\x9c\x89\xe5\x9c\xa8\xe5\x8f\x91\xe7\x94\x9f\xe6\xb7
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sample_examples</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sample_examples</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10</span>
 
 <span class="k">for</span> <span class="n">en_t</span><span class="p">,</span> <span class="n">zh_t</span> <span class="ow">in</span> <span class="n">train_examples</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
@@ -1811,10 +1810,10 @@ Managing the rise of NCDs will require long-term thinking, and government leader
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 <span class="k">try</span><span class="p">:</span>
   <span class="n">subword_encoder_en</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">SubwordTextEncoder</span><span class="o">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="n">en_vocab_file</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"載入已建立的字典： </span><span class="si">{en_vocab_file}</span><span class="s2">"</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"載入已建立的字典： </span><span class="si">{en_vocab_file}</span><span class="s2">"</span><span class="p">)</span>
 <span class="k">except</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="s2">"沒有已建立的字典，從頭建立。"</span><span class="p">)</span>
   <span class="n">subword_encoder_en</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">SubwordTextEncoder</span><span class="o">.</span><span class="n">build_from_corpus</span><span class="p">(</span>
@@ -1825,8 +1824,8 @@ Managing the rise of NCDs will require long-term thinking, and government leader
   <span class="n">subword_encoder_en</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">(</span><span class="n">en_vocab_file</span><span class="p">)</span>
   
 
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"字典大小：</span><span class="si">{subword_encoder_en.vocab_size}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"前 10 個 subwords：</span><span class="si">{subword_encoder_en.subwords[:10]}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"字典大小：</span><span class="si">{subword_encoder_en.vocab_size}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"前 10 個 subwords：</span><span class="si">{subword_encoder_en.subwords[:10]}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1875,7 +1874,7 @@ Wall time: 391 ms
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sample_string</span> <span class="o">=</span> <span class="s1">'Taiwan is beautiful.'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sample_string</span> <span class="o">=</span> <span class="s1">'Taiwan is beautiful.'</span>
 <span class="n">indices</span> <span class="o">=</span> <span class="n">subword_encoder_en</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sample_string</span><span class="p">)</span>
 <span class="n">indices</span>
 </pre></div>
@@ -1903,7 +1902,7 @@ Wall time: 391 ms
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0:10}{1:6}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">"Index"</span><span class="p">,</span> <span class="s2">"Subword"</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0:10}{1:6}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">"Index"</span><span class="p">,</span> <span class="s2">"Subword"</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">15</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
   <span class="n">subword</span> <span class="o">=</span> <span class="n">subword_encoder_en</span><span class="o">.</span><span class="n">decode</span><span class="p">([</span><span class="n">idx</span><span class="p">])</span>
@@ -1942,7 +1941,7 @@ Wall time: 391 ms
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sample_string</span> <span class="o">=</span> <span class="s1">'Taiwan is beautiful.'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sample_string</span> <span class="o">=</span> <span class="s1">'Taiwan is beautiful.'</span>
 <span class="n">indices</span> <span class="o">=</span> <span class="n">subword_encoder_en</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sample_string</span><span class="p">)</span>
 <span class="n">decoded_string</span> <span class="o">=</span> <span class="n">subword_encoder_en</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">decoded_string</span> <span class="o">==</span> <span class="n">sample_string</span>
@@ -1972,10 +1971,10 @@ Wall time: 391 ms
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 <span class="k">try</span><span class="p">:</span>
   <span class="n">subword_encoder_zh</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">SubwordTextEncoder</span><span class="o">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="n">zh_vocab_file</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"載入已建立的字典： </span><span class="si">{zh_vocab_file}</span><span class="s2">"</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"載入已建立的字典： </span><span class="si">{zh_vocab_file}</span><span class="s2">"</span><span class="p">)</span>
 <span class="k">except</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="s2">"沒有已建立的字典，從頭建立。"</span><span class="p">)</span>
   <span class="n">subword_encoder_zh</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">SubwordTextEncoder</span><span class="o">.</span><span class="n">build_from_corpus</span><span class="p">(</span>
@@ -1986,8 +1985,8 @@ Wall time: 391 ms
   <span class="c1"># 將字典檔案存下以方便下次 warmstart </span>
   <span class="n">subword_encoder_zh</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">(</span><span class="n">zh_vocab_file</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"字典大小：</span><span class="si">{subword_encoder_zh.vocab_size}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"前 10 個 subwords：</span><span class="si">{subword_encoder_zh.subwords[:10]}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"字典大小：</span><span class="si">{subword_encoder_zh.vocab_size}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"前 10 個 subwords：</span><span class="si">{subword_encoder_zh.subwords[:10]}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2021,7 +2020,7 @@ Wall time: 337 ms
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sample_string</span> <span class="o">=</span> <span class="n">sample_examples</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sample_string</span> <span class="o">=</span> <span class="n">sample_examples</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">indices</span> <span class="o">=</span> <span class="n">subword_encoder_zh</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sample_string</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sample_string</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
@@ -2051,7 +2050,7 @@ Wall time: 337 ms
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">en</span> <span class="o">=</span> <span class="s2">"The eurozone&rsquo;s collapse forces a major realignment of European politics."</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">en</span> <span class="o">=</span> <span class="s2">"The eurozone&rsquo;s collapse forces a major realignment of European politics."</span>
 <span class="n">zh</span> <span class="o">=</span> <span class="s2">"欧元区的瓦解强迫欧洲政治进行一次重大改组。"</span>
 
 <span class="c1"># 將文字轉成為 subword indices</span>
@@ -2117,7 +2116,7 @@ The eurozone&rsquo;s collapse forces a major realignment of European politics.
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">en_t</span><span class="p">,</span> <span class="n">zh_t</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">en_t</span><span class="p">,</span> <span class="n">zh_t</span><span class="p">):</span>
   <span class="c1"># 因為字典的索引從 0 開始，</span>
   <span class="c1"># 我們可以使用 subword_encoder_en.vocab_size 這個值作為 BOS 的索引值</span>
   <span class="c1"># 用 subword_encoder_en.vocab_size + 1 作為 EOS 的索引值</span>
@@ -2144,7 +2143,7 @@ The eurozone&rsquo;s collapse forces a major realignment of European politics.
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">en_t</span><span class="p">,</span> <span class="n">zh_t</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">train_examples</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">en_t</span><span class="p">,</span> <span class="n">zh_t</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">train_examples</span><span class="p">))</span>
 <span class="n">en_indices</span><span class="p">,</span> <span class="n">zh_indices</span> <span class="o">=</span> <span class="n">encode</span><span class="p">(</span><span class="n">en_t</span><span class="p">,</span> <span class="n">zh_t</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'英文 BOS 的 index：'</span><span class="p">,</span> <span class="n">subword_encoder_en</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'英文 EOS 的 index：'</span><span class="p">,</span> <span class="n">subword_encoder_en</span><span class="o">.</span><span class="n">vocab_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
@@ -2211,7 +2210,7 @@ The eurozone&rsquo;s collapse forces a major realignment of European politics.
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">tf_encode</span><span class="p">(</span><span class="n">en_t</span><span class="p">,</span> <span class="n">zh_t</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">tf_encode</span><span class="p">(</span><span class="n">en_t</span><span class="p">,</span> <span class="n">zh_t</span><span class="p">):</span>
   <span class="c1"># 在 `tf_encode` 函式裡頭的 `en_t` 與 `zh_t` 都不是 Eager Tensors</span>
   <span class="c1"># 要到 `tf.py_funtion` 裡頭才是</span>
   <span class="c1"># 另外因為索引都是整數，所以使用 `tf.int64`</span>
@@ -2257,7 +2256,7 @@ tf.Tensor([4201   48  557  116   48   81 4202], shape=(7,), dtype=int64)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">MAX_LENGTH</span> <span class="o">=</span> <span class="mi">40</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">MAX_LENGTH</span> <span class="o">=</span> <span class="mi">40</span>
 
 <span class="k">def</span> <span class="nf">filter_max_length</span><span class="p">(</span><span class="n">en</span><span class="p">,</span> <span class="n">zh</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="n">MAX_LENGTH</span><span class="p">):</span>
   <span class="c1"># en, zh 分別代表英文與中文的索引序列</span>
@@ -2282,8 +2281,8 @@ tf.Tensor([4201   48  557  116   48   81 4202], shape=(7,), dtype=int64)
   <span class="k">assert</span> <span class="n">cond1</span> <span class="ow">and</span> <span class="n">cond2</span>
   <span class="n">num_examples</span> <span class="o">+=</span> <span class="mi">1</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"所有英文與中文序列長度都不超過 {MAX_LENGTH} 個 tokens"</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"訓練資料集裡總共有 {num_examples} 筆數據"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"所有英文與中文序列長度都不超過 </span><span class="si">{MAX_LENGTH}</span><span class="s2"> 個 tokens"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"訓練資料集裡總共有 </span><span class="si">{num_examples}</span><span class="s2"> 筆數據"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2313,7 +2312,7 @@ tf.Tensor([4201   48  557  116   48   81 4202], shape=(7,), dtype=int64)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">64</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">64</span>
 <span class="c1"># 將 batch 裡的所有序列都 pad 到同樣長度</span>
 <span class="n">tmp_dataset</span> <span class="o">=</span> <span class="n">tmp_dataset</span><span class="o">.</span><span class="n">padded_batch</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">padded_shapes</span><span class="o">=</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
 <span class="n">en_batch</span><span class="p">,</span> <span class="n">zh_batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">tmp_dataset</span><span class="p">))</span>
@@ -2375,7 +2374,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">MAX_LENGTH</span> <span class="o">=</span> <span class="mi">40</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">MAX_LENGTH</span> <span class="o">=</span> <span class="mi">40</span>
 <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">128</span>
 <span class="n">BUFFER_SIZE</span> <span class="o">=</span> <span class="mi">15000</span>
 
@@ -2415,7 +2414,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">en_batch</span><span class="p">,</span> <span class="n">zh_batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">en_batch</span><span class="p">,</span> <span class="n">zh_batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"英文索引序列的 batch"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">en_batch</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'-'</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
@@ -2520,7 +2519,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">demo_examples</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">demo_examples</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="s2">"It is important."</span><span class="p">,</span> <span class="s2">"这很重要。"</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">"The numbers speak for themselves."</span><span class="p">,</span> <span class="s2">"数字证明了一切。"</span><span class="p">),</span>
 <span class="p">]</span>
@@ -2551,7 +2550,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">demo_examples</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span>
     <span class="p">[</span><span class="n">en</span> <span class="k">for</span> <span class="n">en</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">demo_examples</span><span class="p">],</span> <span class="p">[</span><span class="n">zh</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">zh</span> <span class="ow">in</span> <span class="n">demo_examples</span><span class="p">]</span>
 <span class="p">))</span>
@@ -2754,7 +2753,7 @@ emb_tar: tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"tar[0]:"</span><span class="p">,</span> <span class="n">tar</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"tar[0]:"</span><span class="p">,</span> <span class="n">tar</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"emb_tar[0]:"</span><span class="p">,</span> <span class="n">emb_tar</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span>
 </pre></div>
@@ -2808,7 +2807,7 @@ emb_tar[0]: tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">create_padding_mask</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">create_padding_mask</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
   <span class="c1"># padding mask 的工作就是把索引序列中為 0 的位置設為 1</span>
   <span class="n">mask</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">mask</span><span class="p">[:,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="c1">#　broadcasting</span>
@@ -2844,7 +2843,7 @@ array([[[[0., 0., 0., 0., 0., 0., 1., 1.]]],
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"inp:"</span><span class="p">,</span> <span class="n">inp</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"inp:"</span><span class="p">,</span> <span class="n">inp</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"tf.squeeze(inp_mask):"</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">inp_mask</span><span class="p">))</span>
 </pre></div>
@@ -2953,7 +2952,7 @@ tf.squeeze(inp_mask): tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 設定一個 seed 確保我們每次都拿到一樣的隨機結果</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 設定一個 seed 確保我們每次都拿到一樣的隨機結果</span>
 <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">9527</span><span class="p">)</span>
 
 <span class="c1"># 自注意力機制：查詢 `q` 跟鍵值 `k` 都是 `emb_inp`</span>
@@ -3019,7 +3018,7 @@ array([[[1., 0., 0., 0.],
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">scaled_dot_product_attention</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">scaled_dot_product_attention</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
   <span class="sd">"""Calculate the attention weights.</span>
 <span class="sd">  q, k, v must have matching leading dimensions.</span>
 <span class="sd">  k, v must have matching penultimate dimension, i.e.: seq_len_k = seq_len_v.</span>
@@ -3077,7 +3076,7 @@ array([[[1., 0., 0., 0.],
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">output</span><span class="p">,</span> <span class="n">attention_weights</span> <span class="o">=</span> <span class="n">scaled_dot_product_attention</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"output:"</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
@@ -3204,7 +3203,7 @@ attention_weights: tf.Tensor(
 <span class="n">scaled_attention_logits</span> <span class="o">=</span> <span class="n">matmul_qk</span> <span class="o">/</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dk</span><span class="p">)</span>
 
 <span class="c1"># 將遮罩「加」到被丟入 softmax 前的 logits</span>
-<span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
   <span class="n">scaled_attention_logits</span> <span class="o">+=</span> <span class="p">(</span><span class="n">mask</span> <span class="o">*</span> <span class="o">-</span><span class="mf">1e9</span><span class="p">)</span>
 
 <span class="c1"># 取 softmax 是為了得到總和為 1 的比例做加權平均</span>
@@ -3237,7 +3236,7 @@ attention_weights: tf.Tensor(
 <p>回想一下，我們的 <code>q</code> 跟 <code>k</code> 都是從 <code>emb_inp</code> 來的。<code>emb_inp</code> 代表著英文句子的詞嵌入張量，而裡頭的第一個句子應該是有 <code>&lt;pad&gt;</code> token 的。啊哈！誰會想要放注意力在沒有實際語義的傢伙上呢？</p>
 <div class="highlight"><pre><span></span><span class="o">...</span>
 
-<span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
   <span class="n">scaled_attention_logits</span> <span class="o">+=</span> <span class="p">(</span><span class="n">mask</span> <span class="o">*</span> <span class="o">-</span><span class="mf">1e9</span><span class="p">)</span> <span class="c1"># 是 -1e9 不是 1e-9</span>
 
 <span class="n">attention_weights</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">scaled_attention_logits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
@@ -3254,7 +3253,7 @@ attention_weights: tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">create_padding_mask</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">create_padding_mask</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
   <span class="c1"># padding mask 的工作就是把索引序列中為 0 的位置設為 1</span>
   <span class="n">mask</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">mask</span><span class="p">[:,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="c1">#　broadcasting</span>
@@ -3297,7 +3296,7 @@ inp_mask: tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 這次讓我們將 padding mask 放入注意函式並觀察</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 這次讓我們將 padding mask 放入注意函式並觀察</span>
 <span class="c1"># 注意權重的變化</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">inp_mask</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># (batch_size, 1, seq_len_q)</span>
 <span class="n">_</span><span class="p">,</span> <span class="n">attention_weights</span> <span class="o">=</span> <span class="n">scaled_dot_product_attention</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
@@ -3360,7 +3359,7 @@ inp_mask: tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 事實上也不完全是上句話的翻譯，</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 事實上也不完全是上句話的翻譯，</span>
 <span class="c1"># 因為我們在第一個維度還是把兩個句子都拿出來方便你比較</span>
 <span class="n">attention_weights</span><span class="p">[:,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
 </pre></div>
@@ -3435,7 +3434,7 @@ array([[[0.        , 0.        ],
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 建立一個 2 維矩陣，維度為 (size, size)，</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 建立一個 2 維矩陣，維度為 (size, size)，</span>
 <span class="c1"># 其遮罩為一個右上角的三角形</span>
 <span class="k">def</span> <span class="nf">create_look_ahead_mask</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
   <span class="n">mask</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">tf</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">band_part</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">)),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -3507,7 +3506,7 @@ look_ahead_mask tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 讓我們用目標語言（中文）的 batch</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 讓我們用目標語言（中文）的 batch</span>
 <span class="c1"># 來模擬 Decoder 處理的情況</span>
 <span class="n">temp_q</span> <span class="o">=</span> <span class="n">temp_k</span> <span class="o">=</span> <span class="n">emb_tar</span>
 <span class="n">temp_v</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">greater</span><span class="p">(</span>
@@ -3584,7 +3583,7 @@ look_ahead_mask tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">attention_weights</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">attention_weights</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -3611,7 +3610,7 @@ array([[1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">attention_weights</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">attention_weights</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -3753,7 +3752,7 @@ array([[0.49974996, 0.50025004, 0.        , 0.        , 0.        ,
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">split_heads</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">split_heads</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">):</span>
   <span class="c1"># x.shape: (batch_size, seq_len, d_model)</span>
   <span class="n">batch_size</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
   
@@ -3886,7 +3885,7 @@ output: tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 實作一個執行多頭注意力機制的 keras layer</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 實作一個執行多頭注意力機制的 keras layer</span>
 <span class="c1"># 在初始的時候指定輸出維度 `d_model` &amp; `num_heads，</span>
 <span class="c1"># 在呼叫的時候輸入 `v`, `k`, `q` 以及 `mask`</span>
 <span class="c1"># 輸出跟 scaled_dot_product_attention 函式一樣有兩個：</span>
@@ -3894,7 +3893,7 @@ output: tf.Tensor(
 <span class="c1"># attention_weights.shape == (batch_size, num_heads, seq_len_q, seq_len_k)</span>
 <span class="k">class</span> <span class="nc">MultiHeadAttention</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
   <span class="c1"># 在初始的時候建立一些必要參數</span>
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">MultiHeadAttention</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span> <span class="o">=</span> <span class="n">num_heads</span> <span class="c1"># 指定要將 `d_model` 拆成幾個 heads</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">d_model</span> <span class="o">=</span> <span class="n">d_model</span> <span class="c1"># 在 split_heads 之前的基底維度</span>
@@ -3990,8 +3989,8 @@ output: tf.Tensor(
 <span class="k">assert</span> <span class="n">d_model</span> <span class="o">==</span> <span class="n">emb_inp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="o">==</span> <span class="mi">4</span>
 <span class="n">num_heads</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"d_model: {d_model}"</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"num_heads: {num_heads}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"d_model: </span><span class="si">{d_model}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"num_heads: </span><span class="si">{num_heads}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># 初始化一個 multi-head attention layer</span>
 <span class="n">mha</span> <span class="o">=</span> <span class="n">MultiHeadAttention</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">)</span>
@@ -4001,16 +4000,16 @@ output: tf.Tensor(
 <span class="c1"># 別忘記，第一個英文序列的最後兩個 tokens 是 &lt;pad&gt;</span>
 <span class="n">v</span> <span class="o">=</span> <span class="n">k</span> <span class="o">=</span> <span class="n">q</span> <span class="o">=</span> <span class="n">emb_inp</span>
 <span class="n">padding_mask</span> <span class="o">=</span> <span class="n">create_padding_mask</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">"q.shape:"</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">"k.shape:"</span><span class="p">,</span> <span class="n">k</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">"v.shape:"</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">"padding_mask.shape:"</span><span class="p">,</span> <span class="n">padding_mask</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"q.shape:"</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"k.shape:"</span><span class="p">,</span> <span class="n">k</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"v.shape:"</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"padding_mask.shape:"</span><span class="p">,</span> <span class="n">padding_mask</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
 <span class="n">output</span><span class="p">,</span> <span class="n">attention_weights</span> <span class="o">=</span> <span class="n">mha</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">"output.shape:"</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">"attention_weights.shape:"</span><span class="p">,</span> <span class="n">attention_weights</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"output.shape:"</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"attention_weights.shape:"</span><span class="p">,</span> <span class="n">attention_weights</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">output:"</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">output:"</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4190,7 +4189,7 @@ output: tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 建立 Transformer 裡 Encoder / Decoder layer 都有使用到的 Feed Forward 元件</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 建立 Transformer 裡 Encoder / Decoder layer 都有使用到的 Feed Forward 元件</span>
 <span class="k">def</span> <span class="nf">point_wise_feed_forward_network</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">dff</span><span class="p">):</span>
   
   <span class="c1"># 此 FFN 對輸入做兩個線性轉換，中間加了一個 ReLU activation func</span>
@@ -4214,7 +4213,7 @@ output: tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span>
 <span class="n">seq_len</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">d_model</span> <span class="o">=</span> <span class="mi">512</span>
 <span class="n">dff</span> <span class="o">=</span> <span class="mi">2048</span>
@@ -4255,7 +4254,7 @@ out.shape: (64, 10, 512)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d_model</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># FFN 的輸入輸出張量的最後一維皆為 `d_model`</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">d_model</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># FFN 的輸入輸出張量的最後一維皆為 `d_model`</span>
 <span class="n">dff</span> <span class="o">=</span> <span class="mi">6</span>
 
 <span class="c1"># 建立一個小 FFN</span>
@@ -4336,10 +4335,10 @@ out = LayerNorm(x + sub_layer_out)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Encoder 裡頭會有 N 個 EncoderLayers，而每個 EncoderLayer 裡又有兩個 sub-layers: MHA &amp; FFN</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Encoder 裡頭會有 N 個 EncoderLayers，而每個 EncoderLayer 裡又有兩個 sub-layers: MHA &amp; FFN</span>
 <span class="k">class</span> <span class="nc">EncoderLayer</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
   <span class="c1"># Transformer 論文內預設 dropout rate 為 0.1</span>
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">EncoderLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">mha</span> <span class="o">=</span> <span class="n">MultiHeadAttention</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">)</span>
@@ -4388,7 +4387,7 @@ out = LayerNorm(x + sub_layer_out)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 之後可以調的超參數。這邊為了 demo 設小一點</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 之後可以調的超參數。這邊為了 demo 設小一點</span>
 <span class="n">d_model</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">num_heads</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">dff</span> <span class="o">=</span> <span class="mi">8</span>
@@ -4523,10 +4522,10 @@ out = LayerNorm(x + sub_layer_out)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Decoder 裡頭會有 N 個 DecoderLayer，</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Decoder 裡頭會有 N 個 DecoderLayer，</span>
 <span class="c1"># 而 DecoderLayer 又有三個 sub-layers: 自注意的 MHA, 關注 Encoder 輸出的 MHA &amp; FFN</span>
 <span class="k">class</span> <span class="nc">DecoderLayer</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">DecoderLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
     <span class="c1"># 3 個 sub-layers 的主角們</span>
@@ -4595,7 +4594,7 @@ out = LayerNorm(x + sub_layer_out)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tar_padding_mask</span> <span class="o">=</span> <span class="n">create_padding_mask</span><span class="p">(</span><span class="n">tar</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">tar_padding_mask</span> <span class="o">=</span> <span class="n">create_padding_mask</span><span class="p">(</span><span class="n">tar</span><span class="p">)</span>
 <span class="n">look_ahead_mask</span> <span class="o">=</span> <span class="n">create_look_ahead_mask</span><span class="p">(</span><span class="n">tar</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">combined_mask</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">tar_padding_mask</span><span class="p">,</span> <span class="n">look_ahead_mask</span><span class="p">)</span>
 
@@ -4680,7 +4679,7 @@ combined_mask: tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數</span>
 <span class="n">d_model</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">num_heads</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">dff</span> <span class="o">=</span> <span class="mi">8</span>
@@ -4841,7 +4840,7 @@ dec_enc_attn_weights: (2, 2, 10, 8)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 以下直接參考 TensorFlow 官方 tutorial </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 以下直接參考 TensorFlow 官方 tutorial </span>
 <span class="k">def</span> <span class="nf">get_angles</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">d_model</span><span class="p">):</span>
   <span class="n">angle_rates</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span><span class="o">//</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">d_model</span><span class="p">))</span>
   <span class="k">return</span> <span class="n">pos</span> <span class="o">*</span> <span class="n">angle_rates</span>
@@ -4958,11 +4957,11 @@ array([[[ 0.        ,  0.        ,  0.        , ...,  1.        ,
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Encoder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Encoder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
   <span class="c1"># Encoder 的初始參數除了本來就要給 EncoderLayer 的參數還多了：</span>
   <span class="c1"># - num_layers: 決定要有幾個 EncoderLayers, 前面影片中的 `N`</span>
   <span class="c1"># - input_vocab_size: 用來把索引轉成詞嵌入向量</span>
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_layers</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span> <span class="n">input_vocab_size</span><span class="p">,</span> 
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_layers</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span> <span class="n">input_vocab_size</span><span class="p">,</span> 
                <span class="n">rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">Encoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
@@ -5017,7 +5016,7 @@ array([[[ 0.        ,  0.        ,  0.        , ...,  1.        ,
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數</span>
 <span class="n">num_layers</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># 2 層的 Encoder</span>
 <span class="n">d_model</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">num_heads</span> <span class="o">=</span> <span class="mi">2</span>
@@ -5097,9 +5096,9 @@ enc_out: tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Decoder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Decoder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
   <span class="c1"># 初始參數跟 Encoder 只差在用 `target_vocab_size` 而非 `inp_vocab_size`</span>
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_layers</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span> <span class="n">target_vocab_size</span><span class="p">,</span> 
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_layers</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span> <span class="n">target_vocab_size</span><span class="p">,</span> 
                <span class="n">rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">Decoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
@@ -5152,7 +5151,7 @@ enc_out: tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數</span>
 <span class="n">num_layers</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># 2 層的 Decoder</span>
 <span class="n">d_model</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">num_heads</span> <span class="o">=</span> <span class="mi">2</span>
@@ -5183,7 +5182,7 @@ enc_out: tf.Tensor(
 <span class="nb">print</span><span class="p">(</span><span class="s2">"dec_out:"</span><span class="p">,</span> <span class="n">dec_out</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">block_name</span><span class="p">,</span> <span class="n">attn_weights</span> <span class="ow">in</span> <span class="n">attn</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"</span><span class="si">{block_name}</span><span class="s2">.shape: </span><span class="si">{attn_weights.shape}</span><span class="s2">"</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{block_name}</span><span class="s2">.shape: </span><span class="si">{attn_weights.shape}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5332,10 +5331,10 @@ decoder_layer2_block2.shape: (2, 2, 10, 8)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Transformer 之上已經沒有其他 layers 了，我們使用 tf.keras.Model 建立一個模型</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Transformer 之上已經沒有其他 layers 了，我們使用 tf.keras.Model 建立一個模型</span>
 <span class="k">class</span> <span class="nc">Transformer</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
   <span class="c1"># 初始參數包含 Encoder &amp; Decoder 都需要超參數以及中英字典數目</span>
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_layers</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span> <span class="n">input_vocab_size</span><span class="p">,</span> 
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_layers</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span> <span class="n">input_vocab_size</span><span class="p">,</span> 
                <span class="n">target_vocab_size</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">Transformer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
@@ -5393,7 +5392,7 @@ decoder_layer2_block2.shape: (2, 2, 10, 8)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數</span>
 <span class="n">num_layers</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">d_model</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">num_heads</span> <span class="o">=</span> <span class="mi">2</span>
@@ -5490,7 +5489,7 @@ predictions: tf.Tensor(
 <span class="n">tar_inp</span> <span class="o">=</span> <span class="n">tar</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">tar_real</span> <span class="o">=</span> <span class="n">tar</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
 
-<span class="n">predictions</span><span class="p">,</span> <span class="n">attn_weights</span> <span class="o">=</span> <span class="n">transformer</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">tar_inp</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="n">predictions</span><span class="p">,</span> <span class="n">attn_weights</span> <span class="o">=</span> <span class="n">transformer</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">tar_inp</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 
 <span class="o">...</span>
 </pre></div>
@@ -5544,7 +5543,7 @@ predictions: tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">loss_object</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">loss_object</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span>
     <span class="n">from_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">'none'</span><span class="p">)</span>
 
 <span class="c1"># 假設我們要解的是一個 binary classifcation， 0 跟 1 個代表一個 label</span>
@@ -5581,7 +5580,7 @@ predictions: tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"predictions:"</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"predictions:"</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
@@ -5642,7 +5641,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">loss_function</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">pred</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">loss_function</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">pred</span><span class="p">):</span>
   <span class="c1"># 這次的 mask 將序列中不等於 0 的位置視為 1，其餘為 0 </span>
   <span class="n">mask</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
   <span class="c1"># 照樣計算所有位置的 cross entropy 但不加總</span>
@@ -5666,7 +5665,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">Mean</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'train_loss'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">Mean</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'train_loss'</span><span class="p">)</span>
 <span class="n">train_accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">SparseCategoricalAccuracy</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s1">'train_accuracy'</span><span class="p">)</span>
 </pre></div>
@@ -5707,7 +5706,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_layers</span> <span class="o">=</span> <span class="mi">4</span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">num_layers</span> <span class="o">=</span> <span class="mi">4</span> 
 <span class="n">d_model</span> <span class="o">=</span> <span class="mi">128</span>
 <span class="n">dff</span> <span class="o">=</span> <span class="mi">512</span>
 <span class="n">num_heads</span> <span class="o">=</span> <span class="mi">8</span>
@@ -5769,9 +5768,9 @@ target_vocab_size: 4203
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">CustomSchedule</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">schedules</span><span class="o">.</span><span class="n">LearningRateSchedule</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">CustomSchedule</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">schedules</span><span class="o">.</span><span class="n">LearningRateSchedule</span><span class="p">):</span>
   <span class="c1"># 論文預設 `warmup_steps` = 4000</span>
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">warmup_steps</span><span class="o">=</span><span class="mi">4000</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">warmup_steps</span><span class="o">=</span><span class="mi">4000</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">CustomSchedule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
     
     <span class="bp">self</span><span class="o">.</span><span class="n">d_model</span> <span class="o">=</span> <span class="n">d_model</span>
@@ -5779,7 +5778,7 @@ target_vocab_size: 4203
 
     <span class="bp">self</span><span class="o">.</span><span class="n">warmup_steps</span> <span class="o">=</span> <span class="n">warmup_steps</span>
     
-  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
     <span class="n">arg1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">rsqrt</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
     <span class="n">arg2</span> <span class="o">=</span> <span class="n">step</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">warmup_steps</span> <span class="o">**</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">)</span>
     
@@ -5813,7 +5812,7 @@ target_vocab_size: 4203
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">,</span> <span class="s2">"black"</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">d_models</span><span class="p">:</span>
   <span class="n">schedules</span> <span class="o">+=</span> <span class="p">[</span><span class="n">CustomSchedule</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">warmup_steps</span><span class="p">]</span>
-  <span class="n">labels</span> <span class="o">+=</span> <span class="p">[</span><span class="n">f</span><span class="s2">"d_model: {d}, warm: {s}"</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">warmup_steps</span><span class="p">]</span>
+  <span class="n">labels</span> <span class="o">+=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"d_model: </span><span class="si">{d}</span><span class="s2">, warm: </span><span class="si">{s}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">warmup_steps</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">schedule</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">schedules</span><span class="p">,</span> <span class="n">labels</span><span class="p">)):</span>
   <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">schedule</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)),</span> 
@@ -5862,10 +5861,10 @@ target_vocab_size: 4203
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transformer</span> <span class="o">=</span> <span class="n">Transformer</span><span class="p">(</span><span class="n">num_layers</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">transformer</span> <span class="o">=</span> <span class="n">Transformer</span><span class="p">(</span><span class="n">num_layers</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span>
                           <span class="n">input_vocab_size</span><span class="p">,</span> <span class="n">target_vocab_size</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"""這個 Transformer 有 </span><span class="si">{num_layers}</span><span class="s2"> 層 Encoder / Decoder layers</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""這個 Transformer 有 </span><span class="si">{num_layers}</span><span class="s2"> 層 Encoder / Decoder layers</span>
 <span class="s2">d_model: </span><span class="si">{d_model}</span><span class="s2"></span>
 <span class="s2">num_heads: </span><span class="si">{num_heads}</span><span class="s2"></span>
 <span class="s2">dff: </span><span class="si">{dff}</span><span class="s2"></span>
@@ -5908,8 +5907,8 @@ dropout_rate: 0.1
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 方便比較不同實驗/ 不同超參數設定的結果</span>
-<span class="n">run_id</span> <span class="o">=</span> <span class="n">f</span><span class="s2">"</span><span class="si">{num_layers}</span><span class="s2">layers_</span><span class="si">{d_model}</span><span class="s2">d_</span><span class="si">{num_heads}</span><span class="s2">heads_</span><span class="si">{dff}</span><span class="s2">dff_</span><span class="si">{train_perc}</span><span class="s2">train_perc"</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 方便比較不同實驗/ 不同超參數設定的結果</span>
+<span class="n">run_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{num_layers}</span><span class="s2">layers_</span><span class="si">{d_model}</span><span class="s2">d_</span><span class="si">{num_heads}</span><span class="s2">heads_</span><span class="si">{dff}</span><span class="s2">dff_</span><span class="si">{train_perc}</span><span class="s2">train_perc"</span>
 <span class="n">checkpoint_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">checkpoint_path</span><span class="p">,</span> <span class="n">run_id</span><span class="p">)</span>
 <span class="n">log_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">log_dir</span><span class="p">,</span> <span class="n">run_id</span><span class="p">)</span>
 
@@ -5928,7 +5927,7 @@ dropout_rate: 0.1
   
   <span class="c1"># 用來確認之前訓練多少 epochs 了</span>
   <span class="n">last_epoch</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ckpt_manager</span><span class="o">.</span><span class="n">latest_checkpoint</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">'已讀取最新的 checkpoint，模型已訓練 </span><span class="si">{last_epoch}</span><span class="s1"> epochs。'</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'已讀取最新的 checkpoint，模型已訓練 </span><span class="si">{last_epoch}</span><span class="s1"> epochs。'</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
   <span class="n">last_epoch</span> <span class="o">=</span> <span class="mi">0</span>
   <span class="nb">print</span><span class="p">(</span><span class="s2">"沒找到 checkpoint，從頭訓練。"</span><span class="p">)</span>
@@ -5968,7 +5967,7 @@ dropout_rate: 0.1
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 為 Transformer 的 Encoder / Decoder 準備遮罩</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 為 Transformer 的 Encoder / Decoder 準備遮罩</span>
 <span class="k">def</span> <span class="nf">create_masks</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">tar</span><span class="p">):</span>
   <span class="c1"># 英文句子的 padding mask，要交給 Encoder layer 自注意力機制用的</span>
   <span class="n">enc_padding_mask</span> <span class="o">=</span> <span class="n">create_padding_mask</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
@@ -6008,7 +6007,7 @@ dropout_rate: 0.1
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>  <span class="c1"># 讓 TensorFlow 幫我們將 eager code 優化並加快運算</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>  <span class="c1"># 讓 TensorFlow 幫我們將 eager code 優化並加快運算</span>
 <span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">tar</span><span class="p">):</span>
   <span class="c1"># 前面說過的，用去尾的原始序列去預測下一個字的序列</span>
   <span class="n">tar_inp</span> <span class="o">=</span> <span class="n">tar</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -6057,10 +6056,10 @@ dropout_rate: 0.1
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 定義我們要看幾遍數據集</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 定義我們要看幾遍數據集</span>
 <span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"此超參數組合的 Transformer 已經訓練 </span><span class="si">{last_epoch}</span><span class="s2"> epochs。"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"剩餘 epochs：{min(0, last_epoch - EPOCHS)}"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"此超參數組合的 Transformer 已經訓練 </span><span class="si">{last_epoch}</span><span class="s2"> epochs。"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"剩餘 epochs：{min(0, last_epoch - EPOCHS)}"</span><span class="p">)</span>
 
 
 <span class="c1"># 用來寫資訊到 TensorBoard，非必要但十分推薦</span>
@@ -6270,7 +6269,7 @@ Time taken for 1 epoch: 68.7313539981842 secs
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 給定一個英文句子，輸出預測的中文索引數字序列以及注意權重 dict</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 給定一個英文句子，輸出預測的中文索引數字序列以及注意權重 dict</span>
 <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">inp_sentence</span><span class="p">):</span>
   
   <span class="c1"># 準備英文句子前後會加上的 &lt;start&gt;, &lt;end&gt;</span>
@@ -6333,7 +6332,7 @@ Time taken for 1 epoch: 68.7313539981842 secs
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 要被翻譯的英文句子</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 要被翻譯的英文句子</span>
 <span class="n">sentence</span> <span class="o">=</span> <span class="s2">"China, India, and others have enjoyed continuing economic growth."</span>
 
 <span class="c1"># 取得預測的中文索引序列</span>
@@ -6380,7 +6379,7 @@ predicted_sentence: 中国、印度和其他国家都享受了经济增长的持
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transformer</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">transformer</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -6426,10 +6425,10 @@ _________________________________________________________________
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">predicted_seq</span><span class="p">,</span> <span class="n">attention_weights</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">predicted_seq</span><span class="p">,</span> <span class="n">attention_weights</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
 
 <span class="c1"># 在這邊我們自動選擇最後一個 Decoder layer 的 MHA 2，也就是 Decoder 關注 Encoder 的 MHA</span>
-<span class="n">layer_name</span> <span class="o">=</span> <span class="n">f</span><span class="s2">"decoder_layer</span><span class="si">{num_layers}</span><span class="s2">_block2"</span>
+<span class="n">layer_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"decoder_layer</span><span class="si">{num_layers}</span><span class="s2">_block2"</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"sentence:"</span><span class="p">,</span> <span class="n">sentence</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
@@ -6437,7 +6436,7 @@ _________________________________________________________________
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"attention_weights.keys():"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">attn</span> <span class="ow">in</span> <span class="n">attention_weights</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"</span><span class="si">{layer_name}</span><span class="s2">.shape: </span><span class="si">{attn.shape}</span><span class="s2">"</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{layer_name}</span><span class="s2">.shape: </span><span class="si">{attn.shape}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"layer_name:"</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">)</span>
 </pre></div>
@@ -6482,7 +6481,7 @@ layer_name: decoder_layer4_block2
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="c1"># 你可能會需要自行下載一個中文字體檔案以讓 matplotlib 正確顯示中文</span>
 <span class="n">zhfont</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">font_manager</span><span class="o">.</span><span class="n">FontProperties</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s1">'/usr/share/fonts/SimHei/simhei.ttf'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"seaborn-whitegrid"</span><span class="p">)</span>
@@ -6553,7 +6552,7 @@ layer_name: decoder_layer4_block2
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_attention_weights</span><span class="p">(</span><span class="n">attention_weights</span><span class="p">,</span> <span class="n">sentence</span><span class="p">,</span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_attention_weights</span><span class="p">(</span><span class="n">attention_weights</span><span class="p">,</span> <span class="n">sentence</span><span class="p">,</span> 
                        <span class="n">predicted_seq</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">max_len_tar</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -6562,7 +6561,7 @@ layer_name: decoder_layer4_block2
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABMUAAAHvCAYAAABUoWiWAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDMuMC4zLCBo
 dHRwOi8vbWF0cGxvdGxpYi5vcmcvnQurowAAIABJREFUeJzs3XlAVNXfBvBnhs0NUtTc0FxSTEst

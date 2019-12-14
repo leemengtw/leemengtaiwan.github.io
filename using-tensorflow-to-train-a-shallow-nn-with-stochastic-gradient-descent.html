@@ -183,7 +183,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2017-09-21 (Thu)</li>
                         <li class="page-view">
-                            2,711 views
+                            2,714 views
                         </li>
                     </ul>
 
@@ -242,8 +242,7 @@
 
             <div class="col-full blog-content__main">
 
-                
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+                <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The goal here is to progressively train deeper and more accurate models using TensorFlow. We will first load the notMNIST dataset which we have done data cleaning. For the classification problem, we will first train two logistic regression models use simple gradient descent, stochastic gradient descent (SGD) respectively for optimization to see the difference between these optimizers.</p>
 <p>Finally, train a Neural Network with one-hidden layer using ReLU activation units to see whether we can boost our model's performance further.</p>
@@ -262,14 +261,14 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># These are all the modules we'll be using later. Make sure you can import them</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># These are all the modules we'll be using later. Make sure you can import them</span>
 <span class="c1"># before proceeding further.</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="n">cPickle</span> <span class="k">as</span> <span class="n">pickle</span>
-<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="nb">range</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">cPickle</span> <span class="k">as</span> <span class="n">pickle</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="nb">range</span>
 </pre></div>
 </div>
 </div>
@@ -289,7 +288,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pickle_file</span> <span class="o">=</span> <span class="s1">'datasets/notMNIST.pickle'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pickle_file</span> <span class="o">=</span> <span class="s1">'datasets/notMNIST.pickle'</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pickle_file</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">save</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -361,7 +360,7 @@ Test set (10000, 28, 28) (10000,)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">image_size</span> <span class="o">=</span> <span class="mi">28</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">image_size</span> <span class="o">=</span> <span class="mi">28</span>
 <span class="n">num_labels</span> <span class="o">=</span> <span class="mi">10</span>
 
 
@@ -431,7 +430,7 @@ Test set (784, 10000) (10, 10000)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># With gradient descent training, even this much data is prohibitive.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># With gradient descent training, even this much data is prohibitive.</span>
 <span class="c1"># Subset the training data for faster turnaround.</span>
 <span class="n">train_subset</span> <span class="o">=</span> <span class="mi">10000</span>
 
@@ -515,7 +514,7 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tnrange</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tnrange</span>
 <span class="n">num_steps</span> <span class="o">=</span> <span class="mi">801</span>
 
 
@@ -570,10 +569,10 @@ Here we will use <code>tqdm</code> library to help us easily visualize the progr
 </div>
 </div>
 <div class="output_area">
-<div id="313cdba5-5e4f-4829-a6fb-3320601bc6c8"></div>
-<div class="output_subarea output_widget_view ">
+<div id="7e0d2e20-8f0e-411b-ae3d-67a386ea9c53"></div>
+<div class="output_subarea output_widget_view">
 <script type="text/javascript">
-var element = $('#313cdba5-5e4f-4829-a6fb-3320601bc6c8');
+var element = $('#7e0d2e20-8f0e-411b-ae3d-67a386ea9c53');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -627,7 +626,7 @@ Test acc: 82.8%
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
 
 <span class="n">graph</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 <span class="k">with</span> <span class="n">graph</span><span class="o">.</span><span class="n">as_default</span><span class="p">():</span>
@@ -677,7 +676,7 @@ Test acc: 82.8%
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">3001</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">3001</span>
 
 <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">graph</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
     <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -718,10 +717,10 @@ Test acc: 82.8%
 </div>
 </div>
 <div class="output_area">
-<div id="84f61298-3cea-4c56-8a00-3d0c705739db"></div>
-<div class="output_subarea output_widget_view ">
+<div id="7497349b-1b7e-404e-9c8e-b1da26ea0167"></div>
+<div class="output_subarea output_widget_view">
 <script type="text/javascript">
-var element = $('#84f61298-3cea-4c56-8a00-3d0c705739db');
+var element = $('#7497349b-1b7e-404e-9c8e-b1da26ea0167');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -777,7 +776,7 @@ Test acc: 86.9%
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
 <span class="n">num_hidden_unit</span> <span class="o">=</span> <span class="mi">1024</span>
 
 <span class="n">graph</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
@@ -831,7 +830,7 @@ Test acc: 86.9%
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">3001</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">3001</span>
 
 <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">graph</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
     <span class="c1"># initialized parameters</span>
@@ -874,10 +873,10 @@ Test acc: 86.9%
 </div>
 </div>
 <div class="output_area">
-<div id="19393633-2aa3-4609-988c-2a0c8bdd4e66"></div>
-<div class="output_subarea output_widget_view ">
+<div id="6d38d574-5f1c-4fab-b88d-a01ca0053917"></div>
+<div class="output_subarea output_widget_view">
 <script type="text/javascript">
-var element = $('#19393633-2aa3-4609-988c-2a0c8bdd4e66');
+var element = $('#6d38d574-5f1c-4fab-b88d-a01ca0053917');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
@@ -911,7 +910,7 @@ Test acc: 88.7%
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 </div>
 </div>

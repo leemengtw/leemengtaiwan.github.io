@@ -171,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-03-27 (Wed)</li>
                         <li class="page-view">
-                            10,148 views
+                            10,172 views
                         </li>
                     </ul>
 
@@ -230,8 +230,7 @@
 
             <div class="col-full blog-content__main">
 
-                
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+                <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <link href="https://leemeng.tw/tfjs-apps/lstm-text-generation/index.css" rel="stylesheet"/>
 </div>
@@ -662,7 +661,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 隨意取出第 9505 到 9702 的中文字</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 隨意取出第 9505 到 9702 的中文字</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">9505</span><span class="p">:</span><span class="mi">9702</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -695,10 +694,10 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="n">w</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"天龍八部小說共有 </span><span class="si">{n}</span><span class="s2"> 中文字"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"包含了 </span><span class="si">{w}</span><span class="s2"> 個獨一無二的字"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"天龍八部小說共有 </span><span class="si">{n}</span><span class="s2"> 中文字"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"包含了 </span><span class="si">{w}</span><span class="s2"> 個獨一無二的字"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -740,7 +739,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 
 <span class="c1"># 初始化一個以字為單位的 Tokenizer</span>
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span>\
@@ -848,7 +847,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">text_as_int</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">text_as_int</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -867,10 +866,10 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">text_as_int</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">text_as_int</span><span class="p">)</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text_as_int</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"text_as_int 是一個 </span><span class="si">{_type}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"小說的序列長度： </span><span class="si">{n}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"text_as_int 是一個 </span><span class="si">{_type}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"小說的序列長度： </span><span class="si">{n}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"前 5 索引："</span><span class="p">,</span> <span class="n">text_as_int</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -914,7 +913,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"實際丟給模型的數字序列："</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"實際丟給模型的數字序列："</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">partial_indices</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"方便我們理解的文本序列："</span><span class="p">)</span>
@@ -948,7 +947,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"實際丟給模型的數字序列："</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"實際丟給模型的數字序列："</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">partial_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
 <span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"方便我們理解的文本序列："</span><span class="p">)</span>
@@ -1089,7 +1088,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 方便說明，實際上我們會用更大的值來</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 方便說明，實際上我們會用更大的值來</span>
 <span class="c1"># 讓模型從更長的序列預測下個中文字</span>
 <span class="n">SEQ_LENGTH</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># 數字序列長度</span>
 <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">128</span> <span class="c1"># 幾筆成對輸入/輸出</span>
@@ -1215,7 +1214,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># print 是用來幫你理解 tf.data.Dataset</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># print 是用來幫你理解 tf.data.Dataset</span>
 <span class="c1"># 的內容，實際上存取資料集非常簡單</span>
 <span class="c1"># 現在先關注下面的 print 結果</span>
 <span class="k">for</span> <span class="n">b_inp</span><span class="p">,</span> <span class="n">b_tar</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
@@ -1300,7 +1299,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">b_inp</span><span class="p">,</span> <span class="n">b_tar</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">b_inp</span><span class="p">,</span> <span class="n">b_tar</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
     <span class="c1"># 蒙多想去哪就去哪</span>
     <span class="c1"># 想怎麼存取 b_iup, b_tar 都可以</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"b_inp 是個 Tensor：</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
@@ -1437,7 +1436,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數</span>
 <span class="n">EMBEDDING_DIM</span> <span class="o">=</span> <span class="mi">512</span>
 <span class="n">RNN_UNITS</span> <span class="o">=</span> <span class="mi">1024</span>
 
@@ -1629,7 +1628,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數，決定模型一次要更新的步伐有多大</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 超參數，決定模型一次要更新的步伐有多大</span>
 <span class="n">LEARNING_RATE</span> <span class="o">=</span> <span class="mf">0.001</span>
 
 <span class="c1"># 定義模型預測結果跟正確解答之間的差異</span>
@@ -1676,7 +1675,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># 決定看幾篇天龍八部文本</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># 決定看幾篇天龍八部文本</span>
 <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
     <span class="n">ds</span><span class="p">,</span> <span class="c1"># 前面使用 tf.data 建構的資料集</span>
     <span class="n">epochs</span><span class="o">=</span><span class="n">EPOCHS</span>
@@ -1744,7 +1743,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span>\
         <span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="s2">"logs"</span><span class="p">),</span>
     <span class="c1"># 你可以加入其他 callbacks 如</span>
@@ -1772,7 +1771,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> tensorboard.notebook
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> tensorboard.notebook
 <span class="o">%</span><span class="k">tensorboard</span> --logdir logs
 </pre></div>
 </div>
@@ -1885,7 +1884,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 跟訓練時一樣的超參數，</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 跟訓練時一樣的超參數，</span>
 <span class="c1"># 只差在 BATCH_SIZE 為 1</span>
 <span class="n">EMBEDDING_DIM</span> <span class="o">=</span> <span class="mi">512</span>
 <span class="n">RNN_UNITS</span> <span class="o">=</span> <span class="mi">1024</span>
@@ -1964,7 +1963,7 @@ tf.Tensor(
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 代表「喬」的索引</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 代表「喬」的索引</span>
 <span class="n">seed_indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">234</span><span class="p">]</span> 
 
 <span class="c1"># 增加 batch 維度丟入模型取得預測結果後</span>

@@ -171,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-04-30 (Mon)</li>
                         <li class="page-view">
-                            6,446 views
+                            6,451 views
                         </li>
                     </ul>
 
@@ -230,8 +230,7 @@
 
             <div class="col-full blog-content__main">
 
-                
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+                <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>這篇簡單討論<a href="https://zh.wikipedia.org/wiki/SQL">結構化查詢語言（SQL）</a>在概念上跟命令式程式語言如 Python 有什麼不同之處，以及在什麼樣的情況下我們會想要利用 SQL 做資料分析。</p>
 <p>這篇注重在為何你會想要使用 SQL 做資料分析，而非 SQL 本身功能的教學。如果要學習 SQL 本身，可以參考最後面的<a href="#推薦閱讀">推薦閱讀</a>。</p>
@@ -369,7 +368,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">customers</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">customers</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Customer#000000001"</span><span class="p">,</span> <span class="s2">"custkey"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">},</span>
     <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Customer#000000002"</span><span class="p">,</span> <span class="s2">"custkey"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">}</span>
 <span class="p">]</span>
@@ -388,7 +387,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">orders</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">orders</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"1"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"totalprice"</span><span class="p">:</span> <span class="mf">152411.41</span><span class="p">,</span> <span class="s2">"orderdate"</span><span class="p">:</span> <span class="s2">"1993-06-05"</span><span class="p">},</span>
           <span class="p">{</span><span class="s2">"totalprice"</span><span class="p">:</span> <span class="mf">270087.44</span><span class="p">,</span> <span class="s2">"orderdate"</span><span class="p">:</span> <span class="s2">"1997-03-04"</span><span class="p">},</span>
           <span class="p">{</span><span class="s2">"totalprice"</span><span class="p">:</span> <span class="mf">165928.33</span><span class="p">,</span> <span class="s2">"orderdate"</span><span class="p">:</span> <span class="s2">"1995-10-29"</span><span class="p">}</span>
@@ -410,7 +409,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"customer           | totalprice| orderdate "</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"customer           | totalprice| orderdate "</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"------------------ | ----------| --------- "</span><span class="p">)</span>
 <span class="c1"># 從所有顧客找符合條件的人</span>
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">customers</span><span class="p">:</span>

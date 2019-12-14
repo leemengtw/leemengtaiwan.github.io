@@ -173,7 +173,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-04-04 (Wed)</li>
                         <li class="page-view">
-                            1,414 views
+                            1,426 views
                         </li>
                     </ul>
 
@@ -232,8 +232,7 @@
 
             <div class="col-full blog-content__main">
 
-                
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+                <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>所謂的<a href="https://en.wikipedia.org/wiki/Data_lake">資料湖 (data lake) </a> 指的是一企業裡頭所有形式的資料的集合。這些資料包含原始資料 (raw data)，以及經過轉換的衍生資料 (derived data)。</p>
 <p>資料湖的核心概念是將所有可用的資料全部整合在一個邏輯上相近的地方以供企業自由結合並做各式各樣的運用。資料湖可以用很多方式建立，這裏我們主要介紹如何利用 <a href="https://aws.amazon.com/tw/kinesis/">Amazon Kinesis</a> 將串流資料 (streaming data) 載入資料湖。</p>
@@ -511,7 +510,7 @@
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">event</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">"event_id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)),</span>
         <span class="s2">"event_type"</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">'read_post'</span><span class="p">,</span> <span class="s1">'write_post'</span><span class="p">,</span> <span class="s1">'make_comments'</span><span class="p">]),</span>

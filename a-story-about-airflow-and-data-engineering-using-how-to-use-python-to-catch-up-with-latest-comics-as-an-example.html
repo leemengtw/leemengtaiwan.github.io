@@ -175,7 +175,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-08-21 (Tue)</li>
                         <li class="page-view">
-                            14,051 views
+                            14,107 views
                         </li>
                     </ul>
 
@@ -234,8 +234,7 @@
 
             <div class="col-full blog-content__main">
 
-                
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+                <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -631,23 +630,23 @@ airflow initdb
 
 
 <span class="k">def</span> <span class="nf">fn_superman</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"取得使用者的閱讀紀錄"</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"去漫畫網站看有沒有新的章節"</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"跟紀錄比較，有沒有新連載？"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"取得使用者的閱讀紀錄"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"去漫畫網站看有沒有新的章節"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"跟紀錄比較，有沒有新連載？"</span><span class="p">)</span>
 
     <span class="c1"># Murphy's Law</span>
     <span class="n">accident_occur</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">accident_occur</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">天有不測風雲,人有旦夕禍福"</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">"工作遇到預期外狀況被中斷</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">天有不測風雲,人有旦夕禍福"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"工作遇到預期外狀況被中斷</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span>
 
     <span class="n">new_comic_available</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">new_comic_available</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">"寄 Slack 通知"</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">"更新閱讀紀錄"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"寄 Slack 通知"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"更新閱讀紀錄"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">"什麼都不幹，工作順利結束"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"什麼都不幹，工作順利結束"</span><span class="p">)</span>
 
 
 <span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">'comic_app_v1'</span><span class="p">,</span> <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
@@ -778,23 +777,23 @@ airflow initdb
 <p>我們用 <code>python dags/comic_app_v1.py</code> 確保 DAG 本身沒有語法問題以後，接著就是要確保裡頭每個工作（Task）的執行結果如我們預期。</p>
 <p>在 <code>comic_app_v1</code> DAG 裡頭，我們只有一個工作 <code>superman_task</code> （其透過一個函式 <code>fn_superman</code> 幫我們做所有邏輯上的工作）：</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fn_superman</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"取得使用者的閱讀紀錄"</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"去漫畫網站看有沒有新的章節"</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"跟紀錄比較，有沒有新連載？"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"取得使用者的閱讀紀錄"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"去漫畫網站看有沒有新的章節"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"跟紀錄比較，有沒有新連載？"</span><span class="p">)</span>
 
     <span class="c1"># Murphy's Law</span>
     <span class="n">accident_occur</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">accident_occur</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">天有不測風雲,人有旦夕禍福"</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">"工作遇到預期外狀況被中斷</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">天有不測風雲,人有旦夕禍福"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"工作遇到預期外狀況被中斷</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span>
 
     <span class="n">new_comic_available</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">new_comic_available</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">"寄 Slack 通知"</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">"更新閱讀紀錄"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"寄 Slack 通知"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"更新閱讀紀錄"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">"什麼都不幹，工作順利結束"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"什麼都不幹，工作順利結束"</span><span class="p">)</span>
 
 
 <span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">'comic_app_v1'</span><span class="p">,</span> <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
@@ -867,7 +866,7 @@ airflow initdb
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><blockquote><p>雞蛋不要放在同個籃子裡。為邏輯上獨立的工作/步驟分別建立 Airflow 工作，可以讓 Airflow 只從失敗的工作開始重新做起。</p></blockquote></div>
+<div class="highlight hl-ipython3"><blockquote><p>雞蛋不要放在同個籃子裡。為邏輯上獨立的工作/步驟分別建立 Airflow 工作，可以讓 Airflow 只從失敗的工作開始重新做起。</p></blockquote></div>
 </div>
 </div>
 </div>
@@ -936,14 +935,14 @@ airflow initdb
 
 <span class="k">def</span> <span class="nf">process_metadata</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="o">**</span><span class="n">context</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">'read'</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">"取得使用者的閱讀紀錄"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"取得使用者的閱讀紀錄"</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">'write'</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">"更新閱讀紀錄"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"更新閱讀紀錄"</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">check_comic_info</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
     <span class="n">all_comic_info</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s1">'task_instance'</span><span class="p">]</span><span class="o">.</span><span class="n">xcom_pull</span><span class="p">(</span><span class="n">task_ids</span><span class="o">=</span><span class="s1">'get_read_history'</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"去漫畫網站看有沒有新的章節"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"去漫畫網站看有沒有新的章節"</span><span class="p">)</span>
 
     <span class="n">anything_new</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">anything_new</span><span class="p">,</span> <span class="n">all_comic_info</span>
@@ -952,7 +951,7 @@ airflow initdb
 <span class="k">def</span> <span class="nf">decide_what_to_do</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
     <span class="n">anything_new</span><span class="p">,</span> <span class="n">all_comic_info</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s1">'task_instance'</span><span class="p">]</span><span class="o">.</span><span class="n">xcom_pull</span><span class="p">(</span><span class="n">task_ids</span><span class="o">=</span><span class="s1">'check_comic_info'</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">"跟紀錄比較，有沒有新連載？"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"跟紀錄比較，有沒有新連載？"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">anything_new</span><span class="p">:</span>
         <span class="k">return</span> <span class="s1">'yes_generate_notification'</span>
     <span class="k">else</span><span class="p">:</span>
@@ -961,7 +960,7 @@ airflow initdb
 
 <span class="k">def</span> <span class="nf">generate_message</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">all_comic_info</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s1">'task_instance'</span><span class="p">]</span><span class="o">.</span><span class="n">xcom_pull</span><span class="p">(</span><span class="n">task_ids</span><span class="o">=</span><span class="s1">'check_comic_info'</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"產生要寄給 Slack 的訊息內容並存成檔案"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"產生要寄給 Slack 的訊息內容並存成檔案"</span><span class="p">)</span>
 
 
 <span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">'comic_app_v2'</span><span class="p">,</span> <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
@@ -975,26 +974,26 @@ airflow initdb
     <span class="n">check_comic_info</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
         <span class="n">task_id</span><span class="o">=</span><span class="s1">'check_comic_info'</span><span class="p">,</span>
         <span class="n">python_callable</span><span class="o">=</span><span class="n">check_comic_info</span><span class="p">,</span>
-        <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
+        <span class="n">provide_context</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 
     <span class="n">decide_what_to_do</span> <span class="o">=</span> <span class="n">BranchPythonOperator</span><span class="p">(</span>
         <span class="n">task_id</span><span class="o">=</span><span class="s1">'new_comic_available'</span><span class="p">,</span>
         <span class="n">python_callable</span><span class="o">=</span><span class="n">decide_what_to_do</span><span class="p">,</span>
-        <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
+        <span class="n">provide_context</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 
     <span class="n">update_read_history</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
         <span class="n">task_id</span><span class="o">=</span><span class="s1">'update_read_history'</span><span class="p">,</span>
         <span class="n">python_callable</span><span class="o">=</span><span class="n">process_metadata</span><span class="p">,</span>
         <span class="n">op_args</span><span class="o">=</span><span class="p">[</span><span class="s1">'write'</span><span class="p">],</span>
-        <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
+        <span class="n">provide_context</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 
     <span class="n">generate_notification</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
         <span class="n">task_id</span><span class="o">=</span><span class="s1">'yes_generate_notification'</span><span class="p">,</span>
         <span class="n">python_callable</span><span class="o">=</span><span class="n">generate_message</span><span class="p">,</span>
-        <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
+        <span class="n">provide_context</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 
     <span class="n">send_notification</span> <span class="o">=</span> <span class="n">SlackAPIPostOperator</span><span class="p">(</span>
@@ -1306,7 +1305,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 <span class="n">decide_what_to_do</span> <span class="o">=</span> <span class="n">BranchPythonOperator</span><span class="p">(</span>
     <span class="n">task_id</span><span class="o">=</span><span class="s1">'new_comic_available'</span><span class="p">,</span>
     <span class="n">python_callable</span><span class="o">=</span><span class="n">decide_what_to_do</span><span class="p">,</span>
-    <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
+    <span class="n">provide_context</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 
 <span class="o">...</span>
@@ -1706,7 +1705,7 @@ airflow trigger_dag comic_app_v2</code></pre>
         <span class="n">task_id</span><span class="o">=</span><span class="s1">'get_read_history'</span><span class="p">,</span>
         <span class="n">python_callable</span><span class="o">=</span><span class="n">process_metadata</span><span class="p">,</span>
         <span class="n">op_args</span><span class="o">=</span><span class="p">[</span><span class="s1">'read'</span><span class="p">],</span>
-        <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
+        <span class="n">provide_context</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>       
 
     <span class="o">...</span>
@@ -1715,7 +1714,7 @@ airflow trigger_dag comic_app_v2</code></pre>
         <span class="n">task_id</span><span class="o">=</span><span class="s1">'update_read_history'</span><span class="p">,</span>
         <span class="n">python_callable</span><span class="o">=</span><span class="n">process_metadata</span><span class="p">,</span>
         <span class="n">op_args</span><span class="o">=</span><span class="p">[</span><span class="s1">'write'</span><span class="p">],</span>
-        <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
+        <span class="n">provide_context</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 </pre></div>
 <p>你會發現上面兩個 Airflow 工作的 <code>python_callable</code> 都呼叫 <code>process_metadata</code>，因為它們做類似的事情：</p>
@@ -1733,7 +1732,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 <h4 id="Xcom：工作之間的訊息交換">Xcom：工作之間的訊息交換<a class="anchor-link" href="#Xcom：工作之間的訊息交換">&para;</a></h4><p><a href="https://airflow.apache.org/concepts.html?highlight=xcom#xcoms">Xcom（Cross Communication）</a> 是 Airflow 工作之間交換訊息的方式。一個被 <code>PythonOperator</code> 呼叫的 Python 函式所回傳（return）的值，都可以被其他 Airflow 工作透過 Xcom 存取：</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_comic_info</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">"檢查有無新連載"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"檢查有無新連載"</span><span class="p">)</span>
     <span class="o">...</span>
 
     <span class="k">return</span> <span class="n">anything_new</span><span class="p">,</span> <span class="n">all_comic_info</span>
@@ -1742,7 +1741,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 <span class="k">def</span> <span class="nf">decide_what_to_do</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
     <span class="n">anything_new</span><span class="p">,</span> <span class="n">all_comic_info</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s1">'task_instance'</span><span class="p">]</span><span class="o">.</span><span class="n">xcom_pull</span><span class="p">(</span><span class="n">task_ids</span><span class="o">=</span><span class="s1">'check_comic_info'</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">"跟紀錄比較，有沒有新連載？"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"跟紀錄比較，有沒有新連載？"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">anything_new</span><span class="p">:</span>
         <span class="k">return</span> <span class="s1">'yes_generate_notification'</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1758,7 +1757,7 @@ airflow trigger_dag comic_app_v2</code></pre>
     <span class="n">check_comic_info</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
         <span class="n">task_id</span><span class="o">=</span><span class="s1">'check_comic_info'</span><span class="p">,</span>
         <span class="n">python_callable</span><span class="o">=</span><span class="n">check_comic_info</span><span class="p">,</span>
-        <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
+        <span class="n">provide_context</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 </pre></div>
 <p>你可以看到最底下的 <code>check_comic_info</code> 工作呼叫上方的 <code>check_comic_info</code> 函式，而該函式回傳 <code>anything_new, all_comic_info</code>。</p>
@@ -1774,7 +1773,7 @@ airflow trigger_dag comic_app_v2</code></pre>
 <div class="highlight"><pre><span></span><span class="n">check_comic_info</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
     <span class="n">task_id</span><span class="o">=</span><span class="s1">'check_comic_info'</span><span class="p">,</span>
     <span class="n">python_callable</span><span class="o">=</span><span class="n">check_comic_info</span><span class="p">,</span>
-    <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
+    <span class="n">provide_context</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1814,12 +1813,12 @@ airflow trigger_dag comic_app_v2</code></pre>
 <li>將該 <code>BranchPythonOperator</code> 工作 <code>&gt;&gt;</code> 原下游工作</li>
 </ul>
 <p>資料工程很大一部份的工作就是在建立資料管道/工作流程，接個水管合情合理對吧？</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">airflow.operators.python_operator</span> <span class="nn">BranchPythonOperator</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">airflow.operators.python_operator</span> <span class="n">BranchPythonOperator</span>
 
 <span class="k">def</span> <span class="nf">decide_what_to_do</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
     <span class="n">anything_new</span><span class="p">,</span> <span class="n">all_comic_info</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s1">'task_instance'</span><span class="p">]</span><span class="o">.</span><span class="n">xcom_pull</span><span class="p">(</span><span class="n">task_ids</span><span class="o">=</span><span class="s1">'check_comic_info'</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">"跟紀錄比較，有沒有新連載？"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"跟紀錄比較，有沒有新連載？"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">anything_new</span><span class="p">:</span>
         <span class="k">return</span> <span class="s1">'yes_generate_notification'</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1834,7 +1833,7 @@ airflow trigger_dag comic_app_v2</code></pre>
     <span class="n">decide_what_to_do</span> <span class="o">=</span> <span class="n">BranchPythonOperator</span><span class="p">(</span>
         <span class="n">task_id</span><span class="o">=</span><span class="s1">'new_comic_available'</span><span class="p">,</span>
         <span class="n">python_callable</span><span class="o">=</span><span class="n">decide_what_to_do</span><span class="p">,</span>
-        <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
+        <span class="n">provide_context</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 
     <span class="n">generate_notification</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>

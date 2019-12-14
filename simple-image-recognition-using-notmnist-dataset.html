@@ -179,7 +179,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2017-09-19 (Tue)</li>
                         <li class="page-view">
-                            1,743 views
+                            1,746 views
                         </li>
                     </ul>
 
@@ -238,8 +238,7 @@
 
             <div class="col-full blog-content__main">
 
-                
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+                <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Today we're going to do some simple image recogintion using NotMNIST dataset. But before creating model for prediction, it's more important to explore, clean and normalize our dataset in order to make the learning go smoother when we actually build predictive models.</p>
 <p>I motified the <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb">notebook</a> from Udacity's online Deep learning course and the objective of this assignment is to learn about <strong>simple data curation practices</strong>, and familiarize you with some of the data we'll be reusing later.</p>
@@ -280,20 +279,20 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># These are all the modules we'll be using later. Make sure you can import them</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># These are all the modules we'll be using later. Make sure you can import them</span>
 <span class="c1"># before proceeding further.</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">tarfile</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">ndimage</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">six.moves.urllib.request</span> <span class="k">import</span> <span class="n">urlretrieve</span>
-<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="n">cPickle</span> <span class="k">as</span> <span class="n">pickle</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">six.moves.urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">cPickle</span> <span class="k">as</span> <span class="n">pickle</span>
 
 <span class="c1"># Config the matplotlib backend as plotting inline in IPython</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -320,7 +319,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'https://commondatastorage.googleapis.com/books1000/'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'https://commondatastorage.googleapis.com/books1000/'</span>
 <span class="n">last_percent_reported</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">data_root</span> <span class="o">=</span> <span class="s1">'./datasets'</span> <span class="c1"># Change me to store data elsewhere</span>
 
@@ -385,7 +384,7 @@ This should give you a set of directories, labeled A through J.</p>
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">maybe_extract</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -446,7 +445,7 @@ This should give you a set of directories, labeled A through J.</p>
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls ./datasets/notMNIST_small/
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls ./datasets/notMNIST_small/
 </pre></div>
 </div>
 </div>
@@ -468,7 +467,7 @@ A.pickle <span class="ansi-blue-fg">C</span>        D.pickle <span class="ansi-b
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">characters</span> <span class="o">=</span> <span class="s1">'abcdefghij'</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>  <span class="c1"># sub folders to choose images from </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">characters</span> <span class="o">=</span> <span class="s1">'abcdefghij'</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>  <span class="c1"># sub folders to choose images from </span>
 <span class="n">image_per_folder</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># number of images to show for each folder</span>
 </pre></div>
 </div>
@@ -479,7 +478,7 @@ A.pickle <span class="ansi-blue-fg">C</span>        D.pickle <span class="ansi-b
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">BASE_PATH</span> <span class="o">=</span> <span class="s1">'./datasets/notMNIST_small/'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">BASE_PATH</span> <span class="o">=</span> <span class="s1">'./datasets/notMNIST_small/'</span>
 
 <span class="n">list_of_images</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">image_per_folder</span><span class="p">):</span>
@@ -491,8 +490,8 @@ A.pickle <span class="ansi-blue-fg">C</span>        D.pickle <span class="ansi-b
     
 
 <span class="k">def</span> <span class="nf">showImagesHorizontally</span><span class="p">(</span><span class="n">list_of_files</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="k">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">imshow</span><span class="p">,</span> <span class="n">axis</span>
-    <span class="kn">from</span> <span class="nn">matplotlib.image</span> <span class="k">import</span> <span class="n">imread</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">imshow</span><span class="p">,</span> <span class="n">axis</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.image</span> <span class="kn">import</span> <span class="n">imread</span>
     
     <span class="n">number_of_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_files</span><span class="p">)</span>
     <span class="n">num_char</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">characters</span><span class="p">)</span>
@@ -514,7 +513,7 @@ A.pickle <span class="ansi-blue-fg">C</span>        D.pickle <span class="ansi-b
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsfVdzJNlx9WnvvfcAGsAAGLezXEohSsHg0/cLpCe96Pfo
 vyj0wgcpqAhKCnLJWDM7Fhj4hulGe+/t9zDK3NuFgneN2ToRHZgBuqtvVd26N0/myUzVZDKBAgUK
@@ -1070,7 +1069,7 @@ hHpFAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsfddyHEl29tfee49Gw1uaGXJGXIa0mg0p9m4VehTd6QH0
 AHoGXeolpAitLlZD7nAcCJCE70Z77303+r+Y/+RkJ6ph24FTXwSCJNhdlZWVefJ8xyoGgwFkyJAh
@@ -1638,7 +1637,7 @@ kf8HkM8y8KWrC8MAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsfVlzG9t19QKIeZ4ngoM4iBJ1pasb24nzYvslVUmVq/KQ
 yp/JX4uf7DwkTu69sjWLMzEQ8ww0ZnwP+vbWwWEDBEiQAuReVSiSILpx+vTpffbao240GkGDBg0a
@@ -2307,7 +2306,7 @@ BgZPCOOEGRgYGBgYGBgYGBgYPCH+HzlBw+VKq88yAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsfVdzJNlx9WnvvW+gu2EaMxi/s8slJVLSiyL0pl+in6Bf
 Jj5JDGlJLrncHe4MZgbetPfem+9hvsy9XaiGaQM0ZupEIOC6q6tu3bo3T+bJTNV4PIYCBQoUKFCg
@@ -2868,7 +2867,7 @@ KBQKhUKhUCgUigminDCFQqFQKBQKhUKhmCD/B49LVnfWJaUqAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Debugging">Debugging<a class="anchor-link" href="#Debugging">&para;</a></h3><p>In case of following error occur:</p>
-<div class="highlight"><pre><span></span><span class="ne">ImportError</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="kn">import</span> <span class="nn">the</span> <span class="nn">Python</span> <span class="nn">Imaging</span> <span class="nn">Library</span> <span class="p">(</span><span class="n">PIL</span><span class="p">)</span> <span class="n">required</span> <span class="n">to</span> <span class="n">load</span> <span class="n">image</span> <span class="n">files</span><span class="o">.</span>
+<div class="highlight"><pre><span></span><span class="ne">ImportError</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="kn">import</span> <span class="nn">the</span> <span class="n">Python</span> <span class="n">Imaging</span> <span class="n">Library</span> <span class="p">(</span><span class="n">PIL</span><span class="p">)</span> <span class="n">required</span> <span class="n">to</span> <span class="n">load</span> <span class="n">image</span> <span class="n">files</span><span class="o">.</span>
 </pre></div>
 <p>Follow these steps:</p>
 <ul>
@@ -2896,7 +2895,7 @@ to<div class="highlight"><pre><span></span><span class="kn">from</span> <span cl
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">image_size</span> <span class="o">=</span> <span class="mi">28</span>  <span class="c1"># Pixel width and height.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">image_size</span> <span class="o">=</span> <span class="mi">28</span>  <span class="c1"># Pixel width and height.</span>
 <span class="n">pixel_depth</span> <span class="o">=</span> <span class="mf">255.0</span>  <span class="c1"># Number of levels per pixel.</span>
 
 <span class="k">def</span> <span class="nf">load_letter</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">min_num_images</span><span class="p">):</span>
@@ -3004,13 +3003,13 @@ to<div class="highlight"><pre><span></span><span class="kn">from</span> <span cl
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">test_datasets</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">'Number of samples in </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
     <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span>
   
-<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="k">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">imshow</span><span class="p">,</span> <span class="n">axis</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">imshow</span><span class="p">,</span> <span class="n">axis</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">image</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">images</span><span class="p">):</span>
     <span class="n">a</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">),</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
@@ -3038,7 +3037,7 @@ Number of samples in ./datasets/notMNIST_small/J.pickle: 1872
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAABnCAYAAACJvUq/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnVlzG1lythMACRD7TgBcRW3dY0d4HBP2/7/xnX3hiPFM
 e77pllpcQWLfFxLAdyE/yayjAldQUvcgIxCUuABVp87J5c03MwOLxULWspa1rGUta1nLWtaylrWs
@@ -3872,7 +3871,7 @@ By problem 2 above, we already see the data is balanced in test set, verify data
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">train_datasets</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">train_datasets</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">'Number of samples in </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 </pre></div>
@@ -3914,7 +3913,7 @@ Number of samples in ./datasets/notMNIST_large/J.pickle: 52911
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">make_arrays</span><span class="p">(</span><span class="n">nb_rows</span><span class="p">,</span> <span class="n">img_size</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">make_arrays</span><span class="p">(</span><span class="n">nb_rows</span><span class="p">,</span> <span class="n">img_size</span><span class="p">):</span>
   <span class="k">if</span> <span class="n">nb_rows</span><span class="p">:</span>
     <span class="n">dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">((</span><span class="n">nb_rows</span><span class="p">,</span> <span class="n">img_size</span><span class="p">,</span> <span class="n">img_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
     <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">(</span><span class="n">nb_rows</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
@@ -4003,7 +4002,7 @@ Testing: (10000, 28, 28) (10000,)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">randomize</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">randomize</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
     <span class="n">permutation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">shuffled_dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">permutation</span><span class="p">,:,:]</span>
     <span class="n">shuffled_labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">permutation</span><span class="p">]</span>
@@ -4033,7 +4032,7 @@ Keypoints:</p>
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lookup_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s1">'ABCDEFGHIJ'</span><span class="p">)}</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">lookup_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s1">'ABCDEFGHIJ'</span><span class="p">)}</span>
 <span class="k">def</span> <span class="nf">sanity_check</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
     <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -4064,7 +4063,7 @@ Keypoints:</p>
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAAByCAYAAADaptmXAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvUdsJFuaLvZFeu8NmYZpyKQtc6tu39s9fnqA6QfMaCBA
 wMxbaKPVgwBBawnC22mjtxO0kQCtBpAAqQU8QNBS6IEwbxrTr+eaLndZZNEzSab3nswMLar/c08e
@@ -4679,7 +4678,7 @@ D4K/5h4Q6KxOAAAAAElFTkSuQmCC
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sanity_check</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">,</span> <span class="s1">'Test dataset:'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sanity_check</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">,</span> <span class="s1">'Test dataset:'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4693,7 +4692,7 @@ D4K/5h4Q6KxOAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2EAAAByCAYAAADaptmXAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvVmMY1uaLvTt8DzPYzjmKTNPZp48edTddaq6qKIFD10N
 ulegCw+A4IkX1DwgcRHiihce0JWQAKmfGjE8gAT0FRJqWqhFd9+qhq7qqjPlyczIIeZwTJ7nORze
@@ -5316,7 +5315,7 @@ YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pickle_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_root</span><span class="p">,</span> <span class="s1">'notMNIST.pickle'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pickle_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_root</span><span class="p">,</span> <span class="s1">'notMNIST.pickle'</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
   <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">pickle_file</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span>
@@ -5342,7 +5341,7 @@ YGBg0ET8P9N6scxbYvhxAAAAAElFTkSuQmCC
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">statinfo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">pickle_file</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">statinfo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">pickle_file</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'Compressed pickle size:'</span><span class="p">,</span> <span class="n">statinfo</span><span class="o">.</span><span class="n">st_size</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -5389,7 +5388,7 @@ Measure how much overlap there is between training, validation and test samples.
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 <span class="k">def</span> <span class="nf">get_duplicate_data</span><span class="p">(</span><span class="n">source_dataset</span><span class="p">,</span> <span class="n">target_dataset</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_duplicate_to_show</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">source_dataset</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">source_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">Y</span> <span class="o">=</span> <span class="n">target_dataset</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">target_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
@@ -5451,7 +5450,7 @@ Wall time: 7min 40s
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAB6VJREFUeJzt2muMXVUZxvH/0+mFFtqxINJITRnqJZBigHiDCuViSLkF
 PmBNUGjwUiCgJW2tBgMGaGoCWJMSDEGDAgWFFANWE4UYogWd6QWqjIVxQFIzSBjaWlpaaRn7+mG9
@@ -5492,7 +5491,7 @@ OQxmyWEwSw6DWXIYzJLDYJYcBrPkMJglh8EsOQxmyWEwS/8FG9OOYCpq074AAAAASUVORK5CYII=
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAEU5JREFUeJztnXuMJMddxz+/nsc99tZ7Xp+98fk4+x4ycnAsMMQkzkME
 gwmCCAkUgwKJE0JsWTxCTHgoIgoJyH9ECKREoBCwSZzYQBRQgnnJKJyI41Osu5w5crazd3vYu3d7
@@ -5577,7 +5576,7 @@ f0L3TH8Ju55mAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAADPhJREFUeJztnX+QJGdZxz/fmbmZ3Z3MZH/ewrGye7eJqUtdrAsIieGX
 gnVEOAv+UFAoSYESQKCCCaIFiAUif4iVP4JSKbWCgqJYwSJyWiZVSmkK4yUQygsuJGbvciZ4JHe7
@@ -5642,7 +5641,7 @@ BscJuBgcJ+BicJyAi8FxAi4Gxwm4GBwn4GJwnMD/A0dGWk7q6LhuAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAHwZJREFUeJztfWuMZNt11rfqXdXV9X50dVc/Zrpn7tyQuVysiNzrhMiX
 GCcIRUggEvGKcYJvCAGCTcQPIJiEKD8CCpIjRYkJhjgPk2CQTcBCRkmUGJv8cGx859p3Hj2P7qru
@@ -5788,7 +5787,7 @@ YInBggUNlhgsWNBgicGCBQ2WGCxY0GCJwYIFDZYYLFjQ8P8B6ShCWv5B0oUAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAGe9JREFUeJztnWmMZFlW33839n3JyIyqXKpyq5zpblW7Z0x3g6DBstgs
 GWQBAsxihmVoGNlINviLx4iRF/EBBJZsWUIDGsQyNgZsATOsMoNsNCNGM9N0mZ6anu6prMqlMyMz
@@ -5924,7 +5923,7 @@ RU5ErkJggg==
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 <span class="n">dup_indices_valid</span> <span class="o">=</span> <span class="n">get_duplicate_data</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">valid_dataset</span><span class="p">,</span> <span class="n">num_duplicate_to_show</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'Number of duplicates in validation dataset: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dup_indices_valid</span><span class="p">)))</span>
 </pre></div>
@@ -5942,7 +5941,7 @@ Wall time: 8min 57s
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAGyFJREFUeJztnXuMZNl91z+/er/f1d3TPT0z3rW8XsdYJoYkNokhcTCL
 FxQIkAgjZKzgWAgjEyfBEgGZBGSkgJCwFZQEMEkIJgSBCOFpyUTICokUhyUkbOz1sqvdmZ7pru6q
@@ -6071,7 +6070,7 @@ A6sMFhYO/h+m1Uqkr7plLgAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAEyZJREFUeJztnXuMZGlZh5+3rqequqqv0zVMz0zP7G5md4aVqFlZYFkW
 XBYX0WAwQkQJEgRiRFcWROMlXDQkEuIfEIiiAQREwWhE1BgMIYagmIA47qXdXufWM93T09PT3dXV
@@ -6164,7 +6163,7 @@ RbGoGRTFomZQFIuaQVEs/w+kfKKTmnnyZgAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAF1pJREFUeJztnXmMbFlZwH+nu2vpqurq2qu7qt/r7vdkyIzADIbI8pQE
 F8QYY5SICSrILlFERtSIIosEE+ISITEKigoISlBBlMgoKhKWRBYHEAeHcXqp6q7q2veuruo6/lH3
@@ -6276,7 +6275,7 @@ BoOFMQaDweL/AYZSupfKO62bAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAFTZJREFUeJztnXtsXFl9xz+/mTsznqc9M3Zix7EndkRWi0rILpQ3ybLb
 bldqUVstUAlaFgosRW1FC/2LtkK0aCtRFaSlqipAtKWCvqDtLq36kGhJKBSpkN0ku3Q3TRPycsjG
@@ -6378,7 +6377,7 @@ tjawGLS9G43GOnt31n8n2DusNnTbMPC7ps1mk3q9zurqKs1ms3vbdssHaAZD2Ozqf/ZpMASJEYPB
 </div>
 </div>
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAB3CAYAAAC+JPTJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAADllJREFUeJztnXtwXNddxz+/3dVK2tVj5dXDdhxHtvOgnThOSmgLfTCl
 1M1AGSjQFgLUtE3dFugADTNAWpoBOvzRTjtDmTKdtBOmaSkFCtMkhWk8NB3opI8kuHac0TgG1TKy
@@ -6469,7 +6468,7 @@ RK5CYII=
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Number of duplicate images in test set: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dup_indices_test</span><span class="p">)))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Number of duplicate images in test set: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dup_indices_test</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Number of duplicate images in valid set: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dup_indices_valid</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -6491,7 +6490,7 @@ Number of duplicate images in valid set: 1507
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">non_duplicate_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">test_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dup_indices_test</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">non_duplicate_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">test_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dup_indices_test</span><span class="p">]</span>
 <span class="n">sanitized_test_dataset</span> <span class="o">=</span> <span class="n">test_dataset</span><span class="p">[</span><span class="n">non_duplicate_indices</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
 <span class="n">sanitized_test_labels</span> <span class="o">=</span> <span class="n">test_labels</span><span class="p">[</span><span class="n">non_duplicate_indices</span><span class="p">]</span>
 
@@ -6507,7 +6506,7 @@ Number of duplicate images in valid set: 1507
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pickle_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_root</span><span class="p">,</span> <span class="s1">'notMNIST_sanitized.pickle'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pickle_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_root</span><span class="p">,</span> <span class="s1">'notMNIST_sanitized.pickle'</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
   <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">pickle_file</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span>
@@ -6533,7 +6532,7 @@ Number of duplicate images in valid set: 1507
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">statinfo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">pickle_file</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">statinfo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">pickle_file</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'Compressed pickle size:'</span><span class="p">,</span> <span class="n">statinfo</span><span class="o">.</span><span class="n">st_size</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -6564,8 +6563,8 @@ Number of duplicate images in valid set: 1507
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">'ggplot'</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">train_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">200000</span><span class="p">]</span>
@@ -6621,7 +6620,7 @@ Number of duplicate images in valid set: 1507
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAegAAAHZCAYAAABNdqgEAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XlcVOX+B/DPHDaZYXBAIFdEUBPRTBHERAXB8gbuW1bq
 1Ra9aV2z22La5r1d81pWalrazZtSKeTVi900FwRzyT0LFGNLFFKUZWQbcOD5/cGPuU4zLMM2R/i8
@@ -7090,7 +7089,7 @@ AAAASUVORK5CYII=
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 </div>
 </div>

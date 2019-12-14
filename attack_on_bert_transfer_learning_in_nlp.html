@@ -171,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-07-10 (Wed)</li>
                         <li class="page-view">
-                            22,176 views
+                            22,453 views
                         </li>
                     </ul>
 
@@ -230,8 +230,7 @@
 
             <div class="col-full blog-content__main">
 
-                
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+                <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
@@ -454,7 +453,7 @@
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<div class="highlight hl-ipython3"><pre><span></span>%%bash
 pip install transformers tqdm boto3 requests regex -q
 </pre></div>
 </div>
@@ -471,9 +470,9 @@ pip install transformers tqdm boto3 requests regex -q
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">BertTokenizer</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">clear_output</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">BertTokenizer</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">clear_output</span>
 
 <span class="n">PRETRAINED_MODEL_NAME</span> <span class="o">=</span> <span class="s2">"bert-base-chinese"</span>  <span class="c1"># 指定繁簡中文 BERT-BASE 預訓練模型</span>
 
@@ -533,7 +532,7 @@ pip install transformers tqdm boto3 requests regex -q
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">vocab</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">vocab</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">vocab</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"字典大小："</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">vocab</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -560,7 +559,7 @@ pip install transformers tqdm boto3 requests regex -q
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">random_tokens</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">vocab</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">random_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">vocab</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">random_tokens</span><span class="p">]</span>
 
@@ -606,7 +605,7 @@ privacy              8677
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">647</span><span class="p">,</span> <span class="mi">657</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">647</span><span class="p">,</span> <span class="mi">657</span><span class="p">))</span>
 <span class="n">some_pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">t</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">vocab</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">some_pairs</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span>
@@ -644,7 +643,7 @@ privacy              8677
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">"[CLS] 等到潮水 [MASK] 了，就知道誰沒穿褲子。"</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">"[CLS] 等到潮水 [MASK] 了，就知道誰沒穿褲子。"</span>
 <span class="n">tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="n">ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">convert_tokens_to_ids</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
 
@@ -687,10 +686,10 @@ privacy              8677
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
 <span class="sd">這段程式碼載入已經訓練好的 masked 語言模型並對有 [MASK] 的句子做預測</span>
 <span class="sd">"""</span>
-<span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">BertForMaskedLM</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">BertForMaskedLM</span>
 
 <span class="c1"># 除了 tokens 以外我們還需要辨別句子的 segment ids</span>
 <span class="n">tokens_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">ids</span><span class="p">])</span>  <span class="c1"># (1, seq_len)</span>
@@ -796,15 +795,15 @@ Top 3 ( 2%)：['[CLS]', '等', '到', '潮', '水', '過', '了', '，', '就', 
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 安裝 BertViz</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 安裝 BertViz</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="o">!</span><span class="nb">test</span> -d bertviz_repo <span class="o">||</span> git clone https://github.com/jessevig/bertviz bertviz_repo
 <span class="k">if</span> <span class="ow">not</span> <span class="s1">'bertviz_repo'</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
   <span class="n">sys</span><span class="o">.</span><span class="n">path</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">'bertviz_repo'</span><span class="p">]</span>
 
 <span class="c1"># import packages</span>
-<span class="kn">from</span> <span class="nn">bertviz.pytorch_transformers_attn</span> <span class="k">import</span> <span class="n">BertModel</span><span class="p">,</span> <span class="n">BertTokenizer</span>
-<span class="kn">from</span> <span class="nn">bertviz.head_view</span> <span class="k">import</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bertviz.pytorch_transformers_attn</span> <span class="kn">import</span> <span class="n">BertModel</span><span class="p">,</span> <span class="n">BertTokenizer</span>
+<span class="kn">from</span> <span class="nn">bertviz.head_view</span> <span class="kn">import</span> <span class="n">show</span>
 
 <span class="c1"># 在 jupyter notebook 裡頭顯示 visualzation 的 helper</span>
 <span class="k">def</span> <span class="nf">call_html</span><span class="p">():</span>
@@ -991,7 +990,7 @@ Top 3 ( 2%)：['[CLS]', '等', '到', '潮', '水', '過', '了', '，', '就', 
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
 <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.csv.zip"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1022,7 +1021,7 @@ Top 3 ( 2%)：['[CLS]', '等', '到', '潮', '水', '過', '了', '，', '就', 
 <span class="sd">你不需了解細節，只需要看註解了解邏輯或是輸出的數據格式即可</span>
 <span class="sd">"""</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="c1"># 解壓縮從 Kaggle 競賽下載的訓練壓縮檔案</span>
 <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">"unzip train.csv.zip"</span><span class="p">)</span>
@@ -1050,9 +1049,9 @@ Top 3 ( 2%)：['[CLS]', '等', '到', '潮', '水', '過', '了', '，', '就', 
 <span class="n">df_train</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'text_a'</span><span class="p">,</span> <span class="s1">'text_b'</span><span class="p">,</span> <span class="s1">'label'</span><span class="p">]</span>
 
 <span class="c1"># idempotence, 將處理結果另存成 tsv 供 PyTorch 使用</span>
-<span class="n">df_train</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"train.tsv"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">df_train</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"train.tsv"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">"訓練樣本數："</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"訓練樣本數："</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">))</span>
 <span class="n">df_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1078,7 +1077,7 @@ Top 3 ( 2%)：['[CLS]', '等', '到', '潮', '水', '過', '了', '，', '就', 
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_train</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_train</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1108,9 +1107,9 @@ Name: label, dtype: float64</pre>
 <span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"test.csv"</span><span class="p">)</span>
 <span class="n">df_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">"title1_zh"</span><span class="p">,</span> <span class="s2">"title2_zh"</span><span class="p">,</span> <span class="s2">"id"</span><span class="p">]]</span>
 <span class="n">df_test</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"text_a"</span><span class="p">,</span> <span class="s2">"text_b"</span><span class="p">,</span> <span class="s2">"Id"</span><span class="p">]</span>
-<span class="n">df_test</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"test.tsv"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">df_test</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"test.tsv"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">"預測樣本數："</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"預測樣本數："</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_test</span><span class="p">))</span>
 <span class="n">df_test</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1129,7 +1128,7 @@ Name: label, dtype: float64</pre>
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ratio</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ratio</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"測試集樣本數 / 訓練集樣本數 = </span><span class="si">{:.1f}</span><span class="s2"> 倍"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ratio</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1196,19 +1195,19 @@ Name: label, dtype: float64</pre>
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
 <span class="sd">實作一個可以用來讀取訓練 / 測試集的 Dataset，這是你需要徹底了解的部分。</span>
 <span class="sd">此 Dataset 每次將 tsv 裡的一筆成對句子轉換成 BERT 相容的格式，並回傳 3 個 tensors：</span>
 <span class="sd">- tokens_tensor：兩個句子合併後的索引序列，包含 [CLS] 與 [SEP]</span>
 <span class="sd">- segments_tensor：可以用來識別兩個句子界限的 binary tensor</span>
 <span class="sd">- label_tensor：將分類標籤轉換成類別索引的 tensor, 如果是測試集則回傳 None</span>
 <span class="sd">"""</span>
-<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="k">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span>
  
     
 <span class="k">class</span> <span class="nc">FakeNewsDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
     <span class="c1"># 讀取前處理後的 tsv 檔並初始化一些參數</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"train"</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">]</span>  <span class="c1"># 一般訓練你會需要 dev set</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
         <span class="c1"># 大數據你會需要用 iterator=True</span>
@@ -1218,7 +1217,7 @@ Name: label, dtype: float64</pre>
         <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tokenizer</span>  <span class="c1"># 我們將使用 BERT tokenizer</span>
     
     <span class="c1"># 定義回傳一筆訓練 / 測試數據的函式</span>
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">"test"</span><span class="p">:</span>
             <span class="n">text_a</span><span class="p">,</span> <span class="n">text_b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
             <span class="n">label_tensor</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1249,7 +1248,7 @@ Name: label, dtype: float64</pre>
         
         <span class="k">return</span> <span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">segments_tensor</span><span class="p">,</span> <span class="n">label_tensor</span><span class="p">)</span>
     
-    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">len</span>
     
     
@@ -1271,7 +1270,7 @@ Name: label, dtype: float64</pre>
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 選擇第一個樣本</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 選擇第一個樣本</span>
 <span class="n">sample_idx</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="c1"># 將原始文本拿出做比較</span>
@@ -1285,7 +1284,7 @@ Name: label, dtype: float64</pre>
 <span class="n">combined_text</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
 
 <span class="c1"># 渲染前後差異，毫無反應就是個 print。可以直接看輸出結果</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"""[原始文本]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""[原始文本]</span>
 <span class="s2">句子 1：</span><span class="si">{text_a}</span><span class="s2"></span>
 <span class="s2">句子 2：</span><span class="si">{text_b}</span><span class="s2"></span>
 <span class="s2">分類  ：</span><span class="si">{label}</span><span class="s2"></span>
@@ -1356,7 +1355,7 @@ label_tensor   ：2
 
 <span class="k">class</span> <span class="nc">FakeNewsDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
         <span class="o">...</span>
-    <span class="nd">@pysnooper.snoop</span><span class="p">()</span>  <span class="c1"># 加入以了解所有轉換過程</span>
+    <span class="nd">@pysnooper</span><span class="o">.</span><span class="n">snoop</span><span class="p">()</span>  <span class="c1"># 加入以了解所有轉換過程</span>
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
         <span class="o">...</span>
 </pre></div>
@@ -1394,7 +1393,7 @@ label_tensor   ：2
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
 <span class="sd">實作可以一次回傳一個 mini-batch 的 DataLoader</span>
 <span class="sd">這個 DataLoader 吃我們上面定義的 `FakeNewsDataset`，</span>
 <span class="sd">回傳訓練 BERT 時會需要的 4 個 tensors：</span>
@@ -1404,8 +1403,8 @@ label_tensor   ：2
 <span class="sd">- label_ids       : (batch_size)</span>
 <span class="sd">"""</span>
 
-<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="k">import</span> <span class="n">DataLoader</span>
-<span class="kn">from</span> <span class="nn">torch.nn.utils.rnn</span> <span class="k">import</span> <span class="n">pad_sequence</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span> <span class="nn">torch.nn.utils.rnn</span> <span class="kn">import</span> <span class="n">pad_sequence</span>
 
 <span class="c1"># 這個函式的輸入 `samples` 是一個 list，裡頭的每個 element 都是</span>
 <span class="c1"># 剛剛定義的 `FakeNewsDataset` 回傳的一個樣本，每個樣本都包含 3 tensors：</span>
@@ -1460,12 +1459,12 @@ label_tensor   ：2
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">trainloader</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">trainloader</span><span class="p">))</span>
 
 <span class="n">tokens_tensors</span><span class="p">,</span> <span class="n">segments_tensors</span><span class="p">,</span> \
     <span class="n">masks_tensors</span><span class="p">,</span> <span class="n">label_ids</span> <span class="o">=</span> <span class="n">data</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"""</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
 <span class="s2">tokens_tensors.shape   = </span><span class="si">{tokens_tensors.shape}</span><span class="s2"> </span>
 <span class="si">{tokens_tensors}</span><span class="s2"></span>
 <span class="s2">------------------------</span>
@@ -1585,8 +1584,8 @@ tensor([2, 0, 2, 2, 1, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 2,
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 載入一個可以做中文多分類任務的模型，n_class = 3</span>
-<span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">BertForSequenceClassification</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 載入一個可以做中文多分類任務的模型，n_class = 3</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">BertForSequenceClassification</span>
 
 <span class="n">PRETRAINED_MODEL_NAME</span> <span class="o">=</span> <span class="s2">"bert-base-chinese"</span>
 <span class="n">NUM_LABELS</span> <span class="o">=</span> <span class="mi">3</span>
@@ -1603,7 +1602,7 @@ tensor([2, 0, 2, 2, 1, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 2,
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">named_children</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"bert"</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">module</span><span class="o">.</span><span class="n">named_children</span><span class="p">():</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"</span><span class="si">{name}</span><span class="s2">:</span><span class="si">{n}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{name}</span><span class="s2">:</span><span class="si">{n}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{:15}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">module</span><span class="p">))</span>
 </pre></div>
@@ -1649,7 +1648,7 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
         <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_labels</span><span class="p">)</span>
           <span class="o">...</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_ids</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">attention_mask</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_ids</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attention_mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
         <span class="c1"># BERT 輸入就是 tokens, segments, masks</span>
         <span class="n">outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bert</span><span class="p">(</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="p">,</span> <span class="n">attention_mask</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
         <span class="o">...</span>
@@ -1658,7 +1657,7 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
         <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="p">(</span><span class="n">pooled_output</span><span class="p">)</span>
 
         <span class="c1"># 輸入有 labels 的話直接計算 Cross Entropy 回傳，方便！</span>
-        <span class="k">if</span> <span class="n">labels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">labels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">loss_fct</span> <span class="o">=</span> <span class="n">CrossEntropyLoss</span><span class="p">()</span>
             <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fct</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_labels</span><span class="p">),</span> <span class="n">labels</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
             <span class="k">return</span> <span class="n">loss</span>
@@ -1682,7 +1681,7 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">config</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">config</span>
 </pre></div>
 </div>
 </div>
@@ -1757,7 +1756,7 @@ classifier      Linear(in_features=768, out_features=3, bias=True)
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
 <span class="sd">定義一個可以針對特定 DataLoader 取得模型預測結果以及分類準確度的函式</span>
 <span class="sd">之後也可以用來生成上傳到 Kaggle 競賽的預測結果</span>
 
@@ -1839,13 +1838,13 @@ classification acc: 0.6789612344749718
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_learnable_params</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_learnable_params</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">module</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">]</span>
      
 <span class="n">model_params</span> <span class="o">=</span> <span class="n">get_learnable_params</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 <span class="n">clf_params</span> <span class="o">=</span> <span class="n">get_learnable_params</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">classifier</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"""</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
 <span class="s2">整個分類模型的參數量：{sum(p.numel() for p in model_params)}</span>
 <span class="s2">線性分類器的參數量：{sum(p.numel() for p in clf_params)}</span>
 <span class="s2">"""</span><span class="p">)</span>
@@ -1891,7 +1890,7 @@ classification acc: 0.6789612344749718
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># 訓練模式</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
@@ -1978,7 +1977,7 @@ Wall time: 7min 56s
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 <span class="c1"># 建立測試集。這邊我們可以用跟訓練時不同的 batch_size，看你 GPU 多大</span>
 <span class="n">testset</span> <span class="o">=</span> <span class="n">FakeNewsDataset</span><span class="p">(</span><span class="s2">"test"</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">)</span>
 <span class="n">testloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">testset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> 
@@ -2024,7 +2023,7 @@ Wall time: 12min 4s
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls bert*.csv
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls bert*.csv
 </pre></div>
 </div>
 </div>
@@ -2071,7 +2070,7 @@ Wall time: 12min 4s
 <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">trainset</span><span class="o">.</span><span class="n">df</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">'predicted'</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">disagreed_tp</span> <span class="o">=</span> <span class="p">((</span><span class="n">df1</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="s1">'disagreed'</span><span class="p">)</span> <span class="o">&amp;</span> \
                 <span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">df1</span><span class="o">.</span><span class="n">predicted</span><span class="p">)</span> <span class="o">&amp;</span> \
-                <span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">text_a</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">True</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="bp">False</span><span class="p">)))</span>
+                <span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">text_a</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)))</span>
 <span class="n">df1</span><span class="p">[</span><span class="n">disagreed_tp</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
