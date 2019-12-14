@@ -29,6 +29,21 @@ git fetch leemengtaiwan
 git checkout dev
 ```
 
+ga_page_view
+```commandline
+cd pelican-plugins/ga_page_view/
+git remote add leemengtaiwan https://github.com/leemengtaiwan/pelican.plugins.ga_page_view.git
+git fetch leemengtaiwan
+```
+
+## 關聯 Github Repo
+
+deep-learning-resources
+```commandline
+git clone https://github.com/leemengtaiwan/deep-learning-resources.git
+```
+
+
 ## 第一次修改插件
 首先先手動 fork 在 `pelican-plugins` 裡頭想要修改的 submodule，再 clone 下來修改
 ```commandline
@@ -45,8 +60,11 @@ git push --set-upstream leemengtaiwan dev
 
 ```commandline
 conda create -n blog python=3
-source activate blog
+conda activate blog
+conda install pkg-config
 pip install -r init_requirements.txt
+conda install -c conda-forge jupyterlab
+conda install pandas
 ```
 
 ## 修改插件 / 主題設定

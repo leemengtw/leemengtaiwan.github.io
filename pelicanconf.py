@@ -234,7 +234,8 @@ print('Done: Processed {} books.'.format(len(BOOKS)))
 IGNORE_FILES = [
     'node_modules',
     'yarn.lock',
-    '.ipynb_checkpoints'
+    '.ipynb_checkpoints',
+    'tfjs-apps',
 ]
 
 # left navigation image information for all articles
