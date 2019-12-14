@@ -50,10 +50,12 @@ git clone https://github.com/leemengtaiwan/deep-learning-resources.git
 ```
 
 gapminder
+- 記得把 `.git` 刪掉，要不複製到 blog 時部署會出錯
 ```commandline
 git clone https://github.com/leemengtaiwan/gapminder-private.git
+cd gapminder-private
+rm -rf .git
 ```
-
 
 ## 第一次修改插件
 首先先手動 fork 在 `pelican-plugins` 裡頭想要修改的 submodule，再 clone 下來修改
@@ -83,47 +85,31 @@ conda install pandas
     - `THEME` 指到 `WORKSPACE/pelican-jupyter-notebook/themes/Hola10`
     - `PLUGIN_PATHS` 指到 `WORKSPACE/pelican-plugins`
 
-
 ## Blog 開發
 - Shell 快捷鍵參考 [Gist](https://gist.github.com/leemengtaiwan/0fb24bdd4d33fefad39d0c718413880f)
-- 啟動對應的開發環境，例： `source activate blog`
+- 啟動對應的開發環境，例： `conda activate blog`
 
-在 dev branch 重新建立文章
+基本快捷鍵
 ```commandline
-cd leemengtaiwan.github.io
-python copy_static_files.py; pelican content
-```
-
-只更新特定文章
-```commandline
-pelican content -r 
-```
-
-
-
-開啟 HTTP 伺服器確認
-```commandline
-cd leemengtaiwan.github.io/output
-python -m pelican.server
-```
-
-更新 dev 分支
-```commandline
-git commit -m "Update A post"
-```
-
-發布文章到 master branch
-```commandline
-cd leemengtaiwan.github.io/
-pelican content -s publishconf.py
-python add_templates.py
-ghp-import output -b master -m "Commit Message Here"
-git push origin master
+alias copy-gapminder='cp -r ~/Documents/workspace/gapminder-private/ ~/Documents/workspace/leemengtaiwan.github.io/output'
+alias b-base='conda activate blog;cd ~/Documents/workspace/leemengtaiwan.github.io'
+alias b-jupyter='b-base;cd content;jupyter lab'
+alias b-server='b-base;cd output;python -m http.server'
+alias b-build='b-base;python preprocessing.py;pelican content;cd -'
+alias bp-build='b-base;python preprocessing.py;pelican content -s publishconf.py;copy-gapminder;cd -'
+b-publish() {
+	b-base 
+	python preprocessing.py
+	pelican content -s publishconf.py
+	copy-gapminder
+	ghp-import output -b master -m "$1"
+	git push origin master
+	cd -
+}
 ```
 
 ## 追加 project 步驟
 - 修改 `pelicanconf.py`
-
 
 ## 找書的圖片
 - [Rakuten Kobo](https://www.kobo.com/tw/zh/ebook/relr-70c5diu4fjbpvtpfg) 
