@@ -9,6 +9,9 @@ def main():
         'googleb61e79b00fce6520.html'
     ]
 
+    if not os.path.exists('output'):
+        os.mkdir('output')
+
     for template in templates:
         copyfile('./{}'.format(template), './output/{}'.format(template))
 
