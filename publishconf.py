@@ -17,18 +17,13 @@ RELATIVE_URLS = False
 PLUGINS += ['tipue_search', 'ga_page_view', 'sitemap', 'share_post']
 PLUGINS = list(set(PLUGINS))
 
-
 # Feeds
 FEED_DOMAIN = SITEURL
 FEED_ALL_RSS = 'feeds/all.rss.xml'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 # CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
-# DELETE_OUTPUT_DIRECTORY = True
-DELETE_OUTPUT_DIRECTORY = False
-
 # Following items are often useful when publishing
-
 DISQUS_SITENAME = "leemengtaiwan"
 DISQUS_SECRET_KEY = '5VlHrNMlpJ9f6wKT3nSC3O1lVKYlUetlB9a0eFaqXYqRII2LJWTjsdxeBF4m54Bb'
 DISQUS_PUBLIC_KEY = '4aHNPuCwkVqbu7Mzn7VYoiJh39hV0kIUAgdfAgyiIY9U4VQsJqdQgPiFdxujTsNf'

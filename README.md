@@ -14,6 +14,8 @@ git clone -b dev https://github.com/leemengtaiwan/leemengtaiwan.github.io.git
 統一使用官方 plugins，ipynb plugin 及 theme 則使用自己開發的 repo
 ```commandline
 git clone https://github.com/leemengtaiwan/pelican-jupyter-notebook.git
+git checkout dev
+
 git clone --recursive https://github.com/getpelican/pelican-plugins
 cd pelican-plugins/pelican-ipynb/
 git remote add leemengtaiwan https://github.com/leemengtaiwan/pelican-ipynb.git
@@ -34,13 +36,22 @@ ga_page_view
 cd pelican-plugins/ga_page_view/
 git remote add leemengtaiwan https://github.com/leemengtaiwan/pelican.plugins.ga_page_view.git
 git fetch leemengtaiwan
+git checkout normalize-page-vie
+pip install --upgrade google-api-python-client
 ```
+
+然後從 Google Drive 上的 `credentials` 裡頭下載 `Blog-usage-0799d847dd8f.p12` 放到 `leemengtaiwan.github.io`
 
 ## 關聯 Github Repo
 
 deep-learning-resources
 ```commandline
 git clone https://github.com/leemengtaiwan/deep-learning-resources.git
+```
+
+gapminder
+```commandline
+git clone https://github.com/leemengtaiwan/gapminder-private.git
 ```
 
 
