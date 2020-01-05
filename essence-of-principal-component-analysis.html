@@ -173,9 +173,9 @@
                         </a>
                     </h1>
                     <ul class="page-header__meta">
-                        <li class="date">2020-01-05 (Sun)</li>
+                        <li class="date">2020-01-06 (Mon)</li>
                         <li class="page-view">
-                            0 views
+                            4 views
                         </li>
                     </ul>
 
@@ -256,7 +256,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/20200105_pca_blog_post_public.ipynb">
-<source src="https://leemeng.tw/images/pca/pca-teaser.mp4" type="video/mp4"/>
+<source src="https://leemeng.tw/images/pca/covariance-matrix-as-linear-transformation.mp4" type="video/mp4"/>
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <center>
@@ -519,7 +519,7 @@ a_{21}\\
 a_{m1}
 \end{bmatrix}, a_{i1} \in R
 \end{align}
-$$<p>本文大多以 $m=2$ 作為例子。這樣表達 $x$ 的好處是你不需把以前學過的矩陣相乘再做一次轉置。等內化本文概念以後，你自然可以輕鬆地切換數據 $X$ 與其轉置 。為了幫助你進入狀況，底下展示如何取得數據 $\mathbf{X}$ 裡一或多個特定樣本 $x$：</p>
+$$<p>本文前半皆以 $m=2$ 作為例子。這樣表達 $x$ 的好處是你不需把以前學過的矩陣相乘再做一次轉置。等內化本文概念以後，你自然可以輕鬆地切換數據 $X$ 與其轉置 。為了幫助你進入狀況，底下展示如何取得數據 $\mathbf{X}$ 裡一或多個特定樣本 $x$：</p>
 </div>
 </div>
 </div>
@@ -535,7 +535,7 @@ $$<p>本文大多以 $m=2$ 作為例子。這樣表達 $x$ 的好處是你不需
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>是的，在<a href="https://leemeng.tw/practical-pandas-tutorial-for-aspiring-data-scientists.html">資料分析</a>以及機器學習領域裡矩陣索引（indexing）十分基本，基本到你可能沒想過竟然會有人特地為此做動畫。不過我想不論背景，你現在應該都可以在腦中想像如何操作數據 $\mathbf{X}$ 並取得特定的樣本了。這很重要，所以你得讓它變成直覺反應。在<a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html">淺談神經機器翻譯</a>裡，我們也運用相同的索引方式存取高達 4 維的批次（batch）詞向量數據。</p>
+<p>是的，在<a href="https://leemeng.tw/practical-pandas-tutorial-for-aspiring-data-scientists.html">資料分析</a>以及機器學習領域裡矩陣索引（indexing）十分基本，基本到你可能沒想過竟然會有人特地為此做動畫。不過我想現在不論背景，你應該都可以在腦中想像如何操作數據 $\mathbf{X}$ 並取得特定的樣本了。這很重要，所以你得讓它變成直覺反應。在<a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html">淺談神經機器翻譯</a>裡，我們也運用相同的索引方式存取高達 4 維的批次（batch）詞向量數據。</p>
 <p>所見即所得，我們可以再次確認同樣的索引可以得到跟動畫中相同的內容：</p>
 </div>
 </div>
@@ -646,7 +646,7 @@ $$
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>在線性代數的世界裡，如果我們將基底向量 $\{\vec{i}, \vec{j}\}$ 稱作基底 $\mathbf{B}_{standard}$，則剛剛動畫裡出現的那些 $(x, y)$ 座標則是其成分表徵（Component Representation）。你可以把 $\{\vec{i}, \vec{j}\}$ 當成是 2 維<a href="http://linear.ups.edu/html/section-VS.html">向量空間（Vector Space）</a>裡頭的基礎成分（Component）並將所有處在該空間裡的樣本 $\vec{x}$ 表示成這 2 個成分的線性組合。因此要為數據 $\mathbf{X}$ 取得一組成分表徵並將其繪製在對應的座標系統上，事實上你得先選擇一個<a href="https://bit.ly/2QmzPnj">基底（Basis）</a>。</p>
+<p>在線性代數的世界裡，我們常會把基底向量 $\{\vec{i}, \vec{j}\}$ 稱作標準基底 $\mathbf{B}_{standard}$，而剛剛動畫裡出現的那些 $(x, y)$ 座標則是該基底的其成分表徵（Component Representation）。你可以把 $\{\vec{i}, \vec{j}\}$ 當成是 2 維<a href="http://linear.ups.edu/html/section-VS.html">向量空間（Vector Space）</a>裡頭的基礎成分（Component）並將所有處在該空間裡的樣本 $\vec{x}$ 表示成這 2 個成分的線性組合。因此要為數據 $\mathbf{X}$ 取得一組成分表徵並將其繪製在對應的座標系統上，事實上你得先選擇一個<a href="https://bit.ly/2QmzPnj">基底（Basis）</a>。</p>
 <p>以上例而言， $\mathbf{X}$ 的成分表徵之所以那麼好找，好找到你根本不覺得你有選擇 $\mathbf{B}_{standard}$，是因為它太符合直覺了！如果你把其中一個基底向量換掉，找出來的 $(x, y)$ 座標就不再是 $(f_1, f_2)$ 。你可以試試用下面這組基底 $\mathbf{B}_{pc}$ 來建構 $\mathbf{X}$ 的 $(x, y)$ 座標：</p>
 </div>
 </div>
@@ -683,7 +683,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>事實上如果掌握了這個概念，你從 PCA 的全名：主成分分析（Principal Component Analysis）就已經能用非常宏觀的角度理解它的終極目標了：找出一組最能代表你手中數據的主成分（Principal Components），並以此為基底重新得到數據的成分表徵。這個新的成分表徵能為數據降維、去關聯並幫助我們理解數據本質。</p>
-<p>而我也可以跟你保證，就算 $\mathbf{B}_{standard}$ 再怎麼地好用，大多數情況下它都不會是你手中數據的主成分。這概念是如此地重要，讓我想叫你拿出螢光筆畫上 100 遍。這段敘述已經闡述了 PCA 的核心思想，但接下來我還會用不少動畫以及不同的視角帶你多次體會這個道理。</p>
+<p>而我也可以跟你保證，就算 $\mathbf{B}_{standard}$ 再怎麼地好用，大多數情況下它都不會是你手中數據的主成分。這概念是如此地重要，讓我想叫你拿出螢光筆畫上 100 遍。沒錯，你已經了解 PCA 的核心思想了！接下來我還用不少動畫以及不同的視角帶你多次體會這個道理。</p>
 <p>另外你可能有猜到，我剛剛舉例的 $\mathbf{B}_{pc}$ 正是數據 $\mathbf{X}$ 的主成分。我們很快就會看到它跟 $\mathbf{B}_{standard}$ 的區別、為何它們特別以及如何找出它們。上面的動畫中也依序展示了前 4 個樣本 $\vec{x_i}, i = 1, 2, 3, 4$ 在 $\mathbf{B}_{standard}$ 下的成分表徵，你可以自己對照一下：</p>
 </div>
 </div>
@@ -735,7 +735,7 @@ $$
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>真的，你不得不承認用這個座標系統來呈現 $\mathbf{X}$ 的感覺真好！但你很快就會發現，取決於應用情境，萬能基底 $\mathbf{B}_{standard}$ 並不真的萬能。很明顯地，觀測到的數據裡存在著線性關係。在有了這個發現之後，你的下個直覺反應可能是把所有樣本 $\vec{x}$ 都投影到 span 出該條直線的<a href="https://en.wikipedia.org/wiki/Unit_vector">單位向量（Unit Vector）</a> $\vec{v}$ 上。這是因為你知道<a href="https://youtu.be/LyGKycYT2v0?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">投影等於讓兩向量做點積</a>，而每個樣本 $\vec{x}$ 各自跟 $\vec{v}$ 點積後所得到的<strong>那個</strong>特別的數值 $l$，或許就是教授想要你讓他看的那一個數字！</p>
+<p>真的，你不得不承認用這個座標系統來呈現 $\mathbf{X}$ 的感覺真好！但你很快就會發現，取決於應用情境，你認為萬能的標準基底 $\mathbf{B}_{standard}$ 並不真的萬能。很明顯地，觀測到的數據裡存在著線性關係。在有了這個發現之後，你的下個直覺反應可能是把所有樣本 $\vec{x}$ 都投影到 span 出該條直線的<a href="https://en.wikipedia.org/wiki/Unit_vector">單位向量（Unit Vector）</a> $\vec{v}$ 上。這是因為你知道<a href="https://youtu.be/LyGKycYT2v0?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">投影等於讓兩向量做點積（Dot Product）</a>，而每個樣本 $\vec{x}$ 各自跟 $\vec{v}$ 點積後所得到的<strong>那一個</strong>特別的數值 $l$，或許就是教授想要你讓他看的那一個數字！</p>
 <p>現在假設我們已經有個合適的單位向量 $\vec{v}$，則你可以把所有的 $\vec{x}$ 這樣投影到 $\vec{v}$ 所 span 出來的直線：</p>
 </div>
 </div>
@@ -752,7 +752,7 @@ $$
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>簡單而美麗，對吧？你剛剛目睹了這世上最簡單的降維過程，並了解 2 維空間的數據是如何被投影到一維空間上的。我相信動畫勝過千言萬語，但這邊仍有些概念值得強調：</p>
+<p>簡單而美麗，對吧？你剛剛親眼目睹了這世上最簡單的降維過程，並了解 2 維空間的數據是如何被投影到一維空間上的。我相信動畫勝過千言萬語，但這邊仍有些概念值得強調：</p>
 </div>
 </div>
 </div>
@@ -771,7 +771,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在此例中，向量 $\vec{v}$ 的所有線性組合 $k\vec{v}, k \in \Re $ 自成一個在 2 維空間 $\Re^{2}$ 裡的 1 維<a href="https://en.wikipedia.org/wiki/Linear_subspace">線性子空間（Linear Subspace）</a> $\Re^{1}$。1 維的意思是說，本質上你只需要 1 維資訊就能描述該子空間（數線）上的任一點，儘管每個點都有自己的 2 維座標。這是因為給定一個向量 $\vec{v}$，你只需要一個實數 $k$ 作為該向量的 scaler，就能用 $k\vec{v}$ 描述該線上的任何位置，多虧了線性組合。將所有樣本 $\vec{x}$ 投影到該子空間以後，自然 $\vec{x}$ 的維度也從 $\Re^{2}$ 降到 $\Re^{1}$。</p>
-<p>我們在本節最後會看到，向量 $\vec{v}$ 本身的兩個維度值事實上就已經隱含了描述數據 $\mathbf{X}$ 特性時所需的大半資訊，因此只要將每個樣本 $\vec{x}$ 重新表示成向量 $\vec{v}$ 的一個對應係數即可。</p>
+<p>我們在本節最後會看到，向量 $\vec{v}$ 本身的兩個維度值事實上就已經隱含了描述數據 $\mathbf{X}$ 特性時所需的大半資訊，因此只要將每個樣本 $\vec{x}$ 重新表示成向量 $\vec{v}$ 的一個對應倍數（scaler）即可。</p>
 </div>
 </div>
 </div>
@@ -789,20 +789,18 @@ $$
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>線性代數裡充滿著這種關於<a href="https://en.wikipedia.org/wiki/Matrix_decomposition">矩陣拆解（Matrix Decomposition）</a>的描述。不過別擔心，等等的動畫會讓你有更深刻的體會。</p>
-<p>另外別忘了我們之所以一開始會想把數據 $\mathbf{X}$ 投影到這個 1 維子空間（線）上，是因為依據我們的幾何直覺（視覺上的判斷），這些 2 維樣本 $\vec{x}$ 的背後似乎有<strong>一個</strong>被隱藏起來、沒辦法馬上被寫出來的隱藏特徵 $l$ （latent feature）。</p>
+<p>線性代數裡充滿著這種關於<a href="https://en.wikipedia.org/wiki/Matrix_decomposition">矩陣拆解（Matrix Decomposition）</a>的描述。不過別擔心，等等的動畫會讓你有更深刻的體會。另外別忘了我們之所以一開始會想把數據 $\mathbf{X}$ 投影到這個 1 維子空間（直線）上，是因為依據我們的幾何直覺（視覺上的判斷），這些 2 維樣本 $\vec{x}$ 的背後似乎有<strong>一個</strong>被隱藏起來、沒辦法馬上被寫出來的隱藏特徵 $l$ （latent feature）。</p>
 <p>比起使用原來的兩特徵 $f_1$ 與 $f_2$ 來表示一個樣本 $\vec{x}$，我們相信特徵 $l$ 可以被用來更精準且簡潔地描述這些樣本的特性（畢竟這是降維的主要目的）。透過投影到 $\vec{v}$ 所在的一維空間，我們能輕鬆地得到所有樣本的新特徵 $l$。</p>
 <p>在有單位向量 $\vec{v}$ 的情況下，你可以輕易地做到這件事情：</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-</div>
-<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 該直線的單位向量（顯示到小數後第兩位）</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.9691344</span><span class="p">,</span> <span class="mf">0.246533</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"v       :"</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>  <span class="c1"># shape: (2,)</span>
 <span class="n">assert_almost_equal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
 
@@ -869,7 +867,7 @@ L[:, :4]: [[ 3.18  0.53  5.99 -6.53]]
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
 <p>
-                        x 軸並不一定得水平展開。只要你想，這世上的任何直線都能是你的 x 軸。任何向量都可以是你描述手中數據的新基準。
+                        跳脫你的慣性思維，x 軸並不一定得水平展開。只要你想，這世上的任何直線都能是你的 x 軸。任何向量都可以是你描述手中數據的新基準。
                         <br/>
 <br/>
 </p>
@@ -937,7 +935,7 @@ L_sk: [[ 3.18  0.53  5.99 -6.53]]
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 橫看成嶺側成峰</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span>
-<span class="n">L_transpose</span> <span class="o">=</span> <span class="n">pca1d</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">L_transpose</span> <span class="o">=</span> <span class="n">pca_1d</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">L_transpose</span><span class="p">)</span>
 <span class="c1"># 通過測驗，沒有 assert error</span>
 </pre></div>
@@ -947,7 +945,7 @@ L_sk: [[ 3.18  0.53  5.99 -6.53]]
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>你在<a href="#踏入荒野：實際應用-PCA-來解析真實數據">踏入荒野：實際應用 PCA 來解析真實數據</a>一節會看到真實世界的案例。這些說明看似繁瑣，但事實上非常地實際（practical）。因為作為一個資料科學家或是機器學習從業者，不少時間你可能都只是在呼叫某個 ML 函式庫的 API 而非全部自己從頭實作。你得確保自己能正確解讀手中數據以及 API 要求的維度。</p>
+<p>你在<a href="#踏入荒野：實際應用-PCA-來解析真實數據">踏入荒野：實際應用 PCA 來解析真實數據</a>一節會看到真實世界的案例。這些說明看似繁瑣，但事實上非常地實際（practical）。因為作為一個<a href="https://leemeng.tw/journey-of-data-scientist-L-part-1-two-must-ask-questions-when-on-board.html">資料科學家</a>或是機器學習從業者，不少時間你可能都只是在呼叫某個 ML 函式庫的 API 而非自己從頭實作。你得確保自己能正確解讀手中數據以及 API 要求的維度。</p>
 <p>你已經看到透過 <a href="https://scikit-learn.org/stable/index.html">scikit-learn</a>，要用 PCA 對數據做線性降維可以說是小菜一碟。如果你很實用主義，這篇文章看到這裡，把剛剛得到的一維特徵 $\mathbf{L}$ 交給教授就可以了：</p>
 </div>
 </div>
@@ -999,7 +997,7 @@ $$
 \begin{align}
 \text{RE} = \sum_{i=1}^{\text{n}_{samples}} \left \| \vec{x_{i}} - T^{-1}T(\vec{x_{i}}) \right \|
 \end{align}
-$$<p>這邊的關鍵是認識到 $T$ 這個轉換因為牽涉到了降維，其反轉換 $T^{-1}$ 一般是沒辦法將 $T(\vec{x_{i}})$ 完美無損地還原回 $\vec{x_{i}}$ 的。這中間無法復原、損失的資訊就是所謂的 RE。其實際計算結果如下：</p>
+$$<p>這邊的關鍵是認知到 $T$ 這個轉換因為牽涉到了降維，其反轉換 $T^{-1}$ 一般是沒辦法將 $T(\vec{x_{i}})$ 完美無損地還原回 $\vec{x_{i}}$ 的。這中間無法復原、損失的資訊就是所謂的 RE。其實際計算結果如下：</p>
 </div>
 </div>
 </div>
@@ -1012,7 +1010,7 @@ $$<p>這邊的關鍵是認識到 $T$ 這個轉換因為牽涉到了降維，其�
 <span class="sd">而 inverse_transform() 則對應到 T-1。</span>
 <span class="sd">"""</span>
 <span class="c1"># 從新的一維特徵 L 還原回原來的 2 維數據</span>
-<span class="n">X_proj</span> <span class="o">=</span> <span class="n">pca1d</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># 注意維度</span>
+<span class="n">X_proj</span> <span class="o">=</span> <span class="n">pca_1d</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># 注意維度</span>
 
 <span class="c1"># 依照樣本的原始向量以及投影向量算距離後加總</span>
 <span class="c1"># 你可以一個個樣本分開計算距離並加總與此數值比較</span>
@@ -1042,7 +1040,12 @@ $$<p>這邊的關鍵是認識到 $T$ 這個轉換因為牽涉到了降維，其�
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 手動得到 scikit-learn API 的計算結果</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
+<span class="sd">手動得到 scikit-learn API 的計算結果</span>
+<span class="sd">"""</span>
+<span class="c1"># 因為前面的 v 向量的 precision 不夠會導致誤差太大，</span>
+<span class="c1"># 這邊重新建構 P1</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="n">pca_1d</span><span class="o">.</span><span class="n">components_</span>
 <span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">P1</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">L</span><span class="p">,</span> <span class="n">X_proj</span><span class="p">)</span>
 <span class="n">X_proj</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
@@ -1101,13 +1104,13 @@ $$<p>這邊的關鍵是認識到 $T$ 這個轉換因為牽涉到了降維，其�
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>這畫面太美，害我重複觀看而導致晚了幾週發表文章。這當然是玩笑話，但我真心建議你多看幾遍，培養對 PCA 降維的直觀感受。當然，我想幾何直覺已經幫你回答了剛剛的疑問：</p>
+<p>這畫面太美，害我重複觀看而導致晚了幾週發表文章。這當然是玩笑話，但我真心建議你多看幾遍，培養對 PCA 降維的直觀感受。當然，你與生俱來的幾何直覺已經幫你回答了剛剛的疑問：</p>
 <ol>
 <li>PCA 找出來的主成分 $\vec{pc_{1}}$ 是我們能找出最能代表數據 $X$ <strong>變異傾向</strong>的向量，它會使得投影後的 $RE_{1}$ 最小</li>
 <li>$\vec{pc_{1}}$ 在最小化 $RE_{1}$ 的同時也使得投影後的黃點分布最廣，這也就意味著最大化新特徵 $\mathbf{L}$ 的變異</li>
 </ol>
 <p>眼尖的你可能也已經發現，如果將數據 $\mathbf{X}$ 投影到 PCA 中第二大的 $\vec{pc_{2}}$ 上，你將得到<strong>最大</strong>的 $RE_{1}$。而因為投影到 $\vec{pc_{1}}$ 能得到最小的 $RE_{1}$，這間接透露了 $\vec{pc_{1}}$ 跟 $\vec{pc_{2}}$ 互相垂直的事實（更正式點，兩者為<a href="https://en.wikipedia.org/wiki/Orthogonality">正交</a>）。</p>
-<p>另外如果你還記得一些基礎的<a href="https://en.wikipedia.org/wiki/Statistic">統計</a>知識，應該就能體會當我說 $\vec{pc_1}$ 能代表 2 維數據 $\mathbf{X}$ 的整體<a href="https://zh-yue.wikipedia.org/wiki/%E8%AE%8A%E7%95%B0%E6%95%B8">變異（Variance）</a>時，事實上等同於宣稱 $\vec{pc_1}$ 能夠用來代表 $\mathbf{X}$ 中兩特徵 $f_1$ 與 $f_2$ 的<a href="https://en.wikipedia.org/wiki/Covariance">共變異（Covariance）</a>傾向。你從上圖可以明顯地看出，兩特徵呈現正向線性關係，而 $\vec{pc_1}$ 很好地描繪出該傾向。這是為何我們在下一節能從數據 $\mathbf{X}$ 的<a href="https://zh.wikipedia.org/wiki/%E5%8D%8F%E6%96%B9%E5%B7%AE%E7%9F%A9%E9%98%B5">共變異數矩陣（Covariance Matrix）</a>中找出 $\vec{pc_1}$ 與 $\vec{pc_2}$ 並依此對數據 $\mathbf{X}$ <a href="https://en.wikipedia.org/wiki/Decorrelation">去關聯（Decorrelate）</a>的原因。</p>
+<p>另外如果你還記得一些基礎的<a href="https://en.wikipedia.org/wiki/Statistic">統計</a>知識，應該就能體會當我說 $\vec{pc_1}$ 能代表 2 維數據 $\mathbf{X}$ 的整體<a href="https://zh-yue.wikipedia.org/wiki/%E8%AE%8A%E7%95%B0%E6%95%B8">變異（Variance）</a>時，事實上等同於宣稱 $\vec{pc_1}$ 能夠用來代表 $\mathbf{X}$ 中兩特徵 $f_1$ 與 $f_2$ 的<a href="https://en.wikipedia.org/wiki/Covariance">共變異（Covariance）</a>傾向。你從上圖可以明顯地看出，兩特徵呈現正向線性關係，而 $\vec{pc_1}$ 所指的方向很好地描繪出該傾向。這是為何我們在下一節能從數據 $\mathbf{X}$ 的<a href="https://zh.wikipedia.org/wiki/%E5%8D%8F%E6%96%B9%E5%B7%AE%E7%9F%A9%E9%98%B5">共變異數矩陣（Covariance Matrix）</a>中找出 $\vec{pc_1}$ 與 $\vec{pc_2}$ 並依此對數據 $\mathbf{X}$ <a href="https://en.wikipedia.org/wiki/Decorrelation">去關聯（Decorrelate）</a>的原因。</p>
 </div>
 </div>
 </div>
@@ -1487,7 +1490,7 @@ $$
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>透過剛剛的動畫以及解說，我想你已經能夠直觀地理解 PCA 是怎麼將數據 $\mathbf{X}$ 去關聯的。如果數據只有 2 維，那麼就只要將 2 個主成分作為新的基底，將數據投影到上面並得到新的特徵 $l_1$ 及 $l_2$ 即可。現在只剩一個謎團還沒解開：怎麼實際找出主成分？</p>
+<p>透過剛剛的動畫以及解說，我想你已經能夠直觀地理解 PCA 是怎麼將數據 $\mathbf{X}$ 去關聯的。如果數據只有 2 維，那麼就只要將 2 個主成分作為新的基底，將數據投影到上面並得到新的特徵 $l_1$ 及 $l_2$ 即可。現在只剩一個謎團還沒解開：怎麼實際找出主成分？數據 $\mathbf{X}$ 的主成分究竟從哪冒出來的？</p>
 <p>我在降維時已經透露過，數據 $\mathbf{X}$ 的<a href="https://zh.wikipedia.org/wiki/%E5%8D%8F%E6%96%B9%E5%B7%AE%E7%9F%A9%E9%98%B5">共變異數矩陣（Covariance Matrix）</a>裡頭的 2 個 <a href="https://www.youtube.com/watch?v=PFDu9oVAE-g&amp;list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&amp;index=15&amp;t=0s">Eigenvectors</a> 事實上就是我們要找的 $\vec{pc_1}$ 以及 $\vec{pc_2}$。我等等會給你個更直觀的解釋，但現在先讓我們算出該共變異數矩陣：</p>
 </div>
 </div>
@@ -1579,8 +1582,8 @@ eig_vals.shape: (2,)
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 兩者完全一樣，毫不意外</span>
-<span class="n">pc1</span> <span class="o">=</span> <span class="n">pca1d</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">T</span>
-<span class="n">equal</span><span class="p">(</span><span class="n">eig_vecs</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">1</span><span class="p">],</span> <span class="n">pc1</span><span class="p">)</span>
+<span class="n">pc1</span> <span class="o">=</span> <span class="n">pca_1d</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">T</span>
+<span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">eig_vecs</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">1</span><span class="p">],</span> <span class="n">pc1</span><span class="p">)</span>
 
 <span class="c1"># 降維時我們用的第一主成分</span>
 <span class="n">pc1</span>
@@ -1601,7 +1604,7 @@ eig_vals.shape: (2,)
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>你現在也知道數據 $\mathbf{X}$ 的第二主成分 $\vec{pc_2}$ 就是 $\mathbf{K}_{f_1f_2}$ 的第二大 Eigenvector $\vec{v_2}$。我們也清楚 $\{\vec{v_1}, \vec{v_2}\}$ 等同於之前提過的 $\mathbf{B}_{pc}$，其跟 $\mathbf{B}_{standard}$ 一樣可以作為 $\Re^2$ 基底。跟 $\mathbf{B}_{standard}$ 不同的是， 用 $\mathbf{B}_{pc}$ 為基底獲得的 2 維成分表徵能最有效率地表達數據 $\mathbf{X}$ 的特性。且由於這兩個向量同時為 $\mathbf{K}_{f_1f_2}$ 的 Eigenvectors，我們一般也稱這種基底為 <a href="https://intuitive-math.club/linear-algebra/eigenbasis">Eigenbasis</a> $\mathbf{B}_{eigen}$。</p>
+<p>你現在也知道數據 $\mathbf{X}$ 的第二主成分 $\vec{pc_2}$ 就是 $\mathbf{K}_{f_1f_2}$ 的第二大 Eigenvector $\vec{v_2}$。我們也清楚 $\{\vec{v_1}, \vec{v_2}\}$ 就等同於之前提過的 $\mathbf{B}_{pc}$，其跟標準基底 $\mathbf{B}_{standard}$ 一樣可以作為 $\Re^2$ 基底。跟 $\mathbf{B}_{standard}$ 不同的是， 用 $\mathbf{B}_{pc}$ 為基底獲得的 2 維成分表徵能最有效率地表達數據 $\mathbf{X}$ 的特性。且由於這兩個向量同時為 $\mathbf{K}_{f_1f_2}$ 的 Eigenvectors，我們一般也稱這種基底為 <a href="https://intuitive-math.club/linear-algebra/eigenbasis">Eigenbasis</a> $\mathbf{B}_{eigen}$。</p>
 </div>
 </div>
 </div>
@@ -1609,7 +1612,7 @@ eig_vals.shape: (2,)
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>如果你有依照建議事先觀看 <a href="https://www.youtube.com/watch?v=P2LTAUO1TdA&amp;list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&amp;index=14&amp;t=1s">3Blue1Brown 的基底變更介紹</a>，就能明白我們剛剛得出的 <code>eig_vecs</code> 事實上就代表著一個<a href="https://zh.wikipedia.org/wiki/%E5%9F%BA%E5%8F%98%E6%9B%B4">基底變更矩陣（<strong>C</strong>hange <strong>o</strong>f <strong>B</strong>asis Matrix, 後簡稱為 COB 矩陣）</a>。這個 COB 矩陣做的事情是將：</p>
 <ul>
-<li>$C_{eigen}$：以 $\mathbf{B}_{eigen}$ 為基準的<a href="https://en.wikipedia.org/wiki/Coordinate_system">座標系統</a> ，即以 $\mathbf{B}_{eigen}$ 所表示的成分表徵</li>
+<li>$C_{eigen}$：以 $\mathbf{B}_{eigen}$ 為基準的<a href="https://en.wikipedia.org/wiki/Coordinate_system">座標系統</a> ，即以 $\mathbf{B}_{eigen}$ 所表示的成分表徵 $l_1, l_2$</li>
 </ul>
 </div>
 </div>
@@ -1618,7 +1621,7 @@ eig_vals.shape: (2,)
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>轉換成</p>
 <ul>
-<li>$C_{standard}$：以 $\mathbf{B}_{standard}$ 為基準的座標系統，以 $\mathbf{B}_{standard}$ 所表示的成分表徵</li>
+<li>$C_{standard}$：以 $\mathbf{B}_{standard}$ 為基準的座標系統，以 $\mathbf{B}_{standard}$ 所表示的成分表徵 $f_1, f_2$</li>
 </ul>
 <p>這也是為何 COB 矩陣常被說是在進行座標轉換，就像是你在之前的旋轉動畫看到的那樣。為了方便起見，我將這個 COB 矩陣以 $\mathbf{Q}$ 表示。而因為 $\mathbf{Q}$ 裡頭的每個 eigenvectors $\vec{v_i}$ 長度皆為 1 且互相正交， $\mathbf{Q}$ 是一個<a href="https://zh.wikipedia.org/iki/%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5">正交矩陣（Orthogonal Matrix）</a>。其美妙的性質值得特別空一行出來表示：</p>
 $$
@@ -1631,7 +1634,7 @@ $$
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>別忘了我們之前算出的 $(x, y)$ 座標是 $\mathbf{B}_{standard}$ 的成分表徵，因此是被以 $C_{standard}$ 的形式表示。我們實際想要做的事情是 $\mathbf{Q}$ 的逆運算 $\mathbf{Q}^{-1}$：將 $C_{standard}$ 轉換成 $C_{eigen}$。幸運的是，你已經知道 $\mathbf{Q^{-1}} = \mathbf{Q}^\mathsf{T} $。水到渠成，最令人期待的時刻到來了，我們現在可以用 $\mathbf{Q}^\mathsf{T} $ 將數據 $\mathbf{X}$ 重新表示成 $\mathbf{B}_{eigen}$ 的成分表徵以去關聯：</p>
+<p>別忘了我們最一開始得到的 $(x, y)$ 座標是 $\mathbf{B}_{standard}$ 的成分表徵，因此是被以 $C_{standard}$ 的形式表示。我們實際想要做的事情是 $\mathbf{Q}$ 的逆運算 $\mathbf{Q}^{-1}$：將 $C_{standard}$ 轉換成 $C_{eigen}$。幸運的是，你已經知道 $\mathbf{Q^{-1}} = \mathbf{Q}^\mathsf{T} $！水到渠成，最令人期待的時刻到來了，我們現在可以用 $\mathbf{Q}^\mathsf{T} $ 將數據 $\mathbf{X}$ 重新表示成 $\mathbf{B}_{eigen}$ 的成分表徵以去關聯：</p>
 </div>
 </div>
 </div>
@@ -1754,7 +1757,7 @@ $$
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>很直覺的， 在我們的例子裡 PCA 實際上就是稍微旋轉數據，使得讓兩特徵的共變異數 $=0$。而且旋轉後的數據看起來的確也沒有相關，你說是吧？去關聯任務，大成功！到此為止，我想你已經能夠直觀地理解 PCA 怎麼將數據去關聯，並能實際將這個數據處理技巧應用在自己的數據上了，恭喜！</p>
+<p>很直覺的， 在我們的例子裡 PCA 實際上就是稍微旋轉數據，使得讓兩特徵的共變異數 $=0$。而且旋轉後的數據呈現水平分布，的確沒有相關，你說是吧？去關聯任務，大成功！到此為止，我想你已經能夠直觀地理解 PCA 怎麼將數據去關聯，並能實際將這個數據處理技巧應用在自己的數據上了，恭喜！</p>
 <p>我在這章節用了不少篇幅闡述 PCA 的去關聯應用，如果你到目前為止都有好好跟上，那你的 PCA 基礎就已經勝過大多數人了。不過，如果你內心還是覺得好像少了點什麼，可能是因為你還無法給這個問題一個非常直觀的解釋：</p>
 </div>
 </div>
@@ -1773,7 +1776,7 @@ $$
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>事實上這是本章標題丟出的提問。再繼續閱讀前用幾分鐘，想像你迫不及待地想跟別人解釋 PCA 是怎麼將數據去關聯時，他 / 她問了這個問題。你要怎麼回答？</p>
+<p>事實上這是本章標題丟出的提問。再繼續閱讀之前，用一分鐘想像你迫不及待地想跟別人解釋 PCA 是怎麼將數據去關聯時，他 / 她問了這個問題。你要怎麼回答？</p>
 <p>喔，拜託別直接往下拉！這是一個複習本章概念以及所有你學過的線代概念的最佳時機，也是你唯一一次有機會用自己的話解釋 PCA 概念。我保證，在觀看接下來幾個動畫之後，你就永遠沒有這個機會了。你可以快速地重新瀏覽本章內容或是 Google，尋找此題解答的蛛絲馬跡。</p>
 </div>
 </div>
@@ -1805,7 +1808,7 @@ $$
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>再換句話說，共變異數矩陣的 Eigenvectors 事實上就隱含了特徵之間的共變異性質，而共變異程度則由 Eigenvalues 所表示。如果你有類似的回答，很好！你可以直接<a href="#踏入荒野：實際應用-PCA-來解析真實數據">跳到下一章，看看如何將 PCA 套用到真實世界的數據</a>。但如果你對這個概念還是有點模糊，我會再花一點篇幅讓你多點直觀感受。</p>
+<p>再換句話說，共變異數矩陣的 Eigenvectors 事實上就隱含了特徵之間的共變異性質，而該共變異的程度則由對應的 Eigenvalues 所表示。如果你有類似的回答，很好！你可以直接<a href="#踏入荒野：實際應用-PCA-來解析真實數據">跳到下一章，看看如何將 PCA 套用到真實世界的數據</a>。但如果你對這個概念還是有點模糊，我會再花一點篇幅讓你多點直觀感受。</p>
 <p>關鍵在於意識到 $X$ 的共變異數矩陣 $\mathbf{K}_{f_1f_2}$ 完整地儲存了 $\mathbf{X}$ 的變異資訊，同時本身也是一個<a href="https://www.youtube.com/watch?v=kYB8IZa5AuE&amp;list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&amp;index=4&amp;t=0s">線性轉換</a>的事實：</p>
 </div>
 </div>
@@ -1878,7 +1881,7 @@ $$
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>另外你可以看到 $\lambda_{1}$ 已經解釋了大部分 $\mathbf{X}$ 的變異，這是為何投影到 $\vec{v_1}$ 是個好的線性降維。更美妙的是，因為共變異數矩陣 $\mathbf{K}_{f_1f_2}$是一個<a href="https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix#Real_symmetric_matrices">實數對稱矩陣（Real Symmetric Matrix）</a> ，我們可以對其進行<a href="https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix">特徵分解（Eigen Decomposition）</a>：</p>
+<p>另外你可以看到 $\lambda_{1}$ 已經解釋了大部分 $\mathbf{X}$ 的變異，這是為何投影到 $\vec{v_1}$ 是個好的線性降維。更美妙的是，因為共變異數矩陣 $\mathbf{K}_{f_1f_2}$ 是一個<a href="https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix#Real_symmetric_matrices">實數對稱矩陣（Real Symmetric Matrix）</a> ，我們可以對其進行<a href="https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix">特徵分解（Eigen Decomposition）</a>：</p>
 </div>
 </div>
 </div>
@@ -1894,7 +1897,7 @@ $$
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>如果你還記得我們前面是怎麼用 $\mathbf{Q}^\mathsf{T}$ 將數據 $\mathbf{X}$ 旋轉並去關聯的，看到上面這個式子你應該跟當初的我一樣激動地跳起來並撞到天花板才對！不不不，並不是因為右項長得很像表情符號，而是因為 $\mathbf{K}_{f_1f_2}$ 所代表的線性轉換可以被拆解成 3 個更簡單的線性轉換：旋轉（rotate）、伸縮（stretch）、再旋轉！</p>
+<p>如果你腦筋動得夠快，且還記得我們前面是怎麼用 $\mathbf{Q}^\mathsf{T}$ 將數據 $\mathbf{X}$ <strong>旋轉</strong>並去關聯的，看到上面這個式子你應該跟當初的我一樣激動地跳起來並撞到天花板才對！不不不，並不是因為右項長得很像表情符號，而是因為 $\mathbf{K}_{f_1f_2}$ 所代表的線性轉換可以被拆解成 3 個更簡單的線性轉換：旋轉（rotate）、伸縮（stretch）、再旋轉！</p>
 <p>$\mathbf{Q}$ 正是我們前面去關聯時交手過的那個<a href="https://en.wikipedia.org/wiki/Orthogonal_matrix">正交矩陣（Orthogonal Matrix）</a>，裡頭的每個 column 都對應到一個 Eigenvector $\vec{v_i}$；$\mathbf{\Lambda}$ 則是一個<a href="https://zh.wikipedia.org/wiki/%E5%B0%8D%E8%A7%92%E7%9F%A9%E9%99%A3">對角矩陣（Diagonal matrix）</a>，其對角線皆為 Eigenvalues $\lambda_i$，分別對應到 $\mathbf{Q}$ 裡頭的 Eigenvectors 使得：</p>
 </div>
 </div>
@@ -1911,7 +1914,7 @@ $$
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>而我們之前是透過 $\mathbf{Q}^\mathsf{T}$ 旋轉並取得共變異數 $=0$ 的 $\mathbf{X}_{trans}$：</p>
+<p>而我們之前是透過 $\mathbf{Q}^\mathsf{T}$ 旋轉座標來獲得共變異數 $=0$ 的 $\mathbf{X}_{trans}$：</p>
 </div>
 </div>
 </div>
@@ -1945,7 +1948,7 @@ $$
 <li>伸縮：透過 $\mathbf{\Lambda}$ 將轉換到 $C_{eigen}$ 上的 $\mathbf{X}_{trans}$ 依照 Eigenvector 方向伸縮 Eigenvalue 倍</li>
 <li>旋轉：透過 $\mathbf{Q}$ 將伸縮完的 $\mathbf{X}_{trans}$ 旋轉回原來座標 $C_{standard}$</li>
 </ol>
-<p>沒錯，共變異數矩陣 $\mathbf{K}_{f_1f_2}$ 本身代表著 3 個連續的簡單線性轉換：旋轉、伸縮、再旋轉。而在共變異的情境下，代表著將數據 $\mathbf{X}$ 的共變異重新表達成主成分的變異。</p>
+<p>沒錯，共變異數矩陣 $\mathbf{K}_{f_1f_2}$ 本身代表著 3 個連續的簡單線性轉換：旋轉、伸縮、再旋轉。而在共變異的情境下，代表著將數據中各特徵 $f_i$ 的共變異傾向重新表達成主成分 $\vec{pc_j}$ 自己的變異。</p>
 </div>
 </div>
 </div>
@@ -2073,8 +2076,8 @@ K = Q @ Lambda @ Q.T !!
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>好啦！關於 PCA 的最後一塊迷霧也已經散去。你現在已經能夠直觀地理解為何大家總是說共變異數矩陣 $\mathbf{K}_{f_1f_2}$ 的 Eigenvectors 是數據 $\mathbf{X}$ 的主成分了（因為其直接解釋了 $\mathbf{X}$ 中特徵間的共變異傾向）。你也懂得如何利用 PCA 找出的主成分來對數據去關聯，這可是一個不小的成就！</p>
-<p>從下一節開始，我們將從美麗的理論基礎走向實際的 PCA 應用。我將簡單分享 2 個透過 PCA 解析真實數據的例子。閱讀完該節後，你也能用類似的方式有效率地分析自己感興趣的數據並獲得有趣的洞見。</p>
+<p>好啦！遮掩住 PCA 本質的最後一塊迷霧也已經散去。你現在能夠直觀地理解為何人們總是說共變異數矩陣 $\mathbf{K}_{f_1f_2}$ 的 Eigenvectors 是數據 $\mathbf{X}$ 的主成分了（因為這些向量直接解釋了 $\mathbf{X}$ 中特徵間的共變異傾向）。你也懂得如何利用 PCA 找出的主成分來對數據去關聯，這可是一個不小的成就！</p>
+<p>從下一節開始，我們將從美麗的理論基礎走向實際的 PCA 應用。我將簡單分享 2 個透過 PCA 解析真實數據的例子。閱讀完該節後，你也能用最有效率的方式分析自己感興趣的數據並獲得無數有趣的洞見。</p>
 </div>
 </div>
 </div>
@@ -2124,7 +2127,7 @@ K = Q @ Lambda @ Q.T !!
 <li><a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">用 BERT：NLP 界的巨人之力<strong>進行假新聞分類</strong></a></li>
 </ul>
 <p>除了使用的「工具」以外，你可以看到我的文章充滿著「目的性」。畢竟，真正有用的是那些能被實際用來解決你手邊問題的工具。秉持著這個想法並冒著被視為宅宅的風險，
-比起使用隨處可見的數據集然後展示乏善可陳的結果，在這節我將 PCA 套用在自己喜歡的一款多人線上遊戲：<a href="https://lol.garena.tw/preindex">英雄聯盟（<strong>L</strong>eague <strong>o</strong>f <strong>L</strong>egends，常被簡稱為 LOL）</a>的<a href="https://developer.riotgames.com/docs/lol">公開數據</a>之上。這應該是你最想不到會被拿來當作 PCA 案例的數據。</p>
+與其使用隨處可見的數據集然後展示乏善可陳的結果，在這節我將 PCA 套用在自己喜歡的一款多人線上遊戲：<a href="https://lol.garena.tw/preindex">英雄聯盟（<strong>L</strong>eague <strong>o</strong>f <strong>L</strong>egends，常被簡稱為 LOL）</a>的<a href="https://developer.riotgames.com/docs/lol">公開數據</a>之上。這應該是你最想不到會被拿來當作 PCA 案例的數據。</p>
 <p>以下就是該遊戲目前所有可供使用的 147 名英雄角色（champions）：</p>
 </div>
 </div>
@@ -2141,13 +2144,14 @@ K = Q @ Lambda @ Q.T !!
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>別擔心，就算你一個英雄都不認識也無傷大雅。我只是想讓你感受一下遊戲裡有多少英雄以及它們的多樣性。等等實際使用的英雄數據並不會比經典的<a href="https://en.wikipedia.org/wiki/MNIST_database">手寫數字 MNIST</a> 或是<a href="https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html#sphx-glr-auto-examples-datasets-plot-iris-dataset-py">鳶尾花瓣  Iris Dataset</a> 來得困難多少。你也可以把這些英雄想成是一隻隻的<a href="https://zh.wikipedia.org/wiki/%E5%AE%9D%E5%8F%AF%E6%A2%A6%E7%B3%BB%E5%88%97">神奇寶貝 / 寶可夢（Pok&eacute;mon）</a>，各自有各自的屬性即可。以下是幾名英雄數據以及各屬性的平均與標準差：</p>
+<p>別擔心，就算你一個英雄都不認識也無傷大雅。我只是想讓你感受一下這個遊戲裡有多少英雄以及它們的多樣性。等等實際使用的英雄數據並不會比經典的<a href="https://en.wikipedia.org/wiki/MNIST_database">手寫數字 MNIST</a> 或是<a href="https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html#sphx-glr-auto-examples-datasets-plot-iris-dataset-py">鳶尾花瓣  Iris Dataset</a> 來得困難多少。你也可以把這些英雄想成是一隻隻的<a href="https://zh.wikipedia.org/wiki/%E5%AE%9D%E5%8F%AF%E6%A2%A6%E7%B3%BB%E5%88%97">神奇寶貝 / 寶可夢（Pok&eacute;mon）</a>，各自有各自的屬性即可。以下是幾名英雄數據以及各屬性的平均與標準差：</p>
 <div class="highlight"><pre><span></span><span class="c1"># 使用方便的資料分析函式庫 pandas 處理 CSV 數據</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
 
-<span class="c1"># 將 LOL 英雄數據讀取為 pandas 的 DataFrame</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"lol_champion_stats.tsv"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">"名稱"</span><span class="p">)</span>
+<span class="c1"># 將事先預處理過的英雄數據讀取為 pandas 的 DataFrame</span>
+<span class="c1"># 你可以從同樣的 url 獲得本文 demo 的數據</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"https://bit.ly/2FkIaTv"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">"名稱"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"df.shape:"</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
@@ -2165,8 +2169,8 @@ K = Q @ Lambda @ Q.T !!
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>對熟悉此遊戲的玩家們（players）而言，我相信這數據集本身就顯得十分有趣並值得深入探索了。不過在這篇文章裡，我將聚焦在 PCA 身上而不會進行<a href="https://en.wikipedia.org/wiki/Exploratory_data_analysis">探索性數據分析 EDA</a>。我也會用<a href="https://leemeng.tw/practical-pandas-tutorial-for-aspiring-data-scientists.html">資料科學家的 pandas 實戰手冊</a>裡頭闡述過的技巧來處理這些英雄數據。如果你想要用最短的時間上手 pandas，稍後可以自行<a href="https://leemeng.tw/practical-pandas-tutorial-for-aspiring-data-scientists.html">前往閱讀該篇文章</a>。</p>
-<p>現在我們手上握有每位英雄的詳細資料，包含了英雄名稱、所屬類型以及 11 種屬性值（特徵值）。除非有什麼領域知識（Domain Knowledge）讓你確信某個特徵 $f_i$ 的單位變異比另個特徵 $f_j$ 的單位變異要來得重要，在套用 PCA 或是任何機器學習模型之前，你都應該將數據<a href="http://cs231n.github.io/neural-networks-2/#datapre">正規化（Normalization）</a>，也就是將每個數據點 $x$（此例中為一名名英雄） 減去平均後除以<a href="https://en.wikipedia.org/wiki/Standard_deviation">標準差（Standard Deviation）</a>：</p>
+<p>對熟悉此遊戲的玩家們（players）而言，我相信這數據集本身就顯得十分有趣並值得深入探索了。不過在這篇文章裡，我將聚焦在 PCA 身上而不會進行<a href="https://en.wikipedia.org/wiki/Exploratory_data_analysis">探索性數據分析 EDA</a>。另外，我會用<a href="https://leemeng.tw/practical-pandas-tutorial-for-aspiring-data-scientists.html">資料科學家的 pandas 實戰手冊</a>裡頭闡述過的技巧來處理這些英雄數據。如果你想要用最短的時間上手 pandas，稍後可以自行<a href="https://leemeng.tw/practical-pandas-tutorial-for-aspiring-data-scientists.html">前往閱讀該篇文章</a>。</p>
+<p>現在我們手上握有每位英雄的詳細資料，包含了英雄名稱、所屬類型以及 11 種屬性值（特徵值）。除非有什麼領域知識（Domain Knowledge）讓你確信某個特徵 $f_i$ 的單位變異比另個特徵 $f_j$ 的單位變異要來得重要，在套用 PCA 或是任何機器學習模型之前，你都應該將數據<a href="http://cs231n.github.io/neural-networks-2/#datapre">正規化（Normalization）</a>，也就是將每個數據點 $x$（此例中為一名名英雄向量） 減去平均後除以<a href="https://en.wikipedia.org/wiki/Standard_deviation">標準差（Standard Deviation）</a>：</p>
 $$
 \begin{align}
 z &amp;= \operatorname{normalize}(x)\\
@@ -2543,11 +2547,11 @@ $$<p>數據正規化的實作也十分容易：</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>我們之前就說過主成分本身的方向就解釋了原始數據中多個特徵之間的共變異傾向。透過簡單的觀察，你可以發現：</p>
 <ul>
-<li>第一主成分代表著「遠攻」或是「魔力型」英雄。x 軸的值越大會讓攻擊距離越長、魔力相關屬性皆有所提升；其代價是生命與防禦相關的數值降低。這些是被俗稱為「脆皮」的血少攻高類型的英雄。</li>
+<li>第一主成分代表著「遠攻」或是「魔力型」英雄。這是因為 x 值越大會讓攻擊距離越長、魔力相關屬性皆有所提升；其代價是生命與防禦相關的數值降低。這些是被俗稱為「脆皮」的血少攻高類型英雄。</li>
 <li>第二主成分則是以降低魔力相關屬性的數值以換取更遠的攻擊距離以及更高跑速的物理英雄。</li>
 </ul>
 <p>從第一主成分我們可以看出攻擊距離以及魔力造就了英雄聯盟裡最大的整體英雄數值差異，而這也或多或少反映了設計該遊戲的公司以及設計師理念。這可是個非常有趣且實用的洞見！不過雖然我們已經知道第一主成分解釋了最多的數據變異，但實際上它到底解釋（explain）了多少？有沒有什麼辦法可以量化這件事情？</p>
-<p>變異解釋率（Explained Variance Ratio）是一個常被用來量化某個主成分 $\vec{v_i}$ 解釋數據程度的指標：</p>
+<p>變異解釋率（Explained Variance Ratio）是一個常被用來量化某個主成分 $\vec{v_i}$ 解釋數據變異程度的指標：</p>
 $$
 \begin{align}
 \frac{\lambda_i}{\sum \lambda_i} \ |\ \mathbf{K}\vec{v_i} = \lambda_i \vec{v_i}
@@ -2611,16 +2615,16 @@ $$<p>別忘了 $\mathbf{K}$ 是數據 $\mathbf{X}$ 的共變異數矩陣，而 $
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>你可以猜一猜，依照我們前面對第一主成分的解讀：</p>
+<p>你可以猜一猜，這是我們剛剛對第一主成分的解讀：</p>
 <ul>
 <li>第一主成分代表著「遠攻」或是「魔力型」英雄。x 軸的值越大會讓攻擊距離越長、魔力相關屬性皆有所提升；其代價是生命與防禦相關的數值降低。這些是被俗稱為「脆皮」的血少攻高類型的英雄。</li>
 </ul>
-<p>依照這個敘述，假設我們將每位英雄投影到第一主成分所得到的特徵值 $l_1$ 描繪在水平 x 軸上，你覺得哪種類型的英雄會有比較大的 x 值？如果你有些電玩遊戲經驗，應該可以想像以下這兩類型的英雄符合第一主成分的描述：</p>
+<p>依照這個敘述，假設我們將每位英雄投影到第一主成分所得到的特徵值 $l_1$ 描繪在水平 x 軸上，你覺得哪種類型的英雄會有比較大的 x 值？如果你有些電玩遊戲經驗，應該可以想像以下這兩類型的英雄相當符合第一主成分的描述：</p>
 <ul>
-<li>射手：定位為遠程攻擊，血少攻高</li>
-<li>法師：大多也為遠程攻擊，魔力為主要傷害來源</li>
+<li>射手（Marksman）：定位為遠程攻擊，生命值少，玻璃大砲</li>
+<li>法師（Mage）：大多也為遠程攻擊，魔力為主要傷害來源</li>
 </ul>
-<p>我們可以看看這個猜想有多準確。以下分別展示 6 個英雄類型的分布。前兩個類型即為射手（Marksman）與法師（Mage）：</p>
+<p>我們可以看看這個猜想有多準確。下面依序展示每個英雄類型的 2 維主成分表徵分布。前兩類型即為射手與法師：</p>
 </div>
 </div>
 </div>
@@ -2636,8 +2640,8 @@ $$<p>別忘了 $\mathbf{K}$ 是數據 $\mathbf{X}$ 的共變異數矩陣，而 $
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>我們可以看到跟其他類型的英雄相比，射手以及法師英雄的確普遍具有較大的 x 值，代表它們相當符合第一主成分的特性：遠程攻擊、魔法傷害高。透過幾行程式碼，在沒有介紹任何英雄的情況下我們就能有效率地發掘出顯著且有趣的英雄特性，這正是 PCA 的強大之處！跟這兩類型英雄相反，你也可以發現動畫中第四個類型：鬥士（Fighter）普遍擁有較小的 x 值。這代表其魔力較低且擁有較高的生命以及防禦力。</p>
-<p>如果你是此遊戲的玩家，也能透過英雄頭像感受一下結果。我相信你會同意從 PCA 得到的發現不只相當有趣，還符合我們對這些英雄特性的理解。這例子也告訴我們領域知識（Domain Knowledge）的重要。以這邊的例子而言，所謂的領域知識自然是你對此遊戲以及英雄特性的理解。如果你完全沒玩過此遊戲， PCA 能幫助你快速地了解這些英雄屬性的本質；但只有領域知識能幫助你驗證數據得出的結果是否符合常理並讓你找到更多有趣的洞見。</p>
+<p>我們可以看到跟其他類型的英雄相比，射手以及法師英雄的確普遍具有較大的 x 值，代表它們相當符合第一主成分的特性：遠程攻擊、魔法傷害高。透過幾行程式碼，在沒有介紹任何英雄的情況下我們就能有效率地發掘出顯著且有趣的英雄特性，這正是 PCA 的強大之處！跟這兩類型英雄相反，你也可以發現動畫中第四個類型：鬥士（Fighter）普遍擁有較小的 x 值。這代表它們魔力較低但擁有較高的生命以及防禦力。</p>
+<p>如果你是此遊戲的玩家，也能透過英雄頭像感受一下結果。我相信你會同意從 PCA 得到的發現不只相當有趣，還符合我們對這些英雄特性的理解。這例子也告訴我們領域知識（Domain Knowledge）的重要。以這邊的例子而言，所謂的領域知識自然是你對此遊戲以及英雄特性的理解。如果你完全沒玩過此遊戲， PCA 能幫助你快速地了解這些英雄屬性的本質；但領域知識能幫助你驗證數據得出的結果是否符合常理並讓你找到更多有趣的洞見。</p>
 <p>這也是我們在<a href="https://leemeng.tw/gapminder.html">如何用 30 秒了解台灣發展與全球趨勢</a>就已經看過的重要數據概念：</p>
 </div>
 </div>
@@ -2657,8 +2661,8 @@ $$<p>別忘了 $\mathbf{K}$ 是數據 $\mathbf{X}$ 的共變異數矩陣，而 $
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>我鼓勵你認真思考如何將 PCA 應用到自己感興趣或是熟悉的數據之上，並嘗試利用自己的世界觀以及領域知識，解讀其帶給你的分析結果。你將獲得專屬於自己的全新洞見。</p>
-<p>讓我們再簡單看一個 PCA 的例子。這次直接用 PCA 解析你已經剛剛看過的英雄頭像圖片：</p>
+<p>我鼓勵你認真思考如何將 PCA 應用到自己感興趣或是熟悉的數據之上，並嘗試利用自己的世界觀以及領域知識，解讀 PCA 帶給你的分析結果。相信我，你將獲得專屬於自己的全新洞見。</p>
+<p>讓我再簡單介紹一個 PCA 案例。這次直接用 PCA 解析你剛剛已經看過的英雄頭像圖片：</p>
 </div>
 </div>
 </div>
@@ -2674,7 +2678,7 @@ $$<p>別忘了 $\mathbf{K}$ 是數據 $\mathbf{X}$ 的共變異數矩陣，而 $
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>你可以自行前往<a href="https://developer.riotgames.com/docs/lol">英雄聯盟的開發者頁面</a>下載最新版本的英雄頭像圖。我在這邊已經將所有英雄頭像讀取為 4 維陣列：</p>
+<p>你可以自行前往<a href="https://developer.riotgames.com/docs/lol">英雄聯盟的開發者頁面</a>或是<a href="https://github.com/leemengtaiwan/leemengtaiwan.github.io/blob/dev/content/dataset/lol_champion_images.npy?raw=true">右鍵下載</a>我為你準備好的 <code>lol_champion_images.npy</code>。下載後可以這樣將所有的英雄頭像讀取為 4 維 NumPy 陣列：</p>
 </div>
 </div>
 </div>
@@ -2686,6 +2690,8 @@ $$<p>別忘了 $\mathbf{K}$ 是數據 $\mathbf{X}$ 的共變異數矩陣，而 $
 <span class="sd">包含所有英雄頭像圖片的陣列。</span>
 <span class="sd">維度分別為 (n_champions, height, width, channel)</span>
 <span class="sd">"""</span>
+
+<span class="n">images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"lol_champion_images.npy"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"images.shape:"</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
 <span class="n">flatten_images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
@@ -17157,7 +17163,8 @@ MGlOK6m8KwAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>雖然本文篇幅有限無法詳述，在熟悉 PCA 這個線性降維技巧之後，你已經可以開始了解其他（非）線性的降維技術了。比如知名的 <a href="http://distill.pub/2016/misread-tsne/">t-SNE</a>、<a href="https://umap-learn.readthedocs.io/en/latest/how_umap_works.html">UMAP</a>、<a href="https://scikit-learn.org/stable/auto_examples/applications/plot_topics_extraction_with_nmf_lda.html#sphx-glr-auto-examples-applications-plot-topics-extraction-with-nmf-lda-py">NMF</a> 以及&nbsp; <a href="https://www.youtube.com/watch?v=PSOt7u8u23w&amp;t=48s">Autoencoder</a>。希望你離去之後能夠實際嘗試應用 PCA 來分析自己或是企業的數據，並將得到的洞見與我分享。另外如果這篇文章有幫助到你，還請不吝花個幾秒鐘分享給更多對機器學習以及數據分析的朋友閱讀。那就這樣啦！我們下次見。</p>
+<p>雖然本文篇幅有限無法詳述，在熟悉 PCA 這個線性降維技巧之後，你已經可以開始了解其他（非）線性的降維技術了。比如知名的 <a href="http://distill.pub/2016/misread-tsne/">t-SNE</a>、<a href="https://umap-learn.readthedocs.io/en/latest/how_umap_works.html">UMAP</a>、<a href="https://scikit-learn.org/stable/auto_examples/applications/plot_topics_extraction_with_nmf_lda.html#sphx-glr-auto-examples-applications-plot-topics-extraction-with-nmf-lda-py">NMF</a> 以及 <a href="https://www.youtube.com/watch?v=PSOt7u8u23w&amp;t=48s">Autoencoder</a>。希望你離去之後能夠實際嘗試應用 PCA 來分析自己或是企業的數據，並將得到的洞見與我分享。另外如果這篇文章有幫助到你，還請不吝花個幾秒鐘分享給對機器學習或是數據分析有興趣的朋友閱讀，幫我將這些知識傳播給更多人。</p>
+<p>那就這樣啦！我們下次見。</p>
 </div>
 </div>
 </div>
