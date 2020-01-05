@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+    
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 部落格第 5 頁</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="不只是資料科學家，處在資訊時代的各行各業都需要能活用資料科學的人才。透過分享自己的學習心得以及業界經驗，我希望讓更多人接觸到資料科學的奧秘。部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。此為部落格第 5 頁。" />
+        <meta name="keywords" content="部落格, 資料科學, 數據科學, Python, R, 機器學習, 資料分析, 深度學習, 資料視覺化, 軟體工程, 資料工程, 雲端運算, 台灣, blog, data science, machine learning, deep learning, data analysis, data visualization, data engineering, taiwan, tensorflow, tensorflow.js, keras, pytorch, transformer, bert, gpt" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+            <meta property="og:image" content="https://leemeng.tw/theme/images/hero-bg4.jpg" />
+    <meta property="og:type" content="website" />
+
+        <meta property="og:url" content="https://leemeng.tw/blog.html" />
+        <meta property="og:title" content="部落格第 5 頁" />
+        <meta property="og:description" content="不只是資料科學家，處在資訊時代的各行各業都需要能活用資料科學的人才。透過分享自己的學習心得以及業界經驗，我希望讓更多人接觸到資料科學的奧秘。部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。此為部落格第 5 頁。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+
+    <!--for showing toc navigation which slide in from left-->
+
+    <!--for responsive embed youtube video-->
+
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+
+<title>LeeMeng - 部落格第 5 頁</title>        <meta name="description" content="不只是資料科學家，處在資訊時代的各行各業都需要能活用資料科學的人才。透過分享自己的學習心得以及業界經驗，我希望讓更多人接觸到資料科學的奧秘。部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。此為部落格第 5 頁。" />
+        <meta name="keywords" content="部落格, 資料科學, 數據科學, Python, R, 機器學習, 資料分析, 深度學習, 資料視覺化, 軟體工程, 資料工程, 雲端運算, 台灣, blog, data science, machine learning, deep learning, data analysis, data visualization, data engineering, taiwan, tensorflow, tensorflow.js, keras, pytorch, transformer, bert, gpt" />
+            <meta property="og:image" content="https://leemeng.tw/theme/images/hero-bg4.jpg" />
+    <meta property="og:type" content="website" />
+
+        <meta property="og:url" content="https://leemeng.tw/blog.html" />
+        <meta property="og:title" content="部落格第 5 頁" />
+        <meta property="og:description" content="不只是資料科學家，處在資訊時代的各行各業都需要能活用資料科學的人才。透過分享自己的學習心得以及業界經驗，我希望讓更多人接觸到資料科學的奧秘。部落格主要會提及資料科學、資料工程、機器學習及資料視覺化技巧。此為部落格第 5 頁。" />
+
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="https://demo.leemeng.tw">Demo</a>
+        </li>
+        <li>
+            <a href="../books.html">Books</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+
+    <!-- page header for featured/newest post
+    ================================================== -->
+    <section class="page-header page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/default.jpg)">
+        <div class="row page-header__content">
+            <article class="col-full">
+
+                <div class="page-header__info">
+                    <div class="page-header__cat">
+                        <a href="https://leemeng.tw/tag/python.html" rel="tag">python</a>
+                        <a href="https://leemeng.tw/tag/pelican.html" rel="tag">pelican</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        <a href="https://leemeng.tw/tag/blogging.html" rel="tag">blogging</a>
+                    </div>
+                    <div class="page-header__date">
+                        2017-09-17 (Sun)
+                    </div>
+                </div>
+                
+                <h1 class="page-header__title">
+                     <a href="https://leemeng.tw/purpose-of-this-blog.html" rel="bookmark" title="Permalink to Purpose of this blog">
+                        Purpose of this blog
+                     </a>
+                </h1>
+                <p><p>第一篇文章做一點 blog 的簡介，打算把自己在學 data science 還有 machine learning 過程中寫的筆記還有在 MOOC 上課的 code (主要是 jupyter notebook) 記錄下來方便自己以後搜尋。</p></p>
+
+                <p>
+                    <a href="https://leemeng.tw/purpose-of-this-blog.html" class="btn btn--stroke page-header__btn">Read More</a>
+                </p>
+            </article>
+        </div>
+
+    </section> <!-- end page-header -->
+
+    <!-- blog
+    ================================================== -->
+    <section class="blog-content-wrap">
+
+<div class="row blog-content">
+    <div class="col-full">
+
+        <div class="blog-list block-1-2 block-tab-full">
+
+                <article class="col-block">
+
+                    <div class="blog-date">
+                        <a href="https://leemeng.tw/purpose-of-this-blog.html">2017-09-17 (Sun)</a>
+                        <br>
+                        141 views
+                    </div>
+
+                    <h2 class="h01">
+                        <a href="https://leemeng.tw/purpose-of-this-blog.html" rel="bookmark" title="Permalink to Purpose of this blog">Purpose of this blog</a>
+                    </h2>
+                    <div>
+                        <a href="https://leemeng.tw/purpose-of-this-blog.html" rel="bookmark" title="Permalink to Purpose of this blog">
+                            <img src="https://leemeng.tw/theme/images/background/default.jpg">
+                        </a>
+                    </div>
+                    <p><p>第一篇文章做一點 blog 的簡介，打算把自己在學 data science 還有 machine learning 過程中寫的筆記還有在 MOOC 上課的 code (主要是 jupyter notebook) 記錄下來方便自己以後搜尋。</p></p>
+                    <div class="blog-cat">
+                        <a href="https://leemeng.tw/tag/python.html" rel="tag">python</a>
+                        <a href="https://leemeng.tw/tag/pelican.html" rel="tag">pelican</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        <a href="https://leemeng.tw/tag/blogging.html" rel="tag">blogging</a>
+                    </div>
+
+                </article>
+
+        </div> <!-- end blog-list -->
+
+    </div> <!-- end col-full -->
+</div> <!-- end blog-content -->
+
+<!-- Infinite scroll status elements -->
+<div class="scroller-status">
+  <div class="infinite-scroll-request loader-ellips">
+    ...
+  </div>
+  <p class="infinite-scroll-last"></p>
+  <p class="infinite-scroll-error"></p>
+</div>
+
+<div class="row blog-entries-nav pagination">
+    <div class="col-full">
+        <a href="https://leemeng.tw/blog/4/" class="btn btn--stroke">
+            <i class="im im-arrow-left"></i>
+            Prev
+        </a>
+    </div>
+</div>
+
+    </section> <!-- end blog-content-wrap -->
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full">
+
+                <div class="footer-logo">
+                    <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+                </div>
+
+                <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>                </ul>
+            </div>
+        </div>
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>Powered by <a href="http://getpelican.com/" target="_blank">Pelican</a></span>
+                    <span>© Copyright Hola 2017</span>
+                    <span>Design by <a href="https://www.styleshout.com/" target="_blank">styleshout</a></span>
+                </div>
+
+                <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+    </footer> <!-- end footer -->
+
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main.js"></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--https://instant.page/-->
+    <script src="//instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
+
+
+
+    <!--init Infinite Scroll-->
+    <!--reference: https://infinite-scroll.com/demo/full-page/-->
+    <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
+    <script>
+        $('.blog-list').infiniteScroll({
+          path: '.pagination__next',
+          append: '.col-block',
+          status: '.scroller-status',
+          hideNav: '.pagination',
+        });
+    </script>
+<!--https://darkmodejs.learn.uno/-->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js"></script>
+<script>
+var options = {
+  bottom: '32px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.2s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+</script>
+</body>
+</html>
