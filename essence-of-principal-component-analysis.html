@@ -175,7 +175,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2020-01-06 (Mon)</li>
                         <li class="page-view">
-                            4 views
+                            653 views
                         </li>
                     </ul>
 
@@ -348,7 +348,7 @@ Neural Network）
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>我接著會假設你已將<a href="https://leemeng.tw/deep-learning-for-everyone-understand-neural-net-and-linear-algebra.html">上篇文章</a>以及 3Blue1Brown 的<a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">影片</a>看過一遍，或是至少已了解剛剛提到的幾個基本線代概念。當然，我懂你想要「省時間」直接閱讀的心情，而你也完全可以這樣做！不過如果你等等發現自己的線代基礎不是那麼穩固，我會建議回到本節打好底子，或是點擊我在當下附的連結複習相關概念。</p>
+<p>我接著會假設你已將<a href="https://leemeng.tw/deep-learning-for-everyone-understand-neural-net-and-linear-algebra.html">上篇文章</a>以及 3Blue1Brown 的<a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">影片</a>看過一遍，或是至少已了解剛剛提到的幾個基本線代概念。當然，我懂你想要「省時間」直接閱讀的心情，而你也完全可以這樣做！不過如果你等等發現自己的線代基礎不是那麼穩固，我會建議回到本節打好底子，或是點擊我在當下附的連結複習相關概念。另外，如果你只是被文章封面吸引過來，想要馬上看到用 PCA 分析線上遊戲<a href="https://lol.garena.tw/game/champion">《英雄聯盟》</a>的案例，可以先跳到<a href="#踏入荒野：實際應用-PCA-來解析真實數據">踏入荒野：實際應用 PCA 來解析真實數據</a>一節。</p>
 <p>萬丈高樓平地起，打好地基真的很重要。但現在假設你已經準備完畢，讓我們開始這趟 PCA 的深度探索之旅吧！</p>
 </div>
 </div>
@@ -2142,10 +2142,11 @@ K = Q @ Lambda @ Q.T !!
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>別擔心，就算你一個英雄都不認識也無傷大雅。我只是想讓你感受一下這個遊戲裡有多少英雄以及它們的多樣性。等等實際使用的英雄數據並不會比經典的<a href="https://en.wikipedia.org/wiki/MNIST_database">手寫數字 MNIST</a> 或是<a href="https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html#sphx-glr-auto-examples-datasets-plot-iris-dataset-py">鳶尾花瓣  Iris Dataset</a> 來得困難多少。你也可以把這些英雄想成是一隻隻的<a href="https://zh.wikipedia.org/wiki/%E5%AE%9D%E5%8F%AF%E6%A2%A6%E7%B3%BB%E5%88%97">神奇寶貝 / 寶可夢（Pok&eacute;mon）</a>，各自有各自的屬性即可。以下是幾名英雄數據以及各屬性的平均與標準差：</p>
-<div class="highlight"><pre><span></span><span class="c1"># 使用方便的資料分析函式庫 pandas 處理 CSV 數據</span>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 使用方便的資料分析函式庫 pandas 處理 CSV 數據</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
 
@@ -2164,6 +2165,189 @@ K = Q @ Lambda @ Q.T !!
 <span class="n">df_stats</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">'mean'</span><span class="p">,</span> <span class="s1">'std'</span><span class="p">]]</span>
 <span class="n">df_stats</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">"</span><span class="si">{:.2f}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>df.shape: (147, 12)
+前五名英雄數據：
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_html rendered_html output_subarea">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe table table-striped table-responsive">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>類型</th>
+<th>攻擊距離</th>
+<th>魔力</th>
+<th>魔力回復</th>
+<th>魔力提升</th>
+<th>生命提升</th>
+<th>生命</th>
+<th>生命回復</th>
+<th>移動速度</th>
+<th>物理攻擊</th>
+<th>物理防禦</th>
+<th>魔法防禦</th>
+</tr>
+<tr>
+<th>名稱</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>厄薩斯</th>
+<td>鬥士</td>
+<td>175</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>90</td>
+<td>580.0</td>
+<td>3.0</td>
+<td>345</td>
+<td>60.0</td>
+<td>38.0</td>
+<td>32.1</td>
+</tr>
+<tr>
+<th>阿璃</th>
+<td>法師</td>
+<td>550</td>
+<td>418</td>
+<td>0.8</td>
+<td>25</td>
+<td>92</td>
+<td>526.0</td>
+<td>6.5</td>
+<td>330</td>
+<td>53.0</td>
+<td>20.9</td>
+<td>30.0</td>
+</tr>
+<tr>
+<th>阿卡莉</th>
+<td>刺客</td>
+<td>125</td>
+<td>200</td>
+<td>0.0</td>
+<td>0</td>
+<td>95</td>
+<td>575.0</td>
+<td>8.0</td>
+<td>345</td>
+<td>62.4</td>
+<td>23.0</td>
+<td>37.0</td>
+</tr>
+<tr>
+<th>亞歷斯塔</th>
+<td>坦克</td>
+<td>125</td>
+<td>350</td>
+<td>0.8</td>
+<td>40</td>
+<td>106</td>
+<td>573.4</td>
+<td>8.5</td>
+<td>330</td>
+<td>61.1</td>
+<td>44.0</td>
+<td>32.1</td>
+</tr>
+<tr>
+<th>阿姆姆</th>
+<td>坦克</td>
+<td>125</td>
+<td>287</td>
+<td>0.5</td>
+<td>40</td>
+<td>84</td>
+<td>613.1</td>
+<td>9.0</td>
+<td>335</td>
+<td>53.4</td>
+<td>33.0</td>
+<td>32.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>各特徵平均與標準差：
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<style type="text/css">
+</style><table class="table table-striped table-responsive" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002"><thead> <tr> <th class="blank level0"></th> <th class="col_heading level0 col0">攻擊距離</th> <th class="col_heading level0 col1">魔力</th> <th class="col_heading level0 col2">魔力回復</th> <th class="col_heading level0 col3">魔力提升</th> <th class="col_heading level0 col4">生命提升</th> <th class="col_heading level0 col5">生命</th> <th class="col_heading level0 col6">生命回復</th> <th class="col_heading level0 col7">移動速度</th> <th class="col_heading level0 col8">物理攻擊</th> <th class="col_heading level0 col9">物理防禦</th> <th class="col_heading level0 col10">魔法防禦</th> </tr></thead><tbody>
+<tr>
+<th class="row_heading level0 row0" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002level0_row0">mean</th>
+<td class="data row0 col0" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row0_col0">326.39</td>
+<td class="data row0 col1" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row0_col1">309.66</td>
+<td class="data row0 col2" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row0_col2">0.57</td>
+<td class="data row0 col3" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row0_col3">33.03</td>
+<td class="data row0 col4" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row0_col4">88.52</td>
+<td class="data row0 col5" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row0_col5">555.83</td>
+<td class="data row0 col6" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row0_col6">6.60</td>
+<td class="data row0 col7" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row0_col7">336.31</td>
+<td class="data row0 col8" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row0_col8">59.37</td>
+<td class="data row0 col9" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row0_col9">30.06</td>
+<td class="data row0 col10" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row0_col10">31.13</td>
+</tr>
+<tr>
+<th class="row_heading level0 row1" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002level0_row1">std</th>
+<td class="data row1 col0" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row1_col0">196.52</td>
+<td class="data row1 col1" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row1_col1">115.40</td>
+<td class="data row1 col2" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row1_col2">0.28</td>
+<td class="data row1 col3" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row1_col3">16.62</td>
+<td class="data row1 col4" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row1_col4">6.65</td>
+<td class="data row1 col5" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row1_col5">37.33</td>
+<td class="data row1 col6" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row1_col6">1.78</td>
+<td class="data row1 col7" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row1_col7">7.56</td>
+<td class="data row1 col8" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row1_col8">6.17</td>
+<td class="data row1 col9" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row1_col9">6.72</td>
+<td class="data row1 col10" id="T_f8a65eec_3021_11ea_8774_0242ac1c0002row1_col10">1.71</td>
+</tr>
+</tbody></table>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2661,7 +2845,7 @@ $$<p>別忘了 $\mathbf{K}$ 是數據 $\mathbf{X}$ 的共變異數矩陣，而 $
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>我鼓勵你認真思考如何將 PCA 應用到自己感興趣或是熟悉的數據之上，並嘗試利用自己的世界觀以及領域知識，解讀 PCA 帶給你的分析結果。相信我，你將獲得專屬於自己的全新洞見。</p>
+<p>我鼓勵你認真思考如何將 PCA 應用到自己感興趣或是熟悉的數據之上，並嘗試利用自己的世界觀以及領域知識，解讀 PCA 帶給你的分析結果。相信我，只要結合領域知識以及數據分析能力，你將獲得專屬於自己的全新洞見。</p>
 <p>讓我再簡單介紹一個 PCA 案例。這次直接用 PCA 解析你剛剛已經看過的英雄頭像圖片：</p>
 </div>
 </div>
@@ -17143,7 +17327,7 @@ MGlOK6m8KwAAAABJRU5ErkJggg==
 <li>透過 NumPy 以及 scikit-learn 將 PCA 應用在自己想分析的數據之上</li>
 <li>直觀理解並能欣賞 PCA 背後的線性代數與統計概念</li>
 </ol>
-<p>我希望你也能感受到自己的成長。PCA 的核心精神是為手邊的數據選擇一個最好的觀察視角，給予數據全新且最具意義的表徵（representation）。在這個萬物皆能被以一個數值向量表示並解析的時代，這個核心精神能幫助你解構任何數據，瞭解事物的本質。這也是我撰寫此文希望能讓更多人掌握此精神的動力之一。</p>
+<p>我希望你也能感受到現在自己的腦袋裡多了不少有用的知識。PCA 的核心精神是為手邊的數據選擇一個最好的觀察視角，給予數據全新且最具意義的表徵（representation）。在這個萬物皆能被以一個數值向量表示並解析的時代，這個核心精神能幫助你解構任何數據，瞭解事物的本質。這也是我撰寫此文希望能讓更多人掌握此精神的動力之一。</p>
 </div>
 </div>
 </div>
