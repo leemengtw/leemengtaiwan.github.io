@@ -171,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-07-10 (Wed)</li>
                         <li class="page-view">
-                            26,457 views
+                            26,485 views
                         </li>
                     </ul>
 
@@ -1416,7 +1416,7 @@ label_tensor   ：2
     <span class="n">tokens_tensors</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">]</span>
     <span class="n">segments_tensors</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">]</span>
     
-    <span class="c1"># 測試集有 labels</span>
+    <span class="c1"># 訓練集有 labels</span>
     <span class="k">if</span> <span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">label_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
