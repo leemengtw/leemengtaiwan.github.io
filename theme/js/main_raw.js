@@ -336,56 +336,51 @@
 
     /* Contact Form
      * ------------------------------------------------------ */
-    var ssContactForm = function() {
+    // https://formspree.io/forms/xpzjnzdg/integration
+    var form = document.getElementById("contactForm");
+    var button = document.getElementById("contactFormButton");
+    var sLoader = $('.submit-loader');
 
-        /* local validation */
-	    $('#contactForm').validate({
-        
-            /* submit via ajax */
-            submitHandler: function(form) {
-    
-                var sLoader = $('.submit-loader');
-    
-                $.ajax({
-    
-                    type: "POST",
-                    url: "https://formspree.io/xpzjnzdg",
-                    data: $(form).serialize(),
-                    beforeSend: function() { 
-    
-                        sLoader.slideDown("slow");
-    
-                    },
-                    success: function(msg) {
-    
-                        // Message was sent
-                        if (msg == 'OK') {
-                            sLoader.slideUp("slow"); 
-                            $('.message-warning').fadeOut();
-                            $('#contactForm').fadeOut();
-                            $('.message-success').fadeIn();
-                        }
-                        // There was an error
-                        else {
-                            sLoader.slideUp("slow"); 
-                            $('.message-warning').html(msg);
-                            $('.message-warning').slideDown("slow");
-                        }
-    
-                    },
-                    error: function() {
-    
-                        sLoader.slideUp("slow"); 
-                        $('.message-warning').html("Oh no！訊息寄送失敗，請查看你的網路連線並再度嘗試。");
-                        $('.message-warning').slideDown("slow");
-    
-                    }
-    
-                });
-            }
-    
-        });
-    };
+    // Success and Error functions for after the form is submitted
+
+    function success() {
+      form.reset();
+      sLoader.slideUp("slow");
+      $('.message-warning').fadeOut();
+      $('#contactForm').fadeOut();
+      $('.message-success').fadeIn();
+    }
+
+    function error() {
+      sLoader.slideUp("slow");
+      $('.message-warning').html("Oh no！訊息寄送失敗，請查看你的網路連線並再度嘗試。");
+      $('.message-warning').slideDown("slow");
+    }
+
+    // handle the form submission event
+
+    form.addEventListener("submit", function(ev) {
+      ev.preventDefault();
+      var data = new FormData(form);
+      ajax(form.method, form.action, data, success, error);
+    });
+
+    // helper function for sending an AJAX request
+
+    function ajax(method, url, data, success, error) {
+      var xhr = new XMLHttpRequest();
+      xhr.open(method, url);
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState !== XMLHttpRequest.DONE) return;
+        if (xhr.status === 200) {
+          success(xhr.response, xhr.responseType);
+        } else {
+          error(xhr.status, xhr.response, xhr.responseType);
+        }
+      };
+      xhr.send(data);
+    }
 
 
    /* Back to Top
@@ -425,7 +420,6 @@
         ssSmoothScroll();
         ssPlaceholder();
         ssAlertBoxes();
-        ssContactForm();
         ssBackToTop();
 
     })();
