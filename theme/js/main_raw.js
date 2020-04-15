@@ -349,7 +349,7 @@
                 $.ajax({
     
                     type: "POST",
-                    url: "https://formspree.io/b98705001@gmail.com",
+                    url: "https://formspree.io/xpzjnzdg",
                     data: $(form).serialize(),
                     beforeSend: function() { 
     
@@ -376,7 +376,7 @@
                     error: function() {
     
                         sLoader.slideUp("slow"); 
-                        $('.message-warning').html("Something went wrong. Please try again.");
+                        $('.message-warning').html("Oh no！訊息寄送失敗，請查看你的網路連線並再度嘗試。");
                         $('.message-warning').slideDown("slow");
     
                     }
