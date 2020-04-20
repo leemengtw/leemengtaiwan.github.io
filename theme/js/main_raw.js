@@ -49,6 +49,10 @@
      * -------------------------------------------------- */
     var ssPrettyPrint = function() {
         $('pre').addClass('prettyprint');
+        $('table').addClass('table');
+        $('table').addClass('table-striped');
+        $('table').addClass('table-responsive');
+
         $( document ).ready(function() {
             prettyPrint();
         });
