@@ -69,7 +69,7 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 </div>
 
 -----------------
-這裡紀錄了我在學習[深度學習](https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0)時蒐集的一些線上資源。內容由淺入深，而且會不斷更新，希望能幫助你順利地開始學習：）
+這裡紀錄了我在學習[深度學習](https://leemeng.tw/deep-learning-for-everyone-understand-neural-net-and-linear-algebra.html)時蒐集的一些線上資源。內容由淺入深，而且會不斷更新，希望能幫助你順利地開始學習：）
 
 ## 本文章節
 - [遊玩空間](#playground)
@@ -200,15 +200,18 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 
 ---
 
-|[AI Notes](http://www.deeplearning.ai/ai-notes/)| To Be Updated
+|[AI Notes](http://www.deeplearning.ai/ai-notes/)| [Anomagram](https://anomagram.fastforwardlabs.com/#/)
 |:---:|:---:|
-|<a href="http://www.deeplearning.ai/ai-notes/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/deeplearning-ai-notes.jpg"></a>|<a href=""><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/general/to-be-updated.jpg"></a>
+|<a href="http://www.deeplearning.ai/ai-notes/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/deeplearning-ai-notes.jpg"></a>|<a href="https://anomagram.fastforwardlabs.com/#/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/playground/anomagram.jpg"></a>
 
 ### [AI Notes](http://www.deeplearning.ai/ai-notes/)
 
 - AI Notes 是 [吳恩達的 Deep Learning 專項課程](#deep-learning-specialization--coursera)的輔助教材，使用數學證明以及由 TensorFlow.js 建立的線上 demo 讓你可以直觀地學習[如何初始化神經網路權重](http://www.deeplearning.ai/ai-notes/initialization/)及[如何最佳化模型權重](http://www.deeplearning.ai/ai-notes/optimization/) 
 - 縮圖為 [Parameter optimization in neural networks](http://www.deeplearning.ai/ai-notes/optimization/) 單元中使用不同 Optimiziers 訓練模型的線上 demo
 
+### [Anomagram](https://anomagram.fastforwardlabs.com/#/)
+
+- Anomagram 是一個以 Tensorflow.js 實作，可以建立、訓練並測試能夠用來做異常檢測的 Autoencoder。
 
 ## <div id='courses'>線上課程</div>
 看完[遊玩空間](#playground)的大量實際應用，相信你已經迫不及待地想要開始學習強大的深度學習技術了。
@@ -221,12 +224,12 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 |:---:|:---:|
 |<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS18.html"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/Hung-Yi-Lee-ml-courses.jpg"></a>|<a href="https://www.coursera.org/specializations/deep-learning"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/deep-learning-specification-coursera.jpg"></a>
 
-### [李宏毅教授的機器學習 / 深度學習課程](http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML19.html)
+### [李宏毅教授的機器學習 / 深度學習課程](http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML20.html)
 
-- 大概是全世界最好、最完整的 Deep Learning <b>中文</b>學習資源。
-- 影片內容涵蓋基本理論（約 10 小時觀看時間）一直到進階的[生成對抗網路 GAN](https://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C) 以及[強化學習 RL](https://zh.wikipedia.org/wiki/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0)
-- 你也可以從[這邊](https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ/playlists)看到教授的 Youtube 課程清單
-- [李宏毅机器学习笔记(LeeML-Notes，簡體)](https://github.com/datawhalechina/leeml-notes) 則將教授上課的影片內容轉換為完整的筆記，方便快速瀏覽所有課程內容。
+- 大概是全世界最好、最完整的深度學習<b>中文</b>學習資源，且作業皆提供 Colab 筆記本範例。
+- 影片內容涵蓋基本理論（約 10 小時觀看時間）一直到進階的[生成對抗網路 GAN](https://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C) 以及[強化學習 RL](https://zh.wikipedia.org/wiki/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0)。
+- 想學語音辨識或是自然語言處理則可參考教授的[用深度學習處理人類語言](http://speech.ee.ntu.edu.tw/~tlkagk/courses_DLHLP20.html)。
+- [李宏毅机器学习笔记(LeeML-Notes，簡體)](https://github.com/datawhalechina/leeml-notes) 則將教授上課的影片內容轉為筆記，方便瀏覽課程內容。
 
 ### [Deep Learning Specialization @ Coursera](https://www.coursera.org/specializations/deep-learning)
 
@@ -261,8 +264,8 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 
 ### [MIT Deep Learning](https://deeplearning.mit.edu/)
 
-- 麻省理工學院推出的深度學習課程，內容包含深度學習基礎、深度強化學習以及自動駕駛相關知識。[Github Repo](https://github.com/lexfridman/mit-deep-learning) 包含了多個教學筆記本，值得參考
-- 上圖是 [DeepTraffic](https://selfdrivingcars.mit.edu/deeptraffic/)，由 MIT 的研究科學家 [Lex Fridman](https://lexfridman.com/) 推出的一個深度強化學習競賽。此競賽目標是建立一個可以在高速公路上駕駛汽車的神經網路。你可以在[這裡](https://selfdrivingcars.mit.edu/deeptraffic/)看到線上 Demo 以及詳細說明
+- 麻省理工學院推出的深度學習課程，內容包含深度學習基礎、深度強化學習以及自動駕駛相關知識。[Github Repo](https://github.com/lexfridman/mit-deep-learning) 包含了多個教學筆記本，值得參考。
+- 上圖是 [DeepTraffic](https://selfdrivingcars.mit.edu/deeptraffic/)，由 MIT 的研究科學家 [Lex Fridman](https://lexfridman.com/) 推出的一個深度強化學習競賽。此競賽目標是建立一個可以在高速公路上駕駛汽車的神經網路。你可以在[這裡](https://selfdrivingcars.mit.edu/deeptraffic/)看到線上 Demo 以及詳細說明。
 
 ---
 
@@ -270,9 +273,9 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 |:---:|:---:|
 |<a href="http://introtodeeplearning.com"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/intro-to-deeplearning-mit.jpg"></a>|<a href="https://www.coursera.org/learn/ai-for-everyone"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/courses/ai-for-everyone.jpg"></a>
 
-### [6.S191: Introduction to Deep Learning](http://introtodeeplearning.com)
+### [MIT 6.S191 Introduction to Deep Learning](http://introtodeeplearning.com/)
 
-- 麻省理工學院推出的另一堂基礎深度學習課程，介紹深度學習以及其應用。內容涵蓋機器翻譯、圖像辨識以及更多其他應用。此課程使用 Python 以及 TensorFlow 來實作作業，並預期學生具備基礎的微積分（梯度 & Chain Rule）以及線性代數（矩陣相乘）
+- 麻省理工學院推出的另一堂基礎深度學習課程，介紹深度學習以及其應用。內容涵蓋機器翻譯、圖像辨識以及更多其他應用。此課程使用 Python 以及 TensorFlow 來實作作業，並預期學生具備基礎的微積分（梯度下降、鏈鎖律）以及線性代數（矩陣相乘）。
 
 ### [AI For Everyone](https://www.coursera.org/learn/ai-for-everyone)
 
@@ -384,7 +387,7 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 
 ---
 
-|[Stanford CS230 Cheatsheets](https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks)|[practicalAI](https://github.com/GokuMohandas/practicalAI)|
+|[Stanford CS230 Cheatsheets](https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks)|[practicalAI](https://github.com/madewithml/practicalAI)|
 |:---:|:---:|
 |<a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tutorials/cs230-deep-learning-cheatsheet.jpg"></a>|<a href="https://github.com/GokuMohandas/practicalAI"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tutorials/practical-ai-pytorch.jpg"></a>
 
@@ -394,20 +397,25 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 - 此小抄最適合已經熟悉基礎知識的同學隨時複習運用。你也可以從他們的 [Github Repo](https://github.com/afshinea/stanford-cs-230-deep-learning) 下載包含上述所有內容的[超級 VIP 小抄](https://github.com/afshinea/stanford-cs-230-deep-learning/blob/master/en/super-cheatsheet-deep-learning.pdf)
 - 除了深度學習以外，你也可以查看 [CS229 機器學習課程的小抄](https://stanford.edu/~shervine/teaching/cs-229.html)
 
-### [practicalAI](https://github.com/GokuMohandas/practicalAI)
-- 在 Github 上超過 1 萬星的 Repo。除了深度學習，也有介紹 [Python 基礎](https://colab.research.google.com/github/GokuMohandas/practicalAI/blob/master/notebooks/01_Python.ipynb)及 [Pandas](https://colab.research.google.com/github/GokuMohandas/practicalAI/blob/master/notebooks/03_Pandas.ipynb) 的使用方式
-- 使用 [Pytorch](https://pytorch.org/) 框架來實現深度學習模型，且所有內容都是 Jupyter 筆記本，可以讓你在 Colab 或本地端執行
+### [practicalAI](https://github.com/madewithml/practicalAI)
+- 在 Github 上超過 1 萬星的 Repo。除了深度學習，也有介紹 [Python 基礎](https://colab.research.google.com/github/practicalAI/practicalAI/blob/master/notebooks/basic_ml/01_Python.ipynb)及 [Pandas](https://colab.research.google.com/github/practicalAI/practicalAI/blob/master/notebooks/basic_ml/03_Pandas.ipynb) 的使用方式
+- 使用 [PyTorch](https://pytorch.org/) 框架來實現深度學習模型，且所有內容都是 Jupyter 筆記本，可以讓你在 Colab 或本地端執行
 
 ---
 
-|[AllenNLP Demo](http://demo.allennlp.org/)| To Be Updated
+|[AllenNLP Demo](http://demo.allennlp.org/)| [Hands-on Machine Learning 2](https://github.com/ageron/handson-ml2)
 |:---:|:---:|
-|<a href="http://demo.allennlp.org/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tools/allennlp-demo.jpg"></a>|<a href=""><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/general/to-be-updated.jpg"></a>
+|<a href="http://demo.allennlp.org/"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tools/allennlp-demo.jpg"></a>|<a href="https://github.com/ageron/handson-ml2"><img src="https://github.com/leemengtaiwan/deep-learning-resources/raw/master/images/tutorials/handson-ml2.jpg"></a>
 
 ### [AllenNLP Demo](http://demo.allennlp.org/)
 
 - 清楚地展示了如[機器理解](https://demo.allennlp.org/machine-comprehension)、[命名實體識別](https://demo.allennlp.org/named-entity-recognition)等多個自然語言處理任務的情境。每個任務的情境包含了任務所需要的輸入、SOTA 模型的預測結果以及模型內部的注意力機制，對理解一個 NLP 任務的實際應用情境有很大幫助
 - [AllenNLP](https://allennlp.org/) 是一個由 [AI2](https://allenai.org/) 以 [PyTorch](https://pytorch.org/) 實現的自然語言處理函式庫
+
+### [Hands-on Machine Learning 2](https://github.com/ageron/handson-ml2)
+
+- 前 YouTube 影片分類 PM [Aurélien Geron](https://twitter.com/aureliengeron) 教你如何透過 Scikit-Learn、Keras 以及 TensorFlow 2 來進行機器學習以及深度學習任務與應用的筆記本彙整。
+- 第二版專注在 TensorFlow 2，其 Github repo 已有超過 6 千顆星，[第一版](https://github.com/ageron/handson-ml)則有高達 2 萬星。
 
 ## <div id="blogs">優質文章</div>
 這邊列舉了一些幫助我釐清重要概念的部落格以及網站，希望能加速你探索這個深度學習世界。
@@ -423,7 +431,7 @@ Image_credit_url: https://unsplash.com/photos/g4_IymCiD-k?utm_source=unsplash&ut
 - [Jay Alammar's blog](https://jalammar.github.io/)
     - 以清楚易懂的視覺化解釋深度學習概念。[這篇](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/)用大量易懂的動畫說明[神經機器翻譯](https://en.wikipedia.org/wiki/Neural_machine_translation)，而在[這篇](https://jalammar.github.io/illustrated-bert/)則介紹如何利用如 [ELMo](https://allennlp.org/elmo)、[BERT](https://github.com/google-research/bert) 等預先訓練過的強大模型在自然語言處理進行[遷移學習](https://en.wikipedia.org/wiki/Transfer_learning)
 - [Andrej Karpathy's blog](http://karpathy.github.io/)
-    - 現為 Tesla AI 負責人的 Andrej Karpathy 在[這篇](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)明確說明何謂循環神經網路 RNN。文中提供不少應用實例及視覺化來幫助我們理解 RNN 模型究竟學到了什麼，是學習 RNN 的朋友幾乎一定會碰到的一篇文章
+    - 現為 Tesla AI 負責人的 [Andrej Karpathy](https://twitter.com/karpathy) 在[這篇](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)明確說明何謂循環神經網路 RNN。文中提供不少應用實例及視覺化來幫助我們理解 RNN 模型究竟學到了什麼，是學習 RNN 的朋友幾乎一定會碰到的一篇文章
 
 ## <div id="papers">經典論文</div>
 這邊依發表時間列出深度學習領域的經典 / 重要論文。
