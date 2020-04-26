@@ -109,7 +109,18 @@ b-publish() {
 ```
 
 ## 追加 project 步驟
-- 修改 `pelicanconf.py`
+- 在 `pelican-jupyter-notebook/themes/Hola10/static/imgaes/portfolio` 裡頭新增 3 圖
+    - 使用 [resizeimage.net](https://resizeimage.net/) 裁剪圖片
+    - 決定新 Project 在 index.html 上的 cover image 類型以及圖片尺寸：
+        - 方型圖片尺寸：
+            - `project-name@jpg`: 500 x 500
+            - `project-name@2x.jpg`: 1000 x 1000
+        - 長型圖片尺寸：
+            - `project-name@jpg`: 500 x 625
+            - `project-name@2x.jpg`: 1000 x 1250
+        - `gallery/g-project-name.jpg`: 自由, 寬型圖片
+- 前往 `pelicanconf.py`，搜尋 `PROJECTS`
+    - 調整專案順序
 
 ## 找書的圖片
 - [Rakuten Kobo](https://www.kobo.com/tw/zh/ebook/relr-70c5diu4fjbpvtpfg) 
