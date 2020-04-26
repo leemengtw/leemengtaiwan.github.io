@@ -160,18 +160,17 @@ PAGINATED_DIRECT_TEMPLATES = ['index', 'blog']
 IPYNB_NB_SAVE_AS = 'notebooks/{slug}.ipynb'
 
 # Email receiving setting
-# TODO: 測試 message form
-EMAIL_FORM_ACTION = "https://formspree.io/b98705001@gmail.com"
+EMAIL_FORM_ACTION = "https://formspree.io/xpzjnzdg"
 
 # Portfolio setting, order matters
 PROJECTS = [
     {
-        "name": "GapMinder 中文版",
-        "thumb": "gapminder",
-        "categories": "利用公開數據來探索全世界以及台灣的動態資料視覺化工具",
-        "link": "https://leemeng.tw/gapminder.html",
-        "link_title": "專案介紹連結",
-        "description": '這是一個利用各國公開數據來探索世界以及台灣的資料視覺化工具。你可以在<a href="https://leemeng.tw/gapminder.html">如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀</a>實際使用此工具並了解細節'
+        "name": "從 COVID-19 看台灣與世界",
+        "thumb": "covid-19",
+        "categories": "了解如何開始使用 Python 視覺化並分析台灣與世界的 COVID-19 疫情",
+        "link": "https://covid19.leemeng.tw/",
+        "link_title": "專案連結",
+        "description": '<a href="https://covid19.leemeng.tw/" target="_blank">在這個專案裡頭</a>，我透過一系列專欄文章引領讀者存取 COVID-19 的公開數據並了解如何繪製如衛福部疾管署首頁所呈現的疫情趨勢。 每篇專欄都有對應的 Colab 並包含用來生成圖表的 Python 程式碼，希望能鼓勵更多人深入探索數據，進而發現對社會有用的新洞見。'
     },
     {
         "name": "由淺入深的 AI 與深度學習資源",
@@ -182,11 +181,12 @@ PROJECTS = [
         "description": '我將線上的深度學習資源做些整理並逐一介紹。你可以在<a href="https://leemeng.tw/deep-learning-resources.html">由淺入深的深度學習資源整理</a>了解細節，或者直接去專屬的 <a href="https://github.com/leemengtaiwan/deep-learning-resources" target="_blank">Github Repo</a> 關注並查看所有資源。'
     },
     {
-        "name": "AI 如何找出你的喵",
-        "thumb": "cat-recognizer",
-        "categories": "一個利用 TensorFlow 以及 Flask 實做的貓狗辨識應用",
-        "link": "https://demo.leemeng.tw/",
-        "description": '這是一個利用 TensorFlow 以及 Flask 來分辨貓咪以及狗狗的圖片辨識應用，使用 Docker 封裝並部署在 Heroku 上。你可以閱讀 <a href="https://demo.leemeng.tw/" target="_blank">AI 如何找出你的喵：直觀理解卷積神經網路</a> 來了解細節並實際使用該神經網路。'
+        "name": "GapMinder 中文版",
+        "thumb": "gapminder",
+        "categories": "利用公開數據來探索全世界以及台灣的動態資料視覺化工具",
+        "link": "https://leemeng.tw/gapminder.html",
+        "link_title": "專案介紹連結",
+        "description": '這是一個利用各國公開數據來探索世界以及台灣的資料視覺化工具。你可以在<a href="https://leemeng.tw/gapminder.html">如何用 30 秒了解台灣發展與全球趨勢：用 GapMinder 培養正確世界觀</a>實際使用此工具並了解細節'
     },
     {
         "name": "用 CartoonGAN 畫日本動漫",
@@ -221,9 +221,12 @@ PROJECTS = [
         "description": '展示一個由 TensorFlow 2.0 以及 TensorFlow.js 實現的線上文本生成應用。你可以前往<a href="https://leemeng.tw/how-to-generate-interesting-text-with-tensorflow2-and-tensorflow-js.html" target="_blank">讓 AI 寫點金庸：如何用 TensorFlow 2.0 及 TensorFlow.js 寫天龍八部</a>了解詳情。'
     },
     {
-        "thumb": "minimalismo"
+        "name": "AI 如何找出你的喵",
+        "thumb": "cat-recognizer",
+        "categories": "一個利用 TensorFlow 以及 Flask 實做的貓狗辨識應用",
+        "link": "https://demo.leemeng.tw/",
+        "description": '這是一個利用 TensorFlow 以及 Flask 來分辨貓咪以及狗狗的圖片辨識應用，使用 Docker 封裝並部署在 Heroku 上。你可以閱讀 <a href="https://demo.leemeng.tw/" target="_blank">AI 如何找出你的喵：直觀理解卷積神經網路</a> 來了解細節並實際使用該神經網路。'
     },
-
 ]
 
 # get book information for books.html
