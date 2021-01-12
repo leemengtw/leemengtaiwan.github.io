@@ -154,6 +154,7 @@ DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog'
 # DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search']
 # PAGINATED_DIRECT_TEMPLATES = ['index', 'blog', 'books']
 PAGINATED_DIRECT_TEMPLATES = ['index', 'blog']
+# PAGINATED_TEMPLATES = ['index', 'blog']
 
 # Copy notebook to output folder for downloading
 # reference: `ARTICLE_SAVE_AS` in http://docs.getpelican.com/en/3.6.3/settings.html
@@ -266,7 +267,4 @@ DELETE_OUTPUT_DIRECTORY = True
 # GA_END_DATE = 'today'
 # GA_METRIC = 'ga:pageviews'
 # POPULAR_POST_START = 'A month ago'
-
-
-
 

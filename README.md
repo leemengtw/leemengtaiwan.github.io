@@ -80,6 +80,19 @@ conda install -c conda-forge jupyterlab
 conda install pandas
 ```
 
+### 新版本 Pelican 環境設置
+
+```commandline
+cd /Users/meng.lee/Documents/workspace
+git clone https://github.com/getpelican/pelican
+cd pelican
+python setup.py install
+cd ../leemengtaiwan.github.io 
+
+```
+
+
+
 ## 修改插件 / 主題設定
 - 修改 `pelicanconf.py`
     - `THEME` 指到 `WORKSPACE/pelican-jupyter-notebook/themes/Hola10`
