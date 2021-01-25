@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="zh-hant-tw"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="zh-hant-tw"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-hant-tw">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Lee Meng" />
+<title>LeeMeng - 監控資本主義時代下的資料科學、AI 與你我的數位未來</title>
+    <!--- article-specific meta data
+    ================================================== -->
+        <meta name="description" content="這是一篇講述監控資本主義的驚悚輕小說與科普文。處在數位時代的每個人都需要了解谷歌、臉書與推特等科技巨頭如何形塑我們的數位現實以及其背後運作的商業邏輯與經濟誘因。文中也會清晰地呈現資料科學與監控資本主義之間的緊密關係。閱讀完本文的讀者將能重新找回數位時代中最重要的注意力並專注在真正重要的事情。" />
+        <meta name="keywords" content="監控資本主義, 資料科學, 人工智慧, 深度學習, 推薦系統" />
+        <meta name="tags" content="監控資本主義" />
+        <meta name="tags" content="資料科學" />
+        <meta name="tags" content="人工智慧" />
+        <meta name="tags" content="深度學習" />
+        <meta name="tags" content="推薦系統" />
+
+
+    <!--- Open Graph Object metas
+    ================================================== -->
+        <meta property="og:image" content="https://leemeng.tw/theme/images/background/maxim-hopman-IayKLkmz6g0-unsplash.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://leemeng.tw/data-science-ai-and-our-digital-future-in-the-age-of-surveillance-capitalism.html" />
+        <meta property="og:title" content="監控資本主義時代下的資料科學、AI 與你我的數位未來" />
+        <meta property="og:description" content="這是一篇講述監控資本主義的驚悚輕小說與科普文。處在數位時代的每個人都需要了解谷歌、臉書與推特等科技巨頭如何形塑我們的數位現實以及其背後運作的商業邏輯與經濟誘因。文中也會清晰地呈現資料科學與監控資本主義之間的緊密關係。閱讀完本文的讀者將能重新找回數位時代中最重要的注意力並專注在真正重要的事情。" />
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <!--for customized css in individual page-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/bootstrap.min.css">
+
+    <!--for showing toc navigation which slide in from left-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/toc-nav.css">
+
+    <!--for responsive embed youtube video-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/embed_youtube.css">
+
+    <!--for prettify dark-mode result-->
+        <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/darkmode.css">
+
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://leemeng.tw/theme/css/ipython.css">
+    <link rel="stylesheet" type="text/css" href='https://leemeng.tw/theme/css/progress-bar.css' />
+
+
+    <!--TiqueSearch-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/normalize.css">
+    <link rel="stylesheet" href="https://leemeng.tw/theme/tipuesearch/css/tipuesearch.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/modernizr.js"></script>
+    <script src="https://leemeng.tw/theme/js/pace.min.js"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../theme/images/favicon.ico" type="image/x-icon"/>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106559980-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106559980-1');
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="../index.html"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+        </div>
+<!--navigation bar ref: http://jinja.pocoo.org/docs/2.10/tricks/-->
+
+
+
+<nav class="header-nav-wrap">
+    <ul class="header-nav">
+        <li>
+            <a href="../index.html#home">Home</a>
+        </li>
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+        <li>
+            <a href="../index.html#projects">Projects</a>
+        </li>
+        <li class="current">
+            <a href="../blog.html">Blog</a>
+        </li>
+        <li>
+            <a href="https://demo.leemeng.tw">Demo</a>
+        </li>
+        <li>
+            <a href="../books.html">Books</a>
+        </li>
+        <li>
+            <a href="../index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <!--<div class="search-container">-->
+        <!--<form action="../search.html">-->
+            <!--<input type="text" placeholder="Search.." name="search">-->
+            <!--<button type="submit"><i class="im im-magnifier" aria-hidden="true"></i></button>-->
+        <!--</form>-->
+    <!--</div>-->
+
+</nav>
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+
+
+    <!--TOC navigation displayed when clicked from left-navigation button-->
+    <div id="tocNav" class="overlay" onclick="closeTocNav()">
+      <div class="overlay-content">
+        <div id="toc"><ul><li><a class="toc-href" href="#" title="監控資本主義時代下的資料科學、AI 與你我的數位未來">監控資本主義時代下的資料科學、AI 與你我的數位未來</a><ul><li><a class="toc-href" href="#引言" title="引言">引言</a></li><li><a class="toc-href" href="#本文章節安排" title="本文章節安排">本文章節安排</a></li><li><a class="toc-href" href="#第一章-進入臉書監控你我的時代" title="第一章 進入臉書監控你我的時代">第一章 進入臉書監控你我的時代</a></li><li><a class="toc-href" href="#第二章-以用戶出發的資訊服務：行為價值再投資循環" title="第二章 以用戶出發的資訊服務：行為價值再投資循環">第二章 以用戶出發的資訊服務：行為價值再投資循環</a></li><li><a class="toc-href" href="#第三章-使用者淪為屍塊：發現並汲取大規模行為剩餘" title="第三章 使用者淪為屍塊：發現並汲取大規模行為剩餘">第三章 使用者淪為屍塊：發現並汲取大規模行為剩餘</a></li><li><a class="toc-href" href="#第四章-數據神父手中的演算法與資料結構是生產手段" title="第四章 數據神父手中的演算法與資料結構是生產手段">第四章 數據神父手中的演算法與資料結構是生產手段</a><ul><li><a class="toc-href" href="#回到上古時代：基於協同過濾的推薦系統" title="回到上古時代：基於協同過濾的推薦系統">回到上古時代：基於協同過濾的推薦系統</a></li><li><a class="toc-href" href="#快轉到基於深度學習的推薦系統王朝" title="快轉到基於深度學習的推薦系統王朝">快轉到基於深度學習的推薦系統王朝</a></li><li><a class="toc-href" href="#一張圖說明監控資本主義與資料科學的聯姻" title="一張圖說明監控資本主義與資料科學的聯姻">一張圖說明監控資本主義與資料科學的聯姻</a></li><li><a class="toc-href" href="#再訪影子文本：「我們絕不會賣用戶個資！」" title="再訪影子文本：「我們絕不會賣用戶個資！」">再訪影子文本：「我們絕不會賣用戶個資！」</a></li><li><a class="toc-href" href="#個人化的極致：以個人為單位的平行世界與社會極化" title="個人化的極致：以個人為單位的平行世界與社會極化">個人化的極致：以個人為單位的平行世界與社會極化</a></li></ul></li><li><a class="toc-href" href="#最終章-21-世紀第-3-個十年的認知革命_1" title="最終章 21 世紀第 3 個十年的認知革命">最終章 21 世紀第 3 個十年的認知革命</a></li></ul></li></ul></div>
+      </div>
+    </div>
+
+    <!--custom images with icon shown on left nav-->
+    <!--the details are set in `pelicanconf.py` as `LEFT_NAV_IMAGES`-->
+
+    <article class="blog-single">
+
+        <!-- page header/blog hero, use custom cover image if available
+        ================================================== -->
+            <div class="page-header page-header--single page-hero" style="background-image:url(https://leemeng.tw/theme/images/background/maxim-hopman-IayKLkmz6g0-unsplash.jpg)">
+
+            <div class="row page-header__content narrow">
+                <article class="col-full">
+                    <div class="page-header__info">
+                        <div class="page-header__cat">
+                            <a href="https://leemeng.tw/tag/jian-kong-zi-ben-zhu-yi.html" rel="tag">監控資本主義</a>
+                            <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                            <a href="https://leemeng.tw/tag/ren-gong-zhi-hui.html" rel="tag">人工智慧</a>
+                            <a href="https://leemeng.tw/tag/shen-du-xue-xi.html" rel="tag">深度學習</a>
+                            <a href="https://leemeng.tw/tag/tui-jian-xi-tong.html" rel="tag">推薦系統</a>
+                        </div>
+                    </div>
+                    <h1 class="page-header__title">
+                        <a href="https://leemeng.tw/data-science-ai-and-our-digital-future-in-the-age-of-surveillance-capitalism.html" title="">
+                            監控資本主義時代下的資料科學、AI 與你我的數位未來
+                        </a>
+                    </h1>
+                    <ul class="page-header__meta">
+                        <li class="date">2021-01-25 (Mon)</li>
+                        <li class="page-view">
+                            0 views
+                        </li>
+                    </ul>
+
+                </article>
+            </div>
+
+        </div> <!-- end page-header -->
+
+        <div class="KW_progressContainer">
+            <div class="KW_progressBar"></div>
+        </div>
+
+        <div class="row blog-content" style="position: relative">
+<div id="left-navigation">
+
+    <div id="search-wrap">
+        <i class="im im-magnifier" aria-hidden="true"></i>
+        <div id="search">
+            <form action="../search.html">
+            <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="想搜尋什麼呢？（請至少輸入兩個字）" required></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toc-wrap">
+        <a title="顯示/隱藏 文章章節">
+            <i class="im im-menu" aria-hidden="true" onclick="toggleTocNav()"></i>
+        </a>
+    </div>
+
+    <div id="social-wrap" style="cursor: pointer">
+        <a class="open-popup" title="訂閱最新文章">
+            <i class="im im-newspaper-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//leemeng.tw/data-science-ai-and-our-digital-future-in-the-age-of-surveillance-capitalism.html" target="_blank" title="分享到 Facebook">
+            <i class="im im-facebook" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//leemeng.tw/data-science-ai-and-our-digital-future-in-the-age-of-surveillance-capitalism.html&title=%E7%9B%A3%E6%8E%A7%E8%B3%87%E6%9C%AC%E4%B8%BB%E7%BE%A9%E6%99%82%E4%BB%A3%E4%B8%8B%E7%9A%84%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E3%80%81AI%20%E8%88%87%E4%BD%A0%E6%88%91%E7%9A%84%E6%95%B8%E4%BD%8D%E6%9C%AA%E4%BE%86&summary=%E9%80%99%E6%98%AF%E4%B8%80%E7%AF%87%E8%AC%9B%E8%BF%B0%E7%9B%A3%E6%8E%A7%E8%B3%87%E6%9C%AC%E4%B8%BB%E7%BE%A9%E7%9A%84%E9%A9%9A%E6%82%9A%E8%BC%95%E5%B0%8F%E8%AA%AA%E8%88%87%E7%A7%91%E6%99%AE%E6%96%87%E3%80%82%E8%99%95%E5%9C%A8%E6%95%B8%E4%BD%8D%E6%99%82%E4%BB%A3%E7%9A%84%E6%AF%8F%E5%80%8B%E4%BA%BA%E9%83%BD%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E8%B0%B7%E6%AD%8C%E3%80%81%E8%87%89%E6%9B%B8%E8%88%87%E6%8E%A8%E7%89%B9%E7%AD%89%E7%A7%91%E6%8A%80%E5%B7%A8%E9%A0%AD%E5%A6%82%E4%BD%95%E5%BD%A2%E5%A1%91%E6%88%91%E5%80%91%E7%9A%84%E6%95%B8%E4%BD%8D%E7%8F%BE%E5%AF%A6%E4%BB%A5%E5%8F%8A%E5%85%B6%E8%83%8C%E5%BE%8C%E9%81%8B%E4%BD%9C%E7%9A%84%E5%95%86%E6%A5%AD%E9%82%8F%E8%BC%AF%E8%88%87%E7%B6%93%E6%BF%9F%E8%AA%98%E5%9B%A0%E3%80%82%E6%96%87%E4%B8%AD%E4%B9%9F%E6%9C%83%E6%B8%85%E6%99%B0%E5%9C%B0%E5%91%88%E7%8F%BE%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E8%88%87%E7%9B%A3%E6%8E%A7%E8%B3%87%E6%9C%AC%E4%B8%BB%E7%BE%A9%E4%B9%8B%E9%96%93%E7%9A%84%E7%B7%8A%E5%AF%86%E9%97%9C%E4%BF%82%E3%80%82%E9%96%B1%E8%AE%80%E5%AE%8C%E6%9C%AC%E6%96%87%E7%9A%84%E8%AE%80%E8%80%85%E5%B0%87%E8%83%BD%E9%87%8D%E6%96%B0%E6%89%BE%E5%9B%9E%E6%95%B8%E4%BD%8D%E6%99%82%E4%BB%A3%E4%B8%AD%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E6%B3%A8%E6%84%8F%E5%8A%9B%E4%B8%A6%E5%B0%88%E6%B3%A8%E5%9C%A8%E7%9C%9F%E6%AD%A3%E9%87%8D%E8%A6%81%E7%9A%84%E4%BA%8B%E6%83%85%E3%80%82&source=https%3A//leemeng.tw/data-science-ai-and-our-digital-future-in-the-age-of-surveillance-capitalism.html" target="_blank" title="分享到 LinkedIn">
+            <i class="im im-linkedin" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div id="social-wrap">
+        <a href="https://twitter.com/intent/tweet?text=%E7%9B%A3%E6%8E%A7%E8%B3%87%E6%9C%AC%E4%B8%BB%E7%BE%A9%E6%99%82%E4%BB%A3%E4%B8%8B%E7%9A%84%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E3%80%81AI%20%E8%88%87%E4%BD%A0%E6%88%91%E7%9A%84%E6%95%B8%E4%BD%8D%E6%9C%AA%E4%BE%86&url=https%3A//leemeng.tw/data-science-ai-and-our-digital-future-in-the-age-of-surveillance-capitalism.html&hashtags=jian-kong-zi-ben-zhu-yi,zi-liao-ke-xue,ren-gong-zhi-hui,shen-du-xue-xi,tui-jian-xi-tong" target="_blank" title="分享到 Twitter">
+            <i class="im im-twitter" aria-hidden="true"></i>
+        </a>
+    </div>
+
+
+    <!--custom images with icon shown on left nav-->
+
+</div>
+
+            <div class="col-full blog-content__main">
+
+                <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        監控資本主義在 21 世紀主導資料科學以及 AI 的發展方向，並持續往大多數人不樂見的方向邁進。只有在大眾能夠認知到並理解其商業邏輯，我們才能透過集體意識去改善每個人的數位未來。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 1 分鐘懶人包</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這是本文最想傳達的訊息。因為資訊量龐大，如果你現在還無法消化也沒有關係。閱讀完本文，你將能夠了解在背後驅使數位世界光速運轉的商業邏輯，並用一個可說是駭人卻又無比清晰的視角理解自己正身處在一個怎麼樣的數位時代。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="引言">引言<a class="anchor-link" href="#引言">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>2018 年 5 月，我在<a href="https://leemeng.tw/demystify-the-hype-of-data-science-and-its-value.html">揭開資料科學的神秘面紗</a>中粗略地說明過為何<a href="https://zh.wikipedia.org/wiki/%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%B6%93%E6%BF%9F">注意力經濟（Attention Economy）</a>促使近年大數據、資料科學以及人工智慧的蓬勃發展。注意力經濟將人類的注意力視為資訊過載時代下最寶貴的資源，而<a href="https://www.google.com/">谷歌（Google）</a>與<a href="https://www.facebook.com/">臉書（Facebook）</a>在一般使用者不知情或是沒有明確允許的情況下貪婪地蒐集、累積、分析進而預測其<a href="https://wiki.mbalib.com/zh-tw/%E5%B9%BF%E5%91%8A%E7%82%B9%E5%87%BB%E7%8E%87">廣告點擊</a>行為。他們想盡辦法使你我對其服務上癮，以將我們有限的注意力榨取成龐大的商業利益。</p>
+<p>長年下來，越來越多人注意到「免費」的代價並看到此經濟邏輯的可怕之處，不少專家則開始將此經濟邏輯與商業模式稱之為<a href="https://en.wikipedia.org/wiki/Surveillance_capitalism">監控資本主義（Surveillance Capitalism）</a>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/數位服務與社群網站.png"/>
+</center>
+<center>
+                        現下熱門的數位服務與社群媒體，每天佔用了你多少注意力與時間？
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>今天我想用簡單的經濟學、心理學與資料科學的角度帶你理解其背後的運作原理以及其對人類社會帶來的負面影響。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="本文章節安排">本文章節安排<a class="anchor-link" href="#本文章節安排">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>儘管其商業模式早就統治了我們的世界，關於監控資本主義的結構性描述一直要等待哈佛商學院榮譽教授<a href="https://en.wikipedia.org/wiki/Shoshana_Zuboff">肖莎娜・祖博夫（Shoshana Zuboff）</a> 的<a href="https://shoshanazuboff.com/book/about/">《監控資本主義時代》（後簡稱為《監控》）</a>出版後才比較被一般大眾所知。此書也<a href="https://twitter.com/BarackObama/status/1211033245812441091?s=20">名列歐巴馬在 2019 年最愛的書籍之一</a>。</p>
+<p>我在第一章會先以知名的臉書為例，簡述科技公司現在是如何監控我們的數位行為。接著，我將花 2 個章節跟你一起拿著祖博夫的放大鏡，用經濟學以及心理學直觀地理解監控資本主義的起源以及運作邏輯。然後我們會用<a href="https://zh.wikipedia.org/zh-tw/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6">資料科學&nbsp;（Data Science）</a>的視角來理解監控科技是如何被實現的。你將清楚地了解監控資本主義的商業邏輯是如何跟資料科學緊密耦合的。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/個資風暴_數位行為.jpg"/>
+</center>
+<center>
+                        你我的數位行為一直都被蒐集與監控
+                        （圖片來源：<a href="https://www.youtube.com/watch?v=qRQEXmg3RaE" target="_blank">《個資風暴：劍橋分析事件》（圖片使用已獲同意）</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>閱讀完本文，你將能用更全面的視角思考這些大哉問：</p>
+<ul>
+<li>為何社群網站助長了 <a href="https://www.bbc.com/zhongwen/trad/world-55565454">2021 美國國會騷亂</a>？</li>
+<li>推特是否有權<a href="https://www.bbc.com/zhongwen/trad/world-55639767">關閉美國總統川普帳號</a>？</li>
+<li>為何<a href="https://www.cna.com.tw/news/ait/202012170127.aspx">蘋果新的隱私權條款讓臉書大跳腳</a>？</li>
+</ul>
+<p>為了讓你更輕鬆地掌握本文架構，我也附上各章節的傳送門（你也可以點擊左側導覽圖例）：</p>
+<ul>
+<li><a href="#第一章-進入臉書監控你我的時代">第一章 進入臉書監控你我的時代</a></li>
+<li><a href="#第二章-以用戶出發的資訊服務：行為價值再投資循環">第二章 以用戶出發的資訊服務：行為價值再投資循環</a></li>
+<li><a href="#第三章-使用者淪為屍塊：發現並汲取大規模行為剩餘">第三章 使用者淪為屍塊：發現並汲取大規模行為剩餘</a></li>
+<li><a href="#第四章-數據神父手中的演算法與資料結構是生產手段">第四章 數據神父手中的演算法與資料結構是生產手段</a></li>
+<li><a href="#最終章-21-世紀第-3-個十年的認知革命_1">最終章 21 世紀第 3 個十年的認知革命</a></li>
+</ul>
+<p>建議依序閱讀。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/peter-miranda-fTw24pNs21w-unsplash.jpg"/>
+</center>
+<center>
+                        暫時封印手機並以桌筆電閱讀本文或許能幫助你集中注意力
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在了解監控資本主義及其利弊後（劇透：長遠的弊遠大於利），我在最終章則會說明你能做些什麼來讓自己身處的數位環境變得更好。在繼續閱讀之前，我想給你個「自我數位專注挑戰」：看你能不能在將本文閱讀完以前都不做以下行為：</p>
+<ul>
+<li>不點開任何 App 送給你的通知</li>
+<li>不回覆任何電子郵件以及訊息</li>
+<li>不滑臉書、推特、IG 和 YouTube（除了文中嵌入的影片）</li>
+</ul>
+<p>我得承認這在現代非常不易做到。如果當前的客觀環境不允許，把本文存入書籤或 <a href="https://app.getpocket.com/">Pocket</a> 並為自己找個能在 30 分鐘內專注閱讀並思考的地點與時間吧！閱讀完本文並完成挑戰的你將會發現，從中獲益最多的人將是自己。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="第一章-進入臉書監控你我的時代">第一章 進入臉書監控你我的時代<a class="anchor-link" href="#第一章-進入臉書監控你我的時代">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>前陣子我在 <a href="https://www.dcard.tw/f">Dcard</a> 的一個分享會上問了台下的聽眾一個簡單的問題：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        有多少人有這樣的經驗：在滑臉書時跳出了某個「準」到不行、燒到你的廣告，讓你相信臉書正在「監視」你的瀏覽網頁與朋友的聊天記錄或是「監聽」你的麥克風？
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>毫不意外地，幾乎所有人都舉了手。大家都能想像臉書、谷歌與<a href="https://twitter.com/">推特（Twitter）</a>等科技公司的廣告以及內容<a href="https://zh.wikipedia.org/wiki/%E6%8E%A8%E8%96%A6%E7%B3%BB%E7%B5%B1">推薦系統（Recommender system, 在後面章節我們會討論它）</a>在螢幕的另一頭「監控」著我們數位足跡的事實。</p>
+<p>第一次是我在使用 <a href="https://www.messenger.com/">Messenger</a> 時無意間跟朋友提到「奶粉」，接著大腦就被硬生生地植入一個自己從沒聽過、這輩子估計也不會曉得的奶粉商的廣告，無力抵抗。對廣告麻木的人可能覺得「只是個廣告，大驚小怪」。但這實際隱含的是：臉書可以在用戶不知情或是不情願的情況下，透過蒐集其行為數據來預測並<strong>改變</strong>用戶對世界的認知。改變了認知，就能在你我沒有意識到的情況下操弄我們的行為，使得我們的「行為」符合他們與廣告商承諾的「保證結果」：使用者點擊（clicks）。</p>
+<p>如果你到現在還不清楚臉書及谷歌是如何實現廣告追蹤的，可以看看 <a href="https://zh.wikipedia.org/wiki/Vox">Vox</a> 與發明 
+<a href="https://zh.wikipedia.org/zh-tw/Cookie">Cookie</a> 的<a href="https://zh.wikipedia.org/wiki/%E7%9B%A7%C2%B7%E8%92%99%E7%89%B9%E5%88%A9">盧・蒙特利</a>的訪談影片：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="resp-container">
+<iframe allow="accelerometer; 
+                            autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="resp-iframe" frameborder="0" src="https://www.youtube-nocookie.com/embed/HFyaW50GFOs">
+</iframe>
+</div>
+<center>
+                        臉書以及谷歌如何透過第三方 Cookies 監控並使得商家廣告能無時無刻地追蹤你我
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>順帶一提，你可以透過鮮為人知的 <a href="https://www.facebook.com/off_facebook_activity">Facebook 站外動態</a>功能查看臉書透過上述影片的方法（即 <a href="https://www.facebook.com/business/help/952192354843755?id=1205376682832142&amp;ref=fbb_retargeting">Facebook 像素</a>）從網路蒐集到的<strong>你的</strong>行為。資料顯示，臉書目前已經從 235 個應用程式以及網站蒐集到我的數位行為以進行<a href="https://www.facebook.com/business/goals/retargeting">再行銷（retargeting）</a>：將我曾拜訪過的網站的產品在我下次「免費」滑臉書時透過其競標系統推出我的「個人化」廣告以誘使我點擊。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://www.ithome.com.tw/news/140848">截至 2020 年 10 月為止，臉書的每日用戶數達到 18.2 億人</a>，意味著每一天全球都會有 24％ 的人口造訪臉書並接受臉書為他們精心打造的「個人化」貼文與廣告。這可是人類歷史上最成功的實時監控系統之一，也超越任何<a href="https://zh.wikipedia.org/wiki/%E6%9E%81%E6%9D%83%E4%B8%BB%E4%B9%89%E7%9A%84%E8%B5%B7%E6%BA%90">極權主義</a>家的瘋狂夢想。</p>
+<p>事實上，祖博夫在《監控》裡就表示，這些私營科技公司跟被稱為<a href="https://opinion.cw.com.tw/blog/profile/390/article/9763">數位極權主義</a>的中國信用系統的差別，只在於前者是以經濟取向發展監控科技，後者則是為了政治權力。很多人忘了這些科技公司存在這世上的最大目的<strong>始終都是最大化<a href="https://en.wikipedia.org/wiki/Shareholder_value">股東價值</a></strong>，而不是優化你我的心理健康、減少假新聞傳播、避免社會分裂或是確保民主價值。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/監控資本主義時代_個資風暴_智能社會.png"/>
+</center>
+<center>
+                        《監控資本主義時代》與 2 部討論相關主題的 Netflix 紀錄片
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在對一般民眾說明時，臉書與谷歌等科技公司一直以來都將「監控」解釋為科技發展下的必然結果以及實現<a href="https://en.wikipedia.org/wiki/Personalization">個人化（personalization）</a>的必要之惡（或是否認有這回事）。但近年越來越多的用戶意識到了矛盾：一方面確實感受到這些服務帶給自己的便利之處，另一方面則持續感受到自己的隱私受到侵犯以及無可自拔的科技上癮。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        全世界只有兩種產業把客戶稱為「使用者」，一個是毒品，一個是軟體。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 統計學家 愛德華塔夫特</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Netflix 劇情紀錄片<a href="https://www.youtube.com/watch?v=uaaC57tcci0&amp;ab_channel=Netflix">《智能社會：進退兩難》（The Social Dilemma）</a>生動地描述了這樣的情境。透過對自己親手打造的產物敲響警鐘的科技專家，該片探究了社群媒體的危險人為影響，如<a href="https://zh.wikipedia.org/wiki/%E9%99%B0%E8%AC%80%E8%AB%96">陰謀論</a>的廣泛傳播、青少年心理健康議題以及<a href="https://en.wikipedia.org/wiki/Political_polarization">政治極化</a>。</p>
+<p>另一部紀錄片<a href="https://www.youtube.com/watch?v=qRQEXmg3RaE">《個資風暴：劍橋分析事件》（The Great Hack）</a>則探究名為<a href="https://zh.wikipedia.org/wiki/%E5%8A%8D%E6%A9%8B%E5%88%86%E6%9E%90%E5%85%AC%E5%8F%B8">劍橋分析</a>的數據公司如何不當地取得 5000 萬名臉書使用者的個資（超過全台灣人口的 2 倍）並在 <a href="https://zh.wikipedia.org/wiki/2016%E5%B9%B4%E7%BE%8E%E5%9C%8B%E7%B8%BD%E7%B5%B1%E9%81%B8%E8%88%89">2016 年美國總統選舉</a>後成為社群媒體黑暗面的象徵。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>接下來的章節在探討監控資本主義時會以《監控》一書的內容為主，上述紀錄片的內容為輔（本文截圖之使用已獲 Netflix 同意）。想保留觀影新鮮感的讀者可以先去觀看這兩部紀錄片再回來閱讀本文（好啦，你可以重新開始專注挑戰）。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="第二章-以用戶出發的資訊服務：行為價值再投資循環">第二章 以用戶出發的資訊服務：行為價值再投資循環<a class="anchor-link" href="#第二章-以用戶出發的資訊服務：行為價值再投資循環">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>文章開頭我以臉書作為當代監控資本家的一個例子，不過事實上依照《監控》一書的描述，谷歌才是監控資本主義的先驅。谷歌之於監控資本主義，如同一百年前的<a href="https://zh.wikipedia.org/wiki/%E7%A6%8F%E7%89%B9%E6%B1%BD%E8%BD%A6">福特汽車</a>或<a href="https://zh.wikipedia.org/wiki/%E9%80%9A%E7%94%A8%E6%B1%BD%E8%BD%A6">通用汽車</a>之於工業資本主義。</p>
+<p>為了更好地理解監控資本主義，讓我們先把時針倒回到距今超過 20 年前的 1998 年，也就是谷歌成立的那一年。</p>
+<p>在谷歌成立時已經有 <a href="https://zh.wikipedia.org/wiki/Mosaic">Mosaic</a> 等瀏覽器讓所有電腦使用者都能連上<a href="https://zh.wikipedia.org/wiki/%E4%B8%87%E7%BB%B4%E7%BD%91">全球資訊網</a>。最初，谷歌也實踐了<strong>資訊</strong>資本主義的承諾，提供免費的線上搜尋服務讓大眾搜尋數位資訊。憑藉著卓越的<a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E">搜尋引擎（Search Engine）</a>，谷歌搜尋的使用者越來越多。僅僅不到一年，谷歌的搜尋引擎就得每天處理 700 萬筆搜尋指令，這些搜尋指令也是使用者與系統互動的主要方式。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        每位用戶的每個行動，都視為可進行分析並再次投進系統中的信號。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 范里安, 谷歌首席經濟學家</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>但之後讓谷歌跟其他搜尋服務競爭者拉開距離的，是谷歌工程師將自家的搜尋引擎轉變成一個能持續學習的遞迴系統。他們透過「使用者與系統互動所產生的行為副產品」來持續改善搜尋結果並刺激產品創新：拼字檢查、翻譯以及語音辨識。</p>
+<p>有些人也把「行為副產品」稱作數據廢氣（Data Exhaust），也就是谷歌搜尋指令的附帶數據，比方說搜尋詞彙的拼字、停留時間、點擊模式以及地點。谷歌發現，這些儲存在數據緩存內的行為副產品能用來「回推」出每位使用者的思想、感受以及興趣。被譽為「谷歌經濟學的<a href="https://zh.wikipedia.org/wiki/%E4%BA%9A%E5%BD%93%C2%B7%E6%96%AF%E5%AF%86">亞當・斯密</a>」的<a href="https://zh.wikipedia.org/wiki/%E5%93%88%E5%B0%94%C2%B7%E8%8C%83%E9%87%8C%E5%AE%89">哈爾・范里安</a>則表示這是<a href="https://zh.wikipedia.org/zh-tw/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B">逆向工程（reverse engineering）</a>：從使用者的行為數據回推他或她的意圖，提供更相關的搜尋結果。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/監控資本主義/行為價值再投資循環.jpeg" style="mix-blend-mode: initial;">
+<source src="https://leemeng.tw/images/監控資本主義/行為價值再投資循環.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        《監控》：行為價值再投資循環
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在谷歌搜尋引擎發展的初期，其使用者無意間提供的珍貴行為數據，<strong>全部</strong>都被谷歌拿來提昇服務品質並「全然」回饋給使用者，比方說提升搜尋的精確度與相關性。《監控》作者祖博夫將這種<strong>從用戶出發</strong>的循環稱之為行為價值再投資循環（Behavioral Value Reinvestment Cycle）：行為數據中隱含的價值經過再投資後被用來提升產品或服務品質。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在這個循環裡頭，谷歌跟使用者互相需要，達到一種力量平衡：</p>
+<ul>
+<li>用戶需要「使用」谷歌的優秀搜尋功能完成知識獲取的需求</li>
+<li>谷歌需要「消耗」用戶創造的價值來改善產品，而該價值可從用戶的行為副產品中汲取</li>
+</ul>
+<p>群眾被視為企業營運的唯一目的，跟谷歌使命：「彙整全球資訊，供大眾使用，使人人受惠。」的宗旨完美契合。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/谷歌_降低資訊取得門檻.jpg" style="mix-blend-mode: initial;"/>
+</center>
+<center>
+                        谷歌：我們的搜尋原則
+                        （<a href="https://www.google.com/intl/zh-TW/search/howsearchworks/mission/" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>當初一切看來都是那麼地美好，令人莞爾。</p>
+<p>但如果你是當初在 1999 年投資谷歌並急著想要回本的矽谷創投企業家，可能就笑不出來了。因為值得聲明的是谷歌的這個循環還不是你在<a href="#第三章-使用者淪為屍塊：發現並汲取大規模行為剩餘">下個章節</a>會看到的監控資本主義，甚至不是你在大一經濟學碰過的<a href="https://zh.wikipedia.org/wiki/%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89">資本主義（Capitalism）</a>。谷歌搜尋引擎的這個行為價值再投資循環並無法將資金轉為收益。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        資本主義是一齣由每一個投資者、員工、企業家、消費者攜手演出的一場毫無是非道德之分的鬧劇。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 《矽谷潑猴》</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>雖然此循環概念是效仿之前<a href="https://zh.wikipedia.org/wiki/%E8%98%8B%E6%9E%9C%E5%85%AC%E5%8F%B8">蘋果（Apple Inc.）</a>大紅大紫的 <a href="https://zh.wikipedia.org/wiki/IPod">iPod</a> 而來，谷歌並不像蘋果那樣具有 iPod 或數位歌曲。沒有利潤、沒有盈餘，完全沒有可銷售並轉換成收益的「實體商品」。</p>
+<p>在谷歌與使用者之間完美的力量平衡下，向使用者收費會帶來極高財務風險，而在未付費的情況下把谷歌的<a href="https://zh.wikipedia.org/wiki/%E7%B6%B2%E8%B7%AF%E7%88%AC%E8%9F%B2">網路爬蟲（web crawler）</a>從他人手中取來的索引資訊貼上價格也是非常危險的先例。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/監控資本主義/進擊的巨人_大地惡魔.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在心急的矽谷創投給的壓力、2000 年網路泡沫化的雙重夾擊之下，谷歌終於不得不宣告例外狀態（state of exception），擁抱當初被其貶為最低階業務的廣告。當時由 7 名員工組成的迷你 <a href="https://zh.wikipedia.org/wiki/Google_Ads">AdWords</a> 團隊最重要的使命，就是得想辦法用廣告讓公司獲利。</p>
+<p>有點出戲，但當年谷歌對廣告態度的劇烈轉變總是讓我聯想到在<a href="https://zh.wikipedia.org/wiki/%E9%80%B2%E6%93%8A%E7%9A%84%E5%B7%A8%E4%BA%BA">《進擊的巨人》</a>中與惡魔簽下契約的那名少女。其後世代代掌握強大的惡魔之力，在受眾人崇拜的同時遭人厭惡。其巨大的影響力也將引領人類走向不明的未來。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="第三章-使用者淪為屍塊：發現並汲取大規模行為剩餘">第三章 使用者淪為屍塊：發現並汲取大規模行為剩餘<a class="anchor-link" href="#第三章-使用者淪為屍塊：發現並汲取大規模行為剩餘">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為了減輕投資者們的焦慮，谷歌宣告例外狀態以擁抱廣告。但該怎麼說服成千上萬名用戶呢？</p>
+<p>為了向大眾合理化新的商業操作，谷歌創辦人<a href="https://zh.wikipedia.org/wiki/%E6%8B%89%E9%87%8C%C2%B7%E4%BD%A9%E5%A5%87">賴利歐・佩吉（Larry Page）</a>決定不走當年盛行的廣告關鍵字模式，堅持廣告商不能干預關鍵字的選擇：谷歌會替他們選擇關鍵字。谷歌向大眾表示會利用蒐集到的大量數據、運算能力以及科技專長確保如果「搜尋時顯示了廣告」，這些廣告也會保證跟「下搜尋指令的使用者相關」。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/google_ads.jpg" style="mix-blend-mode: initial;"/>
+</center>
+<center>
+                        Google Ads 即為當年的 Google AdWords
+                        （<a href="https://ads.google.com/intl/zh_TW/home/" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>換句話說，這意味著谷歌會將特定廣告「對準」特定用戶，而不是讓廣告跟使用者搜尋指令中特定的關鍵字相連。秉持這項原則，谷歌宣稱可以兼顧所有人的顧慮：</p>
+<ul>
+<li>投資者角度：穩定獲取利潤並使其成指數增長</li>
+<li>廣告商角度：確保自己廣告能被目標用戶點擊</li>
+<li>使用者角度：谷歌顯示的廣告會與其高度相關</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>谷歌與投資者想賺的錢由眾多廣告商提供，對一般使用者來說又能繼續「免費」地使用谷歌搜尋，一切又回歸美好。</p>
+<p>谷歌沒有跟用戶說的是：為了達到這個目標，谷歌將利用其敏感的行為資料，將原本只被用來改善搜尋結果的行為副產品拿去針對特定用戶進行<a href="https://support.google.com/google-ads/answer/2497941?hl=zh-Hant">指定目標廣告投放</a>。而因為這些行為副產品現在除了原本用途（提升服務品質），還額外具備了其他用途（替谷歌與廣告商賺取廣告收益），《監控》作者祖博夫將其稱之為行為剩餘（behavior surplus）。</p>
+<p><a href="#第二章-以用戶出發的資訊服務：行為價值再投資循環">上一章</a>看到的行為價值再投資循環（下方菱形）已悄悄地屈服於另一項規模更大、更複雜的商業操作（上方五角形）：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/監控資本主義/發現行為剩餘.jpeg" style="mix-blend-mode: initial;">
+<source src="https://leemeng.tw/images/監控資本主義/發現行為剩餘.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        《監控》：發現行為剩餘（請繼續閱讀並適時回顧圖中五角形的各元件）
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>上面這套操作要成功，關鍵不在技術實現，而在於谷歌得暗中「監視」。如果當年谷歌公開跟每位使用者說：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        嘿！我為了過活，要拿你的搜尋以及網路上的行為數據去建構你的個人檔案喔！我還會把它拿去跟那些你這輩子沒聽過的廣告商的廣告比對，預估你會點擊哪一個。在你下次搜尋時我就會把廣告顯示出來給你看溜！別忘了點進去瞧瞧：）
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>基於最基本的隱私考量，我想應該沒有一個理性的用戶會直接點頭同意這筆交易的。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>儘管沒跟大眾說白，谷歌與後來的臉書為了目標廣告投放將包含你在內的所有用戶都建檔了。諷刺的是，這檔案裡雖然都是關於你的數位資訊，但卻不是為了你而建立，因此自然也不會讓你存取或是認知到它的存在。《監控》一書將其命名為「影子文本」，相對於你在網路上看得到的所有公開資訊（公開文本）。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在這個商業模式底下，使用者的行為數據仍然會被用來提升服務品質，但是更多的附帶數據被用來建立能夠預測使用者點擊行為的預測產品（Prediction Products）。用了這些能精準預測用戶行為的產品後，谷歌在行為未來市場（Markets in Future Behaviors）讓貪婪的廣告商們即時競價使用者對廣告的曝光（impressions）以及未來的點擊行為。</p>
+<p>你現在可以回顧一下剛剛前面看到的五角形。我們會在<a href="#第四章-數據神父手中的演算法與資料結構是生產手段">第四章</a>詳細說明有哪些生產手段。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/谷歌專利_UPI.jpg" style="mix-blend-mode: initial;"/>
+</center>
+<center>
+                        《為廣告指定目標生成使用者資訊》
+                        （<a href="https://patents.google.com/patent/US20050131762A1/en" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>依據 2003 年谷歌持有的一個具指標性的專利<a href="https://patents.google.com/patent/US20050131762A1/en">《為廣告指定目標生成使用者資訊》（Generating User Information for Use in Targeted Advertising）</a>，谷歌掌握的行為剩餘包含但不限於：</p>
+<ul>
+<li>使用者曾瀏覽之網頁</li>
+<li>心理變數（別問我谷歌怎麼取得這項的，我也不知道）</li>
+<li>瀏覽活動</li>
+<li>使用者先前被選定或投放之廣告資訊</li>
+<li>使用者是否在瀏覽廣告後出現消費行為</li>
+</ul>
+<p>進入 21 世紀第 3 個十年，更新後的名單可能比本文還長了。這些使用者屬性/特質數據交互組合起來，就是專利內所謂的用戶檔案資訊（<strong>U</strong>ser <strong>P</strong>rofile <strong>I</strong>nformation, UPI）。3 名谷歌頂尖的資訊工程科學家跟其真正的<a href="https://zh.wikipedia.org/wiki/%E9%A1%A7%E5%AE%A2">顧客</a>：廣告商們表示，透過 UPI 就不用再玩傳統的廣告猜謎遊戲，不需浪費廣告預算就能夠確保使用者點擊。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>而且他們也向顧客說明最大的瓶頸不是技術問題，而是社會層面的隱私問題：使用者可能不願交出自己的資料。但他們也讓顧客安心：他們有辦法在使用者不知情的情況下透過使用者行為推論、假設並演繹出其正確的 UPI 以跟廣告比對。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        谷歌將每次點擊之價格，乘以他們估算的使用者點擊廣告之機率，並根據此運算結果，將最好的搜尋位置提供給可能支付最高報酬的廣告商，藉此最大化來自珍貴資產的收益。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 彭博社, 2006 年</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>要能估算成千上萬的使用者以及廣告組合的點擊機率，需要為每位使用者都建構出具代表性的 UPI。而要具代表性，自然需要蒐集特定使用者的大量行為剩餘。理解了這邏輯，谷歌便從一開始無意間「發現」行為剩餘，逐步演變成無所不用其極地「獵捕」用戶行為數據。而這一切都是為了能更精準地預測使用者的點擊行為。</p>
+<p>當年彭博記者筆下的「珍貴資產」，正是谷歌在絕多數用戶不知情的情況下，從其與搜尋系統的互動轉換而來的行為剩餘。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<video autoplay="" loop="" muted="" playsinline="" poster="https://leemeng.tw/images/監控資本主義/老鼠轉輪.jpg">
+<source src="https://leemeng.tw/images/監控資本主義/老鼠轉輪.mp4" type="video/mp4"/>
+                    您的瀏覽器不支援影片標籤，請留言通知我：S
+                </video>
+<center>
+                        用有限的注意力追逐無限的數位內容
+                        （<a href="https://www.youtube.com/watch?v=LQf3P1QLWzM" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>至此，新的資本主義變種隨之誕生：谷歌用以致富的行為剩餘即為監控資產，其既為賺取監控收益的原物料，也是監控資本的重要來源。最適合用來描述這套資本累積邏輯的詞彙，自然就是<a href="https://en.wikipedia.org/wiki/Surveillance_capitalism">監控資本主義（Surveillance Capitalism）</a>了。依據 <a href="https://finance.ettoday.net/news/1843096">2020 財年第三季度財報</a>，谷歌母公司 Alphabet 的整體營收達到 461.7 億美元（約新台幣 1 兆 3205 億元），而其中廣告收入就佔了 8 成（包含搜尋廣告以及 YouTube 廣告）。</p>
+<p>為了最大化其監控收益，谷歌在 21 世紀發展了一系列監控科技以及免費服務，務求讓每位使用者都能像隻小老鼠一樣，持續盯著眼前誘人的數位內容並在轉輪上留下數位足跡。監控資本家想不斷地從我們的數位與實體行為中汲取出不只更大量，還要更多元的行為剩餘。除了搜尋以外，我們還有其他便利的飼料：</p>
+<ul>
+<li><a href="https://zh.wikipedia.org/zh-tw/Gmail">Gmail</a>：蒐集你的用字行為</li>
+<li><a href="https://zh.wikipedia.org/zh-tw/Google%E5%9C%B0%E5%9B%BE">Google 地圖</a>：蒐集你在實體世界裡的活動</li>
+<li><a href="https://support.google.com/assistant/answer/7172657?co=GENIE.Platform%3DAndroid&amp;hl=zh-Hant">Google 助理</a>：蒐集你的語音資訊</li>
+<li><a href="https://www.youtube.com/?gl=TW&amp;hl=zh-TW">YouTube</a>：蒐集你所有的觀片記錄與喜好</li>
+</ul>
+<p>深諳監控資本主義邏輯的企業家們朗朗上口的台詞：<a href="https://fc.bnext.com.tw/data-is-the-new-oil-for-tech/">「數據是新的石油！」</a>背後真正的意思昭然若揭。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/谷歌產品.jpg"/>
+</center>
+<center>
+                        熱門的 Google 產品
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>說白點，在監控資本主義裡頭實際進行價值交換的主體是谷歌與廣告商。我們這些使用者只是原物料（行為剩餘）抽取以及徵收的目標。因此你可能聽人說過：「如果有什麼東西免費，那真正的商品其實就是你。」</p>
+<p>但《監控》一書的作者祖博夫針對這句話有更進一步的說明。她認為谷歌與臉書等監控資本家盜獵我們行為剩餘的程度，恰似盜獵者為了象牙殘殺大象的暴行，扔下我們體內、腦內、跳動心臟內蘊含的意義。她表示前面那句已經過時，事實上：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        你才不是商品，你是被捨棄的屍塊，真正的「商品」源於從你人生奪取的剩餘。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 《監控資本主義時代》</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在監控資本主義的思維下，要賺取更多的廣告收益，就需要更多的廣告點擊。因此「跟使用者相關」很自然地就跟「使用者點擊」劃上了等號。谷歌創造了新的人類行為預測科學：「點擊物理學」，持續召募最聰明的 AI 人才去優化上述五角形中的<a href="#第四章-數據神父手中的演算法與資料結構是生產手段">生產工具</a>，為的是更精準地預測使用者對個人化廣告的<a href="https://en.wikipedia.org/wiki/Click-through_rate">點擊率（<strong>C</strong>lick-<strong>T</strong>hrought <strong>R</strong>ate, CTR）</a>。</p>
+<p>一般來說，這些複雜的廣告預測系統的最佳化目標是最大化 CTR，因此並不會關心（也沒有意識）一名特定用戶在點擊某廣告時，內心是憤怒、悲傷還是快樂的。「我其實不在乎你的想法、感受或是靈魂，但我要確保你的（點擊）行為符合我的預測。」這樣的激進想法是監控資本主義從<a href="https://en.wikipedia.org/wiki/Radical_behaviorism">激進行為主義（Radical behaviorism）</a>的「以他人觀點客觀地觀察某生物個體在環境中的行為」延伸而來，祖博夫則將其稱為「激進冷漠」。</p>
+<p>谷歌透過這樣的想法打造出來的預測產品是所有公司夢寐以求的：能夠保證只要刊登廣告，就會有不錯的效果。一個谷歌能夠向其真正的顧客：廣告商販賣近似確定性（certainty）的市場：只要你給我足夠的錢，我就能用自家的預測產品給你要的保證結果：保證讓負責點擊的使用者買單。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/google_analytics.jpg"/>
+</center>
+<center>
+                        Google Analytics 報表頁面
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在絕大多數用戶還不知情的情況下，處於市場循環之外的使用者就已不再是 21 世紀多數科技公司營運的主要目的，淪落成了一個手段，一個為了達成陌生、貪婪廣告商的營利目的的<strong>手段</strong>。以上就是長達 800 頁的《監控資本主義時代》想傳達的核心概念。相信你現在也對其有一定的瞭解了。</p>
+<p>對某些人來說，這一切可能聽起來十分地黑暗且令人焦慮。或許還會有人選擇直接視而不見並關掉此頁面。但要馴服一頭野獸，我們得先克服恐懼、直視它的雙眼並嘗試理解。轉頭奔逃很有可能只會讓你更快被其吞噬。</p>
+<p>要能建立精準的預測產品，比方說廣告推薦系統，只有大量的行為剩餘是不成氣候的。監控資本家也需要全新的生產手段來打造這些資訊系統。在了解監控資本主義的商業操作以後，讓我們用資料科學的角度看看科技公司是怎麼打造這些神奇產品的。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>喔對了！值得一提的是，與谷歌及臉書「冷漠」的廣告競標系統相比，採付費訂閱制的電影推薦服務 <a href="https://www.netflix.com/">Netflix</a> 比較有「人性」，看似接近<a href="#第二章-以用戶出發的資訊服務：行為價值再投資循環">以用戶出發的資訊服務</a>。但一般內容推薦系統仍有其原罪：「無上限」地渴望著用戶的「有限」注意力，因此這類服務（Netflix 上看不完的電影、推特滑不完的動態
+）都存在著讓用戶沈迷於其服務的隱憂。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="第四章-數據神父手中的演算法與資料結構是生產手段">第四章 數據神父手中的演算法與資料結構是生產手段<a class="anchor-link" href="#第四章-數據神父手中的演算法與資料結構是生產手段">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>《監控》一書將打造預測產品的「全新生產技術」（請回顧<a href="#第三章-使用者淪為屍塊：發現並汲取大規模行為剩餘">前一章</a>的五角形）統稱為機器智慧（Machine Intelligence），對應到我們已耳濡目染的資訊科技技術：人工智慧、資料科學、<a href="https://leemeng.tw/deep-learning-resources.html">深度學習（Deep Learning）</a>以及預測分析。而使用這些技術打造預測模型的資料工程師、資料科學家以及機器學習工程師就是祖博夫筆下的「數據神父」。</p>
+<p>用「機器智慧」來概括監控資本主義中的科技很方便，卻也讓前幾章對監控資本家們的「指控」顯得十分抽象。在這章節裡，我會用資料科學的角度描述數據神父們是如何地實作對科技公司來說最重要的預測產品：<a href="https://zh.wikipedia.org/zh-tw/%E6%8E%A8%E8%96%A6%E7%B3%BB%E7%B5%B1">推薦系統</a>。這章內容能讓你更直觀地連接監控資本主義的商業邏輯以及與之掛鉤的資料科學概念。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="回到上古時代：基於協同過濾的推薦系統">回到上古時代：基於協同過濾的推薦系統<a class="anchor-link" href="#回到上古時代：基於協同過濾的推薦系統">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/簡單電影推薦CF例子.jpg"/>
+</center>
+<center>
+                        協同過濾：從用戶與物品的互動矩陣建構用戶興趣與物品屬性嵌入
+                        （<a href="https://developers.google.com/machine-learning/recommendation/collaborative/matrix" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我在 <a href="https://coursera.org/share/b38390e0d76c7076751ec721e22d0a6d">2015 年完成 Coursera 上的推薦系統課程</a>時，<a href="https://zh.wikipedia.org/zh-tw/%E5%8D%94%E5%90%8C%E9%81%8E%E6%BF%BE">協同過濾（collaborative filtering）</a>仍是初學者必學的推薦方法之一。以 Netflix 的電影推薦場景來說，其原理是透過<a href="https://zh.wikipedia.org/wiki/%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3">矩陣拆解（matrix decomposition）</a>將所有用戶與所有物品互動的矩陣（電影評分紀錄） $\mathbf{A}$ 拆解成最具代表性的用戶潛在興趣矩陣 $\mathbf{U}$ 與物品潛在屬性矩陣 $\mathbf{V^{T}}$，使得 $\mathbf{U}\mathbf{V}^{T}  \approx \mathbf{A}$。</p>
+<p>一旦有了這兩個子矩陣，我們就能預測任意使用者 $u$ 給任意電影 $v$ 的評分（先不考慮<a href="https://www.mdeditor.tw/pl/2Gcp/zh-tw">新用戶</a>）。該系統只要在用戶登入時將他或她還沒看過的電影的預測分數從高到低排序，並把預測評分前 N 個大的電影顯示給該用戶即可完成最簡單的電影推薦。這邊值得一提的是，任一用戶只能存取自己的評分紀錄（公開文本），而 Netflix 可以存取<a href="https://www.statista.com/statistics/250934/quarterly-number-of-netflix-streaming-subscribers-worldwide/">截至 2020 年為止其在全球獲得的近 2 億訂閱用戶</a>的所有評分行為（影子文本），創造了和單一用戶之間龐大的知識與力量鴻溝。</p>
+<p>另外在推薦系統領域中，所有人都已習慣將每一名用戶簡化為一個紀錄其喜好的高維向量了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="快轉到基於深度學習的推薦系統王朝">快轉到基於深度學習的推薦系統王朝<a class="anchor-link" href="#快轉到基於深度學習的推薦系統王朝">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>2016 年，Google Play 推薦團隊推出 <a href="https://ai.googleblog.com/2016/06/wide-deep-learning-better-together-with.html">Wide &amp; Deep 模型</a>，整合<a href="https://zh.wikipedia.org/wiki/%E9%82%8F%E8%BC%AF%E8%BF%B4%E6%AD%B8">邏輯回歸（logistic regression）</a>以及<a href="https://leemeng.tw/deep-learning-for-everyone-understand-neural-net-and-linear-algebra.html">深度神經網路（deep neural network）</a>的優點來做 App 推薦並看到卓越的指標提昇。隨後業界爭相使用此架構（或其變形）來改善自家的推薦系統。此研究也是讓<a href="https://leemeng.tw/deep-learning-for-everyone-understand-neural-net-and-linear-algebra.html">深度學習</a>更快普及到推薦系統領域的主要推手之一。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="resp-container">
+<iframe allow="accelerometer; 
+                            autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="resp-iframe" frameborder="0" src="https://www.youtube-nocookie.com/embed/Xmw9SWJ0L50">
+</iframe>
+</div>
+<center>
+                        3 分鐘理解谷歌經典的 Wide＆Deep 推薦模型概念
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://arxiv.org/abs/1606.07792">谷歌的論文</a>用實際的業務成長說明其模型的卓越性。谷歌對當時的用戶進行<a href="https://zh.wikipedia.org/wiki/A/B%E6%B8%AC%E8%A9%A6">線上 A/B 測試</a>：讓 1 % 的用戶繼續使用原始版本的 App 推薦系統（對照組），讓另外 1％ 的用戶使用類神經網路加持的 Wide &amp; Deep 模型（實驗組）。實驗結果顯示谷歌可以讓實驗組在 Google Play 多點擊下載 3.9％ 的應用程式。要知道 <a href="https://www.statista.com/statistics/734332/google-play-app-installs-per-year/#:~:text=In%202020%2C%20Google%20Play%20users,only%20available%20for%20Apple%20devices">Google Play 在 2016 年有 550 億下載，到了 2020 年更達到上千億</a>。以這個規模來評估模型帶來的影響力就十分驚人了。當然，一般用戶不會知曉這場偉大的實驗。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在 App 推薦取得巨大突破後，沒道理不應用到指定目標廣告投放的點擊率預測。你一樣可以把每一個廣告商的廣告視為一個物品，並依據用戶過去的點擊與瀏覽行為去預測他/她點擊每個廣告的機率。搭配無數廣告商的競標預算，谷歌在你搜尋任何東西時顯示他們有信心能讓你點擊的廣告。2017 年史丹佛大學與谷歌的 <a href="https://arxiv.org/abs/1708.05123">Deep &amp; Cross Network for Ad Click Predictions</a> 的論文標題就直白地說明了他們是改造 Wide ＆ Deep 模型來做廣告點擊預測。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/谷歌_deep_and_cross_廣告預測推薦模型.jpg" style="mix-blend-mode: initial;"/>
+</center>
+<center>
+                        谷歌的 Deep &amp; Cross Network 被設計來做廣告點擊預測
+                        （<a href="https://arxiv.org/abs/1708.05123" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>為了避免失焦，我在這篇文章裡頭不會討論過多技術細節。值得強調的是，這些模型是科技公司與數據神父們的嘔心瀝血之作，但從一般人的角度來看可以說是不知所云。所以我完全可以理解心理學與經濟學背景的祖博夫給這些技術下的評論：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        成千上百份研究成果，無論是小成就還是大躍進，全都是那昂貴、複雜、晦澀難懂，而且獨一無二的二十一世紀「生產手段」。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 《監控資本主義時代》</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這些生產工具為監控資本家帶來了巨大收益。在<a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2017/04/main-1.pdf">一篇 2017 年的微軟跟 Bing 搜尋相關的廣告論文</a>開頭就寫著：「對搜尋引擎的收益來說，精準預估廣告的點擊率相當關鍵，就算只有將精準度提升 0.1％，也能增加數億美元的營收。」而他們最後顯示能夠用該論文提出的深度學習推薦模型提升 0.9％ 的離線與線上精準度。真正的卓越成就。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>有趣的是，實際打造谷歌這些「生產工具」的是他們大力推行的開源軟體庫 <a href="https://www.tensorflow.org/?hl=zh-tw">TensorFlow</a>，也是無數機器學習工程師與資料科學家日夜使用的開發工具。所以現在大家一窩蜂在學的 TensorFlow 以及 <a href="https://pytorch.org/">PyTorch</a> 可以說是生產工具的生產工具。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>以下則是谷歌向開發者（developer）展示如何透過 TensorFlow 打造 Wide &amp; Deep 模型的範例程式碼：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="n">estimator</span> <span class="o">=</span> <span class="n">DNNLinearCombinedClassifier</span><span class="p">(</span>
+    <span class="n">linear_feature_columns</span><span class="o">=</span><span class="n">my_wide_features</span><span class="p">,</span>
+    <span class="n">dnn_feature_columns</span><span class="o">=</span><span class="n">my_deep_features</span><span class="p">,</span>
+    <span class="n">dnn_hidden_units</span><span class="o">=</span><span class="p">[</span><span class="mi">256</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span>
+    <span class="o">...</span><span class="p">)</span>
+
+<span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">estimator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>而因為這些開源軟體庫使用上十分便利，讓建構複雜神經網路模型像是在疊疊樂，業界內的工程師有時會自娛娛人：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/nlp-kaggle-intro/playing-with-keras.jpg"/>
+</center>
+<center>
+                        用開源函式庫建構深度學習模型
+                        （<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>更有趣的是，這些終日研讀技術文檔、開發的數據神父們有很大機率並不曉得自己在這樣的商業世界裡頭。</p>
+<p>這我們等等還會提到。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="一張圖說明監控資本主義與資料科學的聯姻">一張圖說明監控資本主義與資料科學的聯姻<a class="anchor-link" href="#一張圖說明監控資本主義與資料科學的聯姻">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>讀完上節，我相信你已經能夠直觀地將資料科學與監控資本主義的商業邏輯結合了。但我在撰寫此文時一直在想：「有沒有更淺白、更直觀的方式讓我把到目前為止談過的所有概念用一張圖呈現給你看呢？」</p>
+<p>人類是視覺的動物。一個可行方案是透過<a href="https://en.wikipedia.org/wiki/Knowledge_graph">知識圖譜（knowledge graph）</a>的想法，將所有重要概念（監控資本主義、推薦系統等）視為一個個的節點（node），並將節點其中的關係視為邊（edge）來繪圖。你要不要猜一猜世上最大的<strong>公開</strong>知識圖譜在哪？沒錯，就是<a href="https://zh.wikipedia.org/zh-tw/%E7%BB%B4%E5%9F%BA%E6%95%B0%E6%8D%AE">維基數據（Wikidata）</a>。我們可以用類似 <a href="https://leemeng.tw/why-you-need-to-learn-sql-as-a-data-scientist.html">SQL</a> 的語法即時查詢有提及《監控資本主義時代》作者<a href="https://en.wikipedia.org/wiki/Shoshana_Zuboff">肖莎娜・祖博夫（Shoshana Zuboff）</a>名字的所有維基頁面：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="p">(</span><span class="n">concat</span><span class="p">(</span><span class="o">?</span><span class="n">itemLabel</span><span class="p">,</span> <span class="ss">" ("</span><span class="p">,</span> <span class="o">?</span><span class="n">typeLabel</span><span class="p">,</span> <span class="ss">")"</span><span class="p">)</span> <span class="k">AS</span> <span class="o">?</span><span class="n">name</span><span class="p">)</span> <span class="o">?</span><span class="n">itemLabel</span> <span class="o">?</span><span class="n">typeLabel</span>
+<span class="k">WHERE</span> <span class="err">{</span>
+ <span class="err">{</span>
+   <span class="k">SELECT</span> <span class="o">?</span><span class="n">item</span> <span class="k">WHERE</span> <span class="err">{</span>
+    <span class="n">SERVICE</span> <span class="n">wikibase</span><span class="p">:</span><span class="n">mwapi</span> <span class="err">{</span>
+      <span class="n">bd</span><span class="p">:</span><span class="n">serviceParam</span> <span class="n">wikibase</span><span class="p">:</span><span class="n">endpoint</span> <span class="ss">"en.wikipedia.org"</span><span class="p">;</span>
+                      <span class="n">wikibase</span><span class="p">:</span><span class="n">api</span> <span class="ss">"Generator"</span><span class="p">;</span>
+                      <span class="n">mwapi</span><span class="p">:</span><span class="n">generator</span> <span class="ss">"search"</span><span class="p">;</span>
+                      <span class="n">mwapi</span><span class="p">:</span><span class="n">gsrsearch</span> <span class="ss">"'Shoshana Zuboff'"</span><span class="p">;</span>
+                      <span class="n">mwapi</span><span class="p">:</span><span class="n">gsrlimit</span> <span class="ss">"max"</span><span class="p">.</span>
+      <span class="o">?</span><span class="n">item</span> <span class="n">wikibase</span><span class="p">:</span><span class="n">apiOutputItem</span> <span class="n">mwapi</span><span class="p">:</span><span class="n">item</span> <span class="p">.</span>
+    <span class="err">}</span>
+  <span class="err">}</span> <span class="k">LIMIT</span> <span class="mi">100</span>
+ <span class="err">}</span>
+ <span class="n">hint</span><span class="p">:</span><span class="k">Prior</span> <span class="n">hint</span><span class="p">:</span><span class="n">runFirst</span> <span class="ss">"true"</span><span class="p">.</span>
+ <span class="o">?</span><span class="n">item</span> <span class="n">wdt</span><span class="p">:</span><span class="n">P31</span><span class="o">|</span><span class="n">wdt</span><span class="p">:</span><span class="n">P279</span> <span class="o">?</span><span class="k">type</span><span class="p">.</span>
+ <span class="n">OPTIONAL</span> <span class="err">{</span> <span class="o">?</span><span class="n">item</span> <span class="n">wdt</span><span class="p">:</span><span class="n">P18</span> <span class="o">?</span><span class="n">pic</span> <span class="err">}</span>
+ <span class="n">SERVICE</span> <span class="n">wikibase</span><span class="p">:</span><span class="n">label</span> <span class="err">{</span> <span class="n">bd</span><span class="p">:</span><span class="n">serviceParam</span> <span class="n">wikibase</span><span class="p">:</span><span class="k">language</span> <span class="ss">"zh-hant,[AUTO_LANGUAGE]"</span><span class="p">.</span> <span class="err">}</span>
+<span class="err">}</span> <span class="k">LIMIT</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/wikidata_query_service.png" style="mix-blend-mode: initial;"/>
+</center>
+<center>
+                        有提及《監控》作者名稱的部分維基頁面
+                        （圖片來源：<a href="https://w.wiki/uU9" target="_blank">Wikidata Query Service</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你開啟<a href="https://w.wiki/uU9">圖片來源連結</a>，就能找到一些跟監控資本主義直接相關的概念：</p>
+<ul>
+<li>資本主義</li>
+<li>極權主義</li>
+<li>精靈寶可夢 GO（還記得谷歌無所不用其極地蒐集你的行為剩餘嗎？）</li>
+<li>網路訪客追蹤</li>
+<li>Netflix 紀錄片：《智能社會：進退兩難》</li>
+<li>圓形監獄</li>
+</ul>
+<p>但這樣還不夠，我相信我們能做得更好。我用 <a href="https://github.com/WestHealth/pyvis">Pyvis</a> 打造了一個涵蓋監控資本主義以及資料科學相關概念的知識圖譜（或者說是我的心智圖）。在有了前面幾章的背景知識之後，你可以很輕鬆地解讀這個知識圖譜。要理解<code>谷歌</code>、<code>臉書</code>以及<code>推特</code>是怎麼賺進大把鈔票的，你只需找到下方圖譜中的<code>使用者 A（你我）</code>圖標，接著一路順著箭頭探索就能理解監控資本家是如何將你我的<code>注意力、行為與時間</code>轉換成<code>監控收益</code>的了，magic！</p>
+<p>註：如果你用暗色模式，建議點擊左下角按鈕切換成非暗色模式後再探索圖譜。你也可以縮放、拖曳圖譜。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<iframe allowfullscreen="" frameborder="0" height="750px" src="pyvis/surveillance_capitalism_mindmap.html" width="100%"></iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+    世上唯一涵蓋監控資本主義與資料科學相關概念的知識圖譜
+    <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我希望你在瀏覽此圖譜時不只有一個 <a href="http://big5.cri.cn/gate/big5/news.cri.cn/gb/33160/2010/11/26/4925s3069304.htm">Aha moment</a>：比方說突然對世界的運作方式有了更深的領悟、頓悟資料科學跟監控資本主義的商業邏輯是如何緊密耦合的。如果你富有好奇心，應該會花不少時間瀏覽上圖並從中獲得一些有趣的發現：</p>
+<ol>
+<li>紅色代表與監控資本主義相關的概念；藍色是資料科學；黑色則是指相關人物</li>
+<li>影子文本是監控資本家的最大生財資產。一般用戶無法存取甚至不知道其存在</li>
+<li>資訊科技不等於監控資本主義。後者是一種商業邏輯而前者是後者的生產手段</li>
+<li>監控資本圈並不只科技公司牽涉其中。監控資本以及政治力量都會型塑著市場</li>
+<li>行為未來市場最終能控制社會，且終將影響一般用戶以及打造它的數據神父們</li>
+<li>行為價值再投資循環是一個相對健康的商業邏輯，但仍有前面提過的科技上癮</li>
+<li>除了推薦系統，<a href="https://leemeng.tw/shortest-path-to-the-nlp-world-a-gentle-guide-of-natural-language-processing-and-deep-learning-for-everyone.html">自然語言處理</a>與電腦視覺也是監控資本主義中的生產手段之一</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>沒有藏頭，不用找了。我只是有點強迫症。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="再訪影子文本：「我們絕不會賣用戶個資！」">再訪影子文本：「我們絕不會賣用戶個資！」<a class="anchor-link" href="#再訪影子文本：「我們絕不會賣用戶個資！」">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>有了我們的知識圖譜以後，上一節最後提到的論述應該都顯得十分直觀。不過我還是建議想深入了解監控資本主義的讀者找時間咀嚼<a href="https://shoshanazuboff.com/book/about/">《監控資本主義時代》</a>。你可以透過該書深入了解祖博夫筆下的<code>大他者</code>以及<code>機器蜂巢</code>所代表的意義。</p>
+<p>底下我再針對第 2 點提到的<code>影子文本</code>給一個實例說明。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你沒有在科技公司工作的經驗，可能難以想像祖博夫筆下的<code>影子文本</code>長什麼樣子。但對業界的工程師來說，所謂的影子文本自然指的是那些只能在企業內部存取的一筆筆使用者行為日誌（user behavior log）。這些日誌詳細紀錄了<strong>每一個</strong>用戶跟某個系統 / 網站 / App 的<strong>每一次</strong>互動，是萃取<code>行為剩餘</code>最好的原物料。科技公司對其隱密的程度讓維基上甚至沒有一個好的說明頁面。下圖則是<a href="https://zh.wikipedia.org/wiki/%E5%BE%AE%E8%BD%AF%E4%BA%9A%E6%B4%B2%E7%A0%94%E7%A9%B6%E9%99%A2">微軟亞洲研究院</a>於 <a href="https://arxiv.org/abs/1801.08284">2018 年發布的一篇新聞推薦論文</a>中出現的案例研究：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/DKN_使用者行為數據.jpg" style="mix-blend-mode: initial;"/>
+</center>
+<center>
+                        某位毫不知情的 Microsoft News 用戶的實際新聞瀏覽行為
+                        （<a href="https://arxiv.org/abs/1801.08284" target="_blank">圖片來源</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在<a href="https://arxiv.org/abs/1801.08284">這篇論文</a>裡，研究員們描述了他們怎麼使用微軟自有的 <a href="https://www.microsoft.com/en-us/research/project/knowledge-mining-api/">Satori 知識圖譜</a>以及我以前寫過的<a href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html">注意力機制（attention mechanism）</a>來為一名隨機抽樣出來的用戶提供更好的新聞推薦（更多點擊 = 更好）：「我們看到注意力神經網路能準確地抓到此用戶喜歡汽車以及政治的喜好。因為在知識圖譜裡頭，通用汽車跟特斯拉距離很近。」</p>
+<p>這邊的重點是所有你現在在用的數位服務都在做這件事情：研發最能抓住你注意力的演算法，讓你繼續點擊、往下滑並待在他們的 Apps 上以提升你的互動與參與程度（engagement）。當然，科技公司會跟你說這些私密數據都匿名化了，沒有隱私議題。而且你當初在下載 App 時也已經同意了使用者條款，不是嗎？（儘管沒人會/能仔細看冗長的說明書）。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/智能社會_監控.jpg"/>
+</center>
+<center>
+                        科技公司監控用戶行為並使用能最大化用戶互動的演算法
+                        （圖片來源：<a href="https://www.youtube.com/watch?v=uaaC57tcci0&amp;ab_channel=Netflix" target="_blank">《智能社會：進退兩難》</a>）
+                        
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>透過蒐集成千上萬名用戶的數位行為，科技公司累積了人類史上最龐大的知識量，以此打造能夠緊緊抓住每一位用戶注意力的演算法。這些演算法與推薦系統是將知識轉成權力的最佳體現：「我比你還懂你自己，而且我覺得這個東西很重要，所以你應該馬上點開查看」。<a href="https://www.books.com.tw/products/0010774982">《人類大未來》</a>作者，歷史學家哈拉瑞就在書中預言未來會是少數菁英統治 AI，AI 再統治絕大多數的人類。應該也有人跟我一樣嗅到經典的反烏托邦作品<a href="https://zh.wikipedia.org/wiki/%E7%BE%8E%E9%BA%97%E6%96%B0%E4%B8%96%E7%95%8C">《美麗新世界》</a>的味道：這些菁英怎麼聽起來那麼像阿爾法 $\alpha $ ？</p>
+<p>Github 聯合創立人普雷斯頓・沃納在<a href="https://www.businessinsider.com/jobs-in-the-future-2014-8">接受彭博採訪時也有類似的言論</a>：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        未來人類可能只會剩下兩種類型的工作：一種是你寫程式告訴機器怎麼做，另外一種則是機器告訴你該做什麼。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ Preston-Werner, Github 聯合創辦人</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>這就是影子文本的強大之處：累積巨大知識並能用來預測並引導底下用戶的未來行為。這是上對下的關係。</p>
+<p>懂了這個以後，你就知道外界常常控訴「科技公司將用戶個資賣給第三方！」的這個議題根本打錯方向。一流的科技公司最珍視的就是自己的影子文本，谷歌跟臉書的發言人會跟你說：「我們怎麼可能出賣用戶個資！」而他們沒有說謊。使用者的數據隱私權不是沒了，而只是被科技公司「重新分配」了：雖然這些日誌都是關於你的行為，但我們不會讓你看到，而是自己用來預測你的未來行為。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="resp-container">
+<iframe allow="accelerometer; 
+                            autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="resp-iframe" frameborder="0" src="https://www.youtube-nocookie.com/embed/OQSMr-3GGvQ">
+</iframe>
+</div>
+<center>
+                        卡羅爾在 TED 上與她口中的「矽谷神祇」們講述臉書在英國脫歐的角色和它對民主的威脅
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://www.twreporter.org/a/information-warfare-business-interview-cambridge-analytica-brittany-kaiser">2016 年劍橋分析醜聞</a>的<a href="https://zh.wikipedia.org/wiki/%E5%8A%8D%E6%A9%8B%E5%88%86%E6%9E%90%E5%85%AC%E5%8F%B8">劍橋分析公司</a>被英國追蹤記者<a href="https://twitter.com/carolecadwalla">卡洛爾・卡瓦拉德爾（Carole Cadwalladr）</a>揭露其非法取得 5,000 萬筆臉書用戶數據並透過臉書的廣告推薦系統操控易被左右的英國選民，在選民沒意識到的情況下影響他們的脫歐抉擇。</p>
+<p>該醜聞的其中一個引爆點正是因帕森設計學院的副教授<a href="https://twitter.com/profcarroll">大衛凱洛（David Carroll）</a>問了該公司一個很簡單的問題：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        我能看看你握有的我的個人數據嗎？
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 大衛凱洛</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>而一直要到 2020 年，該公司宣告破產的 2 年多以後，大衛凱洛才<a href="https://www.youtube.com/watch?v=5Swqc2NjEXM&amp;feature=emb_logo">終於透過媒體拿到了屬於他自己的那一份「影子文本」</a>。大多數美國臉書用戶仍然沒親眼見過劍橋分析公司從臉書蒐集到的、那些屬於他們自己的私密數據。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="個人化的極致：以個人為單位的平行世界與社會極化">個人化的極致：以個人為單位的平行世界與社會極化<a class="anchor-link" href="#個人化的極致：以個人為單位的平行世界與社會極化">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在你想要去暴打你那位被祖博夫稱作「數據神父」的工程師或是資料科學家的朋友之前，讓我幫他/她辯解一下：他們自己可能也沒有意識到背後的商業邏輯。沒有貶低的意味，但在這年代利用最新生產手段（人工智慧、類神經網路）打造出能夠精準預測用戶行為的工程師們，其實就跟當年工廠生產線上的作業員沒差多少。我們都只是經濟體系裡服從資本的勞動力。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/大量生產資本主義_監控資本主義_生產線.jpg"/>
+</center>
+<center>
+                        左右兩邊出乎意料地相似
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>只不過當年工廠中的作業員信奉的神諭是「大量生產」，現在的工程師們信奉的是「個人化」的信條。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>幾乎所有你能看到的推薦系統論文都會在其研究動機以及背景提到個人化的重要以及必要性。工程師與研究員也早已習慣將「用戶點擊」、「用戶按讚」、「用戶轉發分享」或是「用戶接受通知進入 App」視為數位世界的真理：「這對使用者好」。這些使用者行為要不是<strong>直接</strong>增加企業收益，就是透過提升使用者與系統的互動程度<strong>間接</strong>為企業賺錢。</p>
+<p>這就是為何臉書 / IG 有時會貼心地提醒你：「有人在照片上標注你了喔！」卻沒有直接把該照片附在通知裡的原因。在通知裡頭附上照片對用戶很有實質幫助，卻可能讓用戶不需點進 App，進而造成企業的利益損失。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/智能社會_照片通知.jpg"/>
+</center>
+<center>
+                        《智能社會：進退兩難》
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>個人化當然有對用戶的好處及其必要性。不過我們也絕不能忽略極端的個人化會導致《智能社會》裡頭看到的科技上癮。無上限的個人化也會導致我們在 2016 年劍橋醜聞已經看過的社會極化：每個人都只看到自己想看到的。現在的監控資本家們就像是發給全世界每一位用戶一個免費的<a href="https://harrypotter.fandom.com/zh/wiki/%E5%8E%84%E9%87%8C%E6%96%AF%E9%AD%94%E9%95%9C?variant=zh-tw">意若思鏡</a>，其大小就是你手中那只有幾寸的螢幕畫面，投射出所有你內心最渴望卻也最虛幻的慾望，而此單面鏡後不斷有人想著怎麼讓你的大腦再分泌一點多巴胺。</p>
+<p>到頭來疑惑的人們會在社群媒體上丟出疑問，質疑跟自己想法不一樣的「他們」到底在想什麼：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        為什麼那些人這麼地蠢？你看看我每天看到的臉書與推特動態、谷歌搜尋結果以及微軟新聞內容，難道這些資訊他們都沒看到嗎？
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 身處數位時代的你我會有的日常疑問</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>然後這些疑問還只有願意跟我們互動的同溫層會收得到，多虧了個人化演算法。</p>
+<p>人們都會趨吉避凶，本能地排斥不同觀點並喜歡與符合自己觀點的想法/群體互動。這種人類天性被「最大化用戶互動程度以獲利」的社群媒體利用，直接導致了震驚全球的 <a href="https://www.bbc.com/zhongwen/trad/world-55565454">2021 年 1 月美國國會示威騷亂</a>：美國總統川普支持者強行闖入象徵該國民主的國會大廈，試圖推翻 <a href="https://zh.wikipedia.org/wiki/2020%E5%B9%B4%E7%BE%8E%E5%9C%8B%E7%B8%BD%E7%B5%B1%E9%81%B8%E8%88%89">2020 美國總統大選</a>結果。</p>
+<p>用監控資本主義的框架思考，就能理解正是因為社群媒體的商業本質使得「川普將會帶領軍隊推翻選舉結果！」等陰謀論以及極右思想能夠以低廉的成本廣泛散播給數以百萬計的用戶，塑造他們的平行宇宙，最終導致這場悲劇。<a href="https://www.bbc.com/zhongwen/trad/world-55631638">BBC 指出早在騷動的前 65 天</a>就已經能看到陰謀論在臉書上流傳的跡象。以下則是 <a href="https://www.bbc.com/zhongwen/trad/world-55666142">BBC 新聞攝影師在前線的紀錄</a>：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<iframe frameborder="0" height="600" src="https://www.bbc.com/zhongwen/trad/av-embeds/world-55666142" width="100%">
+</iframe>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>監控資本主義給出的答案很殘酷。沒錯，那些跟你持不同想法的人們每天會看到並互動的個人化內容都跟你看到的不一樣。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>而在美國國會大廈遭到衝擊之後，推特宣佈已經關閉了超過 7 萬個與陰謀論有關的賬戶，最後則是美國前總統川普本人的帳號。有些人將其視為左派的勝利，但如果你超越政治光譜，把思考問題的高度放到跟<a href="https://www.bbc.com/zhongwen/trad/world-55639767">德國總理梅克爾</a>一樣的位置，就知道真正需要被大眾討論跟解決的問題應該是：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        為何社群媒體可以為了營利在一開始放縱這些陰謀論流竄？為何這些科技巨頭後來可以自己選擇下架美國總統？社群媒體自我審查的基準在哪裡？為何他們有那麼大的權力？民主與人權在哪裡？
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://www.bbc.com/zhongwen/trad/world-52846379">根據美國現行法律《通信規範法案》第 230 條</a>，包括推特和臉書在內的社交媒體公司不會因用戶發帖內容而被追責，同時也可以刪除合法但會引起反感的內容。這是俗稱的「避風港條款」。</p>
+<p>但我們需要承認新型態的資本主義發展速度太快，現行的法律已經跟不上腳步了。避風港條款是在 21 世紀初期通過，而監控資本主義那時也才剛剛萌芽。時至今日，如果今天推特 CEO 可以凌駕全世界所有法律，關閉有 8,800 萬追蹤者的美國總統帳號，同時宣稱該企業會「自主控管」以及擁有「言論自由」，還有什麼能限制他們呢？</p>
+<p>這些問題值得我們認真思考。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/監控資本主義/舒適圈.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>要改善我們的數位社會需要每個人的合作，近年工程師們也正努力地想辦法改善推薦系統的社會面向。幫助用戶脫離個人化資訊的舒適層（comfort zone）、增加推薦內容的多樣性（diversity）以提升用戶滿意度。「誰說我們只想著 CTR！」</p>
+<p>雖然老實說是因為不少企業發現要保證用戶能持續地使用自家 App（另個企業指標：長期留存率！）得考慮 CTR 以外的事情，頂尖的推薦系統會議如 <a href="https://recsys.acm.org/">RecSys</a> 在 2020 年都出現了更多試圖解決推薦系統對社會帶來的負面影響的研究。RecSys 2020 Keynotes 的主題就分別為
+「4 個社群媒體使我們容易被操控的理由」以及「搜尋以及推薦系統的偏差」。</p>
+<p>其他我印象比較深刻的近期研究（以下為我自己的翻譯）有：</p>
+<ul>
+<li><a href="https://arxiv.org/abs/2012.10185">肩負使命的推薦系統：評估新聞推薦裡頭的多樣性</a></li>
+<li><a href="https://www.youtube.com/watch?v=TtF6exuBbSU&amp;ab_channel=ACMRecSys">對抗搜尋及推薦系統裡頭的偏見並提升公平性</a></li>
+<li><a href="https://dl.acm.org/doi/10.1145/3383313.3412238">PURS: 提升使用者滿意度的個人化非預期推薦系統</a></li>
+</ul>
+<p>以後或許會撰文深入討論相關研究，但現在先讓我們就此打住，總結一下一路上聊了些什麼。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="最終章-21-世紀第-3-個十年的認知革命_1">最終章 21 世紀第 3 個十年的認知革命<a class="anchor-link" href="#最終章-21-世紀第-3-個十年的認知革命">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>呼！一路走來，我相信你對自己身處的數位世界已經有更深一層的理解了。你已經知曉了監控資本主義扭曲的過去以及瘋狂的現在，是時候回顧一下我們在開始這趟驚悚旅程之前那段關於未來的訊息了：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        監控資本主義在 21 世紀主導資料科學以及 AI 的發展方向，並持續往大多數人不樂見的方向邁進。只有在大眾能夠認知到並理解其商業邏輯，我們才能透過集體意識去改善每個人的數位未來。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 本文主旨</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你現在能夠理解這段訊息了。</p>
+<p>監控資本主義的火車能這樣不受控制地在我們的數位世界裡橫衝直撞，要歸功於你我長期對監控科技發展的「無知」以及我們對「免費」的錯誤理解。但現在你已經「知曉」了監控科技的實際存在，也能明白一直以來的「免費使用」交易的是你在數位時代越來越寶貴的「注意力」。</p>
+<p>認知到這些事實是任何偉大改變的開始。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="https://leemeng.tw/images/監控資本主義/老鷹專注.jpg"/>
+</center>
+<center>
+                        在數位時代最重要的能力是能不被大量無用資訊分心的專注眼神
+                        <br/>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在這篇文章裡，我近乎囉唆地以各種視角與實例為你重現由（1）監控資本主義的商業邏輯以及（2）強大的資訊科技共同打造的數位世界，幫你從頭構築出一個能夠合理解釋這瘋狂年代的世界觀。事到如今我們已經無法成為拒絕使用數位服務的<a href="https://zh.wikipedia.org/wiki/%E7%9B%A7%E5%BE%B7%E9%81%8B%E5%8B%95">盧德主義者</a>，但我們能做的是重新找回自我。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        資訊的豐富意味著它消耗著資訊接受人的注意力導致其變得稀缺。因此資訊之豐富創造了注意力之貧窮。資訊接受人需要在過剩的資訊來源中有效地分配其注意力。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 赫伯特・亞歷山大・西蒙, 人工智慧之父</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>認知到注意力的珍貴以及數位服務對其之無限的渴望後，你就能開始做些改變。</p>
+<p>你應該時時刻刻問自己：</p>
+<ul>
+<li>「真的有需要一直往下滑臉書、推特或是 IG 嗎？沒有其他更重要的任務嗎？」</li>
+<li>「App 通知來了，真的有需要現在、立刻、馬上打開查看嗎？」</li>
+<li>「能不能改掉一看到手機螢幕亮就反射性去看是什麼通知的壞習慣？」</li>
+<li>「當下這個時間點除了消耗數位內容，對我來說最重要的事情是什麼？」</li>
+<li>「這篇貼文讓我情緒激動想分享轉貼留言，但它的內容可信嗎？」</li>
+<li>「App 推薦的內容讓我很想點進去看，但那是我人生最高順位的事情嗎？」</li>
+<li>「我真的需要邊吃飯邊聽 Podcast ，不給大腦自主思考的時間嗎？」</li>
+<li>「我一天有幾分鐘是真的能夠靜下心思考重要問題而不是無腦觀看影片？」</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>沒人會在意你往自己腦中塞了什麼，你的思想與行動才是證明自己最大價值的事物。你可以試試數位內容的間歇性斷食，拿掉你的數位奶嘴，不要再讓那些無時無刻吵著「你的朋友標注了你！」「你的訂閱者出了新影片！」這種為了爭奪你寶貴注意力的「便利通知」而疏忽了你人生中最重要的事情了。</p>
+<p>如果你也想要為世界創造些價值，就盡可能地專注吧！我們不該整天都把寶貴的注意力以及大腦資源拿來消耗「他們」要我們馬上查看的數位內容。從今天開始為自己決定優先順序吧。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><u><b>我也希望你能幫忙把這些知識傳達給對你來說重要的人知道</b></u>。當越來越多人意識到真正重要的事情並改變行為，就能創造一股集體意識讓企業們做真正對我們有幫助的事情。監控資本主義的商業邏輯讓我們每個人有不同的現實（reality）進而各個擊破。透過這篇文章我希望能跟所有人一起建立一致的現實，並透過這股力量改善我們以及下一世代的數位未來。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<img src="https://leemeng.tw/images/監控資本主義/改變.jpg"/>
+<br/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>除了重視自己的注意力並將其視為最重要的資產，所有人都應該開始向數位霸權宣示在這個數位時代裡，我們的新人權也包含了自己的數據權。行政院數位政委<a href="https://technews.tw/2020/06/28/personal-data-equal-basic-human-rights/">唐鳳也建議我們應該要把自己的數據權當作基本人權</a>。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你是其中一名數據神父，別忘了能力越強，責任越大。我們得開始理解用戶的意圖（intention）並幫助他們解決真正的問題，而不是整天抓著他們的注意力（attention）。《個資風暴》裡頭我們看到數據分析人員如何因為看到廣告投放的實際 KPI 成長而忘了背後都是一名名真實活在世上的人類。就像在<a href="https://leemeng.tw/gapminder.html">《真確》</a>裡瑞典公衛教授漢斯・羅斯林跟我們說的：</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        我要你看到統計數據背後的個別故事，也要你看到個別故事背後的統計數據。不靠數據無法了解世界，但光靠數據也無法了解世界。
+                        <br/>
+<span style="float:right;margin-right: 1.5rem">─ 漢斯・羅斯林，《真確》</span>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>機器學習工程師以及資料科學家並不只是人型的「最佳化機器」。數據神父們得要承認人類的注意力、時間都是有限的，認識到人類本身的認知極限，並把這些因素考量進去決定演算法應該要最佳化什麼，而不只是去最佳化 CTR。</p>
+<p>如果你是企業家或是正打算創業，多花點心思打造更符合「人性」的數位服務吧！這雖然不是一件容易的事情，但只要你成功了，我想全人類都會支持你的產品。</p>
+<p>雖然在這篇我延續《監控資本主義時代》的思路抨擊谷歌、臉書以及推特等科技公司，但他們的服務也實際為社會做了不少貢獻。只是這樣還不夠，我希望能喚起大眾的集體認知，讓這些我們熱愛的數位服務往真正對人類未來發展有助益的方向邁進。如果他們宣稱拋棄自我是科技進步與數位化的必要代價，我想就是我們該為自己發聲的時候了。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>
+                        讓我們修正監控資本主義創造的數位現實，建立以人為本並符合人體工學的數位未來。
+                        <br/>
+<br/>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+
+                <!-- Tags -->
+                <p class="blog-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="blog-content__tag-list">
+                        <a href="https://leemeng.tw/tag/jian-kong-zi-ben-zhu-yi.html" rel="tag">監控資本主義</a>
+                        <a href="https://leemeng.tw/tag/zi-liao-ke-xue.html" rel="tag">資料科學</a>
+                        <a href="https://leemeng.tw/tag/ren-gong-zhi-hui.html" rel="tag">人工智慧</a>
+                        <a href="https://leemeng.tw/tag/shen-du-xue-xi.html" rel="tag">深度學習</a>
+                        <a href="https://leemeng.tw/tag/tui-jian-xi-tong.html" rel="tag">推薦系統</a>
+                    </span>
+
+                </p>
+
+
+
+                <!-- end Tags -->
+
+
+                <!-- Mail-list-subscribe -->
+                <div id="article-inner-subscribe" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__prev">
+                            <a class="open-popup" rel="subscribe">
+                                <span>Get Latest Arrivals</span>
+                                訂閱最新文章
+                            </a>
+                        </div>
+                        <div class="blog-content__next">
+                            <p>
+                                跟資料科學相關的最新文章直接送到家。</br>
+                                只要加入訂閱名單，當新文章出爐時，</br>
+                                你將能馬上收到通知 <i class="im im-newspaper-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content__all">
+                        <a class="open-popup btn btn--primary ">&nbsp;&nbsp;Subscribe&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <!-- end Mail-list-subscribe -->
+
+                <!--Pagination-->
+                <div id="article-inner-neighbor-pages" class="blog-content__pagenav">
+                    <div class="blog-content__nav">
+                        <div class="blog-content__next">
+                            <a href="https://leemeng.tw/essence-of-principal-component-analysis.html" rel="next">
+                                <span>Next Post</span>
+                                世上最生動的 PCA：直觀理解並應用主成分分析
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog-content__all">
+                        <a href="blog.html" class="btn btn--primary">
+                            View All Post
+                        </a>
+                    </div>
+                </div>
+                <!-- end Pagination-->
+
+            </div><!-- end blog-content__main -->
+
+
+        </div>
+        </div> <!-- end blog-content -->
+
+    </article>
+
+<div class="comments-wrap">
+    <div id="comments" class="row">
+        <div class="col-full">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'leemengtaiwan';
+var disqus_title = '監控資本主義時代下的資料科學、AI 與你我的數位未來';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<!-- footer
+================================================== -->
+<footer style="background:#0a0809">
+    <div class="row">
+        <div class="col-full">
+
+            <div class="footer-logo">
+                <a class="footer-site-logo" href="#0"><img src="https://leemeng.tw/theme/images/logo.png" alt="Homepage"></a>
+            </div>
+
+            <ul class="footer-social">
+<li><a href="https://github.com/leemengtaiwan" target="_blank">
+    <i class="im im-github" aria-hidden="true"></i>
+    <span>Github</span>
+</a></li>
+<li><a href="https://www.facebook.com/LeeMengTaiwan" target="_blank">
+    <i class="im im-facebook" aria-hidden="true"></i>
+    <span>Facebook</span>
+</a></li>
+<li><a href="https://www.instagram.com/leemengtaiwan/" target="_blank">
+    <i class="im im-instagram" aria-hidden="true"></i>
+    <span>Instagram</span>
+</a></li>
+<li><a href="https://www.linkedin.com/in/leemeng1990/" target="_blank">
+    <i class="im im-linkedin" aria-hidden="true"></i>
+    <span>LinkedIn</span>
+</a></li>            </ul>
+        </div>
+    </div>
+    <div class="row footer-bottom">
+        <div class="col-twelve">
+            <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div> <!-- end footer-bottom -->
+</footer> <!-- end footer -->
+
+
+        <!-- Javascript
+    ================================================== -->
+    <script src="https://leemeng.tw/theme/js/jquery-3.2.1.min.js"></script>
+    <script src="https://leemeng.tw/theme/js/plugins.js"></script>
+    <script src="https://leemeng.tw/theme/js/main_raw.js"></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--https://instant.page/-->
+    <script src="//instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
+
+
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/progress-bar.js'></script>
+    <script type='text/javascript' src='https://leemeng.tw/theme/js/scroll-detect.js'></script>
+
+    <!--show and hide left navigation by scrolling-->
+    <script>
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+      if ( $(window).width() > 980 ) {
+        if (y > 600) {
+          $('#left-navigation').fadeIn(300);
+        } else {
+          $('#left-navigation').fadeOut(300);
+        }
+      }
+    });
+    </script>
+
+<!--reference: https://gist.github.com/scottmagdalein/259d878ad46ed6f2cdce-->
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">
+</script>
+
+<script type="text/javascript">
+  function showMailingPopUp() {
+    require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"151cb59f2de814c499c76b77a","lid":"dd1d78cc5e"})})
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  };
+
+  $(function() {
+    $(".open-popup").on('click', function() {
+      showMailingPopUp();
+    });
+  });
+</script><!--https://darkmodejs.learn.uno/-->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js"></script>
+<script>
+var options = {
+  bottom: '32px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.2s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+</script>
+<!--reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay-->
+<script>
+function openTocNav() {
+    document.getElementById("tocNav").style.width = "100%";
+}
+
+function closeTocNav() {
+    document.getElementById("tocNav").style.width = "0%";
+}
+
+function toggleTocNav() {
+    var current_width = document.getElementById("tocNav").style.width;
+    if (current_width == "100%") {
+        document.getElementById("tocNav").style.width = "0%";
+    } else {
+        document.getElementById("tocNav").style.width = "100%";
+    }
+}
+
+function closeLeftNavImage(elementId) {
+    document.getElementById(elementId).style.width = "0%";
+}
+
+function toggleLeftNavImage(elementId) {
+    var current_width = document.getElementById(elementId).style.width;
+    if (current_width == "100%") {
+        document.getElementById(elementId).style.width = "0%";
+    } else {
+        document.getElementById(elementId).style.width = "100%";
+    }
+}
+
+</script>
+
+
+</body>
+</html>
