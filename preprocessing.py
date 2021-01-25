@@ -2,6 +2,8 @@ import os
 from shutil import copyfile
 import glob
 
+OUTPUT_PATH = 'output'
+
 
 def main():
 
@@ -9,8 +11,8 @@ def main():
         'googleb61e79b00fce6520.html'
     ]
 
-    if not os.path.exists('output'):
-        os.mkdir('output')
+    if not os.path.exists(OUTPUT_PATH):
+        os.mkdir(OUTPUT_PATH)
 
     for template in templates:
         copyfile('./{}'.format(template), './output/{}'.format(template))

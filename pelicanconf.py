@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+import os
+import shutil
+from glob import glob
 import pandas as pd
 
 # Pelican setting start below
@@ -36,7 +39,6 @@ PATH = 'content'
 # Set path for stat files like favicon and robot.txt
 STATIC_PATHS = [
     'images',
-    'pyvis',
     'Udacity/Deep Learning/images',
     'extra/robots.txt',
     'extra/favicon.ico',
