@@ -136,7 +136,8 @@ b-publish() {
     - 調整專案順序
 
 ## 找書的圖片
-- [Rakuten Kobo](https://www.kobo.com/tw/zh/ebook/relr-70c5diu4fjbpvtpfg) 
+- [Rakuten Kobo](https://www.kobo.com/tw/zh/ebook/relr-70c5diu4fjbpvtpfg)
+- https://share.readmoo.com/book/794361
 - 把圖片中跟 size 相關的 path 刪掉即可得到原圖，再裁剪成 700 * 1000
 - ex:
     - https://kbimages1-a.akamaihd.net/55fbde1d-55df-489e-b25f-1edd95814662/353/569/90/False/ReLr-70c5DiU4fJBPvTPFg.jpg
