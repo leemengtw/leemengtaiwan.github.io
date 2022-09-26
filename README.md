@@ -14,6 +14,7 @@ git clone -b dev https://github.com/leemengtaiwan/leemengtaiwan.github.io.git
 統一使用官方 plugins，ipynb plugin 及 theme 則使用自己開發的 repo
 ```commandline
 git clone https://github.com/leemengtaiwan/pelican-jupyter-notebook.git
+cd pelican-jupyter-notebook
 git checkout dev
 
 git clone --recursive https://github.com/getpelican/pelican-plugins
@@ -36,8 +37,7 @@ ga_page_view
 cd pelican-plugins/ga_page_view/
 git remote add leemengtaiwan https://github.com/leemengtaiwan/pelican.plugins.ga_page_view.git
 git fetch leemengtaiwan
-git checkout normalize-page-vie
-pip install --upgrade google-api-python-client
+git checkout normalize-page-view
 ```
 
 然後從 Google Drive 上的 `credentials` 裡頭下載 `Blog-usage-0799d847dd8f.p12` 放到 `leemengtaiwan.github.io`
@@ -72,12 +72,46 @@ git push --set-upstream leemengtaiwan dev
 ## 建立開發基本環境
 
 ```commandline
-conda create -n blog python=3
+conda create -n blog python=3.8.0
 conda activate blog
 conda install pkg-config
+cd leemengtaiwan.github.io
 pip install -r init_requirements.txt
 conda install -c conda-forge jupyterlab
 conda install pandas
+```
+
+## 建立開發基本環境 (Mac M1)
+
+```commandline
+CONDA_SUBDIR=osx-64 conda create -n blog python=3.8.0
+conda activate blog
+conda config --env --set subdir osx-64
+conda install pkg-config -y
+cd leemengtaiwan.github.io
+pip install -r init_requirements.txt
+```
+
+### 解決 `Markup` error
+- https://candid.technology/cannot-import-name-markup-from-jinja2/
+
+將 conda 環境下的 `pelican` 的 `writers.py` & `utils.py` 裡的 `from jinja2 import Markup` 改成 `from jinja2.utils import markupsafe`
+- `/Users/meng.lee/miniforge3/envs/blog/lib/python3.8/site-packages/pelican/writers.py`
+- `/Users/meng.lee/miniforge3/envs/blog/lib/python3.8/site-packages/pelican/utils.py`
+```python
+# from jinja2 import Markup
+from jinja2.utils import markupsafe 
+```
+
+然後將所有 `Markup(` 改成 `markupsafe.Markup(`
+
+
+### 解決 `nbconvert` import error 
+- `ModuleNotFoundError: No module named 'IPython.nbconvert'`
+- https://github.com/conda/conda/issues/9038#issuecomment-627698375
+```commandline
+cd /Users/meng.lee/miniforge3/envs/blog/lib
+ln -s libffi.7.dylib libffi.6.dylib
 ```
 
 ### 新版本 Pelican 環境設置

@@ -5,6 +5,9 @@ import os
 import shutil
 from glob import glob
 import pandas as pd
+import os
+
+WORKSPACE = os.environ['WORKSPACE']
 
 # Pelican setting start below
 # --------------------------
@@ -102,7 +105,8 @@ MAIL = 'mailto:b9875001@gmail.com'
 
 # enable Pelican to use plugins for additional features
 MARKUP = ('md', 'ipynb')
-PLUGIN_PATHS = ['/Users/meng.lee/Documents/workspace/pelican-plugins']
+
+PLUGIN_PATHS = [os.path.join(WORKSPACE, "pelican-plugins")]
 PLUGINS = ['pelican-ipynb.markup', 'pelican-toc']
 
 IGNORE_FILES = ['.ipynb_checkpoints']
@@ -152,7 +156,7 @@ DEFAULT_CATEGORY = 'Miscellaneous'
 
 
 # Pelican default theme for dev
-THEME = "/Users/meng.lee/Documents/workspace/pelican-jupyter-notebook/themes/Hola10"
+THEME = os.path.join(WORKSPACE, "pelican-jupyter-notebook/themes/Hola10")
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search', 'books']
 # DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'blog', 'search']
 # PAGINATED_DIRECT_TEMPLATES = ['index', 'blog', 'books']
