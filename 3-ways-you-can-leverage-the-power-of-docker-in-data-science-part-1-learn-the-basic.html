@@ -169,7 +169,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-09-08 (Sat)</li>
                         <li class="page-view">
-                            11,109 views
+                            11,224 views
                         </li>
                     </ul>
 
@@ -472,11 +472,11 @@
 <p>非常好的一個問題。</p>
 <p>事實上，要產生一個新的 Docker 容器，Docker 需要一份「環境安裝步驟書」來讓它幫我們自動地建置容器內的環境，比方說使用什麼 OS，用什麼版本的 TensorFlow 等等。這份步驟書在 Docker 的世界裡被稱作 <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a>。</p>
 <p>舉個例子，以下是 Tensorflow 官方釋出的一個 <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/docker/Dockerfile">Dockerfile</a>（截錄重要部分）：</p>
-<div class="highlight"><pre><span></span><span class="k">FROM</span> <span class="s">ubuntu:16.04</span>
+<div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:16.04</span>
 
 ...
 
-<span class="k">RUN</span> pip --no-cache-dir install <span class="se">\</span>
+<span class="k">RUN</span><span class="w"> </span>pip --no-cache-dir install <span class="se">\</span>
         ipykernel <span class="se">\</span>
         jupyter <span class="se">\</span>
         numpy <span class="se">\</span>
@@ -488,12 +488,12 @@
 ...
 
 <span class="c"># Install TensorFlow CPU version from central repo</span>
-<span class="k">RUN</span> pip --no-cache-dir install <span class="se">\</span>
+<span class="k">RUN</span><span class="w"> </span>pip --no-cache-dir install <span class="se">\</span>
     http://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.0.0-cp27-none-linux_x86_64.whl
 
 ...
 
-<span class="k">CMD</span> <span class="p">[</span><span class="s2">"/run_jupyter.sh"</span><span class="p">,</span> <span class="s2">"--allow-root"</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"/run_jupyter.sh"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--allow-root"</span><span class="p">]</span>
 </pre></div>
 <p>除了 <code>RUN</code>、<code>CMD</code> 等 Docker 專屬的關鍵字以後，你會發現這份 Dockfile 裡頭的指令其實跟你平常在本地開發時也會使用的指令如 <code>pip install</code> 沒有相差太多。差別在於透過第一行的 <code>FROM ubuntu:16.04</code> 指令，我們要求 Docker 在這個容器裡頭建置一個 Ubuntu OS 後，在其之上安裝這些函式庫。</p>
 <h2 id="追求規模性：Docker-映像檔的誕生">追求規模性：Docker 映像檔的誕生<a class="anchor-link" href="#追求規模性：Docker-映像檔的誕生">&para;</a></h2><p>聽完以上的解釋，你可能會覺得在我們每次要啟動一個新的容器的時候，Docker 就得拿出 Dockerfile，一步步建置該容器的環境。</p>
@@ -768,14 +768,14 @@ docker run -it -p <span class="m">2468</span>:5000 leemeng/cat
 <p>正因為我們是資料科學家，利用 Docker能幫我們抽象化很多不必要的環境建置工作，加速我們的開發效率。</p>
 <p>在本系列文章的下篇出爐之前，我鼓勵你先<a href="https://www.docker.com/get-started">下載 Docker</a>，並開始在 <a href="https://hub.docker.com/">Docker Hub</a> 或者 Google 搜尋一些你感興趣的映像檔，甚至自己寫一個 Dockerfile 將你目前的專案打包起來跟別人分享。</p>
 <p>雖然我們這篇因為篇幅關係沒有細講，但只要有一個 Dockerfile，你就能使用 <code>docker build</code> 來輕鬆建立一個自給自足的 Docker 映像檔。一個 Dockerfile 也不難寫，像是上面貓咪的 App 的 Dockerfile 也不過就如此幾行：</p>
-<div class="highlight"><pre><span></span><span class="k">FROM</span> <span class="s">python:3.6.3</span>
-<span class="k">MAINTAINER</span><span class="s"> Meng Lee "b98705001@gmail.com"</span>
-<span class="k">COPY</span> ./requirements.txt /app/requirements.txt
-<span class="k">WORKDIR</span><span class="s"> /app</span>
-<span class="k">RUN</span> pip install -r requirements.txt
-<span class="k">COPY</span> . /app
-<span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">"python3"</span> <span class="p">]</span>
-<span class="k">CMD</span> <span class="p">[</span><span class="s2">"app.py"</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.6.3</span>
+<span class="k">MAINTAINER</span><span class="w"> </span><span class="s">Meng Lee "b98705001@gmail.com"</span>
+<span class="k">COPY</span><span class="w"> </span>./requirements.txt /app/requirements.txt
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">RUN</span><span class="w"> </span>pip install -r requirements.txt
+<span class="k">COPY</span><span class="w"> </span>. /app
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"python3"</span><span class="w"> </span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"app.py"</span><span class="p">]</span>
 </pre></div>
 <p>在本篇裡頭我們都是在自己的機器上使用 Docker。在下篇，我們將利用本篇學到的 Docker 知識，將其運用在浩瀚無垠的雲端平台之上，去最大化我們的影響力。</p>
 <p>在那之前你可以先熟悉熟悉 Docker，下次遇到你的 DS 同事時，可以問問他/她：</p>

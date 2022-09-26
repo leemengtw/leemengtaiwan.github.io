@@ -173,7 +173,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-04-23 (Mon)</li>
                         <li class="page-view">
-                            13,356 views
+                            13,492 views
                         </li>
                     </ul>
 
@@ -295,8 +295,8 @@
 <span class="n">ramen_all</span><span class="o">$</span><span class="n">Stars</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">ramen_all</span><span class="o">$</span><span class="n">Stars</span><span class="p">)</span> 
 <span class="c1"># Subset 資料</span>
 <span class="n">ramen</span> <span class="o">&lt;-</span> <span class="n">ramen_all</span> <span class="o">%&gt;%</span>
-  <span class="nf">filter</span><span class="p">(</span><span class="n">Country</span> <span class="o">%in%</span> <span class="nf">count</span><span class="p">(</span><span class="n">ramen_all</span><span class="p">,</span> <span class="n">Country</span><span class="p">,</span> <span class="n">sort</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span><span class="n">[1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">TRUE</span><span class="n">]</span><span class="p">)</span> <span class="o">%&gt;%</span>
-  <span class="nf">filter</span><span class="p">(</span><span class="n">Style</span> <span class="o">%in%</span> <span class="nf">count</span><span class="p">(</span><span class="n">ramen_all</span><span class="p">,</span> <span class="n">Style</span><span class="p">,</span> <span class="n">sort</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span><span class="n">[1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="m">1</span> <span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">TRUE</span><span class="n">]</span><span class="p">)</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="n">Country</span> <span class="o">%in%</span> <span class="nf">count</span><span class="p">(</span><span class="n">ramen_all</span><span class="p">,</span> <span class="n">Country</span><span class="p">,</span> <span class="n">sort</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">])</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="n">Style</span> <span class="o">%in%</span> <span class="nf">count</span><span class="p">(</span><span class="n">ramen_all</span><span class="p">,</span> <span class="n">Style</span><span class="p">,</span> <span class="n">sort</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="m">1</span> <span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>

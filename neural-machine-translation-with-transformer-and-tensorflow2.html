@@ -178,7 +178,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-06-17 (Mon)</li>
                         <li class="page-view">
-                            80,001 views
+                            80,966 views
                         </li>
                     </ul>
 
@@ -1813,7 +1813,7 @@ Managing the rise of NCDs will require long-term thinking, and government leader
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 <span class="k">try</span><span class="p">:</span>
   <span class="n">subword_encoder_en</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">SubwordTextEncoder</span><span class="o">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="n">en_vocab_file</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"載入已建立的字典： </span><span class="si">{en_vocab_file}</span><span class="s2">"</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"載入已建立的字典： </span><span class="si">{</span><span class="n">en_vocab_file</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="k">except</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="s2">"沒有已建立的字典，從頭建立。"</span><span class="p">)</span>
   <span class="n">subword_encoder_en</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">SubwordTextEncoder</span><span class="o">.</span><span class="n">build_from_corpus</span><span class="p">(</span>
@@ -1824,8 +1824,8 @@ Managing the rise of NCDs will require long-term thinking, and government leader
   <span class="n">subword_encoder_en</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">(</span><span class="n">en_vocab_file</span><span class="p">)</span>
   
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"字典大小：</span><span class="si">{subword_encoder_en.vocab_size}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"前 10 個 subwords：</span><span class="si">{subword_encoder_en.subwords[:10]}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"字典大小：</span><span class="si">{</span><span class="n">subword_encoder_en</span><span class="o">.</span><span class="n">vocab_size</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"前 10 個 subwords：</span><span class="si">{</span><span class="n">subword_encoder_en</span><span class="o">.</span><span class="n">subwords</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1974,7 +1974,7 @@ Wall time: 391 ms
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 <span class="k">try</span><span class="p">:</span>
   <span class="n">subword_encoder_zh</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">SubwordTextEncoder</span><span class="o">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="n">zh_vocab_file</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"載入已建立的字典： </span><span class="si">{zh_vocab_file}</span><span class="s2">"</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"載入已建立的字典： </span><span class="si">{</span><span class="n">zh_vocab_file</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="k">except</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="s2">"沒有已建立的字典，從頭建立。"</span><span class="p">)</span>
   <span class="n">subword_encoder_zh</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">SubwordTextEncoder</span><span class="o">.</span><span class="n">build_from_corpus</span><span class="p">(</span>
@@ -1985,8 +1985,8 @@ Wall time: 391 ms
   <span class="c1"># 將字典檔案存下以方便下次 warmstart </span>
   <span class="n">subword_encoder_zh</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">(</span><span class="n">zh_vocab_file</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"字典大小：</span><span class="si">{subword_encoder_zh.vocab_size}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"前 10 個 subwords：</span><span class="si">{subword_encoder_zh.subwords[:10]}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"字典大小：</span><span class="si">{</span><span class="n">subword_encoder_zh</span><span class="o">.</span><span class="n">vocab_size</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"前 10 個 subwords：</span><span class="si">{</span><span class="n">subword_encoder_zh</span><span class="o">.</span><span class="n">subwords</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2281,8 +2281,8 @@ tf.Tensor([4201   48  557  116   48   81 4202], shape=(7,), dtype=int64)
   <span class="k">assert</span> <span class="n">cond1</span> <span class="ow">and</span> <span class="n">cond2</span>
   <span class="n">num_examples</span> <span class="o">+=</span> <span class="mi">1</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"所有英文與中文序列長度都不超過 </span><span class="si">{MAX_LENGTH}</span><span class="s2"> 個 tokens"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"訓練資料集裡總共有 </span><span class="si">{num_examples}</span><span class="s2"> 筆數據"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"所有英文與中文序列長度都不超過 </span><span class="si">{</span><span class="n">MAX_LENGTH</span><span class="si">}</span><span class="s2"> 個 tokens"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"訓練資料集裡總共有 </span><span class="si">{</span><span class="n">num_examples</span><span class="si">}</span><span class="s2"> 筆數據"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3989,8 +3989,8 @@ output: tf.Tensor(
 <span class="k">assert</span> <span class="n">d_model</span> <span class="o">==</span> <span class="n">emb_inp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="o">==</span> <span class="mi">4</span>
 <span class="n">num_heads</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"d_model: </span><span class="si">{d_model}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"num_heads: </span><span class="si">{num_heads}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"d_model: </span><span class="si">{</span><span class="n">d_model</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"num_heads: </span><span class="si">{</span><span class="n">num_heads</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># 初始化一個 multi-head attention layer</span>
 <span class="n">mha</span> <span class="o">=</span> <span class="n">MultiHeadAttention</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">)</span>
@@ -5182,7 +5182,7 @@ enc_out: tf.Tensor(
 <span class="nb">print</span><span class="p">(</span><span class="s2">"dec_out:"</span><span class="p">,</span> <span class="n">dec_out</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">block_name</span><span class="p">,</span> <span class="n">attn_weights</span> <span class="ow">in</span> <span class="n">attn</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{block_name}</span><span class="s2">.shape: </span><span class="si">{attn_weights.shape}</span><span class="s2">"</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">block_name</span><span class="si">}</span><span class="s2">.shape: </span><span class="si">{</span><span class="n">attn_weights</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5812,7 +5812,7 @@ target_vocab_size: 4203
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">,</span> <span class="s2">"black"</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">d_models</span><span class="p">:</span>
   <span class="n">schedules</span> <span class="o">+=</span> <span class="p">[</span><span class="n">CustomSchedule</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">warmup_steps</span><span class="p">]</span>
-  <span class="n">labels</span> <span class="o">+=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"d_model: </span><span class="si">{d}</span><span class="s2">, warm: </span><span class="si">{s}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">warmup_steps</span><span class="p">]</span>
+  <span class="n">labels</span> <span class="o">+=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"d_model: </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">, warm: </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">warmup_steps</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">schedule</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">schedules</span><span class="p">,</span> <span class="n">labels</span><span class="p">)):</span>
   <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">schedule</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)),</span> 
@@ -5864,13 +5864,13 @@ target_vocab_size: 4203
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">transformer</span> <span class="o">=</span> <span class="n">Transformer</span><span class="p">(</span><span class="n">num_layers</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span>
                           <span class="n">input_vocab_size</span><span class="p">,</span> <span class="n">target_vocab_size</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""這個 Transformer 有 </span><span class="si">{num_layers}</span><span class="s2"> 層 Encoder / Decoder layers</span>
-<span class="s2">d_model: </span><span class="si">{d_model}</span><span class="s2"></span>
-<span class="s2">num_heads: </span><span class="si">{num_heads}</span><span class="s2"></span>
-<span class="s2">dff: </span><span class="si">{dff}</span><span class="s2"></span>
-<span class="s2">input_vocab_size: </span><span class="si">{input_vocab_size}</span><span class="s2"></span>
-<span class="s2">target_vocab_size: </span><span class="si">{target_vocab_size}</span><span class="s2"></span>
-<span class="s2">dropout_rate: </span><span class="si">{dropout_rate}</span><span class="s2"></span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""這個 Transformer 有 </span><span class="si">{</span><span class="n">num_layers</span><span class="si">}</span><span class="s2"> 層 Encoder / Decoder layers</span>
+<span class="s2">d_model: </span><span class="si">{</span><span class="n">d_model</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">num_heads: </span><span class="si">{</span><span class="n">num_heads</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">dff: </span><span class="si">{</span><span class="n">dff</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">input_vocab_size: </span><span class="si">{</span><span class="n">input_vocab_size</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">target_vocab_size: </span><span class="si">{</span><span class="n">target_vocab_size</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">dropout_rate: </span><span class="si">{</span><span class="n">dropout_rate</span><span class="si">}</span><span class="s2"></span>
 
 <span class="s2">"""</span><span class="p">)</span>
 </pre></div>
@@ -5908,7 +5908,7 @@ dropout_rate: 0.1
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 方便比較不同實驗/ 不同超參數設定的結果</span>
-<span class="n">run_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{num_layers}</span><span class="s2">layers_</span><span class="si">{d_model}</span><span class="s2">d_</span><span class="si">{num_heads}</span><span class="s2">heads_</span><span class="si">{dff}</span><span class="s2">dff_</span><span class="si">{train_perc}</span><span class="s2">train_perc"</span>
+<span class="n">run_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num_layers</span><span class="si">}</span><span class="s2">layers_</span><span class="si">{</span><span class="n">d_model</span><span class="si">}</span><span class="s2">d_</span><span class="si">{</span><span class="n">num_heads</span><span class="si">}</span><span class="s2">heads_</span><span class="si">{</span><span class="n">dff</span><span class="si">}</span><span class="s2">dff_</span><span class="si">{</span><span class="n">train_perc</span><span class="si">}</span><span class="s2">train_perc"</span>
 <span class="n">checkpoint_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">checkpoint_path</span><span class="p">,</span> <span class="n">run_id</span><span class="p">)</span>
 <span class="n">log_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">log_dir</span><span class="p">,</span> <span class="n">run_id</span><span class="p">)</span>
 
@@ -5927,7 +5927,7 @@ dropout_rate: 0.1
   
   <span class="c1"># 用來確認之前訓練多少 epochs 了</span>
   <span class="n">last_epoch</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ckpt_manager</span><span class="o">.</span><span class="n">latest_checkpoint</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'已讀取最新的 checkpoint，模型已訓練 </span><span class="si">{last_epoch}</span><span class="s1"> epochs。'</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'已讀取最新的 checkpoint，模型已訓練 </span><span class="si">{</span><span class="n">last_epoch</span><span class="si">}</span><span class="s1"> epochs。'</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
   <span class="n">last_epoch</span> <span class="o">=</span> <span class="mi">0</span>
   <span class="nb">print</span><span class="p">(</span><span class="s2">"沒找到 checkpoint，從頭訓練。"</span><span class="p">)</span>
@@ -6058,8 +6058,8 @@ dropout_rate: 0.1
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 定義我們要看幾遍數據集</span>
 <span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"此超參數組合的 Transformer 已經訓練 </span><span class="si">{last_epoch}</span><span class="s2"> epochs。"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"剩餘 epochs：{min(0, last_epoch - EPOCHS)}"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"此超參數組合的 Transformer 已經訓練 </span><span class="si">{</span><span class="n">last_epoch</span><span class="si">}</span><span class="s2"> epochs。"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"剩餘 epochs：</span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">last_epoch</span> <span class="o">-</span> <span class="n">EPOCHS</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 
 <span class="c1"># 用來寫資訊到 TensorBoard，非必要但十分推薦</span>
@@ -6428,7 +6428,7 @@ _________________________________________________________________
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">predicted_seq</span><span class="p">,</span> <span class="n">attention_weights</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
 
 <span class="c1"># 在這邊我們自動選擇最後一個 Decoder layer 的 MHA 2，也就是 Decoder 關注 Encoder 的 MHA</span>
-<span class="n">layer_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"decoder_layer</span><span class="si">{num_layers}</span><span class="s2">_block2"</span>
+<span class="n">layer_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"decoder_layer</span><span class="si">{</span><span class="n">num_layers</span><span class="si">}</span><span class="s2">_block2"</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"sentence:"</span><span class="p">,</span> <span class="n">sentence</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
@@ -6436,7 +6436,7 @@ _________________________________________________________________
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"attention_weights.keys():"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">attn</span> <span class="ow">in</span> <span class="n">attention_weights</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{layer_name}</span><span class="s2">.shape: </span><span class="si">{attn.shape}</span><span class="s2">"</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">layer_name</span><span class="si">}</span><span class="s2">.shape: </span><span class="si">{</span><span class="n">attn</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"layer_name:"</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">)</span>
 </pre></div>

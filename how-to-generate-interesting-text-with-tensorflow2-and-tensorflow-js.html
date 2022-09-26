@@ -171,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-03-27 (Wed)</li>
                         <li class="page-view">
-                            25,595 views
+                            25,756 views
                         </li>
                     </ul>
 
@@ -696,8 +696,8 @@
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="n">w</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"天龍八部小說共有 </span><span class="si">{n}</span><span class="s2"> 中文字"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"包含了 </span><span class="si">{w}</span><span class="s2"> 個獨一無二的字"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"天龍八部小說共有 </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> 中文字"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"包含了 </span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s2"> 個獨一無二的字"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -868,8 +868,8 @@
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">text_as_int</span><span class="p">)</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text_as_int</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"text_as_int 是一個 </span><span class="si">{_type}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"小說的序列長度： </span><span class="si">{n}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"text_as_int 是一個 </span><span class="si">{</span><span class="n">_type</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"小說的序列長度： </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"前 5 索引："</span><span class="p">,</span> <span class="n">text_as_int</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -2063,8 +2063,8 @@ tf.Tensor(
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="nx">model</span> <span class="o">=</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">loadLayersModel</span><span class="p">(</span><span class="s2">"url"</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">output</span> <span class="o">=</span> <span class="nx">model</span><span class="p">.</span><span class="nx">predict</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="nx">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tf</span><span class="p">.</span><span class="nx">loadLayersModel</span><span class="p">(</span><span class="s2">"url"</span><span class="p">);</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">model</span><span class="p">.</span><span class="nx">predict</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </div>

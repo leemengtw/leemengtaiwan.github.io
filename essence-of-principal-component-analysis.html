@@ -175,7 +175,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2020-01-06 (Mon)</li>
                         <li class="page-view">
-                            113,732 views
+                            115,993 views
                         </li>
                     </ul>
 
@@ -260,7 +260,7 @@
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <center>
-                        我們後面會看到將共變異數矩陣 $\mathbf{K}$ 視為一線性轉換並套用到數據 $\mathbf{X}$ 上會增強其變異趨勢
+                        我們後面會看到將共變異數矩陣 $\mathbf{k}$ 視為一線性轉換並套用到數據 $\mathbf{x}$ 上會增強其變異趨勢
                         <br/>
 <br/>
 </center>
@@ -1477,7 +1477,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <video autoplay="" controls="" loop="" muted="" playsinline="" poster="https://leemeng.tw/20200105_pca_blog_post_public.ipynb">
-<source src="https://leemeng.tw/images/pca/ShowReconstructionErrorWhileRotatingProjectionLine.mp4" type="video/mp4"/>
+<source src="https://leemeng.tw/images/pca/showreconstructionerrorwhilerotatingprojectionline.mp4" type="video/mp4"/>
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <center>
@@ -2613,7 +2613,7 @@ $$<p>數據正規化的實作也十分容易：</p>
 <span class="n">pcs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="p">)</span> <span class="c1"># (n_comp, n_features)</span>
 
 <span class="n">df_pc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pcs</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-<span class="n">df_pc</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"第</span><span class="si">{c}</span><span class="s2">主成分"</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span><span class="p">[</span><span class="s1">'一'</span><span class="p">,</span> <span class="s1">'二'</span><span class="p">]]</span>
+<span class="n">df_pc</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"第</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">主成分"</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span><span class="p">[</span><span class="s1">'一'</span><span class="p">,</span> <span class="s1">'二'</span><span class="p">]]</span>
 <span class="n">df_pc</span><span class="o">.</span><span class="n">style</span>\
     <span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">'bwr_r'</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>\
     <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">"</span><span class="si">{:.2}</span><span class="s2">"</span><span class="p">)</span>
@@ -17338,7 +17338,7 @@ MGlOK6m8KwAAAABJRU5ErkJggg==
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <center>
-                        t-SNE 也可以用來視覺化高維數據，但需小心解讀
+                        t-sne 也可以用來視覺化高維數據，但需小心解讀
                         <br/>
 <br/>
 </center>

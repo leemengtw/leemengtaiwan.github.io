@@ -171,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-07-10 (Wed)</li>
                         <li class="page-view">
-                            185,617 views
+                            188,146 views
                         </li>
                     </ul>
 
@@ -1287,23 +1287,23 @@ Name: label, dtype: float64</pre>
 
 <span class="c1"># 渲染前後差異，毫無反應就是個 print。可以直接看輸出結果</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""[原始文本]</span>
-<span class="s2">句子 1：</span><span class="si">{text_a}</span><span class="s2"></span>
-<span class="s2">句子 2：</span><span class="si">{text_b}</span><span class="s2"></span>
-<span class="s2">分類  ：</span><span class="si">{label}</span><span class="s2"></span>
+<span class="s2">句子 1：</span><span class="si">{</span><span class="n">text_a</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">句子 2：</span><span class="si">{</span><span class="n">text_b</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">分類  ：</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"></span>
 
 <span class="s2">--------------------</span>
 
 <span class="s2">[Dataset 回傳的 tensors]</span>
-<span class="s2">tokens_tensor  ：</span><span class="si">{tokens_tensor}</span><span class="s2"></span>
+<span class="s2">tokens_tensor  ：</span><span class="si">{</span><span class="n">tokens_tensor</span><span class="si">}</span><span class="s2"></span>
 
-<span class="s2">segments_tensor：</span><span class="si">{segments_tensor}</span><span class="s2"></span>
+<span class="s2">segments_tensor：</span><span class="si">{</span><span class="n">segments_tensor</span><span class="si">}</span><span class="s2"></span>
 
-<span class="s2">label_tensor   ：</span><span class="si">{label_tensor}</span><span class="s2"></span>
+<span class="s2">label_tensor   ：</span><span class="si">{</span><span class="n">label_tensor</span><span class="si">}</span><span class="s2"></span>
 
 <span class="s2">--------------------</span>
 
 <span class="s2">[還原 tokens_tensors]</span>
-<span class="si">{combined_text}</span><span class="s2"></span>
+<span class="si">{</span><span class="n">combined_text</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">"""</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1467,17 +1467,17 @@ label_tensor   ：2
     <span class="n">masks_tensors</span><span class="p">,</span> <span class="n">label_ids</span> <span class="o">=</span> <span class="n">data</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
-<span class="s2">tokens_tensors.shape   = </span><span class="si">{tokens_tensors.shape}</span><span class="s2"> </span>
-<span class="si">{tokens_tensors}</span><span class="s2"></span>
+<span class="s2">tokens_tensors.shape   = </span><span class="si">{</span><span class="n">tokens_tensors</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> </span>
+<span class="si">{</span><span class="n">tokens_tensors</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">------------------------</span>
-<span class="s2">segments_tensors.shape = </span><span class="si">{segments_tensors.shape}</span><span class="s2"></span>
-<span class="si">{segments_tensors}</span><span class="s2"></span>
+<span class="s2">segments_tensors.shape = </span><span class="si">{</span><span class="n">segments_tensors</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"></span>
+<span class="si">{</span><span class="n">segments_tensors</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">------------------------</span>
-<span class="s2">masks_tensors.shape    = </span><span class="si">{masks_tensors.shape}</span><span class="s2"></span>
-<span class="si">{masks_tensors}</span><span class="s2"></span>
+<span class="s2">masks_tensors.shape    = </span><span class="si">{</span><span class="n">masks_tensors</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"></span>
+<span class="si">{</span><span class="n">masks_tensors</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">------------------------</span>
-<span class="s2">label_ids.shape        = </span><span class="si">{label_ids.shape}</span><span class="s2"></span>
-<span class="si">{label_ids}</span><span class="s2"></span>
+<span class="s2">label_ids.shape        = </span><span class="si">{</span><span class="n">label_ids</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"></span>
+<span class="si">{</span><span class="n">label_ids</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">"""</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1604,7 +1604,7 @@ tensor([2, 0, 2, 2, 1, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 2,
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">named_children</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"bert"</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">module</span><span class="o">.</span><span class="n">named_children</span><span class="p">():</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{name}</span><span class="s2">:</span><span class="si">{n}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{:15}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">module</span><span class="p">))</span>
 </pre></div>
@@ -1872,8 +1872,8 @@ classification acc: 0.03387278885961611
 <span class="n">clf_params</span> <span class="o">=</span> <span class="n">get_learnable_params</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">classifier</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
-<span class="s2">整個分類模型的參數量：{sum(p.numel() for p in model_params)}</span>
-<span class="s2">線性分類器的參數量：{sum(p.numel() for p in clf_params)}</span>
+<span class="s2">整個分類模型的參數量：</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model_params</span><span class="p">)</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">線性分類器的參數量：</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">clf_params</span><span class="p">)</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">"""</span><span class="p">)</span>
 </pre></div>
 </div>

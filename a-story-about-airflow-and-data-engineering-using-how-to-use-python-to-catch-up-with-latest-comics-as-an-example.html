@@ -175,7 +175,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-08-21 (Tue)</li>
                         <li class="page-view">
-                            52,425 views
+                            53,310 views
                         </li>
                     </ul>
 
@@ -809,9 +809,9 @@ airflow initdb
 </pre></div>
 <p>這行指令是讓 Airflow 幫我們測試 <code>comic_app_v1</code> DAG 裡頭的 <code>superman_task</code> 工作，並假設這個工作是在 <code>2018-08-18</code> 這個日期被執行。在我們的 App 例子中，<code>superman_task</code> 工作的執行結果基本上不會受到執行日期的影響，可以隨便你改。</p>
 <p>但想像一個每天 24 點 0 分準備被啟動，從資料庫撈出數據並計算「當天」使用者數目的工作。其 SQL 查詢可能長這樣：</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="k">AS</span> <span class="n">num_new_users</span>
-<span class="k">FROM</span> <span class="n">user_activities</span>
-<span class="k">WHERE</span> <span class="n">dt</span> <span class="o">=</span> <span class="s1">'{execute_date}'</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">num_new_users</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">user_activities</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'{execute_date}'</span><span class="w"></span>
 </pre></div>
 <p>因為此工作的結果會受到執行日期的影響，在測試的時候，你就得仔細選擇執行日期（execute_date）。</p>
 </div>
@@ -1464,18 +1464,18 @@ airflow trigger_dag comic_app_v2</code></pre>
 <li>「 Airflow 排程器會在 西元 2100 年 1 月 1 號 0 點第一次執行此 DAG 」</li>
 </ul>
 <p>是非常矛盾的，讓我們做個我最愛的假想實驗。還記得在<a href="#測試開發-Airflow-工作">測試開發 Airflow 工作</a>章節提到的 SQL 查詢嗎？</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="k">AS</span> <span class="n">num_new_users</span>
-<span class="k">FROM</span> <span class="n">user_activities</span>
-<span class="k">WHERE</span> <span class="n">dt</span> <span class="o">=</span> <span class="s1">'{execute_date}'</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">num_new_users</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">user_activities</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'{execute_date}'</span><span class="w"></span>
 </pre></div>
 <p>現在假設我們給這個工作跟 <code>comic_app_v2</code> 一模一樣的排程設定：</p>
 <div class="highlight"><pre><span></span>'start_date': datetime(2100, 1, 1, 0, 0)
 'schedule_interval': '@daily'
 </pre></div>
 <p>根據本章節一開始的敘述，這個 DAG 的第一個執行日期（execute_date）為 <code>2100-01-01</code>。而按照我們在 <a href="#Airflow-變數以及-Jinja-模板">Airflow 變數以及 Jinja 模板</a>章節所說的，此 SQL 查詢裡頭的 Jinja 語法會被渲染成：</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="k">AS</span> <span class="n">num_new_users</span>
-<span class="k">FROM</span> <span class="n">user_activities</span>
-<span class="k">WHERE</span> <span class="n">dt</span> <span class="o">=</span> <span class="s1">'2100-01-01'</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">num_new_users</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">user_activities</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'2100-01-01'</span><span class="w"></span>
 </pre></div>
 <p>接著假設我們一開始的猜想：</p>
 <ul>
@@ -1489,9 +1489,9 @@ airflow trigger_dag comic_app_v2</code></pre>
 <ul>
 <li>在 2100 年 1 月 <strong>2</strong> 號 0 點的時候，以下的 SQL 查詢會被執行</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="k">AS</span> <span class="n">num_new_users</span>
-<span class="k">FROM</span> <span class="n">user_activities</span>
-<span class="k">WHERE</span> <span class="n">dt</span> <span class="o">=</span> <span class="s1">'2100-01-01'</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">num_new_users</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">user_activities</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'2100-01-01'</span><span class="w"></span>
 </pre></div>
 <p>這代表我們在 1 月 1 號 23 點 59 分結束以後，也就是 1 月 2 號 0 點的時候，將 1 月 1 號所有的使用者資料做彙總。</p>
 <p>一般而言，Airflow 會在 <code>start_date</code> 加上一個 <code>schedule_interval</code> 之後開始<a href="https://airflow.readthedocs.io/en/latest/scheduler.html?highlight=start_date">第一次執行某個 DAG</a>，而該 DAG Run 的 <code>execute_date</code> 為 <code>start_date</code>。這樣的設計就是為了避免像是上面那個 SQL 查詢在當天才剛開始的時候就想要搜集該天所有資料的窘境。</p>
@@ -1874,9 +1874,9 @@ conda install -c conda-forge selenium
 <p>在這個 App 裡頭，要讓 Selenium 正常運作，你還需要 <a href="https://sites.google.com/a/chromium.org/chromedriver/">Chrome Driver</a>。下載最新版本以後把它放在你的 <code>$PATH</code> 讀得到的地方。Mac 使用者的話可以放到像是 <code>/usr/local/bin</code> 資料夾下面。如果還是不懂可以查看<a href="https://github.com/leemengtaiwan/gist-evernote#chrome-driver">這裡的 Chrome Driver 安裝教學</a>。</p>
 <p>環境設定好以後，你會需要一個新的 <a href="https://peppergeeks.slack.com/apps">Slack App</a> 來送訊息到你的 Workspace。建立一個新的 Slack App，給予它寫訊息的權限以後，安裝到你自己的 Workspace。這時候你應該會得到一個開頭為 <code>xoxp-</code> 的 Slack Token。將該 Token 複製下來，打開 <code>airflow-tutorials</code> 資料夾底下的 <code>data/credentials/slack.json</code>。</p>
 <p>將你的 Token 複製貼上如：</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">"token"</span><span class="p">:</span> <span class="s2">"xoxp-....."</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xoxp-....."</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 <p>搞定網路爬蟲以及 Slack 認證以後，你需要改變 <code>comic_app_v3.py</code> 裡頭的一行程式碼，以讓 Airflow 送訊息到你 Workspace 底下指定的頻道（channel）：</p>
 <div class="highlight"><pre><span></span><span class="n">send_notification</span> <span class="o">=</span> <span class="n">SlackAPIPostOperator</span><span class="p">(</span>
@@ -1913,12 +1913,12 @@ conda install -c conda-forge selenium
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>目前 <code>comic_app_v3</code> DAG 將使用者的閱讀紀錄儲存在 <code>data/comic.json</code> 裡頭，底下則是為了產生上面這個 Slack 訊息的假閱讀紀錄：</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">"1152"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"海賊王"</span><span class="p">,</span>
-    <span class="nt">"previous_chapter_num"</span><span class="p">:</span> <span class="mi">900</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"1152"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"海賊王"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"previous_chapter_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1939,37 +1939,37 @@ conda install -c conda-forge selenium
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>目前此 App 只能從<a href="https://www.cartoonmad.com/">動漫狂</a>（歡迎你丟 PR 改善！）找最新的漫畫連載。為了新增你自己的漫畫，你需要找出該漫畫主頁在動漫狂的連結，將連結中的數字如上述的例子一樣新增在 <code>data/comic.json</code> 裡頭。假設你想開始關注「進擊的巨人」，然後最近看到 100 話的話，可以把 <code>data/comic.json</code> 改成這樣：</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">"1221"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"進擊的巨人"</span><span class="p">,</span>
-    <span class="nt">"previous_chapter_num"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"1221"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"進擊的巨人"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"previous_chapter_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 <p>這樣一來， <code>comic_app_v3</code> DAG 就會用該數字去「進擊的巨人」的頁面，幫你查看有沒有最新的連載。當然你也可以像我一樣，在 <code>comic.json</code> 裡追加多個漫畫：</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">"1152"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"海賊王"</span><span class="p">,</span>
-    <span class="nt">"previous_chapter_num"</span><span class="p">:</span> <span class="mi">911</span>
-  <span class="p">},</span>
-  <span class="nt">"1221"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"進擊的巨人"</span><span class="p">,</span>
-    <span class="nt">"previous_chapter_num"</span><span class="p">:</span> <span class="mi">107</span>
-  <span class="p">},</span>
-  <span class="nt">"4485"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"西遊"</span><span class="p">,</span>
-    <span class="nt">"previous_chapter_num"</span><span class="p">:</span> <span class="mi">152</span>
-  <span class="p">},</span>
-  <span class="nt">"1121"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"浪人劍客"</span><span class="p">,</span>
-    <span class="nt">"previous_chapter_num"</span><span class="p">:</span> <span class="mi">327</span>
-  <span class="p">},</span>
-  <span class="nt">"1122"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"王者天下"</span><span class="p">,</span>
-    <span class="nt">"previous_chapter_num"</span><span class="p">:</span> <span class="mi">565</span>
-  <span class="p">}</span>
-  <span class="err">...</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"1152"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"海賊王"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"previous_chapter_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">911</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"1221"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"進擊的巨人"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"previous_chapter_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">107</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"4485"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"西遊"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"previous_chapter_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">152</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"1121"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"浪人劍客"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"previous_chapter_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">327</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"1122"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"王者天下"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"previous_chapter_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">565</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 <p>修改完 <code>comic.json</code>，最後你會想要修改 <code>comic_app_v3.py</code> 裡頭的排程設定：</p>
 <div class="highlight"><pre><span></span><span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>

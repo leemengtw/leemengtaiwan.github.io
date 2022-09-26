@@ -171,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-07-27 (Sat)</li>
                         <li class="page-view">
-                            179,983 views
+                            182,641 views
                         </li>
                     </ul>
 
@@ -1328,7 +1328,7 @@ memory usage: 322.0 KB
                     您的瀏覽器不支援影片標籤，請留言通知我：S
                 </video>
 <center>
-                        Variable Inspector
+                        variable inspector
                         <br/>
 <br/>
 </center>
@@ -6493,7 +6493,7 @@ dtype: object</pre>
 <span class="c1"># apply custom function 可以說是 pandas 裡最重要的技巧之一</span>
 <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'male'</span><span class="p">:</span> <span class="s1">'男性'</span><span class="p">,</span> <span class="s1">'female'</span><span class="p">:</span> <span class="s1">'女性'</span><span class="p">}</span> 
 <span class="k">def</span> <span class="nf">generate_desc</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">"一名 </span><span class="si">{row['Age']}</span><span class="s2"> 歲的{d[row['Sex']]}"</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"一名 </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span><span class="si">}</span><span class="s2"> 歲的</span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">'Sex'</span><span class="p">]]</span><span class="si">}</span><span class="s2">"</span>
 
 <span class="n">df</span><span class="p">[</span><span class="s1">'描述'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">generate_desc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">4</span><span class="p">,</span> <span class="s1">'Sex'</span><span class="p">:]</span>
@@ -6743,7 +6743,7 @@ dtype: object</pre>
 <span class="n">columns</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">new_col</span><span class="p">)</span>
 
 <span class="c1"># 將 numerical 轉換成 categorical 欄位</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">'族群 </span><span class="si">{i}</span><span class="s1">'</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">'族群 </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">'</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
 <span class="n">df</span><span class="p">[</span><span class="n">new_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="p">,</span> 
                      <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
                      <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
@@ -7441,7 +7441,7 @@ dtype: object</pre>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_city</span><span class="o">.</span><span class="n">itertuples</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'City'</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{row.city}</span><span class="s1">是</span><span class="si">{row.state}</span><span class="s1">裡頭的一個城市'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">city</span><span class="si">}</span><span class="s1">是</span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">state</span><span class="si">}</span><span class="s1">裡頭的一個城市'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
