@@ -14,7 +14,12 @@ SITEURL = 'https://leemeng.tw'
 RELATIVE_URLS = False
 
 # Parse content and save as JSON for searching
-PLUGINS += ['tipue_search', 'ga_page_view', 'sitemap', 'share_post']
+PLUGINS += [
+    # 'tipue_search',
+    'ga_page_view',
+    'sitemap',
+    'share_post'
+]
 PLUGINS = list(set(PLUGINS))
 
 # Feeds
