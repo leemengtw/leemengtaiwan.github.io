@@ -173,7 +173,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-04-14 (Sat)</li>
                         <li class="page-view">
-                            6,386 views
+                            6,546 views
                         </li>
                     </ul>
 
@@ -899,7 +899,7 @@ QACBVAT+H+5PGMGtxImPAAAAAElFTkSuQmCC"/>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在</p>
-<div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">ramen</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Style</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_bar</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">ramen</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Style</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_bar</span><span class="p">()</span>
 </pre></div>
 <p>裡頭，我們實際上已經建構了圖表最基礎的三層元素：</p>
 <ul>
@@ -2580,8 +2580,8 @@ KoE66EiWrwAAAABJRU5ErkJggg=="/>
 </ul>
 <p>首先 ggplot2 的 <code>geom_bar</code> 預設只需要 <code>x</code> 視覺變數，因為匯總資料的統計層會把 x 依照不同的值分別計數（也就是各個包裝的數量），然後讓 <code>geom_bar</code> 顯示。但我們並不希望 <code>geom_bar</code> 使用這個數值，因此使用 <code>geom_bar</code> 裡頭的 <code>stat = "identity"</code> 是告訴統計層不要分別計數，而是使用我們給定的星星數 <code>y</code> 。</p>
 <p>而 <code>facet_wrap( ~ Country)</code> 則是告訴小平面層依照 <code>Country</code> 這個變數重複畫</p>
-<div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">ramen</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Style</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Stars</span><span class="p">))</span> <span class="o">+</span>
-  <span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span> <span class="o">=</span> <span class="s">"identity"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">ramen</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Style</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stars</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"identity"</span><span class="p">)</span>
 </pre></div>
 <p>注意所有的圖的 x, y 軸都是一致的，方便我們做比較。</p>
 </div>

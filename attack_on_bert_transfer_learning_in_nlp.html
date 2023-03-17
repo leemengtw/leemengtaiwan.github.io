@@ -171,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-07-10 (Wed)</li>
                         <li class="page-view">
-                            188,146 views
+                            205,512 views
                         </li>
                     </ul>
 
@@ -454,7 +454,7 @@
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span>%%bash
-pip install transformers tqdm boto3 requests regex -q
+pip<span class="w"> </span>install<span class="w"> </span>transformers<span class="w"> </span>tqdm<span class="w"> </span>boto3<span class="w"> </span>requests<span class="w"> </span>regex<span class="w"> </span>-q
 </pre></div>
 </div>
 </div>
@@ -797,7 +797,7 @@ Top 3 ( 2%)：['[CLS]', '等', '到', '潮', '水', '過', '了', '，', '就', 
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 安裝 BertViz</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="o">!</span><span class="nb">test</span> -d bertviz_repo <span class="o">||</span> git clone https://github.com/jessevig/bertviz bertviz_repo
+<span class="o">!</span><span class="nb">test</span><span class="w"> </span>-d<span class="w"> </span>bertviz_repo<span class="w"> </span><span class="o">||</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jessevig/bertviz<span class="w"> </span>bertviz_repo
 <span class="k">if</span> <span class="ow">not</span> <span class="s1">'bertviz_repo'</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
   <span class="n">sys</span><span class="o">.</span><span class="n">path</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">'bertviz_repo'</span><span class="p">]</span>
 
@@ -1287,23 +1287,23 @@ Name: label, dtype: float64</pre>
 
 <span class="c1"># 渲染前後差異，毫無反應就是個 print。可以直接看輸出結果</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""[原始文本]</span>
-<span class="s2">句子 1：</span><span class="si">{</span><span class="n">text_a</span><span class="si">}</span><span class="s2"></span>
-<span class="s2">句子 2：</span><span class="si">{</span><span class="n">text_b</span><span class="si">}</span><span class="s2"></span>
-<span class="s2">分類  ：</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">句子 1：</span><span class="si">{</span><span class="n">text_a</span><span class="si">}</span>
+<span class="s2">句子 2：</span><span class="si">{</span><span class="n">text_b</span><span class="si">}</span>
+<span class="s2">分類  ：</span><span class="si">{</span><span class="n">label</span><span class="si">}</span>
 
 <span class="s2">--------------------</span>
 
 <span class="s2">[Dataset 回傳的 tensors]</span>
-<span class="s2">tokens_tensor  ：</span><span class="si">{</span><span class="n">tokens_tensor</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">tokens_tensor  ：</span><span class="si">{</span><span class="n">tokens_tensor</span><span class="si">}</span>
 
-<span class="s2">segments_tensor：</span><span class="si">{</span><span class="n">segments_tensor</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">segments_tensor：</span><span class="si">{</span><span class="n">segments_tensor</span><span class="si">}</span>
 
-<span class="s2">label_tensor   ：</span><span class="si">{</span><span class="n">label_tensor</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">label_tensor   ：</span><span class="si">{</span><span class="n">label_tensor</span><span class="si">}</span>
 
 <span class="s2">--------------------</span>
 
 <span class="s2">[還原 tokens_tensors]</span>
-<span class="si">{</span><span class="n">combined_text</span><span class="si">}</span><span class="s2"></span>
+<span class="si">{</span><span class="n">combined_text</span><span class="si">}</span>
 <span class="s2">"""</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1468,16 +1468,16 @@ label_tensor   ：2
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
 <span class="s2">tokens_tensors.shape   = </span><span class="si">{</span><span class="n">tokens_tensors</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> </span>
-<span class="si">{</span><span class="n">tokens_tensors</span><span class="si">}</span><span class="s2"></span>
+<span class="si">{</span><span class="n">tokens_tensors</span><span class="si">}</span>
 <span class="s2">------------------------</span>
-<span class="s2">segments_tensors.shape = </span><span class="si">{</span><span class="n">segments_tensors</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"></span>
-<span class="si">{</span><span class="n">segments_tensors</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">segments_tensors.shape = </span><span class="si">{</span><span class="n">segments_tensors</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span>
+<span class="si">{</span><span class="n">segments_tensors</span><span class="si">}</span>
 <span class="s2">------------------------</span>
-<span class="s2">masks_tensors.shape    = </span><span class="si">{</span><span class="n">masks_tensors</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"></span>
-<span class="si">{</span><span class="n">masks_tensors</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">masks_tensors.shape    = </span><span class="si">{</span><span class="n">masks_tensors</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span>
+<span class="si">{</span><span class="n">masks_tensors</span><span class="si">}</span>
 <span class="s2">------------------------</span>
-<span class="s2">label_ids.shape        = </span><span class="si">{</span><span class="n">label_ids</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"></span>
-<span class="si">{</span><span class="n">label_ids</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">label_ids.shape        = </span><span class="si">{</span><span class="n">label_ids</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span>
+<span class="si">{</span><span class="n">label_ids</span><span class="si">}</span>
 <span class="s2">"""</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1872,8 +1872,8 @@ classification acc: 0.03387278885961611
 <span class="n">clf_params</span> <span class="o">=</span> <span class="n">get_learnable_params</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">classifier</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
-<span class="s2">整個分類模型的參數量：</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model_params</span><span class="p">)</span><span class="si">}</span><span class="s2"></span>
-<span class="s2">線性分類器的參數量：</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">clf_params</span><span class="p">)</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">整個分類模型的參數量：</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model_params</span><span class="p">)</span><span class="si">}</span>
+<span class="s2">線性分類器的參數量：</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">clf_params</span><span class="p">)</span><span class="si">}</span>
 <span class="s2">"""</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2050,7 +2050,7 @@ Wall time: 3min 1s
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls bert*.csv
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls<span class="w"> </span>bert*.csv
 </pre></div>
 </div>
 </div>
@@ -2164,21 +2164,21 @@ Wall time: 3min 1s
 <div class="highlight"><pre><span></span><span class="c1"># 腳本模式的好處是可以透過改變參數快速進行各種實驗。</span>
 <span class="c1"># 壞處是黑盒子效應，不過對閱讀完本文的你應該不是個問題。</span>
 <span class="c1"># 選擇適合自己的方式 fine-tuning BERT 吧！</span>
-<span class="nb">export</span> <span class="nv">SQUAD_DIR</span><span class="o">=</span>/path/to/SQUAD
+<span class="nb">export</span><span class="w"> </span><span class="nv">SQUAD_DIR</span><span class="o">=</span>/path/to/SQUAD
 
-python run_squad.py <span class="se">\</span>
-  --bert_model bert-base-uncased <span class="se">\</span>
-  --do_train <span class="se">\</span>
-  --do_predict <span class="se">\</span>
-  --do_lower_case <span class="se">\</span>
-  --train_file <span class="nv">$SQUAD_DIR</span>/train-v1.1.json <span class="se">\</span>
-  --predict_file <span class="nv">$SQUAD_DIR</span>/dev-v1.1.json <span class="se">\</span>
-  --train_batch_size <span class="m">12</span> <span class="se">\</span>
-  --learning_rate 3e-5 <span class="se">\</span>
-  --num_train_epochs <span class="m">2</span>.0 <span class="se">\</span>
-  --max_seq_length <span class="m">384</span> <span class="se">\</span>
-  --doc_stride <span class="m">128</span> <span class="se">\</span>
-  --output_dir /tmp/debug_squad/
+python<span class="w"> </span>run_squad.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--bert_model<span class="w"> </span>bert-base-uncased<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--do_train<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--do_predict<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--do_lower_case<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--train_file<span class="w"> </span><span class="nv">$SQUAD_DIR</span>/train-v1.1.json<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--predict_file<span class="w"> </span><span class="nv">$SQUAD_DIR</span>/dev-v1.1.json<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--train_batch_size<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--learning_rate<span class="w"> </span>3e-5<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--num_train_epochs<span class="w"> </span><span class="m">2</span>.0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max_seq_length<span class="w"> </span><span class="m">384</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--doc_stride<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output_dir<span class="w"> </span>/tmp/debug_squad/
 </pre></div>
 <p>用腳本的好處是你不需要知道所有實作細節，只要調整自己感興趣的參數就好。我在<a href="http://localhost:8000/generate-anime-using-cartoongan-and-tensorflow2.html">用 CartoonGAN 與 TensorFlow 2 生成新海誠動畫</a>一文也採用同樣方式，提供讀者一鍵生成卡通圖片的 Python 腳本。</p>
 <p>當然，你也可以先試著一步步執行本文列出的程式碼，複習並鞏固學到的東西。最後，讓我們做點簡單的總結。</p>

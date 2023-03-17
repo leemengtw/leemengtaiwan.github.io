@@ -171,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2019-03-27 (Wed)</li>
                         <li class="page-view">
-                            25,756 views
+                            27,020 views
                         </li>
                     </ul>
 
@@ -551,7 +551,7 @@
 <li>自動幫你建構計算圖的 <a href="https://youtu.be/Up9CvRLIIIw?list=PLQY2H8rRoyvzoUYI26kHmKSJBedn3SQuB">tf.function</a></li>
 </ul>
 <p>在這篇文章裡頭會看到前 3 者。下節列出的程式碼皆在 <a href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/r2/tutorials/sequences/text_generation.ipynb">Google Colab</a> 上用最新版本的 TensorFlow 2.0 Nightly 執行。</p>
-<div class="highlight"><pre><span></span>pip install tf-nightly-gpu-2.0-preview
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>tf-nightly-gpu-2.0-preview
 </pre></div>
 <p>如果有 GPU 則強烈建議安裝 GPU 版本的 TF Nightly，訓練速度跟 CPU 版本可以差到 10 倍以上。</p>
 </div>
@@ -2047,10 +2047,10 @@ tf.Tensor(
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span>tensorflowjs_converter <span class="se">\</span>
-    --input_format<span class="o">=</span>keras <span class="se">\</span>
-    model.h5 <span class="se">\</span>
-    tfjs_model_folder
+<div class="highlight"><pre><span></span>tensorflowjs_converter<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_format<span class="o">=</span>keras<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>model.h5<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>tfjs_model_folder
 </pre></div>
 </div>
 </div>
@@ -2063,8 +2063,8 @@ tf.Tensor(
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="nx">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tf</span><span class="p">.</span><span class="nx">loadLayersModel</span><span class="p">(</span><span class="s2">"url"</span><span class="p">);</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">model</span><span class="p">.</span><span class="nx">predict</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="nx">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tf</span><span class="p">.</span><span class="nx">loadLayersModel</span><span class="p">(</span><span class="s2">"url"</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">model</span><span class="p">.</span><span class="nx">predict</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

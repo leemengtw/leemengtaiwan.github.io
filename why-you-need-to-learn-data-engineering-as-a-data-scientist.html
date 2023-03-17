@@ -173,7 +173,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-04-23 (Mon)</li>
                         <li class="page-view">
-                            13,492 views
+                            14,028 views
                         </li>
                     </ul>
 
@@ -290,13 +290,13 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="資料準備">資料準備<a class="anchor-link" href="#資料準備">&para;</a></h3><p>說到資料準備，你可能會聯想到我們在前一篇<a href="data-visualization-from-matplotlib-to-ggplot2.html#載入資料-+-簡單資料處理">淺談資料視覺化以及 ggplot2 實踐</a>裡頭，使用 R 語言做的簡單資料清理：</p>
 <div class="highlight"><pre><span></span><span class="c1"># 將 CSV 檔案載入成資料框架（dataframe）</span>
-<span class="n">ramen_all</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">"datasets//ramen-ratings.csv"</span><span class="p">)</span>
+<span class="n">ramen_all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">"datasets//ramen-ratings.csv"</span><span class="p">)</span>
 <span class="c1"># 將「星星數」轉成定量資料</span>
-<span class="n">ramen_all</span><span class="o">$</span><span class="n">Stars</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">ramen_all</span><span class="o">$</span><span class="n">Stars</span><span class="p">)</span> 
+<span class="n">ramen_all</span><span class="o">$</span><span class="n">Stars</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">ramen_all</span><span class="o">$</span><span class="n">Stars</span><span class="p">)</span><span class="w"> </span>
 <span class="c1"># Subset 資料</span>
-<span class="n">ramen</span> <span class="o">&lt;-</span> <span class="n">ramen_all</span> <span class="o">%&gt;%</span>
-  <span class="nf">filter</span><span class="p">(</span><span class="n">Country</span> <span class="o">%in%</span> <span class="nf">count</span><span class="p">(</span><span class="n">ramen_all</span><span class="p">,</span> <span class="n">Country</span><span class="p">,</span> <span class="n">sort</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">])</span> <span class="o">%&gt;%</span>
-  <span class="nf">filter</span><span class="p">(</span><span class="n">Style</span> <span class="o">%in%</span> <span class="nf">count</span><span class="p">(</span><span class="n">ramen_all</span><span class="p">,</span> <span class="n">Style</span><span class="p">,</span> <span class="n">sort</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="m">1</span> <span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">])</span>
+<span class="n">ramen</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ramen_all</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">Country</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">ramen_all</span><span class="p">,</span><span class="w"> </span><span class="n">Country</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">drop</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">])</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">Style</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">ramen_all</span><span class="p">,</span><span class="w"> </span><span class="n">Style</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">drop</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>

@@ -169,7 +169,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-09-08 (Sat)</li>
                         <li class="page-view">
-                            11,224 views
+                            11,938 views
                         </li>
                     </ul>
 
@@ -476,20 +476,20 @@
 
 ...
 
-<span class="k">RUN</span><span class="w"> </span>pip --no-cache-dir install <span class="se">\</span>
-        ipykernel <span class="se">\</span>
-        jupyter <span class="se">\</span>
-        numpy <span class="se">\</span>
-        pandas <span class="se">\</span>
-        sklearn <span class="se">\</span>
-        <span class="o">&amp;&amp;</span> <span class="se">\</span>
-    python -m ipykernel.kernelspec
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>--no-cache-dir<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>ipykernel<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>jupyter<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>numpy<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>pandas<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>sklearn<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>python<span class="w"> </span>-m<span class="w"> </span>ipykernel.kernelspec
 
 ...
 
 <span class="c"># Install TensorFlow CPU version from central repo</span>
-<span class="k">RUN</span><span class="w"> </span>pip --no-cache-dir install <span class="se">\</span>
-    http://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.0.0-cp27-none-linux_x86_64.whl
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>--no-cache-dir<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>http://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.0.0-cp27-none-linux_x86_64.whl
 
 ...
 
@@ -586,28 +586,28 @@
 <p>當 Docker 就緒以後，依照我們前面的所學，你會需要一個 Dockerfile 或是 Docker 映像檔來產生一個 Docker 容器。就像 <a href="https://github.com/">Github</a> 是一個被大家拿來分享程式碼的地方，<a href="https://hub.docker.com/">Dockerhub</a> 則被用來分享 Dockerfile 以及 Docker 映像檔。</p>
 <p>假設我們現在要開始一個新的 TensorFlow 專案，並且想透過 Jupyter Notebook 進行開發，最省力的方式就是從 Dockerhub 下載一個 <a href="https://hub.docker.com/r/tensorflow/tensorflow/">TensorFlow 官方</a>幫我們弄好的 Docker 映像檔。</p>
 <p>讓我們打開一個 terminal 並輸入 <code>docker pull</code> 指令：</p>
-<div class="highlight"><pre><span></span>docker pull tensorflow/tensorflow
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>tensorflow/tensorflow
 </pre></div>
 <p>第 1 個 <code>tensorflow</code> 代表 Tensorflow 的官方 Dockerhub repository，就跟 Github repository 的概念相同；第 2 個則是容器名稱。</p>
 <p>你會看到當 Docker 在下載映像檔的時候，同時也在建置環境，而其環境會分成一層一層（Layer）的：</p>
-<div class="highlight"><pre><span></span>$ docker pull tensorflow/tensorflow
-Using default tag: latest
-latest: Pulling from tensorflow/tensorflow
-3b37166ec614: Already exists
-ba077e1ddb3a: Already exists
-34c83d2bc656: Already exists
-84b69b6e4743: Already exists
-0f72e97e1f61: Already exists
-6086c6484ab2: Pull <span class="nb">complete</span>
-25817b9e5842: Pull <span class="nb">complete</span>
-5252e5633f1c: Pull <span class="nb">complete</span>
-8de57ae4ad7d: Pull <span class="nb">complete</span>
-4b7717108c3b: Pull <span class="nb">complete</span>
-b65e9e47e80a: Pull <span class="nb">complete</span>
-006d31e013ea: Pull <span class="nb">complete</span>
-700521cc53f3: Pull <span class="nb">complete</span>
-Digest: sha256:f45d87bd473bf999241afe444748a2d3a9be24f8d736a808277b4f3e32159566
-Status: Downloaded newer image <span class="k">for</span> tensorflow/tensorflow:latest
+<div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>pull<span class="w"> </span>tensorflow/tensorflow
+Using<span class="w"> </span>default<span class="w"> </span>tag:<span class="w"> </span>latest
+latest:<span class="w"> </span>Pulling<span class="w"> </span>from<span class="w"> </span>tensorflow/tensorflow
+3b37166ec614:<span class="w"> </span>Already<span class="w"> </span>exists
+ba077e1ddb3a:<span class="w"> </span>Already<span class="w"> </span>exists
+34c83d2bc656:<span class="w"> </span>Already<span class="w"> </span>exists
+84b69b6e4743:<span class="w"> </span>Already<span class="w"> </span>exists
+0f72e97e1f61:<span class="w"> </span>Already<span class="w"> </span>exists
+6086c6484ab2:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+25817b9e5842:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+5252e5633f1c:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+8de57ae4ad7d:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+4b7717108c3b:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+b65e9e47e80a:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+006d31e013ea:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+700521cc53f3:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span>
+Digest:<span class="w"> </span>sha256:f45d87bd473bf999241afe444748a2d3a9be24f8d736a808277b4f3e32159566
+Status:<span class="w"> </span>Downloaded<span class="w"> </span>newer<span class="w"> </span>image<span class="w"> </span><span class="k">for</span><span class="w"> </span>tensorflow/tensorflow:latest
 </pre></div>
 <p>我們不會細談 Docker 實作細節，但你可以想像 Docker 映像檔是一個法式千層酥（Mille Feuille）。</p>
 <p>這時候的 Docker 是一名蛋糕師傅，利用 Dockerfile 作為食譜，逐行執行裡頭的指令以建立一層層的環境。每做出一層新的環境，就把它加在目前所有環境的上面，最後成為一個 Docker 映像檔。</p>
@@ -636,14 +636,14 @@ Status: Downloaded newer image <span class="k">for</span> tensorflow/tensorflow:
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>依照你的網路速度，下載映像檔所需的時間可能有所不同。</p>
 <p>在下載完成以後，輸入 <code>docker images</code> 指令可以顯示所有目前本地端擁有的 Docker 映像檔：</p>
-<div class="highlight"><pre><span></span>$ docker images tensorflow/tensorflow
-REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
-tensorflow/tensorflow   latest              76fb62c3cb89        <span class="m">2</span> weeks ago         <span class="m">1</span>.23GB
+<div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>images<span class="w"> </span>tensorflow/tensorflow
+REPOSITORY<span class="w">              </span>TAG<span class="w">                 </span>IMAGE<span class="w"> </span>ID<span class="w">            </span>CREATED<span class="w">             </span>SIZE
+tensorflow/tensorflow<span class="w">   </span>latest<span class="w">              </span>76fb62c3cb89<span class="w">        </span><span class="m">2</span><span class="w"> </span>weeks<span class="w"> </span>ago<span class="w">         </span><span class="m">1</span>.23GB
 </pre></div>
 <p>這邊因為我的環境裡已經有一大堆的映像檔，我在 <code>docker images</code> 後面加入額外的篩選器來告訴 Docker 只顯示 <code>tensorflow</code> repository 裡頭的 <code>tensorflow</code> 容器。</p>
 <p>有了映像檔以後，最令人期待的時刻終於來臨了！</p>
 <p>我們現在要呼叫 Docker 幫我們從這個映像檔產生並執行（run）一個新的 Docker 容器：</p>
-<div class="highlight"><pre><span></span>docker run -it -p <span class="m">1234</span>:8888 tensorflow/tensorflow
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>-p<span class="w"> </span><span class="m">1234</span>:8888<span class="w"> </span>tensorflow/tensorflow
 </pre></div>
 <p>短短一行指令，包含了 3 個你不可不知的重要概念：</p>
 <ul>
@@ -652,7 +652,7 @@ tensorflow/tensorflow   latest              76fb62c3cb89        <span class="m">
 <li>利用 <code>-p 1234:8888</code> 告訴 Docker 我們將會透過本地端的 <code>1234</code> port 來連到容器裡頭的 <code>8888</code> port</li>
 </ul>
 <p>你可以透過</p>
-<div class="highlight"><pre><span></span>docker run --help
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--help
 </pre></div>
 <p>來查看所有 <code>docker run</code> 可以使用的參數。</p>
 <p>另外，一個 DS 應該都知道，<code>8888</code> 是 Jupyter Notebook 預設的 port。因此我們的企圖就跟司馬昭之心一樣，打算透過本地端的 <code>1234</code> port 連到在容器裡頭跑的 Jupyter Notebook。</p>
@@ -677,8 +677,8 @@ tensorflow/tensorflow   latest              76fb62c3cb89        <span class="m">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>對你沒看錯，你已經用 Docker 建置了一個完整的資料科學環境，裡頭有 TensorFlow 以及 Jupyter Notebook。</p>
 <p>而你只需要 2 個指令：</p>
-<div class="highlight"><pre><span></span>docker pull tensorflow/tensorflow
-docker run -it -p <span class="m">1234</span>:8888 tensorflow/tensorflow
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>tensorflow/tensorflow
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>-p<span class="w"> </span><span class="m">1234</span>:8888<span class="w"> </span>tensorflow/tensorflow
 </pre></div>
 <p>建置環境什麼的交給 Docker 吧，你已經能馬上開始實作機器學習模型了。</p>
 <p>有些 DS 可能會覺得他的 <a href="https://anaconda.org/">Anaconda</a> 或者是 pip 功能爐火純青，不需要用到 Docker 也能自己在本地建出這樣的環境。其實沒錯，如果你只是開發個人專案，說真的不學 Docker 也沒關係（喂！）</p>
@@ -699,8 +699,8 @@ docker run -it -p <span class="m">1234</span>:8888 tensorflow/tensorflow
 <p><a href="https://github.com/leemengtaiwan/cat-recognition-app">Cat Recognizer</a> 是我用 TensorFlow 以及 <a href="http://flask.pocoo.org/">Flask</a> 實作的一個非常 naive 的貓咪辨識 App。</p>
 <p>如同我們前面所說的，我事先將所有此 App 需要的環境用一個 <a href="https://github.com/leemengtaiwan/cat-recognition-app/blob/master/Dockerfile">Dockerfile</a> 定義、全部包在一個 Docker 映像檔後分享在 <a href="https://hub.docker.com/r/leemeng/">Docker Hub</a> 上面。</p>
 <p>任何想要使用此 App 的人，只需要利用 Docker 輸入兩行指令：</p>
-<div class="highlight"><pre><span></span>docker pull leemeng/cat
-docker run -it -p <span class="m">2468</span>:5000 leemeng/cat
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>leemeng/cat
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>-p<span class="w"> </span><span class="m">2468</span>:5000<span class="w"> </span>leemeng/cat
 </pre></div>
 </div>
 </div>
@@ -770,10 +770,10 @@ docker run -it -p <span class="m">2468</span>:5000 leemeng/cat
 <p>雖然我們這篇因為篇幅關係沒有細講，但只要有一個 Dockerfile，你就能使用 <code>docker build</code> 來輕鬆建立一個自給自足的 Docker 映像檔。一個 Dockerfile 也不難寫，像是上面貓咪的 App 的 Dockerfile 也不過就如此幾行：</p>
 <div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.6.3</span>
 <span class="k">MAINTAINER</span><span class="w"> </span><span class="s">Meng Lee "b98705001@gmail.com"</span>
-<span class="k">COPY</span><span class="w"> </span>./requirements.txt /app/requirements.txt
+<span class="k">COPY</span><span class="w"> </span>./requirements.txt<span class="w"> </span>/app/requirements.txt
 <span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
-<span class="k">RUN</span><span class="w"> </span>pip install -r requirements.txt
-<span class="k">COPY</span><span class="w"> </span>. /app
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>/app
 <span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"python3"</span><span class="w"> </span><span class="p">]</span>
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"app.py"</span><span class="p">]</span>
 </pre></div>

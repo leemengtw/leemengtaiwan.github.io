@@ -179,7 +179,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2017-09-19 (Tue)</li>
                         <li class="page-view">
-                            2,757 views
+                            2,843 views
                         </li>
                     </ul>
 
@@ -324,7 +324,7 @@
 <span class="n">data_root</span> <span class="o">=</span> <span class="s1">'./datasets'</span> <span class="c1"># Change me to store data elsewhere</span>
 
 <span class="k">def</span> <span class="nf">download_progress_hook</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">blockSize</span><span class="p">,</span> <span class="n">totalSize</span><span class="p">):</span>
-  <span class="sd">"""A hook to report the progress of a download. This is mostly intended for users with</span>
+<span class="w">  </span><span class="sd">"""A hook to report the progress of a download. This is mostly intended for users with</span>
 <span class="sd">  slow internet connections. Reports every 5% change in download progress.</span>
 <span class="sd">  """</span>
   <span class="k">global</span> <span class="n">last_percent_reported</span>
@@ -341,7 +341,7 @@
     <span class="n">last_percent_reported</span> <span class="o">=</span> <span class="n">percent</span>
         
 <span class="k">def</span> <span class="nf">maybe_download</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">expected_bytes</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-  <span class="sd">"""Download a file if not present, and make sure it's the right size."""</span>
+<span class="w">  </span><span class="sd">"""Download a file if not present, and make sure it's the right size."""</span>
   <span class="n">dest_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_root</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
   <span class="k">if</span> <span class="n">force</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dest_filename</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">'Attempting to download:'</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span> 
@@ -445,7 +445,7 @@ This should give you a set of directories, labeled A through J.</p>
 <div class="input">
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls ./datasets/notMNIST_small/
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls<span class="w"> </span>./datasets/notMNIST_small/
 </pre></div>
 </div>
 </div>
@@ -2899,7 +2899,7 @@ to<div class="highlight"><pre><span></span><span class="kn">from</span> <span cl
 <span class="n">pixel_depth</span> <span class="o">=</span> <span class="mf">255.0</span>  <span class="c1"># Number of levels per pixel.</span>
 
 <span class="k">def</span> <span class="nf">load_letter</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">min_num_images</span><span class="p">):</span>
-  <span class="sd">"""Load the data for a single letter label."""</span>
+<span class="w">  </span><span class="sd">"""Load the data for a single letter label."""</span>
   <span class="n">image_files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
   <span class="n">dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">image_files</span><span class="p">),</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">image_size</span><span class="p">),</span>
                          <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>

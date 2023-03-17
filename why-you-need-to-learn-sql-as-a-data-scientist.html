@@ -171,7 +171,7 @@
                     <ul class="page-header__meta">
                         <li class="date">2018-04-30 (Mon)</li>
                         <li class="page-view">
-                            13,214 views
+                            13,699 views
                         </li>
                     </ul>
 
@@ -273,7 +273,7 @@
 <span class="w">       </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">o</span><span class="w"> </span>
 <span class="w">       </span><span class="k">ON</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">custkey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">custkey</span><span class="w"> </span>
 <span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Customer#000000001'</span><span class="w"> </span>
-<span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">orderdate</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">orderdate</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -463,17 +463,17 @@ Customer#000000001 | 270087.44 | 1997-03-04
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>再看一次先前的 SQL 查詢（+註解）：</p>
 <div class="highlight"><pre><span></span><span class="c1">-- 給我以下幾個欄位：顧客名稱、總購買金額、購買日期</span>
-<span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">customer</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="n">o</span><span class="p">.</span><span class="n">totalprice</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="n">o</span><span class="p">.</span><span class="n">orderdate</span><span class="w"></span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">customer</span><span class="p">,</span>
+<span class="w">       </span><span class="n">o</span><span class="p">.</span><span class="n">totalprice</span><span class="p">,</span>
+<span class="w">       </span><span class="n">o</span><span class="p">.</span><span class="n">orderdate</span>
 <span class="c1">-- 將有相同 custkey 的顧客跟購買紀錄合併</span>
-<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">c</span><span class="w"></span>
-<span class="w">       </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">o</span><span class="w"></span>
-<span class="w">       </span><span class="k">ON</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">custkey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">custkey</span><span class="w"></span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">c</span>
+<span class="w">       </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">o</span>
+<span class="w">       </span><span class="k">ON</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">custkey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">custkey</span>
 <span class="c1">-- 只需要此顧客的購買紀錄</span>
-<span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Customer#000000001'</span><span class="w"></span>
+<span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Customer#000000001'</span>
 <span class="c1">-- 依照購買日期排序</span>
-<span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">orderdate</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">orderdate</span><span class="p">;</span>
 </pre></div>
 <p>這裡頭我們不需要了解資料被以什麼形式儲存，也不需要定義要以什麼順序執行查詢，更不用做最佳化。這些事情全部交給背後的資料庫處理，使得資料科學家可以專注在更高層次的問題：「我們需要什麼資料？」</p>
 <p>而這正是 SQL 最強大的地方：</p>

@@ -76,7 +76,7 @@
 
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;maybe_download&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;expected_bytes&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;"""Download a file into 'datasets' sub-directory&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""Download a file into 'datasets' sub-directory&lt;/span&gt;
 &lt;span class="sd"&gt;    if not present, and make sure it's the right size.&lt;/span&gt;
 &lt;span class="sd"&gt;    """&lt;/span&gt;
     &lt;span class="n"&gt;rel_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'datasets/&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -121,7 +121,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;read_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;"""Extract the first file enclosed in a zip file as a list of words"""&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""Extract the first file enclosed in a zip file as a list of words"""&lt;/span&gt;
     &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;zipfile&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ZipFile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;compat&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;namelist&lt;/span&gt;&lt;span class="p"&gt;()[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;
@@ -255,7 +255,7 @@ called a kitten which is
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;build_dataset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""&lt;/span&gt;
 &lt;span class="sd"&gt;    Build training data for word2vec from a string including&lt;/span&gt;
 &lt;span class="sd"&gt;    sequences of words divided by spaces.&lt;/span&gt;
 &lt;span class="sd"&gt;    &lt;/span&gt;
@@ -372,7 +372,7 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# global variable to randomize mini-batch&lt;/span&gt;
 &lt;span class="n"&gt;data_index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;generate_batch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;batch_size&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_skips&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;skip_window&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""&lt;/span&gt;
 &lt;span class="sd"&gt;    Generate a mini-batch containing (target_word, context) pairs&lt;/span&gt;
 &lt;span class="sd"&gt;    of `batch_size`. &lt;/span&gt;
 &lt;span class="sd"&gt;    &lt;/span&gt;
@@ -615,10 +615,10 @@ Other than batch_size, we also have to decide the range of context surrounding t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="67b1b745-f4b3-4e15-b482-eec8939563fa"&gt;&lt;/div&gt;
+&lt;div id="1c8a6928-5902-4248-9a48-d4a16bbe15fb"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#67b1b745-f4b3-4e15-b482-eec8939563fa');
+var element = $('#1c8a6928-5902-4248-9a48-d4a16bbe15fb');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "479bac87e8864793a2657306231c3b2a", "version_major": 2, "version_minor": 0}
@@ -3912,10 +3912,10 @@ The function will draw mini-batch loss and training/validation accuracy dynamica
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="897d2801-fd39-4aeb-b316-052b81e57a19"&gt;&lt;/div&gt;
+&lt;div id="21e7e068-d9ec-4058-91b2-e7af60ea05cf"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#897d2801-fd39-4aeb-b316-052b81e57a19');
+var element = $('#21e7e068-d9ec-4058-91b2-e7af60ea05cf');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -4679,10 +4679,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="f9eb77e3-1170-479a-a28f-bdf90cb26b1a"&gt;&lt;/div&gt;
+&lt;div id="ac7eaab5-1587-42e5-a5f8-288524a7684c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f9eb77e3-1170-479a-a28f-bdf90cb26b1a');
+var element = $('#ac7eaab5-1587-42e5-a5f8-288524a7684c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "255b2330df764c069bf0fa8b72e282b3", "version_major": 2, "version_minor": 0}
@@ -4868,10 +4868,10 @@ Test accuracy: 89.4%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="1e385cf3-5931-4334-9092-f69469133280"&gt;&lt;/div&gt;
+&lt;div id="40a0358a-5982-4359-b19c-76f04448c71b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#1e385cf3-5931-4334-9092-f69469133280');
+var element = $('#40a0358a-5982-4359-b19c-76f04448c71b');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -5635,10 +5635,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="80010fdb-e002-44bc-a3c8-e4862d81055d"&gt;&lt;/div&gt;
+&lt;div id="658aa058-a3d1-4414-b350-d4e4eb213946"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#80010fdb-e002-44bc-a3c8-e4862d81055d');
+var element = $('#658aa058-a3d1-4414-b350-d4e4eb213946');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ae81313ad6ad4b428ce63444b7f0ae73", "version_major": 2, "version_minor": 0}
@@ -5835,10 +5835,10 @@ Test accuracy: 90.7%
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="eea51d63-fb6b-49dd-a055-c02e2e51674a"&gt;&lt;/div&gt;
+&lt;div id="6ec35165-c8d2-4341-a0ac-f77f94cc18c6"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#eea51d63-fb6b-49dd-a055-c02e2e51674a');
+var element = $('#6ec35165-c8d2-4341-a0ac-f77f94cc18c6');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -6602,10 +6602,10 @@ if (IPython.notebook.kernel != null) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="32e022fc-0bbb-41b1-ade6-bb3629d5dbde"&gt;&lt;/div&gt;
+&lt;div id="7e522968-5d33-4498-ab51-4fff371426ab"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#32e022fc-0bbb-41b1-ade6-bb3629d5dbde');
+var element = $('#7e522968-5d33-4498-ab51-4fff371426ab');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "b240065c4ffa4ca29432614b189f2e04", "version_major": 2, "version_minor": 0}
@@ -6866,7 +6866,7 @@ so accuracy alone will be sufficient for evaluating performance of our model on 
           &lt;span class="n"&gt;keep_prob&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;learning_decay&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
           &lt;span class="n"&gt;batch_size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;batch_size&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_steps&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;num_steps&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;n1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n2&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;n2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n3&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;n3&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""&lt;/span&gt;
 &lt;span class="sd"&gt;    Train 3-layer NN with following settings:&lt;/span&gt;
 &lt;span class="sd"&gt;    Regularization lambda: {}&lt;/span&gt;
 &lt;span class="sd"&gt;    Learning rate: {}&lt;/span&gt;
@@ -7001,10 +7001,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="f2aabe36-6547-4ba1-9e77-ca6fb75a8f22"&gt;&lt;/div&gt;
+&lt;div id="cc45e11b-cf12-4322-b6ec-d82e1f2385e2"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f2aabe36-6547-4ba1-9e77-ca6fb75a8f22');
+var element = $('#cc45e11b-cf12-4322-b6ec-d82e1f2385e2');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "95a1e075513f4d02a8579c4fcd5b8509", "version_major": 2, "version_minor": 0}
@@ -7065,10 +7065,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="733b750e-5231-418d-aefd-67491dac13e4"&gt;&lt;/div&gt;
+&lt;div id="d3df8dd9-387d-4ef5-8e35-d373ed853d5c"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#733b750e-5231-418d-aefd-67491dac13e4');
+var element = $('#d3df8dd9-387d-4ef5-8e35-d373ed853d5c');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "6b6986da296646b9aac2266326edcf21", "version_major": 2, "version_minor": 0}
@@ -7121,10 +7121,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="53fd9177-9ba0-4bbe-a95b-9a6221bae5d2"&gt;&lt;/div&gt;
+&lt;div id="2ed6f140-4dc0-4001-9798-117c52a1a519"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#53fd9177-9ba0-4bbe-a95b-9a6221bae5d2');
+var element = $('#2ed6f140-4dc0-4001-9798-117c52a1a519');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "312b63e26f364cec95540b452b4ec95c", "version_major": 2, "version_minor": 0}
@@ -7177,10 +7177,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="0fb38f0c-87a6-4273-aa33-14e5ff37b47f"&gt;&lt;/div&gt;
+&lt;div id="6d79ddf7-a1df-4d13-8be7-4d10a8d11976"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#0fb38f0c-87a6-4273-aa33-14e5ff37b47f');
+var element = $('#6d79ddf7-a1df-4d13-8be7-4d10a8d11976');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f5a5be47b2a14f488d9d302df5d5988d", "version_major": 2, "version_minor": 0}
@@ -7239,10 +7239,10 @@ Initialized
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="5b868c00-220e-4459-bc81-c758ec6f3ec3"&gt;&lt;/div&gt;
+&lt;div id="c0f8af43-cd3e-48b5-8152-156efc1e2c67"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#5b868c00-220e-4459-bc81-c758ec6f3ec3');
+var element = $('#c0f8af43-cd3e-48b5-8152-156efc1e2c67');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "ee2b75cf5f6542f99a17c5ad02bc49fd", "version_major": 2, "version_minor": 0}
@@ -7583,7 +7583,7 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;accuracy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;predictions&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;labels&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;"""For every (logit/Z, y) pair, get the (predicted label, label) and count the &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""For every (logit/Z, y) pair, get the (predicted label, label) and count the &lt;/span&gt;
 &lt;span class="sd"&gt;    occurence where predicted label == label and divide by the total number of &lt;/span&gt;
 &lt;span class="sd"&gt;    data points.&lt;/span&gt;
 &lt;span class="sd"&gt;    """&lt;/span&gt;
@@ -7633,10 +7633,10 @@ Here we will use &lt;code&gt;tqdm&lt;/code&gt; library to help us easily visuali
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="3ea39cda-c9ba-4d19-baa5-5e09440a8953"&gt;&lt;/div&gt;
+&lt;div id="3a50d11a-5486-4ff3-a59a-70e3da0c0ee3"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#3ea39cda-c9ba-4d19-baa5-5e09440a8953');
+var element = $('#3a50d11a-5486-4ff3-a59a-70e3da0c0ee3');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "a776469c0f394bab94bc900cf03f469d", "version_major": 2, "version_minor": 0}
@@ -7781,10 +7781,10 @@ Test acc: 82.8%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="c43405d4-f1ae-4ff3-846d-9bc6c1a26073"&gt;&lt;/div&gt;
+&lt;div id="19948813-b5f9-430f-8a79-0254c8dc76fb"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#c43405d4-f1ae-4ff3-846d-9bc6c1a26073');
+var element = $('#19948813-b5f9-430f-8a79-0254c8dc76fb');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "2d2a36e34f9843b5a38a9fe105281093", "version_major": 2, "version_minor": 0}
@@ -7937,10 +7937,10 @@ Test acc: 86.9%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;
-&lt;div id="9b0f78d0-e5ff-4fda-98da-7b3f1702fa01"&gt;&lt;/div&gt;
+&lt;div id="3516b44a-ea44-4198-8f11-fef31cd6f6cf"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9b0f78d0-e5ff-4fda-98da-7b3f1702fa01');
+var element = $('#3516b44a-ea44-4198-8f11-fef31cd6f6cf');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "f379ee5b4ed04eb18e5ee8d6b1e69a17", "version_major": 2, "version_minor": 0}
